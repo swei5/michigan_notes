@@ -1,0 +1,161 @@
+{
+  "main": {
+    "id": "61cc6f447629749e",
+    "type": "split",
+    "children": [
+      {
+        "id": "15db0ae16e66c48a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "18497a999c352106",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Random/Notes.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d9a2ab25f600403b",
+    "type": "split",
+    "children": [
+      {
+        "id": "574adfb7c39e77d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "65410b69182c8eda",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "37508de9e8eb1d13",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0620a900a2fce001",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b00c598022fe354f",
+    "type": "split",
+    "children": [
+      {
+        "id": "b5d8e22b0938ead4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "63aea5c5c1a90cf3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Random/Notes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f468ee8dce0ceaed",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Random/Notes.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "47e76e62d938c895",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d65832bb8476bef6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Random/Notes.md"
+              }
+            }
+          },
+          {
+            "id": "7dd1b4208a7c2715",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "active": "18497a999c352106",
+  "lastOpenFiles": [
+    "Random/Notes 2.md",
+    "2022-12-11.md",
+    "Random/Notes.md",
+    "EECS 281/2.1 Stack.md",
+    "Random/Untitled.md",
+    "Random/google.com.md",
+    "Random/attachments/Pasted image 20221211155702.png",
+    "Random/attachments/Pasted image 20221211160024.png",
+    "Random/Pasted image 20221211155628.png",
+    "Pasted image 20221211154315.png"
+  ]
+}
