@@ -12,6 +12,7 @@
   "attachmentFolderPath": "./attachments",
   "newFileLocation": "current",
   "alwaysUpdateLinks": true,
-  "trashOption": "none",
-  "spellcheck": true
+  "trashOption": "local",
+  "spellcheck": true,
+  "showLineNumber": true
 }
