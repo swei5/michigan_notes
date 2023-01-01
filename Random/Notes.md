@@ -58,9 +58,6 @@ Test if links work:
 
 To link to a chunk of test, we use `! + \[[]]`:
 
-> [!NOTE] Title
-> Contents
-
 Like this: ![[#^910f99]]
-[[Note]]
+
 Link to website: [Google](https://google.com)
