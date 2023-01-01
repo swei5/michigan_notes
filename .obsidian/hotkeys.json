@@ -1,1 +1,21 @@
-{}
+{
+  "editor:toggle-code": [],
+  "editor:toggle-highlight": [
+    {
+      "modifiers": [
+        "Ctrl",
+        "Mod"
+      ],
+      "key": "H"
+    }
+  ],
+  "editor:toggle-strikethrough": [
+    {
+      "modifiers": [
+        "Ctrl",
+        "Mod"
+      ],
+      "key": "-"
+    }
+  ]
+}
