@@ -1,4 +1,3 @@
-
 ### Criteria
 1. Revenue must be **earned**
 	- **Risk of ownership** has passed
@@ -26,3 +25,4 @@ When collecting $`x` on account:
 - If determined a company will not pay the payable
 	1. Debit Allowance for Uncollectible Accounts $`x`
 	2. Credit AR gross $`x`
+

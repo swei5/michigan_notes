@@ -11,3 +11,7 @@ $\bar{x}\pm z \frac{\sigma}{\sqrt{n}}$
 > [!This] This
 > Contents
 > 
+
+^66d2dc
+
+![[#^66d2dc]]
