@@ -8,10 +8,34 @@ $\bar{x}\pm z \frac{\sigma}{\sqrt{n}}$
 | what's this | something | unknown |
 
 
-> [!This] This
-> Contents
-> 
+> [!This] 
+> Normal box. The boxes below are achieved by plug-ins.
 
-^66d2dc
+```ad-note
+Adding a note.
+```
 
-![[#^66d2dc]]
+```ad-tip
+Adding a tip.
+```
+
+```ad-warning
+Adding a warning.
+```
+
+```ad-info
+Adding an info.
+```
+
+```ad-quote
+Adding a quote.
+```
+
+```ad-bug
+Adding a bug.
+```
+
+```ad-example
+Adding an example.
+```
+

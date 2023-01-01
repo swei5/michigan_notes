@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Random/Notes 2.md",
+                "file": "Random/Notes.md",
                 "mode": "preview",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Random/Notes 2.md",
+                "file": "Random/Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Random/Notes 2.md",
+                "file": "Random/Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Random/Notes 2.md"
+                "file": "Random/Notes.md"
               }
             }
           },
@@ -157,15 +157,15 @@
   },
   "active": "b59a0fd9754f8ef1",
   "lastOpenFiles": [
-    "Random/Notes.md",
-    "ACC/Revenue Recognition.md",
-    "ACC/2022-12-31.md",
-    "ACC/2023-01-01.md",
-    "Random/EECS 280.md",
-    "Random/attachments/Pasted image 20221211155702.png",
     "Random/Notes 2.md",
+    "Random/Notes.md",
+    "Random/EECS 280.md",
     "Random/attachments/Pasted image 20221211160024.png",
-    "2022-12-11.md",
-    "EECS 281/2.1 Stack.md"
+    "Random/attachments/Pasted image 20221211155702.png",
+    "Random/attachments/ExtraPracticet2022Combined.pdf",
+    "ACC/Revenue Recognition.md",
+    "Random/What.md",
+    "ACC/2022-12-31.md",
+    "ACC/2023-01-01.md"
   ]
 }
