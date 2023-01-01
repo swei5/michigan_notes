@@ -1,0 +1,3 @@
+# michigan_notes
+
+Notetaking.
