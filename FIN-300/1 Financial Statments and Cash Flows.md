@@ -12,6 +12,8 @@ Financial markets are important in that they allocate capitals in an efficient m
 Financial markets facilitate the interaction between those who need **capital** with those who have **capital** to invest.
 ```
 
+^b42f8e
+
 FM are **NOT PERFECT**:
 - Information problems
 
