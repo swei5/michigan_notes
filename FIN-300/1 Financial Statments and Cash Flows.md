@@ -64,9 +64,9 @@ Reports the company's **total asset** and how the assets are financed, either th
 
 **Assets** are estimates of the physical assets, financial assets, and intangible assets that have been contributed to the business.
 - $Total\ Assets = Current\ Assets + Non-current\ Assets$
-	- Current: **WITHIN** 12 months
-	
-- $Assets = Liabilities + Equity$
+	- Current: **WITHIN** 12 months	
+
+$$Assets = Liabilities + Equity$$
 
 **Liabilities** are what the business owes to other parties.
 
@@ -77,5 +77,6 @@ Gives a high-level overview of all **cash movements** over a **period of time**.
 - **Investment analysis**: investors care about the timing, magnitude, and risk of prospective cash flows.
 - **Risk analysis:** whether a business is likely to become financially distressed depends upon whether it generates **cash** rather than **earnings**.
 
-$Cash\ at\ the\ end = Cash\ at\ the\ beginning + Cash\ movements$
+$$Cash\ at\ the\ end = Cash\ at\ the\ beginning + Cash\ movements$$
+
 
