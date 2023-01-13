@@ -20,3 +20,10 @@ and **Training Error**:
 If the data are **[[2 Linear Classifiers#^91d7b9|linearly separable]]**, this algorithm finds a **separating [[2 Linear Classifiers#^ba658c |hyperplane]]**.
 - Otherwise, we have an **infinite loop**.
 
+#### Example Run-through
+- $\overline{\theta}^1=\begin{bmatrix}6\\6\end{bmatrix}$
+	![[Pasted image 20230112172003.png|400]]
+
+- $\overline{\theta}^2=\begin{bmatrix}-3\\5\end{bmatrix}$
+
+![[Pasted image 20230112172203.png|400]]

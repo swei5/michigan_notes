@@ -23,10 +23,14 @@ Labels:
 	- Features are **statistics** or **attributes** that describe the data. Here, we represent them in terms of vectors: $$\vec{x}\in \mathbb{R}^d \to \mathbb{R} \times \mathbb{R}\times \cdots \times \mathbb{R}$$
 		where $d$ is the dimension of our data set. In our case, $d=2$.
 		
-	- $\vec{x}^i$ represents datapoint $i$ such that $\vec{x}^i \in \mathbb{R}^2 \ s.t. \ \vec{x}^i \in [0,1]\times[0,1]$. This set is known as the **feature space**.
-			![[Pasted image 20230110110411.png]]
-		
-		In this example, $\vec{x}^4=[0.2,0.4]^T$. And $\vec{x}^4_1=0.2$.
+		![[Pasted image 20230110110411.png]]
+	
+
+```ad-example
+In this example, $\vec{x}^i$ represents datapoint $i$ such that $\vec{x}^i \in \mathbb{R}^2 \ s.t. \ \vec{x}^i \in [0,1]\times[0,1]$. This set is known as the **feature space**.
+
+Specifically, $\vec{x}^4=[0.2,0.4]^T$. And $\vec{x}^4_1=0.2$.
+```
 
 2. Labels
 	- In general, we refer to labels as $y^i$ such that $y^i \in \set{1,-1}$. This set is known as the **label space**.
