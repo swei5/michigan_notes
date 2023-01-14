@@ -125,8 +125,8 @@ The choice of $\overline{\theta}$ determines
 We want to find $\overline{\theta}$ that works well on **training dataset** $S=\set{(\overline{x}^i,\overline{y}^i)}_{i=1}^{n}$.
 
 ```ad-important
-**Definition 2.2** The training error is defined as
-$$E_n(\overline{\theta})=\sum_{i=1}^{n} \left([[\overline{y}^i \ne h(\overline{x};\overline{\theta})]]\right)$$
+**Definition 2.2**: The training error is defined as
+$$E_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \left([[\overline{y}^i \ne h(\overline{x};\overline{\theta})]]\right)$$
 
 The predicate function returns 1 when $p$ (predicate) is true, and 0 otherwise.
 ```
@@ -136,6 +136,13 @@ The predicate function returns 1 when $p$ (predicate) is true, and 0 otherwise.
 Thus the function above returns the **count** of the datapoints that were misclassified.
 
 Our goal is therefore to **minimize** training error.
+
+```ad-important
+**Definition 2.3**: The empirical risk is defined as
+$$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \left((\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x})\right)$$
+```
+
+^52880f
 
 ##### Algorithm
 
