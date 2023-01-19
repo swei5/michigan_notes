@@ -82,3 +82,37 @@ $$\mathrm{Return}=(1+\mathrm{Periodic \ Return})^n-1$$
 
 Given a variable interest rate $r_t$ at time $t$, we have
 $$FV=PV\cdot \prod_{t=1}^{n} \left(1+r_t\right)$$
+
+```ad-warning
+Exam questions will focus on variable interest rates.
+```
+
+---
+
+#### Periodic Rates
+In performing present value/future value computations we always use the **periodic rate**.
+
+```ad-example
+Rates of different periods/lengths.
+
+![[Pasted image 20230118122930.png|600]]
+```
+
+There are two ways to express a periodic rate on an **annual basis**.
+- **Annual Percentage Rate**
+	$$APR=r\cdot \mathrm{number\ of\ periods\ in\ a\ year}$$
+	
+	The annual percentage rate (often called the **simple interest rate**) is used for a quick approximation of an **annual return**.
+
+- **Effective Annual Rate**
+	$$EAR=(1+r)^{\mathrm{number\ of\ periods\ in\ a\ year}}-1$$
+
+	The effective annual rate (often called the **compound interest rate**) is the “true” **interest rate**.
+
+
+```ad-question
+When should we use EAR or APR?
+```
+
+In performing a $PV$ or $FV$ calculation, we **ALWAYS** use the **PERIODIC RATE**.
+
