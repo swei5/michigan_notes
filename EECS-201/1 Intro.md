@@ -54,7 +54,7 @@ Follows the structure:
 There are two types of paths.
 - Absolute: start with `/`
 	- we call `/` the **root directory** - the starting point
-	- (e.g.) `/home/brandon/Music/deemo-saika-rabpit.flac`
+		- `/home/brandon/Music/deemo-saika-rabpit.flac`
 
 - Relative: starts from current or parent directory
 	- `./dir1/dir2`
@@ -76,5 +76,23 @@ Lots of commands **act** on files.
 #### Output
 - we can pipe output from command to another command with a pipe (`|`)
 	- `echo "hello world" | rev`
-	- Effect: prints `hello world`
+	- Effect: prints the reverse of `hello world`
+- We can save output from a command to a file with a "redirection" (`>`)
+	- `echo "hello world" > some-file`
+- We can retrieve input from a file for a command with another "redirection" (`<`)
+	- `amongus -TSP < test-f`
 
+---
+
+### Automation
+We can save a list of commands into a file.
+- Known as the *script*
+
+We can now run this script whenever we want by **invoking** the filename as an **argument** for shell of choice
+- `$ zsh some-script`
+
+This runs a **new shell instance** that runs each of those commands as if you had entered in the commands yourself.
+
+If the file is marked as **executable**, you can also directly invoke it as a **program**.
+- `$ ./some-script`
+- **HAVE** to specify it as an **explicit path**
