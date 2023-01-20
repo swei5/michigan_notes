@@ -16,7 +16,7 @@ Due to the TVM, how do we compare cash at different points in time?
 We can use the **interest rate** to calculate the Present Value of the money you
 receive in the future, or the Future Value of the money you receive today.
 
-```ad-info
+```ad-important
 **Definition 2.1**: To compare the value or money from the future to the value today, we need an **exchange rate** across time. This is **discount rate** or **interest rate**.
 ```
 
