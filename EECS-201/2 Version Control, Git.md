@@ -146,3 +146,35 @@ Initializing Git repos inside of Git repos might not work the way you expect the
 - `git merge <branch-name>` will try to move the **current branch** to where `<branch-name>` is. This is called **fast-forwarding**
 	- If the branches **diverged** (`<branch-name>` and the current branch both got **new commits** before **merging**), a special "merge commit" will be produced; more on this later
 
+---
+
+#### Remotes
+The remote has its **own** branches.
+- Your local **Repository**'s branches might be "*tracking*" this a **corresponding** remote branch
+	- Local `dev` tracks `origin/dev`
+- `git fetch` will **get** the **latest** commits from the **remote** into the Repository
+	- Effectively, the Repository has a **local cached** version of `origin/dev`
+- `git pull` will do a `git fetch` and additionally `git merge`, **potentially** modifying your Working Directory
+	- `git merge` merges the **locally cached version** of remote branch into the **local branch**
+		- Merging `origin/dev` into `dev`
+		- 
+
+```ad-warning
+Making commits locally $\ne$ making commits to remote!
+- Can simply make commits to your local Repository
+- Only `git push` will send commits to the **remote**.
+```
+
+Remote hosting services include
+- Github
+- GitLab
+- BitBucket
+
+##### Communicating with Remote
+- HTTP
+	- Uses a username and password to authenticate
+		- URL format: `https://somedomain.tld/path/to/repo.git`
+- SSH
+	- Requires **key** setup
+		- URL format: `git@somedomain.tld:path/to/repo.git`
+
