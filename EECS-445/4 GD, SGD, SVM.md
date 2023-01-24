@@ -74,7 +74,7 @@ Note that there are two cases for this $\mathrm{loss}$ function.
 	- **NO** update is made
 - Case 2: $y^i(\overline{\theta}\cdot\overline{x}^i)<1$
 	- $\nabla(^i(\overline{\theta}\cdot\overline{x}^i))=-y^ix^i$
-	- Note how this relates to the gradient of a loss function:![[#^7ade40]]
+	- Note how this relates to the gradient of a loss function (hinge): [[3 Perceptron, Loss Functions#^e177f0]]
 ```
 
 The algorithm is therefore equivalent to
@@ -119,5 +119,56 @@ Note that $\lim_{k\to\infty}R_n(\overline{\theta}^{(i_k)})$ is not necessarily $
 #### Convergence
 
 
+---
 
+### Hard Margin SVM
+We want to have
+- Boundary that classifies the training set **correctly**
+- That is **maximally removed** from training examples closest to the decision boundary
+
+This is an optimization problem with constraints.
+
+```ad-important
+**Definition 4.3**: Hard-margin Support Vector Machines (SVMs) maximize the distance between the **decision boundary** and points that are **closest** to the decision boundary.
+
+$$\max_{\overline{\theta}, b} \min_{i} \gamma^{i}(\overline
+\theta, b) \mathrm{\ \ \ \ subject\ to\ \ \ \ } y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1$$
+
+```
+
+![[Pasted image 20230123093702.png|400]]
+
+Here, $\gamma^i$ is defined to be the **distance** between the datapoint $x^i$ and the hyperplane.
+
+```ad-note
+$\gamma^i$ can be computed as follow:
+$$\frac{y^{i}(\overline{\theta}\cdot x^{i}+b)}{||\overline{\theta}||}.$$
+
+**Proof**:
+$$d=\frac{\overline{\theta}\cdot(x^i-x_0)}{||\overline{\theta}||}$$
+
+where $x_0$ is a point on the hyperplane $H$. Then,
+$$=\frac{\overline{\theta}\cdot x^{i}- \overline{\theta}\cdot x^{0}}{||\overline{\theta}||}=\frac{\overline{\theta}\cdot x^{i}+b}{||\overline{\theta}||}$$
+
+as $\overline{\theta}\cdot x^{0}+b = 0$ as defined by the decision boundary. We then multiply it by $y^{i}\in \set{1,-1}$ to account for the direction.
+```
+
+The points that are closest to our decision boundary in this case is called **support vectors** - they lie on the **support margin**. 
+
+```ad-note
+We can in fact simplify the general formulae to Hard-Margin SVM.
+
+This is because 
+
+$$\min \gamma^{i}(\overline{\theta}, b) = \min \frac{y^{i}(\overline{\theta}\cdot x^{i}+b)}{||\overline{\theta}||}$$
+
+and we had set the constraint that $y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1$.
+
+Therefore, we are essentially trying to get at
+
+$$\max_{\overline{\theta}} \frac{1}{||\overline{\theta}||}$$
+
+which is equivalent to
+$$\min_{\overline{\theta}} \frac{||\overline{\theta}^2||}{2}.$$
+```
 

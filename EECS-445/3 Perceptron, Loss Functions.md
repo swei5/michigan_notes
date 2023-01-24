@@ -97,6 +97,8 @@ for some $z=\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x})$, essential
 - Informally, a convex function is characterized as "*bowl*-shape".
 ```
 
+^fd4ee6
+
 ---
 
 ### Gradient Descent
