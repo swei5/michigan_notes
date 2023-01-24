@@ -1,4 +1,4 @@
-[[2023-01-04]] #SupervisedLearning #UnsupervisedLearning
+[[2023-01-04]]
 
 ### Machine Learning
 What is Machine Learning?

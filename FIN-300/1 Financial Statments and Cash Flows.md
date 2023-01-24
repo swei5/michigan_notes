@@ -1,4 +1,4 @@
-[[2023-01-04]] #CashFlow #FinancialMarket #CashFlow 
+[[2023-01-04]]
 
 ### Road Maps - Two Key Questions
 1. Valuation: what are the right investment decisions?

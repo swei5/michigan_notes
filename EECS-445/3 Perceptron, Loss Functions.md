@@ -1,4 +1,4 @@
-[[2023-01-11]] #Perceptron #LossFunctions #EmpiricalRisks #GradientDescent #LinearClassifier #LinearSeparability
+[[2023-01-11]]
 
 ### Recap
 Recall the definition of **Binary Linear Classifier**, 
@@ -84,9 +84,7 @@ Therefore, we might want to take a new approach.
 $$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{loss}\left(\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x})\right)$$
 ```
 
-^e23e8f
-
-There are a number of ways to define **loss functions**: ^e177f0
+There are a number of ways to define **loss functions**:
 
 ![[Pasted image 20230113004516.png|300]]
 
@@ -97,11 +95,9 @@ for some $z=\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x})$, essential
 - Informally, a convex function is characterized as "*bowl*-shape".
 ```
 
-^fd4ee6
-
 ---
 
 ### Gradient Descent
-Brief idea: take a small step in the **opposite** direction to which the gradient points. ^9fa4a8
+Brief idea: take a small step in the **opposite** direction to which the gradient points.
 - Start with a guess, ends at the point where the gradient is 0
 

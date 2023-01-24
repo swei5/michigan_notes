@@ -1,4 +1,4 @@
-[[2023-01-09]] #LinearClassifier #Hyperplane #Perceptron #SupervisedLearning 
+[[2023-01-09]]
 
 ### Linear Binary Classifier
 This is **supervised** **learning** as the data are already pre-labeled.
