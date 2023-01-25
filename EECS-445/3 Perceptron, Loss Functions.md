@@ -84,6 +84,8 @@ Therefore, we might want to take a new approach.
 $$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{loss}\left(\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x})\right)$$
 ```
 
+^03b62f
+
 There are a number of ways to define **loss functions**:
 
 ![[Pasted image 20230113004516.png|300]]

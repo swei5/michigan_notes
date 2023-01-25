@@ -37,9 +37,9 @@ This is known as a **shell**.
 The \*nix command line is known as the *shell*.
 - Follows very similar basic syntax no matter what shell (bash, zsh, csh, etc.) you use
 
-Follows the structure:
+Follows the structure: ^a03f80
 
-![[Pasted image 20230119003258.png|600]]
+![[Pasted image 20230119003258.png|600]] ^a049ce
 
 ---
 
@@ -62,6 +62,8 @@ There are two types of paths.
 	- `../../some-dir`
 	- **NOTE**: Implicitly starts from **current directory** if path doesn't start with `/`, `.`, or `..`.
 ```
+
+^612acf
 
 ---
 

@@ -51,7 +51,7 @@ In fact, any **positive** learning rate that satisfies $\sum\limits_{k=0}^{\inft
 ```ad-warning
 Gradient Descent with a large dataset is extremely time-consuming as computing $R_n(\overline{\theta})$ requires us to look at all datapoints in the set.
 
-Recall the definition of **empirical risk** ![[3 Perceptron, Loss Functions#^e23e8f]]
+Recall the definition of **empirical risk** ![[3 Perceptron, Loss Functions#^03b62f]]
 ```
 
 ---
@@ -126,7 +126,7 @@ We want to have
 - Boundary that classifies the training set **correctly**
 - That is **maximally removed** from training examples closest to the decision boundary
 
-This is an optimization problem with constraints.
+This is an **optimization** problem with **constraints**.
 
 ```ad-important
 **Definition 4.3**: Hard-margin Support Vector Machines (SVMs) maximize the distance between the **decision boundary** and points that are **closest** to the decision boundary.

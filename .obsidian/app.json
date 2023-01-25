@@ -5,5 +5,7 @@
   "attachmentFolderPath": "./",
   "showFrontmatter": true,
   "showLineNumber": true,
-  "spellcheck": true
+  "spellcheck": true,
+  "promptDelete": false,
+  "newFileLocation": "current"
 }
