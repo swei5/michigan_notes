@@ -1,1 +1,9 @@
-{}
+{
+  "showUnsupportedFiles": true,
+  "alwaysUpdateLinks": true,
+  "trashOption": "local",
+  "attachmentFolderPath": "./",
+  "showFrontmatter": true,
+  "showLineNumber": true,
+  "spellcheck": true
+}
