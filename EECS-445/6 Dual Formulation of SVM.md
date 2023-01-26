@@ -1,4 +1,4 @@
-[[2023-01-25]] #SVM #SoftMarginSVM #FeatureMap #DualFormulation
+[[2023-01-25]] #SVM #SoftMarginSVM #FeatureMap #DualFormulation #PrimalFormulation
 
 ### Recap
 
@@ -111,4 +111,21 @@ The difference between primal formulation and dual formulation is called the **d
 
 
 #### SVM Dual Formulation
+Using the methodology above, we can derive the dual formulation for SVM.
 
+```ad-example
+The Lagrangian can be written as
+$$
+L (\overline{w},\overline{\alpha}) = \frac{||\overline{\theta}||^{2}}{2} +\sum\limits_{i=1}^{n}\alpha_{i}(1-y^{i}(\overline{\theta}\cdot\overline{x}^{i}))
+$$
+
+such that $\alpha_{i}\ge 0$ and where
+$$
+h_i(\overline{w}):=1-y^{i}\overline{\theta}\cdot \overline{x}^{i}\le 0.
+$$
+
+To find the minimum of $L$, we take the gradient and set it to zero. We get
+$$
+\overline{\theta}-\nabla_{\overline{\theta}} \sum\limits_{i=1}^{n} \alpha_{i}y^{i}\overline{\theta}\cdot \overline{x}^{i}=\overline{\theta}- \sum\limits _{i=1}^{n} \alpha_{i}y^{i}\cdot \overline{x}^{i}
+$$
+```
