@@ -50,6 +50,17 @@ Here, we want to re-write the solution in **dual form**:
 
 ![[Pasted image 20230125234256.png|400]]
 
+The output of this optimization problem is $\hat{\overline{\alpha}}$:
+$$
+\overline{\theta}^{\star}=\sum\limits_{i=1}^{n} \hat{\alpha}_{i}y^ix^i
+$$
+
+Suppose we want to map to a higher dimensional space, using dual form to solve, this is equivalent to
+
+![[Pasted image 20230125234601.png|400]]
+
+As sometimes, $\phi (\overline{x}^i)\cdot\phi (\overline{x}^j)$ can be computed **MUCH MORE efficiently** than separately computing them.
+
 Before that, we can abstract our original QP function into $f(\overline{w})$.
 
 #### Primal Formulation
@@ -81,17 +92,23 @@ If constraints are **NOT** satisfied, it is futile to find the min from infinity
 ```
 
 ```ad-important
-**Definition 6.1**: $\min_{\overline{w}}g_p(\overline{w})=\min_{\overline{w}} \left(\max_{\overline{\alpha}} L (\overline{w},\overline{\alpha})\right)$ is called the **primal formulation**.
+**Definition 6.1**: $$
+\min_{\overline{w}}\max_{\overline{\alpha}, \alpha_{i}\ge 0} L (\overline{w},\overline{\alpha})$$ 
+
+is called the **primal formulation**.
+
+Its opposite, $$
+\max_{\overline{\alpha}, \alpha_{i}\ge 0}\min_{\overline{w}}L (\overline{w},\overline{\alpha})$$
+
+is called the **dual formulation**.
 ```
 
+#### Duality Gap
+The difference between primal formulation and dual formulation is called the **duality gap**.
+- The **dual** gives a **lower bound** on the solution of the **primal**
+- Under certain conditions, the gap is **ZERO**
+	- For quadratic convex objective, constraint functions affine, primal/dual feasible
 
-The output of this optimization problem is $\hat{\overline{\alpha}}$:
-$$
-\overline{\theta}^{\star}=\sum\limits_{i=1}^{n} \hat{\alpha}_{i}y^ix^i
-$$
 
-Suppose we want to map to a higher dimensional space, using dual form to solve, this is equivalent to
+#### SVM Dual Formulation
 
-![[Pasted image 20230125234601.png|400]]
-
-As sometimes, $\phi (\overline{x}^i)\cdot\phi (\overline{x}^j)$ can be computed **MUCH MORE efficiently** than separately computing them.

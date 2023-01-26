@@ -2,7 +2,7 @@
   "showUnsupportedFiles": true,
   "alwaysUpdateLinks": true,
   "trashOption": "local",
-  "attachmentFolderPath": "./",
+  "attachmentFolderPath": "./attachments",
   "showFrontmatter": true,
   "showLineNumber": true,
   "spellcheck": true,
