@@ -6,10 +6,12 @@ Supports data that are **NOT** linearly separable.
 ```ad-important
 **Definition 5.1**: The Soft-Margin SVM is defined as the **Hard-Margin** SVM with a slack to the constraints.
 $$\min_{\overline{\theta}, b, \overline{\xi}} \frac{||\overline{\theta}||^2}{2}+C\sum\limits_{i=1}^{n}\xi_i$$
-$$\mathrm{subject\ to\ \ \ \ } y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1-\xi_{i}\mathrm{\ \ \ \ for} i \in \{1,\cdots, n\}, \xi_i\ge0$$
+$$\mathrm{subject\ to\ \ \ \ } y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1-\xi_{i}\mathrm{\ \ \ \ for\ } i \in \{1,\cdots, n\}, \xi_i\ge0$$
 
 Here, $C$ is a hyperparameter.
 ```
+
+^accc27
 
 In other words, we allow the **decision boundary** to violate the constraint.
 
@@ -33,6 +35,8 @@ Soft-Margin SVM is a special case for Hard-Margin SVM.
 - Intuitively, as $C$ increases, penalty/misclassification increases
 - However, as $C\to \infty$, penalty/misclassification decreases, and this is the hard margin SVM
 ```
+
+^8c7dd1
 
 - Small values of $C$ indicates
 	- The penalty part plays *little* role - thus, the slack variables **DOES NOT** need to be very small for the minimization process.

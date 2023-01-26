@@ -136,6 +136,8 @@ $$\max_{\overline{\theta}, b} \min_{i} \gamma^{i}(\overline
 
 ```
 
+^f87ed1
+
 ![[Pasted image 20230123093702.png|400]]
 
 Here, $\gamma^i$ is defined to be the **distance** between the datapoint $x^i$ and the hyperplane.
@@ -152,6 +154,8 @@ $$=\frac{\overline{\theta}\cdot x^{i}- \overline{\theta}\cdot x^{0}}{||\overline
 
 as $\overline{\theta}\cdot x^{0}+b = 0$ as defined by the decision boundary. We then multiply it by $y^{i}\in \set{1,-1}$ to account for the direction.
 ```
+
+^def8e8
 
 The points that are closest to our decision boundary in this case is called **support vectors** - they lie on the **support margin**. 
 
@@ -171,4 +175,6 @@ $$\max_{\overline{\theta}} \frac{1}{||\overline{\theta}||}$$
 which is equivalent to
 $$\min_{\overline{\theta}} \frac{||\overline{\theta}^2||}{2}.$$
 ```
+
+^ec1126
 
