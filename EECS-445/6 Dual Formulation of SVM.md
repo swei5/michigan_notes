@@ -149,4 +149,4 @@ Let optimal values be given by $\overline{\theta}^{\star}$ and we substitute tha
 
 ![[Pasted image 20230126182455.png]]
 
-Note that $b$ eventually evaluates to zero
+Note that $b$ eventually evaluates to zero given $b$ 's optimal value (when taking the gradient) in this case.
