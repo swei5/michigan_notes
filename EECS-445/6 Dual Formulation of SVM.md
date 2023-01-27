@@ -150,3 +150,19 @@ Let optimal values be given by $\overline{\theta}^{\star}$ and we substitute tha
 ![[Pasted image 20230126182455.png]]
 
 Note that $b$ eventually evaluates to zero given $b$ 's optimal value (when taking the gradient) in this case.
+
+Thus, we have re-written Hard-Margin SVM in dual formulation.
+
+```ad-note
+Note that given our constraints:
+1. $y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1$
+2. $\alpha_{i}\ge 0 \ \ \forall i$
+
+$\alpha_{i}$ satisfies "complementary slackness constraints":
+- $\hat{\alpha}_{i}\ge 0 \to y^{i}(\overline{\theta}\cdot x^{i}+b) = 1$
+	- This is a **support vector**
+- $y^{i}(\overline{\theta}\cdot x^{i}+b)\ge1 \to \hat{\alpha}_{i}= 0$
+	- This is a non-support vector
+
+In other words, either the **primal inequality** is satisfied with equality or the **dual variable** is zero.
+```
