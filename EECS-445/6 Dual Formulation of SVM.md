@@ -63,6 +63,8 @@ As sometimes, $\phi (\overline{x}^i)\cdot\phi (\overline{x}^j)$ can be computed 
 
 Before that, we can abstract our original QP function into $f(\overline{w})$.
 
+---
+
 #### Primal Formulation
 
 ```ad-important
@@ -114,7 +116,7 @@ The difference between primal formulation and dual formulation is called the **d
 Using the methodology above, we can derive the dual formulation for SVM.
 
 ```ad-example
-The Lagrangian can be written as
+**Proof**: The Lagrangian can be written as
 $$
 L (\overline{w},\overline{\alpha}) = \frac{||\overline{\theta}||^{2}}{2} +\sum\limits_{i=1}^{n}\alpha_{i}(1-y^{i}(\overline{\theta}\cdot\overline{x}^{i}))
 $$
@@ -128,4 +130,23 @@ To find the minimum of $L$, we take the gradient and set it to zero. We get
 $$
 \overline{\theta}-\nabla_{\overline{\theta}} \sum\limits_{i=1}^{n} \alpha_{i}y^{i}\overline{\theta}\cdot \overline{x}^{i}=\overline{\theta}- \sum\limits _{i=1}^{n} \alpha_{i}y^{i}\cdot \overline{x}^{i}
 $$
+
+Hence, $$ \overline{\theta}^{\star}= \sum\limits_{i=1}^{n} \alpha_{i}y^{i}\cdot \overline{x}^{i} $$
+
+like what we saw before.
+
+Then, we can now rewrite everything in **dual formulation**:
+$$
+\max_{\overline{\alpha}, \alpha_{i}\ge 0}\min_{\overline{w}}L (\overline{w},\overline{\alpha}) = \max_{\overline{\alpha}, \alpha_{i}\ge 0} \left(\frac{||\overline{\theta}||^{2}}{2} +\sum\limits_{i=1}^{n}\alpha_{i}(1-y^{i}(\overline{\theta}\cdot\overline{x}^{i}))\right)
+$$
+
+$$
+= \max_{\overline{\alpha}, \alpha_{i}\ge 0} \frac{\left(\sum\limits_{i=1}^{n} \alpha_{i}y^{i}\cdot \overline{x}^{i}\right)\cdot \left(\sum\limits_{i=1}^{n} \alpha_{i}y^{i}\cdot \overline{x}^{i}\right)}{2} + \sum\limits_{i=1}^{n} \left(1-y^{i}\left(\sum\limits_{i=1}^{n} \alpha_{i}y^{i}\cdot \overline{x}^{i} \right)\cdot \overline{x}^i\right)
+$$
 ```
+
+Let optimal values be given by $\overline{\theta}^{\star}$ and we substitute that in our original equation, we get
+
+![[Pasted image 20230126182455.png]]
+
+Note that $b$ eventually evaluates to zero

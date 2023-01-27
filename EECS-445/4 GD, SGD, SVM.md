@@ -167,6 +167,7 @@ This is because
 $$\min \gamma^{i}(\overline{\theta}, b) = \min \frac{y^{i}(\overline{\theta}\cdot x^{i}+b)}{||\overline{\theta}||}$$
 
 and we had set the constraint that $y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1$.
+- If $\min (\overline{\theta}\cdot x^{i}+b)$ is not necessarily $1$, we **normalize**
 
 Therefore, we are essentially trying to get at
 
