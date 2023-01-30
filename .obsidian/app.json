@@ -7,5 +7,5 @@
   "showLineNumber": true,
   "spellcheck": true,
   "promptDelete": false,
-  "newFileLocation": "folder"
+  "newFileLocation": "current"
 }

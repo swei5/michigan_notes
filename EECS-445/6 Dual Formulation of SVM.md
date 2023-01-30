@@ -46,7 +46,7 @@ This implies, however, our parameter is now learnt in $\mathbb{R}^p$ space, whic
 
 ### Dual Formulation
 Consider a Hard-Margin SVM problem with no offset parameter: ![[4 GD, SGD, SVM#^ec1126]]
-Here, we want to re-write the solution in **dual form**:
+Here, we want to re-write the solution in **dual form**: ^c03001
 
 ![[Pasted image 20230125234256.png|400]]
 
@@ -61,7 +61,7 @@ Suppose we want to map to a higher dimensional space, using dual form to solve, 
 
 As sometimes, $\phi (\overline{x}^i)\cdot\phi (\overline{x}^j)$ can be computed **MUCH MORE efficiently** than separately computing them.
 
-Before that, we can abstract our original QP function into $f(\overline{w})$.
+Before that, we can abstract our original QR formulation into $f(\overline{w})$.
 
 ---
 
@@ -145,7 +145,7 @@ $$
 $$
 ```
 
-Let optimal values be given by $\overline{\theta}^{\star}$ and we substitute that in our original equation, we get
+Let optimal values be given by $\overline{\theta}^{\star}$ and we substitute that in our original equation, we get ^bfb2e3
 
 ![[Pasted image 20230126182455.png]]
 
@@ -166,3 +166,6 @@ $\alpha_{i}$ satisfies "complementary slackness constraints":
 
 In other words, either the **primal inequality** is satisfied with equality or the **dual variable** is zero.
 ```
+
+^b23318
+
