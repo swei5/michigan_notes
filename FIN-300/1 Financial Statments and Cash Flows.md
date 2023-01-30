@@ -1,4 +1,4 @@
-[[2023-01-04]]
+[[2023-01-04]] #Assets #CashFlow #FinancialMarket #Accounting
 
 ### Road Maps - Two Key Questions
 1. Valuation: what are the right investment decisions?
@@ -36,7 +36,9 @@ Shareholders are the **last group** to be paid. Shareholders receive money only 
 
 ![[Pasted image 20230104120513.png|400]]
 
+
 ---
+
 ### Decision-Making: Creating shareholder value
 
 Three things that affect the **value** of a business.
@@ -51,6 +53,7 @@ The content of NPV will be covere shortly in the class.
 ```
 
 ---
+
 ### Accountings
 #### Income Statements
 Shows a company's **financial performance** over a **period**.

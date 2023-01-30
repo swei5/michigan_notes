@@ -1,4 +1,4 @@
-[[2023-01-09]] #DCF #InterestRate #PV #FV #DiscountRate #CashFlow
+[[2023-01-09]] #DCF #InterestRate #NPV #DiscountRate #CashFlow
 
 ### Time Value of Money
 - A dollar today is worth **MORE** than a dollar tomorrow.
