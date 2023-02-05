@@ -1,7 +1,7 @@
 [[2023-01-18]] #SGD #SVM #GradientDescent #SupervisedLearning #LinearClassifier #GD #HardMarginSVM 
 
 ### Gradient Descent
-Recall the definition of gradient descent: ![[3 Perceptron, Loss Functions#^9fa4a8]]
+Recall the definition of gradient descent: ![[3 Perceptron, Loss Functions#^4bb007]]
 ```ad-important
 **Definition 4.1**: Gradient Descent
 
@@ -60,8 +60,8 @@ Recall the definition of **empirical risk** ![[3 Perceptron, Loss Functions#^03b
 Since this can be computationally expensive, a slight variation of (batch) Gradient Descent known as **Stochastic Gradient Descent** (SGD) is more commonly used.
 
 #### Algorithm
-
-![[Pasted image 20230119141956.png|700]]
+The algorithm is shown as the following:
+![[Pasted image 20230119141956.png|700]] ^ae3c39
 
 ```ad-example
 Here, we use the **[[3 Perceptron, Loss Functions#^e177f0|hinge loss]]** function:

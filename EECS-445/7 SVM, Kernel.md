@@ -80,7 +80,7 @@ Let $K_1$ and $K_2$ be valid kernel, then the following are valid
 
 #### Gaussian Kernel (RBF)
 $$
-K (\overline{u}, \overline{v})=exp(-\gamma ||\overline{u}-\overline{v}||^2)
+K (\overline{u}, \overline{v})=\exp(-\gamma ||\overline{u}-\overline{v}||^2)
 $$
 
 with $\gamma\ge 0$, and $\gamma$ is a hyperparameter that we tune. This maps data to an **infinite dimensional** feature space.
@@ -90,6 +90,11 @@ with $\gamma\ge 0$, and $\gamma$ is a hyperparameter that we tune. This maps dat
 The higher the $\gamma$ value, the more **complicated** $\overline{\theta}$ is.
 
 ![[Pasted image 20230130101833.png|500]]
+
+```ad-example
+Let's take $\gamma=\frac{1}{2}$ without loss and generality.
+![[Pasted image 20230205112040.png|500]]
+```
 
 
 ---

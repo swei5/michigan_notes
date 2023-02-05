@@ -81,7 +81,7 @@ Therefore, we might want to take a new approach.
 
 ```ad-info
 **Definition 3.1**: Re-definition of **Empirical Risk** under the context of **loss function**:
-$$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{loss}\left(\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x})\right)$$
+$$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{loss}\left(\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x}^i)\right)$$
 ```
 
 ^03b62f
@@ -100,6 +100,9 @@ for some $z=\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x})$, essential
 ---
 
 ### Gradient Descent
-Brief idea: take a small step in the **opposite** direction to which the gradient points.
+
+^74a030
+
+Brief idea: take a small step in the **opposite** direction to which the gradient points. ^4bb007
 - Start with a guess, ends at the point where the gradient is 0
 
