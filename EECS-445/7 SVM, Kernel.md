@@ -1,4 +1,4 @@
-[[2023-01-30]] #SVM #Kernel #DualFormulation #FeatureMap 
+[[2023-01-30]] #SVM #Kernel #DualFormulation #FeatureMap #FeatureSelection #Mercer
 
 ### Recap
 Recall our derivations for dual variable $\overline{\alpha}_i$ and support vectors, ![[6 Dual Formulation of SVM#^b23318]]
@@ -94,5 +94,59 @@ The higher the $\gamma$ value, the more **complicated** $\overline{\theta}$ is.
 
 ---
 
+### Feature Selection
+*Motivation*
+- When you have few examples and a large number of features ($d\gg n$), it becomes very easy to overfit training data
+- How can we remove **uninformative** features?
+
+#### Filter Approach
+Rank features according to some metric (independent of learning algorithm).
+- Filter out features that fall below a certain threshold
+
+```ad-example
+We can create a label (correlation with output) using Pearson's correlation:
+	![[Pasted image 20230205102259.png|500]]
+
+And we rank the features according to $r_{x_({1})}$, $r_{x_({2})}$, $\cdots$, $r_{x_({d})}$
+```
+
+#### Wrapper Approach
+Utilizes learning algorithm to score subsets according to predictive power.
+- Learning algorithm is “wrapped” in a search algorithm
+
+![[Pasted image 20230205102609.png|500]]
+
+Pros and cons for **filter approach** and **wrapper approach**
+
+![[Pasted image 20230205102659.png|500]]
+
+#### Embedded Methods
+Incorporate **variable selection** as part of the training process.
+- L2 regularization
+
+$$\min_{\overline{\theta}, b, \overline{\xi}} \frac{||\overline{\theta}||^2}{2}+C\sum\limits_{i=1}^{n}\xi_i$$
+
+- L1 regularization
+$$\min_{\overline{\theta}, b, \overline{\xi}} ||\overline{\theta}||_1+C\sum\limits_{i=1}^{n}\xi_i$$
+
+such that $y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1-\xi_{i}\mathrm{\ \ \ \ for\ } i \in \{1,\cdots, n\}, \xi_i\ge0$.
+
+```ad-note
+Note that L1-norm is essentially
+$$
+||\overline{\theta}||_1=\sum\limits_{i=1}^{d} |\overline{\theta}_i|
+$$
+```
+
+When $C$ is sufficiently small, the **L1-norm** penalty will **shrink** some parameters to  
+exactly zero, which is implicit (or embedded) feature selection.
+
+---
+
 ### Mercer's Theorem
-A function $K:\mathbb{R}^{d}\times \mathbb{R}^{d} \to \mathbb{R}$ is a valid kernel **iff** for any $\overline{x}^i$ and 
+A function $K:\mathbb{R}^{d}\times \mathbb{R}^{d} \to \mathbb{R}$ is a valid kernel **iff** for any $\overline{x}^{i}\in \mathbb{R}^d$ and finite $n$ the $n \times n$ matrix $G$ with $G_{ij}$  = $K(\overline{x}_i,\overline{x}_{j})$ is **positive-semidefinite**.
+- That is, $G$ is symmetric: $G=G^T$
+- $\forall z \in \mathbb{R}^{n}\ z^TGz\ge0$ 
+
+In other words, for such a function $K(\overline{u}, \overline{v})$, there exists a function $\varphi$ such that $K (\overline{u}, \overline{v})=\varphi({\overline{u}})\cdot \varphi({\overline{v}})$.
+
