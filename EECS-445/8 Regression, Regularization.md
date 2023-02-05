@@ -45,3 +45,31 @@ Thus, the update step in our SGD becomes:
 
 ### Optimal Value of $\overline{\theta}$ for Empirical Risk
 To find the optimal value of $\overline{\theta}$, we need to find the gradient of $R_n(\overline{\theta})$ with respect to $\overline{\theta}$.
+
+Since
+$$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \frac{\left(\overline{y}^i-(\overline{\theta}\cdot \overline{x}^i)\right)^2}{2}$$
+
+Taking the gradient and setting it to zero gives
+$$
+\nabla_{\overline{\theta}}R_n(\overline{\theta})=-\frac{1}{n} \sum\limits_{i=1}^{n} \overline{x}^iy^i+\frac{1}{n} \sum\limits_{i=1}^{n} (\overline{x}^{i}\cdot\overline{\theta})\overline{x}^i=0
+$$
+$$
+\to-\sum\limits_{i=1}^{n} \overline{x}^iy^i+\left(\sum\limits_{i=1}^{n} \overline{x}^i(\overline{x}^i)^T\right)\overline{\theta}=0
+$$
+
+Due to the characteristics of dot products.
+![[Pasted image 20230205145726.png|600]]
+
+$$\to -X^{T}\overline{y}+X^{T}X \overline{\theta}=0$$
+```ad-note
+Note that $\dim(\overline{x}^i)$ is $d$. Thus, summing the doct products between $\overline{x}^i$ and $\overline{y}^i$ for all $n$ samples. We can re-write this as $X^{T}\overline{y}$ since
+
+$$X=[\overline{x}^{1},\cdots,\overline{x}^{n}]^{T}\to X^T=[\overline{x}^{1},\cdots,\overline{x}^{n}]$$
+
+where $\overline{x}^i$ is a column vector of size $d$ and $$\overline{y}=[y^1,\cdots,y^n]$$
+
+Finally, note that the matrix product of $X^{T}\overline{y}$ is of size $d\times n \times n \times 1 =d$, which is exactly the sum of the product of our original vectors.
+```
+
+$$\to\overline{\theta}^\star=(X^{T}X)^{-1}X^{T}\overline{y}$$
+
