@@ -69,7 +69,9 @@ $$X=[\overline{x}^{1},\cdots,\overline{x}^{n}]^{T}\to X^T=[\overline{x}^{1},\cdo
 where $\overline{x}^i$ is a column vector of size $d$ and $$\overline{y}=[y^1,\cdots,y^n]$$
 
 Finally, note that the matrix product of $X^{T}\overline{y}$ is of size $d\times n \times n \times 1 =d$, which is exactly the sum of the product of our original vectors.
-```
 
+The same reasoning goes for the second part of the summation.
+```
 $$\to\overline{\theta}^\star=(X^{T}X)^{-1}X^{T}\overline{y}$$
 
+Note that we still want to perform SGD just because the above is computationally heavy.
