@@ -83,7 +83,7 @@ $$
 K (\overline{u}, \overline{v})=\exp(-\gamma ||\overline{u}-\overline{v}||^2)
 $$
 
-with $\gamma\ge 0$, and $\gamma$ is a hyperparameter that we tune. This maps data to an **infinite dimensional** feature space.
+with $\gamma\ge 0$, and $\gamma$ is a hyperparameter that  we tune. This maps data to an **infinite dimensional** feature space.
 
 ![[Pasted image 20230130101334.png|400]]
 
