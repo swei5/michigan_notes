@@ -82,7 +82,7 @@ Lots of commands **act** on files.
 	- Effect: prints the reverse of `hello world`
 - We can save output from a command to a file with a "redirection" (`>`)
 	- `echo "hello world" > some-file`
-- We can retrieve input from a file for a command with another "redirection" (`<`)
+- We can retrieve input from a file for a command with another "redirection" (`<`) ^0e8068
 	- `amongus -TSP < test-f`
 
 ---

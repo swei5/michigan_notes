@@ -146,17 +146,19 @@ There are many shells around that build o of the POSIX shell (with more features
 - `bash`: the "Bourne again shell"
 - `zsh`: the Z shell
 
-Recall some basic shell operation structure: ![[1 Intro#^a049ce]]
+Recall some basic shell operation structure: ![[1 Intro#^a049ce]] ^fcd64b
 
 #### General Shell Operation
-1. Receive a **command** from a file or terminal input
+
+^31bd4d
+1. Receive a **command** from a file or terminal input ^a40b51
 	- `ls -l $HOME > some_file`
 2. Splits it into **tokens** separated by **white-space**
 3. Expands/substitutes special tokens
 	- `$HOME` is equivalent to `/home/user_name` in this case
-4. Perform file redirections
+4. Perform file redirections ^31a3e5
 	- Standard output to `some_file`
-5. Execute commands
+5. Execute commands ^f66b7b
 	- `exec()`
 	- `argc = 3`
 	- `argv = ["ls", "-l", "/home/user_name"]`
@@ -170,6 +172,7 @@ We can also string commands together.
 	- Run `cmd2` **after** `cmd1`
 - `cmd1 | cmd2`
 	- Connect standard **output** of `cmd1` to **input** of `cmd2`
+	- `echo "hello" | rev` prints `olleh`
 
 ```ad-note
 A note on file redirection that `>>` sets file as standard output, **appends** (fd 1), whereas `>` **overwrites**.
@@ -179,9 +182,14 @@ The general form follows that:
 	- e.g. `2>` captures `stderr` to a file
 ```
 
+^c9934d
+
 ---
 
 #### Environmental Variables
+
+^3643a3
+
 Shell **variables** are stored inside the shell **process**.
 - Stored data in the process's memory
 - Launched commands don't inherit them
@@ -204,6 +212,9 @@ You can use a variable with `$varname` or `${varname}`.
 ---
 
 #### Executing Programs
+
+^7373d7
+
 - If the command has a `/` in it, it's treated as a **filepath** and the **file** will be **executed**.
 	- `$ somedir/somescript`
 	- Only works if the file has its **execute** **bit** set
@@ -212,8 +223,10 @@ You can use a variable with `$varname` or `${varname}`.
 	- `$ vim -> searches PATH` and finds it at `/usr/bin/vim`
 	- This is why we want to specify `./` to run something
 
+```ad-important
 Some commands are "**built-in**"/implemented by the shell.
-- These will take precedent over ones in the `PATH`
+- These will take precedent over ones in the `PATH
+```
 
 There are  two classes of executable program.
 - Binaries
