@@ -1,4 +1,4 @@
-[[2023-02-03]] #Shell #Process #System #Bash #Functions
+[[2023-02-03]] #Shell #Process #System #Bash #Functions #Executable 
 
 ### Shells
 Interactive shells are the shell that you directly **interact** with at a **terminal**.
@@ -127,4 +127,80 @@ done
 
 The `until` loop repeats commands until the condition **succeeds**.
 
-What a `for` loop looks l
+What a `for` loop looks like:
+```shell
+for var in list; do 
+	commands
+done
+```
+
+If `list` is not present, it will implicitly iterate over the **argument** **list**.
+- `$@`
+- `1 2 3 4 5`
+- `$(ls)`
+
+What a switch looks like:
+```shell
+case value in  
+	pattern1 ) commands1 ;;  
+	pattern2 ) commands2 ;;  
+	multpat1 | multpat2 ) commands3 ;; 
+	* ) commands
+esac
+```
+
+Value is **matched** against **patterns**.
+- When a pattern is matched its **command**(-list) is **run**
+- A **wildcard** (`*`) pattern is often used to represent a "default" case
+
+What a function looks like:
+```shell
+function hello-world () {
+	if echo "Hello world!"; then 
+		echo "This should print"
+	fi
+}
+```
+
+A compound command is a **command group** (`()`, `{}`), or a control flow (`if-else`).
+- Called by invoking them like any other **utility**, including passing **arguments**
+	- `$n` - `n` is the argument number
+	- `$@` - list of arguments
+	- `$#` - number of arguments
+
+To call the function above, simply put
+```shell
+hello-world
+```
+
+---
+
+### Shell Scripts
+Recall what we have learned before about [[3 Unix#^7373d7|executables]] and [[3 Unix#^2e964f|scripts]].
+
+There's a few nuances.
+- `./my-script`: tells the **OS** to execute the `my-script` file
+	- The OS will try to **identify** the file and will look for a **[[3 Unix#^fd875b|shebang]]** for the **interpreter**
+- `bash ./my-script` tells the **OS** to execute `bash` with `my-script` file as an argument
+	- It's up to `bash` to figure out what to do with the file
+
+#### Running VS Sourcing
+- **Running** (executing) a script puts it into its **own shell** **instance**; shell variables set **WON'T** be **visible** to the parent shell.
+- **Sourcing** a script makes your **current shell instance** run each command in it; shell variables set will be visible
+	- Essentially how to set up the python `venv`
+
+---
+
+### Configuring Shell
+Shells will automatically source certain files to perform configuration.
+- `/etc/profile`: system-wide configuration
+- Can make own additions to `~/.zshrc`
+	- `export PATH="newdir:$PATH"`
+	- Add alias for directories
+	- Add prompts
+		- The `PS1` and `PS2` variables hold the prompt information
+
+#### Terminals
+- `ctrl-l`: clear screen
+- `reset`: reset the terminal
+- `ctrl-d`: send EOF - no more inputs for commands, and closes **CLEANLY**

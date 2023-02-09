@@ -228,7 +228,7 @@ Some commands are "**built-in**"/implemented by the shell.
 - These will take precedent over ones in the `PATH
 ```
 
-There are  two classes of executable program.
+There are  two classes of executable program. ^5e5cf2
 - Binaries
 	- Machine code (0/1s)
 	- Various kinds of formats: ELF, Mach-O, PE, etc.
@@ -237,10 +237,13 @@ There are  two classes of executable program.
 - Interpreted programs/scripts
 	- Contains **human readable (plain) text** that map to some programming language
 	- Typically run through an **interpreter** to do tasks
-		- Python scripts, shell scripts
+		- Python scripts, shell scripts ^2d4a35
 
 ##### Script
-The first line of a script should contain a **shebang**.
+
+^2e964f
+
+The first line of a script should contain a **shebang**. ^fd875b
 - Tells the OS **what** **program** to use as an interpreter
 - Starts with `#!` with the **path to the interpreting program** right after
 	- `#!/bin/sh`: Run this script with sh
