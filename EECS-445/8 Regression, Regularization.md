@@ -1,4 +1,4 @@
-[[2023-02-01]] #LinearClassifier #LinearRegression #LossFunction #SGD #Regularization #EmpiricalRisk 
+[[2023-02-01]] #LinearClassifier #LinearRegression #LossFunction #SGD #Regularization #EmpiricalRisk #Bias #Variance #FeatureSelection 
 
 ### Recap : Loss
 
@@ -23,7 +23,7 @@ in response to training set $S_n=\set{\overline{x}^i,\overline{y}^i}^n_{i=1}$ wh
 
 ### Loss Function
 For regression, we slightly tweaked the definition of **empirical risk**:
-$$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{loss}\left(\overline{y}^i-(\overline{\theta}\cdot \overline{x}^i)\right)$$
+$$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{loss}\left(\overline{y}^i-(\overline{\theta}\cdot \overline{x}^i)\right)$$ ^ac935d
 
 where $y^i$ is the **true label** and $\overline{\theta}\cdot \overline{x}^i$  is the **prediction**.
 
@@ -32,7 +32,7 @@ Has the form of
 $$\mathrm{Loss}(z)=\frac{z^2}{2}$$
 
 In terms of empirical risk, this is,
-$$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \frac{\left(\overline{y}^i-(\overline{\theta}\cdot \overline{x}^i)\right)^2}{2}$$
+$$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \frac{\left(\overline{y}^i-(\overline{\theta}\cdot \overline{x}^i)\right)^2}{2}$$ ^5c42ab
 
 ##### SGD with Squared Loss
 Recall the SGD algorithm: ![[4 GD, SGD, SVM#^ae3c39]]
@@ -72,7 +72,7 @@ Finally, note that the matrix product of $X^{T}\overline{y}$ is of size $d\times
 
 The same reasoning goes for the second part of the summation.
 ```
-$$\to\overline{\theta}^\star=(X^{T}X)^{-1}X^{T}\overline{y}$$
+$$\to\overline{\theta}^\star=(X^{T}X)^{-1}X^{T}\overline{y}$$ ^a9289d
 
 Note that we still want to perform SGD just because the above is computationally heavy.
 
@@ -102,6 +102,58 @@ Intuitively, to reduce **bias**, we need a larger $\mathcal{F}$.
 
 ![[Pasted image 20230210162937.png|400]]
 
+---
+
 ### Regularization
 Recall the definition of L1-regularization and L2-regularization (Embedded Methods): ![[7 SVM, Kernel Trick#^9cec77]]
-![[7 SVM, Kernel Trick]]
+![[7 SVM, Kernel Trick#^556b69]]
+
+Motivation: we prefer a ***simpler*** hypothesis.
+- We want to push parameters towards some **default value** (typically $\textbf{0}$)
+- Resists setting parameters away from default value when data weakly tells us otherwise
+	- *Bad wording, I think this still means to gravitate parameters towards 0*
+
+Thus, our new objective function can be written as
+$$J_{n,\lambda}(\overline{\theta})=\lambda Z(\overline{\theta})+R_n(\overline{\theta})$$
+
+where $\lambda Z(\overline{\theta})$ is the **regularization term** or the **penalty** with $\lambda \ge 0$.
+
+$Z(\overline{\theta})$ should have the following characteristics:
+- should **force** components of $\overline{\theta}$ to be small (close to zero)
+- Convex, smooth
+
+Some popular choices are $l_p$ norms.
+
+#### Ridge Regression
+L2 regularization with **squared loss function**.
+
+$$
+J_{n,\lambda}(\overline{\theta})=\lambda \frac{||\overline{\theta}||^2}{2}+\frac{1}{n}\sum_{i=1}^{n} \ \frac{\left(\overline{y}^i-(\overline{\theta}\cdot \overline{x}^i)\right)^2}{2}
+$$
+
+```ad-note
+When $\lambda=0$
+- This is linear regression with squared loss
+
+When $\lambda \to \infty$
+- $J$ is minimized at $\overline{\theta} = \mathbf{0}$
+	- As in this case the regularization term is the only thing we care about
+
+We will need to pick an appropriate $\lambda$ balances between these two extremes.
+```
+
+#### Ridge Regression, Closed Form
+
+^1b0fde
+
+See the notes below:
+![[Pasted image 20230210165706.png|600]]
+
+$$\to\overline{\theta}^\star=(\lambda^{\prime}I+X^{T}X)^{-1}X^{T}\overline{y}$$ 
+Note that $(\lambda^{\prime}I + X^{T}X)$ is **invertible** as long as $\lambda > 0$.
+
+Note the similarity of this expression with the optimal value of $\overline{\theta}$ without applying the regularization: ![[#^a9289d]]
+
+```ad-seealso
+Further reading: [Discussion 5 Note](https://umich.instructure.com/courses/583110/files/folder/Discussion%20Notes?preview=29386226)
+```

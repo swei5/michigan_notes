@@ -1,4 +1,4 @@
-[[2023-01-11]] #Perceptron #SupervisedLearning #EmpiricalRisk #LossFunction #LinearClassifier #GD #Hyperplane 
+[[2023-01-11]] #Perceptron #SupervisedLearning #EmpiricalRisk #LossFunction #LinearClassifier #GD #Hyperplane #Optimization 
 
 ### Recap
 Recall the definition of **Binary Linear Classifier**, 

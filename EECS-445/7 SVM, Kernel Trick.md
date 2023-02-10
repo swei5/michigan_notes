@@ -1,4 +1,4 @@
-[[2023-01-30]] #SVM #Kernel #DualFormulation #FeatureMap #FeatureSelection #Mercer #Regularization 
+[[2023-01-30]] #SVM #Kernel #DualFormulation #FeatureMap #FeatureSelection #Mercer #Regularization #Optimization 
 
 ### Recap
 Recall our derivations for dual variable $\overline{\alpha}_i$ and support vectors, ![[6 Dual Formulation of SVM#^b23318]]
@@ -131,9 +131,8 @@ Pros and cons for **filter approach** and **wrapper approach**
 
 Incorporate **variable selection** as part of the training process.
 - L2 regularization
-
 $$\min_{\overline{\theta}, b, \overline{\xi}} \frac{||\overline{\theta}||^2}{2}+C\sum\limits_{i=1}^{n}\xi_i$$
-
+ ^556b69
 - L1 regularization
 $$\min_{\overline{\theta}, b, \overline{\xi}} ||\overline{\theta}||_1+C\sum\limits_{i=1}^{n}\xi_i$$ ^9cec77
 
