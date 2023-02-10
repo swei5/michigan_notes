@@ -75,3 +75,33 @@ The same reasoning goes for the second part of the summation.
 $$\to\overline{\theta}^\star=(X^{T}X)^{-1}X^{T}\overline{y}$$
 
 Note that we still want to perform SGD just because the above is computationally heavy.
+
+```ad-question
+What if $X^TX$ is singular?
+- This is possible as some columns are **linearly dependent**.
+
+However, this implies that some features are redundant and signals that we should remove the offending features.
+- We could also use regularizations
+
+```
+
+---
+
+### Bias-Variance Tradeoff
+Intuitively, to reduce **bias**, we need a larger $\mathcal{F}$. 
+- However, if we have noisy/small dataset, this may increase **variance**, which could be attributed to
+	- Noisy labels
+	- Noisy features
+
+#### Estimation (Variance) and Structural Error (Bias)
+**Examples**:
+- Low variance $\to$ constant function
+- High variance $\to$ high degree polynomial, RBF kernel
+- Low bias $\to$ linear regression applied to linear data
+- High bias $\to$ constant function model applied to non-linear data
+
+![[Pasted image 20230210162937.png|400]]
+
+### Regularization
+Recall the definition of L1-regularization and L2-regularization (Embedded Methods): ![[7 SVM, Kernel Trick#^9cec77]]
+![[7 SVM, Kernel Trick]]

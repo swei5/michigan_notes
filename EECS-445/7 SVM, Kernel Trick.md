@@ -126,13 +126,16 @@ Pros and cons for **filter approach** and **wrapper approach**
 ![[Pasted image 20230205102659.png|500]]
 
 #### Embedded Methods
+
+^fa79f2
+
 Incorporate **variable selection** as part of the training process.
 - L2 regularization
 
 $$\min_{\overline{\theta}, b, \overline{\xi}} \frac{||\overline{\theta}||^2}{2}+C\sum\limits_{i=1}^{n}\xi_i$$
 
 - L1 regularization
-$$\min_{\overline{\theta}, b, \overline{\xi}} ||\overline{\theta}||_1+C\sum\limits_{i=1}^{n}\xi_i$$
+$$\min_{\overline{\theta}, b, \overline{\xi}} ||\overline{\theta}||_1+C\sum\limits_{i=1}^{n}\xi_i$$ ^9cec77
 
 such that $y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1-\xi_{i}\mathrm{\ \ \ \ for\ } i \in \{1,\cdots, n\}, \xi_i\ge0$.
 
@@ -145,6 +148,12 @@ $$
 
 When $C$ is sufficiently small, the **L1-norm** penalty will **shrink** some parameters to  
 exactly zero, which is implicit (or embedded) feature selection.
+
+```ad-seealso
+- Readings on [why L1 regularization induces sparsity](https://stats.stackexchange.com/a/45644)
+- Readings on [what is the loss function of SVM?](https://stats.stackexchange.com/questions/74499/what-is-the-loss-function-of-hard-margin-svm)
+- Readings on [differences between L1 and L2 regularization (中文)](https://zhuanlan.zhihu.com/p/127755008)
+```
 
 ---
 
