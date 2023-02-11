@@ -85,5 +85,14 @@ Since we can't define our parameters in advance (thus no training loss found), w
 		- How?
 
 #### Shannon Entropy
-A measure of the amount of “**uncertainty**” in a variable. For a variable $y\in \{0,1\}$:
-$$H(y)=$$
+A measure of the amount of “**uncertainty**” in a variable. In mathematical terms, for $y \in [y_{1}, \cdots, y_{n}]$:
+$$H(Y)=-\sum\limits_{i=1}^{n}p(y_i)\log_{2}(p(y_i))$$
+where $p(y_i)$ is the proportion of $y$ that takes on value of $y_i$.
+
+For instance, if $y\in \set{0,1}$:
+$$H(Y)=-p(Y=1)\log_2p(Y=1)-p(Y=0)\log_2p(Y=0)$$
+![[Pasted image 20230210183716.png|400]]
+
+
+
+
