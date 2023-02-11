@@ -1,4 +1,4 @@
-[[2023-02-06]] #DecisionTree #Bias #Variance 
+[[2023-02-06]] #DecisionTree #Bias #Variance #Entropy
 
 ### Recap
 - Linear models, regression
@@ -21,7 +21,7 @@ So far we have focused on accuracy, but we also want **interpretability**.
 
 ### Decision Tree
 $f: \mathcal{X} \to \mathcal{Y}$. It is non-linear and contains axis-aligned **partitions**.
-- Axis-aligned means **parallel** to the $x, y$ axis.
+- Axis-aligned means **parallel** to the $x, y$ axis
 - In addition, decision trees can also handle **binary input** (yes/no) or **categorical input** (type) at the same time
 
 There are two main types of trees:
@@ -74,7 +74,7 @@ Since we can't define our parameters in advance (thus no training loss found), w
 
 ---
 
-### Training Decision Trees
+### Training Decision Trees: Intro
 - Brute force
 	- Number of possible trees grows **exponentially** with the **dimension** of the features and # of distinct values
 		- $d!$ possible ways to order $d$ possible tests
@@ -93,6 +93,30 @@ For instance, if $y\in \set{0,1}$:
 $$H(Y)=-p(Y=1)\log_2p(Y=1)-p(Y=0)\log_2p(Y=0)$$
 ![[Pasted image 20230210183716.png|400]]
 
+#### Entropy of $Y$ conditioned on $X$
+The entropy of $Y$ conditioned on $X=x$ is
+$$H(Y|X=x)=-\sum\limits_{y}p(Y=y|X=x) \log_{2}p(Y=y|X=x)$$
 
+It indicates the **uncertainty** in $Y$ after we learn the value of $X$.
+
+The conditional entropy is defined as
+$$H(Y|X)=\sum\limits_{x}p(X=x)H(Y|X=x)$$ ^5c5641
+```ad-warning
+Note the difference!
+```
+
+```ad-example
+For probability chart that looks like the below:
+![[Pasted image 20230211120112.png|300]]
+
+The entropy of $Y$ given that $x_1$ is cloudy is
+$$H(Y|X_1=c)=-p(Y=0|X_1=c)\log_{2}p(Y=0|X_1=c)-p(Y=1|X_1=c)\log_{2}p(Y=1|X_1=c)$$
+
+$$=-\frac{2}{3}\log_{2}\frac{2}{3}-\frac{1}{3}\log_{2}\frac{1}{3}$$
+
+Whereas,
+$$H(Y|X_1)=p(X_1=s)H(Y|X_1=s)+p(X_1=c)H(Y|X_1=c)$$
+$$=\frac{2}{5}(-\frac{1}{2}\log_{2}\frac{1}{2}+\frac{1}{2}\log_{2}\frac{1}{2})+\frac{3}{5}(-\frac{2}{3}\log_{2}\frac{2}{3}-\frac{1}{3}\log_{2}\frac{1}{3}).$$
+```
 
 
