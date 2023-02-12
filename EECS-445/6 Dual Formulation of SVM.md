@@ -88,7 +88,7 @@ Then, we have two cases:
 		- Hence, $g_p (\overline{w})=\infty$, without loss of generality
 
 ```ad-note
-Note that $\min_{\overline{w}}g_p(\overline{w})=\min_{\overline{w}} \left(\max_{\overline{\alpha}, \alpha_{i}\ge 0} L (\overline{w},\overline{\alpha})\right)=min_{\overline{w}}f(\overline{w})$ if constraints are satisfied.
+Note that $\min_{\overline{w}}g_p(\overline{w})=\min_{\overline{w}} \left(\max_{\overline{\alpha}, \alpha_{i}\ge 0} L (\overline{w},\overline{\alpha})\right)=\min_{\overline{w}}f(\overline{w})$ if constraints are satisfied.
 
 If constraints are **NOT** satisfied, it is futile to find the min from infinity.
 ```
