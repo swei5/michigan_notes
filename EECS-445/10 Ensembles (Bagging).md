@@ -100,7 +100,7 @@ There are two main types of **ensembles**:
 2. Boosting (Adaboost)
 
 #### Bagging
-Bootstrap sampling is defined as to **sample** $n$ data points with **replacement**. Do that $B$ times.
+Bootstrap (vanilla bagging) sampling is defined as to randomly **sample** $n$ data points with **replacement**. Do that $B$ times.
 
 ![[Pasted image 20230211202954.png|600]]
 

@@ -1,0 +1,61 @@
+[[2023-02-13]] #Ensemble #Boosting #DecisionTree 
+
+### Boosting
+Combining simple **weak classifiers** into a more complex/strong classifier.
+- Decreases **bias** (structural error) and **variance** (estimation error)
+- **Sequentially** build classifiers, each one improves on the previous classifiers
+
+A classifier a general form of
+$$h_M(\overline{x})=\sum\limits_{m=1}^{M}\alpha_{m}h(\overline{x}^{i};\overline{\theta}_{m})$$
+
+- Different boosting algorithms differ on loss function, and how to pick $\alpha$
+
+---
+
+### AdaBoost
+A **weak classifier** is said to be a *decision stump* - a single split (short) tree.
+- There can only be $n+1$ binary stumps (one at a time)
+- Misclassification rate $\le 50\%$
+
+```ad-example
+- First and second iteration
+
+	![[Pasted image 20230213093027.png|300]]
+
+After the first iteration, we assign heavier weights on the three **misclassified points** in the data.
+
+Note that for the second iteration, despite the same number of points are misclassified, $\epsilon_{1}\ne \epsilon_{2}$
+
+Also, note that $\alpha_{m}$ is inversely proportional to $\epsilon_{m}$.
+
+- Eventually, $h_M(\overline{x})=$
+
+	![[Pasted image 20230213093409.png|400]]
+
+```
+
+### AdaBoost: details
+We use the **exponential loss**:
+$$\mathrm{Loss}_{\mathrm{exp}}(z)=\exp(-z)$$
+
+Consequently, AdaBoost aims to minimize:
+$$\sum\limits_{i=1}^{n}\exp(-y^{i}h_{M}(\overline{x}^i))$$
+
+```ad-example
+We have a classifier $h(\overline{x};\overline{\theta})=\mathrm{sign}(\theta_{1}(x_{d}-\theta_{0}))$, where
+$$\overline{\theta}=[d,\theta_{0},\theta_{1}]^T$$
+
+Here,
+- $d$ is the index of the variable we **split** on
+- $\theta_0$ is the value of the variable we **split** on
+- $\theta_1$ is the direction we split on
+
+Example: try $\mathbf{x}=[6,0]^T$.
+
+```
+
+
+#### Algorithm
+![[Pasted image 20230213094757.png|550]]
+
+- $\tilde{w}$ means that the weights are normalized to sum up to $1$. 
