@@ -34,7 +34,7 @@ Also, note that $\alpha_{m}$ is inversely proportional to $\epsilon_{m}$.
 
 ```
 
-### AdaBoost: details
+### AdaBoost: Details
 We use the **exponential loss**:
 $$\mathrm{Loss}_{\mathrm{exp}}(z)=\exp(-z)$$
 
@@ -56,6 +56,19 @@ Example: try $\mathbf{x}=[6,0]^T$.
 
 
 #### Algorithm
-![[Pasted image 20230213094757.png|550]]
+![[Pasted image 20230213100642.png|500]]
 
+- Step 2 a: find the $\overline{\theta}$ that **minimizes** the loss 
+
+```ad-note
 - $\tilde{w}$ means that the weights are normalized to sum up to $1$. 
+	- Thus, step 2-b sums up to $1$  at most (given every point is misclassified)
+- $Z'_{m}$ is a term to ensure normalization holds (sum of weights add up to 1)
+```
+
+#### Properties
+![[Pasted image 20230213100828.png|400]]
+
+- Red: test error
+- Blue: training error
+- Iterations: the number of **weak classifier**
