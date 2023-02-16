@@ -24,7 +24,7 @@ There are also special functions denoted by **special** **characters**.
 	- `\b` matches the empty string at the "edge" of a word
 - Quantifiers: **how** **many** to match
 - Brackets: a **set** of **characters** to match
-	- `(hello|hi) (John/Joe)` matches:
+	- `(hello|hi) (John|Joe)` matches:
 		- "hello John"
 		- "hello Joe"
 		- "hi John"
