@@ -1,4 +1,4 @@
-[[2023-02-07]] #PriceDiscrimination
+[[2023-02-07]] #PriceDiscrimination 
 
 ### Price Discrimination
 Charging **different prices** to **different customers** for same good or for different units of good without cost differences is called price discrimination.
@@ -32,20 +32,9 @@ In the scenario above, we can't sell between $Q_m$ and $Q_c$ without lowering th
 		- Firm has **market power**
 		- There are multiple types of customers
 		- Firm does not have to know type of each customer
+	- Inter-temporal
 	- Coupons (e.g. coupons for lower income customers)
 	- Versioning (e.g. airlines)
 	- Quantity discounts
 
 - Third‐degree (direct) price discrimination, or discrimination by **indicators**/ **segments**: firm charges different prices by market segment (age, income, type of use, time of purchase)
-
-##### Inter-temporal price discrimination
-Charge a high price early on, then drop it later.
-- Electronics, books
-- Sales and outlets
-- Airline pricing: charge lower fares to price sensitive leisure travelers than to price insensitive business travelers for equivalent seats
-
-##### Versioning
-A pricing strategy where a firm offers **different** **versions** of a product at different prices to attract various consumer types.
-- Airline tickets
-- Tax software
-- Designers
