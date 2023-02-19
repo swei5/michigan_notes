@@ -1,13 +1,83 @@
-[[2023-02-18]] #Valuation
+[[2023-02-18]] #Valuation #CashFlow #DCF 
 
 ### Valuation Concepts
 We will use the free cash flow approach to estimate:
 - **Project value**: what is a project worth to a business
 - **Enterprise value**: What is an entire enterprise/business/firm worth
 
-To compute what the **equity** is worth in a business, take the **enterprise** **value** and subtract **debt**.
-
 There are two concepts of value:
 1. **Market value**: what an asset could sell for in a transaction between a *well-informed* and *willing* buyer and a well-informed and willing seller
 2. **Intrinsic value**: what an asset is worth on a **fundamental** basis
 	- Reasonable assumptions
+
+We can use **free cash flows** to estimate market value and intrinsic value.
+
+---
+
+### Free Cash Flow Valuation
+1. Compile an income statement, down to the level of earnings before interest and tax (EBIT)
+	- $\mathrm{EBIT} = \mathrm{EBITDA} - \mathrm{Depreciation, Amortization}$
+2. Estimate free cash flow based upon information from the income statement and other information in nominal dollars
+	- Compute earnings before interest and $\mathrm{tax} \cdot (1 - \mathrm{corporate\ tax\ rate})$
+		- We need to pay tax on all earnings
+	- Reverse any non-cash items that affected earnings (add back non-cash costs and subtract non-cash revenue)
+		- Depreciation, Amortization
+	- Include any cash flows that do not appear on the income statement
+		- Subtract **capital expenditure**
+		- Subtract **change in non-debt working capital**
+1. Convert the nominal cash flow projections to **present value** using a nominal discount rate
+	- There are two periods to consider
+		1. The explicit forecast period
+		2. The period after the explicit forecast period (extrapolation)
+
+```ad-warning
+Explicit **assumptions** about the growth of cash-flows are valid only for the **short run**.
+```
+
+From the above steps, we have already known $PV_{0, 1\to i}$ .
+
+Assume the PV of cash flows during explicit forecast period $i$ is $PV_i$. The growth rate of cash flow is $g$ and the discount rate is $r$. Then, we first compute $CF_{i+1}$ by
+$$CF_{i+1}=CF(1+g)$$
+
+Then, using perpetuity, the **present value** for cash flows **AT THE END OF PERIOD $i$** **after period** $i$, i.e. $[i+1, \infty)$ is
+$$PV_{i, i+1\to \infty}=\frac{CF_{i+1}}{r-g}$$
+
+Finally, we want to obtain the **present value** for cash flows **AT TIME ZERO** for the above (cash flows after period $i$):
+$$PV_{0,i\to\infty}=\frac{PV_i}{(1+r)^i}$$
+
+Thus, to get the **present value** for all cash flows at time zero, 
+$$PV=PV_{0, 1\to i}+PV_{0,i\to\infty}$$
+
+
+```ad-note
+In some instances there might be **additional** **assets** outside those which generated the free cash flow. If those non-operational assets exist you should also add them in to enterprise value.
+```
+
+To compute what the **equity** is worth in a business, take the **enterprise** **value** and subtract **debt**.
+
+---
+
+### Incremental Cash Flow
+The only cash flows that matter for project analysis are cash flows that occur **only if** the project is **undertaken**.
+
+```ad-important
+**Definition 5.1**: Incremental cash flows are changes in cash flows that are a consequence of implementing the project.
+
+Incremental cash flows allow us to value each **project** without having to analyze all other cash flows of the firm.
+```
+
+To compute incremental cashflow, we do the following:
+1. Compute the valuation of the business with a project
+2. Compute the valuation of the business without a project
+3. Get the difference
+
+### Cash Flows: Considerations
+1. Future cash flows are always estimates
+2. Overheads
+3. Sunk costs
+4. Depreciation
+	- Straight-line
+	- MACRS (Modified Accelerated Cost Recovery System)
+		- **More** value deducted in **earlier** years and **less** in **later** years
+1. Change in non-debt working capital
+2. Capital Investment

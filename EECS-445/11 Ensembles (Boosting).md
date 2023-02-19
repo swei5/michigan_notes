@@ -58,7 +58,16 @@ Example: try $\mathbf{x}=[6,0]^T$.
 #### Algorithm
 ![[Pasted image 20230213100642.png|500]]
 
-- Step 2 a: find the $\overline{\theta}$ that **minimizes** the loss 
+```ad-note
+**Remarks**:
+- Step 2 a: find the $\overline{\theta}_m$ that **minimizes** the loss, given the function
+$$\sum\limits_{i=1}^{n} \tilde{w}^{i}_{m-1}[[y^{i}\ne h(\overline{x}^{i}; \overline{\theta})]]$$
+
+- Step 2 b: given $\overline{\theta}_m$, we compute the **misclassified error**. It's guaranteed that $0 \le \hat{\epsilon} \le1$.
+
+- Step 2 c: the natural logarithm is a direct consequence of the fact that Adaboost minimizes exponential loss.
+```
+
 
 ```ad-note
 - $\tilde{w}$ means that the weights are normalized to sum up to $1$. 
