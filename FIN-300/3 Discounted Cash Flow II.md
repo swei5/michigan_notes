@@ -25,11 +25,15 @@ A **perpetuity** is a type of **annuity** with **NO END**.  Perpetuity is a fina
 
 Instead of computing the present value of each **individual cash flows**, there is an equation for the **present value** of all **ALL** flows in the **annuity**.
 
-$$PV=\frac{C_1}{(1+r)}+\frac{C_1\cdot(1+g)^1}{(1+r)^2}+\cdots+\frac{C_{T\cdot}(1+g)^{T-1}}{(1+r)^T}$$
+$$PV=\frac{C_1}{(1+r)}+\frac{C_1\cdot(1+g)^1}{(1+r)^2}+\cdots+\frac{C_{1\cdot}(1+g)^{T-1}}{(1+r)^T}$$ ^384322
 
 $$
 =\frac{C_{1}}{r-g}\cdot \left(1-\left(\frac{1+g}{1+r}\right)^T\right)
 $$
+
+^28bede
+
+where $r$ is the **discount rate** (required rate of growth) and $g$ is the **growth rate**.
 
 When $T\to \infty$, $PV=\frac{C_1}{r-g}$.
 
