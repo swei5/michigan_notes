@@ -56,7 +56,7 @@ Example: try $\mathbf{x}=[6,0]^T$.
 
 
 #### Algorithm
-![[Pasted image 20230213100642.png|500]]
+![[Pasted image 20230213100642.png|500]] ^367ada
 
 ```ad-note
 **Remarks**:
@@ -65,20 +65,26 @@ $$\sum\limits_{i=1}^{n} \tilde{w}^{i}_{m-1}[[y^{i}\ne h(\overline{x}^{i}; \overl
 
 - Step 2 b: given $\overline{\theta}_m$, we compute the **misclassified error**. It's guaranteed that $0 \le \hat{\epsilon} \le1$.
 
-- Step 2 c: the natural logarithm is a direct consequence of the fact that Adaboost minimizes exponential loss.
+- Step 2 c: calculate the **weighted misclassified rate**. The natural logarithm is a direct consequence of the fact that Adaboost minimizes exponential loss. $\alpha_{m} \ge 0$ because of step 2b.
 
-- Step 2 d: note that $h_m(\overline{x})=\sum\limits_{j=1}^{m} \alpha_{j}h(\overline{x}_{j}; \overline{\theta}_j)$
+- Step 2 d: note that $h_m(\overline{x})=\sum\limits_{j=1}^{m} \alpha_{j}h(\overline{x}^i; \overline{\theta}_j)$
+	- If $\overline{x}^i$ is correctly classified, $\tilde{w}^{i}_{m}=\tilde{w}^{i}_{m-1} \exp(-\alpha_m)$ such that $\exp({-\alpha_{m}}) < 1$
+	- If $\overline{x}^i$ is misclassified, $\tilde{w}^{i}_{m}=\tilde{w}^{i}_{m-1} \exp(\alpha_m)$ such that $\exp({\alpha_{m}}) > 1$
+
+This explains why **weights** of misclassified points are larger, and correctly classified points are smaller.
 ```
 
 
-```ad-note
+```ad-important
 - $\tilde{w}$ means that the weights are normalized to sum up to $1$. 
 	- Thus, step 2-b sums up to $1$  at most (given every point is misclassified)
 - $Z'_{m}$ is a term to ensure normalization holds (sum of weights add up to 1)
+- Note that for the **update step** (2.d), update is the same for **ALL** correctly classified points, and the same for **ALL** incorrectly classified points.
+- $Z_{m}= \sum\limits_{i=1}^{n} \tilde{w}_{m}^{i}$
 ```
 
 #### Properties
-![[Pasted image 20230213100828.png|400]]
+![[Pasted image 20230213100828.png|400]] ^7a5bd6
 
 - Red: test error
 - Blue: training error
