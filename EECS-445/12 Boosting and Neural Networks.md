@@ -25,3 +25,9 @@ since ![[11 Ensembles (Boosting)#^240105]]
 Hence, our final expression of our objective function is
 $$J(\alpha_m,\overline{\theta}_m)=\exp(-\alpha_m)+(\exp(\alpha_m)-\exp(-\alpha_{m})) \sum\limits_{i=1}^{n}\tilde{w}_{m-1} [[h(\overline{x};\overline{\theta}_{m})\ne y^i]]$$
 
+Thus, 
+$$\overline{\theta}_{m}^{\star}=\mathrm{argmin}_{\theta} J(\alpha_m,\overline{\theta}_m)=\mathrm{argmin}_{\theta} \sum\limits_{i=1}^{n}\tilde{w}_{m-1} [[h(\overline{x};\overline{\theta}_{m})\ne y^i]]$$
+Similarly,
+$$\alpha_{m}^{\star}=\mathrm{argmin}_{\alpha} J(\alpha_m,\overline{\theta}_m)=\mathrm{argmin}_{\alpha}\exp(-\alpha_m)+(\exp(\alpha_m)-\exp(-\alpha_{m}))+\hat{\epsilon}_{m}$$
+$$\alpha_{m}^{\star}=\frac{1}{2}\ln\left(\frac{1-\hat{\epsilon}}{\hat{\epsilon}}\right).$$
+
