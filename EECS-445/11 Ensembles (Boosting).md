@@ -72,6 +72,8 @@ $$\sum\limits_{i=1}^{n} \tilde{w}^{i}_{m-1}[[y^{i}\ne h(\overline{x}^{i}; \overl
 	- If $\overline{x}^i$ is misclassified, $\tilde{w}^{i}_{m}=\tilde{w}^{i}_{m-1} \exp(\alpha_m)$ such that $\exp({\alpha_{m}}) > 1$
 
 This explains why **weights** of misclassified points are larger, and correctly classified points are smaller.
+
+- $Z_{m}= \sum\limits_{i=1}^{n} \tilde{w}_{m-1}^{i} \exp(-y^{i}\alpha_{1}h(\overline{x}^{i};\overline{\theta}_{m}))$
 ```
 
 
@@ -80,7 +82,6 @@ This explains why **weights** of misclassified points are larger, and correctly 
 	- Thus, step 2-b sums up to $1$  at most (given every point is misclassified)
 - $Z'_{m}$ is a term to ensure normalization holds (sum of weights add up to 1)
 - Note that for the **update step** (2.d), update is the same for **ALL** correctly classified points, and the same for **ALL** incorrectly classified points.
-- $Z_{m}= \sum\limits_{i=1}^{n} \tilde{w}_{m}^{i}$
 ```
 
 #### Properties

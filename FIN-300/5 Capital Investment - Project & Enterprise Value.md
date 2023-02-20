@@ -1,4 +1,4 @@
-[[2023-02-18]] #Valuation #CashFlow #DCF 
+[[2023-02-18]] #Valuation #CashFlow #DCF #Accounting 
 
 ### Valuation Concepts
 We will use the free cash flow approach to estimate:
