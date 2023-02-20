@@ -10,3 +10,18 @@ $$\sum\limits_{i=1}^{n}\tilde{w}_m^{i} [[h(\overline{x};\overline{\theta}_{m})\n
 **Intuition**: Since the current classifier achieves weighted error smaller than 0.5, there is more weight on correct examples. We increase weights on incorrect examples and decrease weights on correct examples so that they are perfectly balanced.
 ```
 
+---
+
+### AdaBoost, Final Expression
+Recall that AdaBoost aims to minimize the loss function in form of
+$$J(\alpha_m,\overline{\theta}_m)=\sum\limits_{i=1}^{n}\exp(-y^{i}h_{M}(\overline{x}^i))$$
+$$=\sum\limits_{i=1}^{n}\exp(-y^{i}(\alpha_{m}h(\overline{x}^i;\overline{\theta}_{m})+h_{m-1}(\overline{x}^i)))$$
+Note that $h_{m-1}(\overline{x}^{i})=\sum\limits_{j=1}^{M-1}\alpha_{j}h(\overline{x}^i;\overline{\theta}_j)$.
+
+$$=\sum\limits_{i=1}^{n}\exp(-y^{i}(\alpha_{m}h(\overline{x}^i;\overline{\theta}_{m}))\exp(-y^ih_{m-1}(\overline{x}^i)))$$
+$$=\sum\limits_{i=1}^{n}\exp(-y^{i}(\alpha_{m}h(\overline{x}^i;\overline{\theta}_{m}))w^{i}_{m-1}$$
+since ![[11 Ensembles (Boosting)#^240105]]
+![[Pasted image 20230220005549.png|550]]
+Hence, our final expression of our objective function is
+$$J(\alpha_m,\overline{\theta}_m)=\exp(-\alpha_m)+(\exp(\alpha_m)-\exp(-\alpha_{m})) \sum\limits_{i=1}^{n}\tilde{w}_{m-1} [[h(\overline{x};\overline{\theta}_{m})\ne y^i]]$$
+

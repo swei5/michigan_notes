@@ -106,7 +106,8 @@ There are two ways to express a periodic rate on an **annual basis**.
 
 - **Effective Annual Rate**
 	$$EAR=(1+r)^{\mathrm{number\ of\ periods\ in\ a\ year}}-1$$
-
+	where $r=\frac{APR}{n}$.
+	
 	The effective annual rate (often called the **compound interest rate**) is the “true” **interest rate**.
 
 

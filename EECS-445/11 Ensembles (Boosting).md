@@ -56,7 +56,13 @@ Example: try $\mathbf{x}=[6,0]^T$.
 
 
 #### Algorithm
+
+^705f6d
+
 ![[Pasted image 20230213100642.png|500]] ^367ada
+
+Note that an **alternate expression** for Step 2 d is
+$$\tilde{w}^{i}_{m}=\frac{\exp(-y^{i}h_{m}(\overline{x}^i))}{Z^\prime_{m}}$$ ^240105
 
 ```ad-note
 **Remarks**:
@@ -67,7 +73,7 @@ $$\sum\limits_{i=1}^{n} \tilde{w}^{i}_{m-1}[[y^{i}\ne h(\overline{x}^{i}; \overl
 
 - Step 2 c: calculate the **weighted misclassified rate**. The natural logarithm is a direct consequence of the fact that Adaboost minimizes exponential loss. $\alpha_{m} \ge 0$ because of step 2b.
 
-- Step 2 d: note that $h_m(\overline{x})=\sum\limits_{j=1}^{m} \alpha_{j}h(\overline{x}^i; \overline{\theta}_j)$
+- Step 2 d: note that $h_m(\overline{x})=\sum\limits_{j=1}^{m} \alpha_{j}h(\overline{x}^i; \overline{\theta}_j)$.
 	- If $\overline{x}^i$ is correctly classified, $\tilde{w}^{i}_{m}=\tilde{w}^{i}_{m-1} \exp(-\alpha_m)$ such that $\exp({-\alpha_{m}}) < 1$
 	- If $\overline{x}^i$ is misclassified, $\tilde{w}^{i}_{m}=\tilde{w}^{i}_{m-1} \exp(\alpha_m)$ such that $\exp({\alpha_{m}}) > 1$
 
