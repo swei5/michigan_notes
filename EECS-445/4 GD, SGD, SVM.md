@@ -7,7 +7,7 @@ Recall the definition of gradient descent: ![[3 Perceptron, Loss Functions#^4bb0
 
 Given $S_n=\set{\overline{x}^i,\overline{y}^i}^n_{i=1}$
 - Find the value of parameter $\overline{\theta}$ that **minimizes empirical risk** $R_n(\overline{\theta})$.
-	- $\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{max}\left(\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x}),0\right)$
+	- $\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{loss}\left(\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x})\right)$
 ```
 
 #### Algorithm
@@ -61,7 +61,8 @@ Since this can be computationally expensive, a slight variation of (batch) Gradi
 
 #### Algorithm
 The algorithm is shown as the following:
-![[Pasted image 20230119141956.png|700]] ^ae3c39
+![[Pasted image 20230119141956.png|700]]
+^ae3c39
 
 ```ad-example
 Here, we use the **[[3 Perceptron, Loss Functions#^e177f0|hinge loss]]** function:
@@ -73,8 +74,8 @@ Note that there are two cases for this $\mathrm{loss}$ function.
 	- Gradient is $\overline{0}$
 	- **NO** update is made
 - Case 2: $y^i(\overline{\theta}\cdot\overline{x}^i)<1$
-	- $\nabla(^i(\overline{\theta}\cdot\overline{x}^i))=-y^ix^i$
-	- Note how this relates to the gradient of a loss function (hinge): [[3 Perceptron, Loss Functions#^e177f0]]
+	- $\nabla_{\theta}(y^{i}(\overline{\theta}\cdot\overline{x}^i))=-y^ix^i$
+	- Note how this relates to the gradient of a loss function (hinge)
 ```
 
 The algorithm is therefore equivalent to

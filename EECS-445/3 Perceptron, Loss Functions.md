@@ -79,7 +79,7 @@ Problem: Minimization of this function is NP-Hard.
 
 Therefore, we might want to take a new approach.
 
-```ad-info
+```ad-important
 **Definition 3.1**: Re-definition of **Empirical Risk** under the context of **loss function**:
 $$R_n(\overline{\theta})=\frac{1}{n}\sum_{i=1}^{n} \ \mathrm{loss}\left(\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x}^i)\right)$$
 ```

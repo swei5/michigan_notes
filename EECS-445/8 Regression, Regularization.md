@@ -7,12 +7,18 @@ Similarly, to measure **generalization error**, we take measure performance on *
 $$R_{n^\prime}^{\mathrm{test}}(\overline{\theta})=\frac{1}{n^\prime}\sum_{i=1}^{n^\prime} \ \mathrm{loss}\left(\overline{y}^i\cdot(\overline{\theta}\cdot \overline{x}^i)\right)$$
 
 ### Regression
+
+```ad-important
+**Definition 8.1**:
+
 For supervised learning, we learn to predict $\mathcal{Y}$ from $\mathcal{X}$.
 - Labels can be **discrete** or **continuous**
 	- Discrete: classification
 	- Continuous: regression
 
 Essentially, a regression function $f:\mathbb{R}^{d}\to\mathbb{R}$ where $f \in \mathcal{F}$ (the set of **possible functions**).
+
+```
 
 A linear regression function is simply a **linear function** of the **feature vector**:
 $$f(\overline{x};\overline{\theta},b)=\overline{\theta}\cdot\overline{x}+b$$
@@ -60,7 +66,7 @@ $$
 Due to the characteristics of dot products.
 ![[Pasted image 20230205145726.png|600]]
 
-$$\to -X^{T}\overline{y}+X^{T}X \overline{\theta}=0$$
+$$\nabla_{\overline{\theta}}R_n(\overline{\theta})\to -X^{T}\overline{y}+X^{T}X \overline{\theta}=0$$
 ```ad-note
 Note that $\dim(\overline{x}^i)$ is $d$. Thus, summing the doct products between $\overline{x}^i$ and $\overline{y}^i$ for all $n$ samples. We can re-write this as $X^{T}\overline{y}$ since
 
@@ -72,7 +78,14 @@ Finally, note that the matrix product of $X^{T}\overline{y}$ is of size $d\times
 
 The same reasoning goes for the second part of the summation.
 ```
+
+```ad-info
+**Theorem 8.1**: The closed form of $\overline{\theta}^\star$ for regression with squared loss is
+
 $$\to\overline{\theta}^\star=(X^{T}X)^{-1}X^{T}\overline{y}$$ ^a9289d
+```
+
+^514acb
 
 Note that we still want to perform SGD just because the above is computationally heavy.
 
@@ -105,8 +118,7 @@ Intuitively, to reduce **bias**, we need a larger $\mathcal{F}$.
 ---
 
 ### Regularization
-Recall the definition of L1-regularization and L2-regularization (Embedded Methods): ![[7 SVM, Kernel Trick#^9cec77]]
-![[7 SVM, Kernel Trick#^556b69]]
+Recall the definition of L1-regularization and L2-regularization (Embedded Methods): ![[7 SVM, Kernel Trick#^294d65]]
 
 Motivation: we prefer a ***simpler*** hypothesis.
 - We want to push parameters towards some **default value** (typically $\textbf{0}$)
@@ -125,11 +137,15 @@ $Z(\overline{\theta})$ should have the following characteristics:
 Some popular choices are $l_p$ norms.
 
 #### Ridge Regression
-L2 regularization with **squared loss function**.
 
+```ad-important
+**Definition 8.2**: Ridge Regression
+
+Ridge Regression is regression with L2 regularization with **squared loss function**.
 $$
 J_{n,\lambda}(\overline{\theta})=\lambda \frac{||\overline{\theta}||^2}{2}+\frac{1}{n}\sum_{i=1}^{n} \ \frac{\left(\overline{y}^i-(\overline{\theta}\cdot \overline{x}^i)\right)^2}{2}
 $$
+```
 
 ```ad-note
 When $\lambda=0$
@@ -152,7 +168,7 @@ See the notes below:
 $$\to\overline{\theta}^\star=(\lambda^{\prime}I+X^{T}X)^{-1}X^{T}\overline{y}$$ 
 Note that $(\lambda^{\prime}I + X^{T}X)$ is **invertible** as long as $\lambda > 0$.
 
-Note the similarity of this expression with the optimal value of $\overline{\theta}$ without applying the regularization: ![[#^a9289d]]
+Note the similarity of this expression with the optimal value of $\overline{\theta}$ without applying the regularization: ![[#^514acb]]
 
 ```ad-seealso
 Further reading: [Discussion 5 Note](https://umich.instructure.com/courses/583110/files/folder/Discussion%20Notes?preview=29386226)

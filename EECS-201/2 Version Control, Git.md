@@ -1,7 +1,7 @@
 #VersionControl #Git #Index #Branch
 ### Version Control
 
-```ad-info
+```ad-important
 **Definition 2.1**: Version Control keeps track of changes of files over time, allowing you to roll back to previous versions.
 ```
 
@@ -119,7 +119,7 @@ Initializing Git repos inside of Git repos might not work the way you expect the
 
 #### Branching
 
-```ad-info
+```ad-important
 **Definition 2.2**: A branch in Git is a pointer to a commit.
 - Super lightweight
 - `HEAD` is a pointer pointing to the **current commit** that's being looked at.

@@ -126,10 +126,10 @@ Pros and cons for **filter approach** and **wrapper approach**
 ![[Pasted image 20230205102659.png|500]]
 
 #### Embedded Methods
-
-^fa79f2
-
 Incorporate **variable selection** as part of the training process.
+```ad-important
+**Definition 7.1**: Regularization
+
 - L2 regularization
 $$\min_{\overline{\theta}, b, \overline{\xi}} \frac{||\overline{\theta}||^2}{2}+C\sum\limits_{i=1}^{n}\xi_i$$
  ^556b69
@@ -137,6 +137,9 @@ $$\min_{\overline{\theta}, b, \overline{\xi}} \frac{||\overline{\theta}||^2}{2}+
 $$\min_{\overline{\theta}, b, \overline{\xi}} ||\overline{\theta}||_1+C\sum\limits_{i=1}^{n}\xi_i$$ ^9cec77
 
 such that $y^{i}(\overline{\theta}\cdot x^{i}+b) \ge 1-\xi_{i}\mathrm{\ \ \ \ for\ } i \in \{1,\cdots, n\}, \xi_i\ge0$.
+```
+
+^294d65
 
 ```ad-note
 Note that L1-norm is essentially
@@ -157,9 +160,14 @@ exactly zero, which is implicit (or embedded) feature selection.
 ---
 
 ### Mercer's Theorem
-A function $K:\mathbb{R}^{d}\times \mathbb{R}^{d} \to \mathbb{R}$ is a valid kernel **iff** for any $\overline{x}^{i}\in \mathbb{R}^d$ and finite $n$ the $n \times n$ matrix $G$ with $G_{ij}$  = $K(\overline{x}_i,\overline{x}_{j})$ is **positive-semidefinite**.
+```ad-important
+**Definition 7.2**:
+
+A function $K:\mathbb{R}^{d}\times \mathbb{R}^{d} \to \mathbb{R}$ is a valid kernel **iff** for any $\overline{x}^{i}\in \mathbb{R}^d$ and finite $n$ the $n \times n$ matrix $G$ with $G_{ij}=K(\overline{x}_i,\overline{x}_{j})$ is **positive-semidefinite**.
 - That is, $G$ is symmetric: $G=G^T$
 - $\forall z \in \mathbb{R}^{n}\ z^TGz\ge0$ 
+
+```
 
 In other words, for such a function $K(\overline{u}, \overline{v})$, there exists a function $\varphi$ such that $K (\overline{u}, \overline{v})=\varphi({\overline{u}})\cdot \varphi({\overline{v}})$.
 

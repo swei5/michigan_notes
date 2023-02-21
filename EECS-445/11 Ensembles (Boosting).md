@@ -1,9 +1,14 @@
 [[2023-02-13]] #Ensemble #Boosting #DecisionTree 
 
 ### Boosting
+
+```ad-important
+**Definition 11.1**:
+
 Combining simple **weak classifiers** into a more complex/strong classifier.
 - Decreases **bias** (structural error) and **variance** (estimation error)
 - **Sequentially** build classifiers, each one improves on the previous classifiers
+```
 
 A classifier a general form of
 $$h_M(\overline{x})=\sum\limits_{m=1}^{M}\alpha_{m}h(\overline{x}^{i};\overline{\theta}_{m})$$
@@ -79,9 +84,8 @@ $$\sum\limits_{i=1}^{n} \tilde{w}^{i}_{m-1}[[y^{i}\ne h(\overline{x}^{i}; \overl
 
 This explains why **weights** of misclassified points are larger, and correctly classified points are smaller.
 
-- $Z_{m}= \sum\limits_{i=1}^{n} \tilde{w}_{m-1}^{i} \exp(-y^{i}\alpha_{1}h(\overline{x}^{i};\overline{\theta}_{m}))$
+- $Z_{m}= \sum\limits_{i=1}^{n} \tilde{w}_{m-1}^{i} \exp(-y^{i}\alpha_{m}h(\overline{x}^{i};\overline{\theta}_{m}))$
 ```
-
 
 ```ad-important
 - $\tilde{w}$ means that the weights are normalized to sum up to $1$. 

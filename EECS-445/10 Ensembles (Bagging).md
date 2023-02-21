@@ -5,7 +5,7 @@ Recall the definition of **conditional entropy** ![[9 Decision Tree#^5c5641]]
 Information gain is defined as
 $$IG(X,Y)=H(Y)-H(Y|X)$$
 
-In other words, this denotes how much does **knowing** the value of $X$ **reduce** my **uncertainty** in the variable $Y$.
+	In other words, this denotes how much does **knowing** the value of $X$ **reduce** my **uncertainty** in the variable $Y$.
 
 ---
 

@@ -19,7 +19,7 @@ This does not mean that \*nix systems are inherently better than other operating
 
 ### Command Line Basics
 
-```ad-info
+```ad-important
 **Definition 1.2**: The "command line" is a type of interface where you provide a line of text that the interpreting soware can interpret into commands to perform.
 ```
 

@@ -22,11 +22,15 @@ and $l_2$-norm regularizer.
 ### Feature Mapping
 Another way to handle data that are **NOT** linearly separable is by mapping.
 
+```ad-important
+**Definition 6.1**:
+
 We can map data to a **higher dimension space** in which there exists a **separating hyperplane** (corresponds to a non-linear decision boundary in the original space).
 
 $$S_n=\{\overline{x}^{i},\overline{y}^{i}\}_{i=1}^{n}\to S_n^\prime=\{\phi(\overline{x}^i), \overline{y}^i\}_{i=1}^{n}$$
 
 In which $\phi$ is a feature map s.t. $\phi:\mathbb{R}^d\to\mathbb{R}^p$. 
+```
 
 ![[Pasted image 20230125232653.png|500]]
 
@@ -94,7 +98,7 @@ If constraints are **NOT** satisfied, it is futile to find the min from infinity
 ```
 
 ```ad-important
-**Definition 6.1**: $$
+**Definition 6.2**: $$
 \min_{\overline{w}}\max_{\overline{\alpha}, \alpha_{i}\ge 0} L (\overline{w},\overline{\alpha})$$ 
 
 is called the **primal formulation**.
