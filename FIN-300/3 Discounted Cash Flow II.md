@@ -12,7 +12,7 @@ We calculate the present value for each investment, and sum them up accordingly.
 ![[Pasted image 20230123115845.png|600]]
 ```
 
-In this application, the cash flows are (usually) equally-spaced (1 year),  so we can use the Excel function `NPV (discount rate, cash flows)`.
+In this application, the cash flows are (usually) equally-spaced (1 year),  so we can use the Excel function `NPV (discount rate: float, cash flows: 1d-array)`.
 -  However, we need to manually input cash flow at time `0`.
 	- `=NPV(discount_rate, cash flows 1-11) + year0_cash_flow`
 

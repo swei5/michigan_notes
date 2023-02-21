@@ -82,7 +82,7 @@ $$
 - Decision Rule: accept the project if the **internal rate** of is the return exceeds the **discount rate** (that is, accept if the **internal rate of return** is **above a return** you consider fair given the project risk).
 
 For this, we have to use **trial and error**
-- In excel, we can use `=IRR(cashflows)`.
+- In excel, we can use `=IRR(cashflows: 1d-array)`.
 	- In this excel formulae, the first cash flow occurs at **time** **zero**, meaning that the input should include **ALL** cashflows.
 
 | Criteria              | Y/N                                                |
