@@ -9,7 +9,7 @@ $$R_{n^\prime}^{\mathrm{test}}(\overline{\theta})=\frac{1}{n^\prime}\sum_{i=1}^{
 ### Regression
 
 ```ad-important
-**Definition 8.1**:
+**Definition 8.1**: **Regression**
 
 For supervised learning, we learn to predict $\mathcal{Y}$ from $\mathcal{X}$.
 - Labels can be **discrete** or **continuous**
@@ -83,10 +83,11 @@ The same reasoning goes for the second part of the summation.
 **Theorem 8.1**: The closed form of $\overline{\theta}^\star$ for regression with squared loss is
 
 $$\to\overline{\theta}^\star=(X^{T}X)^{-1}X^{T}\overline{y}$$ ^a9289d
+
+A linear algebra proof can be accessed [here](https://pages.pomona.edu/~jsh04747/courses/math158/lr_matrix.pdf).
 ```
 
 ^514acb
-
 Note that we still want to perform SGD just because the above is computationally heavy.
 
 ```ad-question
@@ -139,7 +140,7 @@ Some popular choices are $l_p$ norms.
 #### Ridge Regression
 
 ```ad-important
-**Definition 8.2**: Ridge Regression
+**Definition 8.2**: **Ridge Regression**
 
 Ridge Regression is regression with L2 regularization with **squared loss function**.
 $$

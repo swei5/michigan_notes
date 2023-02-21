@@ -20,9 +20,14 @@ So far we have focused on accuracy, but we also want **interpretability**.
 ---
 
 ### Decision Tree
+
+```ad-important
+**Definition 9.1**: **Decision Tree**
+
 $f: \mathcal{X} \to \mathcal{Y}$. It is non-linear and contains axis-aligned **partitions**.
 - Axis-aligned means **parallel** to the $x, y$ axis
 - In addition, decision trees can also handle **binary input** (yes/no) or **categorical input** (type) at the same time
+```
 
 There are two main types of trees:
 - Classification trees, where $y\in\{0,1\}$
@@ -85,9 +90,14 @@ Since we can't define our parameters in advance (thus no training loss found), w
 		- How?
 
 #### Shannon Entropy
+
+```ad-important
+**Definition 9.2**: **Entropy**
+
 A measure of the amount of “**uncertainty**” in a variable. In mathematical terms, for $y \in [y_{1}, \cdots, y_{n}]$:
 $$H(Y)=-\sum\limits_{i=1}^{n}p(y_i)\log_{2}(p(y_i))$$
 where $p(y_i)$ is the proportion of $y$ that takes on value of $y_i$.
+```
 
 For instance, if $y\in \set{0,1}$:
 $$H(Y)=-p(Y=1)\log_2p(Y=1)-p(Y=0)\log_2p(Y=0)$$

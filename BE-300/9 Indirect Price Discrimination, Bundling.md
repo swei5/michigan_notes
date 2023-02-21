@@ -8,10 +8,15 @@ Charge a high price early on, then drop it later.
 - Airline pricing: charge lower fares to price sensitive leisure travelers than to price insensitive business travelers for equivalent seats
 
 ##### Versioning
+
+```ad-important
+**Definition 9.1**: **Versioning**
+
 A pricing strategy where a firm offers **different** **versions** of a product at different prices to attract various consumer types.
 - Determine **consumer surplus** generated for each type at a **given price** for the “budget” version
 - Set price for *high end* version so it just generates exactly the same in consumer surplus for the second type of consumer
 - Check “incentive compatibility,” i.e., **NEITHER** type consumer prefers the other version
+```
 
 Examples:
 - Airline tickets: business travelers
@@ -23,8 +28,15 @@ Versioning is not exactly price discrimination because
 - Different versions of product need not be identical
 
 #### Quantity Discounts
+
+```ad-important
+**Definition 9.2**: **Quantity Discounts**
+
 A firm offers customers who buy **larger** quantities of a good a **lower** per-unit price
 - Useful if one consumer type has **elastic** demand
+```
+
+^30fab2
 
 Examples
 - Frequent or high-volume users (public transportation)
@@ -53,8 +65,15 @@ Both versioning and quantity discounts require
 ---
 
 ### Bundling
+
+```ad-important
+**Definition 9.3**: **Bundling**
+
 Bundling is when a firm sells 2 or more products together for a single price. ^f715aa
 - Cable televisions, streaming, software
+```
+
+^dbc3ce
 
 ```ad-example
 Assume customers have the following maximum willingness to pay for two products.

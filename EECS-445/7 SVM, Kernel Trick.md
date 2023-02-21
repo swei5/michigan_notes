@@ -128,7 +128,7 @@ Pros and cons for **filter approach** and **wrapper approach**
 #### Embedded Methods
 Incorporate **variable selection** as part of the training process.
 ```ad-important
-**Definition 7.1**: Regularization
+**Definition 7.1**: **Regularization**
 
 - L2 regularization
 $$\min_{\overline{\theta}, b, \overline{\xi}} \frac{||\overline{\theta}||^2}{2}+C\sum\limits_{i=1}^{n}\xi_i$$
@@ -160,8 +160,9 @@ exactly zero, which is implicit (or embedded) feature selection.
 ---
 
 ### Mercer's Theorem
+
 ```ad-important
-**Definition 7.2**:
+**Definition 7.2**: **Mercer's Theorem**
 
 A function $K:\mathbb{R}^{d}\times \mathbb{R}^{d} \to \mathbb{R}$ is a valid kernel **iff** for any $\overline{x}^{i}\in \mathbb{R}^d$ and finite $n$ the $n \times n$ matrix $G$ with $G_{ij}=K(\overline{x}_i,\overline{x}_{j})$ is **positive-semidefinite**.
 - That is, $G$ is symmetric: $G=G^T$

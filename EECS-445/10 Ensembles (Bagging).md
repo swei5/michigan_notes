@@ -2,10 +2,15 @@
 
 ### Information Gain
 Recall the definition of **conditional entropy** ![[9 Decision Tree#^5c5641]] 
+```ad-important
+**Definition 10.1**: **Information Gain**
+
 Information gain is defined as
 $$IG(X,Y)=H(Y)-H(Y|X)$$
 
-	In other words, this denotes how much does **knowing** the value of $X$ **reduce** my **uncertainty** in the variable $Y$.
+In other words, this denotes how much does **knowing** the value of $X$ **reduce** my **uncertainty** in the variable $Y$.
+
+```
 
 ---
 
@@ -100,7 +105,12 @@ There are two main types of **ensembles**:
 2. Boosting (Adaboost)
 
 #### Bagging
+
+```ad-important
+**Definition 10.2**: **Bagging**
+
 Bootstrap (vanilla bagging) sampling is defined as to randomly **sample** $n$ data points with **replacement**. Do that $B$ times.
+```
 
 ![[Pasted image 20230211202954.png|600]]
 
