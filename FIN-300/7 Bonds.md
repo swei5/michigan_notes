@@ -1,4 +1,4 @@
-[[2023-02-26]] #Bond #DiscountRate 
+[[2023-02-26]] #Bond #DiscountRate #YTM #Valuation 
 
 ### Overview, Value, Price, Yield
 
@@ -85,7 +85,26 @@ $$PV_{FV}=\frac{FV}{(1+r)^T}$$
 ```ad-example
 If we are asked to compute the value of a bond at time $t$, where $t\notin \mathbb{Z}^+$, do the following:
 1. Compute $P_{t^\prime}$, where $t^{\prime}=\mathrm{floor}(t)$
-	- Note that $T'=T-t$ as we have paid exactly $t$ coupon payments
+	- Note that $T'=n-t'$ as we have paid exactly $t$ coupon payments
 2. Shift the valuation of $P_t$ forward by $t-t^{\prime}$
-- $P_{t'}=P_{t}\cdot(1+r)^{}$
+- $P_{t'}=P_{t}\cdot(1+r)^{N(t')}$
+	- $N(k)$ indicates the **number of payments** after $t'$ time since the last coupon payment
+```
+
+---
+
+### Yield to Maturity
+Again, yield to maturity is a way of expressing price as a **rate of return**. This allows for **comparison** across bonds of prospective returns.
+- However, the bond price doesn’t tell us anything compared to other bonds
+- Most of the time quoted as an **APR**
+
+```ad-example
+- At 99.21, the prospective return on the Ford bond (the yield) is 5.00%.
+- At 103.16, the prospective return on the GM bond (the yield) is 4.51%.
+
+Is the Ford bond a better investment because of higher YTM? Not necessarily. Ford could have a higher yield because it is a **riskier** bond than the GM bond, or it could have a higher yield because investors have **mispriced** either the Ford or GM bond.
+```
+
+```ad-warning
+Don't forget to translate **periodic rate** into **APR** after we've done the calculations!
 ```
