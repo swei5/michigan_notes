@@ -19,12 +19,16 @@ In this application, the cash flows are (usually) equally-spaced (1 year),  so w
 ---
 
 ### Annuity, Perpetuity
+
+```ad-important
+**Definition 3.1**: Annuity, Perpetuity
+
 An annuity is a **stream of projected cash flows** that grow at a **constant rate** each year (the growth rate can be zero).
 
 A **perpetuity** is a type of **annuity** with **NO END**.  Perpetuity is a financial term that indicates an **infinite stream** of cash flows.
+```
 
-Instead of computing the present value of each **individual cash flows**, there is an equation for the **present value** of all **ALL** flows in the **annuity**.
-
+Instead of computing the present value of each **individual cash flows**, there is an equation for the **present value** of all **ALL** flows in the **annuity** (Net Present Value).
 $$PV=\frac{C_1}{(1+r)}+\frac{C_1\cdot(1+g)^1}{(1+r)^2}+\cdots+\frac{C_{1\cdot}(1+g)^{T-1}}{(1+r)^T}$$ ^384322
 
 $$

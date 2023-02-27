@@ -61,7 +61,9 @@ To compute what the **equity** is worth in a business, take the **enterprise** *
 The only cash flows that matter for project analysis are cash flows that occur **only if** the project is **undertaken**.
 
 ```ad-important
-**Definition 5.1**: Incremental cash flows are changes in cash flows that are a consequence of implementing the project.
+**Definition 5.1**: Incremental Cash Flow
+
+Incremental cash flows are changes in cash flows that are a consequence of implementing the project.
 
 Incremental cash flows allow us to value each **project** without having to analyze all other cash flows of the firm.
 ```

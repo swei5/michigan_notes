@@ -9,9 +9,10 @@
 Financial markets are important in that they allocate capitals in an efficient manner.
 
 ```ad-important
+**Definition 1.1**: Financial Market
+
 Financial markets facilitate the interaction between those who need **capital** with those who have **capital** to invest.
 ```
-
 ^b42f8e
 
 FM are **NOT PERFECT**:
@@ -30,7 +31,7 @@ FM are **NOT PERFECT**:
 Shareholders are the **last group** to be paid. Shareholders receive money only **after** taxes and interest.
 ```
 
-- Derivatives
+- **Derivatives**
 	- Assets whose prices are dependent on other assets.
 	- *Out of the scope of this class*
 
@@ -58,7 +59,7 @@ The content of NPV will be covere shortly in the class.
 #### Income Statements
 Shows a company's **financial performance** over a **period**.
 
-```ad-note
+```ad-important
 EBITDA is a measure of **cash flows**! In finance it's more important than profits.
 ```
 

@@ -1,4 +1,4 @@
-[[2023-02-19]] #DiscountRate #Valuation #CashFlow #DiscountRate 
+[[2023-02-19]] #DiscountRate #Valuation #CashFlow
 
 ### Inflation, Nominal and Real Rates
 - Nominal prices represent the **actual** **prices** paid in **transactions**.
@@ -13,11 +13,16 @@ In terms of interest rates,
 - Real rate of interest: interest rate obtained after considering the impact of **inflation**
 
 #### Fisher Equation
+
+```ad-important
+**Definition 6.1**: Fisher Equation
+
 The Fisher equation defines the relationship between real rates, nominal rates, and inflation:
 $$(1+r)\cdot(1+\pi)=1+i$$
 $$\to r=\frac{1+i}{1+\pi}-1$$
 
 where $r$ is real interest rate, $\pi$ is inflation, and $i$ is nominal interest rate.
+```
 
 If we expand the formulae above, since both $r$ and $\pi$ are small values, **real interest rate** plus **inflation** is approximately **nominal interest rate**.
 

@@ -74,10 +74,17 @@ It is still useful in quick assessment of project viability before committing re
 ---
 
 ### Internal Rate of Return
+
+```ad-important
+**Definition 4.1**: Internal Rate of Return (IRR)
+
 The **internal rate of return** (IRR) is defined as the discount rate at which the **NPV** becomes zero:
 $$
 NPV_{r=IRR}\ \ \ \ s.t. \ \ \ \ C_0+\frac{C_1}{(1+IRR)}+\cdots+\frac{C_T}{(1+IRR)^T}=0
 $$
+```
+
+^d8138a
 
 - Decision Rule: accept the project if the **internal rate** of is the return exceeds the **discount rate** (that is, accept if the **internal rate of return** is **above a return** you consider fair given the project risk).
 
@@ -98,7 +105,6 @@ The rule adjusts for both TVM, magnitude, and risk, but **CAN'T** used to rank p
 - We cannot compare projects that have **fundamentally** **different** lives.
 	- Suppose we had a 5 year project with IRR of 12% versus a 10 year project with IRR of 10%, we would have chosen the 5 year project. But what if we were not able to find another project that generates 12% IRR after the first 5 years? 
     
-
 ```ad-note
 It is, however, very useful for presentation purposes. Net present value comparisons can be hard to **benchmark**. Is the net present value high or low? But the internal rate of return can be compared to returns earned on **past investment**s, and the returns currently on offer on corporate bonds.
 - For example, historical average equity market return is about 8% per year in real terms
@@ -108,14 +114,20 @@ It is, however, very useful for presentation purposes. Net present value compari
 ---
 
 ### Profitability Index
-**Present value** of **future cash** flows divided by the **initial investment**.
+
+```ad-important
+**Definition 4.2**: Profitability Index
+
+Profitability Index is defined as the **present value** of **future cash** flows divided by the **initial investment**:
+$$PI=\frac{NPV}{\mathrm{Initial\ Investment}}$$
+```
 - Decision Rule: Accept project if profitability index > 1
 
 ```ad-example
 ![[Pasted image 20230218212900.png|600]]
 ```
 
-```ad-important
+```ad-summary
 The three propositions below are equivalent
 - PI $>1$
 - NPV is positive
@@ -138,7 +150,7 @@ Project ranking can shift, contingent upon the **discount rate** and the **timin
 When the cash flows of a project change sign more than once, we may have **multiple** IRRs or no IRR at all.
 - To solve this, we  could set a **different discount rate** to the cash flows that reflect the activities causing the negative cash flow (like clean-up costs).
 
-```ad-important
+```ad-warning
 Different parts (phases) of a project are exposed to **different** **risks** and therefore should be discounted at **different** **discount** **rates**.
 ```
 

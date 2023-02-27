@@ -27,6 +27,9 @@ receive in the future, or the Future Value of the money you receive today.
 - How much is a present unit of cash worth in the future?
 ![[Pasted image 20230109121422.png|400]]
 
+```ad-important
+**Definition 2.2**: Present Value and Future Values
+
 We relate the present value, future value, and the per-period interest rate with the following equation:
 
 $$FV\ in \ n \ periods=PV(1+r)^n$$
@@ -34,6 +37,7 @@ $$FV\ in \ n \ periods=PV(1+r)^n$$
 Rearranging gives:
 
 $$PV=\frac{FV\ in \ n \ periods}{(1+r)^n}$$
+```
 
 ```ad-note
 Future cash flows are **discounted** at the appropriate discounted rate in order to calculate present value.
@@ -42,11 +46,16 @@ Future cash flows are **discounted** at the appropriate discounted rate in order
 ---
 
 #### Discount Rate, Interest Rate, Cost of Capital
-The terms can be used interchangeably.
+
+```ad-important
+**Definition 2.3**: Discount Rate
+
+These terms can be used interchangeably.
 - **Interest rate** is typically used for a debt security
 - **Discount rate** or **cost of capital** is typically used for a project or a business
+```
 
-#### Compound Interest, Simple Interest
+##### Compound Interest, Simple Interest 
 Investors benefitted from interest on interest.
 
 Depending on simple or compound interests, the formula to calculate present/future value differ.
@@ -60,13 +69,11 @@ $$PV=\frac{FV\ in \ n \ periods}{(1+r\cdot n)}$$
 ---
 
 #### Risk Adjustment
-
 A discount rate should account for both the **time value of money** and the **risk** of achieving the **projected future cash flow**.
 
 ```ad-note
 If the value of something is indiciated as "expected value", then treat it as the **future value**. **Current value** is sometimes expressed as **intrinsic value** or **fair value**.
 ```
-
 
 #### Expected Return
 
@@ -79,7 +86,6 @@ $$\mathrm{Return}=(1+\mathrm{Periodic \ Return})^n-1$$
 ---
 
 #### Variable Interest Rates
-
 Given a variable interest rate $r_t$ at time $t$, we have
 $$FV=PV\cdot \prod_{t=1}^{n} \left(1+r_t\right)$$
 
@@ -99,17 +105,22 @@ Rates of different periods/lengths.
 ```
 
 There are two ways to express a periodic rate on an **annual basis**.
-- **Annual Percentage Rate**
-	$$APR=r\cdot \mathrm{number\ of\ periods\ in\ a\ year}$$
-	
-	The annual percentage rate (often called the **simple interest rate**) is used for a quick approximation of an **annual return**.
 
-- **Effective Annual Rate**
-	$$EAR=(1+r)^{\mathrm{number\ of\ periods\ in\ a\ year}}-1$$
+```ad-important
+**Definition 2.4**: Annual Percentage Rate (APR)
+	$$APR=r\cdot \mathrm{number\ of\ periods\ in\ a\ year}$$
+
+The annual percentage rate (often called the **simple interest rate**) is used for a quick approximation of an **annual return**.
+```
+
+```ad-important
+**Definition 2.5**: Effective Annual Rate
+
+$$EAR=(1+r)^{\mathrm{number\ of\ periods\ in\ a\ year}}-1$$
 	where $r=\frac{APR}{n}$.
 	
 	The effective annual rate (often called the **compound interest rate**) is the “true” **interest rate**.
-
+```
 
 ```ad-question
 When should we use EAR or APR?

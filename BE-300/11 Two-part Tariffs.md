@@ -30,5 +30,4 @@ When you cannot distinguish the two consumer types, then (using calculus) can sh
 - Higher per unit price **captures** some of the $CS$ of the **high-demand type** when you cannot do it by charging those customers their own higher FF
 	- This is price discrimination because average price per unit varies with number of units purchased
 
-
 In general, Two-part tariff works if demands are different but not “too different.” If demands are very different, charge $P = MC$ and set $FF = CS$ for the **high demand group** (i.e.  abandon the low demand group)
