@@ -1,0 +1,108 @@
+[[2023-02-27]] #Bonds #DiscountRate #YTM #Risks
+
+### Bond Price Movement
+- Bond trading at discount ($P<FV$)
+	![[Pasted image 20230227130453.png|400]]
+	- The twists and turns are caused by difference in time relative to the coupon payment.
+		- As soon as a coupon payment is made at time $t$, the valuation of the bond goes down  immediately after time $t$ as the projected coupon payments decreases - thus the discrete pattern
+	- The general upward trend is due to the change in years to maturity, such that the $PV$ of the $FV$ increases exponentially as $t\to T$
+		- The increase in $PV_{FV}$ is higher relative to the decrease in $PV_{\mathrm{coupons}}$, which leads to the overall increase in price, since $\mathrm{coupon\ rate}<\mathrm{yield}$
+
+- Bond trading at premium ($P>FV$)
+	![[Pasted image 20230227131507.png|400]]
+	- The twists and turns are caused by the same reason as above
+	- Similar to above, the increase in $PV_{FV}$ is lower relative to the decrease in $PV_{\mathrm{coupons}}$, which leads to the overall increase in price, since $\mathrm{coupon\ rate}>\mathrm{yield}$
+
+ ---
+
+### Risks
+#### Interest Rate Risk, Reinvestment Risk
+
+```ad-important
+**Definition 8.1**: Interest Rate Risk, Reinvestment Risk
+
+Interest Rate Risk: investors are exposed to the risk that interest rates increase, and so the market value of their bond portfolio falls.
+
+Reinvestment Risk: if interest rates fall, investors can now only invest their coupon payments at lower rates than they previously anticipated.
+```
+
+```ad-example
+![[Pasted image 20230227132508.png|400]]
+
+Investors who bought on the issue date (Aug 13, 2010) and held until Jan 24, 2022 (11.4 years) earned an annual return of 5.4%. But during intermediate periods investors can lose money, or earn returns higher than the yield to maturity.
+```
+
+This is because of the **interest rate risk**. 
+
+Investors in the market continuously re-assess
+1. How much risk there is
+2. What they think is a fair return for risk
+
+This altogether results in what is so-called the **discount rate**.
+
+```ad-important
+If interest rates rise:
+- Investors lose because the prices of their bonds fall, but
+- Investors win because they can invest coupons at higher rates
+
+If interest rates fall
+- Investors win because the prices of their bonds rises, but
+- Investors lose because they can invest coupons at lower rates
+```
+
+Actual bond prices move in a **different direction** to projected, because of **new information** that causes the market to change its **view** on price.
+
+```ad-note
+Interest rate risks...
+- **DOES NOT** mean that the coupon rate on a bond changes\
+	- Coupon payment, face value, term, and thus coupon rate **IS FIXED** as soon as the bond is initialized
+- DOES MEAN that the market’s **required return** (the market interest rate, discount rate, and the opportunity cost) changes from one day to another so bond prices change
+	- The price and YTM changes day-to-day
+	- Recall the price formulae [[7 Bonds I#^a866bd|here]]
+```
+
+The bonds that generate **more** of the present value of cash flows from **payments further in the future** are **MORE exposed** to **interest rate risk**. That is
+- Bonds with a lower coupon rate
+- Bonds trading at lower yields
+- Bonds with a longer term to maturity
+
+Ceteris paribus.
+
+---
+
+#### Credit Risk
+Different bonds have different probabilities of default. Rating agencies estimate:
+- Probability of default
+	- **Higher** the risk of default, the **lower** the rating
+- Recovery in the event of default
+	- What proportion of what the bond holders is owed will be repaid
+- Assign credit ratings
+
+The Securities and Exchange Commission (SEC) requires some securities to have a  
+**credit rating** issued by a Nationally Recognized Statistical Ratings Organization, NRSRO). There are currently 9 NRSROs.
+
+The rating agencies use a combination of
+- Analysis  of accounting information
+- Share price and bond price movements
+
+```ad-example
+Sample Rating Scale:
+
+![[Pasted image 20230227135659.png|550]]
+```
+
+About 80% of ratings can be replicated with a small number of **simple quantitative metrics**, e.g. market value of equity, EBITDA versus interest expense, total debt/EBITDA.
+
+---
+
+### Yield Curve
+Yield curve is a snapshot of yields from bonds of **different maturities**.
+- Normally, **upward-sloping**
+	- Longer-maturity investors generally demand a premium to compensate the **additional volatility** associated with longer-duration investments
+- Can be **downward-sloping**
+	- Usually a predictor of economic downturns
+
+There are three drivers of the yield curve
+1. Interest rate risk: leads to upward-sloping
+2. Expectations of future rate movements: leads to upward-sloping and inverted yield curves
+3. Market frictions: lead to upward-sloping and inverted yield curves.

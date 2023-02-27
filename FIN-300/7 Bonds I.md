@@ -1,4 +1,4 @@
-[[2023-02-26]] #Bond #DiscountRate #YTM #Valuation 
+[[2023-02-26]] #Bonds #DiscountRate #YTM #Valuation #IRR 
 
 ### Overview, Value, Price, Yield
 
@@ -74,6 +74,8 @@ In general, bond price follows the formulae below:
 $$P=PV_{\mathrm{coupons}}+PV_{\mathrm{FV}}$$
 ```
 
+^a866bd
+
 Technically, the cash flows are not **expected cash flows** (there is some chance of **default**!). But we can still perform a valuation using these promised cash flows provided the discount rate **incorporates the risk** of default.
 
 To compute the present value of **future coupon payments**, we have a **zero-growth annuity**. We will thus use the NPV formulae for the PV of coupon payments (expected cash flows): ![[3 Discounted Cash Flow II#^28bede]]
@@ -98,6 +100,8 @@ Again, yield to maturity is a way of expressing price as a **rate of return**. T
 - However, the bond price doesn’t tell us anything compared to other bonds
 - Most of the time quoted as an **APR**
 
+Yield is a way of quoting **prices**.
+
 ```ad-example
 - At 99.21, the prospective return on the Ford bond (the yield) is 5.00%.
 - At 103.16, the prospective return on the GM bond (the yield) is 4.51%.
@@ -108,3 +112,33 @@ Is the Ford bond a better investment because of higher YTM? Not necessarily. For
 ```ad-warning
 Don't forget to translate **periodic rate** into **APR** after we've done the calculations!
 ```
+
+---
+
+### YTM and Price
+Bond price and yields move in **opposite directions**.
+- Intuition: since bond price is lower, the initial investment is smaller while the payoffs (coupon and principal) remain the same
+
+- If $P=FV$
+	- The bond is trading **at par**
+	- $\mathrm{coupon\ rate}=\mathrm{yield}$
+		- Intuition: all *yields* of the bond come from coupons, not difference between face values and price
+- If $P>FV$
+	- The bond is trading **at a premium**
+	- $\mathrm{coupon\ rate}>\mathrm{yield}$
+		- Intuition: smaller yield as bond is priced higher, coupon rate remains unchanged
+- If $P<FV$
+	- The bond is trading **at a discount**
+	- $\mathrm{coupon\ rate}<\mathrm{yield}$
+
+---
+
+### Zero Coupon Bonds
+Zero coupon bonds are just like coupon paying bonds, but with one exception – coupons are zero.
+- The **promised repayment** is simply the **repayment** of the **face value** at maturity.
+- In the valuation of the bond, we simply leave out the coupon payments.
+
+```ad-example
+![[Pasted image 20230227125447.png|600]]
+```
+

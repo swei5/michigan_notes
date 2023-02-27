@@ -1,4 +1,4 @@
-[[2023-01-23]] #CashFlow #DCF #Annuity #Perpetuity
+[[2023-01-23]] #CashFlow #DCF #Annuity 
 
 ### Multiple Cash Flows
 Investments typically generate **multiple** cash flows.
