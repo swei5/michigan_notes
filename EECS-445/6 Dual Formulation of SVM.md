@@ -32,6 +32,8 @@ $$S_n=\{\overline{x}^{i},\overline{y}^{i}\}_{i=1}^{n}\to S_n^\prime=\{\phi(\over
 In which $\phi$ is a feature map s.t. $\phi:\mathbb{R}^d\to\mathbb{R}^p$. 
 ```
 
+^816d20
+
 ![[Pasted image 20230125232653.png|500]]
 
 In the example above, we map data in $\mathbb{R}^2$ to $\mathbb{R}^3$ using the mapping function.

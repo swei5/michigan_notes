@@ -79,9 +79,14 @@ Let $K_1$ and $K_2$ be valid kernel, then the following are valid
 ---
 
 #### Gaussian Kernel (RBF)
+
+^aa7257
+
 $$
 K (\overline{u}, \overline{v})=\exp(-\gamma ||\overline{u}-\overline{v}||^2)
 $$
+
+^f606f6
 
 with $\gamma\ge 0$, and $\gamma$ is a hyperparameter that  we tune. This maps data to an **infinite dimensional** feature space.
 

@@ -11,7 +11,7 @@ Combining simple **weak classifiers** into a more complex/strong classifier.
 ```
 
 A classifier a general form of
-$$h_M(\overline{x})=\sum\limits_{m=1}^{M}\alpha_{m}h(\overline{x}^{i};\overline{\theta}_{m})$$
+$$h_M(\overline{x})=\sum\limits_{m=1}^{M}\alpha_{m}h(\overline{x}^{i};\overline{\theta}_{m})$$ ^c54656
 
 - Different boosting algorithms differ on loss function, and how to pick $\alpha$
 
@@ -58,6 +58,8 @@ Here,
 Example: try $\mathbf{x}=[6,0]^T$.
 
 ```
+
+^06a470
 
 
 #### Algorithm

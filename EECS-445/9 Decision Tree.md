@@ -54,7 +54,7 @@ A classification tree: Predict if a patient is healthy or not ($y$) using their 
 
 In mathematical terms, this is
 $$f(\overline{x})=\mu_1[[\overline{x}\in R_1]]+\cdots \mu_n[[\overline{x}\in R_n]]=\sum\limits_{m=1}^{M} \mu_{m}[[\overline{x}\in R_m]]$$
-for a training model of $M$ partitions, where $[[\star]]$ is an indicator function that returns $0$ or $1$ and $\mu_i$ returns the **majority label** in region $R_i$.
+for a training model of $M$ partitions, where $[[\star]]$ is an indicator function that returns $0$ or $1$ and $\mu_i$ returns the **majority label** in region $R_i$. ^213987
 
 ```ad-example
 Using the example above, for an arbitrary $\overline{x}\in R_2$,
