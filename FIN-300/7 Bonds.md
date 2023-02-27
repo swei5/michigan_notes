@@ -48,3 +48,44 @@ The **rate of return** from holding the bond to maturity, if there is no default
 We compute the yield to maturity as an [[4 Investment Decision Rules#^d8138a|Internal Rate of Return]]. “What return would set the present value of the promised cash flows equal to the price? ”
 
 **Current yield** is the return from income on a bond, computed as **annual coupon payments** divided by price.
+
+```ad-warning
+The coupon rate, coupon payment, face value, timing of coupon payments and maturity date **DO NOT** **change** from day to day as the bond is being traded.
+
+The price and yield to maturity **DO change** from day to day as the bond is being traded. Yield to maturity is just a way of writing the price as a projected return.
+```
+
+---
+
+### Bond Valuation
+The term “value” has two concepts:
+- Market value, or price
+	- What two investors willing and well-informed investors are **willing** to **exchange** an asset for
+- Intrinsic value
+	- An **estimate** of what an investor thinks is a **fair price** for the asset, given **projections** of potential **payoffs** and **risks**
+
+Price is **NOT EQUAL** to intrinsic value as the expectations of the investors trading the asset are different from the expectations of someone estimating intrinsic value.
+- We want to buy the assets that are trading at/below **intrinsic value**
+
+```ad-important
+**Definition 7.4**: Bond Valuation
+
+In general, bond price follows the formulae below:
+$$P=PV_{\mathrm{coupons}}+PV_{\mathrm{FV}}$$
+```
+
+Technically, the cash flows are not **expected cash flows** (there is some chance of **default**!). But we can still perform a valuation using these promised cash flows provided the discount rate **incorporates the risk** of default.
+
+To compute the present value of **future coupon payments**, we have a **zero-growth annuity**. We will thus use the NPV formulae for the PV of coupon payments (expected cash flows): ![[3 Discounted Cash Flow II#^28bede]]
+In this case, $C_1=C_i=\cdots=C_n$ is our fixed coupon payment, $g=0$, $T$ is number of payments, and $r$ is the discount rate provided. This is equivalent to
+$$PV_{\mathrm{coupons}}=\frac{C}{r}\cdot\left(1-\left(\frac{1}{1+r}\right)^{T}\right)$$
+To compute the present value of the **face value**, this is simply
+$$PV_{FV}=\frac{FV}{(1+r)^T}$$
+
+```ad-example
+If we are asked to compute the value of a bond at time $t$, where $t\notin \mathbb{Z}^+$, do the following:
+1. Compute $P_{t^\prime}$, where $t^{\prime}=\mathrm{floor}(t)$
+	- Note that $T'=T-t$ as we have paid exactly $t$ coupon payments
+2. Shift the valuation of $P_t$ forward by $t-t^{\prime}$
+- $P_{t'}=P_{t}\cdot(1+r)^{}$
+```
