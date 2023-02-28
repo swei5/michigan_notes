@@ -1,4 +1,4 @@
-[[2023-01-23]] #SVM #Optimization #Hyperparameter #SoftMarginSVM
+[[2023-01-23]] #SVM #Optimization #LinearClassifier 
 
 ### Soft-Margin SVM
 Supports data that are **NOT** linearly separable.

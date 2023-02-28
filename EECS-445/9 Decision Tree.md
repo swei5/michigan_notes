@@ -1,4 +1,4 @@
-[[2023-02-06]] #DecisionTree #Bias #Variance #Entropy
+[[2023-02-06]] #DecisionTree #Bias #Variance #Entropy #LinearClassifier #SupervisedLearning 
 
 ### Recap
 - Linear models, regression

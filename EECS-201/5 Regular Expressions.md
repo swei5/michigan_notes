@@ -1,4 +1,4 @@
-[[2023-02-09]] #RegularExpressions
+[[2023-02-09]] #Regex
 
 ### Regex
 A **pattern** that matches a set of strings.

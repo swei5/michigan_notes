@@ -1,4 +1,4 @@
-[[2023-01-25]] #SVM #SoftMarginSVM #FeatureMap #DualFormulation #HardMarginSVM #Optimization #Hyperparameter 
+[[2023-01-25]] #SVM #FeatureMap #DualFormulation #Optimization
 
 ### Recap
 

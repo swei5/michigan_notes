@@ -1,4 +1,4 @@
-[[2023-01-09]] #SupervisedLearning #LinearClassifier #Perceptron #Hyperplane #EmpiricalRisk #Optimization 
+[[2023-01-09]] #SupervisedLearning #LinearClassifier #Perceptron #EmpiricalRisk #Optimization 
 
 ### Linear Binary Classifier
 This is **supervised** **learning** as the data are already pre-labeled.

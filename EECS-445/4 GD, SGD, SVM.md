@@ -1,4 +1,4 @@
-[[2023-01-18]] #SGD #SVM #SupervisedLearning #LinearClassifier #GD #HardMarginSVM #Optimization 
+[[2023-01-18]] #SGD #SVM #SupervisedLearning #LinearClassifier #GD #Optimization 
 
 ### Gradient Descent
 Recall the definition of gradient descent: ![[3 Perceptron, Loss Functions#^4bb007]]
