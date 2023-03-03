@@ -82,7 +82,7 @@ To compute the present value of **future coupon payments**, we have a **zero-gro
 In this case, $C_1=C_i=\cdots=C_n$ is our fixed coupon payment, $g=0$, $T$ is number of payments, and $r$ is the discount rate provided. This is equivalent to
 $$PV_{\mathrm{coupons}}=\frac{C}{r}\cdot\left(1-\left(\frac{1}{1+r}\right)^{T}\right)$$
 To compute the present value of the **face value**, this is simply
-$$PV_{FV}=\frac{FV}{(1+r)^T}$$
+$$PV_{FV}=\frac{FV}{(1+r)^T}$$ ^4ca547
 
 ```ad-example
 If we are asked to compute the value of a bond at time $t$, where $t\notin \mathbb{Z}^+$, do the following:
@@ -119,7 +119,7 @@ Don't forget to translate **periodic rate** into **APR** after we've done the ca
 Bond price and yields move in **opposite directions**.
 - Intuition: since bond price is lower, the initial investment is smaller while the payoffs (coupon and principal) remain the same
 
-- If $P=FV$
+- If $P=FV$ ^5a2fcb
 	- The bond is trading **at par**
 	- $\mathrm{coupon\ rate}=\mathrm{yield}$
 		- Intuition: all *yields* of the bond come from coupons, not difference between face values and price
