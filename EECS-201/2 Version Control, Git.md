@@ -135,7 +135,6 @@ Initializing Git repos inside of Git repos might not work the way you expect the
 ---
 
 ##### Branching Commands
-
 - The default branch is `master`.
 	- Typically used for production/release
 - `git branch` lists your **local** branches
@@ -147,3 +146,27 @@ Initializing Git repos inside of Git repos might not work the way you expect the
 - `git merge <branch-name>` will try to move the **current branch** to where `<branch-name>` is. This is called **fast-forwarding**
 	- If the branches **diverged** (`<branch-name>` and the current branch both got **new commits** before **merging**), a special "merge commit" will be produced; more on this later
 
+---
+
+### Git, Revisit
+`git reset <filename>`
+- Options regarding file states
+	- `--soft`
+		- Moves `HEAD` back to the specified commit, **undoes** all the **changes** made between where `HEAD` was pointing and the specified commit, and **saves** all the changes in the **index**
+	- `--hard`
+		- Deletes **ANY** changes in the **working directory** and **staging area**
+	- `--mixed`
+		- **Undo** all the **changes** between `HEAD` and the specified commit, but will preserve your changes in the Working Directory, as **unstaged changes**.
+
+`git rebase <branch>`
+- Allows you to **reapply** your **commits** on top of another commit, e.g.
+	- Earlier commit in history
+	- Further in history on top of another branch
+- Allows you to perform various operations on the involved commits
+
+#### Conflict Resolution
+- Fix the involved files
+	- Put them into working condition
+	- Reconcile ideas from both branches involved
+	- Make sure to delete the version control markers!
+- Use `git status` to see whether conflicts come from `rebase` or `merge`
