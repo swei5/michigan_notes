@@ -1,4 +1,4 @@
-[[2023-02-20]]  #NeuralNetwork #FeatureMap #SGD #SupervisedLearning 
+[[2023-02-20]]  #NeuralNetwork #FeatureMap #SGD #SupervisedLearning #Optimization 
 
 ### Recap: Feature Representation
 1. Explicit Feature Mapping
@@ -96,6 +96,8 @@ $$z^{4}=w_{11}^{(3)}h_1^{(3)}+w_{12}^{(3)}h_2^{(3)}+w_{13}^{(3)}h_3^{(3)}+w_{10}
 ---
 
 ### Neural Networks: Architecture
+The number of **layers** of NN is the **number of weights** (number of parameters) in its architecture.
+
 - Number of hidden layers
 	- NN with one hidden layer can model complex functions provided it has **enough neurons** (i.e., is wide)
 		- In fact, 2-layer NN can approximate *any* function
@@ -124,20 +126,97 @@ We want to increase number of neurons until we start to overfit.
 - Parameters
 	- $\overline{\theta}=[w_{11}^{(1)},w_{12}^{(1)},\cdots,w_{ij}^{(k)}]^T$
 
+where $k$ is the total number of **layers**.
+
 - Loss Function
 	- $J (\overline{\theta})=\frac{1}{n} \sum\limits_{i=1}^{n} \mathrm{Loss}(y,h(\overline{x}^{(i)};\overline{\theta}))$
 
 #### Back Propagation
 Brief idea: run stochastic gradient descent. 
+1. Initialize weights at **SMALL, RANDOM** values
+2. Sample one data point per turn
+3. Update weights
+
+```ad-note
+Because of the non-linearity we introduced earlier, the loss functions for certain parameters (weights) may be **non-convex**, meaning that we cannot achieve a **closed-form** solution. We thereby want to go with SGD in the optimization.
+```
 
 We start with the **last layer**, go through each node in reverse order to figure out the contribution of **each node** to the loss.
 
-Let us begin with a one-layer NN for illustration.
+Let us begin with a two-layer (one-hidden-layer) NN for illustration. We apply the **ReLU** activation function to our neurons.
 
-![[Pasted image 20230227175320.png|300]]
+```ad-example
+![[Pasted image 20230306200245.png|250]]
 
-Assume that we go with the hinge loss. Then,
-$$\frac{\partial f}{\partial w_i}=\frac{\partial f}{\partial z} \frac{\partial z}{\partial w_i}=-yx_i$$
+Note that in this example, $z=\hat{y}$, $h_{j}=h_{j}^{(2)}$, $v_{j}=w_{1j}^{(2)}$.
 
-We update $w_i$ if $\mathrm{loss}\ge 0$:
-$$w_{i}^{(k+1)}=w_{i}^{(k)}+\eta_{k}yx_i$$
+Note that since we only have one hidden layer, we took out all the superscripts for simplicity. In this case:
+$$z=\sum\limits_{j} v_{j}h_{j}+v_{0}$$
+$$h_{j}=\max(0,z_j)$$
+$$z_{j}=\sum\limits_{i} w_{ji}x_{i}+w_{j0}$$
+
+Since we have two set of parameters, $v_j$ and $w_{ji}$, we want to compute the partial derivatives of the loss function with respect to these set of parameters.
+
+The loss function can be written as the following by substituting what we have computed for $z=\hat{y}$.
+$$\mathrm{Loss}(y,h(\overline{x};\overline{\theta}))=\mathrm{Loss}(y,z)=\max\left(1-y\left(\sum\limits_{j} v_{j}h_{j}+v_{0}\right),0\right)$$
+
+Thus,
+$$
+\begin{equation}
+  \frac{\partial f}{\partial v_{j}} =
+    \begin{cases}
+      0 & \text{if $(1-yz)$ $\le$ 0}\\
+      -yh_j & \text{otherwise}
+    \end{cases}       
+\end{equation}
+$$
+
+Hence, the update step for $v_{j}$ will be:
+$$v_{j}^{(k+1)}=v_{j}^{(k)}+\mu_{k}yh_j[[(1-yz)\le 0]]$$
+
+For the partial derivative with respect to $w_{ji}$, we want to use the chain rule here just to simplify our calculations:
+
+$$\frac{\partial f}{\partial w_{ji}}=\frac{\partial \text{Loss}(z)}{\partial z}\frac{\partial z}{\partial h_{j}} \frac{\partial h_{j}}{z_{j}} \frac{\partial z_{j}}{\partial w_{ji}}$$
+
+- $\frac{\partial f}{\partial z}=\frac{\max(1-yz,0)}{\partial z}=-y[[(1-yz) >0]]$
+- $\frac{\partial z}{\partial h_{j}}=\frac{\partial \sum\limits_{j}v_{j}h_{j}+v_{0}}{\partial h_{j}}=v_{j}$
+- $\frac{\partial h_{j}}{\partial z_{j}}=\frac{\partial \max(0,z_{j})}{\partial z_{j}}=[[z_{j}>0]]$
+- $\frac{\partial z_{j}}{\partial w_{ji}}=\frac{\partial \sum\limits_{i}w_{ji}x_{i}+w_{j0}}{\partial w_{ji}}=x_{i}$
+
+Multiplying the terms together, we get
+$$\frac{\partial f}{\partial w_{ji}}=-y[[(1-yz) >0]] v_{j} [[z_{j}>0]] x_{i}$$
+
+How did we get to these?
+- We follow the sequence of things that get transformed
+	- From weights, to $z(w)$, to $h(z)$, to $v(h)$, then to $\hat{y}$
+
+```
+
+The above is known as **back-propagation**, where we go through each node in reverse order to figure out the contribution of each node to the **LOSS**.
+
+In essence, the methodology melts down to
+![[Pasted image 20230306203730.png|600]]
+
+Let's use a three-layer neural network to extend generality.
+
+```ad-example
+Assume we have a neural network as such:
+![[Pasted image 20230306204238.png|400]]
+
+![[Pasted image 20230306204308.png|350]]
+
+Note that these derivatives only differ in the **last value** (first hidden layer).
+
+```
+
+#### Learning Rate
+There are two ways to choose our learning rate:
+- Simple: fixed throughout training (hyperparameter)
+- Better, yet: dynamic learning rate by setting a **learning schedule**
+	- $\eta$ decreases with iterations
+
+#### Reducing overfitting
+- Early stopping: interrupt training when performance on the **validation set** starts to decrease
+- $L1$ and $L2$ regularization to **ALL weights**
+- Dropout
+	- Drop/ignore nodes with probability $p$ during training time (not updating)
