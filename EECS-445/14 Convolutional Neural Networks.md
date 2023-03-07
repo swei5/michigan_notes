@@ -9,7 +9,7 @@ We want to capture
 - Exploitability in structure in an image
 	- Spacial locality matters, otherwise no way to recognize
 - Translation invariance
-	- Doesn't matter **WHERe** our target object occurs in the image
+	- Doesn't matter **WHERE** our target object occurs in the image
 
 If we use the feedforward neural networks, we will missing out on these structures.
 - Convolutional neural networks (CNN) work better!
