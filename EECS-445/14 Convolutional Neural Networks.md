@@ -18,3 +18,4 @@ If we use the feedforward neural networks, we will missing out on these structur
 		- ReLU
 		- Max Pooling
 		- Fully connected layer
+
