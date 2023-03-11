@@ -194,7 +194,7 @@ How did we get to these?
 
 The above is known as **back-propagation**, where we go through each node in reverse order to figure out the contribution of each node to the **LOSS**.
 
-In essence, the methodology melts down to
+In essence, the methodology melts down to making a (forward) prediction, then traversing each node in reverse order to figure out the weights of each node (back-propagation).
 ![[Pasted image 20230306203730.png|600]]
 
 Let's use a three-layer neural network to extend generality.
