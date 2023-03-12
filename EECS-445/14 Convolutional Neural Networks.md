@@ -61,6 +61,18 @@ To counteract this, we add additional values (0s in **zero padding**), enabling 
 After applying the padding, we are once again able to detect the spike.
 ```
 
+##### SAME Padding
+The most common type of this padding is **SAME padding**, where the right amount of padding is added so that the output image is the **same size** as the input size.
+
+Note that, however, as the filter size **increases**, the output size will **decrease** in size, as the filter has **FEWER** iterations where it stays within the input image.
+-   To combat this, SAME padding will need to add **MORE padding** to the input image to maintain the output image size. 
+
+This follows the following formulae:
+$$P=\lfloor F/2 \rfloor$$
+where $P$ is the amount of padding for each edge, and $F$ is the filter size, assuming the filter is a square.
+
+---
+
 #### Filters
 Filter values $w\in\mathbb{R}$. The size of the filter is a hyperparameter that we deliberately choose.
 - We can have multiple filters in one single layer in CNN
@@ -121,3 +133,29 @@ It is helpful in helping us **encode uncertainty** in the classification and hel
 Visually, the architecture looks like
 
 ![[Pasted image 20230311170206.png|600]]
+
+Here's a more detailed example illustrating the architecture (parameters) of a CNN as a whole.
+
+```ad-example
+Assume we have a CNN with the structure of following:
+
+![[Pasted image 20230311205010.png]]
+  
+In Convolutional layer 2:
+- The size of the filter is $3\times3\times20$
+	- Denoted by the filter block on Max-pooling layer 1
+- There are $40$ filters
+	- Denoted by the depth of the layer
+- There are $3\times3\times20\times40$ weights
+	- Denoted by the product of the dimension of the filter times the number of filters
+- There are $40$ biases
+	- Denoted by the number of filters
+- Input size: $20\times26\times22$
+- Output size: $40\times24\times20$
+	- `channel * height * width` is the convention
+- There is no padding, and we use unit stride
+
+If we used **SAME** padding and `stride = 1`, the output dimension would be
+- $40\times26\times22$
+```
+
