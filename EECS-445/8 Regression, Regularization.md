@@ -1,4 +1,4 @@
-[[2023-02-01]] #LinearRegression #LossFunction #SGD #Regularization #EmpiricalRisk #Bias #Variance #FeatureSelection 
+[[2023-02-01]] #LinearRegression #LossFunction #SGD #Regularization #EmpiricalRisk #FeatureSelection 
 
 ### Recap : Loss
 

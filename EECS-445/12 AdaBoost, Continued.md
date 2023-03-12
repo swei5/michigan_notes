@@ -1,4 +1,4 @@
-[[2023-02-15]] #Boosting #DecisionTree #Ensemble 
+[[2023-02-15]] #Boosting #DecisionTree #Ensemble #SupervisedLearning 
 
 
 ### Recap, The Boosting Property

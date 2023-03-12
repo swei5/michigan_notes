@@ -61,8 +61,10 @@ To counteract this, we add additional values (0s in **zero padding**), enabling 
 After applying the padding, we are once again able to detect the spike.
 ```
 
-##### SAME Padding
-The most common type of this padding is **SAME padding**, where the right amount of padding is added so that the output image is the **same size** as the input size.
+##### `SAME` Padding
+The most common type of this padding is **`SAME` padding**, where the right amount of padding is added so that the output image is the **same size** as the input size.
+
+![[Pasted image 20230311224425.png|400]]
 
 Note that, however, as the filter size **increases**, the output size will **decrease** in size, as the filter has **FEWER** iterations where it stays within the input image.
 -   To combat this, SAME padding will need to add **MORE padding** to the input image to maintain the output image size. 
