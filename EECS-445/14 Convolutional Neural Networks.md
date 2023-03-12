@@ -104,5 +104,20 @@ A 3D example looks very similar (same depth, different size):
 
 ---
 
-### Multi-class Classification
-In images, we are usually not facing **binary classification** problems.
+### Architecture
+After we pooled our feature sets, we *flatten them* and build a fully connected networks. Then, we pass the nodes to what's called a **soft-max** function:
+$$\hat{y}_{j}=\frac{\exp(z_{j})}{\sum\limits_{k=1}^{K}\exp(z_{k})}$$
+
+```ad-important
+**Definition 14.1**: Soft-max function
+
+A soft-max function transforms an input vector of size $k$ to a probability distribution over $k$ possible outcomes.
+```
+
+It is helpful in helping us **encode uncertainty** in the classification and helps the **loss function** to penalize the model according to the uncertainty.
+- This is typically used with **categorical cross entropy** (Loss function).
+
+
+Visually, the architecture looks like
+
+![[Pasted image 20230311170206.png|600]]
