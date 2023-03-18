@@ -62,3 +62,21 @@ $$h_t=f(u_{x}x_{t}+u_{h}h_{(t-1)}+u_{0})$$
 - Gated Recurrent Units (**GRU**s) and Long, short term memory cells (**LSTM**s) include “gates” to control the flow of information
 
 ##### LSTM Unit
+There are three gates of LSTM Unit.
+1. **Forget Gate**: which parts of the **long-term memory** should be forgotten?
+2. **Input** (store) **Gate**: which parts of the new input should be encoded (relevant)?
+3. **Exposure Gate**: which parts of the **long-term memory** are relevant in the short term?
+
+![[Pasted image 20230318165948.png|400]]
+- **Forget Gate**
+	- $a_t=\sigma(w_{a}x_{t}+u_{a}h_{t-1}+b_{a})$
+		- $w,u$ are weights and $b$ is the bias term
+		- The $\sigma$ sigmoid function returns a value in $[0,1]$ and is interpreted as a measure of **relevance** - 0 being irrelevant and 1 being very relevant
+- **Input Gate**
+	- New-information:  $s_t=\sigma(w_{s}x_{t} +u_{s}h_{t-1}+b_{s})$
+	- Long-term state value: $\dot{c_{t}}=\tanh(w_{c}x_{t}+u_{c}h_{t-1}+b_{c})$
+- **Exposure Gate**
+	- $e_t=\tanh(w_{e}x_{t}+u_{e}h_{t-1}+b_{e})$
+
+- In the figure above, `X` is used to **forget** and `+` is used to **add** new information on to our conveyer belt $C$ used for **long-term memory**.
+	- $c_t=a_{t}\bigotimes c_{t-1}+s_{t}\bigotimes \dot{c_{t}}$
