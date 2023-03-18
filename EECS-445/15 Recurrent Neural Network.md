@@ -31,3 +31,34 @@ We call this class of neural networks “*recurrent*” because we **feed its ou
 
 If we want our parameters to be **shared** (see motivation above), we can set the weights in each layer to be the same.
 $$w_{x}^{(1)}=w_{x}^{(2)}=\cdots=w_{x}^{(t)}$$
+
+In this case,
+$$y_t=g(w_{x}x_{t}+w_{h}h_{(t-1)}+w_{0})$$
+$$h_t=f(u_{x}x_{t}+u_{h}h_{(t-1)}+u_{0})$$
+
+---
+
+### RNNs: Types of Tasks
+- Many-to-one
+	- Example: sentiment analysis
+		![[Pasted image 20230318133522.png|350]]
+- One-to-many
+	- Example: music/image generation (input as a single image and output as a video, which consists multiple frames of an image)
+		![[Pasted image 20230318133647.png|350]]
+- Many-to-many (same length)
+	- Example: video captioning
+		![[Pasted image 20230318133723.png|350]]
+- Many-to-many (different length)
+	- Example: translation
+		![[Pasted image 20230318133758.png|450]]
+		- Where the part $x_1,\cdots,x_t$ is the **encoder**, and $y_{1,\cdots}y_s$ is the **decoder**
+
+#### Challenges
+- Typical RNN might “*forget*” information as the sequence grows **longer**
+	- Vanishing gradient backprop through time (BPTT)
+
+**Solution**:
+- Gated cells: **control** **information** is used to update the cell state
+- Gated Recurrent Units (**GRU**s) and Long, short term memory cells (**LSTM**s) include “gates” to control the flow of information
+
+##### LSTM Unit
