@@ -22,7 +22,7 @@ We will apply a set of decision rules to these projected cash flows to determine
 ---
 
 ### Net Present Value
-Recall how we compute NPV using annuity: ![[3 Discounted Cash Flow II#^28bede]]
+Recall how we compute NPV using annuity: ![[2.2 Discounted Cash Flow II#^28bede]]
 The **net present value** is the **most important** decision rule in capital budgeting.
 - Decision Rule: accept projects with the **highest** net present value
 
@@ -76,7 +76,7 @@ It is still useful in quick assessment of project viability before committing re
 ### Internal Rate of Return
 
 ```ad-important
-**Definition 4.1**: Internal Rate of Return (IRR)
+**Definition 3.1**: Internal Rate of Return (IRR)
 
 The **internal rate of return** (IRR) is defined as the discount rate at which the **NPV** becomes zero:
 $$
@@ -116,7 +116,7 @@ It is, however, very useful for presentation purposes. Net present value compari
 ### Profitability Index
 
 ```ad-important
-**Definition 4.2**: Profitability Index
+**Definition 3.2**: Profitability Index
 
 Profitability Index is defined as the **present value** of **future cash** flows divided by the **initial investment**:
 $$PI=\frac{NPV}{\mathrm{Initial\ Investment}}$$

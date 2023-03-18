@@ -148,6 +148,7 @@ In Convolutional layer 2:
 	- Denoted by the filter block on Max-pooling layer 1
 - There are $40$ filters
 	- Denoted by the depth of the layer
+	- The depth of the filter is given by the depth of the previous layer/input
 - There are $3\times3\times20\times40$ weights
 	- Denoted by the product of the dimension of the filter times the number of filters
 - There are $40$ biases
