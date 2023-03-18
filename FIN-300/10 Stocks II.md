@@ -46,7 +46,7 @@ $$\text{Enterprise Value}=OA+\text{Non-operating Assets including Excess Cash}$$
 
 Then, we get the **value of equit**y as well as **equity value per share**:
 $$\text{Value of Equity}=\text{Enterprise}-\text{Market Value of Debt}$$
-$$EPS=\frac{\text{Equity}}{N}$$
+$$EVPS=\frac{\text{Equity}}{N}$$
 
 where $N$ is the number of **shares outstanding**.
 ```
@@ -78,5 +78,29 @@ Similar to free cash flow model, this technique projects dividends per share for
 In this model, we compute the **present value** of **dividends per share** using a **discount rate** that reflects the **risk to equity** (called “the cost of equity capital”)
 - The cost of equity will be **higher** than the discount rate related to the **whole firm**
 	- Equity is **riskier** than the whole business because of residual claimant
-- 
+
+$$EVPS=PV_{\text{explicit dividends},0\to i}+PV_{\text{forecasted dividends},i\to \infty}$$
 ```
+
+---
+
+#### Valuation Multiples
+See below.
+
+```ad-important
+**Definition 10.5**: Valuation multiples:
+
+There are six steps, in total:
+1. Compile value multiples from **comparable firms**
+	- Enterprise Value/Sales
+	- Enterprise Value/EBITDA
+	- Enterprise Value/EBIT
+	- EPS/PPS
+2. Median multiples
+	- Median of the measure of all firms
+1. Compile financial information for the firm to be valued
+2. Estimate **enterprise value**, **equity value** and equity value per share from all valuation multiples
+3. Summarize valuation estimates
+4. Reach a conclusion
+```
+
