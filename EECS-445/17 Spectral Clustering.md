@@ -1,4 +1,4 @@
-[[2023-03-20]] #UnsupervisedLearning #Clustering 
+[[2023-03-20]] #UnsupervisedLearning #Clustering #Spectral
 
 ### Spectral Clustering
 
@@ -39,7 +39,20 @@ Example of cost of a cut:
 Now, our goal is to find a **minimum cost** RatioCut given such graph representation:
 $$\text{RatioCut}(A_1,\cdots,A_{k})=\frac{1}{2} \sum\limits_{i=1}^{k} \frac{\text{cut}(A_{i},\overline{A}_{i})}{|A_{i}|}$$
 
-This is hard to compute. We want to take advantage of the **graph Laplacian matrix**. First, we will define a **degree matrix**  $D$.
+Let's consider the cut using a partition indicator function $f\in\mathbb{R}^n$, where for cut $A$ and $\overline{A}$:
+$$\begin{equation}
+  f_{i} =
+    \begin{cases}
+      \sqrt{|\overline{A}|/|A|} \text{ if }v_{i}\in A\\
+      -\sqrt{|A|/|\overline{A}|} \text{ if }v_{i}\in \overline{A}\\
+    \end{cases} \end{equation}$$
+And our goal is to show that
+$$\overline{f}^{T}L\overline{f}\propto \text{RatioCut}(A,\overline{A})$$ and$$\sum\limits_{i}f_{i}=0$$and$$||\overline{f}||^2=n.$$
+It turns out that $$\overline{f}^{T}L\overline{f}=R=\frac{1}{2}\sum\limits_{i,j}w_{ij}(\overline{f}_{i}-\overline{f}_{j})^2$$
+where $R$ is the **cost of partitioning**. Thus, we have transformed our problem to $$f^{*}=\text{argmin}_{f\in\mathbb{R}^{n}}\overline{f}^{T}L\overline{f}$$
+We perform the minimization by clustering the rows of the matrix, which is what [[#Build Spectral Clustering for $k$ Partitions]] describes.
+
+This is hard to compute. We want to take advantage of the **graph Laplacian matrix**. First, we will define a **degree matrix** $D$.
 
 ```ad-important
 **Definition 17.3**: Degree Matrix
@@ -62,6 +75,8 @@ Note that $L$ is symmetric and $L$ has $n$ non-negative real-valued eigenvalues
 $$0\le \lambda_{1}\le \cdots \le \lambda_{n}$$
 ```
 
+The **multiplicity** of the **eigenvalue** $0$ is the number of **connected components** in the graph.
+
 From that, we obtain our **graph Laplacian**:
 $$L=D-W$$
 
@@ -83,5 +98,5 @@ After we grabbed $k=3$ eigenvalue, eigenvector pairs from $L$, we have the follo
 
 ![[Pasted image 20230325220424.png|400]]
 
-We select the first $k=$
+We select the first $k=3$ eigenvectors that correspond to the eigenvalues $0,0,0$. This gives us a $5\times 3$ matrix: we intepret each row as a data point to run $k$-means on.
 ```
