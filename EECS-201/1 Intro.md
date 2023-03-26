@@ -1,7 +1,7 @@
 #Unix #Shell
 ### \*nix
 
-```ad-info
+```ad-important
 **Definition 1.1**:
 "\*nix" refers to a group of operating systems either derived from or inspired by the original AT&T Unix from **Bell Labs**.
 - **GNU/Linux** is a "Unix-like"  

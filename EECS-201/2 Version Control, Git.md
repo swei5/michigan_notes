@@ -1,4 +1,5 @@
-#VersionControl #Git #Index #Branch
+#Git
+
 ### Version Control
 
 ```ad-important

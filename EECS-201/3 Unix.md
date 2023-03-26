@@ -1,4 +1,4 @@
-[[2023-01-24]]  #Unix #System #Process #API #Shell 
+[[2023-01-24]]  #Unix #System #Shell 
 
 ### POSIX
 A neat set of standards in industry and academia for Unix.
