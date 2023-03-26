@@ -57,7 +57,7 @@ Before, initialize $k$ means. How?
 ![[Pasted image 20230318222107.png|400]]
 
 ```ad-note
-- $j\in \set{1,\cdots,k}$
+- $j\in \set{1,\cdots,k}$ for the number of clusters
 - $[[\star]]$ is an indicater function telling whether if a given datapoint $\overline{x}^{(i)}$ is in the $j$th cluster
 - $\overline{\mu}^{(j)}$, in simple terms, really is taking the **average** of all points in cluster $j$.
 ```
@@ -76,3 +76,41 @@ A simple and handy method is the **elbow method**. Illustrated by the figure bel
 
 ![[Pasted image 20230318223312.png|300]]
 The objective function dips up until a **particular point**, after which the decrease levels off. In this case, this progression of dip tells us that $k=4$ may be our optimal value to split on.
+
+---
+
+#### $k$ -mean Convergence
+First off, let's define our **objective function**.
+
+```ad-important
+**Definition 16.2**: Objective function for $k$-mean Clustering
+
+$$J(\overline{c}, M)=\sum\limits_{i=1}^{n} ||\overline{x}^{(i)}-\overline{\mu}^{(c_{i})}||^{2}$$
+
+where $\overline{c}=[c_{1}, \cdots, c_{n}]^T$, where $c_{i}$ is $x^{(i)}$'s cluster and $M=[\overline{\mu}^{(1)},\cdots,\overline{\mu}^{(k)}]^T$, where $\overline{\mu}^{(j)}$ is the mean of $\overline{x}^{(i)}$'s cluster.
+```
+
+Now we claim that:
+1. $k$ -means performs **coordinate descent** on the objective function
+2. $k$ -means is guaranteed to **converge**
+
+We thus want to prove that
+- $J$ monotonically decrease
+	- Then, $J$ must converge
+		- Then, $k$ -mean is guaranteed to converge
+
+However, $J$ is **NOT convex**, and that could put us in **local minima**:
+
+```ad-example
+What we want:
+
+![[Pasted image 20230325205020.png|200]]
+
+What we get:
+
+![[Pasted image 20230325205034.png|200]]
+```
+
+Thus, to find our **global optima**, we can either
+- Vary initialization of means and pick clustering with lowest $J$ ($k$ -means++)
+- Or, **spectral clustering**

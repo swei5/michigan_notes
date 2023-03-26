@@ -16,10 +16,57 @@ Common logging levels include
 - Debug: something happened, here's the details
 - Trace: **EVERYTHING**
 
+---
+
 ### GDB (GNU Debugger)
 GDB is a debugging tool that lets you look around **DURING** **execution**.
 
 We can invoke it by
 ```bash
 gdb [options] [executable file] [core file]
+```
+
+Hitting return/enter without anything will **repeat** the previous command.
+
+Also has an approximation of a windowing interface in "Text User Interface" (TUI) mode.
+- `tui enable`
+
+#### Commands
+-  `run [arguments] [file redirects]`
+- `next [count]`: step over
+- `step [count]`: step into functions
+- `finish`: step out of
+- `print <expression>`: print expression
+- `break <location>`: set breakpoint
+- `watch <expression>`: set watchpoint
+
+#### Breakpoints
+Can be conditional!
+- `info b` will list breakpoints
+- `break main.cpp:21 if argc == 4`
+
+#### Watchpoints
+Stop when an expression **changes**.
+- `info watch`
+- `watch somevar`
+
+To disable/delete a breakpoint or watchpoint, we can do
+- `disable <number>`
+- `delete <number>`
+
+---
+
+### `Valgrind`
+General dynamic analysis tool.
+- Most known for Memcheck tool for checking **memory accesses**
+	- Memory leaks
+	- Use-after-frees
+	- Invalid reads
+	- Use of uninitialized variables
+
+`valgrind`  can seriously slow down the program, however.
+
+To invoke, we use
+```shell
+valgrind --leak-check=full ./myapplication
 ```
