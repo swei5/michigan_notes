@@ -18,7 +18,7 @@ Measured by similarity metric - $\text{sim}(A,B)$, where $s \in [0,1]$, with $0$
 
 #### Data Transformation
 Given $S_{n}=\set{\overline{x}^{(i)}}_{i=1}^{n}$, we first compute **similarity** between each pair of datapoints by
-$$w_{ij}=\exp(-\frac{||\overline{x}^{(i)}-\overline{x}^{(j)}||^2}{2\sigma^{2}})$$
+$$w_{ij}=\exp\left(-\frac{||\overline{x}^{(i)}-\overline{x}^{(j)}||^2}{2\sigma^{2}}\right)$$
 
 From which we obtain an **adjacency matrix** $W=\{w_{ij}\}$, $i=1,\cdots,n$, $j=1,\cdots,n$, where $W$ is symmetric and $w_{ij}>0$.
 
