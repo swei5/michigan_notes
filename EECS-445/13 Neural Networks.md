@@ -18,8 +18,7 @@
 ### Feedforward Neural Network
 A very flexible feature mappings.
 - Instead of $\phi$, we will use $h$ - which stands for **hidden layers** of neutrons.
-- [ ] 
-How do we make our learned $h$ flexible?
+- How do we make our learned $h$ flexible?
 - Introduces **weights** into $h$
 - Introduce **non-linearities** in $h$
 - Combine non-linear $h$ s
