@@ -42,3 +42,22 @@ Examples include
 
 ---
 
+### Asymmetric Information
+
+```ad-summary
+**Moral hazard**: hidden **actions**. Tendency for individuals to take actions that affect the costs and benefits of transacting with them.
+- Solutions: monitoring, align incentives
+
+**Adverse selection**: hidden characteristics. More low-quality goods in the market. 
+- Solutions: forced pooling, screening, signaling
+```
+
+#### Risk Profiles
+- **Risk Neutral**: a person who is **indifferent** between a certain outcome and uncertain outcomes with the same expected value
+	- Focus only on **expected return**
+	- Assumption for most firms
+- **Risk Loving**: a person who prefers uncertain outcomes over a certain outcome with the same expected value
+- **Risk Averse**: a person who prefers a certain outcomes over uncertain outcomes with the same expected value
+	- Care about **expected return** and **variance**
+
+To avoid risk, a risk averse person is willing to pay a **risk premium**. A risk-averse person will require **extra compensation** to get them to accept a risk.
