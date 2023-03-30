@@ -148,6 +148,8 @@ J_{n,\lambda}(\overline{\theta})=\lambda \frac{||\overline{\theta}||^2}{2}+\frac
 $$
 ```
 
+^e607e4
+
 ```ad-note
 When $\lambda=0$
 - This is linear regression with squared loss
