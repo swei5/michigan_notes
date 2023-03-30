@@ -51,3 +51,26 @@ gcc -o myapp $(SRCS) -Lsomedir -lstaticlib
 
 ##### Conflicts
 `.so` has a higher priority over `.a`.
+- To use `.a`, we can do `-l:libm.a` to specify that we are interested in using static lib
+
+---
+
+#### Creating Static Libraries
+- Compile
+	- `gcc -c -o somecode.o somecode.c`
+		- `-c`: compile but **DON'T link**, produces an object file
+- Archive
+	- `ar rcs libmylib.a somecode.o morecode.o yaycode.o`
+		- `ar`: an archive tool
+		- `r`: command, insert files with replacement
+		- `c`: option, *create the archive*
+		- `s`: option, *write an object file index into the archive*
+
+
+#### Creating Dynamic Libraries
+- Compile
+	- `gcc -c -fPIC -o somecode.o somecode.c`
+		- `-fPIC`: compile as **position** **independent** code
+- Link
+	- `gcc -shared -o libmylib.so somecode.o morecode.o yaycode.o`
+		- `-shared`: produce a **shared object**
