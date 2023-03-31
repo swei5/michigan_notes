@@ -62,3 +62,44 @@ Suppose $Y_{ai}$ is what we are trying to predict.
 3. Compute a prediction based on $Y_{k_{j}, i}$, $\forall j\in[1,k]$.
 
 ![[Pasted image 20230331143913.png|500]]
+
+```ad-example
+Say if we were to use $kNN$, where $k=1$ to predict the missing cell below.
+
+![[Pasted image 20230331160712.png|600]]
+
+First, we want to find the **similarity** between $a$ and $b$. Hence,
+$$\begin{align}R(a,b)=\set{2,6}\end{align}$$
+$$|R(a,b)|=2$$
+$$\hat{Y}_{a:b}=\frac{Y_{a2}+Y_{a6}}{2}=\frac{4+5}{2}$$
+$$\hat{Y}_{b:a}=\frac{Y_{b2}+Y_{b6}}{2}=\frac{5+3}{2}=4$$
+
+from which we can compute $\text{sim}(a,b)$:
+$$\text{sim}(a,b)=\frac{(Y_{a2}-\hat{Y}_{a:b})(Y_{b2}-\hat{Y}_{b:a})+\cdots}{\sqrt{((Y_{a2}-\hat{Y}_{a:b})^{2}+(Y_{b2}-\hat{Y}_{b:a}))\cdots}}=1.$$
+
+Then, we can move on to calculating the perdiction. We will need $\overline{Y_{a}}$ and $\overline{Y_{b}}$ first:
+$$\overline{Y_{a}}=\frac{5+4}{2}=4.5$$
+$$\overline{Y_{b}}=\frac{5+1+3}{3}=3$$
+
+Thus,
+$$\hat{Y}_{a3}=\overline{Y_{a}}+\frac{1}{\text{sim}(a,b)}\cdot(\text{sim}(a,b)(Y_{bi}-\overline{Y}_{b}))=4.5+1(1-3)=2.5.$$
+```
+
+#### Choosing $k$
+Heuristics to choose our hyperparameters include:
+- Consider **ALL neighbors**
+- Neighbors with **low correlation**
+- Variable $k$
+	- Varying neighborhoods are selected **for each** item based on a similarity **threshold**
+- Offline analysis : values in the 20–50 range area reasonable starting point in many domains
+
+---
+
+### Discriminative and Generative Models
+- Discriminative models
+	- Internal structure of the classes is not captured
+	- E.g. **classification**
+- Generative models
+	- Describes internal structure of the data
+	- Better understand where data *came from*
+	- Can also be used in classification
