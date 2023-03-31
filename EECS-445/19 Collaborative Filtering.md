@@ -25,7 +25,7 @@ In our previous movie example, $U$ contains relevant features of the **user**, a
 ![[Pasted image 20230330100835.png|500]]
 ```
 
-#### Derivation of Algorithm
+#### Algorithm
 Let $\overline{u}^{(a)} \in \mathbb{R}^d$ be the $a$ th row of $U$
 $$U=\begin{bmatrix}\overline{u}^{(1)}, \cdots,\overline{u}^{(n)}\end{bmatrix}^T$$
 Let $\overline{v}^{(i)}$ be the $i$ th row of $V$
@@ -55,5 +55,6 @@ We can thus define **similarity**, as a measure of **correlation**, as known as 
 - The denominator denotes the **standard deviation** of $a$ and $b$
 	- How much ratings vary individually
 
+#### Algorithm
 
 
