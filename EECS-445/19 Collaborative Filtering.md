@@ -47,3 +47,13 @@ Let's define a few things beforehand.
 $$\tilde{Y}_{a:b}=\frac{1}{|R(a,b)|}\sum\limits_{j\in R(a,b)}Y_{a_{j}}$$
 where $R(a,b)$ is the set of movies rated by both users $a$ and $b$.
 
+We can thus define **similarity**, as a measure of **correlation**, as known as Sample Pearson's correlation coefficient:
+![[Pasted image 20230331012410.png|500]]
+
+- The nominator denotes the **covariance** between $a$ and $b$
+	- How much ratings vary together
+- The denominator denotes the **standard deviation** of $a$ and $b$
+	- How much ratings vary individually
+
+
+
