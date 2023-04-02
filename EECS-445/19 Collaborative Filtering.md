@@ -37,6 +37,24 @@ From which we can derive our objective function:
 $$\begin{align}J(U,V)&=\frac{1}{2}\sum\limits_{a,i \in D}(Y_{ai}-[UV^T]_{ai})^{2}+\frac{\lambda}{2}\sum\limits_{a,k}(U_{ak})^2\\&=\frac{1}{2}\sum\limits_{a,i \in D}(Y_{ai}-[UV^T]_{ai})^{2}+\frac{\lambda}{2}\sum\limits_{a}||\overline{u}^{(a)}||^{2}+\frac{\lambda}{2}\sum\limits_{i}||\overline{v}^{(i)}||^{2}\end{align}$$
 Note that this is [[8 Regression, Regularization#^e607e4|ridge regression]]!
 
+Then, we first initialize $\overline{v}^{(1)}, \cdots, \overline{v}^{(m)}$ to **small**, **random** values.
+```shell
+while not converged:
+	fix v[1], ..., v[m]
+	solve u[1], ..., u[n]
+
+	fix u[1], ..., u[n]
+	solve v[1], ..., v[m]
+end
+```
+
+```ad-example
+**Example**: Solving for optimum
+
+![[Pasted image 20230401222207.png|500]]
+![[Pasted image 20230401222226.png|500]]
+```
+
 ---
 
 ### Nearest Neighbor
@@ -50,7 +68,7 @@ where $R(a,b)$ is the set of movies rated by both users $a$ and $b$.
 We can thus define **similarity**, as a measure of **correlation**, as known as Sample Pearson's correlation coefficient:
 ![[Pasted image 20230331012410.png|500]]
 
-- The nominator denotes the **covariance** between $a$ and $b$
+- The numerator denotes the **covariance** between $a$ and $b$
 	- How much ratings vary together
 - The denominator denotes the **standard deviation** of $a$ and $b$
 	- How much ratings vary individually
