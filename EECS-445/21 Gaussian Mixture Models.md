@@ -1,0 +1,35 @@
+[[2023-04-03]] #Gaussians #Mixture
+
+### Recap, Spherical Gaussian
+Recall previous discussions on Spherical Gaussian Distribution being a special type of Multivariate Gaussian Distribution: ![[20 MLE, Gaussians#^1fcfef]]
+
+---
+
+### MLE Derivation
+To **maximize** $p(S_n)$, we apply the **log MLE** method. Let $$\begin{align}l(S_{n};\overline{\mu}, \sigma^{2})=\ln(p(S_{n}))&=\ln\left(\prod_{i=1}^{n} \left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}} \exp\left(-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)\right)\right)\\
+&=\sum\limits_{i=1}^{n}\ln\left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}} \exp\left(-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)\right)\\
+&=\sum\limits_{i=1}^{n}\left(\ln\left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}}\right)-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)\\
+&=\sum\limits_{i=1}^{n}\left(-\frac{d}{2}\ln(2\pi\sigma^{2})-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)
+\end{align}$$
+Then, we take gradient with respect to $\mu$ to find our MLE for $\overline{\mu}$: $$
+\begin{align}\nabla_{\overline{\mu}}l&=-\frac{1}{2\sigma^{2}}\sum\limits_{i=1}^{n}\nabla_{\overline{\mu}}\left(||\overline{x}^{(i)}-\overline{u}||^{2}\right)\\
+&=\frac{1}{\sigma^{2}}\sum\limits_{i=1}^{n}(\overline{x}^{(i)}-\overline{\mu})
+\end{align}$$
+Setting this to zero gives $$\overline{\mu}_{\text{MLE}}=\frac{\sum_{i=1}^{n}\overline{x}^{(i)}}{n}$$
+Doing similar, but more complex things with respect to $\sigma^{2}$, we get the following $$\sigma^{2}_{\text{MLE}}=\frac{\sum_{i=1}^{n}||\overline{x}^{(i)}-\overline{\mu}_{\text{MLE}}||^{2}}{nd}$$
+
+```ad-info
+**Derivation of MLE for variance**
+
+![[Pasted image 20230404013720.png|500]]
+
+```
+
+---
+
+### Mixture Distributions
+Sometimes, a single Gaussian is not a good fit for this dataset.
+
+![[Pasted image 20230404013810.png|400]]
+
+In this model each datapoint $\overline{x}^{(i)}$ is assumed to be **generated** from a mixture of $k$ distributions.

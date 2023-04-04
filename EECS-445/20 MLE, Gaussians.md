@@ -39,7 +39,7 @@ Now, we want to venture into a more general form (multivariate distribution).
 **Definition 20.1**: Multivariate Gaussian Distribution
 
 Data with the following distribution:
-$$\mathcal{N}(\overline{x}|\overline{\mu}, \Sigma)=\frac{1}{(2\pi)^{\frac{d}{2}} \det({\Sigma}^{\frac{1}{2}})} \exp\left({-\frac{1}{2}(\overline{x}-\overline{\mu})^{T}\Sigma^{-1}}(\overline{x}-\overline{\mu})\right)$$
+$$\mathcal{N}(\overline{x}|\overline{\mu}, \Sigma)=\frac{1}{(2\pi)^{\frac{d}{2}} \det({\Sigma})^{\frac{1}{2}}} \exp\left({-\frac{1}{2}(\overline{x}-\overline{\mu})^{T}\Sigma^{-1}}(\overline{x}-\overline{\mu})\right)$$
 
 where $\overline{x}, \overline{\mu}$ are $d\times 1$ column vector, and $\Sigma$ is a $d\times d$ covariance matrix. 
 - $\Sigma_{ij}$ measures the **covariance** between $x_i$ and $x_j$.
@@ -47,6 +47,7 @@ where $\overline{x}, \overline{\mu}$ are $d\times 1$ column vector, and $\Sigma$
 
 We have the following property:
 $$\overline{\mu}=\mathbb{E}[\overline{x}].$$
+$$\Sigma = \mathbb{E}[(\overline{x}-\overline{\mu})(\overline{x}-\overline{\mu})^{T}]$$
 ```
 
 ```ad-example
@@ -55,7 +56,14 @@ Example: **Spherical Gaussians**
 This is a unique type of Gaussian Distribution where
 $$\Sigma = \sigma^{2}\textbf{I}_d$$
 
+The distribution has only **ONE** free parameter - $\sigma^2$.
+
 ![[Pasted image 20230401152652.png|400]]
 
-$$p(S_n)=\prod_{i=1}^{n}p(\overline{x}^{(i)})=\prod_{i=1}^{n} \left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}} \exp\left(||\overline{x}^{(i)}-\overline{u}||^{2}\right)\right)$$
+$$p(S_n)=\prod_{i=1}^{n}p(\overline{x}^{(i)})=\prod_{i=1}^{n} \left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}} \exp\left(-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)\right)$$
+
+
 ```
+
+^1fcfef
+
