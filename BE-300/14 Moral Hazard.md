@@ -53,7 +53,10 @@ Examples include
 ```
 
 #### Risk Profiles
-- **Risk Neutral**: a person who is **indifferent** between a certain outcome and uncertain outcomes with the same expected value
+
+^5e10a5
+
+- **Risk Neutral**: a person who is **indifferent** between a certain outcome and uncertain outcomes with the same expected value 
 	- Focus only on **expected return**
 	- Assumption for most firms
 - **Risk Loving**: a person who prefers uncertain outcomes over a certain outcome with the same expected value
