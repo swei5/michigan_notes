@@ -44,10 +44,14 @@ Let us consider the case where data labels are **known**; that being said, we kn
 
 We can write our probability density function as $$\begin{align}p(S_{n})&=p(\overline{x}^{(i)},\overline{y}^{(i)})\\
 &=\prod_{i=1}^{n} p(\overline{x}^{(i)}|\overline{y}^{(i)})p(\overline{y}^{(i)})\\
-&=\prod_{i=1}^{n} \sum\limits_{j=1}^{n} \delta(j|i) \left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)
+&=\prod_{i=1}^{n} \sum\limits_{j=1}^{k} \delta(j|i) \left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)
 \end{align}$$
 
-And define that
+Using a similar approach as in [[#MLE Derivation]], we can derive the MLE estimator for GMMs with $k$ known clusters and labels. First, we find the log likelihood objective:
+$$\begin{align}\ln\left(p\right)&=\ln\left(\prod_{i=1}^{n} \sum\limits_{j=1}^{k} \delta(j|i) \left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)\right)\\
+&= \sum\limits_{i=1}^{n} \sum\limits_{j=1}^{k} \delta(j|i) \ln\left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)\end{align}$$
+
+Using the MLE estimator, we can define the following:
 $$\hat{n}_{j}=\sum\limits_{i=1}^{n} \delta(j|i)$$
 
 is the number of points assigned to cluster $j$.
@@ -55,9 +59,11 @@ is the number of points assigned to cluster $j$.
 $$\gamma_{j}=\frac{\hat{n}_{j}}{n}$$
 
 is the fraction of points assigned to cluster $j$.
-```
 
-From the above, we can find the mean as well as variance of our GMMs: $$\begin{align}\overline{\mu}^{(j)}&=\frac{1}{\hat{n}_{j}}\sum\limits_{i=1}^{n} \delta(j|i)\overline{x}^{(i)}\\
-\sigma_{j}^{2}&=\frac{1}{d\hat{n}_{j}}
+We can also find the mean as well as variance of our GMMs: $$\begin{align}\overline{\mu}^{(j)}&=\frac{1}{\hat{n}_{j}}\sum\limits_{i=1}^{n} \delta(j|i)\overline{x}^{(i)}\\
+\sigma_{j}^{2}&=\frac{1}{d\hat{n}_{j}} \sum\limits_{i=1}^{n} \delta(j|i) ||\overline{x}^{(i)}-\overline{\mu}^{(j)}||^{2}
 \end{align}$$
+
+
+```
 
