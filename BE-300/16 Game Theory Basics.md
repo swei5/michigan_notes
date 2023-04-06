@@ -28,6 +28,8 @@ wants to **change** their behavior given what other players are doing.
 - Games can have multiple Nash equilibria
 ```
 
+^731cea
+
 #### Finding Nash Equilibrium
 We consider, for each player, best response to **all hypothetical strategies** of opposing **player**.
 1. From Player 1’s perspective, for all hypothetical strategies for Player 2, find Player 1’s best response.  
