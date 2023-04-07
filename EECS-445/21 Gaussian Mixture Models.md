@@ -69,7 +69,7 @@ We can also find the mean as well as variance of our GMMs: $$\begin{align}\overl
 
 ```
 
-^31dde4
+^31dde4x
 
 ```ad-note
 1. It's noteworthy for each data point $\overline{x}^{(i)}$, there could only be **one unique** label $y^{i}$. In addition, our indicator function $\delta$ returns only $0$ or $1$. Thus, we have $$\ln \sum\limits_{j} \delta(j|i)\left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)=\sum\limits_{j} \delta(j|i) \ln  \left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)$$
