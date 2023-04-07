@@ -25,3 +25,24 @@ BP's payoff from deviating in any round is $$X_{\text{Dev}}=\sum\limits_{i=1}^{T
 
 Obviously, it's worth cooperating if $$x_{\text{Coop}}+\frac{x_{\text{Coop}}}{r}>x_{\text{Dev}}+\frac{x_{\text{Punish}}}{r}$$
 Otherwise, we fall back to the Nash Equilibrium. This strategy is known as a **grim trigger**.
+
+It's noteworthy that cooperation **more likely** if players are **patient** (highly value future payoffs).
+- Lower discount rate
+
+```ad-info
+**Solution Strategy**
+1. Figure out stream of payoffs for each strategy
+2. **Discount** those streams to present
+3. Compare them by setting Cooperate $PV$ > Deviate $PV$
+4. The result is an **interest rate**, or discount rate that is necessary to sustain cooperation
+
+Often games are **symmetric**, so we may only need to do this once.
+```
+
+---
+
+#### Repeated Games
+**Finite** games suffer from the **end game problem**: if there is a definite end to then both players know there is **NO BENEFIT** to cooperating in last round. Threats and promises are not credible. 
+- By extension, threats and promises are also not credible in second-to-last period, or in third-to-last period...
+
+Thus, we solve the game by starting in **last period** and then asking what will happen in previous period is known as *backward induction*.
