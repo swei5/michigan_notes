@@ -24,6 +24,8 @@ Data with the following distribution:
 $$\mathcal{N}(x|\mu, \sigma^{2})=\frac{1}{\sqrt{2\pi \sigma^{2}}} \exp\left({-\frac{(x-\mu)^{2}}{2\sigma^{2}}}\right)$$
 ```
 
+^625fb3
+
 And our goal is to determine $\mu$ and $\sigma^2$ that maximizes $p$, where
 $$p(S_{n})=\prod_{i=1}^{n}\mathcal{N}(x|\mu, \sigma^{2})$$
 

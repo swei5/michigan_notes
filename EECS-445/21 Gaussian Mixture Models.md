@@ -32,7 +32,9 @@ Sometimes, a single Gaussian is not a good fit for this dataset.
 
 ![[Pasted image 20230404013810.png|400]]
 
-In this model each datapoint $\overline{x}^{(i)}$ is assumed to be **generated** from a mixture of $k$ distributions.
+In this model each datapoint $\overline{x}^{(i)}$ is assumed to be **generated** from a mixture of $k$ distributions or labels. ^f1277b
+
+Note that our data set (with the labels), can be expressed as $S=\{\overline{x}^{(i)}, y^{(i)}\}_{i=1}^{n}$, where $y^{(i)}$ is the label of $\overline{x}^{(i)}$.
 
 Let us consider the case where data labels are **known**; that being said, we know the cluster with which the data point is associated. First, we define an indicator function $$\begin{equation}\delta(j|i) =
     \begin{cases}
@@ -42,8 +44,8 @@ Let us consider the case where data labels are **known**; that being said, we kn
 ```ad-important
 **Definition 21.1**: MLE for GMMs with known labels
 
-We can write our probability density function as $$\begin{align}p(S_{n})&=p(\overline{x}^{(i)},\overline{y}^{(i)})\\
-&=\prod_{i=1}^{n} p(\overline{x}^{(i)}|\overline{y}^{(i)})p(\overline{y}^{(i)})\\
+We can write our probability density function as $$\begin{align}p(S_{n})&=p(\overline{x}^{(i)},y^{(i)})\\
+&=\prod_{i=1}^{n} p(\overline{x}^{(i)}|y^{(i)})p(y^{(i)})\\
 &=\prod_{i=1}^{n} \sum\limits_{j=1}^{k} \delta(j|i) \left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)
 \end{align}$$
 
@@ -67,3 +69,10 @@ We can also find the mean as well as variance of our GMMs: $$\begin{align}\overl
 
 ```
 
+^31dde4
+
+```ad-note
+1. It's noteworthy for each data point $\overline{x}^{(i)}$, there could only be **one unique** label $y^{i}$. In addition, our indicator function $\delta$ returns only $0$ or $1$. Thus, we have $$\ln \sum\limits_{j} \delta(j|i)\left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)=\sum\limits_{j} \delta(j|i) \ln  \left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)$$
+
+2. $p(y^{(i)})=\gamma_{j}$
+```

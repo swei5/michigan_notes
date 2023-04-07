@@ -117,7 +117,7 @@ Heuristics to choose our hyperparameters include:
 - Discriminative models
 	- Internal structure of the classes is not captured
 	- E.g. **classification**
-- Generative models
+- Generative models ^8b1286
 	- Describes internal structure of the data
 	- Better understand where data *came from*
 	- Can also be used in classification
