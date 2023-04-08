@@ -6,7 +6,7 @@ Recall previous discussions on Spherical Gaussian Distribution being a special t
 ---
 
 ### MLE Derivation
-To **maximize** $p(S_n)$, we apply the **log MLE** method. Let $$\begin{align}l(S_{n};\overline{\mu}, \sigma^{2})=\ln(p(S_{n}))&=\ln\left(\prod_{i=1}^{n} \left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}} \exp\left(-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)\right)\right)\\
+To **maximize** $p(S_n)$, we apply the **log-likelihood** method. Let $$\begin{align}l(S_{n};\overline{\mu}, \sigma^{2})=\ln(p(S_{n}))&=\ln\left(\prod_{i=1}^{n} \left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}} \exp\left(-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)\right)\right)\\
 &=\sum\limits_{i=1}^{n}\ln\left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}} \exp\left(-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)\right)\\
 &=\sum\limits_{i=1}^{n}\left(\ln\left(\frac{1}{(2\pi\sigma^{2})^{\frac{d}{2}}}\right)-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)\\
 &=\sum\limits_{i=1}^{n}\left(-\frac{d}{2}\ln(2\pi\sigma^{2})-\frac{1}{2\sigma^{2}}||\overline{x}^{(i)}-\overline{u}||^{2}\right)
@@ -44,7 +44,7 @@ Let us consider the case where data labels are **known**; that being said, we kn
 ```ad-important
 **Definition 21.1**: MLE for GMMs with known labels
 
-We can write our probability density function as $$\begin{align}p(S_{n})&=p(\overline{x}^{(i)},y^{(i)})\\
+We can write our likelihood function as $$\begin{align}p(S_{n})&=p(\overline{x}^{(i)},y^{(i)})\\
 &=\prod_{i=1}^{n} p(\overline{x}^{(i)}|y^{(i)})p(y^{(i)})\\
 &=\prod_{i=1}^{n} \sum\limits_{j=1}^{k} \delta(j|i) \left(N(\overline{x}^{(i)}|\mu^{(j)},\sigma_{j}^{2})\gamma_{j}\right)
 \end{align}$$
