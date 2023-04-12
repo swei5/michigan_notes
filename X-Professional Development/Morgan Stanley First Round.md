@@ -1,5 +1,5 @@
-Time: Wed, April 11, 2:30-3:00 PM
-With: Unknown
+Time: Tue, April 11, 2:30-3:00 PM
+With: conor.ward@morganstanley.com
 
 **Sales and trading** is one of the primary front-office divisions of major [investment banks]( https://en.wikipedia.org/wiki/Investment_banking "Investment banking"). The term is typically reserved for the trading activities done by **sell-side investment banks** who are primarily engaged in **making markets** for institutional clients in various forms of securities. [[1]] ( https://en.wikipedia.org/wiki/Sales_and_trading#cite_note-1 ) The trading floor of these banks will contain [dedicated desks]( https://en.wikipedia.org/wiki/Trading_desk "Trading desk") who generally focus exclusively on trading one form of security. These desks will more generally fall within the categories of fixed income, currencies, commodities, or equities.
 
@@ -67,7 +67,7 @@ It taught me that financial markets are interconnected with so many realms and d
 
 #### Quantitative Skills
 In addition, I see sales and trading as a field where I get to leverage my data skills to make informed decisions and drive outcomes as I am a highly quantitative person. 
-- Gigantic, dynamic Dataathon
+- Gigantic, dynamic Datathon
 - Constantly changing and unpredictable
 - Client-facing too, not all about data
 
@@ -168,7 +168,10 @@ Reasons
 
 ### Wrap-Up
 - What gets you most excited about the market in this ongoing, pretty volatile year?
+	- Structured solution team
+	- Drastic movement - doors to invest
 - Can you tell me about something interesting or unique about your job that you never know (or picture doing) before coming to Morgan Stanley?
+	- 
 - What in your opinion is the best or most fun desks on the trading floor and why?
 
 - If they come from a different background - How is NYC Life?
