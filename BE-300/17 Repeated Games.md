@@ -10,6 +10,8 @@ Repeated games are simultaneous games that are played more than once by
 the same players. Provide players with opportunity to **tacitly coordinate** with one another and reach better outcomes.  
 ```
 
+^cb81d6
+
 There are two types: infinite and finite.
 
 #### Tacit Collusion in Infinitely Repeated Games
