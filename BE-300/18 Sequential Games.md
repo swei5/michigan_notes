@@ -41,6 +41,22 @@ However, in the following scenario, they will not enter given the incumbent's de
 ![[Pasted image 20230413003541.png|500]]
 ```
 
+Let's provide an example in more general terms.
+
+```ad-example
+Provided this scenario, the incumbent has the ability to decide whether to prevent entry of a rival by paying a fee of $b$; then, the potential rival decides whether to enter, upon a fee of $F$.
+
+![[Pasted image 20230413105050.png|500]]
+
+There are three possible outcomes
+- Blockaded entry: $F>4$
+	- Rivals will stay out. Payoffs are $(10,0)$
+- Deterred entry: $F<4 \land b<6$
+	- Potential rival will enter unless the incumbent pays the exclusivity fee. Payoffs are $(10-b,0)$
+- Accomodated entry: $F<4 \land b>6$
+	- Potential rival will enter and incumbent will not deter since the fee $b$ is too high. Payoffs are $(4, 4-F)$
+```
+
 ```ad-summary
 **Strategic commitments** can be critically valuable in the pursuit of non- cooperative aims, i.e. to deter or discourage entry
 
