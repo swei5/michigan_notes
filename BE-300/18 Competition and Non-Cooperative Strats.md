@@ -30,8 +30,24 @@ There are a few ways to deter entry of competitors.
 	- Might prevent potential entrant from entering in first place
 	- Need to be careful of anticompetitive issues
 
-The **decision to enter** or not for an entrant depends on where the incumbent's **optimal decision** lies. Again, this is based on the premise that all information is available to market participants.
+The **decision to deter** depends on where the incumbent's **optimal decision** lies. Again, this is based on the premise that all information is available to market participants.
 
 ```ad-example
-In this scenario, the entrant should choose to enter since the optimal decision for the in
+In this scenario, the entrant should choose to **enter** since the optimal decision for the incumbent will be to accomodate.
+![[Pasted image 20230413003449.png|500]]
+
+However, in the following scenario, they will not enter given the incumbent's decision.
+
+![[Pasted image 20230413003541.png|500]]
+```
+
+```ad-summary
+**Strategic commitments** can be critically valuable in the pursuit of non- cooperative aims, i.e. to deter or discourage entry
+
+There are two cases:
+1. When entry **CANNOT** be deterred
+	- There is no point wasting resources trying to prevent entry
+2. When strategy can deter entry
+	- Market conditions allow such that entry is likely to occur **AND** it is profitable for incumbents to do so
+
 ```
