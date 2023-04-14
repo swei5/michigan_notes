@@ -35,5 +35,23 @@ Bayesian Network of Coin-flipping
 
 ![[Pasted image 20230414014303.png|600]]
 
+Given this example, the factorization based on the graph is $P(x_{1}, x_{2}, x_{3})=P(x_{1})P(x_{2})P(x_{3}|x_{1}, x_{2})$
 
+Note that this is actually $P(x_{1})P(x_{2}|x_{1})P(x_{3}|x_{1}, x_{2})$; however, since $X_{1}$ and $X_{2}$ are independent events, we ignore the conditional.
+```
+
+Let's look at this problem in a general case.
+
+```ad-important
+**Definition 23.3**: Chain Rule of Probability
+$$P(X_{1},\cdots, X_{d})=P(X_{1}|X_{2},\cdots, X_{d})P(X_{2}|X_{3},\cdots, X_{d})\cdots P(X_{d-1}|X_{d})P(X_{d})$$
+```
+
+Bayesian Networks encode such **conditional independencies**.
+
+Thus, for a given graph, the **joint distribution** can be written as a product of the conditional probability of each **variable** given its **parents**.
+
+```ad-important
+**Definition 23.4**: Bayesian Network Factorization
+For variables $X_{1,}$
 ```
