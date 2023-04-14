@@ -47,11 +47,47 @@ Let's look at this problem in a general case.
 $$P(X_{1},\cdots, X_{d})=P(X_{1}|X_{2},\cdots, X_{d})P(X_{2}|X_{3},\cdots, X_{d})\cdots P(X_{d-1}|X_{d})P(X_{d})$$
 ```
 
+^a9246f
+
 Bayesian Networks encode such **conditional independencies**.
 
 Thus, for a given graph, the **joint distribution** can be written as a product of the conditional probability of each **variable** given its **parents**.
 
 ```ad-important
 **Definition 23.4**: Bayesian Network Factorization
-For variables $X_{1,}$
+For variables $X_{1},\cdots, X_{d}$, and the parents of variable $X_{i}$ represented by $pa_{i}$, $$P(X_{1},\cdots, X_{d})=\prod_{i=1}^{d} P(X_{i}|X_{pa_{i}})$$
 ```
+
+This allows us to simplify the conditional dependencies we've seen in [[#^a9246f|Definition 23.3]], which also allows us to capture dependencies that makes it easier to learn and infer. Illustrated by the example below
+
+```ad-example
+The notations of red and green texts denote the same probability.
+![[Pasted image 20230414152033.png|600]]
+```
+
+#### Marginal and Conditional Independence
+Note that Bayesian Networks encode **independencies**. There are two types of independences we want to explore.
+
+```ad-important
+**Definition 23.5**: Marginal Independence, Conditional Independence
+
+Marginal Independence is defined as $$P(X_{1},X_{2})=P(X_{1})P(X_{2})$$
+
+Conditional Independence is defined as $$P(X_{1}, X_{2}|X_{3})=P(X_{1}|X_{3})P(X_{2}|X_{3})$$
+
+Denoted by $$X_{1}\perp X_{2}|X_{3}.$$
+
+Alternatively, $P(X_{1}|X_{2},X_{3})=P(X_{1}|X_{3})$.
+```
+
+Note that for **conditional independence**, this is simply saying, if we are given $X_3$ and $X_1$, the distribution of $X_2$ is certain ($X_2$ doesn't affect $X_1$) since $X_1$ and $X_2$ are conditionally independent.
+
+```ad-example
+Let us show an example of marginal independence.
+
+![[Pasted image 20230414155101.png|550]]
+```
+
+---
+
+#### $d$ -Separation: Inferring Independence
