@@ -42,6 +42,8 @@ Given $k$ clusters, the above has model parameters $\overline{\theta}=[\gamma_{1
 
 In each iteration, **likelihood** is guaranteed **NOT** to decrease.
 
+![[Pasted image 20230414001819.png|600]]
+
 ##### E-Step
 In **E-Step**, we fix $\overline{\theta}$, then **softly assign points** to clusters according to posterior probability $$p(j|i)=\frac{\gamma_{j}N(\overline{x}^{i}|\overline{\mu}_{j}, \sigma_{j}^{2})}{\sum_{t}\gamma_{t}N(\overline{x}^{i}|\overline{\mu}_{j}, \sigma_{j}^{2})}=\frac{\gamma_{j}P(\overline{x}^{(i)}|\overline{\mu}^{(j)},\sigma^{2}_{j})}{P(\overline{x}^{(i)}|\overline{\theta})}$$
 This translates to *given a datapoint $\overline{x}^{(i)}$, what is the probability that cluster $j$ **generated it*** - analogous to $\delta(j|i)$. Note that $\sum_{j} p(j|i)=1$.
