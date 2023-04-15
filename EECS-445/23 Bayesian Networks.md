@@ -114,3 +114,11 @@ Question: Compute $P(B=T|A=T)$
 Answer:
 ![[Pasted image 20230414184536.png|600]]
 ```
+
+### Learning Bayesian Networks
+There are two main problems.
+1. Estimate **parameters** given **graph structure**
+2. Search over **possible** **graph structures**
+
+#### Parameter Estimation
+Suppose we have ! discrete random variables $x_{1},\cdots, x_{d}$ and each $x_{i}\in V_{i}$ where $V_{i} = \set{v_{1},v_{2},\cdots, v_{k_{i}}}$. Suppose we have $n$ complete observations $S_{n}=\set{[x_{1}^{(t)},\cdots, x_{d}^{(t)}]}_{t=1}^{n}$.
