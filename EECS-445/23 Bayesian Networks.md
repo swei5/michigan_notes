@@ -91,3 +91,26 @@ Let us show an example of marginal independence.
 ---
 
 #### $d$ -Separation: Inferring Independence
+To find out if nodes are marginally or conditionally independent in a Bayesian Network.
+
+1. Keep only *ancestral* graph of the **variables of interest**.
+	- Include the variables of interests themselves
+	- Include the arrows (direction)
+2. Connect nodes with **common child** and change graph to **undirected**
+3. Then, we can use the following rules to infer independence properties.
+	- If there is **NO Path** between variables of interest, then they are **marginally independent**
+	- If **ALL paths** between variables of interest go through **a particular node**, then the variables are **independent given that node**
+		- Intuitively can say that that **node** *blocks* the influence from the first variable to the second
+
+```ad-note
+For $X_{1}\perp X_{2}|\set{X_{3},X_4}$, **EACH** path has to go through at least **ONE** of the nodes in $\set{X_{3},X_4}$.
+```
+
+```ad-example
+Question: Compute $P(B=T|A=T)$
+
+![[Pasted image 20230414184511.png|600]]
+
+Answer:
+![[Pasted image 20230414184536.png|600]]
+```
