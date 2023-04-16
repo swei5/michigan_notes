@@ -120,6 +120,8 @@ The corresponding MLE to the problem above is $$\hat{\theta}_{i}(x_{i}=v_{i}|x_{
 where $n(x_{i},x_{pa_{i}})$ is the number of observations in $S_{n}$ where $X_{i}=x_{i}$ and $X_{pa_{i}}=x_{pa_{i}}$.
 ```
 
+^684350
+
 #### Learning Graph Structure
 The main idea here is to choose the graph structure that **maximizes log likelihood**.
 - However, $G_{0}$ will almost always result in higher log-likelihood
