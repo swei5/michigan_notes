@@ -42,7 +42,9 @@ In real life, market has a degree of inefficiency to it. There is a **spectrum o
 ```ad-note
 Some simple and common market strategies that prove to be usually profitable:
 - Buying stocks with large positive earnings surprise
-- 
+- Buying stocks after a takeover announcement on that stock
+- Buying stocks for which the company has announced a share repurchase
+- Selling stocks for which the company has announced it will issue new equity
 ```
 
 #### Weak Form Efficient Market
@@ -116,3 +118,9 @@ Another reason of market inefficiency may be attributed to **irrational behavior
 - Incomplete markets for trades
 - Lack of unlimited access to capital
 ```
+
+In hindsight and with knowledge of the **EMH**, you need these 4 things to be a manager that earns abnormal returns:
+1. A theoretical reason why the market has ignored the **information** you have **uncovered**
+2. Information that is **different to consensus**
+3. Transaction **costs** sufficiently **low**, and **liquidity** sufficiently **high**
+4. An **investment strategy** that you can replicate
