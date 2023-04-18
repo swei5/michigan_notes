@@ -76,7 +76,7 @@ We can thus define **similarity**, as a measure of **correlation**, as known as 
 #### Algorithm
 Suppose $Y_{ai}$ is what we are trying to predict.
 1. Compute the **similarity** between $a$ and the rest
-2. Find the $k$ **nearest neighbors** of $a$, $k_j$, for instance, where $Y_{k_{j}i}$ is filled
+2. Find the $k$ **nearest neighbors** of $a$, $k_j$, for instance, where $Y_{k_{j}i}$ is **FILLED**
 3. Compute a prediction based on $Y_{k_{j}, i}$, $\forall j\in[1,k]$.
 
 ![[Pasted image 20230331143913.png|500]]
