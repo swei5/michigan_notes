@@ -115,7 +115,7 @@ where $G_{i}$ is the graph structure we are currently using.
 ```ad-important
 **Definition 23.5**: MLE for of Parameter Estimation
 
-The corresponding MLE to the problem above is $$\hat{\theta}_{i}(x_{i}=v_{i}|x_{pa_{i}}=v_{pa_{i}}) = \frac{n(x_{i}=v, x_{pa_{i}}=v_{pa_{i}})}{\sum_{v_{i}^{\prime}}n(x_{i}=v, x_{pa_{i}}=v_{pa_{i}})}$$
+The corresponding MLE to the problem above is $$\hat{\theta}_{i}(x_{i}=v_{i}|x_{pa_{i}}=v_{pa_{i}}) = \frac{n(x_{i}=v_{i}, x_{pa_{i}}=v_{pa_{i}})}{\sum_{v_{i}^{\prime}}n(x_{i}=v^{\prime}_{i}, x_{pa_{i}}=v_{pa_{i}})}$$
 
 where $n(x_{i},x_{pa_{i}})$ is the number of observations in $S_{n}$ where $X_{i}=x_{i}$ and $X_{pa_{i}}=x_{pa_{i}}$.
 ```
