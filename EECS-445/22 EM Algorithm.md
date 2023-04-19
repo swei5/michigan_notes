@@ -1,4 +1,4 @@
-[[2023-04-05]] #MLE #Gaussians #Probability 
+[[2023-04-05]] #MLE #Gaussians #Probability #UnsupervisedLearning 
 
 ### Generative Model
 Recall in [[19 Collaborative Filtering]] we briefly mention the concept of **generative model**: ![[19 Collaborative Filtering#^8b1286]]
