@@ -92,4 +92,53 @@ We may be prompted to think that data and computation are separate, but they are
 ---
 
 #### URL Routing
-Dynamic pages are created by **executing a function** at the time of a **request**.
+Dynamic pages are created by **executing a function** at the time of a **request**. 
+
+```ad-question
+- When a client requests a URL, how does a server know **which function** to call?
+- What about routes like a user page, where the function could have an **input**?
+```
+
+We could use a **routing table** to display how a request is tied to a route/function.
+| Route      | Function           |
+| ---------- | ------------------ |
+| `/u/user1` | `show_user(user1)` |
+| `/explore` | `show_explore()`   |
+| `/p/`      | `show_post()`                   |
+
+The implementation again goes back to another `flask` function. 
+
+```python
+# creates a route
+@app.route('/users/<username>/') # <username> is a placeholder for argument
+def show_user(username):
+    return "hello {}!".format(username)
+
+@app.route('/posts/<postid>/')
+def show_post(postid):
+    return "post {}!".format(postid)
+```
+
+### Python Decorator
+In Python, functions are **first class** objects
+- Can be passed as input
+- Can be returned as output
+- Created/destroyed at run time
+
+A **decorator** is a **function** that takes **another function** and extends the behavior of the latter function without explicitly modifying it.
+
+For example,
+
+```python
+@wrapper
+def f():
+	print("Hello")
+```
+
+is equivalent to
+
+```python
+def f():
+	print("Hello")
+f = wrapper(f)
+```
