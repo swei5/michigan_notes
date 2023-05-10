@@ -1,4 +1,4 @@
-[[2023-05-07]] #Webpage #Python 
+[[2023-05-07]] #Webpage #Python #HTML 
 
 ### Dynamic Pages
 In general, static pages stay the same and dynamic pages can change.
