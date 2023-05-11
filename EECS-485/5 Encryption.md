@@ -72,7 +72,7 @@ Asymmetric cryptography depends on **sharing public keys**.
 When sharing public keys, for instance, how do you know that Amazon's public key actually comes from Amazon?
 ```
 
-One way to go about this problem is by using **certificate authorities**.
+One way to go about this problem is by using **certificate authorities**. ^e0821c
 - Companies manage these
 
 ![[ca-diagram-b.png|500]]
