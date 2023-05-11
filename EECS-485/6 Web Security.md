@@ -67,5 +67,15 @@ Data are sometimes a liability rather than an asset. There are three main method
 The power of “hiding in the crowd.” Specifically, a dataset is **k-anonymous** if quasi-identifiers for each person in the dataset are **identical** to at least $k – 1$ other people also in the dataset.
 
 ```ad-example
-If we have a dataset of students' graduation year, major, and GPA, what we could do to make it 2-anoynomous is to change the graduation year (identifier) to a range of years so that 
+If we have a dataset of students' graduation year, major, and GPA, what we could do to make it 2-anoynomous is to change the graduation year (identifier) to a range of years so that there are always **AT LEAST two** rows that potentially match.
 ```
+
+The downside of using k-anonymization are
+- **Losing information** when you transform data
+- **NP-hard** to find optimal k-anonymization
+	- Optimal being losing the **LEAST** information
+- If everyone in a group has the **same sensitive information**, k-anonymity doesn't help
+
+#### Differential Privacy
+Add **noise** to answers.
+- Repeated queries still a problem – if I can ask 1000 times, I will **converge** to the mean and effectively remove the added noise.
