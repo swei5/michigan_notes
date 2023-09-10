@@ -85,4 +85,3 @@ The *Respondeat superior* does **NOT** apply to independent contractors.
 In general, refer to the chart below is pretty useful to determine tort liability of principal and agents.
 
 ![[Pasted image 20230909204101.png]]
-
