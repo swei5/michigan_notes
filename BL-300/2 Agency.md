@@ -62,7 +62,7 @@ Principal is bounded by the action of the agent if **authorities** above are pre
 
 ![[Pasted image 20230909203045.png|600]]
 
-If **NO authorities** are given, the agent is **fully liable** for their action. An undisclosed principal is bound to the third party **only if** the agent has **actual authority**.
+If **NO authorities** are given, the agent is **fully liable** for their action. An **undisclosed principal** is bound to the third party **only if** the agent has **actual authority**.
 
 #### Tort Liability
 When deciding tort liability, we follow the **doctrine of *Respondeat superior***.
