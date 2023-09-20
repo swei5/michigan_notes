@@ -21,8 +21,7 @@ The American litigation process is generally as follow.
 		- **Personal jurisdiction**: which *states* have the power to hear the claim?
 			- Consent
 			- Citizenship
-			- Long-arm statute (minimum contacts)
-			- TAG
+			- Minimum contacts (long-arm, "TAG" applied)
 		- **Subject-matter jurisdiction**: which *courts* have the power to hear the claim?
 			- Diversity rule allows both state/federal court to hear
 				- Diverse citizenship is both parties and claim > $75,000
