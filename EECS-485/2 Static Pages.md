@@ -174,13 +174,15 @@ Let's begin with an example.
 > Host: cse.eecs.umich.edu
 > User-Agent: curl/7.54.0
 > Accept: */*
->
 ```
 
 Here, `GET` is the verb, `/` is the path, and `HTTP/1.1` is the version. `Host`, `User-Agent`, and `Accept` are **headers**.
+- `HOST`: distinguishes between DNS names sharing a single IP address
+- `User-Agent`: browser making the request
+- `Accept`: which content (file) types the client will accept
 
 There are a number of common verbs.
-- `GET`: send a file (to the browser)
+- `GET`: send a file (to the browser) ^12804f
 - `HEAD`: get only the **headers**
 	- Way to see if a file **has changed** before asking for it to be sent another time
 - `POST`: send data (to the server)
@@ -206,8 +208,7 @@ Let's again show a quick example.
 < Accept-Ranges: bytes
 < Connection: close
 < Transfer-Encoding: chunked
-< Content-Type: text/html;
-charset=UTF-8
+< Content-Type: text/html; charset=UTF-8
 ```
 
 Look very similar to a request in terms of formatting, except that response starts with a **status code**.

@@ -17,7 +17,6 @@ Some desirable properties to have include
 This can be done by **encryption**. Plain texts are encrypted using an **encryption key** into cipher text; then, using a **decryption key**, we can translate cipher text back to plain text.
 
 ---
-
 ### Encryption
 #### Symmetric Encryption
 Encryption and decryption key are the same: $K_{\text{enc}}=K_{\text{dec}}$.
@@ -73,7 +72,10 @@ When sharing public keys, for instance, how do you know that Amazon's public key
 ```
 
 One way to go about this problem is by using **certificate authorities**. ^e0821c
+
+A **certificate authority** or **certification authority** (**CA**) is an entity that stores, signs, and issues [digital certificates]( https://en.wikipedia.org/wiki/Public_key_certificate "Public key certificate"). A digital certificate certifies the ownership of a public key by the named subject of the certificate.
 - Companies manage these
+- E.g. signs certificates used in HTTPS
 
 ![[ca-diagram-b.png|500]]
 

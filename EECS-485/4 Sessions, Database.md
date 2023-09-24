@@ -1,4 +1,4 @@
-[[2023-05-10]] #SQL #Cookie #Webpage 
+[[2023-05-10]] #SQL #Webpage 
 
 ### HTTP
 #### HTTP 1.0
@@ -69,13 +69,13 @@ We should always be mindful of client **modifying cookies** - this could be dang
 - **Signature**: add a number to the end that **ONLY server** knows how to generate/check
 - **Encryption**: scramble cookie so client can't read or change it
 
-Finally, let's use `flask` code to denote how a cookie is created in the background.
+Finally, let's use the `flask` framework to denote how a cookie is created in the background.
 
 ```python
 import flask  
 app = flask.Flask(__name__)
 
-app.secret_key = b'uAy\x9d\x08[\x12\x8d\x9d\x1f\xbar\x86A\x9fpQy4\x05)v04' # random signature
+app.secret_key = b'uAy\x9d\x08[\x12\x8d\x9d\x1f\xbar\x86A\x9fpQy4\x05)v04' # random signature for cookie
 
 @app.route('/')
 def index():

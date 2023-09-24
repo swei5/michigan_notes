@@ -17,7 +17,7 @@ Network attacks happen as information travels between client and server. There a
 While network attacks pertain to information in transit, web attacks are related to the design of our `flask` App. We will again discuss three main types of web attacks.
 
 #### SQL Injection
-The following could happen if we backend code like this
+The following could happen if we had backend code like this
 ```python
 username = flask.request.form["username"]
 
@@ -29,6 +29,15 @@ query =
 
 If a client deliberately passed in a string: `; DROP TABLE PASSWORDS --`, the SQL query will drop the entire database we have back there!
 
+This translates to
+```sql
+SELECT hash 
+FROM passwords 
+WHERE user = ; DROP TABLE PASSWORDS --
+```
+
+which executes the `DROP` operation after inputing an empty string.
+
 Instead, it's a good habit to **separate code from data**:
 ```python
 db.execute( "SELECT hash " 
@@ -37,7 +46,7 @@ db.execute( "SELECT hash "
 ```
 
 #### Cross-Site Scripting
-If you allow users to post comments or other **text**, they can put **HTML tags**.
+If you allow users to post comments or other **text**, they can slip in **HTML tags** which does unexpected things.
 - `<script>` tag loads **code** that will run in other users' browsers
 
 For instance,
