@@ -29,3 +29,4 @@ That means
 
 ---
 ### Client-Side Dynamic Pages
+Client-side dynamic pages: JavaScript running in the client’s web B rowser modifies the DOM. The rendered page changes.
