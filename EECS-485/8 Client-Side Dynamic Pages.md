@@ -88,8 +88,8 @@ Variables declared with `var` are **hoisted** to the **top** of the function.
 
 ```javascript
 > function f() {
-	console.log(x === undefined);
-	var x = 5;
+>	console.log(x === undefined);
+>	var x = 5;
 }
 > f();
 true
@@ -99,8 +99,8 @@ Whereas variables declared with `let` or `const` are **NOT**.
 
 ```javascript
 > function f() {
-	console.log(x === undefined);
-	let x = 5;
+>	console.log(x === undefined);
+>	let x = 5;
 }
 > f();
 ReferenceError: x is not defined
@@ -129,7 +129,30 @@ However, changing the **object** is OK.
 
 In reality `const x` in JS is really like `int *const p` in C.
 
-##### F
+##### `for` `in` loops
+`for-in` loops often yield unexpected results.
+- They iterate *up the prototype chain*
+
+```javascript
+> const chickens = ['Magda', 'Marilyn', 'Myrtle II'];
+> for (let chicken in chickens) {
+> 	console.log(chicken);
+> }
+1
+2
+3
+```
+
+Rather, let's use `for-of` loops (if style guides allow).
+
+```javascript
+> for (let chicken of chickens) {
+> 	console.log(chicken);
+> }
+Magda
+Marilyn
+Myrtle II
+```
 
 ---
 ### Review: Web Pages
@@ -151,6 +174,41 @@ That means
 - No browser chat
 - No browser-based field validation
 - No grabbale map
+```
+
+##### `forEach` and `map`
+`forEach` loops "do the right thing".
+- Like in other programming languages
+- Use the code below to learn to use the loop
+
+```javascript
+const chickens = ['Magda', 'Marilyn', 'Myrtle II'];
+chickens.forEach((chicken) => {
+	console.log(chicken); // replace with own code
+});
+```
+
+`map` is another nice option. We use it to transform an array into another array.
+
+```javascript
+const chickens_say = chickens.map(chicken => (
+`${chicken} says cluck`
+));
+console.log(chickens_say);
+//[ 'Magda says cluck', 'Marilyn says cluck',
+// 'Myrtle II says cluck' ]
+```
+
+##### Iterating over an object's keys and values
+We want to use a `forEach` loop, again.
+
+```javascript
+> Object.entries(chickenAges).forEach(([key, value]) => {
+	console.log(key, value);
+});
+magda 1
+marilyn 2
+myrtleii 1.5
 ```
 
 ---
