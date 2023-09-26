@@ -54,7 +54,7 @@ A state has personal jurisdiction if any of the four circumstances are true:
 		- The state's foreign business registration statute requires any registered company to agree appear-in-state in response to any cause of action
 
 #### Subject Matter Jurisdiction
-Most states courts are courts of general jurisdiction - meaning they have the jurisdiction to hear cases of any subject matter.
+Most states courts are courts of general jurisdiction - meaning they have the jurisdiction to hear cases of any subject matter. State courts **MUST** hear all state law claims.
 
 A federal trial court has SMJ if either of the following are true
 - Diversity Jurisdiction
