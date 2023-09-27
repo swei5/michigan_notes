@@ -187,5 +187,59 @@ To incorporate, an organization would simply need three things.
 Note that the vocabulary we're using here is very similar to that of [[#^630eaf|LLC]].
 
 #### Piercing the Corporate Veil (Invalidate)
-We may sometimes find organizations taking advantage of the limited liability of being an corporation for personal benefits. To pierce through such corporate veil, we would need three items.
-1. Evidence of co-mingling
+We may sometimes find organizations taking advantage of the limited liability of being an corporation for personal benefits. To pierce through such corporate veil, we would need ALL of the three items.
+1. Evidence of co-mingling (financial wrongdoings)
+2. Failure to follow corporate formalities (basic laws)
+3. Controlling or dominating shareholders
+
+Owners can't have **POWER** and **LIMITED LIABILITY** at the same time. This applies to all entities with a limited liability structure: LLC, LP, etc.
+- Inherent trade-off
+
+When this happens, the owners' **personal assets** can be used to satisfy business debts and liabilities.
+
+#### Voting
+In general, there are three types of shares that have implications over their voting rights.
+- Common share (1 share = 1 vote)
+- Super-voting share (1 share = 10 votes, e.g.)
+- No-voting share ($\emptyset$)
+
+These groundworks need to be established in a corporation's bylaws, however. Each company can take on a different voting system.
+
+##### Cumulative Voting, Straight Voting
+
+```ad-important
+**Definition 3.11**: Cumulative and Straight Voting
+
+Under the straight voting scheme shareholders elect directors by a **majority vote**. Each share of stock has one vote. Each share is entitled to vote for each member of the board being elected.
+
+Cumulative voting combats the **dominance of a majority** shareholder in straight voting. In cumulative voting a shareholder has a total number of votes equal to the number of shares $\times$ the number of seats. The shareholder can cast these votes all for one director position or spread them out.
+```
+
+#### Board Structure
+- Classified board
+	- Typically consists of **three classes of directors** who serve **staggered three-year terms** 
+	- Start-ups (More director power)
+- Declassified board
+	- Directors of a declassified board are elected **annually**.
+	- Mature incorporations (More shareholder power)
+
+#### Proxy Access, Proxy Contest
+A proxy vote is a ballot cast by one person or firm on behalf of another. Proxy votes are used by shareholders when they want someone else to vote on their board.
+
+```ad-important
+**Definition 3.12**: Proxy Access
+
+Proxy access gives **eligible shareholders** the power to **nominate** a number of director candidates for inclusion in the company's proxy materials.
+```
+
+The eligibility is that the shareholder must have owned the company's shares for more than three (3) years and more than 3% of the shares.
+
+```ad-important
+**Definition 3.13**: Proxy Contest
+
+A proxy contest is when a shareholder or group of shareholders undertake an effort to convince other shareholders to develop opposition to some aspect of the corporate governance.
+```
+
+This is done in form of a **writing campaign** through sending out unofficial **proxy cards** to shareholders in an attempt to replace the company's official proxy.
+
+Proxy contest can be initiated by anyone as long as they have **ONE** (1) share in the company.
