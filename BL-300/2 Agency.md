@@ -11,7 +11,7 @@ An agent relationship is important because
 - Agent may have authority to **bind principal** to third party
 - Agent and principal have **fiduciary duties** that govern their conduct
 
-How we determine whether if an agent is an employee or an independent contractor is often dependent upon these **eight factors**:
+How we determine whether if an agent is an employee or an independent contractor is often dependent upon these **eight factors**, known as the **traditional majority rule**:
 1. How much control does employer exercise over work?  
 2. Is worker engaged in an occupation distinct from that of employer?  
 3. Is work being done under direct supervision of employer or being done without supervision?  
@@ -20,6 +20,8 @@ How we determine whether if an agent is an employee or an independent contractor
 6. How long is worker employed?  
 7. Is worker paid on basis of time or by the job?  
 8. Does worker offer services to the general public?
+
+These questions, however, are not weighted equally and could be subjective, meaning that it could be difficult at times to decide whether if a worker is an employee.
 
 In 2019, the state of California launches the **ABC test** for the same purpose, replacing the old rules.
 

@@ -40,7 +40,7 @@ United States hold a **dual legal system**.
 #### Personal Jurisdiction
 A state has personal jurisdiction if any of the four circumstances are true:
 - Consent
-- Citizenship
+- Citizenship ^7dccbc
 	- For states, this is their headquarter or incorporation location
 - Service (Individuals)
 	- If the individual physically **hands papers** to the defendant within a state, then that state has jurisdiction
