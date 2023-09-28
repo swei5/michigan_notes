@@ -135,5 +135,19 @@ If there is a law statute that prohibits a negligent act, it is inherently ident
 This is another way to prove duty, breach, and causation **indirectly**. In Latin, this translates to "the thing speaks for itself".
 
 ```ad-important
-**Defi**
+**Definition 5.4**: Res Ipsa Loquitur
+
+The plaintiff can create a rebuttable presumption of negligence by the defendant by proving the following:
+1. The plaintiff was harmed by something **controlled exclusively** by the defendant
+2. Generally people don't get harmed in situation like this unless someone is **negligent**
+3. The plaintiff is **NOT** negligent
 ```
+
+---
+### Defense to Negligence
+There are two main ways that the defendants could argue about the case, even after negligence has been established.
+1. Assumption of risk
+	- The plaintiff voluntarily chooses to undertake activities knowing the risks beforehand
+2. Comparative negligence
+	- The plaintiff is **ALSO** negligence
+	- Then the fact-finders determine what percentage of damage each party is responsible for, then base the compensation on the percentage
