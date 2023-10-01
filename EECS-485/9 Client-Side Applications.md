@@ -34,12 +34,15 @@ Below is an outline of how the application functions.
 2. Static HTML includes a `<script>` tag with file path to JavaScript
 3. Client requests JavaScript source code
 	- Server responds with static JavaScript file
+	- *Or the React Framework*
 1. Client executes JavaScript
 2. JavaScript makes request to REST API
 	- Server responds with `JSON`
-1. JavaScript parses `JSON` into an object
-2. JavaScript uses data in object to modify the DOM
-3. Page updates
+3. JavaScript parses `JSON` into an object
+4. JavaScript uses data in object to modify the DOM
+	- *DOM manipulation provided by React Framework*
+1. Page updates
+	- *When virtual DOM reconciles with real DOM*
 
 ```ad-tldr
 Our goal is to modify the **DOM** using data from the REST API.
@@ -329,4 +332,13 @@ React builds encapsulated components that manage their own state.
 
 Visit [this website](https://reactjs.org/) for more information.
 
-Under the hood, React automatically and periodically converts the **components** built in
+Under the hood, React automatically and periodically converts the **components** built in React to nodes in the DOM.
+- Components are functional or class-type
+	- **Functional**: usually stateless
+	- **Class-type**: usually stateful
+
+It achieves this using the **Virtual DOM**.
+- Components rendering cause other components to render, which causes lots of DOM updates, which is slow
+	- Human also can't spot instantaneous changes...
+- Instead, we update a virtual DOM (a shadow to the real DOM), and **periodically** reconcile virtual DOM with real DOM
+	- This avoids unnecessary changes
