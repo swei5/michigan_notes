@@ -264,3 +264,69 @@ An anonymous function is consisted of three parts:
 - Body
 - Arrow
 
+It creates a **function object** on the **heap**, just like regular JS functions. And it follows a format that looks like
+
+```javascript
+(INPUTS) => {
+	// Body
+}
+```
+
+Or 
+
+```javascript
+INPUT => my_function(INPUT)
+```
+
+---
+### Frameworks, React
+A problem with raw JavaScript is that **large** JavaScript applications quickly become unwieldy.
+- This is because all functions act on the DOM, DOM acts like a **giant global variable**
+	- Difficult to decompose program into abstractions
+
+jQuery library helps, and it is convenient for DOM manipulation.
+- However, same fundamental problem: DOM acts like a giant global variable
+- And performance of large JavaScript applications suffers
+
+The code example can be written in jQuery like this:
+- Look for the `$` symbol
+
+```javascript
+function showUser() {
+	fetch()
+	.then(function(data) {
+		const users = data.results;
+		users.forEach((user) => {
+			let node = $("<p></p>").text("...");
+			$("JSentry").append(node);
+		});
+	})
+//...
+```
+
+We want to have some kind of frameworks to permanently solve this! 
+
+JavaScript frameworks offer a tool for abstraction.
+- Manage complexity, hide details
+- Encapsulation and information hiding
+- Performance enhancements implemented under the hood
+
+```ad-note
+Difference between a library and a framework is that
+- You call a library
+- A framework calls you
+```
+
+Currently there are two large, popular frameworks.
+- React (created by Facebook)
+- Angular (created by Google)
+- Vue
+
+#### React
+React builds encapsulated components that manage their own state.
+- Composes them to make complex UIs
+- Provides efficient updates to the DOM
+
+Visit [this website](https://reactjs.org/) for more information.
+
+Under the hood, React automatically and periodically converts the **components** built in
