@@ -37,7 +37,7 @@ A command line utility that issues a **[[2 Static Pages#^12804f|get request]]** 
 ### REST API
 - Not a REST API: **NOT** a human-**readable** text
 	- HTML
-- REST API: Machine-readable text
+- REST API: Machine-readable text ^b4608e
 	- Representational State Transfer - a collection of **principles** and **practices **
 	- Some form of data structure (`JSON`, for example)
 	- Common use of REST API:

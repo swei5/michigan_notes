@@ -227,7 +227,7 @@ We can break this down into three steps:
 5. Rendered page changes
 
 ```ad-important
-In order to achieve client-side dynamic pages, **NO** programming language is needed.
+In order to achieve client-side dynamic pages, **NO** programming language or **server** is needed.
 ```
 
 Let's demonstrate this with an example.
@@ -317,7 +317,7 @@ In event-driven programming, the flow of the program is determined by events.
 Event-driven programming is useful for Graphical User Interfaces (GUIS) like **web applications**.
 
 #### Callback Functions
-An infinite main loop (in C code of the JavasCript interpreter) listens for events and triggers a **callback function**.
+An infinite main (event) loop (in C code of the JavaScript interpreter) listens for events and triggers a **callback function**.
 - A callback function is just a normal function, **waiting** to be executed
 	- Waiting for the `onclick` event
 - Current example: `hello()` is a callback
