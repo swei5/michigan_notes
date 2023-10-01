@@ -186,6 +186,8 @@ function showUsers() {
 }
 ```
 
+^1f7ef4
+
 #### Closure
 Notice that JavaScript allows **inner functions** in the previous example!
 - This is because functions are first class objects in JavaScript, and we can create them **at runtime**
@@ -220,3 +222,45 @@ Let's sketch this out using our previous example.
 6. Later, JSON data is ready and `handleData` executes
 
 Closures are important because **callback functions** are everywhere, and they need to know their context.
+
+---
+### Anonymous Function
+Note that in the [[#^1f7ef4|previous example]], the callback functions, `handleResponse(response)` and `handleData(data)` are only called **ONCE**. In JS, we can refactor them using what's called the anonymous functions:
+
+```javascript
+function showUsers() {
+	const entry = document.getElementById('JSEntry');
+	/* ... */
+	fetch('/api/v1/users/')
+		.then(function(response) {
+			//...
+		})
+		.then(function(data) {
+			//...
+		})
+}
+```
+
+They work the same as when the functions had names and are also called **lambda function** or function literal.
+
+ES6 provides a convenient syntax for anonymous functions, using the *arrow functions*:
+
+```javascript
+function showUsers() {
+	const entry = document.getElementById('JSEntry');
+	/* ... */
+	fetch('/api/v1/users/')
+		.then((response) => {
+		//...
+		})
+		.then((data) => {
+		//...
+		})
+}
+```
+
+An anonymous function is consisted of three parts:
+- Inputs
+- Body
+- Arrow
+
