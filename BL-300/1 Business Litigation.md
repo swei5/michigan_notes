@@ -74,7 +74,7 @@ A decision made based on statements and evidence without going to trial. Summary
 Facts influence people's behaviors. Lots of parties will decide to **END** the lawsuit after **discovery**, where lots of *unwanted* evidence may be presented.
 ```
 
-Discovery is a process that only exists in the U.S. litigation system. It is often viewed as extremely time and resource-consuming.
+Discovery is a process that only exists in the U.S. litigation system. It is often viewed as extremely time and resource-consuming. ^9e5aa8
 
 ### Class Action
 

@@ -145,9 +145,81 @@ The plaintiff can create a rebuttable presumption of negligence by the defendan
 
 ---
 ### Defense to Negligence
+^a11100
+
 There are two main ways that the defendants could argue about the case, even after negligence has been established.
 1. Assumption of risk
 	- The plaintiff voluntarily chooses to undertake activities knowing the risks beforehand
 2. Comparative negligence
 	- The plaintiff is **ALSO** negligence
 	- Then the fact-finders determine what percentage of damage each party is responsible for, then base the compensation on the percentage
+
+---
+### Product Liability
+There are two ways to determine product liability:
+1. Breach of Warranty (focus later this semester)
+2. Negligence (Previously covered)
+3. **Strict Liability** - California 1963
+	- Applies to products only
+	- Easier to establish compared to negligence
+
+```ad-important
+**Definition 5.5**: Strict Product Liability
+
+A seller or manufacturer being held responsible, **regardless of intent or negligence**, for selling or placing a defective product into the hands of a consumer.
+```
+
+To claim strict liability, a plaintiff needs to claim that
+1. Plaintiff **harmed** by defendant’s product
+2. Injury **caused** by a defect in the product, and
+3. The **defect existed** at the time the product left the defendant and **DID NOT** change substantially along the way
+
+Note that (1) and (2) are essentially the **causation-harm** clause in negligence.
+
+Defects can be broken down into the following categories.
+- **Manufacturing Defects**
+	- Units **failed to meet the internal specification** of that product because of some kinds of **flaws in the manufacturing** products.
+		- E.g. incomplete components, incorrect installation, any evidence that shows divergence from the product specficiation
+- **Warning Defects**
+	- There is **NO** adequate warnings to the foreseeable **risks** that are inherent to the product
+		- Warning defects exist to cover the **residual risk** that exists but cannot fix fundamental defects
+		- The more riskier the product, the more warning there should be
+		- E.g. lawn mower **MUST** have some warning sign as it carries inherent ris
+- **Design Defects**
+	- Different states apply different tests to determine
+		- **Risk-Utility Balancing Test**
+			- `[](risk > utility) -> { defects : !defects }`
+		- **Reasonable Alternative Design Test**
+			- Plaintiff needs to **bring an alternative design to court**, proving that the original has defects
+			- **OR**, shows that the defendant has considered choosing an alternative design but went with a different one
+				- This is done through [[1 Business Litigation#^9e5aa8|discovery]]
+
+---
+### Defense to Product Liability
+There are two main ways that the defendants could argue about the case, even after strict product liability has been established.
+1. Assumption of risks
+	- If customer keeps using it, it is implied that they **deliberately choose** to take on the risk
+1. Comparative fault
+	- Discount the damage if plaintiff is also negligent
+
+Note that these are the same ones as what we've seen in [[#^a11100|negligence]].
+
+---
+### Product Liability & Supply Chain
+As long as **defect existed** when products left a party's hand, that party can be held **liable**.
+- This implies **ALL** upstream parties are **[[3 Entities#^9bef8b|joint and severally liable]]** for the injury
+
+![[Pasted image 20231002121322.png|600]]
+
+To mitigate such risks, producers can
+- Establish **contracts** with suppliers
+	- Suppliers are liable for any defects occurred during their manufacturing stage
+- Vertical integration
+
+```ad-note
+Sellers of **used-goods** **CANNOT** be sued for strict liability. However, this only excludes the salesperson in the chain; if defects exist beforehand and there is **NO** significant change, then all upstream suppliers can still be sued.
+```
+
+In recent era, there has been dispute as to whether **software** is a product or a service.
+- By recognizing it as a service, software companies can avoid strict product liability
+- However, the trade-off is that stock price of a software "product" company is 5x to 8x higher than a software "service" company

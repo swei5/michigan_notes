@@ -27,6 +27,8 @@ All parties are **ALL responsible** for the debt. The total debt is shared betwe
 A wronged party may sue any or all of them, as well as collect the total damages awarded by a court from any or all of them.
 ```
 
+^9bef8b
+
 There is also **NO separation** between personal assets and business assets. The distribution of profits and losses are also **EQUAL** among partners, regardless of capital contribution.
 
 GP follows the pass-through taxation model.
