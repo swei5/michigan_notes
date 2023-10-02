@@ -179,7 +179,7 @@ We can refactor it to use a `Promise`.
 function wait(ms) {
 	return new Promise(resolve => {
 		setTimeout(resolve, ms);
-	});
+	}); // this is equivalent to CONSTRUCTING a Promise object
 }
 ```
 
@@ -195,7 +195,7 @@ A Promise allows you to associate **handlers** with an asynchronous action's eve
 ```ad-note
 **Relation to synchronous methods**
 
-Asynchronous methods (like `wait`) return values like synchronous methods. However, instead of **immediately returning** the final value, the asynchronous method **returns** a `Promise` to supply the value at some point in the future.
+Asynchronous methods (like `wait`, `fetch`) return values like synchronous methods. However, instead of **immediately returning** the final value, the asynchronous method **returns** a `Promise` to supply the value at some point in the future.
 
 ```
 
