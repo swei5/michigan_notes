@@ -9,7 +9,7 @@ As seen in [[2 Static Pages|previous chapter in Static Pages]], HTTP request met
 	- Web form
 
 ---
-### `JSON` Data
+### JSON Data
 Stands for JavaScript Object Notation.
 - Commonly used to send data from server to web client
 
@@ -21,7 +21,7 @@ Stands for JavaScript Object Notation.
 - Value:
 	- String, number, boolean, `null`, **object**, **array**
 
-To validate `JSON`, we can use one of `curl` 's utility:
+To validate JSON, we can use one of `curl` 's utility:
 ```zsh
 curl -s <path> | jsonlint
 ```
@@ -29,8 +29,8 @@ curl -s <path> | jsonlint
 Trailing commas are **NOT allowed**.
 
 #### `curl`
-A command line utility that issues a **[[2 Static Pages#^12804f|get request]]** and returns a `JSON` formatted string.
-- Even better, we can use `Httpie` to make the returned `JSON` object more colorful and readable
+A command line utility that issues a **[[2 Static Pages#^12804f|get request]]** and returns a JSON formatted string.
+- Even better, we can use `Httpie` to make the returned JSON object more colorful and readable
 - We can test it via `http <request_type> httpbin.org/anything <JSON object>`
 
 ---
@@ -39,20 +39,20 @@ A command line utility that issues a **[[2 Static Pages#^12804f|get request]]** 
 	- HTML
 - REST API: Machine-readable text ^b4608e
 	- Representational State Transfer - a collection of **principles** and **practices **
-	- Some form of data structure (`JSON`, for example)
+	- Some form of data structure (JSON, for example)
 	- Common use of REST API:
 		 1. Javascript runs in browser
-		 2. Javascript receives `JSON` data from server
+		 2. Javascript receives JSON data from server
 		 3. JavaScript renders data on page
 	- Commonly Use HTTP
-		- Difference from normal HTTP response is that we get a different content type such as `JSON` instead of `HTML`
+		- Difference from normal HTTP response is that we get a different content type such as JSON instead of HTML
 	- Great for interoperability between web systems
 		- E.g. Laptop running JavaScript code and Instagram server
 
 #### View
 - Detail view or Item view
 	- Returns one object from the database
-	- `JSON` format returned in a typical response
+	- JSON format returned in a typical response
 
 ```json
 curl localhost:8000/<path>/<slug>/
@@ -83,7 +83,7 @@ Notice how the `url` verifies the address we're feeding and the **slug**/id (1 i
 }
 ```
 
-Each item in the `JSON` array is information about one  particular object.
+Each item in the JSON array is information about one  particular object.
 
 #### Pagination
 REST API enables **pagination**.
@@ -102,21 +102,21 @@ In addition to `GET`, `HEAD`, and `POST` HTTP methods we've seen earlier, there 
 - `GET`: return datum
 	- Response `404 NOT FOUND` on a non-existing file request
 - `POST`: create new datum
-	- Request includes `JSON` body. E.g.
+	- Request includes JSON body. E.g.
 		`POST <url> HTTP/1.0`
 		`{"key": "val", ...}`
 	- Response includes a **copy** of the created object and a **link to itself**. E.g.
 		`{"key": "val", ..., "url": <url>/<slug>/}`
 		- Returns `201 CREATED` on success
 - `PATCH`: update part of datum
-	- Request URL includes an ID and a `JSON` body. E.g.
+	- Request URL includes an ID and a JSON body. E.g.
 		`PATCH <url>/<id> HTTP/1.0` 
-		- `JSON` Only contains the field that should be **modified**
+		- JSON Only contains the field that should be **modified**
 	- Response includes a **copy** of the **entire** modified object
 		- Returns `200 OK` on success
 - `PUT`: replace the entire datum
-	- Request URL includes an ID and a `JSON` body
-		- `JSON` contains a replacement value for every field
+	- Request URL includes an ID and a JSON body
+		- JSON contains a replacement value for every field
 	- Response includes a **copy** of the **entire** modified object
 		- Returns `200 OK` on success
 - `DELETE`: delete datum

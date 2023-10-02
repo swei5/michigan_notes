@@ -37,8 +37,8 @@ Below is an outline of how the application functions.
 	- *Or the React Framework*
 1. Client executes JavaScript
 2. JavaScript makes request to REST API
-	- Server responds with `JSON`
-3. JavaScript parses `JSON` into an object
+	- Server responds with JSON
+3. JavaScript parses JSON into an object
 4. JavaScript uses data in object to modify the DOM
 	- *DOM manipulation provided by React Framework*
 1. Page updates
@@ -137,8 +137,8 @@ Let's now, **really** play with the real data responded by the server.
 The Fetch API provides an **interface** for HTTP requests. This is step 7 in our agenda above.
 - A built-in function in JS (ES 6)
 - Call a function when the response arrives
-	- Parse `JSON` into JavaScript object
-- Call another function when `JSON` parsing is finished
+	- Parse JSON into JavaScript object
+- Call another function when JSON parsing is finished
 	- Add DOM nodes using JavaScript object
 
 Why calling functions? This is related to *Asynchronous programming*, something we will cover in the next note.

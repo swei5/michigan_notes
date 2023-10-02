@@ -317,8 +317,8 @@ In event-driven programming, the flow of the program is determined by events.
 Event-driven programming is useful for Graphical User Interfaces (GUIS) like **web applications**.
 
 #### Callback Functions
-An infinite main (event) loop (in C code of the JavaScript interpreter) listens for events and triggers a **callback function**.
-- A callback function is just a normal function, **waiting** to be executed
+An infinite main (event) loop (in C code of the JavaScript interpreter) listens for events and triggers a **callback function**. ^f6f8ef
+- A callback function is just a normal function, **waiting** to be executed ^74c441
 	- Waiting for the `onclick` event
 - Current example: `hello()` is a callback
 
@@ -356,7 +356,7 @@ Initially, the stack is empty (global frame doesn't count) and we see our functi
 
 ![[Pasted image 20230924185033.png|500]]
 
-Then, the function is added to the event table as a **reference** to the function. The event is defined to be happening in one second. How do we know this? The main loop keeps on checking the condition for us.
+Then, the function is added to the event table as a **reference** to the function. The event is defined to be happening in one second. How do we know this? The event loop keeps on checking the condition for us.
 
 ![[Pasted image 20230924185202.png|500]]
 
@@ -364,4 +364,4 @@ After 1000 ms, the event entry is popped and we added a corresponding message fu
 
 ![[Pasted image 20230924185314.png|500]]
 
-When the stack is empty, this message is taken out of the queue and **processed**. Now the function appears on the top of the stack and is executed, and the user will see the output in the console log. 
+When the stack is empty (which means the global stack frame has finished running), this message is taken out of the queue and **processed**. Now the function appears on the top of the stack and is executed, and the user will see the output in the console log. 
