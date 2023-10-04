@@ -1,4 +1,4 @@
-[[2023-10-01]] #JavaScript 
+[[2023-10-01]] #JavaScript #Webpage 
 
 ### Asynchronous Programming, Introduction
 Asynchronous programming is tasks interleaved with one another, in a **single thread** of control.
