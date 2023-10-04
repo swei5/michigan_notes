@@ -96,6 +96,32 @@ There are three elements we need to look for to establish a utility patent.
 1. Novel
 2. Original
 3. Ornamental: pertaining to the appearance and shape of the product
-	- Opposite to utility patent
+	- Opposite of utility patent
 
-#### Patent Litigation
+#### Patent Litigation Defense
+There are two ways to defend against a **direct patent infringement** claim.
+1. **Patent invalidity**
+	- The subject matter should **NOT** be patentable in the first place (proving that it doesn't comply with at least one of the requirements of patent)
+2. **Non-infringement**
+	- The act does not really infringe plaintiff's patent
+
+##### Innocent Infringement
+Once direct infringement is established, the defendant can still argue for the case of **innocent infringement**.
+
+Innocent infringement exists if
+1. Infringement party claims **NOT knowing** the patent
+2. And the patent holder didn't notify the public about the patent
+
+```ad-note
+Note that an innocent infringement is **STILL** an infringement - except that there is no punishment.
+```
+
+To disqualify innocent infringement, the plaintiff simply needs to tell the world about their patent.
+- Through internet, it's fairly easy
+
+If the plaintiff wins the case, the court has two ways of offering remedy to the plaintiff.
+1. **Monetary compensation**
+	- Most common way: how much the defendant made by exploiting the plaintiff's IP?
+	- Preferred way
+2. **Injunction**
+	- Not preferred (costly and time-consuming)
