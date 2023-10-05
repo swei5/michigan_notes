@@ -1,7 +1,7 @@
-[[2023-10-04]] #MapReduce 
+[[2023-10-04]] #MapReduce #DistributedSystem
 
 ### Distributed System
-Distributed system is when **multiple computers cooperating** on a task. 
+Distributed system is when **multiple computers cooperating** on a task.  ^56108f
 - Stored in data centers
 	- Lots of computers means lots of failures
 	- Old strategy: buy a few expensive, reliable servers
@@ -214,7 +214,7 @@ A few common questions we might want to ask ourselves in complicated scenarios (
 
 ---
 ### Summary
-Scalability and fault-tolerance achieved by **optimizing** the execution engine once
+Scalability and fault-tolerance achieved by **optimizing** the execution engine once.
 - This is MapReduce
 - Then we can use it many times by writing **different map** and **reduce** functions for different applications
 	- This calls for stateless mapper and stateless reducer
