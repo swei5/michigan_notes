@@ -184,7 +184,7 @@ After `map()`, workers **exchange** map-output to produce **groups**.
 
 ![[Pasted image 20231004194735.png|300]]
 
-Main breaks `reduce()` keyspace into $m$ chunks (in this case 6). Assigns work. And finally, `reduce()` output may go to shared file stream.
+Main breaks `reduce()` keyspace into $m$ chunks (in this case 6). Assigns work. And finally, `reduce()` output may go to shared file system.
 
 MapReduce framework provides grouping functionality.
 
@@ -199,19 +199,28 @@ Important takeaway here is that
 
 ---
 ### Fault tolerance
-How do we know if a machine goes down?
-- Workers send **periodic heartbeat messages** to Main
-- Main keeps track of which workers are **UP**
-	- Similar technique to Google File System
-
-Without MapReduce, we have to restart the program once a machine dies. However, with MapReduce, we would just have to
-- Restart that task on a different box, if **map worker** dies
-- Restart the reducer, using output from source mappers, if **reduce worker** dies
+A few common questions we might want to ask ourselves in complicated scenarios (large-scale projects):
+- How do we know if a machine goes down?
+	- Workers send **periodic heartbeat messages** to Main
+	- Main keeps track of which workers are **UP**
+		- Similar technique to Google File System
+- What happens when a machine dies?
+	- Without MapReduce, we have to restart the program once a machine dies.
+	- However, with MapReduce, we would just have to
+		- Restart that task on a different box, if **map worker** dies
+		- Restart the reducer, using output from source mappers, if **reduce worker** dies
+- What about slow, not dead, yet slow machines?
+	- Run the same map job on two machines, and kill the second-place finisher
 
 ---
 ### Summary
+Scalability and fault-tolerance achieved by **optimizing** the execution engine once
+- This is MapReduce
+- Then we can use it many times by writing **different map** and **reduce** functions for different applications
+	- This calls for stateless mapper and stateless reducer
+
 Map and reduce functions are inspired by functions of the same name in **Lisp** programming language.
 - Functional programming
 	- Computation as the evaluation of mathematical function
 	- Functions have no side effects, AKA pure, stateless functions
-	- Easy to parallelize!
+	- Easy to **parallelize**!
