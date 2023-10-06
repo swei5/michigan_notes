@@ -11,10 +11,11 @@ We would often need storage that's too big for one computer in the following sce
 - Archive social media data for billions of users
 
 #### Traditional File System
-They are not GFS.
+It is not GFS.
 - From the user's perspective
 	- Directories organized in a tree
 	- Files are contiguous
-- From the disk's perspective
+- From the disk's perspective (physical storage)
 	- Files and directories are organized as sequences of non-contiguous blocks
-- 
+	- Disk is organized as an array of blocks
+	- On-disk **inode** (index node) data structure describes each file or directory
