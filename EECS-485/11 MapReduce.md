@@ -12,7 +12,7 @@ Distributed system is when **multiple computers cooperating** on a task.  ^56108
 
 We will cover these topics later on in the year.
 
-Distributed systems are important because they are the solution for dealing with the **scale** of the web.
+Distributed systems are important because they are the solution for dealing with the **scale** of the web. ^664ec2
 
 Some examples of distributed systems include:
 - **MapReduce**: Distributed system for **compute**
