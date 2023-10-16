@@ -88,3 +88,56 @@ t = Thread(target=hello)
 t.start()
 t.join()
 ```
+
+![[Pasted image 20231015222527.png|400]]
+
+Similar to processes, each CPU core can run one thread at a time, and the OS switches in every ~1-10 ms.
+
+![[Pasted image 20231015222050.png|400]]
+
+On a single-core machine, threads **take turn**. On a multi-core machine, threads run in **parallel** (not in Python).
+- Threads still take turns because there are usually many **more threads than cores**
+
+Threads have a lot in common with processes in that they both provide an illusion of parallelism and both can indeed provide true parallelism on the right hardware.
+- However, threads **share memory**, implying that
+	- There is **LESS** overhead, but
+	- **More** security risk, depending on the application
+
+Let's go back to the example of concurrent requests. If we have multiple threads handling multiple requests, things would get a lot more easier.
+
+![[Pasted image 20231015222622.png|400]]
+
+No more unnecessary waiting!
+
+```ad-summary
+Threads are useful when
+- Multiple things happening at once
+	- Within one program
+- May need to share data in memory
+- Dealing with some usually slow resource
+	- Network response
+	- Disk I/O
+	- Reading a sensor
+	- Human input
+
+**Benefits** of threads
+- Simpler programming model
+	- The illusion of a dedicated CPU per thread
+	- State for each thread (local variables)
+- OS takes care of CPU sharing
+	- Other threads can progress while one thread waits for I/O
+```
+
+```ad-tldr
+**Processes vs. threads**
+- **Processes** have separate address spaces
+	- Useful when there is not complete trust
+	- Useful to limit the damage caused by buggy code
+	- Needed for execution on **different computers**
+- Threads share an address space
+	- Useful for lower memory overhead
+	- Shares data
+```
+
+---
+### Synchronization
