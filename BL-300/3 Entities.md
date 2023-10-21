@@ -69,7 +69,7 @@ A Limited liability company (LLC) is **a business structure that offers limited
 
 To become an LLC, members need to file an **operating agreement** to the state, which isn't needed by GPs.
 
-It is a **members-owned** business that is managed by **managers**, whom are elected by **members** . Members play a **minimum role** in the operation.
+It is a **members-owned** business that is managed by **managers**, whom are elected by **members**. Members play a **minimum role** in the operation.
 - **Managers** are in charge of management-level affairs
 - **Officers** are elected by managers, who take care of day-to-day operations
 
