@@ -153,29 +153,6 @@ Magda
 Marilyn
 Myrtle II
 ```
-
----
-### Review: Web Pages
-- Static pages
-	- Responds with same content every time the page is loaded
-	- Only HTML + CSS
-	- **Client**: browsers are HTML renderers
-	- **Server**: HTTP fileservers
-	- E.g. `python3 -m http.server`, Nginx, Apache
-- Server-side dynamic pages
-	- Response is the output of a **function**
-		- Client makes a request, server executes a function and outputs (usually an HTML) the response
-	- Generation of content is **specific to each request**
-
-```ad-info
-There are limitations, obviously. Since server-side dynamic pages are created at time of request, they don't change after the HTML has been generated and transferred to client's browser.
-
-That means
-- No browser chat
-- No browser-based field validation
-- No grabbale map
-```
-
 ##### `forEach` and `map`
 `forEach` loops "do the right thing".
 - Like in other programming languages
@@ -212,13 +189,35 @@ myrtleii 1.5
 ```
 
 ---
+### Review: Web Pages
+- Static pages
+	- Responds with same content every time the page is loaded
+	- Only HTML + CSS
+	- **Client**: browsers are HTML renderers
+	- **Server**: HTTP fileservers
+	- E.g. `python3 -m http.server`, Nginx, Apache
+- Server-side dynamic pages
+	- Response is the output of a **function**
+		- Client makes a request, server executes a function and outputs (usually an HTML) the response
+	- Generation of content is **specific to each request**
+
+```ad-info
+There are limitations, obviously. Since server-side dynamic pages are created at time of request, they don't change after the HTML has been generated and transferred to client's browser.
+
+That means
+- No browser chat
+- No browser-based field validation
+- No grabbale map
+```
+
+---
 ### Client-Side Dynamic Pages
 In short, JavaScript running in the client’s web browser modifies the DOM. The rendered page changes.
 
 We can break this down into three steps:
 1. Client requests **static** **HTML** page from server
 	- Source file often contains a `<script src="script.js">` tag
-2. Client requests** static JavaScript** file from server
+2. Client requests. **static JavaScript** file from server
 3. Client executes JavaScript
 	- Using a JavaScript interpreter built in the browser
 4. JavaScript code modifies the DOM
