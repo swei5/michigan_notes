@@ -24,7 +24,7 @@ A trade secret is business or proprietary information that is formulas, processe
 ```
 
 Note that this is a **potentially very broad** list. Trade secrets are inherent to the company and doesn't require any filing to be valid. 
-- Patents and trademarks, on the other hand, are **NOT**valid or valuable until they are file, and they only applies to certain things
+- Patents and trademarks, on the other hand, are **NOT** valid or valuable until they are file, and they only applies to certain things
 
 **Negative know-how** are past evidence of **failures** and **trials** of a company. They are valuable because knowing this would save a significant amount of R&D costs by an outside party.
 - Especially important in the pharmaceutical industry
