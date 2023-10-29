@@ -60,7 +60,7 @@ In essence, GFS files are stored as a series of **chunks**, similar to blocks in
 
 A even cooler illustration:
 
-![[Pasted image 20231005223910.png|500]]
+![[Pasted image 20231005223910.png|500]] ^beed5c
 
 Client asks for information about the chunks (not the files) through the main reverted index table. The main returns a list of chunks and chunk locations. The client makes request to the chunk servers and get corresponding chunk responses.
 

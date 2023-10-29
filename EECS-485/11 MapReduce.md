@@ -178,7 +178,7 @@ First, client will submit word count job, indicating **map code**, **reduce code
 
 Then, main breaks input file into $k$ chunks, (in this case 6). Assigns work to workers.
 
-![[Pasted image 20231004194643.png|600]]
+![[Pasted image 20231004194643.png|600]] ^d9ff86
 
 After `map()`, workers **exchange** map-output to produce **groups**. 
 

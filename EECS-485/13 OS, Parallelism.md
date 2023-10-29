@@ -1,7 +1,7 @@
 [[2023-10-15]] #DistributedSystem #OperatingSystem
 
 ### Motivation
-Previously, we've covered the idea of **[[11 MapReduce#^664ec2|distributed system]]**, including MapReduce (distributed system for compute) and GFS (distributed system for storage). In this chapter, we will be discussing how distributed systems are **implemented** using threads and processes for parallelization.
+Previously, we've covered the idea of **[[11 MapReduce#^664ec2|distributed system]]**, including MapReduce (distributed system for compute) and GFS (distributed system for storage). In this chapter, we will be discussing how distributed systems are **implemented** using threads and processes for parallelization. ^45a21f
 
 #### Sequential Program
 Sequential programs are **NOT** parallel. 
@@ -76,6 +76,7 @@ When are processes **NOT useful**?
 Threads are multiple **functions** in **one process** running **simultaneously**.
 - Share heap, static data, code
 - Lower overhead than processes
+- Functions get their **own stack** in the same memory segment
 
 ![[Pasted image 20231015153238.png|300]]
 
@@ -95,32 +96,37 @@ t.join()
 ![[Pasted image 20231015222527.png|400]]
 
 `start` tells the program to start a new thread, and `join` tells it to return back to the **main thread**. 
-- Everything coded before this lecture is **IN** the main thread
+- Everything we coded before is **IN** the main thread, implicitly
 
-Similar to processes, each CPU core can run one thread at a time, and the OS switches in every ~1-10 ms.
+Similar to scheduling processes, each CPU core can run one thread at a time, and the OS switches in every ~1-10 ms.
 
 ![[Pasted image 20231015222050.png|400]]
 
 On a single-core machine, threads **take turn**. On a multi-core machine, threads run in **parallel** (not in Python).
-- Threads still take turns because there are usually many **more threads than cores**
+- Threads still **take turns** because there are usually many **more threads than cores**
 
 Threads have a lot in common with processes in that they both provide an illusion of parallelism and both can indeed provide true parallelism on the right hardware.
 - However, threads **share memory**, implying that
 	- There is **LESS** overhead, but
 	- **More** security risk, depending on the application
+		- One thread could mess with the heap that is used by another thread!
 
-Let's go back to the example of concurrent requests. If we have multiple threads handling multiple requests, things would get a lot more easier.
+Let's go back to the example of concurrent requests. If we have multiple threads handling multiple requests and interweave and operation and overlap the waiting, things would get a lot more easier.
 
 ![[Pasted image 20231015222622.png|400]]
 
-No more unnecessary waiting!
+The operating system is smart that it calls threads to take turn when one of them is not busy. No more unnecessary waiting! 
+
+```ad-note
+Waiting creates opportunity for other threads to **make progress** when the other threads are waiting, making threading useful.
+```
 
 ```ad-summary
 Threads are useful when
 - Multiple things happening at once
-	- Within one program
+	- Within **ONE** program/within one process
 - May need to share data in memory
-- Dealing with some usually slow resource
+- Dealing with some usually slow resource: waiting
 	- Network response
 	- Disk I/O
 	- Reading a sensor
@@ -130,6 +136,7 @@ Threads are useful when
 - Simpler programming model
 	- The illusion of a dedicated CPU per thread
 	- State for each thread (local variables)
+		- Each function gets their own stack, thus the local variables
 - OS takes care of CPU sharing
 	- Other threads can progress while one thread waits for I/O
 ```
@@ -137,7 +144,7 @@ Threads are useful when
 ```ad-tldr
 **Processes vs. threads**
 - **Processes** have separate address spaces
-	- Useful when there is not complete trust
+	- Useful when there is **NOT** complete **trust**
 	- Useful to limit the damage caused by buggy code
 	- Needed for execution on **different computers**
 - Threads share an address space
@@ -171,9 +178,13 @@ The threads are sharing the **output stream** in a manner that looks like
 
 It might occur that there are multiple ways to interleave the operations from `t1` and `t2`.
 - Possible outputs include `hello, world, hello, world`, whereas it's impossible to see something like `world, hello, world, hello`
+	- `hello` must come before `world` within the same thread, but the order in which the OS calls the threads is totally random
+		- `t1->t2->t1->t2`, `t1->t1->t2->t2`, `t1->t2->t2->t1`, etc.
 
-This is oftentimes unpredictable when the OS decides when threads take turns.
-- Different timing means different thread order means different output
+This is oftentimes **unpredictable** when the OS decides when threads take turns.
+- Different timing results in different thread order which results in different output
+	- Ordering within each thread is **sequential**
+	- Global ordering are determined by the OS - random
 
 Thus, we might want to find a way to merge multiple threads together into global order, without producing incorrect results. This leads us to **locks**.
 
@@ -193,14 +204,13 @@ In Python, the following operations are atomic, which means it's safe to perform
 However, **combinations of atomic operations** are not atomic!
 - `x=1` are atomic doesn't make `x=x+1` atomic
 
-To let the programmers manually limit when threads take turn, Lock is introduced.
+To let the programmers manually limit when threads take turn, **Lock** is introduced.
 - Allows for mutual exclusion of operations (mutex)
 
 ```python
 import time
 import random
-from threading import current_thread,
-Thread, Lock
+from threading import current_thread, Thread, Lock
 
 def hello(lock):
 	name = current_thread().name
@@ -222,6 +232,8 @@ t2.join()
 The above code would produce the following:
 
 ![[Pasted image 20231015224337.png|400]]
+
+`acquire` and `release` are the mechanism that restricts when other threads take turn.
 
 ```ad-tldr
 **Threads vs Asynchronous programming**
