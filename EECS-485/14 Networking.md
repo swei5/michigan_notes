@@ -63,5 +63,43 @@ We could use this utility in CLI by `curl 'https://api.ipgeolocation.io/ipgeo?ap
 A message is broken down into **packets** by the sender.
 - Usually ~1,000 to 1,500 B in size
 
-We use packets for the following reasons.
-- 
+Packets are great for the following reasons.
+- Multiple programs on one computer can share one connection
+- Multiple computers can share one connection
+
+---
+### TCP (Transmission Control Protocol)
+IP is **NOT reliable** for the following causes.
+1. Packets may arrive **out of order**
+2. Packets may **disappear**
+3. Packets may be **repeated**
+
+TCP offers an abstraction to make it look like these problems don't exist.
+
+To tend to problem (1), packets may arrive out of order, we do the following:
+1. Sender assigns a **sequence number** to each packet
+2. Receiver reassembles packets in order by sequence number
+3. Receiver gives data to application (e.g. browser) in order
+
+![[Pasted image 20231029192356.png|500]]
+
+In the example above, even though `seq1` arrives ahead of `seq1`, the receiver is still able to assemble the message in order by the sequence number. 
+
+The timeouts occurred between the receiver OS and the receiver application is due to the receiver's failure in sending out the entirety of the ordered data. Once the receiver finishes reassembling the packets, it then successfully sends it to the application.
+
+To solve for problem (2), packets may disappear, we use the following strategies under TCP:
+1. Sender stores a copy of each packet
+2. Sender sets a timer for each packet when it goes out
+3. Receiver sends an **acknowledgement** (ACK) for each packet
+4. Sender **resends** the packet if the **timer expires**
+	- Delete the packet upon receiving ACK
+
+![[Pasted image 20231029192828.png|400]]
+
+If packet is delivered and ACK is received by the sender, it deletes the packet copy.
+
+![[Pasted image 20231029192919.png|400]]
+
+If the packet fails to deliver, the timer will result in a  timeout which asks the sender to resend the packet again.
+
+Lastly, to deal with problem (3), 
