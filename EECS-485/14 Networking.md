@@ -76,18 +76,18 @@ IP is **NOT reliable** for the following causes.
 
 TCP offers an abstraction to make it look like these problems don't exist.
 
-To tend to problem (1), packets may arrive out of order, we do the following:
+To tend to problem (1), packets may arrive **out of order**, we do the following:
 1. Sender assigns a **sequence number** to each packet
 2. Receiver reassembles packets in order by sequence number
 3. Receiver gives data to application (e.g. browser) in order
 
-![[Pasted image 20231029192356.png|500]]
+![[Pasted image 20231029192356.png|400]]
 
 In the example above, even though `seq1` arrives ahead of `seq1`, the receiver is still able to assemble the message in order by the sequence number. 
 
 The timeouts occurred between the receiver OS and the receiver application is due to the receiver's failure in sending out the entirety of the ordered data. Once the receiver finishes reassembling the packets, it then successfully sends it to the application.
 
-To solve for problem (2), packets may disappear, we use the following strategies under TCP:
+To solve for problem (2), packets may **disappear**, we use the following strategies under TCP: ^90401c
 1. Sender stores a copy of each packet
 2. Sender sets a timer for each packet when it goes out
 3. Receiver sends an **acknowledgement** (ACK) for each packet
@@ -102,4 +102,81 @@ If packet is delivered and ACK is received by the sender, it deletes the packet 
 
 If the packet fails to deliver, the timer will result in a  timeout which asks the sender to resend the packet again.
 
-Lastly, to deal with problem (3), 
+Lastly, to deal with problem (3) that packets may be **repeated**, we ask the receiver to **ignore** sequence number that it **has seen before**. A packet may be repeated because
+- ACK is dropped
+- Packet is slow
+
+Let's show an example of how a slow packet can screw things up. Imagine we have a timeout because a packet (`seq0`) fails to deliver (it's still en route because of how slow it is).
+
+![[Pasted image 20231030203713.png|400]]
+
+Then, the sender sends a copy of `seq0` because of the timeout as described [[#^90401c|above]]. This second packet may arrive even faster than the first one.
+
+![[Pasted image 20231030203824.png|400]]
+
+In this case, the slow packet will be seen as a duplicate and we should drop it by looking up its sequence number.
+
+#### Flow Control
+At times, we might have problems such that a **fast sender** overloads a **slow receiver**.
+- E.g. sender is AWS and receiver is a smart watch
+
+The solution to this is **flow control**, which is having the receiver tell the sender how many **empty buffer spots** it has.
+- Sender can then put that much data on the network at one time
+- Also called *sliding window*, or *receiver window (RWND)* 
+
+![[Pasted image 20231030204811.png|400]]
+
+#### Congestion Control
+Another problem is when **many senders** overload a network router.
+- Routers have buffers, but they drop packets when its buffer is **full**
+
+![[Pasted image 20231030205101.png|400]]
+
+In this case, the first packet from sender 2 fails to deliver as the router buffer is full, and hence it is dropped.
+
+The solution to this problem is **congestion control**. Here, we ask the sender to maintain a **congestion window** (CWND), which tracks the maximum packets awaiting acknowledgements. Traditionally, the sender
+- Decrease congestion window when sender **loses** a packet
+	- Assumes that a router dropped a packet because it was too busy
+- Increase congestion window when sender **receives an ACK**
+	- Packet got there safely, maybe there's room to send more
+
+```ad-summary
+**Flow control** (AKA sliding window)
+- Keep a fast sender from overloading a slow receiver: RWND
+
+**Congestion control**
+- Keep a set of senders from overloading the network: CWND
+
+We need both!
+- TCP Window: $\min(\text{congestion window}, \text{receiver window})$
+```
+
+---
+### UDP (User Datagram Protocol)
+TCP's reliability mechanism can cause packets to be late.
+- Late messages matter to applications like
+	- Voice/video chats
+	- Video games
+	- Anything real-time
+
+The solution to this is UDP (User Datagram Protocol) - letting the application decide what it wants to do.
+- Better for real-time applications
+
+---
+### Sockets
+The Socket API is provided by OS functions that let applications use the network.
+- Provides the TCP buffers that store packets
+- Implements TCP sliding window
+
+To allow for multiple programs sharing the network, we can create **multiple sockets**, each with its own **buffer** and **unique port number** (unique identifier for a socket on a host).
+
+![[Pasted image 20231030214319.png|400]]
+
+For example, we could have one server runs two programs that use the network.
+- Nginx listens for incoming HTTP requests
+- SSHD listens for incoming SSH connections
+
+Both processes run on the **same host** using **different ports**.
+- HTTP: port 80
+	- HTTPS: port 445
+- SSH: port 22
