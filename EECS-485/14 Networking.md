@@ -132,9 +132,10 @@ Another problem is when **many senders** overload a network router.
 
 ![[Pasted image 20231030205101.png|400]]
 
-In this case, the first packet from sender 2 fails to deliver as the router buffer is full, and hence it is dropped.
+In this case, the first packet from sender 2 fails to deliver as the router buffer is full, and the router will have to drop this packet.
+- Causing a timeout from sender 2 - sending two packets at once must be too much!
 
-The solution to this problem is **congestion control**. Here, we ask the sender to maintain a **congestion window** (CWND), which tracks the maximum packets awaiting acknowledgements. Traditionally, the sender
+The solution to this problem is **congestion control**. Here, we ask the sender to maintain a **congestion window** (CWND), which tracks the maximum packets awaiting acknowledgements (also **number of sent packages**). Traditionally, the sender
 - Decrease congestion window when sender **loses** a packet
 	- Assumes that a router dropped a packet because it was too busy
 - Increase congestion window when sender **receives an ACK**
@@ -158,17 +159,20 @@ TCP's reliability mechanism can cause packets to be late.
 	- Voice/video chats
 	- Video games
 	- Anything real-time
+		- Packages will have to **wait** before any of the previously missing packages, as TCP doesn't allow for out-of-order networking
+		- E.g. laggy videos
 
 The solution to this is UDP (User Datagram Protocol) - letting the application decide what it wants to do.
 - Better for real-time applications
+- Doesn't handle out-of-order and dropped packets
 
 ---
 ### Sockets
-The Socket API is provided by OS functions that let applications use the network.
+The Socket API is an abstraction provided by OS functions that let applications use the network.
 - Provides the TCP buffers that store packets
 - Implements TCP sliding window
 
-To allow for multiple programs sharing the network, we can create **multiple sockets**, each with its own **buffer** and **unique port number** (unique identifier for a socket on a host).
+To allow for multiple programs **sharing the network**, we can create **multiple sockets**, each with its own **buffer** and **unique port number** (unique identifier for a socket on a host).
 
 ![[Pasted image 20231030214319.png|400]]
 
@@ -180,3 +184,5 @@ Both processes run on the **same host** using **different ports**.
 - HTTP: port 80
 	- HTTPS: port 445
 - SSH: port 22
+
+When a client sends a message to the host, it includes the **port number** of the operating system that it is looking to connect.
