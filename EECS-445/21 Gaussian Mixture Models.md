@@ -1,4 +1,4 @@
-[[2023-04-03]] #Gaussians #Mixture #Probability 
+[[2023-04-03]] #Gaussians #Probability 
 
 ### Recap, Spherical Gaussian
 Recall previous discussions on Spherical Gaussian Distribution being a special type of Multivariate Gaussian Distribution: ![[20 MLE, Gaussians#^1fcfef]]

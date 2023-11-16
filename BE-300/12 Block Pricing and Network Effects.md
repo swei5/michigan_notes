@@ -1,4 +1,4 @@
-[[2023-03-07]] #PriceDiscrimination #BlockPricing #NetworkEffects
+[[2023-03-07]] #PriceDiscrimination
 
 ### Block Pricing
 - Conditions: firms do **NOT** know customer types, customers can all be identical or different, but firms must be capable of **preventing resale**

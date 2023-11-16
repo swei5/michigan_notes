@@ -1,4 +1,4 @@
-[[2023-02-09]] #DecisionTree #Ensemble #Regularization #Entropy #RandomForests #Bagging #LinearClassifier #SupervisedLearning 
+[[2023-02-09]] #DecisionTree #Ensemble #Regularization #LinearClassifier #SupervisedLearning 
 
 ### Information Gain
 Recall the definition of **conditional entropy** ![[9 Decision Tree#^5c5641]] 

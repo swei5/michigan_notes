@@ -1,4 +1,4 @@
-[[2023-10-28]] #DistributedSystem 
+[[2023-10-28]] #DistributedSystem #OperatingSystem 
 
 ### Motivation
 Recall that distributed system is multiple computers cooperating on a task. Distributed systems are implemented through threads and processes for parallelization. 

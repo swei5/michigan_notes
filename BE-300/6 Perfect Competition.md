@@ -1,4 +1,4 @@
-[[2023-01-24]] #PerfectCompetition #MarketStructure #MR #MC
+[[2023-01-24]] #MarketStructure
 
 Pricing strategies are dependent upon market structures.
 

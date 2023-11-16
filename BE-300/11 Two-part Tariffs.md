@@ -1,4 +1,4 @@
-[[2023-02-21]] #PriceDiscrimination #TwoPartTariff
+[[2023-02-21]] #PriceDiscrimination
 
 ### Two-part Tariffs
 

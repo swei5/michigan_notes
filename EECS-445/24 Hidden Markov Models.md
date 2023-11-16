@@ -1,4 +1,4 @@
-[[2023-04-12]] #Markov #Probability 
+[[2023-04-12]] #Probability 
 
 ### Markov Process
 A method to model **sequential data**. Before this, we need to introduce the concept of **transition probabilities**.

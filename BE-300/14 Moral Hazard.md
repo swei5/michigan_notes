@@ -1,4 +1,4 @@
-[[2023-03-23]] #AsymmetricInformation #MoralHazard
+[[2023-03-23]] #AsymmetricInformation
 
 ### Moral Hazard
 

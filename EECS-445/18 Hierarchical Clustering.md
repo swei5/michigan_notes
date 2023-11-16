@@ -1,4 +1,4 @@
-[[2023-03-22]] #UnsupervisedLearning #Clustering #Agglomerative
+[[2023-03-22]] #UnsupervisedLearning #Clustering
 
 ### Overview
 Hard clustering algorithms include

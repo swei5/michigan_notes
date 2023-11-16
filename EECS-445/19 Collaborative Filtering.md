@@ -1,4 +1,4 @@
-[[2023-03-27]] #UnsupervisedLearning #Filtering
+[[2023-03-27]] #UnsupervisedLearning
 
 ### Motivation
 Assume we have a utility matrix of size $m \times n$ for $n$ customers and $m$ movies. We have some partial knowledge about *some* customers' preferences of *some* movies only, how do we solve for the missing ratings?

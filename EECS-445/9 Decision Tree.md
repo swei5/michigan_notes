@@ -1,4 +1,4 @@
-[[2023-02-06]] #DecisionTree #Entropy #LinearClassifier #SupervisedLearning 
+[[2023-02-06]] #DecisionTree #LinearClassifier #SupervisedLearning 
 
 ### Recap
 - Linear models, regression

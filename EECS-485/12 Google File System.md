@@ -1,4 +1,4 @@
-[[2023-10-05]] #DistributedSystem #GFF
+[[2023-10-05]] #DistributedSystem
 
 ### Distributed System
 Recall that [[11 MapReduce#^56108f|distributed system]] is about multiple computers cooperating on a task. In last section, we covered MapReduce, which is a distributed system for compute. Today, we will dive into Google File System (GFS), a distributed system for storage.

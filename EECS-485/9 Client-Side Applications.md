@@ -1,4 +1,4 @@
-[[2023-09-30]] #Webpage #JavaScript #React
+[[2023-09-30]] #Webpage #JavaScript #React #RESTAPI 
 
 ### Server-Side versus Client-Side
 - Server-side dynamic pages

@@ -1,4 +1,4 @@
-[[2023-04-10]] #BayesianNetwork #Probability  #MLE 
+[[2023-04-10]] #Probability  #MLE 
 
 ### Bayesian Networks
 We want to use **probabilistic model** because we can compute

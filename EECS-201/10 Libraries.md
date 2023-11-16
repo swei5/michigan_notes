@@ -1,4 +1,4 @@
-[[2023-03-30]] #Library #System 
+[[2023-03-30]] #System 
 
 ### Libraries
 - Collections of code and data that can be used by other programs

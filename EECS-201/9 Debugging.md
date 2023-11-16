@@ -1,4 +1,4 @@
-[[2023-03-25]] #Debugging #System 
+[[2023-03-25]] #System 
 
 ### `printf` Debugging
 Very Intuitive: just print stuff out at certain points.

@@ -1,8 +1,8 @@
-[[2023-10-04]] #MapReduce #DistributedSystem
+[[2023-10-04]] #DistributedSystem
 
 ### Distributed System
 Distributed system is when **multiple computers cooperating** on a task.  ^56108f
-- Stored in data centers
+- Stored in data centers ^cd42b1
 	- Lots of computers means lots of failures
 	- Old strategy: buy a few expensive, reliable servers
 	- New strategy: buy lots of cheap, unreliable servers, use software to make them reliable
