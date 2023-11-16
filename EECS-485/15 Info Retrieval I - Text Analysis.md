@@ -130,7 +130,7 @@ Vector space similarity is also called the **cosine**, or **normalized inner pro
 Hence, the similarity of two docs is
 $$\text{sim}(D_{i},D_{j})=\sum\limits_{k=1}^{t} w_{ik} \cdot w_{jk}$$
 In the case when $D_i$ and $D_j$ are **NOT normalized** ahead of time (at query time), this is essentially
-$$\text{sim}(D_{i},D_{j})=\cos{(\theta)}=\frac{\textbf{d}_{i} \cdot \textbf{d}_{j}}{||\textbf{d}_{i}|||\textbf{d}_{j}||}=\frac{\sum_{k=1}^{t} w_{ik} \cdot w_{jk}}{\sqrt{\sum_{k=1}^{t} w_{ik}^{2} \sum_{k=1}^{t} w_{ik}^{2}}}$$
+$$\text{sim}(D_{i},D_{j})=\cos{(\theta)}=\frac{\textbf{d}_{i} \cdot \textbf{d}_{j}}{||\textbf{d}_{i}|||\textbf{d}_{j}||}=\frac{\sum_{k=1}^{t} w_{ik} \cdot w_{jk}}{\sqrt{\sum_{k=1}^{t} w_{ik}^{2} \sum_{k=1}^{t} w_{ik}^{2}}}$$ ^c16cfc
 
 ---
 ### Assessing Rank Quality
