@@ -1,4 +1,4 @@
-[[2023-03-13]] #SupervisedLearning #NeuralNetwork #RNN
+[[2023-03-13]] #SupervisedLearning #NeuralNetwork
 
 ### Motivation
 1. Efficiently address varying input **size**

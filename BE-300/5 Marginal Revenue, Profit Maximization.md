@@ -1,4 +1,4 @@
-[[2023-01-19]] #ProfitMaximization #Monopoly #MarketStructure #MR #MC 
+[[2023-01-19]] #MarketStructure
 
 ### Marginal Revenue
 $MR$ has the same intercept as **inverse demand curve** and **twice** the slope.

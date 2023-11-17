@@ -1,4 +1,4 @@
-[[2023-01-26]] #Monopoly #ProfitMaximization #MarketStructure #MR #MC 
+[[2023-01-26]] #MarketStructure
 
 ### Market Structure
 - Perfect competition: many firms, no market power, price takers

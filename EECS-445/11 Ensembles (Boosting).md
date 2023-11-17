@@ -1,4 +1,4 @@
-[[2023-02-13]] #Ensemble #Boosting #DecisionTree #LossFunction #LinearClassifier #SupervisedLearning 
+[[2023-02-13]] #Ensemble #Boosting #DecisionTree #LinearClassifier #SupervisedLearning 
 
 ### Boosting
 

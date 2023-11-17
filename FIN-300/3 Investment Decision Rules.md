@@ -1,4 +1,4 @@
-[[2023-01-30]] #Investment #CashFlow #NPV #IRR #DiscountRate 
+[[2023-01-30]] #Investment #CashFlow #NPV #DiscountRate 
 
 ### Ranking Projects
 There are **two** types of investment decisions

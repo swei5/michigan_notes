@@ -1,4 +1,4 @@
-[[2023-03-08]] #System #Make
+[[2023-03-08]] #System
 
 ### Overview
 - Programs

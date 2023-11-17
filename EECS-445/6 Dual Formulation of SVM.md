@@ -1,4 +1,4 @@
-[[2023-01-25]] #SVM #FeatureMap #DualFormulation #Optimization
+[[2023-01-25]] #SVM #FeatureMap #Optimization
 
 ### Recap
 

@@ -1,4 +1,4 @@
-[[2023-02-16]] #PriceDiscrimination #Bundling #Tying
+[[2023-02-16]] #PriceDiscrimination #Bundling
 
 ### Tying
 

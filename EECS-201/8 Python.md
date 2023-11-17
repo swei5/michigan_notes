@@ -1,4 +1,4 @@
-[[2023-03-25]] #Python #Functions
+[[2023-03-25]]
 
 ### Overview
 - Shell scripting is hard

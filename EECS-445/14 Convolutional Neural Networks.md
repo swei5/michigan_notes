@@ -1,4 +1,4 @@
-[[2023-03-06]] #NeuralNetwork #SupervisedLearning #Optimization #CNN
+[[2023-03-06]] #NeuralNetwork #SupervisedLearning #Optimization
 
 ### Intro
 - Represent images as input - pixels $X$

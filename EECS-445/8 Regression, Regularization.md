@@ -1,4 +1,4 @@
-[[2023-02-01]] #LossFunction #SGD #Regularization #EmpiricalRisk #FeatureSelection 
+[[2023-02-01]] #SGD #Regularization
 
 ### Recap : Loss
 
