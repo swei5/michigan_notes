@@ -23,7 +23,7 @@ How messages are passed from one computer to another computer. Examples include
 
 #### IP Address
 Since there are numerous computers connected to the internet, to tell them apart we would require some form of **addresses**.
-- Every computer on the Internet has an address
+- Every computer on the Internet has an address ^a6362e
 	- IPv4: 32-bit allows for 4 billion computers
 	- IPv6: 64-bit, way more
 
@@ -39,7 +39,7 @@ This has to do with Domain Name Service, covered later this term.
 ```
 
 #### Routers
-Computers are connected through the router. A router **forwards data** from one network to the next, and is usually a purpose-built Linux computer with multiple network connections.
+Computers are connected through the router. A router **forwards data** from one network to the next, and is usually a purpose-built Linux computer with multiple network connections. ^0addf7
 
 ![[Pasted image 20231029190803.png|500]]
 
