@@ -43,6 +43,9 @@ Benefits of IaaS include
 **Solution**: Rent computers with software already installed and configured
 
 #### PaaS
+
+^39388c
+
 **Platform as a Service** (PaaS) is renting a computer in somebody else's data center.
 - Just like IaaS, but PaaS gets **software management and configuration**
 - E.g. AWS Relational Database Service (RDS), Google Cloud SQL, Microsoft Azure SQL
