@@ -27,6 +27,9 @@ However, there's a lot more to just building a data center.
 **Solution**: Rent computers - **IaaS**
 
 #### IaaS
+
+^b1ee91
+
 **Infrastructure as a Service** (IaaS) is **renting a computer** in somebody else's datacenter.
 - Usually connected via SSH (no monitor, mouse, keyboard)
 - Might be a virtual machine (more on that next time)

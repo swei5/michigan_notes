@@ -55,3 +55,26 @@ Round robin DNS and load balancing can be acquired via [[18 Scaling I -  Static 
 
 ---
 ### Hardware Virtualization
+To scale the servers we need to rent a lot of computers/servers from an [[18 Scaling I -  Static Pages#^b1ee91|IaaS]] provider. Nevertheless, this approach comes with a ton of problems.
+1. Energy efficiency
+	- IaaS provider has **many different computers**
+	- Wasteful to run the same **small server-side dynamic pages** program on each server. Difficult to **customize** for each server.
+2. Diverse environments
+	- Programs have different environment
+		- E.g. Linux kernel versions, installed libraries, etc.
+	- How to customize the **OS and environment** for each program?
+3. Security and isolation
+	- IaaS providers has **many customers**
+	- How to securely separate different customer's programs from each other?
+4. Scaling
+	- Variable workload
+	- How to add more servers when load is high, and remove them when load is low?
+
+This calls for **hardware virtualization**.
+
+Without hardware virtualization, one physical computer runs one operating system. With hardware virtualization, one physical computer runs **multiple operating systems**.
+
+```ad-tldr
+**Hardware virtualization terminology**
+
+```
