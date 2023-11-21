@@ -40,6 +40,9 @@ In the subsequent segment, we will talk more about ranking.
 
 ---
 ### Vector Space Model
+
+^a3a539
+
 Think of each document is a vector of values, and there is one component for each term.
 - Thus we have a **vector space**
 	- A doc is a point in the space
@@ -97,7 +100,7 @@ Rumpelstiltskin is a more rare word - if a rare word occurs in your search, it's
 #### Inverse Document Frequency
 Inverse Document Frequency (IDF) provides **high values** for **rare words**, low values for common words.
 $$IDF=\frac{N}{n_{k}}$$
-Here, $N$ is the number of total docs in collection $C$, and $n_k$ is the number of docs in $C$ that contains $T_k$. In our example,
+Here, $N$ is the number of total docs in collection $C$, and $n_k$ is the number of docs in $C$ that contains $T_k$. In our example, ^5975fc
 - $N$ is the number of total pages
 - $n_k$ is the number of pages with the word "Rumpelstiltskin"
 

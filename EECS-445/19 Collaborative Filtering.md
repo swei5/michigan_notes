@@ -66,7 +66,7 @@ $$\tilde{Y}_{a:b}=\frac{1}{|R(a,b)|}\sum\limits_{j\in R(a,b)}Y_{a_{j}}$$
 where $R(a,b)$ is the set of movies rated by both users $a$ and $b$.
 
 We can thus define **similarity**, as a measure of **correlation**, as known as Sample Pearson's correlation coefficient:
-![[Pasted image 20230331012410.png|500]]
+![[Pasted image 20230331012410.png|500]] ^723dd1
 
 - The numerator denotes the **covariance** between $a$ and $b$
 	- How much ratings vary together
@@ -77,7 +77,7 @@ We can thus define **similarity**, as a measure of **correlation**, as known as 
 Suppose $Y_{ai}$ is what we are trying to predict.
 1. Compute the **similarity** between $a$ and the rest
 2. Find the $k$ **nearest neighbors** of $a$, $k_j$, for instance, where $Y_{k_{j}i}$ is **FILLED**
-3. Compute a prediction based on $Y_{k_{j}, i}$, $\forall j\in[1,k]$.
+3. Compute a prediction based on $Y_{k_{j}, i}$, $\forall j\in[1,k]$. ^72b25f
 
 ![[Pasted image 20230331143913.png|500]]
 
