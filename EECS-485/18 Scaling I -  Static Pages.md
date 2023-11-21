@@ -1,4 +1,4 @@
-[[2023-11-16]] #Webpage #Scaling 
+[[2023-11-16]] #Scaling
 
 ### Cloud
 What is cloud? Linux servers mostly.
@@ -199,6 +199,8 @@ A content delivery network (CDN) **stores static files** at many locations throu
 - Static files: HTML, images, videos, JS source codes
 - Large read-only data stored close to client
 ```
+
+^b9baf2
 
 ```ad-example
 If we type `curl -skL eecs485.org | grep cdn` in CLI, we will see how eecs485.org uses CDN to store its JS and CSS codes.

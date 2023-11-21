@@ -1,4 +1,4 @@
-[[2023-11-16]] #Scaling #Webpage 
+[[2023-11-16]] #Scaling
 
 Recall our previously mentioned agenda [[18 Scaling I -  Static Pages#^8fbaf2|here]]. Today we will focus on scaling **dynamic pages**.
 
@@ -79,6 +79,8 @@ This calls for **hardware virtualization**.
 
 Without hardware virtualization, one physical computer runs one operating system. With hardware virtualization, one physical computer runs **multiple operating systems**.
 
+Virtualization is an **abstraction** for hardware.
+
 ```ad-tldr
 **Hardware virtualization terminology**
 - **Host**: **Physical computer** running OS and virtualization software
@@ -120,11 +122,11 @@ Again, hardware virtualization is offered through IaaS.
 ### Containerization
 Virtualization isn't all pretty. One key issue is that it could have high overhead and a slow start. The solution to this is **containerization** - sharing OS with its binaries and libraries.
 
-Container includes application code and dependencies, but does **NOT** include the OS.
+Container includes application code and dependencies, but does **NOT** include the OS. It is an abstraction of the OS.
 
 ![[Pasted image 20231120222826.png]]
 
-An example of this is **Docker**. We can install container runtime, create docker image by copying our application `app` to container and configuring it to execute server by `docker build`, and finally run it by `docker run app`.
+To use a container we need to install **container runtime**. An example of this is **Docker**. Then, we would create docker image by copying our application `app` to container and configure it to execute server by `docker build`, and finally run it by `docker run app`.
 
 To integrate this with our previous round robin DNS and load balancing implementation:
 
@@ -144,6 +146,8 @@ On the flip side, containerization can be disadvantagenous because
 **Comparison between Virtualization and Containerization**
 
 ![[Pasted image 20231120223910.png|500]]
+
+We can combine virtualization with containerization.
 ```
 
 #### Stateful VS. Stateless
@@ -156,11 +160,12 @@ Hence, when we restart the VM, our file is restored, including changes.
 ![[Pasted image 20231120224150.png|300]]
 
 For stateless containers, container software layer **simulates** hard disk drive.
-- Hard drive is a data structure in the container runtime
+- Hard drive is a **data structure** in the container runtime
 - Container writes to the HDD $\implies$ data structure modified
+- Refreshes on restart
 
 However, when we restart the container, changes are **LOST**.
-- This is a feature! Separation of storage and compute
+- This is a feature! It is a **separation of storage and compute**
 
 ![[Pasted image 20231120224308.png|400]]
 
@@ -174,7 +179,14 @@ Breaking up a web app into **services** that **communicate over a network**.
 	- Etc.
 
 **Microservice architecture** is a service-oriented architecture with "smaller pieces" and is common with containerization.
+- Many instances of a web app
+- Web apps communicate with servers over the network
 
 ![[Pasted image 20231120224527.png|400]]
 
 We can acquire container execution via PaaS - renting servers that run container runtime such as Docker. This is sometimes called serverless computing.
+
+### Scaling Client-side Dynamic Pages
+This is simply scaling JavaScript with same technique as **static pages** and REST API as server-side dynamic pages.
+- `bundle.js` via CDN
+- REST API server code in a container on PaaS

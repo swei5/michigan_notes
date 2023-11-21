@@ -1,6 +1,6 @@
 [[2023-05-06]] #HTML #CSS #Webpage
 
-### Overview
+### Overview of Class
 How does the Web work?
 - Front end
 	- Web pages
