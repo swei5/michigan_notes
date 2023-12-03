@@ -1,4 +1,4 @@
-[[2023-11-16]] #Scaling
+[[2023-11-16]] #WebScaling
 
 ### Cloud
 What is cloud? Linux servers mostly.

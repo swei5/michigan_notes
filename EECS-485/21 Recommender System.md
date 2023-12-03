@@ -1,4 +1,4 @@
-[[2023-11-21]] #UnsupervisedLearning
+[[2023-11-21]] #UnsupervisedLearning #WebApplication
 
 ### Introduction
 Recommender Systems predict what you'll like - they predict your preferences.

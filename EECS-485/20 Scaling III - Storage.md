@@ -1,4 +1,4 @@
-[[2023-11-20]] #Scaling #DistributedSystem #SQL 
+[[2023-11-20]] #WebScaling #DistributedSystem #SQL 
 
 ### Distributed Network Database
 Recall that in [[19 Scaling II - Dynamic Pages]] we talked about how increasing the number of servers/computers is important in scaling server-side dynamic pages. 
@@ -48,6 +48,17 @@ Database replication is advantageous in that it has a high throughput by having 
 - With **consistency** issues: hard to keep copies in sync
 
 ```ad-example
+What kind of websites might need
+- More front-end servers?
+	- Websites that **DON'T change** very often
+		- E.g. Wikipedia pages, there are more people reading than editing
+- More database servers?
+	- Websites that have tons of DB activities
+
+Which of sharding or replication would be better for website that stores the following data?
+- Edits to Wikipedia articles: **Replication** as workload is big
+- Tweets on Twitter by different users: **Sharding** by users
+- Airline reservation system: **Sharding** because consistency is important
 ```
 
 ### CAP Theorem
@@ -79,7 +90,10 @@ Case (2): Consistent but not Available
 ![[Pasted image 20231121005035.png|400]]
 
 ```ad-example
-
+Which of the applications require consistency/availability?
+- Instagram feed: **Availability** as users want immediate contents
+- Airline reservation system: **Consistency** because accuracy matters
+- Amazon product search: A mixture of both
 ```
 
 ```ad-summary
