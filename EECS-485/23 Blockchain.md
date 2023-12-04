@@ -146,3 +146,28 @@ There are two main motivations behind the creation of Altcoin.
 - Bugs in code
 - Larger power consumption and environmental impact
 ```
+
+#### Ethereum
+Alternative cryptocurrency. Transactions can:
+- Move money (ETH)
+- **Create new contracts** (virtual, decentralized machines) 
+- Update state in existing contracts
+
+Contracts can:
+- Send money (ETH)  
+- Interact with other contracts
+
+One of the Ethereum smart contracts is **DAO** (Decentralized Autonomous Organization)
+- Allow investors to directly vote on projects to be funded collectively
+	- Investors send ETH to contract in exchange for DAO tokens
+	- Projects use ETH to fund development
+	- Tokens are used for
+		- Dividend payments
+		- Investment returns
+		- Exclusive access, etc.
+
+#### Pre-mined Cryptocurrency
+Creators (and friends) privately mine new currency prior to release.
+- Publicly announce blockchain with first blocks already mined
+	- E.g. Ripple
+- Alternative: Build “Founders reward” into protocol (AKA Zcash)
