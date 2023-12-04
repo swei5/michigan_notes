@@ -132,7 +132,7 @@ Threads are useful when
 	- Reading a sensor
 	- Human input
 
-**Benefits** of threads
+**Benefits** of threads include
 - Simpler programming model
 	- The illusion of a dedicated CPU per thread
 	- State for each thread (local variables)
@@ -201,7 +201,7 @@ In Python, the following operations are atomic, which means it's safe to perform
 - Reads/writes of **built-in types**
 - Read and assignment of instance variables
 
-However, **combinations of atomic operations** are not atomic!
+However, **combinations of atomic operations** are **NOT** atomic!
 - `x=1` are atomic doesn't make `x=x+1` atomic
 
 To let the programmers manually limit when threads take turn, **Lock** is introduced.
