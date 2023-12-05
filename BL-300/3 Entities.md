@@ -172,6 +172,9 @@ To incorporate, an organization would simply need three things.
 3. Submit (1) online, pay a fee of roughly $140
 
 #### Roles in Corporation
+
+^5c8a8d
+
 - Shareholders
 	- Elect directors
 	- Approve M&A deals, sale of assets

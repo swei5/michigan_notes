@@ -120,7 +120,7 @@ We have covered the basics of securities in the segments above. Regarding securi
 	- Registration requirements; misstatements and omissions in the **registration statement** by Section 11
 	- Only applies to **publicly trade companies** (IPO)
 - Obligations of Securities Issuers under the 1934 Act
-	- **Rule 10b-5** (i.e. 10b), widely applied securities fraud provision that applies to **public and private securities**
+	- **Rule 10b-5** (i.e. 10b), widely applied **securities fraud** provision that applies to **public and private securities**
 	- Prohibitions on insider trading
 
 In general, the **Rule 10b-5** is much broader and covers all kinds of securities, instead of just public companies.
@@ -137,7 +137,7 @@ In general, the **Rule 10b-5** is much broader and covers all kinds of securitie
 For a Section 11 claim, only the investors who purchased their shares through the IPO may file the lawsuit.
 ```
 
-### 10b-5 Claim
+### Rule 10b-5
 
 ```ad-important
 **Definition 4.4**: Elements of a 10-b5 Claim
@@ -160,6 +160,129 @@ Private plaintiffs must prove **all** elements:
 Requires the following two elements from the statement of a company:
 - Includes any statement made by the company that is **misleading**, even if statement is technically factual  
 - M/O must be **material**: Would a reasonable investor consider the information important
-	- Must be relevant to 
-	- Statements about a company's earning and assets 
+	- Must be relevant to the investor's decision
+	- Statements such as a company's earning and assets are granted material
+
+Puffing (marketing) are usually not viewed as a serious statement.
+```
+
+Companies, however, are usually **NOT required** to make any statements publicly and therefore could avoid misstatements or omission at all.
+- Except for public companies who need to disclose financial details
+- However, if companies chose **NOT to respond** in the case of a negative rumor, it is deemed essentially helping to spread misleading information
+
+#### Scienter
+This is the equivalent of *mens rea* in criminal laws.
+
+```ad-important
+**Definition 4.6**: Scienter
+
+Requires the following of the statement made:
+- Statement was made with **intent** to deceive, manipulate or defraud, **OR**  
+- Statement was made in reckless disregard of its truth/falsity
+```
+
+Notice that due to the element of **intent**, a negligent yet material statement isn't enough to prove scienter, and nor does a genuine accident. 
+- However, in these cases, companies have the duty of care to correct the problem when discovered
+
+#### Reliance, Loss Causation
+
+```ad-important
+**Definition 4.7**: Reliance
+
+There are **TWO** ways to demonstrate reliance:
+1. **Direct reliance**
+	- Plaintiff directly relies on the misstatement in their decision-making, OR
+		- Usually applies to private companies
+2. **Fraud on the Market**, for which we would only need:
+	- The security is traded in a public market when the statement was made
+	- Rationale behind this is the price is the M/O is already reflected in the price
+```
+
+Fraud on the Market turned out to be much easier to prove than direct reliance in most cases.
+
+```ad-important
+**Definition 4.8**: Loss Causations
+
+For which we need to prove **TWO** things:
+1. The price of the security **goes up** when the misstatement was published
+2. The price of the security **goes down** when the reality was revealed
+```
+
+However, this is usually factually difficult to prove because of the confounding nature of the market.
+
+In short, to bring a security fraud claim if we can prove that the misstatement leads to the actual purchasing/selling of shares.
+- This implies that options and futures are excluded from the scope
+
+Rule 10b-5 also sheds lights on the topic of **insider trading**.
+
+#### Insider Trading
+A judge-made law.
+
+```ad-important
+**Definition 4.9**: Insider Trading
+
+A person commits insider trading in violation of Section 10(b) when  he/she:  
+1. Trades on **material, nonpublic information**, and  
+2. **Breaches a duty** under a theory of insider trading.
+```
+
+That being said, it is **NOT illegal** to trade on private information; it is only illegal in the case that one breaches a duty.
+- **Employees** are allowed to trade during a specific **trading window** (usually occurs after the quarterly report)
+- **Executives** are allowed to trade, but they'll need to send their trading plan to the SEC at least 60 days in advance
+	- Motivation here is to notify the public about this action
+
+There are three main types of insider trading.
+
+##### Classical Insider Trading
+Insider trading that operates as a fraud against the shareholders of the company whose stock was traded.
+
+```ad-important
+**Definition 4.10**: Classical Insider Trading
+
+Classical insider trading occurs:  
+1. When **an insider of the company** whose stock is being traded
+	- An insider may be “temporary” and not a company employee (e.g., an  investment banker, lawyer, etc.)  
+1. Trades while in possession of material, non-public information.  
+```
+
+This breaches the **duty of loyalty**.
+
+##### Misappropriation
+Misappropriation insider trading is a fraud, perpetrated by a **non-insider**, against the **source of the trader’s information**.
+- Mutually exclusive with the classic insider trading theory
+
+```ad-important
+**Definition 4.11**: Misappropriation
+
+Misappropriation occurs when
+1. A trader, who is **NOT an insider** of the company gets material, non-public information 
+2. From someone to whom the trader owes a **duty not to trade**...  
+3. And trades anyway
+
+For misappropriation purpose, non-insiders owe the following duties:  
+- All **applicable fiduciary duties**, plus  
+- Any duty established by **SEC Rule 10b5-2**
+```
+
+```ad-info
+**Rule 10b5-2**: A trader owes a duty to the source of information in business/personal relations if:
+- The trader agrees to maintain confidentiality  
+- The trader and source have a practice of sharing known confidences, or  
+- The source of information is the trader’s spouse, parent, child, sibling (unless the circumstances indicate that confidentiality is not expected)
+```
+
+##### Tipping Theory
+
+```ad-important
+**Definition 4.11**: Tipping Theory
+
+Tipping occurs when:
+1. A tipper — who is **would've committed classical insider trading or misappropriation** - gives material, nonpublic information
+2. In breach of the tipper’s duty and for the **direct, or indirect,   personal benefit** of the tipper
+3. To a tippee, who trades on the information when he or she knows (or should have known) that the information is **material, non-public information** obtained through a **breach of duty**.
+```
+
+```ad-summary
+**Comparing Security Laws**
+![[Pasted image 20231205163824.png|600]]
 ```

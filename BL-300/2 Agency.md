@@ -44,7 +44,7 @@ The trade-off here is obvious: with employees an employer has more **control**, 
 An agent has fiduciary duties to the principal, which includes
 - Duty of loyalty: should put the interests of the principal **above all**
 - Duty of obedience: should always follow **reasonable commands** of the principal
-- Duty of care: avoid mistakes and negligence - **perform as dictated**
+- Duty of care: avoid mistakes and negligence - **perform as dictated** ^9ba03f
 
 ---
 ### Principal's Liability for Agents

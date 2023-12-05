@@ -88,6 +88,8 @@ Elements of a negligence claim includes
 Generally, duty of care requires a person with a **legal duty** to another must act like a **reasonable person** to avoid harming the other person.
 ```
 
+^2c4d67
+
 For example, drivers have a duty not to text and drive. 
 
 ##### Duty of Property Owners
