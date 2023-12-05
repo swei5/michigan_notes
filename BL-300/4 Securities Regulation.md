@@ -95,8 +95,8 @@ Underwriters play a key role in assisting the IPO process especially regarding f
 - **Best efforts**: **Does NOT** agree to purchase all of the securities from the issuer but will use their best efforts to act only as an agent to market the securities to investors
 
 ### Section 11 Claim
-This is from the Securities Act of 1933. An investor can make a section 11 claim in the scenario where the company screws up its registration statement, such that
-- There is material misrepresentation or omission in the registration statement
+This is from the **Securities Act of 1933**. An investor can make a section 11 claim in the scenario where the company screws up its registration statement, such that
+- There is **material misrepresentation** or omission in the registration statement
 - The purchased shares traced back to the IPO (reliance on the registration statement)
 
 The plaintiff has the right to sue the following parties
@@ -111,3 +111,55 @@ A legal tool to help the issuing parties avoid the liability for misstatements i
 Use the following chart to determine availability of due diligence.
 
 ![[Pasted image 20230927142659.png|600]]
+
+---
+### Overview of Securities Enforcement
+We have covered the basics of securities in the segments above. Regarding securities enforcements, there are two main branches we will be looking at:
+- Raising Capital under the 1933 Act (*covered above*)
+	- Defining a security; selling securities to the public
+	- Registration requirements; misstatements and omissions in the **registration statement** by Section 11
+	- Only applies to **publicly trade companies** (IPO)
+- Obligations of Securities Issuers under the 1934 Act
+	- **Rule 10b-5** (i.e. 10b), widely applied securities fraud provision that applies to **public and private securities**
+	- Prohibitions on insider trading
+
+In general, the **Rule 10b-5** is much broader and covers all kinds of securities, instead of just public companies.
+
+```ad-note
+**Enforcers of Rule 10b-5**
+- SEC
+- DOJ
+- **Shareholders**
+	- Usually involves some sort of class action
+- Whistle-blower
+	- Don't initiate the lawsuit but instead refer it to the government for compensation
+
+For a Section 11 claim, only the investors who purchased their shares through the IPO may file the lawsuit.
+```
+
+### 10b-5 Claim
+
+```ad-important
+**Definition 4.4**: Elements of a 10-b5 Claim
+
+Private plaintiffs must prove **all** elements:  
+1. Misstatement or Omission (“M/O”) of a fact  
+2. M/O must be material  
+3. M/O made in connection with purchase or sale of security  
+4. Scienter (M/O was made intentionally or recklessly)  
+5. Reliance  
+6. Loss Causation  
+- (also (7) economic loss and (8) interstate commerce)
+```
+
+#### Misstatement or Omission (M/O)
+
+```ad-important
+**Definition 4.5**: Misstatement or Omission
+
+Requires the following two elements from the statement of a company:
+- Includes any statement made by the company that is **misleading**, even if statement is technically factual  
+- M/O must be **material**: Would a reasonable investor consider the information important
+	- Must be relevant to 
+	- Statements about a company's earning and assets 
+```
