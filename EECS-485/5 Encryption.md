@@ -6,6 +6,7 @@ When two parties communicate over a network, we would like to avoid any illegal 
 - Modification or deletion of data
 - Injection of new data
 
+```ad-important
 Some desirable properties to have include
 - **Confidentiality**
 	- Adversary should **NOT UNDERSTAND** message
@@ -13,6 +14,9 @@ Some desirable properties to have include
 	- Message is really **from** the purported sender
 - **Message Integrity**
 	- Message **NOT MODIFIED** between send and receive
+```
+
+^ff793a
 
 This can be done by **encryption**. Plain texts are encrypted using an **encryption key** into cipher text; then, using a **decryption key**, we can translate cipher text back to plain text.
 

@@ -16,6 +16,9 @@ Similarly, in GFS, we've also learned how a heartbeat message is being sent to t
 
 ---
 ### IP (Internet Protocol)
+
+^84949a
+
 How messages are passed from one computer to another computer. Examples include
 - MapReduce Manager server assigns task to Worker
 - Google File System chunkserver tells Main server "I'm alive"
@@ -41,7 +44,7 @@ This has to do with Domain Name Service, covered later this term.
 #### Routers
 Computers are connected through the router. A router **forwards data** from one network to the next, and is usually a purpose-built Linux computer with multiple network connections. ^0addf7
 
-![[Pasted image 20231029190803.png|500]]
+![[Pasted image 20231029190803.png|500]] ^0f6fce
 
 Each router has a **routing table**, which maps groups of IP address to their destination. The destination could be another router.
 - This is done through **longest prefix matching**
