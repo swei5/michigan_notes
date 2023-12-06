@@ -19,7 +19,7 @@ Recently, the U.S. law has carved out more exceptions to employment at will, whi
 Below is a short summary of the reasons:
 
 ```ad-summary
-1. Unlawful Discrimination
+1. [[#^a7c64e|Unlawful Discrimination]]
 	- U.S. protected groups: race, color, religion, gender, national origin, age 40 & over, disabled, etc.
 2. [[9 Contracts|Contract violation]]
 	- Union agreements  
@@ -126,3 +126,103 @@ The foundation of non-discriminative laws traced back to the 13th amendment (186
 		- Other civil laws model on this
 
 Our focus today will be the Title VII and employment under Civil Rights Act of 1964.
+
+### Title VII: Federal Prohibitions on Discrimination 
+In general, the act is **NOT** a protection of some particular group, but a general protection of all people.
+
+```ad-important
+**Definition 10.4**: Title VII
+
+Title VII of the Civil Rights Act of 1964 prohibits discrimination based on the **five categories**: **race, color, religion, sex, and national origin**, or characteristics intrinsically tied to these groups on connection with compensation, terms, conditions, or privileges of employment.
+```
+
+^a7c64e
+
+Stereotypes and false views based on these five groups are also **NOT ALLOWED**.
+- E.g. firing women because they will have to take care of children
+
+In other words, *discrimination* based on traits other than these are legal in employment.
+
+#### Discrimination
+There are two types of discrimination in employment.
+
+##### Disparate Treatment
+Intentional and direct discrimination because of the [[#^a7c64e|five categories]]. Note that a mixed reasoning also applies.
+- E.g. some discriminatory statement along with some valid argument is also a discrimination
+
+##### Defense
+To defend against a disparate treatment claim, one will apply the **BFOQ defense**.
+
+```ad-important
+**Definition 10.5**: BFOQ Defense
+
+Employer must establish that membership in a desired class is necessary to successfully do the job. The essence of work will be undermined if taken a different policy.
+
+The desired class, however, **DOES NOT** apply to race/color.
+```
+
+The necessity may be present in the following scenarios:
+- Personal and privacy concerns
+	- Baby-givers need to be the same sex
+- Authenticity
+	- Males selling Men's apparels
+
+It is, however, still discriminatory even if the discrimination stems from **customer preferences**.
+##### Disparate Impact
+It is illegal discrimination if the employer's application of a **neutral criteria** has the effect of disadvantaging a significant proportion of people in a protected category.
+- E.g. height for female
+
+To demonstrate disparate impact, we would also need to show **adverse employment actions**, i.e. anything that demeans or degrades one's career.
+
+##### Defense
+To defend against a disparate impact claim, one will apply the **business necessity defense**.
+
+```ad-important
+**Definition 10.6**: Business Necessity Defense
+
+Employet must establish that the criteria is:
+1. **Related to safe and efficient job performance** and consistent with **business necessity**, and
+2. **NO less** discriminatory alternative exists.
+```
+
+Usually the second point could undermine the first point in such defense.
+
+```ad-note
+Note that civil rights do not trump the constitution. That being said, the first amendment applies and **does NOT** prohibit Title VII's selective regulation fighting words or expressed views that are inherently discriminatory.
+```
+
+#### Harassment
+There are also two types of harassments.
+
+##### Quid Pro Quo Harassment
+
+```ad-important
+**Definition 10.7**: Quid Pro Quo Harassment
+
+Sexual harassment that requires:
+1. An adverse action by the superior (intentional isn't enough), and
+2. Proposal of **sexual contact extended** by the superior and is **denied** by the employee and in retaliation the adverse action
+
+For Quid Pro Quo harassment, the **employer** is **ALWAYS liable**.
+```
+
+##### Hostile Work Environment
+
+```ad-important
+**Definition 10.8**: Hostile Work Environment
+
+A **hostile work environment** is a workplace where there are sufficiently severe and pervasive instances of harassment and discrimination against protected characteristics.
+```
+
+Note that there is no need to prove **adverse action** because it is adverse inherently. Hostile work environment covers more behaviors and employers can make their defense.
+
+##### Defense
+- If created by **co-worker**: 
+	- Employer **LIABLE** if it **knew or should have known** about the harassment but failed to stop it.  
+- If created by **supervisor**:  
+	- **Tangible** job action: 
+		- Employer is **LIABLE**. 
+	- **NO tangible** job action: 
+		- Employer is **LIABLE** unless it can prove:  
+			1. Employer took **reasonable care to prevent** and correct harassing behavior, and  
+			2. Employee unreasonably failed to take advantage of preventive or corrective opportunities.
