@@ -18,6 +18,8 @@ Directors **win** any lawsuit brought by shareholders alleging that the board ma
 1. No directors had an **unacceptable conflict of interest**
 ```
 
+^4d226f
+
 ```ad-info
 **Case**: Smith vs. Van Gorkom
 - Van Gorkom: CEO of transunion (D)
@@ -71,5 +73,66 @@ If breach of loyalty is found, the actions are **reversed**, and the director wh
 ```ad-important
 **Definition 11.3**: Corporate Opportunity Doctrine
 
-The specialized rule for situations where an **officer or director** considers taking a business opportunity states that they need to **disclose and offer**
+The specialized rule for situations where an **officer or director** considers taking a business opportunity states that they need to **disclose and offer** the opportunity to the business first before taking on it themselves if the following **corporate opportunity test** is passed:
+1. Is the opportunity within company's regular business?
+2. Is the opportunity what the business is likely to pursue?
+3. Does the company have the capacity to pursue such opportunity?
 ```
+
+Directors **CANNOT** resign from the board to break free from their fiduciary duties.
+
+---
+### Fiduciary Duties for M&A
+Now, we will delve into some more details regarding duties of directors in situations related to mergers & acquisitions. This involves the [[#^4d226f|business judgement rule]] plus some extra requirements.
+
+First, let's start off with a few definitions.
+
+```ad-important
+**Definition 11.4**: Hostile Takeover, Tender Offer
+A third-party aiming to directly take over the company by **directly buying from shareholders** with a **tender offer**.
+
+A **tender offer** is an announcement to the public of buying shares **at a premium**. The goal of a tender offer is to get 51% of total shares of the company.
+```
+
+If a shareholder owns **more than 10%** of a publicly traded company's share, they will need to disclose it to the SEC.
+
+#### Poison Pill/Shareholder Rights Plan
+This is seen as a **threat** and should **NOT be enacted** at any time.
+
+```ad-important
+**Definition 11.5**: Poison Pill
+
+A shareholder rights plan, colloquially known as a "poison pill", is a type of **defensive tactic** used by a corporation's board of directors against a takeover.
+
+It achieves **TWO things**:
+1. Makes it harder for the company to be taken over, and
+2. Even if the acquisition happened, this would be an unfavorable scenario
+
+The plan doesn't expire until the company specifies.
+```
+
+Essentially, the company is destroying its own market value.
+
+A company may want to adopt the poison pill for the following reasons:
+1. Prevent unfavorable acquisition, or
+2. Negotiate a better deal
+	- E.g. Twitter
+
+There are also quite a few disadvantages to the plan:
+1. It is intrinsically not good for the company, and
+2. There exists potential personal conflict of interest
+
+To determine if the directors are acting with fiduciary duties when dealing with M&A decisions, the business judgement rule **DOES NOT apply**. Instead, we have the following two tests.
+
+#### Unocal Test
+
+```ad-important
+**Definition 11.6**: Unocal Test
+For the board of directors to block a M&A deal, it must show the **following two**:
+1. The hostile bidder presents a **reasonable threat**, and
+2. The board's defensive tactic was **proportional to** the threat
+```
+
+The test was almost always determined by the first condition. In essence, the Unocal test ensures that the directors must be **informed** and **act in good faith** when making a decision.
+
+#### Revlon Test
