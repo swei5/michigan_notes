@@ -125,6 +125,7 @@ There are also quite a few disadvantages to the plan:
 To determine if the directors are acting with fiduciary duties when dealing with M&A decisions, the business judgement rule **DOES NOT apply**. Instead, we have the following two tests.
 
 #### Unocal Test
+Applies when the board wants to block a deal.
 
 ```ad-important
 **Definition 11.6**: Unocal Test
@@ -135,4 +136,23 @@ For the board of directors to block a M&A deal, it must show the **following two
 
 The test was almost always determined by the first condition. In essence, the Unocal test ensures that the directors must be **informed** and **act in good faith** when making a decision.
 
-#### Revlon Test
+#### Revlon Rule
+Applies when the board wants to sell the company.
+
+```ad-important
+**Definition 11.7**: Revlon Rule
+
+A company's board of directors shall make a **reasonable effort** to obtain the **highest value** for a company, when a hostile takeover is imminent.
+
+It applies when the board of directors
+- Determines sale or break-up of company is **inevitable**,  
+- Agrees to a deal resulting in a **change in control**, or  
+- Majority of consideration for deal is **cash**
+```
+
+The Revlon Rule is viewed as a part of the company's fiduciary duty.
+- They have to do this even knowing it's bad for the shareholders
+- This also implies that when a third party suddenly swaps in a preliminary merger agreement with **better cash deal**, the company **MUST** take the latter deal
+
+The motivation behind the Revlon is to **protect shareholders** who are greatly impacted by the sale of the company.
+- Thus the company is responsible for getting the best outcome for the shareholders to compensate
