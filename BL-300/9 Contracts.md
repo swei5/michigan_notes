@@ -14,6 +14,8 @@ In essence, a contract is a **meeting of the minds**.
 Sometimes required for contract formation: **Statute of Frauds**.
 ```
 
+^691142
+
 We will now break down into these components and discuss their meanings.
 
 #### Agreement
@@ -145,3 +147,106 @@ If the party failed to show efforts in mitigate, there will be **NO remedy**. If
 ### Contracts, UCC
 
 #### Uniform Commercial Code (UCC)
+Our focus is in Article 2, which deals with sale of goods. The motivation behind the UCC is to
+- Establish uniformity
+- Make it easier to make deals happen as the common law is too complicated
+
+UCC distinguishes **merchants** from **non-merchants**.
+
+```ad-important
+**Definition 9.7**: Goods
+
+Goods are **tangible properties** that are **movable** at the time of contracting.
+
+Goods can turn into a service, and vice versa.
+```
+
+```ad-important
+**Definition 9.8**: Merchant
+
+A merchant is defined as an **expert** or knowledgeable person in the goods they sell.
+- Deals professionally in specific types of goods
+
+The definition of a merchant is **relative**: it only applies to certain fields.
+```
+
+The UCC also requires the [[#^691142|four elements of contract]], however with different internal structure.
+
+#### Agreement
+The agreement clause only requires that there is **evidence** that two parties have the **intention to agree** on.
+- Doesn't matter whether there is concrete terms or not
+	- Definite offer and the Mirror Image Rule **DO NOT apply**
+- Much easier to establish/modify than in the common law
+
+#### Consideration
+If the merchant puts **in writing** of the offer, then one can accept the offer **WITHOUT consideration**.
+- East to form a contract without knowing what it entails
+
+#### UCC, Additional Terms
+A UCC contract has additional three terms that a contract must adhere to.
+- **Uncontested terms**
+	- Terms both parties agree on; if both parties agree, then the term is part of the deal
+- **Knock-out rule**
+	- If a term is **actively disagreed** by any party, then it is **NOT** part of the deal
+- **Default rule**
+	- The contract consists any default terms and additional terms by default
+		- If one would like to object a term from the contract, that term becomes **contested** and the knock-out rule will apply
+
+#### Statute of Frauds
+The UCC has a different **statute of frauds**. It applies when the **transaction value** is larger than $500 and requires the contract to include the **quantity of units being sold**.
+- The transaction could involve multiple goods
+- **DOES NOT** have to be in writing and can be signed electronically
+
+#### Warranties
+
+```ad-important
+**Definition 9.9**: Warranty
+
+A warranty is a **promise** of the **quality** or the **utility** of a good. If a good doesn't perform as planned or lived up to the warranty, it is seen as a **breach of contract**.
+```
+
+There are three main types of warranties under the UCC.
+
+##### Expressed Warranty
+A warranty that is **explicitly and actually** represented by the **merchant**. The represented function or feature consists of part of the reason of the purchase. This is the **basis of bargain**.
+- E.g. label, manual
+- Breach of contract if expressed warranty is invalidated
+
+The more **central** the feature is to the warranty, the **more the court** will lean towards in its judgement.
+
+```ad-note
+**Puffing** is not a type of warranty.
+```
+
+##### Implied Warranty of Merchantability
+A warranty that states that a good should reasonably fit with the **purpose** they are sold.
+- Only applies when the seller is a **merchant**
+- Breach of contract if the features of the good doesn't fit with the reasonable expectation
+
+```ad-note
+The more specific a good is about its features, the more expressed warranty and the less implied warranty it has.
+```
+
+##### Implied Warranty of Fitness and Particular Purpose
+A niche category of **implied warranty**. It implicit guarantees that a good must satisfies some functions if it is in the case that
+- The Buyer has specific needs, and
+- The seller is aware of the need, and whose expertise is **relied on** to make a decision
+
+This applies to **ALL** types of sellers and is really close to **expressed warranty**.
+
+---
+### Remedy
+The UCC provides remedy to put the plaintiff **as close to** where they would've been as if the contract weren't broken. It gives the plaintiff two options:
+1. Sue for damages
+2. Cover: get to where they would've been
+	- Could incur extra costs, which one could subsequently sue for
+
+The actual damage would be the same across the two options.
+
+The difference between common law remedy is that the plaintiff has the option to cover but doesn't have to, yet under the common law one has to cover.
+
+---
+### Summary
+Key differences and applications between contracts under the common law and the UCC.
+
+![[Pasted image 20231206222558.png|600]]
