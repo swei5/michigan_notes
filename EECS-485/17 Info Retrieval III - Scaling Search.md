@@ -147,9 +147,10 @@ After crawling is finished, we will have a big database of documents - hence the
 
 A **forward index** is a list of words in each document.
 - `doc_id -> words: list`
+
 An **inverted index** maps words to docs that contain those words
 - What we want in a search engine!
-- `word -> doc_ids: list`
+	- `word -> doc_ids: list`
 - Old example: concordance - list of every word in alphabetical order constructed manually
 
 In general, for each word, list all the documents where that word can be found.
