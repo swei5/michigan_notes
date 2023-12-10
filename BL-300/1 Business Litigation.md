@@ -38,6 +38,9 @@ United States hold a **dual legal system**.
 ![[Pasted image 20230925205721.png|500]]
 
 #### Personal Jurisdiction
+
+^7609e2
+
 A state has personal jurisdiction if any of the four circumstances are true:
 - Consent
 - Citizenship ^7dccbc

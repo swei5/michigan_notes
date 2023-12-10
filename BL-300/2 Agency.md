@@ -75,6 +75,8 @@ When deciding tort liability, we follow the **doctrine of *Respondeat superior**
 A principal is responsible for acts of their agents performed within the **scope of employment**.
 ```
 
+^5cf0d8
+
 There are a few ways to decide what falls into the scope of employment.
 - Detour & Frolic
 	- Detour is viewed as within the scope as is a slight deviation from work
