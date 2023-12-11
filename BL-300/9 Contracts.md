@@ -130,7 +130,7 @@ A statute requiring certain contracts to be **in writing and signed** by the par
 ```
 
 #### Contract Breach and Remedy
-A legal breach in contract would require some legal source:  [morality clause]( https://www.pon.harvard.edu/daily/business-negotiations/preparing-for-the-worst-in-business-negotiations-nb/#:~:text=What%20Is%20a%20Morality%20Clause ,life%20 of%20 the%20 employee's%20 contract.)
+A legal breach in contract would require some legal source:  [morality clause](https://www.pon.harvard.edu/daily/business-negotiations/preparing-for-the-worst-in-business-negotiations-nb/)
 
 Otherwise, an injured party has the right to claim a breach in contract and seek corresponding remedy. 
 
@@ -180,7 +180,7 @@ The agreement clause only requires that there is **evidence** that two parties h
 
 #### Consideration
 If the merchant puts **in writing** of the offer, then one can accept the offer **WITHOUT consideration**.
-- East to form a contract without knowing what it entails
+- Easy to form a contract without knowing what it entails
 
 #### UCC, Additional Terms
 A UCC contract has additional three terms that a contract must adhere to.
