@@ -115,7 +115,7 @@ Use the following chart to determine availability of due diligence.
 ---
 ### Overview of Securities Enforcement
 We have covered the basics of securities in the segments above. Regarding securities enforcements, there are two main branches we will be looking at:
-- Raising Capital under the 1933 Act (*covered above*)
+- Raising Capital under the 1933 Act (covered above)
 	- Defining a security; selling securities to the public
 	- Registration requirements; misstatements and omissions in the **registration statement** by Section 11
 	- Only applies to **publicly trade companies** (IPO)
@@ -153,6 +153,8 @@ Private plaintiffs must prove **all** elements:
 ```
 
 #### Misstatement or Omission (M/O)
+
+^c95d0a
 
 ```ad-important
 **Definition 4.5**: Misstatement or Omission
