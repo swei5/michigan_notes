@@ -25,7 +25,7 @@ $$\pi_i=\set{1,0,0,\cdots,0}\equiv \pi_j=\set{0,0,0,\cdots,y,\cdots,0}$$
 #### Nominal Interest Rate
 
 ```ad-important
-**Definition 3.1.1**: **Interest Rate (Discount Rate)**
+**Definition 3.1**: **Interest Rate (Discount Rate)**
 
 Nominal Interest Rate $i$ is an important economic factor that can be expressed as
 $$i=i_{p}+i_{DF}+i_{\pi}$$
@@ -61,9 +61,11 @@ The price of a coupon bond is the sum of values of all the **future payments**. 
 Thus,
 $$P=\frac{C}{r}\cdot\left(1-\left(\frac{1}{1+r}\right)^{T}\right)+\frac{FV}{(1+r)^T}$$
 
+Here, $r$ is also known as the **yield to maturity (YTM)**, which equates the present value of the payments from an asset with the asset’s price today. In this scenario, this is also interchangeable with the term **coupon rate**.
+
 ```ad-note
 We note that $P=FV \iff r=\frac{C}{FV}$.
-- This implies when a bond is trading at par, its **yield** is equal to its **coupon rate**. Matches with our observation [[7 Bonds I#^5a2fcb|here]].
+- This implies when a bond is trading **at par**, its **yield** is equal to its **coupon rate**. Matches with our observation [[7 Bonds I#^5a2fcb|here]].
 
 
 More interestingly, we note that the valuation of a bond $P$ isn't a function of $t$.
@@ -84,6 +86,20 @@ This is effectively a coupon bond except that we exchange the repayment of the f
 ![[Pasted image 20230302220324.png|500]]
 
 Given per period installment $x$ and nominal interest rate $i$, the value of the loan over a period of $T$ is thus
-$$P=\frac{x}{1+i}\left(\frac{1-\frac{1}{(1+i)^T}}{1-\frac{1}{1+i}}\right)=\frac{x}{i}\left(1-\frac{1}{(1+i)^T}\right)$$
+$$L=\frac{x}{1+i}\left(\frac{1-\frac{1}{(1+i)^T}}{1-\frac{1}{1+i}}\right)=\frac{x}{i}\left(1-\frac{1}{(1+i)^T}\right)$$
 
-Equivalently, given $P$, the per period installment is $x=\frac{iP}{1-\frac{1}{(1+i)^T}}$. The derivation looks similar to that of a coupon bond.
+Equivalently, given a loan amount of $L$, the per period installment is $x=\frac{iL}{1-\frac{1}{(1+i)^T}}$. The derivation looks similar to that of a coupon bond.
+
+Naturally, the outstanding loan given time $t$ is
+$$L_t=L_{t-1}+iL_{t}-x$$
+Normally, $x>iL_t$ as it should cover the interest payment and **partially pays off the principal**.
+- If one only wants to pay off the interest (leaving the value of the loan unchanged), then $x=iL_t$
+
+In the case of **deferred payments** for $d$ periods, the per period installment $x$ is then
+$$x=\frac{iL(1+i)^{d}}{1-\frac{1}{(1+i)^T}}$$
+Here, the term $(1+i)^d$ applied on the numerator is accounted for the **inflation** factor of accumulated interest during the $d$ periods in which payments are deferred. Note that this is equivalent to taking out a bigger loan at a later time.
+
+```ad-warning
+**Yield to maturity** is a different concept from **yield**.
+```
+
