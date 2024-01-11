@@ -1,4 +1,4 @@
-[[2024-01-11]] #Investment 
+[[2024-01-11]] #Investment #Risks
 
 ### Course Overview
 - **Capital Markets**

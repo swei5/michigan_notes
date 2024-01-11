@@ -32,12 +32,12 @@
 | FA 2023 | EECS 485      | Web Systems           |     ⭕️     |    ⭕️    |
 | FA 2023 | FIN 335       | Maize and Blue Fund   |     N/A     |    N/A    |
 | FA 2023 | MO 300        | Behav Thry Mgmt       |     ⭕️     |    ❌     |
-| WN 2024 | BA 325        | ABIS         |     ?        |   ?        |
-| WN 2024 | EECS 484        | Database Mgt Syst         |     ?        |   ?        |
+| WN 2024 | BA 325        | ABIS         |     N/A        |   N/A        |
+| WN 2024 | EECS 484        | Database Mgt Syst         |     ⭕️        |   ?        |
 | WN 2024 | FIN 336        | Maize and Blue Fund         |     ?        |   ?        |
-| WN 2024 | FIN 408        | Capital Markets Inve         |     ?        |   ?        |
-| WN 2024 | FIN 427        | AI & ML in Investmen         |     ?        |   ?        |
+| WN 2024 | FIN 408        | Capital Markets Inve         |     ⭕️        |   ⭕️        |
+| WN 2024 | FIN 427        | AI & ML in Investmen         |     ⭕️        |   ?        |
 | WN 2024 | FIN 440        | Financial Trading         |     ?        |   ?        |
 | WN 2024 | FIN 475        | Financial Modeling         |     ?        |   ?        |
-| WN 2024 | FIN 480        | Options and Futures         |     ?        |   ?        |
+| WN 2024 | FIN 480        | Options and Futures         |     ⭕️        |   ?        |
 
