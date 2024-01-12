@@ -1,20 +1,21 @@
 [[2024-01-11]] #Options #Valuation 
 
-### Option Concepts
+### Option Concepts, Overview
 - **Option types**  
 	- Call: right to buy  
-	- Put  
+	- Put: right to sell
 - **Contract terms**  
-	- **Strike price**: exercise price
+	- **Strike price**: AKA exercise price
 	- Time to expiry  
-	- European vs American
+	- [European vs American](https://en.wikipedia.org/wiki/Option_style)
 		- **European**: can only exercise on the specified date
 		- **American**: can exercise up until the specified date
 	- Underlying asset  
 - **Other**  
 	- **Spot price**: price of the underlying asset 
-	- Risk-free rate  
-	- Buy/long vs sell/write/short  
+	- Risk-free rate
+	- Buy: long
+	- Sell: write, short
 	- **Option premium**: price of the option
 - **Valuation**  
 	- Moneyness  
@@ -41,13 +42,18 @@ Buyer has the option to buy an underlying asset from the seller at a fixed exerc
 - **Covered call**: option: Seller does own underlying
 
 Payoff to buyer is thus
-$$P=\max(s_{T}-x,0)$$
+$$p=\max(s_{T}-x,0)$$
 And the payoff to the seller is
-$$P=-\max(s_{T}-x,0)$$
+$$p=-\max(s_{T}-x,0)$$
 Where $s_T$ is the underlying asset price at expiration date $T$ and $x$ is the exercise price of the option.
 
 #### Put Options 
-TBD
+Buyer has the option to sell an underlying asset to the seller at a fixed exercise price. Note that this is the reverse of a call option. Selling a put option is also risky, because the underlying asset price could move to a very low price.
+
+Payoff to the buyer is
+$$p=\max(x-s_T,0)$$
+And in turn the payoff to the seller is
+$$p=-\max(x-s_T,0)$$
 
 Our valuation approach is to estimate the **risk-neutral expected payoff** and **discount** to time zero at the **risk-free rate of interest**.
 
@@ -56,7 +62,24 @@ Our valuation approach is to estimate the **risk-neutral expected payoff** and *
 ```
 
 ```ad-note
-Note that in project evaluations, we often used a risk-adjusted rate as the discounted factor (WACC, interest rate, etc.); however, in option valuation, we factor in risk-adjustment by determining the expected payoff using risk-neutral probabilities. This is because option is a much riskier asset than stocks, which could go up to 30% to 50%.
+Note that in project evaluations, we often used a risk-adjusted rate as the discounted factor (WACC, interest rate, etc.).
+
+However, in option valuation, we factor in risk-adjustment by determining the expected payoff **using risk-neutral probabilities**. This is because option is a much riskier asset than stocks, which could go up to 30% to 50%.
 ```
 
 The approach to calculate the risk-neutral probabilities is beyond the scope of this lecture.
+
+```ad-warning
+We will always use a **RISK-FREE rate of interest** in discounting the expected cashflow.
+```
+
+#### Valuation Steps
+1. Estimate the possible prices of the underlying asset (spot price) at the expiration date.
+	- This is usually given by a probability distribution
+2. Estimate the risk-neutral expected future value of the underlying asset
+	- This is simply the future value of the underlying assets given some risk-free rate 
+3. Based upon the **risk-neutral expected future value** of the underlying asset, compute the risk-neutral probabilities of high and low outcomes
+	- $pH+(1-p) L=\mathbb{E}(S_{T})$: solve for $p$
+1. Compute the **option payoffs** at the expiration date
+2. **Apply the risk-neutral probabilities** of high and low outcomes, compute the risk-neutral expected future value of the option
+3. Discount the expected future value of the option to time zero at the risk-free rate of interest

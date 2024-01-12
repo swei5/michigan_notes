@@ -32,6 +32,15 @@ Financial markets can be broken down to:
 	- Equity markets
 	- Derivative markets for options and futures
 
+```ad-summary
+**The role of financial markets**
+- Channel resources to best use
+- Risk allocation 
+- Consumption timing
+	- Investing-consuming tradeoff
+- Separation of ownership and control
+```
+
 #### Money Market Securities
 - Treasury Bills (i.e. T-bills): Simplest form of borrowing  
 - Certificates of Deposit (CD): Bank pays interest and principal to the depositor only at maturity
@@ -89,23 +98,31 @@ A derivative asset is a claim whose value is directly dependent on or is conting
 ### Capital Market Structure
 Can be broken down into **primary** and **secondary markets**.
 
-#### Primary Markets
-The primary market deals with the issuance of new securities. Companies, governments or public sector institutions can obtain funding through the sale of a new stock or bond issue.  
+```ad-important
+**Definition 1.3**: Primary Market
+
+The primary market deals with the issuance of new securities. Companies, governments or public sector institutions can obtain funding through the sale of a **new stock or bond issue**.  
 - Shares and securities are brought to the market by the underwriter  
 - Besides offering to public, private placements are made
+```
 
-#### Secondary Markets
+```ad-important
+**Definition 1.4**: Secondary Market
+
 The secondary market is the market where investors trade previously issued securities. An investor can trade:  
 - Directly with other investors (market cap)
 - Indirectly through a broker who arranges transactions for others  
 - Directly with a dealer (financial institutions) who buys and sells securities from inventory 
+```
 
+```ad-summary
 Capital market has three primary functions:
 - **Economic function**: matches buyers and sellers
 - **Continuous pricing function**: enables market participants to get up-to-date price information
 	- Provides an estimate of values of financial assets
 - **Fair pricing function**: enables market participants to get accurate and fair price information
 	- Removes the fear of buying/selling at unreasonable price
+```
 
 ---
 ### Investment
@@ -124,15 +141,17 @@ There are two approaches to this process:
 #### Asset Allocation
 Asset allocation aims to **balance risk and reward** based on our goals, risk tolerance, taxation, liquidity, and investment horizon.
 
+```ad-question
 Why is asset allocation so important?
 1. Research has shown that most of the returns come from the specific asset class decision, and not from the individual stock selection decision.
 2. Asset class choice influences returns: In the process of selecting your asset allocation, you are selecting the risk for your portfolio
+```
 
 Goal of asset allocation is to attempt to **reduce volatility** and provide a **competitive rate of return**.
 - May generate a lower rate of return when compared to a single "hot" asset class
 
 #### Security Selection
-Once you decide upon an asset allocation that invests in stocks, bonds, commodities, currencies, and cash (e.g., 30%, 20%, 30%, 15%, and 5%) you have to choose the particular securities.  
+Once you decide upon an asset allocation that invests in stocks, bonds, commodities, etc., you have to choose the particular securities.  
 - Stocks: big versus small market cap; growth versus value; industry affiliations such as biotech, financial, oil, real estate; high versus low past return; levered versus unlevered firms.  
 - Bonds: government versus corporate; high versus low quality (credit risk); long versus short duration; fixed versus floating rates
 

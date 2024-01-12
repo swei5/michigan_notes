@@ -11,6 +11,7 @@ DBMS has quite a few advantages:
 - Data independence
 	- App needs a view of the data, not info about internal representation
 - Efficient storage and access
+	- Assumption is that data is too **LARGE** to fit in memory
 - Centralized data administration
 - Data integrity and security
 - Concurrent access, recovery from crashes
@@ -18,26 +19,42 @@ DBMS has quite a few advantages:
 ```
 
 ### Data Models
-**Data model** is a **collection of concepts** for describing data. 
+**Data model** is a **collection of concepts** for describing data. We will look into two main data models today.
 
-A **relational model** is the most widely used model today. An Entity-Relationship (ER) model is a “semantic” data model, i.e., a higher-level more user-intuitive model.
-- A (relational) DBMS understands only the relational model, so we will translate an ER schema to a relational schema
+```ad-important
+**Definition 1.1**: Relational Model
+
+A **relational model** is the most widely used model today.
 
 A relational data model contains a collection of **relations**. A relation is a set of records, naturally represented as a table with rows and (named, typed) columns. Each table row is also called a **tuple** or **record**.
+```
+
+
+```ad-important
+**Definition 1.2**: Schema 
 
 A schema is a **description** of data in terms of a data model.
 - Every relation has a schema
 - Specifies the name of the relation, the name and type of the columns (or fields or attributes)
+```
 
 ![[Pasted image 20240111231446.png|500]]
 
 #### Entity-Relationship (ER) Model
 A higher-level, user-intuitive model. A ER diagram contains **entities** and **relationships**.
 
+```ad-important
+**Definition 1.3**: ER Models 
+
+An Entity-Relationship (ER) model is a “semantic” data model, i.e., a higher-level more user-intuitive model.
+- A (relational) DBMS understands only the relational model, so we will translate an ER schema to a relational schema
+```
+
 ![[Pasted image 20240111231653.png|500]]
 
 In the example above, entities are Student and Course, and relationships are Enrolled in.
 
+##### Schema
 Schema is an abstraction. In reality, there are three layers to it.
 
 ![[Pasted image 20240111232130.png|500]]
