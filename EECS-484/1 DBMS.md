@@ -1,0 +1,64 @@
+[[2024-01-11]] #Database
+
+### Database
+A database is a large, structured collection of data.
+- Models data of real-world enterprise, which can include entities and relationships
+
+A database management system (DBMS) is a software package designed to store and manage databases. It is used to maintain and query **large datasets**.
+
+```ad-summary
+DBMS has quite a few advantages:
+- Data independence
+	- App needs a view of the data, not info about internal representation
+- Efficient storage and access
+- Centralized data administration
+- Data integrity and security
+- Concurrent access, recovery from crashes
+- Reduced application dev time
+```
+
+### Data Models
+**Data model** is a **collection of concepts** for describing data. 
+
+A **relational model** is the most widely used model today. An Entity-Relationship (ER) model is a “semantic” data model, i.e., a higher-level more user-intuitive model.
+- A (relational) DBMS understands only the relational model, so we will translate an ER schema to a relational schema
+
+A relational data model contains a collection of **relations**. A relation is a set of records, naturally represented as a table with rows and (named, typed) columns. Each table row is also called a **tuple** or **record**.
+
+A schema is a **description** of data in terms of a data model.
+- Every relation has a schema
+- Specifies the name of the relation, the name and type of the columns (or fields or attributes)
+
+![[Pasted image 20240111231446.png|500]]
+
+#### Entity-Relationship (ER) Model
+A higher-level, user-intuitive model. A ER diagram contains **entities** and **relationships**.
+
+![[Pasted image 20240111231653.png|500]]
+
+In the example above, entities are Student and Course, and relationships are Enrolled in.
+
+Schema is an abstraction. In reality, there are three layers to it.
+
+![[Pasted image 20240111232130.png|500]]
+
+The physical schema is then directly related to the database itself.
+
+```ad-note
+Schemas are defined using **Data Definition Language** (DDL), e.g. `CREATE TABLE X (...)`.
+
+Data is modified/queried using **Data Manipulation Language** (DML), e.g. `SELECT FROM X WHERE (...)`.
+```
+
+```ad-example
+![[Pasted image 20240111232334.png|500]]
+```
+
+Views can be **computed from the relations in the Conceptual Schema**.
+
+#### Data Independence 
+The idea of having applications **insulated** from data format and storage details.
+- **Logical data independence**:  Protection from **changes in logical structure** of data
+	- External / Conceptual schema interface
+- **Physical data independence**: Protection from changes in physical structure of database
+	- Conceptual / Physical schema interface
