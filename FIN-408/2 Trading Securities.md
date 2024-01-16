@@ -120,7 +120,7 @@ Conversely, if there happens to be an upside to the stock, the rate of return al
 ##### Shortselling
 
 ```ad-important
-**Definition 2.5**: **Shortselling** 
+**Definition 2.5**: **Short-selling** 
 
 A market transaction in which investors sell securities they do not own in anticipation of a price decline and they are required to return an equal number of shares at some point in the future.
 
