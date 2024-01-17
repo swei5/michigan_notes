@@ -26,16 +26,15 @@ DBMS has quite a few advantages:
 
 A **relational model** is the most widely used model today.
 
-A relational data model contains a collection of **relations**. A relation is a set of records, naturally represented as a table with rows and (named, typed) columns. Each table row is also called a **tuple** or **record**.
+A relational data model contains a collection of **relations**. A **relation** is a **set of records**, naturally represented as a table with rows and (named, typed) columns. Each table row is also called a **tuple** or **record**.
 ```
-
 
 ```ad-important
 **Definition 1.2**: Schema 
 
 A schema is a **description** of data in terms of a data model.
 - Every relation has a schema
-- Specifies the name of the relation, the name and type of the columns (or fields or attributes)
+- Specifies the **name of the relation**, the **name and type of the columns** (or fields or attributes)
 ```
 
 ![[Pasted image 20240111231446.png|500]]
@@ -50,6 +49,8 @@ An Entity-Relationship (ER) model is a “semantic” data model, i.e., a higher
 - A (relational) DBMS understands only the relational model, so we will translate an ER schema to a relational schema
 ```
 
+^5cd323
+
 ![[Pasted image 20240111231653.png|500]]
 
 In the example above, entities are Student and Course, and relationships are Enrolled in.
@@ -59,7 +60,11 @@ Schema is an abstraction. In reality, there are three layers to it.
 
 ![[Pasted image 20240111232130.png|500]]
 
-The physical schema is then directly related to the database itself.
+The **physical schema** is then **directly related** to the database itself (layout, indexing, storage, etc.) and does not affect the logical design of the database.
+
+The structure of the database (including the data models) concerns only the conceptual schema.
+
+The **external schema** (views) are subject to some set of **constraints** that are visible to certain group of end-users, and only expose a portion of the database.
 
 ```ad-note
 Schemas are defined using **Data Definition Language** (DDL), e.g. `CREATE TABLE X (...)`.
@@ -71,7 +76,7 @@ Data is modified/queried using **Data Manipulation Language** (DML), e.g. `SELEC
 ![[Pasted image 20240111232334.png|500]]
 ```
 
-Views can be **computed from the relations in the Conceptual Schema**.
+Views can be **computed from the relations in the conceptual schema**. Both conceptual and external schema can be made into **tables**.
 
 #### Data Independence 
 The idea of having applications **insulated** from data format and storage details.

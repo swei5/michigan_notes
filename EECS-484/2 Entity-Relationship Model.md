@@ -1,6 +1,6 @@
 [[2024-01-16]] #Database 
 
-Database models determine how data can be **stored**, **organized** and **manipulated** in a database system. Today we will delve into the **Entity Relationship** (ER) Model, which is most useful for end-users and database designers.
+Database models determine how data can be **stored**, **organized** and **manipulated** in a database system. Today we will delve into the **[[1 DBMS#^5cd323|Entity Relationship (ER) Model]]**, which is most useful for end-users and database designers.
 
 ### Creating ER Diagram 
 #### Basics
@@ -46,7 +46,11 @@ A **key** is a **minimal set** of one or more attributes that has **unique value
 - Candidate keys are potential keys
 	- E.g. students in a student database have multiple potential keys such as student ID, log name, SSN, etc.
 
+```ad-important
+**Definition 2.1**: Primary Key
+
 A **primary key** is one of the candidate keys and is **underlined** in the ER Diagram. When you design a database, the primary key is **cross-referenced** in other tables to represent relationships.
+```
 
 Often each entity is assigned a **unique ID**, which serves as a **primary key**.
 
@@ -112,5 +116,6 @@ There are three main questions we want to ask ourselves in laying out the design
 
 #### Entity v.s. Attribute 
 Go with entity if you want to:
-- Store several addresses per party, or 
-- Encode the structure of address (city, street, etc.)
+- Store several characteristics per concept, or
+- Encode the structure of a concept 
+	- E.g. city, street of a location
