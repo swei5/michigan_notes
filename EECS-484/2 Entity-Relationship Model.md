@@ -27,7 +27,7 @@ An **arrow** indicates a **key constraint** on a relationship and an entity.
 - One-to-one
 
 Lines indicate **participation constraints** between two entities. 
-- A **heavy line** indicates every entity-1 entity **must-participate** in a relationship with an entity-2 entity 
+- A **heavy line** indicates **EVERY** entity-1 entity **must-participate** in a relationship with an entity-2 entity 
 - A **light line** indicates an entity-2 entity can be related to 0 or more entity-1 entities
 
 To sum these up, we now look at another example.
@@ -37,6 +37,29 @@ To sum these up, we now look at another example.
 ![[Pasted image 20240116161347.png|500]]
 
 The updated diagram specifies that
-1. Key contraint: a movie can only be directed by at most one director 
+1. Key contraint: a movie can only be directed by at most one director (many-to-1)
 2. Participation constraint: every movie must have at least one actor
 ```
+
+#### Attributes 
+A **key** is a **minimal set** of one or more attributes that has **unique value for each record**.
+- Candidate keys are potential keys
+	- E.g. students in a student database have multiple potential keys such as student ID, log name, SSN, etc.
+
+A **primary key** is one of the candidate keys and is **underlined** in the ER Diagram. When you design a database, the primary key is **cross-referenced** in other tables to represent relationships.
+
+Often each entity is assigned a **unique ID**, which serves as a **primary key**.
+
+![[Pasted image 20240116164900.png|500]]
+
+```ad-summary
+**Steps to ER Modeling**
+1. Identify **entities** (objects), **relationships** between entities 
+2. Attach **attributes**  
+3. Keys: something that uniquely identifies an entity
+```
+
+```ad-note
+An entity can be **related to itself**.
+```
+

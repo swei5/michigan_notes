@@ -65,6 +65,7 @@ Our valuation approach is to estimate the **risk-neutral expected payoff** and *
 Note that in project evaluations, we often used a risk-adjusted rate as the discounted factor (WACC, interest rate, etc.).
 
 However, in option valuation, we factor in risk-adjustment by determining the expected payoff **using risk-neutral probabilities**. This is because option is a much riskier asset than stocks, which could go up to 30% to 50%.
+- Expected rate of return (discount rate) is impossible to know unless we know the actual distribution of the prices
 ```
 
 The approach to calculate the risk-neutral probabilities is beyond the scope of this lecture.
@@ -79,7 +80,11 @@ We will always use a **RISK-FREE rate of interest** in discounting the expected 
 2. Estimate the risk-neutral expected future value of the underlying asset
 	- This is simply the future value of the underlying assets given some risk-free rate 
 3. Based upon the **risk-neutral expected future value** of the underlying asset, compute the risk-neutral probabilities of high and low outcomes
-	- $pH+(1-p) L=\mathbb{E}(S_{T})$: solve for $p$
+	- $pH+(1-p) L=\mathbb{E}(S_{T})$: solve for $p$: $p=\frac{\mathbb{E}(S_{T})-L}{H-L}$
 1. Compute the **option payoffs** at the expiration date
 2. **Apply the risk-neutral probabilities** of high and low outcomes, compute the risk-neutral expected future value of the option
 3. Discount the expected future value of the option to time zero at the risk-free rate of interest
+
+```ad-note
+The traditional valuation follows the Black-Scholes formula, but the binomial tree valuation method provides more flexibility and is simpler.
+```
