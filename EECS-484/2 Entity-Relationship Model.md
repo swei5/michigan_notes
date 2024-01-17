@@ -21,9 +21,9 @@ A **relationship set** is a set containing all related entities for a relationsh
 #### Adding Constraints
 An **arrow** indicates a **key constraint** on a relationship and an entity.
 - Many-to-many
-	- *Acts-in* is a many-to-many relationship as an actor can act in multiple movies and a movie can have multiple actors
+	- E.g. *Acts-in* is a many-to-many relationship as an actor can act in multiple movies and a movie can have multiple actors
 - One-to-many or many-to-one
-	- *Directed-by* is a many-to-1 relationship because a movie has at most 1 director
+	- E.g. *Directed-by* is a many-to-1 relationship because a movie has at most 1 director
 - One-to-one
 
 Lines indicate **participation constraints** between two entities. 
@@ -68,7 +68,49 @@ A **weak entity** can be identified **uniquely** only by considering **some of i
 
 ```ad-summary
 **Weak Entities Rules**
-- Weak entity has a single owner (one-to-many relationship)
+- Weak entity has a single owner (**one-to-many** relationship)
 - Weak entity must have **total participation** in the **above identifying relationship set**.
 ```
 
+```ad-example
+In this example, the ER Diagram illustrates that candidates have experts on their staff, identified by their name (partial key).
+- Expert names are not globally unique. To identify an expert, we need candidate’s ID + expert’s name
+
+![[Pasted image 20240117130824.png|500]]
+```
+
+#### ISA Hierarchies
+Attributes are **inherited**. If A is-a B, **every** A entity is also a B entity.
+- Specialize superclass (top-down design)
+- Generalize subclasses (bottom-up design)
+
+![[Pasted image 20240117131128.png|500]]
+
+There are two sets of constraints in such hierarchy:
+1. **Overlap**
+	- Can **more than one** subclasses contain the same entity?
+	- Overlapping v.s. disjoint
+1. **Covering**
+	- Do the entities in the subclasses **include ALL the entities** in the superclass?
+	- Total v.s. partial
+
+#### Relationships with Relationships 
+Treating a relationship as **an entity for another relationship** is called **aggregation**.
+
+```ad-example
+In this example, the sponsoring relationship is viewed as an entity. Specifically, each Project must be sponsored by at least one department, and each sponsoring relationship must be monitored by exactly one manager.
+
+![[Pasted image 20240117153622.png|500]]
+```
+
+---
+### Designing ER Model 
+There are three main questions we want to ask ourselves in laying out the design:
+1. Model a concept as an **entity** or an **attribute**?
+2. Model a concept as an **entity** or a **relationship**?
+3. **Binary** or **ternary** relationship? **Aggregation**?
+
+#### Entity v.s. Attribute 
+Go with entity if you want to:
+- Store several addresses per party, or 
+- Encode the structure of address (city, street, etc.)
