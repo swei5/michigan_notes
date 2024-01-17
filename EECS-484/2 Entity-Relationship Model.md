@@ -2,7 +2,7 @@
 
 Database models determine how data can be **stored**, **organized** and **manipulated** in a database system. Today we will delve into the **Entity Relationship** (ER) Model, which is most useful for end-users and database designers.
 
-### Creating ER Design 
+### Creating ER Diagram 
 #### Basics
 Key legends as followed:
 - Square ▭ : entities
@@ -63,3 +63,11 @@ Often each entity is assigned a **unique ID**, which serves as a **primary key**
 An entity can be **related to itself**.
 ```
 
+#### Weak Entities 
+A **weak entity** can be identified **uniquely** only by considering **some of its attributes in conjunction with the primary key** of the another entity (identifying owner).
+
+```ad-summary
+**Weak Entities Rules**
+- Weak entity has a single owner (one-to-many relationship)
+- Weak entity must have **total participation** in the **above identifying relationship set**.
+```
