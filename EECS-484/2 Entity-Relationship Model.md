@@ -71,3 +71,4 @@ A **weak entity** can be identified **uniquely** only by considering **some of i
 - Weak entity has a single owner (one-to-many relationship)
 - Weak entity must have **total participation** in the **above identifying relationship set**.
 ```
+
