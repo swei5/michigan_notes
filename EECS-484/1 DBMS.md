@@ -65,6 +65,7 @@ The **physical schema** is then **directly related** to the database itself (lay
 The structure of the database (including the data models) concerns only the conceptual schema.
 
 The **external schema** (views) are subject to some set of **constraints** that are visible to certain group of end-users, and only expose a portion of the database.
+- When querying, views are computed on the fly (re-computed every time)
 
 ```ad-note
 Schemas are defined using **Data Definition Language** (DDL), e.g. `CREATE TABLE X (...)`.

@@ -42,9 +42,13 @@ The updated diagram specifies that
 ```
 
 #### Attributes 
-A **key** is a **minimal set** of one or more attributes that has **unique value for each record**.
+A **key** is a **MINIMAL set** of one or more attributes that has **unique value for each record**.
 - Candidate keys are potential keys
 	- E.g. students in a student database have multiple potential keys such as student ID, log name, SSN, etc.
+
+```ad-warning
+A unique set of attributes doesn't make it the key of the entity unless it's also the **MINIMAL** set.
+```
 
 ```ad-important
 **Definition 2.1**: Primary Key
@@ -52,9 +56,15 @@ A **key** is a **minimal set** of one or more attributes that has **unique value
 A **primary key** is one of the candidate keys and is **underlined** in the ER Diagram. When you design a database, the primary key is **cross-referenced** in other tables to represent relationships.
 ```
 
-Often each entity is assigned a **unique ID**, which serves as a **primary key**.
+Often each entity is assigned a **unique ID**, which serves as a **primary key**. 
 
 ![[Pasted image 20240116164900.png|500]]
+
+```ad-note
+Keys of the entities define the relationship in which they participate in. In other words, the records with these keys in the relationship should be unique. 
+
+Adding records with duplicate keys with additional attributes requires a redesign of the diagram. 
+```
 
 ```ad-summary
 **Steps to ER Modeling**
