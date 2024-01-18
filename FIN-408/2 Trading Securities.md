@@ -1,4 +1,4 @@
-[[2024-01-16]] #Investment #Stocks 
+[[2024-01-16]] #Investment
 
 ### Issuing Securities
 - Primary Market: new issues of stocks, bonds, etc
@@ -117,7 +117,8 @@ Stocks purchased on margin must be **maintained with the broker as collateral** 
 Conversely, if there happens to be an upside to the stock, the rate of return also doubles.
 ```
 
-##### Shortselling
+##### Short-selling
+Short selling is an advanced trading strategy with many unique risks and pitfalls.  
 
 ```ad-important
 **Definition 2.5**: **Short-selling** 
@@ -128,3 +129,10 @@ Short sellers **cover dividend payments** while borrowing stocks. There is a lim
 ```
 
 Owners of the stock may regain possession of the shares from the short-seller at any time before the contract due date.
+
+There are **margin requirements** for a short sale in which **150% of the value** of the shares shorted needs to be initially held in the account.
+- Note that 100% of the margin requirement is generated from the sale of the security; Therefore, the **additional initial margin requirement is 50%**
+
+```ad-note
+Note that this is reverse to purchasing on margin. If the market value of a stock increases, additional equity needs to be injected to maintain the margin requirement, which is equal to $$\frac{\text{Equity}}{\text{Value of stock}}$$
+```

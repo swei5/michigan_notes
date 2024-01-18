@@ -38,4 +38,9 @@ Note that earnings yield for smaller caps are more dispersed due to higher risks
 
 ### Backtesting
 To avoid survivorship bias, we want to pick the stocks that were in the index during the test period but not the best-performing ones. 
-- Data availability should be more than 30 years
+- Data availability should be **more than 30 years**
+
+```ad-note
+Use ["adjusted close"](https://www.investopedia.com/terms/a/adjusted_closing_price.asp#toc-types-of-adjustments) to calculate the return of stocks (which accounted for dividends and splits).
+```
+

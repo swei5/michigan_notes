@@ -77,7 +77,7 @@ We will always use a **RISK-FREE rate of interest** in discounting the expected 
 #### Valuation Steps
 1. Estimate the possible prices of the underlying asset (spot price) at the expiration date.
 	- This is usually given by a probability distribution
-2. Estimate the risk-neutral expected future value of the underlying asset
+2. Estimate the **risk-neutral expected future value of the underlying asset**
 	- This is simply the future value of the underlying assets given some risk-free rate 
 3. Based upon the **risk-neutral expected future value** of the underlying asset, compute the risk-neutral probabilities of high and low outcomes
 	- $pH+(1-p) L=\mathbb{E}(S_{T})$: solve for $p$: $p=\frac{\mathbb{E}(S_{T})-L}{H-L}$
