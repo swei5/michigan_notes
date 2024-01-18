@@ -88,3 +88,26 @@ We will always use a **RISK-FREE rate of interest** in discounting the expected 
 ```ad-note
 The traditional valuation follows the Black-Scholes formula, but the binomial tree valuation method provides more flexibility and is simpler.
 ```
+
+#### Futures
+A futures contract is a **legally binding agreement to buy or sell** a standardized asset on a specific date or during a specific month. A future contract needs posting of **margins** against possible default parties; the more volatile the future's price is, the higher the margin requirement. 
+
+```ad-note
+In this course, we will often assume futures contract and option contracts contain the same terms for simplicity.
+```
+
+### Re-Combining Binomial Trees
+The number of outcomes will be $n+1$ from this model, where $n$ is the depth of the tree.
+
+#### Valuation Steps 
+- **Underlying asset** 
+	1. Replicate the one step binomial tree many times. The period of time between each step decreases as the number of steps increases, given the same time to expiry.  
+	2. Estimate the possible prices of the underlying asset after one step, two steps and so on until the expiration date.  
+	3. Break up the binomial tree into individual segments, in which each segment is just like a one step binomial tree.  
+	4. Within each segment, estimate the risk-neutral expected future value of the underlying asset.  
+	5. Within each segment, and based upon the risk-neutral expected future value of the underlying asset, compute the risk-neutral probabilities of high and low outcomes
+- **Option**
+	1. Create a binomial tree for the option and break it up into a series of individual binomial trees.  
+	2. Go to the expiration date part of the binomial tree, and compute the option payoffs at the expiration date  
+	3. Apply the risk-neutral probabilities of high and low outcomes, compute the risk neutral expected future value of the option.  
+	4. Discount the expected future value of the option back one step. Now for each individual binomial tree you have the present value of the expected future payoff.
