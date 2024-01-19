@@ -111,3 +111,4 @@ The number of outcomes will be $n+1$ from this model, where $n$ is the depth of 
 	2. Go to the expiration date part of the binomial tree, and compute the option payoffs at the expiration date  
 	3. Apply the risk-neutral probabilities of high and low outcomes, compute the risk neutral expected future value of the option.  
 	4. Discount the expected future value of the option back one step. Now for each individual binomial tree you have the present value of the expected future payoff.
+
