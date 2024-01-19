@@ -91,7 +91,7 @@ Only a portion of the investment comes from your own money, and the remaining po
 - Higher leverage, increasing upside and downside risks
 
 Margin is calculated as the following:
-$$\text{margin}=\frac{\text{equity}}{\text{value of stock}}=\frac{\text{value of stock}-\text{liability}}{\text{value of stock}}$$
+$$\text{margin}=\frac{\text{equity}}{\text{market value of assets}}=\frac{\text{market value of assets}-\text{liability}}{\text{market value of assets}}$$
 
 Stocks purchased on margin must be **maintained with the broker as collateral** for the loan.  
 
@@ -133,6 +133,10 @@ Owners of the stock may regain possession of the shares from the short-seller at
 There are **margin requirements** for a short sale in which **150% of the value** of the shares shorted needs to be initially held in the account.
 - Note that 100% of the margin requirement is generated from the sale of the security; Therefore, the **additional initial margin requirement is 50%**
 
+```ad-example
+![[Pasted image 20240118235644.png]]
+```
+
 ```ad-note
-Note that this is reverse to purchasing on margin. If the market value of a stock increases, additional equity needs to be injected to maintain the margin requirement, which is equal to $$\frac{\text{Equity}}{\text{Value of stock}}$$
+Note that this is reverse to purchasing on margin. If the market value of a stock increases, additional equity needs to be injected to maintain the margin requirement. 
 ```
