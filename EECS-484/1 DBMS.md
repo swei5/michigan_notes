@@ -39,6 +39,8 @@ A schema is a **description** of data in terms of a data model.
 - Specifies the **name of the relation**, the **name and type of the columns** (or fields or attributes)
 ```
 
+^0ed388
+
 ![[Pasted image 20240111231446.png|500]]
 
 #### Entity-Relationship (ER) Model
