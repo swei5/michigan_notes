@@ -29,6 +29,8 @@ A **relational model** is the most widely used model today.
 A relational data model contains a collection of **relations**. A **relation** is a **set of records**, naturally represented as a table with rows and (named, typed) columns. Each table row is also called a **tuple** or **record**.
 ```
 
+^092f47
+
 ```ad-important
 **Definition 1.2**: Schema 
 
