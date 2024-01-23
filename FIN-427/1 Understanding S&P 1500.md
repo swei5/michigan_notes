@@ -15,7 +15,7 @@ Investing in an index fund is a passive investment strategy that gives exposure 
 - ETFs often mimic indices 
 - However, there are active ETFs that attempt to earn higher returns than a benchmark
 
-ETFs offer **low cost diversification** and **exposure to assets** that meet a specified criteria.
+ETFs offer **low cost diversification** and **exposure to assets** that meet a specified criteria. ^108319
 - A passive investor can diversify at low cost
 - An active investor can get bet on a theme, while mitigating company-specific risk
 
