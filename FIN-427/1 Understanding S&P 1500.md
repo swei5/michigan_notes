@@ -1,4 +1,4 @@
-[[2024-01-16]] #Stocks 
+[[2024-01-16]] #Stocks #Investment 
 
 ### Indices, ETF
 An index is a fictional portfolio that replicates the performance of a group of stocks (the market).

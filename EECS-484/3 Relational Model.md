@@ -39,3 +39,21 @@ CREATE TABLE table_name (
 - ICs are checked whenever relations are modified
 
 A legal instance of a relation satisfies **ALL specified ICs**. DBMS **must NOT** admit illegal instances.
+
+```ad-example
+Examples of ICs include:
+- Specify certain attributes as keys of a table
+- Reference keys of entities in other tables
+- No dangling references are allowed in a database when updates occur to any table
+```
+
+##### Primary and Candidate Keys
+Recall the definition of **keys** ![[2 Entity-Relationship Model#^76b380]]
+Equivalently, no two tuples in (any instance of) $R$ have the same key attributes $A_{1}, \cdots, A_{n}$.
+
+A **superkey** is a key that only satisfies the uniqueness requirement, but no minimal requirement. 
+
+```ad-note
+Every key is a superkey.
+```
+

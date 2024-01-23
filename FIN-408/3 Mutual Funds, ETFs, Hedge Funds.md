@@ -174,7 +174,7 @@ underperformed the stock market since the financial crisis of 2008.
 		- Also allow shareholders to redeem shares on at least a daily basis
 	- **Hedge funds**: 
 		- No specific rules on valuation or pricing 
-		- In addition, new investors typically must pledge to keep their money in a hedge fund for at least one year
+		- New investors typically must pledge to keep their money in a hedge fund for at least one year
 ```
 
 

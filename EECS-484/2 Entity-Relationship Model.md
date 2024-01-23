@@ -52,7 +52,7 @@ Arrows can only come **INTO** a relationship, not **OUT OF IT**.
 
 ---
 #### Attributes, Keys
-A **key** is a **MINIMAL set** of one or more attributes that has **unique value for each record**.
+A **key** is a **MINIMAL set** of one or more attributes $A_{1}, \cdots, A_{n}$ that has **unique value for each record**. ^76b380
 - Candidate keys are potential keys
 	- E.g. students in a student database have multiple potential keys such as student ID, log name, SSN, etc.
 
