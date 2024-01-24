@@ -19,7 +19,7 @@
 	- **Option premium**: price of the option
 - **Valuation**  
 	- Moneyness  
-		- **At the money**: when spot price is equal to strike price
+		- **At the money**: when spot price is equal to strike price ^470043
 		- **In the money**: when there is immediate **positive cash pay-off** by exercising the option
 			- E.g. When strike price is lower than the spot price for a **call option**
 		- **Out of the money**: when there is immediate **negative cash pay-off** by exercising the option
@@ -89,6 +89,9 @@ We will always use a **RISK-FREE rate of interest** in discounting the expected 
 The traditional valuation follows the Black-Scholes formula, but the binomial tree valuation method provides more flexibility and is simpler.
 ```
 
+```ad-note
+Note how risk-neutral probabilities differ from real-world probabilities.
+```
 #### Futures
 A futures contract is a **legally binding agreement to buy or sell** a standardized asset on a specific date or during a specific month. A future contract needs posting of **margins** against possible default parties; the more volatile the future's price is, the higher the margin requirement. 
 
@@ -101,14 +104,28 @@ The number of outcomes will be $n+1$ from this model, where $n$ is the depth of 
 
 #### Valuation Steps 
 - **Underlying asset** 
-	1. Replicate the one step binomial tree many times. The period of time between each step decreases as the number of steps increases, given the same time to expiry.  
-	2. Estimate the possible prices of the underlying asset after one step, two steps and so on until the expiration date.  
-	3. Break up the binomial tree into individual segments, in which each segment is just like a one step binomial tree.  
-	4. Within each segment, estimate the risk-neutral expected future value of the underlying asset.  
-	5. Within each segment, and based upon the risk-neutral expected future value of the underlying asset, compute the risk-neutral probabilities of high and low outcomes
+	1. Replicate the one step binomial tree many times. The period of time between each step **decreases as the number of steps increases**, given the same time to expiry
+	2. Estimate the **possible prices** of the underlying asset after one step, two steps and so on until the expiration date
+		- To get to the possible prices after step 1, just use the multiple $\frac{P_1}{P_{0}}$
+	1. Break up the binomial tree into individual segments, in which each segment is just like a one step binomial tree
+	2. Within each segment, **estimate the risk-neutral expected future value** of the underlying asset
+		- This is simply the future value of the underlying assets given some risk-free rate 
+	3. Within each segment, and based upon the risk-neutral expected future value of the underlying asset, compute the **risk-neutral probabilities** of high and low outcomes
+		- $p=\frac{\mathbb{E}(S_{T})-L}{H-L}$
+		- If the percentage of change in high and low outcomes between $t_0$ and $t_1$ and $t_1$ and $t_2$ are different, we would need to recalculate $p$ for each of the sub-tree
 - **Option**
-	1. Create a binomial tree for the option and break it up into a series of individual binomial trees.  
+	1. Create a binomial tree for the option and break it up into a series of individual binomial trees
 	2. Go to the expiration date part of the binomial tree, and compute the option payoffs at the expiration date  
-	3. Apply the risk-neutral probabilities of high and low outcomes, compute the risk neutral expected future value of the option.  
-	4. Discount the expected future value of the option back one step. Now for each individual binomial tree you have the present value of the expected future payoff.
+	3. Apply the risk-neutral probabilities of high and low outcomes, compute the risk neutral expected future value of the option
+	4. Discount the expected future value of the option back one step. Now for each individual binomial tree you have the present value of the expected future payoff
 
+```ad-note
+American call option on a non dividend-paying stock **never worth more than a European call option** because it is never optimal to exercise early as there is always the chance that the stock price could go higher.
+
+On the flipped side, **American put option is more valuable** than the European put option as the American put option is exercised early when the stock price falls.
+```
+
+### Delta 
+The **sensitivity of change in option price** to a small change in underlying asset price is the options’ delta.
+
+Rule of thumb: An **[[#^470043|at the money]] option**(exercise price = spot price) will have delta ~$0.50$.
