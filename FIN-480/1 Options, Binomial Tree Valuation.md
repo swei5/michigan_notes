@@ -36,6 +36,9 @@
 
 ---
 ### One Step Binomial Tree Valuation 
+
+^115aa9
+
 #### Call Options
 Buyer has the option to buy an underlying asset from the seller at a fixed exercise price. **However, selling a call option is risky**, because the underlying asset price could move to a very high price.
 - **Naked call option**: Seller doesn’t own underlying
