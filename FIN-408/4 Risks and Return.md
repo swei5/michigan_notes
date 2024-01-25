@@ -16,12 +16,27 @@ In calculating rate of return, we must take into account both **dividend yield**
 #### Nominal versus Real Return 
 A **nominal return** represents the growth rate of your money.  A **real return** represents the growth rate of your **purchasing power**.
 
-Let $R =$ nominal rate, $r =$ real rate and $I =$ inflation rate. Then
-$$1+r = \frac{1+R}{1+I}$$$$\implies r \approx R-I$$
-When the nominal rate and the inflation rate is *sufficiently small*.
+Let $i =$ nominal rate, $r =$ real rate and $\pi =$ inflation rate. Then
+$$1+r = \frac{1+i}{1+\pi}$$$$\implies r \approx i-\pi$$
+When the nominal rate and the inflation rate is *sufficiently small*. Note that this is from the [[4.2 Capital Investment - Interest Rate#^2fe11c|Fisher Equation]].
 
 #### Expected Return 
 Defined as
 $$\mathbb{E}(R_{t,t+1})=\frac{\mathbb{E}(P_{t+1})+\mathbb{E}(D_{t+1})}{P_t}-1$$
 
 Where $P_t$ is prices at time $t$ and $D_t$ is dividends paid at time $t$. From that we could define the **risk premium**: ![[7.2 Risk and Return Profile#^419f8c]]
+Read [[8.1 Portfolio Theory#Expected Returns|Expected Returns]] and [[8.1 Portfolio Theory#Portfolio Risk and Return|Portfolio Risk and Return]] for more information related to calculating expected return and risks (variance) given some random probability distribution. Note that 
+$$\text{Var}(X,Y)=\mathbb{E}\left(X^{2}\right)-\left(\mathbb{E}(X)\right)^{2}$$
+
+Read [[8.1 Portfolio Theory#Covariance and Correlation|Covariance and Correlation]] for information related to computing the correlation coefficient and covariances between assets. Note that
+$$\text{Cov}(X,Y)=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)$$
+
+---
+### Statistics 
+Use the **arithmetic mean return** if you want to make an **estimate of future returns** based upon a sample of past returns, and you consider that the series of returns is **independent**.
+
+Use the **geometric mean** return if you want to report to investors the **actual returns on a periodic basis**.
+- E.g. CAGR 
+
+Greater variance of returns of a security means greater uncertainty (risks). Securities with **more volatile returns** tend to have **higher average returns**. This is known as the risk-return tradeoff.
+
