@@ -16,6 +16,11 @@ The schema to the table below is `(aid: integer, name: string, country: string, 
 ![[Pasted image 20240121140214.png|500]]
 ```
 
+#### Classical Relational Model 
+Requires that **EVERY row** is **UNIQUE** (set semantics). 
+- In modern system SQL, a multi-set semantics is adapted which means **DUPLICATE rows** are allowed.
+
+---
 ### Relational Query Languages
 Supports simple, powerful querying of data. Queries are written **declaratively**, in contrast to procedural methods, which allows for mathematical optimization.
 
@@ -26,7 +31,27 @@ SQL is the standard database query language.
 ```
 
 ---
-### `CREATE`, Domain Constraints
+### Integrity Constraints
+**Integrity constraints** must hold true for **every instance** of the database.
+- ICs are specified based on application semantics when **schema is defined** 
+- ICs are checked whenever relations are **modified**
+
+Types of ICs include
+- Domain constraints (type)
+- Primary key constraints 
+- Foreign key constraints 
+- General constraints 
+
+A legal instance of a relation satisfies **ALL specified ICs**. DBMS **must NOT** admit illegal instances.
+
+```ad-example
+Examples of ICs include:
+- Specify certain attributes as keys of a table
+- Reference keys of entities in other tables
+- No dangling references are allowed in a database when updates occur to any table
+```
+
+#### `CREATE`, Domain Constraints
  `CREATE` follows the syntax below:
 
 ```sql
@@ -43,20 +68,6 @@ CREATE TABLE {tb} (
 Each table **MUST HAVE** domain constraints.
 ```
 
----
-### Integrity Constraints
-**Integrity constraints** must hold true for **every instance** of the database.
-- ICs are specified when **schema is defined** 
-- ICs are checked whenever relations are modified
-
-A legal instance of a relation satisfies **ALL specified ICs**. DBMS **must NOT** admit illegal instances.
-
-```ad-example
-Examples of ICs include:
-- Specify certain attributes as keys of a table
-- Reference keys of entities in other tables
-- No dangling references are allowed in a database when updates occur to any table
-```
 
 #### Primary Keys Constraints
 Recall the definition of **keys**: ![[2 Entity-Relationship Model#^76b380]]
@@ -98,7 +109,7 @@ CREATE TABLE {tb} (
 
 `NULL` value implies the value is **unknown** or **inapplicable**.
 
-By SQL standard, a primary key attribute **CANNOT** be `NULL`. Primary key is often an **integer ID** for efficiency.
+By SQL standard, a **primary key **attribute **CANNOT** be `NULL`. Primary key is often an **integer ID** for efficiency.
 
 ```ad-note
 The design consideration here is that primary keys should be long-term stable, unique, and, ideally, not sensitive. Avoid addresses, SSN, etc.
@@ -135,6 +146,7 @@ Whenever we modify the database, the DBMS **must check for violations** of ICs. 
 - Primary key and unique ICs are intuitive
 
 If a complete tuple is inserted with **NO corresponding** foreign key in the referenced table, `INSERT` is also rejected.
+- `NULL` is accepted
 
 ```ad-summary
 In general, when it comes to enforcement of referential integrity in the case of deleting a tuple, SQL uses the following rules:
