@@ -98,6 +98,10 @@ CREATE TABLE Citizen_Votes (
 );
 ```
 
+```ad-warning
+Note that in this case we **CANNOT use** both keys $(A, B)$ as the primary keys of the table as it *implies* that we could theoretically have $(a_1,b_1)$ and $(a_1,b_2)$ in the table, where $a \in A$, $b \in B$; however, this should not be allowed in the first place given the key constraint (table $A$ has a many-to-one relationship to table $B$).
+```
+
 Let's again look at a more general picture:
 
 ![[Pasted image 20240127225533.png|500]]
@@ -152,3 +156,94 @@ CREATE TABLE Expert_Staff (
 The `ON DELETE CASCADE` ensures that the DBMS delete all weak entities when an owner entity is deleted.
 
 #### ISA Hierarchy, Aggregation 
+Let's look at a specific ISA hierarchy example:
+
+![[Pasted image 20240127234157.png|500]]
+
+In this example, we want to have three tables, `Citizen`, `PR-Cand`, and `President`. `ssn` will be the primary key for all three tables and will be the **foreign key** for `PR-Cand` and `President` (foreign key constraint applies).
+
+Often, we would need to *join* the `PR-Cand` table and `Citizen` table to look up information about `PR-Cand`, for instance. But more on this later.
+
+In aggregation, we would simply treat a relationship as one single entity and apply the same thought process as above.
+
+```ad-summary
+**Relational Model Design**, by entity relationships
+- **No constraints**
+	- Approach 1
+- **At most 1 **(key constraint but no participation constraints)
+	- Approach 1
+	- Approach 2
+- **Exactly 1** (key constraint **AND** participation constraint)
+	- Approach 2, `FOREIGN KEY NOT NULL`
+- **1 or more** (participation constraint only)
+	- Approach 1 (forgo participation constraint)
+```
+
+#### General Constraints 
+
+^d1927a
+Constraints that are more general than key constraints, and we can always use a query to express such constraints.
+
+```sql
+CREATE TABLE {tb} (
+	...,
+	age INTEGER,
+	CHECK (age >= 18 AND age <= 80)
+);
+```
+
+General constraints are checked each time a table is **updated**. 
+
+```ad-note
+A `CHECK` constraint is always true for **empty** relation.
+```
+
+SQL standard also allows **cross-table** `CHECK` constraints. But, they are not supported in most systems – expensive to enforce.
+
+#### Active Databases, Triggers
+A trigger is a procedure that **starts automatically** if specified changes occur to the DBMS. It is consisted of three parts:
+- **Event** (activates the trigger)
+- **Condition** (test that is run when the trigger is activated)
+- **Action** (what happens if the trigger runs)
+
+There are two types of trigger execution:
+- **Row-level Triggers**: Once per modified row  
+- **Statement-level Triggers**: Once per SQL statement
+
+Let's look at an example; this is a row-level trigger (triggered per row update). If new salary above 1000, log entry is added.
+
+```sql
+CREATE OR REPLACE TRIGGER Log_salary_increase AFTER UPDATE ON Employee FOR EACH ROW WHEN (new.Sal > 1000)  
+BEGIN
+	INSERT INTO Emp_log (Emp_id, Log_date, New_salary, Action) 
+		VALUES (:new.Empno, SYSDATE, :new.SAL, 'NEW SAL’);
+END;
+```
+
+Remember `CASCADE` (foreign key constraints)? We can also use a trigger to achieve the same result:
+
+```sql
+CREATE TABLE Compete (aid INTEGER,
+	oid INTEGER,  
+	PRIMARY KEY (aid, oid),  
+	FOREIGN KEY (aid) REFERENCES Athlete, 
+	FOREIGN KEY (oid) REFERENCES Olympics
+);
+
+CREATE OR REPLACE TRIGGER cascade_on_delete 
+AFTER DELETE ON Athlete  
+FOR EACH ROW  
+BEGIN
+	DELETE FROM Compete
+	  WHERE Compete.aid = :OLD.aid;
+END;
+```
+
+```ad-summary
+**Triggers**: Pitfalls and Pain 
+- Triggers can be **recursive**
+	- Chain of triggers can be hard to predict, which makes triggers difficult to understand and debug
+- Errors with “mutating” table 
+	- A mutating table is a table that is currently being modified by an `UPDATE`, `DELETE`, or `INSERT` statement, or a table that might be updated by the effects of a DELETE CASCADE constraint
+	- The session that issued the triggering statement **CANNOT** **query** or **modify** a mutating table
+```

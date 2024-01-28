@@ -40,7 +40,7 @@ Types of ICs include
 - Domain constraints (type)
 - Primary key constraints 
 - Foreign key constraints 
-- General constraints 
+- [[4 Mapping ER to Relational#^d1927a|General constraints]]
 
 A legal instance of a relation satisfies **ALL specified ICs**. DBMS **must NOT** admit illegal instances.
 
