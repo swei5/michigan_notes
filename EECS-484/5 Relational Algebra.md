@@ -42,6 +42,8 @@ Each term in the condition has one of the following forms:
 - `<attr1> <op> <attr2>`, or
 - `<attr> <op> <value>`
 
+In the background, the program iterates through all the rows to locate all that have a matching condition.
+
 ```ad-example
 The expression below is equivalent to `SELECT * FROM Athlete A WHERE A.sport = 'gymnastics' AND A.country = 'USA';`
 
@@ -55,6 +57,7 @@ Does the following:
 - Delete attributes that are not in projection list
 
 Projection operator in relational algebra **removes duplicates**; this is because classical relational model is a **set**.
+- **DOES NOT** remove duplicates in SQL standards
 
 ```ad-example
 The expression below is equivalent to `SELECT sport, country FROM Athlete;`
