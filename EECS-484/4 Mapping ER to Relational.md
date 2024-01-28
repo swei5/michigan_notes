@@ -207,10 +207,13 @@ A trigger is a procedure that **starts automatically** if specified changes occu
 - **Action** (what happens if the trigger runs)
 
 There are two types of trigger execution:
-- **Row-level Triggers**: Once per modified row  
+- **Row-level Triggers**: Once per modified row
+	- Useful in auditing, creating a log of updates, security checks
 - **Statement-level Triggers**: Once per SQL statement
 
 Let's look at an example; this is a row-level trigger (triggered per row update). If new salary above 1000, log entry is added.
+
+Below is an example of a row-level trigger.
 
 ```sql
 CREATE OR REPLACE TRIGGER Log_salary_increase AFTER UPDATE ON Employee FOR EACH ROW WHEN (new.Sal > 1000)  
@@ -247,3 +250,5 @@ END;
 	- A mutating table is a table that is currently being modified by an `UPDATE`, `DELETE`, or `INSERT` statement, or a table that might be updated by the effects of a DELETE CASCADE constraint
 	- The session that issued the triggering statement **CANNOT** **query** or **modify** a mutating table
 ```
+
+Avoid using triggers unless absolutely necessary.

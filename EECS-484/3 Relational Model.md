@@ -32,9 +32,15 @@ SQL is the standard database query language.
 
 ---
 ### Integrity Constraints
+
+```ad-important
+**Definition 3.1**: Integrity Constraint
+
 **Integrity constraints** must hold true for **every instance** of the database.
 - ICs are specified based on application semantics when **schema is defined** 
 - ICs are checked whenever relations are **modified**
+
+```
 
 Types of ICs include
 - Domain constraints (type)
@@ -68,10 +74,15 @@ CREATE TABLE {tb} (
 Each table **MUST HAVE** domain constraints.
 ```
 
-
-#### Primary Keys Constraints
+#### Primary Key Constraint
 Recall the definition of **keys**: ![[2 Entity-Relationship Model#^76b380]]
-Equivalently, no two tuples in (any instance of) $R$ have the same key attributes $A_{1}, \cdots, A_{n}$.
+Equivalently, no two tuples in (any instance of) $R$ have the same attributes $A_{1}, \cdots, A_{n}$.
+
+```ad-important
+**Definition 3.2**: Primary Key Constraint
+
+By SQL standard, a **primary key **attribute** CANNOT** be `NULL`. Primary key is often an **integer ID** for efficiency.
+```
 
 A **superkey** is a key that only satisfies the **uniqueness requirement**, but no minimal requirement. 
 
@@ -109,8 +120,6 @@ CREATE TABLE {tb} (
 
 `NULL` value implies the value is **unknown** or **inapplicable**.
 
-By SQL standard, a **primary key **attribute **CANNOT** be `NULL`. Primary key is often an **integer ID** for efficiency.
-
 ```ad-note
 The design consideration here is that primary keys should be long-term stable, unique, and, ideally, not sensitive. Avoid addresses, SSN, etc.
 ```
@@ -131,7 +140,7 @@ CREATE TABLE a (
 `UNIQUE` attributes **CAN** be `NULL`, unless `NOT NULL` is specified.
 - **Only the NON-`NULL`** attribute values need to be `UNIQUE`.
 
-#### Foreign Key Constraints and Referential Integrity
+#### Foreign Key Constraint and Referential Integrity
 Enforcing foreign key constraints implies **referential integrity** (no dangling references) is achieved.
 
 ```sql
@@ -164,4 +173,3 @@ To destroy the relation, we use `DELETE TABLE {tb}`. Schema information and tupl
 
 To alter the schema by adding a new column, we use `ALTER TABLE {tb} ADD COLUMN {colname}: {TYPE}`.
 - The new field are put as `NULL`
-
