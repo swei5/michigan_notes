@@ -70,6 +70,7 @@ Takes input of **two union-compatible relations**. The field names of the output
 - Have to have the same number and type of attributes, in same order
 
 #### Set Difference 
+Projection is often used before subtraction.
 
 ```ad-example
 The expression below is equivalent to `SELECT * FROM name MINUS SELECT * FROM AthleteName;`
@@ -115,3 +116,6 @@ $$\rho(C(A1.\text{name} \to \text{name1}, A2.\text{name} \to \text{name2}), \rho
 
 ![[Pasted image 20240128114700.png|500]]
 ```
+
+This is useful because we do not appreciate duplicate columns in a table. 
+- Otherwise each DBMS has their own mechanism to rename, which is often non-SQL standard
