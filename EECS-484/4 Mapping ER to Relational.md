@@ -1,4 +1,4 @@
-[[2024-01-27]] #Database 
+[[2024-01-27]] #Database #SQL
 
 ### Relationship Sets to Tables 
 The primary key (s) of a relationship set are specified by the **underlined attribute**s in the participating entity sets, whereas foreign keys are referenced from participating entity sets.

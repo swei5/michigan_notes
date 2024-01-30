@@ -1,4 +1,4 @@
- [[2024-01-28]] #Database 
+ [[2024-01-28]] #Database #SQL
 
 ### Formal Query Languages 
 Formal query languages are the foundation for commercial query languages like SQL. There are two main types 
@@ -35,7 +35,7 @@ Additional operations (constructed from basic ops – not essential, but very us
 Because algebra is **closed**, we can compose operators.
 
 ---
-### Selection 
+### Selection: $\sigma$
 Retrieve **rows** that satisfy a logical condition.
 $$\sigma_{\text{condition}}(R)$$
 Each term in the condition has one of the following forms:
@@ -51,7 +51,7 @@ The expression below is equivalent to `SELECT * FROM Athlete A WHERE A.sport = '
 ```
 
 ---
-### Projection 
+### Projection: $\pi$
 Does the following:
 - Selects columns
 - Delete attributes that are not in projection list
@@ -69,7 +69,7 @@ The expression below is equivalent to `SELECT sport, country FROM Athlete;`
 Takes input of **two union-compatible relations**. The field names of the output use the names from the **first input**.
 - Have to have the same number and type of attributes, in same order
 
-#### Set Difference 
+#### Set Difference: $-$
 Projection is often used before subtraction.
 
 ```ad-example
@@ -80,7 +80,7 @@ $$\text{name}-\text{AthleteName}$$
 ![[Pasted image 20240128111815.png|500]]
 ```
 
-#### Cross-Product (Cartesian)
+#### Cross-Product (Cartesian): $\times$
 Result is each row of one relation **combined with each row** of the second relation. The result schema will have **ALL fields** from both relations, names inherited by default.
 
 ```ad-example
@@ -91,7 +91,7 @@ $$\text{Athlete} \times \text{Olympics}$$
 ![[Pasted image 20240128112130.png|500]]
 ```
 
-### Rename Operator 
+### Rename Operator: $\rho$
 Use cases include
 - Shorthand
 - Self-joins
@@ -122,7 +122,7 @@ This is useful because we do not appreciate duplicate columns in a table.
 
 ---
 
-### `JOIN`
+### `JOIN`: $\bowtie$
 The most common way of combining information from two tables. There are three types of `JOIN` s:
 - **Conditional Join ($\theta$ -Join)**: $R\bowtie_{c}S=\sigma_{c}(R\times S)$, where $c$ is a condition
 - **Equijoin**: $R\bowtie_{c}S$, where $c$ consists only of **equalities** of one or more columns
@@ -130,4 +130,48 @@ The most common way of combining information from two tables. There are three ty
 
 ```ad-important
 Despite equivalence, `JOIN` is faster than [[#Cross-Product (Cartesian)|cross product]].
+```
+
+```ad-example
+Given the following tables:
+
+![[Pasted image 20240130152334.png|500]]
+
+This is the solution to find names of sailors who have reserved a red boat
+$$\pi_{\text{sname}}((\sigma_{\text{color}=\text{'red'}}\text{Boats}) \bowtie \text{Reserves} \bowtie \text{Sailors})$$
+which is also equivalent to the following expression 
+$$\pi_{\text{sname}}(\pi_\text{sid}((\pi_{\text{bid}}\sigma_{\text{color='red'}}\text{Boats})\bowtie \text{Reserves})\bowtie \text{Sailors})$$
+
+Another example, with step-by-step approach:
+
+![[Pasted image 20240130153545.png|500]]
+```
+
+The **query optimizer** chooses from the (equivalent) expressions and chooses one for **efficiency** of evaluation.
+
+---
+### Division: $/$
+Let $A$ have 2 fields, $x$ and $y$ ; $B$ have only field $y$. Then,
+$$A/B=\{x|\forall y\in B, (x,y)\in A\}$$
+
+The result is all the $x$ tuples such that for every $y$ tuples in $B$, there is at an $(x,y)$ tuple in $A$.
+
+The division operator can be equivalently expressed by basic operators:
+$$A/B = \pi_{x}(A)-\pi_{x}((\pi_{x}(A)\times B)-A)$$
+The underlying idea is to compute all $x$ values that are **NOT disqualified** by some $y$ value in $B$
+- By subtracting $x$ that are **disqualified**
+
+```ad-info
+Division is useful for queries like "Find the sailors who have reserved all boats".
+```
+
+```ad-example
+Suppose we want to find names of sailors who have reserved a red **AND** green boat.
+
+**What works**:
+- Identify (1) sailors who have reserved red boats, (2) sailors who have reserved green boats, then find the **intersection**
+
+**What DOESNOT work**
+- Identify boats that are both red and green, and join it with the sailors table
+	- Logically impossible
 ```

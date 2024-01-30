@@ -46,3 +46,17 @@ $$R_{1,t}=\alpha+\beta R_{0,t}+\epsilon_t$$
 Where $R_{i,t}$ is the excess return of asset $i$ and $\epsilon_t$ is the error of the model in month $t$.
 
 ![[Pasted image 20240123154641.png|500]]
+
+#### Interpreting Output 
+- Durbin-Watson: time series **correlation of errors**
+	- If errors are correlated the standard error will be understated
+- Kurtosis: a measure of the **tailedness** of a distribution
+- Jarque-Bera: a goodness-of-fit test of whether sample data have the skewness and kurtosis matching a normal distribution
+	- Lower probability of JB means residuals are **NOT normally distributed** and one should check for outliers
+
+Outliers are important - the measurement of alpha and beta changes markedly with a few data points.
+
+```ad-important
+Dealing with **influential observations** is more important than formal statistical tests.
+```
+
