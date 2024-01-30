@@ -119,3 +119,15 @@ $$\rho(C(A1.\text{name} \to \text{name1}, A2.\text{name} \to \text{name2}), \rho
 
 This is useful because we do not appreciate duplicate columns in a table. 
 - Otherwise each DBMS has their own mechanism to rename, which is often non-SQL standard
+
+---
+
+### `JOIN`
+The most common way of combining information from two tables. There are three types of `JOIN` s:
+- **Conditional Join ($\theta$ -Join)**: $R\bowtie_{c}S=\sigma_{c}(R\times S)$, where $c$ is a condition
+- **Equijoin**: $R\bowtie_{c}S$, where $c$ consists only of **equalities** of one or more columns
+- **Natural Join**: $R\bowtie S$: Equijoin occurs on all columns with the **same name** (duplicate columns dropped)
+
+```ad-important
+Despite equivalence, `JOIN` is faster than [[#Cross-Product (Cartesian)|cross product]].
+```

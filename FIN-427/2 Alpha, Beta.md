@@ -22,8 +22,9 @@ $$R=\ln\left(\frac{FV}{PV}\right)$$
 To convert discrete time returns to annualized returns, we use
 $$\overline{R}_{\text{Annual}}=(1+\overline{R}_{\text{Monthly}})^{12}-1$$
 
-And standard deviation of returns annualized is defined as:
+And **standard deviation of returns annualized** is defined as:
 $$\sigma_{\text{Annual}}=\sqrt{\left(\sigma_{\text{Monthly}}^{2}+(1+\overline{R}_{\text{Monthly}})^{2}\right)^{12}-(1+\overline{R}_{\text{Monthly}})^{24}}$$
+Where $\overline{R}_{T}$ is the arithmetic or geometric mean of a series of return over time $T$.
 
 ---
 ### Volatility and Sharpe Ratio 
@@ -42,6 +43,6 @@ necessarily lead to high future performance.
 ### Factor Model
 Regressing excess returns of the fund against excess returns of a midcap index generates information allowing us to measure exposure to the “midcap factor” and, on average, alpha (the intercept, which represents average monthly returns from industry- and company-specific **deviations from the benchmark**). The empirical model is
 $$R_{1,t}=\alpha+\beta R_{0,t}+\epsilon_t$$
-Where $R_{i,j}$ is the excess return and $\epsilon_t$ is the error of the model.
+Where $R_{i,t}$ is the excess return of asset $i$ and $\epsilon_t$ is the error of the model in month $t$.
 
 ![[Pasted image 20240123154641.png|500]]

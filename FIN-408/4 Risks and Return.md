@@ -31,6 +31,9 @@ $$\text{Var}(X,Y)=\mathbb{E}\left(X^{2}\right)-\left(\mathbb{E}(X)\right)^{2}$$
 Read [[8.1 Portfolio Theory#Covariance and Correlation|Covariance and Correlation]] for information related to computing the correlation coefficient and covariances between assets. Note that
 $$\text{Cov}(X,Y)=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)$$
 
+Recall the definition of the Sharpe Ratio: ![[7.2 Risk and Return Profile#^3624b7]]
+Historically, the sharpe ratio of US equities is around 0.30.
+
 ---
 ### Statistics 
 Use the **arithmetic mean return** if you want to make an **estimate of future returns** based upon a sample of past returns, and you consider that the series of returns is **independent**.
@@ -40,3 +43,10 @@ Use the **geometric mean** return if you want to report to investors the **actua
 
 Greater variance of returns of a security means greater uncertainty (risks). Securities with **more volatile returns** tend to have **higher average returns**. This is known as the risk-return tradeoff.
 
+Standard deviation of the return on a stock is one measure of risk of investing in that stock.
+
+```ad-summary
+**Two fundamental questions in finance**:
+1. What is risk and how should we measure it?  
+2. How much extra expected return do we need to be compensated for the **additional risk**?
+```
