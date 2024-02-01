@@ -125,7 +125,7 @@ The number of outcomes will be $n+1$ from this model, where $n$ is the depth of 
 ```ad-note
 American call option on a non dividend-paying stock **never worth more than a European call option** because it is never optimal to exercise early as there is always the chance that the stock price could go higher.
 
-On the flipped side, **American put option is more valuable** than the European put option as the American put option is exercised early when the stock price falls.
+On the flipped side, **American put option is more valuable** than the European put option as the American put option can be exercised early when the stock price falls.
 ```
 
 ### Delta 
