@@ -19,6 +19,8 @@ As the return of a risk-free asset is **constant**.
 #### Portfolio of $n$ Risky Assets 
 Assume that $w_{i}=\frac{1}{n}$ (equally weighted). Then,
 $$\text{Var}(\mathbf{R}_{p})=\left(\frac{1}{n}\right) \overline{\sigma_{i}}^{2}+\left(1- \frac{1}{n}\right)\overline{\sigma}_{ij} \to \overline{\sigma}_{ij}$$
+Note that 
+$$\sigma_{ij}=\rho_{ij}\sigma_{i}\sigma_{j}$$
 
 In large portfolios, stocks’ own variances **cancel out** (diversified away) and the total portfolio risk reduces towards the average of covariances of all the assets in the portfolio. This **average covariance** is called the portfolio’s **systematic** (non-diversifiable) risk.
 

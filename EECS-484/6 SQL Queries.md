@@ -109,3 +109,49 @@ We can sometimes use an `INNER JOIN` to achieve the same outcomes.
 
 TODO:
 
+Views are used for creating **external schemas or temporary schemas** on top of conceptual schema. Hence, we could use
+
+```sql
+CREATE VIEW RedGreenSailors AS
+SELECT  S.sid
+FROM Sailors S, Reserves R, Boats B
+WHERE S.sid = R.sid AND R.bid = B.bid AND B.color = 'red'
+INTERSECT
+SELECT S.sid
+FROM Sailors S, Reserves R, Boats B
+WHERE S.sid = R.sid and R.bid = B.bid AND B.color = 'green';
+```
+
+Or just use a **subquery** with an inline name:
+
+```sql
+SELECT S.sname  
+FROM Sailors S,  
+	(
+		SELECT S.sid  
+		FROM Sailors S, Reserves R, Boats B  
+		WHERE S.sid = R.sid AND R.bid = B.bid AND B.color = 'red' 
+		INTERSECT
+		SELECT S.sid  
+		FROM Sailors S, Reserves R, Boats B  
+		WHERE S.sid = R.sid and R.bid = B.bid AND B.color = 'green'
+	) RedGreenSailors
+WHERE S.sid = RedGreenSailors.sid;
+```
+
+#### Set Comparison Operators 
+Set comparisons can be made with 
+- `<attr> IN <R>`: true if `R` contains `attr`
+- `EXISTS <R>`: true if `R` is **NOT an empty relation**
+- `UNIQUE <R>`: true if **NO duplicates** in `R`
+- `NOT`: negation
+
+Operations that are available for `ANY` or `ALL` include:
+- `<attr> <op> ANY <R>`: some element of `R` satisfies the condition that `attr` `op` that element
+- `<attr> <op> ALL <R>`: **ALL** element of `R` satisfies the condition that `attr` `op` that element
+
+`<op>` can take value in `<, >, <>, <=, >=, =`.
+
+```ad-warning
+Query optimizers **not as good** at optimizing queries across nesting boundaries. Hence, try hard first to write non-nested using joins.
+```
