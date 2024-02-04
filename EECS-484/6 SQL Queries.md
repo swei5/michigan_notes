@@ -156,6 +156,9 @@ FROM Sailors S,
 WHERE S.sid = RedGreenSailors.sid;
 ```
 
+```ad-important
+It's never a bad practice to use set operators on the **KEYS** of the tables, as they guarantee unique and definite identification.
+```
 #### Set Comparison Operators 
 Set comparisons can be made with 
 - `<attr> IN <R>`: true if `R` contains `attr`
@@ -167,7 +170,7 @@ Operations that are available for `ANY` or `ALL` include:
 - `<attr> <op> ANY <R>`: some element of `R` satisfies the condition that `attr` `op` that element
 - `<attr> <op> ALL <R>`: **ALL** element of `R` satisfies the condition that `attr` `op` that element
 
-`<op>` can take value in `<, >, <>, <=, >=, =`.
+`<op>` can take value in `<, >, <>, <=, >=, =`. For these operators to work, the relation `R` needs to hold only the same type of attribute as `attr`.
 
 ```ad-note
 If `ALL` returns an **EMPTY query**, then `<op> ALL` evaluates to `TRUE` for every tuple `attr`.
@@ -196,7 +199,7 @@ WHERE S.rating > S2.rating AND S2.name = ‘John’;
 ```
 
 #### Aggregate Operators 
-Includes
+Includes functions like
 - `COUNT(*)`
 - `COUNT([DISTINCT] A)`
 - `SUM([DISTINCT] A)`
@@ -213,14 +216,15 @@ The general syntax is as followed:
 SELECT [DISTINCT] <attr>
 FROM <R>
 WHERE <qualification> GROUP BY <grouping-list>
-HAVING <g-qualification>
+HAVING <grouping-qualification>
 ```
 
 The conceptual evaluation, in steps, is:
 1. Eliminate tuples that don’t satisfy qualification (`WHERE`)
 2. Partition remaining data into groups `GROUP BY`
 3. Eliminate groups according to group-qualification `HAVING`
-4. Evaluate aggregate operation (s) for each group
+	- Whatever that goes with `HAVING` must be a **group property** to make sense
+1. Evaluate aggregate operation (s) for each group
 
 ```ad-note
 The target list from this query contains:
@@ -239,14 +243,15 @@ The boolean operations that involve `NULL` are somewhat complicated; we can refe
 ```
 
 ```ad-example
-The following query will only
-```
+The following query will only return sailors' names whose age is **NOT equal** to 45, meaning that if one sailor has a `NULL` age they would be eliminated based on the table above: $U \lor U$ $\to$ $U$.
 
 ```sql
 SELECT sname
 FROM sailors
 WHERE age > 45 OR age <= 45
 ```
+
+`AVG` will discard `NULL` values but `COUNT` will include.
 
 #### `OUTER JOIN`
 Includes options like `LEFT`, `RIGHT`, `FULL`, and `NATURAL`.
@@ -266,4 +271,4 @@ CREATE VIEW <name> AS
 DROP <name>; -- Since it's a temp view
 ```
 
-Or we can use the `WITH` keyword to generate a temporary table.
+Or we can use the `WITH` keyword to generate a temporary table. Both of these are **BETTER** than subqueries as they don't require nested computation.
