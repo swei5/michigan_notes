@@ -118,7 +118,7 @@ CREATE TABLE {tb} (
 );
 ```
 
-`NULL` value implies the value is **unknown** or **inapplicable**.
+`NULL` value implies the value is **unknown** or **inapplicable**. ^5faaba
 
 ```ad-note
 The design consideration here is that primary keys should be long-term stable, unique, and, ideally, not sensitive. Avoid addresses, SSN, etc.
