@@ -22,6 +22,8 @@ $$\text{Var}(\mathbf{R}_{p})=\left(\frac{1}{n}\right) \overline{\sigma_{i}}^{2}+
 Note that 
 $$\sigma_{ij}=\rho_{ij}\sigma_{i}\sigma_{j}$$
 
+Variance of the portfolio **converges to average covariance**.
+
 In large portfolios, stocks’ own variances **cancel out** (diversified away) and the total portfolio risk reduces towards the average of covariances of all the assets in the portfolio. This **average covariance** is called the portfolio’s **systematic** (non-diversifiable) risk.
 
 We will see later that, in asset pricing models, **systematic risk** is the **only priced risk**, i.e., the only risk that generates a compensation in terms of expected return.
@@ -38,7 +40,7 @@ Systematic or non-diversifiable risk is **NOT reduced** even as we increase the 
 #### Relationship between Expected Return and Risk 
 Given by
 $$\mathbb{E}(\mathbf{R}_{p})=r_{f}+\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}\sigma_{p}$$
-Given a risky asset $f$ and risky equity $E$ in a portfolio $p$.  Here, $\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}$ is the **sharpe ratio** of the risky asset $E$ and is the slope of the **capital allocation line** (CAL).
+Given a risky asset $f$ and risky equity $E$ in a portfolio $p$.  Here, $\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}$ is the **sharpe ratio** of the **risky asset** $E$ and is the slope of the **capital allocation line** (CAL).
 
 ```ad-example
 Portfolio of two risky assets ($\rho = 1$)
