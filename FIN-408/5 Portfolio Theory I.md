@@ -38,9 +38,16 @@ Systematic or non-diversifiable risk is **NOT reduced** even as we increase the 
 ```
 
 #### Relationship between Expected Return and Risk 
+Only applies to **one risky asset** in a portfolio.
+
 Given by
 $$\mathbb{E}(\mathbf{R}_{p})=r_{f}+\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}\sigma_{p}$$
-Given a risky asset $f$ and risky equity $E$ in a portfolio $p$.  Here, $\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}$ is the **sharpe ratio** of the **risky asset** $E$ and is the slope of the **capital allocation line** (CAL).
+Given a risky asset $f$ and risky equity $E$ in a portfolio $p$.  Here, $\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}$ is the **sharpe ratio** of the **risky asset** $E$ and is also the slope of the **capital allocation line** (CAL).
+
+```ad-note
+When we allocate between a risky asset and a risk-free asset, the portfolio forms a **straight line** in mean-standard-deviation space. This is the CAL.
+- Note that this is only the case when the portfolio contains one risky asset, i.e. the sharpe ratio of the risky asset $E$ is the sharpe ratio of the portfolio $p$.
+```
 
 ```ad-example
 Portfolio of two risky assets ($\rho = 1$)
