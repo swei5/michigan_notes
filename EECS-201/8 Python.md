@@ -115,7 +115,7 @@ Classes have special functions that you can implement things like "**constructor
 - When classes are called, they run their `__new()__` function to make a new instance, then pass the arguments to the instance's `__init()__`
 
 ```ad-note
-These `__xxx()__` functions are called "dunder" methods and serve as a way to implement underlying behavior for various things, such as operator overloadding.
+These `__xxx()__` functions are called "dunder" methods and serve as a way to implement underlying behavior for various things, such as operator overloading.
 ```
 
 ---
