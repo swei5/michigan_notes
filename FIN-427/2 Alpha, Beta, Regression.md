@@ -16,7 +16,7 @@ Recall that ![[7.1 Investment Returns#^a7f89a]]
 **Geometric mean returns** show what an investor actually earned. Recall that ![[7.1 Investment Returns#^0bce4e]]
 
 **Discrete time return** is defined as
-$$R=\frac{FV}{PV}-1$$ which is what investors mostly use. Whereas **continuously-compounded return** is defined as
+$$R=\frac{FV}{PV}-1$$which is what investors mostly use. Whereas **continuously-compounded return** is defined as
 $$R=\ln\left(\frac{FV}{PV}\right)$$
 
 To convert discrete time returns to annualized returns, we use

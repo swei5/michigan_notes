@@ -37,3 +37,13 @@ All **efficient portfolios** are combinations of **tangency portfolio** and **ri
 The theorem also states that all investors should hold the risky assets in the **same**  
 **proportion**.
 - Conservative investors should dilute risky asset holdings with cash, but should **NOT** change composition of those holdings
+
+```ad-summary
+**Summary, Markowitz’s Mean-Variance Portfolio Theory**
+
+The optimal portfolio of risky assets is exactly the **same for everyone**, no matter what their tolerance for risk.
+1. Investors should control the risk of their portfolio not by reallocating among risky assets, but through the **split between the risk-free and risky assets**
+2. The portfolio of risky assets should contain a large number of assets: It should be a **well diversified portfolio**
+3. The optimal portfolio of risky assets is the one with the **highest Sharpe ratio**
+```
+
