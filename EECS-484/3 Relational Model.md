@@ -84,6 +84,8 @@ Equivalently, no two tuples in (any instance of) $R$ have the same attributes $A
 By SQL standard, a **primary key **attribute** CANNOT** be `NULL`. Primary key is often an **integer ID** for efficiency.
 ```
 
+^eff39f
+
 A **superkey** is a key that only satisfies the **uniqueness requirement**, but no minimal requirement. 
 
 ```ad-note
