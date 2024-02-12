@@ -42,7 +42,7 @@ $$X \to Y$$
 This reads as $X$ functionally determines $Y$, and that $Y$ depends on $X$ or for a given $X$, there is one $Y$.
 
 More formally, a FD specifies a form of integrity constraint.
-$$D:X\to Y \equiv \pi_{X}(t_{1})=\pi_{X}(t_{2})\implies \pi_{Y}(t_{1})=\pi_{Y}(t_{2})$$
+$$F:X\to Y \equiv \pi_{X}(t_{1})=\pi_{X}(t_{2})\implies \pi_{Y}(t_{1})=\pi_{Y}(t_{2})$$
 For some subsets of relation $R$ 's attributes $X$, $Y$.
 
 ```ad-example
@@ -70,7 +70,7 @@ We can then map functional dependencies to tables.
 ```
 
 #### Implied FD
-Implied functional dependencies, noted as $F+$ as the closure of $F$, is the set of **ALL valid** functional dependencies. To derive $F+$, we need to use **Armstrong's Inference Axioms**.
+Implied functional dependencies, noted as $F+$ as the closure of $F$, is the set of **ALL valid** functional dependencies that can be derived from $F$. To derive $F+$, we need to use **Armstrong's Inference Axioms**.
 
 ```ad-important
 **Definition 8.1**: Armstrong's Inference Axioms
@@ -86,3 +86,43 @@ Given sets of attributes $X,Y,Z$, the following holds true:
 - **Decomposition**: If $X \to YZ$, then $X \to Y$ and $Y \to Z$
 ```
 
+##### Sound and Complete
+A few more definitions to look at.
+- $F^\star$ are all **FD**s that are implied by $F$
+- $F{+}$ are all **FD**s that can be generated from $F$ using Armstrong's Axioms
+
+**Soundness** describes that $F+$ is a **subset** of $F^{\star}$, and **completeness** describes that $F^\star$ is a **subset** of $F+$.
+
+Armstrong’s Axioms can be shown to be **both sound and complete**.
+
+#### Decomposition 
+Two key goals of decomposition are 
+- **Lossless Join**: *Can we reconstruct the original relation from instances of the decomposed relations?*
+	- **REQUIRED**
+- **Dependency Preservation**: Avoid having to join decomposed relations to **check dependencies**
+	- Good to have 
+
+One major downside of decomposition is expensive querying led by more join operations.
+
+##### Lossless Join Decompositions
+Given some relation $R$ that decomposes to $X,Y$; the decomposition of $R$ into $X,Y$ is **lossless** if
+$$\pi_{X}(r) \bowtie \pi_{Y}(r)=r$$
+For **every instance** $r$ of $R$.
+
+Alternatively, **lossless-join** with respect to $F$ exists if and only if $F+$ contains
+$$X \cap Y\to X$$ or $$X \cap Y \to Y$$
+In other words, attributes common to $X$ and $Y$ contain a key for either $X$ or $Y$.
+
+```ad-example
+The following decomposition is **NOT** lossless join.
+
+![[Pasted image 20240212153959.png|500]]
+```
+
+##### Dependency Preserving Decomposition 
+A given relation $R$ has a dependency-preserving decomposition to $X,Y$ if
+$$F+=(F_{X} \cup F_{Y})+$$
+
+```ad-note
+Note that it is not necessarily true that $F=(F_{X}\cup F_{Y})$.
+```
