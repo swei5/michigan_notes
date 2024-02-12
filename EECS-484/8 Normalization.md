@@ -74,6 +74,15 @@ Implied functional dependencies, noted as $F+$ as the closure of $F$, is the set
 
 ```ad-important
 **Definition 8.1**: Armstrong's Inference Axioms
-- **Reflexivity**: if $Y \subset X$, then $X \to Y$ (trivial dependency)
+
+Given sets of attributes $X,Y,Z$, the following holds true:
+- **Reflexivity**: if $Y \subseteq X$, then $X \to Y$ (trivial dependency)
+	- e.g. (`supplier_id`, `item`) $\to$ `item`
 - **Augmentation**: if $X \to Y$, then $XZ \to YZ$ $\forall Z$
+- **Transitivity**: if $X \to Y$ and $Y \to Z$, then $X \to Z$
+
+**Additional Rules**:
+- **Union**: If $X \to Y$ and $X \to Z$, then $X \to YZ$
+- **Decomposition**: If $X \to YZ$, then $X \to Y$ and $Y \to Z$
 ```
+
