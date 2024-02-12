@@ -1,12 +1,17 @@
 [[2024-02-08]] #Database 
 
+Up to this point, we have learned how to transform database designs (represented by an ER diagram) into relational schema with **integrity constraints covered**. This process is known as **normalization**.
+
+![[Pasted image 20240212171904.png|500]]
+
+In this section, we will formally introduce the process in a precise and mathematical manner.
 ### Motivation 
 Imagine the following table:
 
 ![[Pasted image 20240208152558.png|500]]
 
 This is a terrible design for many reasons:
-- `NULL` values in ID field 
+- `NULL` values in *keys*
 - Addresses appear to be **multi-valued**
 - Redundancy in (`Item`, `Desc`)
 
@@ -19,20 +24,32 @@ We want tables where the attributes **depend on the primary key**, on the whole 
 ```
 
 There are two approaches to normalization.
-1. Create an ER model and then map to tables - should result in good (normalized) tables (very manual)
+1. [[2 Entity-Relationship Model|Create an ER model]] and then [[4 Mapping ER to Relational|map to tables]] - should result in good (normalized) tables (very manual)
 2. State **dependencies** between attributes of tables and **map dependencies to tables** (automatic)
 
 ---
-### Normalization 
-TODO:
+### Normal Forms
+A normal forms guarantees that certain problems won’t occur and obeys certain rules:
+1. 1 NF: **NO set-valued attributes**
+	- Rows can be ordered and **ALL rows** are independent 
+1. 2 NF: **Historical**
+2. [[#3NF]]
+3. [[#Boyce-Codd Normal Form (BCNF)|BCNF]]
+4. Use lossless decompositions for multi-valued dependencies
 
+The higher the form, the more restrictive the model is.
+
+---
+### Normalization
 #### Redundancy
 Having redundant rows causes the following problems:
 - Space inefficient 
-- Messy update process
+- Messy update process for **transactional databases**
 	- **Update anomalies**: Changing a field requires changing multiple rows
 	- **Insertion anomalies**: Inserting a field inserting `NULL` or other values in unrelated columns
-	- **Deletion anomalies**: Deleting an item requires care could end up deleting a something unintended
+	- **Deletion anomalies**: Deleting an item requires care and could end up deleting a something unintended
+
+Read-only databases don't care as much about redundancy, however.
 
 We could surely use ER diagramming and translation to a relational model. However, this seems rather ad hoc. Alternatively, we can use functional dependencies.
 
@@ -124,5 +141,30 @@ A given relation $R$ has a dependency-preserving decomposition to $X,Y$ if
 $$F+=(F_{X} \cup F_{Y})+$$
 
 ```ad-note
-Note that it is not necessarily true that $F=(F_{X}\cup F_{Y})$.
+Note that it is not necessarily true that $F=(F_{X}\cup F_{Y})$ if the above holds true.
 ```
+
+#### Boyce-Codd Normal Form (BCNF)
+Relation $R$ with FD $F$ is in **BCNF** if for some single attribute $A$ such that for all $X \to A \in F+$:
+- $A \subseteq X$ (trivial FD), or
+- $X$ is a [[3 Relational Model#^5bf6f5|superkey]] 
+
+```ad-important
+In a BCNF relation, all non-trivial FDs over $R$ are due to keys.
+```
+
+BCNF guarantees **NO redundancy** in $R$ and is the most desirable form.
+
+![[Pasted image 20240212164441.png|400]]
+
+#### 3NF
+Relation $R$ with FD $F$ is in **3NF** if for some single attribute $A$ such that for all $X \to A \in F+$:
+- $A \subseteq X$ (trivial FD), or
+- $X$ is a superkey, or
+- $A$ is part of some (minimal) **key** for $R$ (prime attribute)
+
+```ad-note
+BCNF **implies** 3NF, but 3NF **DOES NOT imply** BCNF.
+```
+
+**Lossless-join**, **dependency-preserving** decomposition of $R$ into a collection of 3NF relations is **ALWAYS** possible.
