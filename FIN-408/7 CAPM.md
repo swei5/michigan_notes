@@ -40,6 +40,8 @@ Most stocks have betas in the range of 0.5 to 1.5.
 5. Asset markets are **frictionless**: same information, no taxes, regulations and short-selling restrictions.
 ```
 
+^cec56e
+
 ![[Pasted image 20240208132018.png|500]]
 
 Note that **CML** (Capital Market Line) and **Market Portfolio** are equivalent to CAL and Tangency Portfolio in Portfolio theory, respectively.
