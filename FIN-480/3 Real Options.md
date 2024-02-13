@@ -6,7 +6,7 @@ A real option gives a firm's management the right, but not the obligation to un
 - High dispersion of payoffs depending upon ultimate success or failure
 - Drug development, device research, etc.
 
-Pathways create options. Risk lowers value, and options increase value.
+Pathways create options. Risk lowers value, and **options increase value**.
 
 In fact, all investments can be valued using real options analysis. But the option value increases along with **multiple stages**, **dispersion of payoffs** and **flexibility** in decision-making.
 
@@ -36,7 +36,18 @@ Real options analysis can be implemented in two phases, with the first phase bei
 The valuation performed at Phase 2 should **always be HIGHER** than the valuation performed in Phase 1 & is the more accurate valuation. Specifically ,
 1. Value the project as if you were **fully committed** to seeing the project to completion by working backwards  
 	-  Value today depends upon what something is expected to sell for later, and a discount to reflect risk and the time value of money  
-	- *Why consider the fully committed project?* We want a framework for comparing projects with options, and without options, to see how much extra value we get from flexibility in decision-making  
+	- *Why consider the fully committed project?* We want a framework for comparing projects with options, and without options, to see how much **extra value we get from flexibility** in decision-making  
 2. Value the project as if you were **not fully committed** to seeing the project to completion by working backwards  
-	- Higher expected cash flows as expected cash flows are the probability weighted average cash flows from the **possible outcomes**; the expected cash flows increase because you re-assess the project at each stage and **ONLY exercise valuable options**.  
-3. Account for the lower risk of a project with options by using **risk-neutral probabilities**
+	- Higher expected cash flows as expected cash flows are the probability weighted average cash flows from the **possible outcomes**; the expected cash flows increase because you re-assess the project at each stage and **ONLY exercise valuable options**. 
+1. Account for the lower risk of a project with options by using **risk-neutral probabilities**
+
+For both step 1 and step 2, we first computed the **expected payoffs** then discount them to present values. At each decision-node, take `MAX(0, PAYOFF)` for all possible options.
+
+The value of the option is equal to the **difference between Phase-2 valuation** (options) and **Phase-1 valuation** (fully committed valuation).
+
+```ad-example
+Note that in the example below the valuation of the project with option is higher - this is inhrently due to the delayed/flexible investment schedule.
+- With options to invest after seeing whether if the investment is successful or not, we eliminate loss associated with a failure
+
+![[Pasted image 20240213164405.png|600]]
+```

@@ -191,5 +191,24 @@ Imagine the following table $T$(Sailor, Boat, Date, Card)
 **Lossless-join**, **dependency-preserving** decomposition of $R$ into a collection of 3NF relations is **ALWAYS** possible.
 
 ```ad-tip
-To verify whether if any relation is in 3NF, the best way would be to enumerate through all the given FDs to find out **ALL possible keys** (minimal) of the table.
+To verify whether if any relation is in 3NF, the best way to start would be to enumerate through all the given FDs to find out **ALL possible keys** (minimal) of the table.
+
+Then, we attempt to **list the given FDs that violate** BCNF/3NF.
 ```
+
+```ad-example
+Suppose you are given the following relation $R$: $(ABCDEF)$ and the following FDs 
+- $BC \to D$
+- $CD \to B$
+- $D \to E$
+- $ACD \to F$
+
+**Solution**
+1. All possible keys: $ACD, ABC$
+2. FDs that violate BCNF: $BC \to D$, $CD \to B$, $D\to E$
+	- None are keys of $R$
+3. FDs that violate 3NF: $D \to E$
+	- $E$ not part of any keys of $R$
+```
+
+#### Decomposition into BCNF
