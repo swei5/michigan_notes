@@ -1,4 +1,4 @@
-[[2023-11-20]] #WebScaling #DistributedSystem #SQL 
+[[2023-11-20]] #WebScaling #DistributedSystem #SQL #Database 
 
 ### Distributed Network Database
 Recall that in [[19 Scaling II - Dynamic Pages]] we talked about how increasing the number of servers/computers is important in scaling server-side dynamic pages. 

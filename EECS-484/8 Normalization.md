@@ -32,6 +32,7 @@ There are two approaches to normalization.
 A normal forms guarantees that certain problems won’t occur and obeys certain rules:
 1. 1 NF: **NO set-valued attributes**
 	- Rows can be ordered and **ALL rows** are independent 
+	- Redundancy might exist
 1. 2 NF: **Historical**
 2. [[#3NF]]
 3. [[#Boyce-Codd Normal Form (BCNF)|BCNF]]
@@ -78,7 +79,7 @@ An FD is a statement about **ALL** allowable relations.
 **[[3 Relational Model#^eff39f|Primary key constraint]]** is a special case of **functional dependencies** such that primary key attributes $\to$ all other attributes.
 ```
 
-We can then map functional dependencies to tables.
+We can then map functional dependencies to tables. However, note the example below is subjective to ER Diagram design - there could be a lot of ways to represent these dependencies.
 
 ```ad-example
 **Constraints to Entity Sets**
@@ -86,7 +87,7 @@ We can then map functional dependencies to tables.
 ![[Pasted image 20240208173413.png|600]]
 ```
 
-#### Implied FD
+#### Implied FDs 
 Implied functional dependencies, noted as $F+$ as the closure of $F$, is the set of **ALL valid** functional dependencies that can be derived from $F$. To derive $F+$, we need to use **Armstrong's Inference Axioms**.
 
 ```ad-important
@@ -100,24 +101,33 @@ Given sets of attributes $X,Y,Z$, the following holds true:
 
 **Additional Rules**:
 - **Union**: If $X \to Y$ and $X \to Z$, then $X \to YZ$
+	- Intuition: $y,z$ must be on the same row if having equal $x$
 - **Decomposition**: If $X \to YZ$, then $X \to Y$ and $Y \to Z$
 ```
 
+```ad-note
+Given the FD $X \to A$, where $A$ includes **ALL attributes** of $R$, we can deduce that $X$ must be a superkey.
+- $X$ may not be a candidate key since its possible that $X=A$
+```
+
 ##### Sound and Complete
-A few more definitions to look at.
+A few more definitions to look at:
 - $F^\star$ are all **FD**s that are implied by $F$
 - $F{+}$ are all **FD**s that can be generated from $F$ using Armstrong's Axioms
 
 **Soundness** describes that $F+$ is a **subset** of $F^{\star}$, and **completeness** describes that $F^\star$ is a **subset** of $F+$.
 
 Armstrong’s Axioms can be shown to be **both sound and complete**.
+- The axioms **CANNOT** generate illegal properties, and the axioms can generate **ALL implications**
 
+Next, we will discuss how to actually applies FD in reducing redundancy of a relation: decomposition.
 #### Decomposition 
 Two key goals of decomposition are 
 - **Lossless Join**: *Can we reconstruct the original relation from instances of the decomposed relations?*
 	- **REQUIRED**
 - **Dependency Preservation**: Avoid having to join decomposed relations to **check dependencies**
-	- Good to have 
+	- Single-table constraints are better than multi-table constraints
+	- Good to have, but **NOT required**
 
 One major downside of decomposition is expensive querying led by more join operations.
 
@@ -128,7 +138,7 @@ For **every instance** $r$ of $R$.
 
 Alternatively, **lossless-join** with respect to $F$ exists if and only if $F+$ contains
 $$X \cap Y\to X$$ or $$X \cap Y \to Y$$
-In other words, attributes common to $X$ and $Y$ contain a key for either $X$ or $Y$.
+In other words, attributes common to $X$ and $Y$ contain a **key** for either $X$ or $Y$.
 
 ```ad-example
 The following decomposition is **NOT** lossless join.
@@ -144,16 +154,18 @@ $$F+=(F_{X} \cup F_{Y})+$$
 Note that it is not necessarily true that $F=(F_{X}\cup F_{Y})$ if the above holds true.
 ```
 
+To test this, simply verify the functional dependencies **using the decomposed tables**.
+
 #### Boyce-Codd Normal Form (BCNF)
-Relation $R$ with FD $F$ is in **BCNF** if for some single attribute $A$ such that for all $X \to A \in F+$:
+Relation $R$ with FD $F$ is in **BCNF** if for a subset of attributes $X$ and some single attribute $A$ such that for all $X \to A \in F+$:
 - $A \subseteq X$ (trivial FD), or
-- $X$ is a [[3 Relational Model#^5bf6f5|superkey]] 
+- $X$ is a [[3 Relational Model#^5bf6f5|superkey]] of $R$
 
 ```ad-important
 In a BCNF relation, all non-trivial FDs over $R$ are due to keys.
 ```
 
-BCNF guarantees **NO redundancy** in $R$ and is the most desirable form.
+BCNF guarantees **NO redundancy** in $R$ and is the most desirable form. Decomposition can end here.
 
 ![[Pasted image 20240212164441.png|400]]
 
@@ -164,7 +176,20 @@ Relation $R$ with FD $F$ is in **3NF** if for some single attribute $A$ such tha
 - $A$ is part of some (minimal) **key** for $R$ (prime attribute)
 
 ```ad-note
-BCNF **implies** 3NF, but 3NF **DOES NOT imply** BCNF.
+BCNF **implies** 3NF, but 3NF **DOES NOT imply** BCNF. In other words, 3NF is a decomposition form where BCNF could not have been achieved (slightly more relaxed version).
+```
+
+```ad-example
+Imagine the following table $T$(Sailor, Boat, Date, Card)
+- Given FD: $SBD \to SBDC$, $S\to C$: $T$ is **NOT 3NF**
+	- $SBD$ could be a super key of $T$, however
+	- $S$ it not a key of the $T$, **AND**
+	- $C$ is not a part of the key(s) of $T$
+- If, additionally we have $C \to S$, then $CBD \to SBDC$ (which makes $CBD$ a key), now $C$ **IS** part of the keys of $T$ and $T$ is in 3NF
 ```
 
 **Lossless-join**, **dependency-preserving** decomposition of $R$ into a collection of 3NF relations is **ALWAYS** possible.
+
+```ad-tip
+To verify whether if any relation is in 3NF, the best way would be to enumerate through all the given FDs to find out **ALL possible keys** (minimal) of the table.
+```

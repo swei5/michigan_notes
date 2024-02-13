@@ -98,10 +98,6 @@ CREATE TABLE Citizen_Votes (
 );
 ```
 
-```ad-warning
-Note that in this case we **CANNOT use** both keys $(A, B)$ as the primary keys of the table as it *implies* that we could theoretically have $(a_1,b_1)$ and $(a_1,b_2)$ in the table, where $a \in A$, $b \in B$; however, this should not be allowed in the first place given the key constraint (table $A$ has a many-to-one relationship to table $B$).
-```
-
 Let's again look at a more general picture:
 
 ![[Pasted image 20240127225533.png|500]]
@@ -120,6 +116,10 @@ CREATE TABLE RAB (
 	UNIQUE (b1), 
 	PRIMARY KEY (a1)
 );
+```
+
+```ad-warning
+Note that in this case we **CANNOT use** both keys $(A, B)$ as the primary keys of the table as it *implies* that we could theoretically have $(a_1,b_1)$ and $(a_1,b_2)$ in the table, where $a \in A$, $b \in B$; however, this should not be allowed in the first place given the key constraint (table $A$ has a many-to-one relationship to table $B$).
 ```
 
 Equivalently, we can specify `b1` as the primary key and thus mark `a1` as unique.

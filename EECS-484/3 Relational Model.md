@@ -86,7 +86,7 @@ By SQL standard, a **primary key **attribute** CANNOT** be `NULL`. Primary key i
 
 ^eff39f
 
-A **superkey** is a key that only satisfies the **uniqueness requirement**, but no minimal requirement.  ^5bf6f5
+A **superkey** is a set of one or more attributes that can uniquely identify a row in a relation.  ^5bf6f5
 
 ```ad-note
 Every key is a superkey.
