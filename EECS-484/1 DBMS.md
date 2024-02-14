@@ -4,7 +4,7 @@
 A database is a large, structured collection of data.
 - Models data of real-world enterprise, which can include entities and relationships
 
-A database management system (DBMS) is a software package designed to store and manage databases. It is used to maintain and query **large datasets**.
+A **database management system **(DBMS) is a software package designed to store and manage databases. It is used to maintain and query **large datasets**. It provides **efficient**, **reliable**, **convenient**, and **safe multi-user storage** of and **access** to **massive** amounts of **persistent** data.
 
 ```ad-summary
 DBMS has quite a few advantages:

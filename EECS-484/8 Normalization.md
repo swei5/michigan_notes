@@ -212,3 +212,41 @@ Suppose you are given the following relation $R$: $(ABCDEF)$ and the following F
 ```
 
 #### Decomposition into BCNF
+Given an input relation $R$ with FDs $F$, we repeat the following steps until **NO** $X \to Y$ violates BCNF for all $(X\to Y)\in F$.
+1. Identify if any FDs violate BCNF
+	- If $X \to Y$ violates BCNF, decompose $R$ into $R-Y$ and $XY$
+
+```ad-note
+This algorithm provides a **lossless join decomposition**. This is because it's guaranteed that $X$ is a key for the relation $XY$.
+- Because $X\to Y$
+```
+
+Several dependencies may cause violation of BCNF. The order in which we deal with them could lead to very **different sets of relations**.
+
+```ad-example
+Given $R=(A,B,C,D,E)$, FDs: $A\to BC, CD \to E, B \to D, E\to A$, we then 
+1. Find the keys: $A, BC, CD, E$
+2. Find the FD(s) that violate BCNF: $B\to D$
+3. Decompose $R$ to $R-D$: $R_{1}=(A,B,C,E)$ and $R_{2}=(B,D)$
+
+**Remarks**
+The decomposition is lossless join - $R_{1}\cap R_{2}=B$ and $B \to R_{2}$. However, it is **NOT dependency preserving**: $CD\to E \notin (F_{1}\cup F_{2})+$
+```
+
+---
+### Schema Refinement 
+Suppose you are given the following schema of $R$. You are asked to normalize it: `IS: (~item~, name, desc, loc, price)` and `S: (~name~, addr)` with the additional FD that `name` $\to$ `loc`.
+
+Let's first **summarize all existing FDs**:
+- `item` $\to$ `IS`
+- `name` $\to$ `S`
+- `name` $\to$ `loc`
+
+We then notice that `IS` is **NOT in** BCNF since `name` $\to$ `loc` and `loc` being a non-key of `IS`. Hence, we decompose `IS` into
+- `IS(~item~, name, desc, price)`
+- `LOC(~name~, loc)
+- `S: (~name~, addr)` remains **unchanged**
+
+Here, we spot an opportunity because `LOC` and `S` share the same key - we merge them to arrive at the final solution
+- `IS(~item~, name, desc, price)`
+- `S: (~name~, addr, loc)`
