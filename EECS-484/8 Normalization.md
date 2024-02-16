@@ -194,6 +194,7 @@ Imagine the following table $T$(Sailor, Boat, Date, Card)
 To verify whether if any relation is in 3NF, the best way to start would be to enumerate through all the given FDs to find out **ALL possible keys** (minimal) of the table.
 
 Then, we attempt to **list the given FDs that violate** BCNF/3NF.
+- For 3NF, we would only need to account for FDs that violate BCNF
 ```
 
 ```ad-example
@@ -216,6 +217,9 @@ Given an input relation $R$ with FDs $F$, we repeat the following steps until **
 1. Identify if any FDs violate BCNF
 	- If $X \to Y$ violates BCNF, decompose $R$ into $R-Y$ and $XY$
 
+We would need to assign FDs to their respective tables after decompositions in the end. FDs that belong to more than one relations become a **cross-table constraint**.
+- With this, we can check if the decomposition is **dependency preserving** or not
+
 ```ad-note
 This algorithm provides a **lossless join decomposition**. This is because it's guaranteed that $X$ is a key for the relation $XY$.
 - Because $X\to Y$
@@ -233,6 +237,9 @@ Given $R=(A,B,C,D,E)$, FDs: $A\to BC, CD \to E, B \to D, E\to A$, we then
 The decomposition is lossless join - $R_{1}\cap R_{2}=B$ and $B \to R_{2}$. However, it is **NOT dependency preserving**: $CD\to E \notin (F_{1}\cup F_{2})+$
 ```
 
+```ad-note
+If decomposition BCNF gives **cross-table constraints**, we could simply leave it at 3NF if it promises a dependency preserving decomposition.
+```
 ---
 ### Schema Refinement 
 Suppose you are given the following schema of $R$. You are asked to normalize it: `IS: (~item~, name, desc, loc, price)` and `S: (~name~, addr)` with the additional FD that `name` $\to$ `loc`.
@@ -242,7 +249,7 @@ Let's first **summarize all existing FDs**:
 - `name` $\to$ `S`
 - `name` $\to$ `loc`
 
-We then notice that `IS` is **NOT in** BCNF since `name` $\to$ `loc` and `loc` being a non-key of `IS`. Hence, we decompose `IS` into
+We then notice that `IS` is **NOT in** BCNF since `name` $\to$ `loc` and `name` being a non-key of `IS`. Hence, we decompose `IS` into
 - `IS(~item~, name, desc, price)`
 - `LOC(~name~, loc)
 - `S: (~name~, addr)` remains **unchanged**
@@ -250,3 +257,20 @@ We then notice that `IS` is **NOT in** BCNF since `name` $\to$ `loc` and `loc` b
 Here, we spot an opportunity because `LOC` and `S` share the same key - we merge them to arrive at the final solution
 - `IS(~item~, name, desc, price)`
 - `S: (~name~, addr, loc)`
+
+```ad-summary
+**Normalization, Summary**
+
+Bad schemas lead to redundancy.
+- Redundant storage, update, insert, and delete anomaly
+
+To correct bad schemas, we **decompose** relations
+- Must be a lossless-join decomposition
+- Would like dependency preserving decompositions
+        
+Desired Normal Forms include
+- BCNF: allow only **super-key functional dependencies**
+- 3NF: allow dependencies with **prime attributes on the RHS** 
+	- Allows a limited form of redundancy 
+	- Trades off **performance** (avoid joins) for **redundancy**
+```
