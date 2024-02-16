@@ -39,7 +39,12 @@ The valuation performed at Phase 2 should **always be HIGHER** than the valuatio
 	- *Why consider the fully committed project?* We want a framework for comparing projects with options, and without options, to see how much **extra value we get from flexibility** in decision-making  
 2. Value the project as if you were **not fully committed** to seeing the project to completion by working backwards  
 	- Higher expected cash flows as expected cash flows are the probability weighted average cash flows from the **possible outcomes**; the expected cash flows increase because you re-assess the project at each stage and **ONLY exercise valuable options**. 
-1. Account for the lower risk of a project with options by using **risk-neutral probabilities**
+3. Account for the lower risk of a project with options by using **[[1 Options, Binomial Tree Valuation#^d138f6|risk-neutral probabilities]]**
+	- Same process used in binomial tree valuation: $p=\frac{\mathbb{E}(S_{T})-L}{H-L}$
+
+```ad-note
+A project with options, compared to the same project without options, has **higher expected cash flows** and **lower risk**. Step 2 accounts for the **cash flow increase** and step 3 accounts for the **risk adjustment**.
+```
 
 For both step 1 and step 2, we first computed the **expected payoffs** then discount them to present values. At each decision-node, take `MAX(0, PAYOFF)` for all possible options.
 
@@ -51,3 +56,9 @@ Note that in the example below the valuation of the project with option is highe
 
 ![[Pasted image 20240213164405.png|600]]
 ```
+
+
+```ad-example
+**Calculating Risk-Neutral Probabilities**
+```
+

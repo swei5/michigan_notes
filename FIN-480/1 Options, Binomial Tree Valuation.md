@@ -82,7 +82,7 @@ We will always use a **RISK-FREE rate of interest** in discounting the expected 
 	- This is usually given by a probability distribution
 2. Estimate the **risk-neutral expected future value of the underlying asset**
 	- This is simply the future value of the underlying assets given some risk-free rate 
-3. Based upon the **risk-neutral expected future value** of the underlying asset, compute the risk-neutral probabilities of high and low outcomes
+3. Based upon the **risk-neutral expected future value** of the underlying asset, compute the risk-neutral probabilities of high and low outcomes ^d138f6
 	- $pH+(1-p) L=\mathbb{E}(S_{T})$: solve for $p$: $p=\frac{\mathbb{E}(S_{T})-L}{H-L}$
 1. Compute the **option payoffs** at the expiration date
 2. **Apply the risk-neutral probabilities** of high and low outcomes, compute the risk-neutral expected future value of the option
