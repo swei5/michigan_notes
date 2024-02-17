@@ -109,7 +109,7 @@ The predicate used in `find` is an object (part or all of a tuple in a document)
 var mycursor = db.users.find({"DOB" : 21, "MOB" : 11, "hometown.state" : "Rohan"});
 ```
 
-Notice the `hometown.state` is actually a nested field - we 
+Notice the `hometown.state` is actually a nested field.
 
 `FIND` can also include **projections**. If we want to find `first_name` and `last_name` of users born in `state` Rohan on Nov. 21st:
 
