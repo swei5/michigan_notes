@@ -176,5 +176,3 @@ underperformed the stock market since the financial crisis of 2008.
 		- No specific rules on valuation or pricing 
 		- New investors typically must pledge to keep their money in a hedge fund for at least one year
 ```
-
-
