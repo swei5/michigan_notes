@@ -27,7 +27,7 @@ $$P=Xe^{-rT}N(-d_{2})-SN(-d_{1})$$
 The range of $d_1$ and $d_2$ is infinite, but mostly within $[-3,3]$.
 
 ```ad-note
-Here, $N(d_{1})$ accounts for both the probability that the **underlying asset price finishes above the exercise price**, and when this happens, **how far above** the exercise price the underlying asset price will be.
+$N(d_{1})$ measures the **delta** of a call option, and $N(d_{2})$ measures the **delta** of a put option.
 ```
 
 If a [[1 Options, Binomial Tree Valuation#^115aa9|binomial tree]] is constructed under the same assumptions as the Black-Scholes-Merton model, its **valuation will converge** to the BSM evaluation if $t\to 0$.
