@@ -60,5 +60,16 @@ Note that in the example below the valuation of the project with option is highe
 
 ```ad-example
 **Calculating Risk-Neutral Probabilities**
+
+We use the payoffs from a **fully committed project** to compute.
+
+![[Pasted image 20240220165930.png|500]]
 ```
 
+After getting the risk-neutral probabilities, we then compute again the expected payoffs of the real options and discount them to present values using the **new rates**. This gives us a higher valuation as **risk reduction** is now accounted in. 
+
+```ad-note
+Using risk-neutral probabilities is equivalent to dropping the discount rate from the given project discount rate to the real options discount rate. 
+
+We can obtain the real options discount rate by using the real-world probabilities (instead of risk-neutral probabilities) in valuation (Phase 2) and setting the valuation of the real options to what the valuation would be if calculated using the risk-neutral probabilities (Phase 3).
+```
