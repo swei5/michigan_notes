@@ -14,7 +14,7 @@ The model prescribes the assumptions below:
 ### Equation 
 The call option value is given by
 $$C=SN(d_{1})-Xe^{-rT}N(d_{2})$$
-Where $S$ is the **underlying asset price** today, $X$ is the **exercise price**, $N (\cdot)$ is a function returns the **area under a normal curve**, $r$ is **continuously-compounded risk-free rate**, and $T$ is the time to expiry in years.
+Where $S$ is the **underlying asset price** today, $X$ is the **exercise price**, $N (\cdot)$ is a function returns the **area under a normal curve** $N(0,1)$, $r$ is **continuously-compounded risk-free rate**, and $T$ is the time to expiry in years.
 
 $d_1$ is defined as
 $$d_{1}:=\frac{\ln\left(\frac{S}{X}\right)+T\left(r+\frac{\sigma^{2}}{2}\right)}{\sigma \sqrt{T}}$$
