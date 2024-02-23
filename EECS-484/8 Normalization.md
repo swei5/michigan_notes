@@ -251,7 +251,7 @@ Let's first **summarize all existing FDs**:
 
 We then notice that `IS` is **NOT in** BCNF since `name` $\to$ `loc` and `name` being a non-key of `IS`. Hence, we decompose `IS` into
 - `IS(~item~, name, desc, price)`
-- `LOC(~name~, loc)
+- `LOC(~name~, loc)`
 - `S: (~name~, addr)` remains **unchanged**
 
 Here, we spot an opportunity because `LOC` and `S` share the same key - we merge them to arrive at the final solution
