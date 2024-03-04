@@ -14,3 +14,4 @@
 - [Python Slicing](https://stackoverflow.com/questions/509211/how-slicing-in-python-works)
 - [Python to PDF](https://stackoverflow.com/questions/20412038/printing-python-code-to-pdf)
 - [Numpy Indexing](https://stackoverflow.com/questions/57840955/numpy-arrays-indexing-assignment-question-code-that-looks-like-it-should-work)
+- [Convert Books to PDFs](https://askubuntu.com/a/299752)
