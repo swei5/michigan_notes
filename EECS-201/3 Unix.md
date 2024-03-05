@@ -146,7 +146,7 @@ There are many shells around that build o of the POSIX shell (with more features
 - `bash`: the "Bourne again shell"
 - `zsh`: the Z shell
 
-Recall some basic shell operation structure: ![[1 Intro#^a049ce]] ^fcd64b
+Recall some basic shell operation structure: ![[EECS-201/1 Intro#^a049ce]] ^fcd64b
 
 #### General Shell Operation
 
