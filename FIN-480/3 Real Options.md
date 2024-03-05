@@ -73,3 +73,7 @@ Using risk-neutral probabilities is equivalent to dropping the discount rate fro
 
 We can obtain the real options discount rate by using the real-world probabilities (instead of risk-neutral probabilities) in valuation (Phase 2) and setting the valuation of the real options to what the valuation would be if calculated using the risk-neutral probabilities (Phase 3).
 ```
+
+```ad-important
+The valuation of each stage is the valuation **AFTER** making the decision to either (a) invest, or (b) abandon.
+```
