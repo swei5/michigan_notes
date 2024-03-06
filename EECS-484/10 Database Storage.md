@@ -69,3 +69,43 @@ There are three different notions of **pages** in a DBMS:
 	- Trade-off between different pages
 		- Larger file size: less number of movement between memory/disk for larger data
 		- Smaller file size: better granularity 
+
+#### Database Heap
+Heap is the terminology used to describe how data files are **organized**. It is easy to find pages if there is **only a SINGLE** heap file.
+- `OFFSET = Page# * Page_Size`
+- SQLite works like this
+
+However, with multiple heaps, we need to store meta-data to keep track of what pages exist in multiple files and which ones have free space (like a hash-map).
+
+![[Pasted image 20240305181126.png|200]]
+
+---
+### Page Layout 
+Every page contains a **header** of **meta-data** about the page's contents:
+- Page Size
+- Checksum
+- DBMS Version
+- Transaction Visibility
+- Compression Information
+
+Some systems require pages to be **self-contained** (e.g., Oracle).
+- Any page should have **ALL necessary information** it needs to recover itself
+
+In terms of data organization, there are two approaches:
+1. Tuple-oriented
+2. Log-structured
+
+#### Tuple Storage 
+The most common layout scheme is called **slotted pages**. The slot array maps "slots" to the tuples' **starting position** offsets.
+
+The header keeps track of:
+- The # of used slots
+- The offset of the starting location of the last slot used 
+
+![[Pasted image 20240305181837.png|300]]
+
+This design fixes the potential issues of
+- Variable lengths of tuples, and 
+- Deleted tuples
+
+The slot array and the tuples grow in opposite direction; when they meet the page is filled.
