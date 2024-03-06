@@ -75,7 +75,7 @@ However, current assets and current liabilities **DO NOT reflect** firm’s prod
 $$\text{COA}=\text{CA}-\text{Cash}$$
 
 $$\text{COL}=\text{CL}-\text{Short-term Debt}$$
-And
+And that
 $$\text{NWC}=\text{COA}-\text{COL}$$
 ```
 
