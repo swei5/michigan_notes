@@ -1,4 +1,4 @@
-[[2024-03-05]] #Valuation #Modeling
+[[2024-03-05]] #Valuation #Modeling #DCF 
 
 ### Overview 
 - Basic approaches to forecast cash flows – core inputs for EV
@@ -35,6 +35,10 @@ To tackle this, **non-controlling interest** (aka minority interest) is added to
 EV is present value of **future free cash flows** (FCF) discounted at the firm **WACC**. Unlevered FCF is defined as
 $$\begin{align}\text{UFCF}&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{Capex}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{Capex}\end{align}$$
 
+In which
+- $\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}$ is known as **Cash Flow from Operation** (OCF)
+- $\text{EBIT}$ is known as **unlevered earnings** (UE)
+
 Often times, we forecast FCFs over the next five years and estimate a terminal value:
 $$\text{EV} = \sum_{t} \frac{\text{FCF}_{t}}{(1+\text{WACC})^{t}}+\frac{\text{Terminal Value}}{(1+\text{WACC})^{T}}$$
 
@@ -47,3 +51,40 @@ In practice, one approach is to use the **estimated figures on the Statement of 
 **Unlevered FCFs** are essentially cash flows from **operating activities and investing activities** (only those related to **PRODUCTIVE** activities excluding investments on financial assets), but financing activities are excluded.
 
 **Levered FCFs** will include **financing activities** which reflect choice of debt structures.
+
+#### NOPAT, NWC, CAPEX
+
+```ad-note
+**Taxes and NOPAT**
+$$\begin{align}\text{OCF}&=\text{EBITDA} - \text{T} - \Delta \text{NWC}\\&=(\text{EBIT}(1-T))+\text{D\&A}-\Delta \text{NWC}\\&=((\text{EBIT}-\text{D\&A})(1-T))+\text{D\&A}-\Delta \text{NWC} \end{align}$$
+
+Where $\text{EBIT}(1-T)$ is known as **Net Operating Profit after Tax** (NOPAT).
+```
+
+D&A are **non-cash deductions** that contribute to tax savings, and thus relevant.
+
+Usually, $\text{CA}>\text{CL}$ for a healthy firm. 
+
+```ad-important
+**Definition 1.3**: Current Assets, Current Liabilities, Net Working Capital
+
+$$\text{CA}=\text{Cash}+\text{A/R}+\text{Inventory}+\text{Prepaids}+\text{Others}$$
+
+$$\text{CL}=\text{N/P}+\text{A/P}+\text{Accurued Liabilities}+\text{Others}$$
+However, current assets and current liabilities **DO NOT reflect** firm’s productive activities. Thus, we compute **Current Operating Assets** and **Current Operating Liabilities**:
+$$\text{COA}=\text{CA}-\text{Cash}$$
+
+$$\text{COL}=\text{CL}-\text{Short-term Debt}$$
+And
+$$\text{NWC}=\text{COA}-\text{COL}$$
+```
+
+
+#### Mid-year Convention 
+At times, companies report cash flow in the middle of each year. Using the previous DCF approach, we would get an inflated figure as the denominator in each term of the summation shrinks by a size of $(1+\text{WACC})^{0.5}$ - valuation boosts by the same factor.
+
+Under this method,
+
+$$\text{EV}^\prime = \sum_{t} \frac{\text{FCF}_{t}}{(1+\text{WACC})^{t-0.5}}+\frac{\text{Terminal Value}}{(1+\text{WACC})^{T-0.5}}$$
+Which is equivalent to saying $\text{EV}^{\prime}= \text{EV}(1+\text{WACC})^{0.5}$.
+
