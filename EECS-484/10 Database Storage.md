@@ -1,4 +1,4 @@
-[[2024-03-05]] #Database
+[[2024-03-05]] #Database #System 
 
 The second half of the class focuses more on building a DBMS, rather than using it (SQL). This includes
 - Storage 
@@ -20,9 +20,11 @@ For non-volatile devices, also known as **disks**, sequential access is faster t
 
 Dynamic random-access memory (DRAM) is equivalent to "memory", and CPU/CPU Caches are regarded as "CPU" in the context of this class.
 
+```ad-note
 DBMS will want to **maximize sequential access** and **minimize I/Os** to disks.
 - Algorithms try to reduce number of writes to random pages so that data is stored in **contiguous blocks**
 - Allocating multiple pages at the same time is called an **extent**
+```
 
 ---
 ### Disk-Oriented DBMS 
@@ -105,7 +107,49 @@ The header keeps track of:
 ![[Pasted image 20240305181837.png|300]]
 
 This design fixes the potential issues of
-- Variable lengths of tuples, and 
-- Deleted tuples
+- **Variable lengths** of tuples, and 
+- **Deleted tuples**
+	- When one tuple gets deleted, we have two choices: (1) leave it open and wait until next tuple that fits in the vacant spot, or (2) pivot the next tuple to its the deleted position
+		- Since we have a slot array that maps to these tuples, the page is able to keep track of tuples at all time
 
-The slot array and the tuples grow in opposite direction; when they meet the page is filled.
+The slot array grows downwards and the tuples grow in opposite direction; when they meet it indicates that the page is filled.
+
+Each tuple is assigned a **unique record identifier**. The most common one is `page_id + offset/slot` or it can also contain **file location** information. These are called **record IDs**.
+
+```ad-warning
+An application **CANNOT rely on these IDs** to mean anything.
+```
+
+---
+### Storage Models 
+A DBMS faces three main workloads:
+1. On-Line Transaction Processing (OLTP)
+	- Fast operations that only **read/update a small amount** of data each time
+2. On-Line Analytical Processing (OLAP)
+	- **Complex queries that read a lot of data** to compute aggregates of multiple entities
+3. Hybrid Transaction + Analytical Processing
+	- OLTP + OLAP together on the same database instance
+
+![[Pasted image 20240307153716.png|500]]
+
+The [[3 Relational Model#^72e116|relational model]] does not specify that we have to store all of a tuple's attributes together in a single page. In fact, the DBMS can store tuples in different ways that are **better for either OLTP or OLAP** workloads.
+
+#### $N$ -ary Storage Model (NSM)
+The DBMS stores **all attributes for a single tuple** contiguously in a page. This is ideal for **OLTP** workloads where queries tend to **operate only on an individual entity and insert-heavy workloads**.
+
+![[Pasted image 20240307154331.png|600]]
+
+```ad-summary
+**N-ary Storage Model, Pros and Cons**
+- **Advantages**
+	- Fast inserts, updates, and deletes 
+	- Good for queries that need the entire tuple 
+- **Disadvantages**
+	- Not good for **scanning large portions** of the table and/or a subset of the attributes
+```
+
+#### Decomposition Storage Model (DSM)
+The DBMS stores the **values of a single attribute for all tuples** contiguously in a page. This is also known as a "column store". This is ideal for **OLAP** workloads where **read-only queries perform large scans** over a subset of the table’s attributes.
+
+![[Pasted image 20240307155939.png|600]]
+
