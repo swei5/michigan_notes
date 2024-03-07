@@ -1,4 +1,4 @@
-[[2023-01-04]] #CashFlow #Accounting
+[[2023-01-04]] #Accounting
 
 ### Road Maps - Two Key Questions
 1. Valuation: what are the right investment decisions?
@@ -62,6 +62,8 @@ Shows a company's **financial performance** over a **period**.
 ```ad-important
 EBITDA is a measure of **cash flows**! In finance it's more important than profits.
 ```
+
+^954400
 
 #### Balance Sheet
 Reports the company's **total asset** and how the assets are financed, either through **debt** or **equity**.

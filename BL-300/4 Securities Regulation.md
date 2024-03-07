@@ -1,3 +1,5 @@
+#Trading 
+
 Most securities regulation covered in class are derived from the [Securities Act of 1933](https://en.wikipedia.org/wiki/Securities_Act_of_1933) and the [Securities Exchange Act of 1934](https://en.wikipedia.org/wiki/Securities_Exchange_Act_of_1934).
 
 ### Overview of Raising Capital

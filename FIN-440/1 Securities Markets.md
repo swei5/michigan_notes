@@ -45,14 +45,70 @@ A dealer is different from a trader. While a dealer buys and sells securities as
 
 ### Instruments 
 Financial securities represent ownership of real assets and the cash flows that they generate. 
-- Stocks mostl
+- Stocks mostly trade on **exchanges**
+- Bonds mostly trade on the **OTC (over-the-counter) market**
 
-Derivative instruments derive their values from the values of the underlying instruments upon which they are based.
-- Derivatives are usually **zero-sum instruments** that sellers create.
-
+Derivative instruments derive their values from the values of the underlying instruments upon which they are based. These include 
+- **Options**: contracts giving holders rights that they do not have to exercise
+- **Forward contracts**: contracts to trade at a set price in the future and they are **traded on OTC markets**
+- **Futures**: forward contracts **traded on an exchange**
+- **Swaps**: contracts to exchange cash flows
 
 Swaps make up the largest segment in the derivative market.
 
-Bid-ask spread is viewed as a transaction cost.
+```ad-note
+Derivatives are usually **zero-sum instruments** that sellers create.
+```
 
-The limit order book illustrates the supply and demand of an asset at any given time.
+---
+### Trading Markets 
+Various securities are traded on various markets. These markets generally have vastly different organizations and mechanisms, e.g., trading rules, pricing rules, etc.
+- **Dealers Market** (OTC)
+	- Operates with a dealer that acts as a **counterparty for both buyers and sellers** of a security
+	- Dealer sets bid and ask prices for the security in question
+	- Less common in stocks, but **more common in bonds**, **derivative** securities and **currencies**
+- **Brokers Market** (Exchanges)
+	- Operates by **finding a counterparty** to both buyers and sellers
+	- Appropriate for tailored or custom products
+
+Dealers may also participate in the market.
+
+**Exchanges** are mainly **automated brokered markets**. Trades are executed based on **order books** that match buyers with sellers.
+- Automated, requiring **NO dealer intermediary**
+- Most appropriate for **standardized** securities
+- **Provision of a central location** (physical of computer network) for buyers and sellers to find their counterparties
+
+```ad-summary
+**Consolidate vs. Fragmented Markets**
+
+- **Consolidated**: all trading happens in one place. 
+	- One “trading floor” or one computer system
+- **Fragmented**: trading is dispersed
+	- Multiple trading locations or computer systems
+	- Most stocks markets
+
+The “home” for trading a stock is the stock’s **primary listing exchange**. The primary listing exchange
+- Provides trading facilities/procedures
+- May arrange for a dealer to assist trading 
+- Coordinates openings and trading halts, however
+- **DOES NOT** have a monopoly on trading
+	- $BAC is listed on NYSE and it is traded on both NYSE (a broker market) and Nasdaq (a dealer market)
+```
+
+---
+### Regulators
+**Governmental agencies** enact and enforce law. **Self regulating organizations** (SRO’s) regulate their members. Regulatory agencies write and enforce specific regulations to implement the law. **Private regulators** try to create respected standards.
+- The **Securities and Exchange Commission** (SEC) regulates the securities markets
+- The **Commodity Futures Trading Commission** (CFTC) regulates futures markets
+- The **Federal Reserve Board** sets margins
+
+**Self-regulating organizations** include
+- Exchanges 
+- Dealer associations
+- Clearing houses
+
+**Private regulators** include
+- The Financial Accounting Standards Board (FASB)  
+- Securities Investor Protection Corporation (SIPC)  
+- Association for Investment Management and Research (AIMR) 
+- Various rating agencies

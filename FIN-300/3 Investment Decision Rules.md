@@ -1,4 +1,4 @@
-[[2023-01-30]] #Investment #CashFlow 
+[[2023-01-30]] #Investment
 
 ### Ranking Projects
 There are **two** types of investment decisions

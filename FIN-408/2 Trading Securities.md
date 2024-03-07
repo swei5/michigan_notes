@@ -1,4 +1,4 @@
-[[2024-01-16]] #Investment
+[[2024-01-16]] #Investment #Trading 
 
 ### Issuing Securities
 - Primary Market: new issues of stocks, bonds, etc

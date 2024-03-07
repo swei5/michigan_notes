@@ -1,4 +1,4 @@
-[[2024-03-05]] #Valuation #Modeling #DCF 
+[[2024-03-05]] #Valuation #DCF #Accounting 
 
 ### Overview 
 - Basic approaches to forecast cash flows – core inputs for EV
@@ -8,14 +8,14 @@
 - Leveraged buyout analysis (LBO)
 - Mergers and acquisitions analysis
 
-EBIT is used as a measure for **GAAP net income**, but EBITDA is occasionally used and useful in many scenarios too.
+EBIT is used as a measure for **GAAP net income**, but [[1 Financial Statments and Cash Flows#^954400|EBITDA]] is occasionally used and useful in many scenarios too.
 - Cashflow
 
 ---
 ### Enterprise Value
 
 ```ad-important
-**Definition 1.1**: Enterprise Value 
+**Definition 1.1**: [[4.1 Capital Investment - Valuation#^1de96e|Enterprise Value]]
 
 Enterprise Value (EV) is the value of firm's **core business activities**.
 
@@ -31,9 +31,10 @@ To tackle this, **non-controlling interest** (aka minority interest) is added to
 ```
 
 ```ad-important
-**Definition 1.2**: DCF Approach 
+**Definition 1.2**: [[4.1 Capital Investment - Valuation#^ea68e9|DCF Approach]]
+
 EV is present value of **future free cash flows** (FCF) discounted at the firm **WACC**. Unlevered FCF is defined as
-$$\begin{align}\text{UFCF}&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{CapEx}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{CapEx}\\&= \text{OCF}-\text{CapEx} \end{align}$$
+$$\begin{align}\text{UFCF}&=\text{NOPAT}-\Delta \text{NWC}-\text{CapEx}\\&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{CapEx}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{CapEx}\\&= \text{OCF}-\text{CapEx} \end{align}$$
 
 In which
 - $\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}$ is known as **Cash Flow from Operation** (OCF)
@@ -50,7 +51,8 @@ In practice, one approach is to use the **estimated figures on the Statement of 
 
 **Unlevered FCFs** are essentially cash flows from **operating activities and investing activities** (only those related to **PRODUCTIVE** activities excluding investments on financial assets), but financing activities are excluded.
 
-**Levered FCFs** will include **financing activities** which reflect choice of debt structures.
+**Levered FCFs** will include **FINANCING activities** which reflect choice of debt structures.
+- CFO from CFS
 
 #### NOPAT, NWC, CAPEX
 
@@ -71,7 +73,7 @@ Usually, $\text{CA}>\text{CL}$ for a healthy firm.
 $$\text{CA}=\text{Cash}+\text{A/R}+\text{Inventory}+\text{Prepaids}+\text{Others}$$
 
 $$\text{CL}=\text{N/P}+\text{A/P}+\text{Accurued Liabilities}+\text{Others}$$
-However, current assets and current liabilities **DO NOT reflect** firm’s productive activities. Thus, we compute **Current Operating Assets** and **Current Operating Liabilities**:
+However, current assets and current liabilities **[[6.2 Stocks II#^0ff21c|DO NOT reflect]]** firm’s productive activities. Thus, we compute **Current Operating Assets** and **Current Operating Liabilities**:
 $$\text{COA}=\text{CA}-\text{Cash}$$
 
 $$\text{COL}=\text{CL}-\text{Short-term Debt}$$
