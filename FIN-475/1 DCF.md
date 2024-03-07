@@ -79,7 +79,10 @@ And that
 $$\text{NWC}=\text{COA}-\text{COL}$$
 ```
 
+```ad-important
+**Definition 1.4**: CapEx 
 
+```
 #### Mid-year Convention 
 At times, companies report cash flow in the middle of each year. Using the previous DCF approach, we would get an inflated figure as the denominator in each term of the summation shrinks by a size of $(1+\text{WACC})^{0.5}$ - valuation boosts by the same factor.
 
