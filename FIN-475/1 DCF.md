@@ -33,7 +33,7 @@ To tackle this, **non-controlling interest** (aka minority interest) is added to
 ```ad-important
 **Definition 1.2**: DCF Approach 
 EV is present value of **future free cash flows** (FCF) discounted at the firm **WACC**. Unlevered FCF is defined as
-$$\begin{align}\text{UFCF}&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{Capex}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{Capex}\end{align}$$
+$$\begin{align}\text{UFCF}&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{CapEx}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{CapEx}\\&= \text{OCF}-\text{CapEx} \end{align}$$
 
 In which
 - $\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}$ is known as **Cash Flow from Operation** (OCF)
@@ -56,7 +56,7 @@ In practice, one approach is to use the **estimated figures on the Statement of 
 
 ```ad-note
 **Taxes and NOPAT**
-$$\begin{align}\text{OCF}&=\text{EBITDA} - \text{T} - \Delta \text{NWC}\\&=(\text{EBIT}(1-T))+\text{D\&A}-\Delta \text{NWC}\\&=((\text{EBIT}-\text{D\&A})(1-T))+\text{D\&A}-\Delta \text{NWC} \end{align}$$
+$$\begin{align}\text{OCF}&=\text{EBITDA} - \text{T} - \Delta \text{NWC}\\&=\text{NOPAT}-\Delta \text{NWC}\\&=(\text{EBIT}(1-T))+\text{D\&A}-\Delta \text{NWC}\\&=((\text{EBITDA}-\text{D\&A})(1-T))+\text{D\&A}-\Delta \text{NWC}\\&= \text{EBITDA}(1-T)+T\cdot\text{D\&A}-\Delta \text{NWC} \end{align}$$
 
 Where $\text{EBIT}(1-T)$ is known as **Net Operating Profit after Tax** (NOPAT).
 ```
@@ -82,7 +82,21 @@ $$\text{NWC}=\text{COA}-\text{COL}$$
 ```ad-important
 **Definition 1.4**: CapEx 
 
+The method to calculate CapEx of a firm during a single period:
+$$\text{CapEx}=\text{FA}_{1}-\text{FA}_{0}+D$$
+where **Fixed Asset** ($\text{FA}_{1}$) is
+$$\text{FA}=\text{FA}_{0}-D+\text{Exp on acquiring FA}-\text{Rev from disposing FA}$$
+And thus 
+$$\text{CapEx}=\text{Exp on acquiring FA}-\text{Rev from disposing FA}$$
+
+This implies that in the periods where **NO acquiring/disposing** of fixed assets take place, depreciation is **ZERO**. Only acquisition and salvage value of fixed assets matter.
+
+We compute the after-tax proceeds from selling some fixed assets as
+$$\text{ATSV}=\text{BV}+(\text{MV}-\text{BV})(1-T)$$
+where $BV$ and $MV$ are book value and market value of the asset, respectively.
 ```
+
+We compute CapEx at an **after-tax** basis.
 #### Mid-year Convention 
 At times, companies report cash flow in the middle of each year. Using the previous DCF approach, we would get an inflated figure as the denominator in each term of the summation shrinks by a size of $(1+\text{WACC})^{0.5}$ - valuation boosts by the same factor.
 
@@ -90,4 +104,3 @@ Under this method,
 
 $$\text{EV}^\prime = \sum_{t} \frac{\text{FCF}_{t}}{(1+\text{WACC})^{t-0.5}}+\frac{\text{Terminal Value}}{(1+\text{WACC})^{T-0.5}}$$
 Which is equivalent to saying $\text{EV}^{\prime}= \text{EV}(1+\text{WACC})^{0.5}$.
-

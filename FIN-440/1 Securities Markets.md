@@ -44,7 +44,15 @@ A dealer is different from a trader. While a dealer buys and sells securities as
 ---
 
 ### Instruments 
-Financial securities represent ownership of real assets and the cash flows that they generate. Derivative instruments derive their values from the values of the underlying instruments upon which they are based.
+Financial securities represent ownership of real assets and the cash flows that they generate. 
+- Stocks mostl
+
+Derivative instruments derive their values from the values of the underlying instruments upon which they are based.
 - Derivatives are usually **zero-sum instruments** that sellers create.
 
+
 Swaps make up the largest segment in the derivative market.
+
+Bid-ask spread is viewed as a transaction cost.
+
+The limit order book illustrates the supply and demand of an asset at any given time.
