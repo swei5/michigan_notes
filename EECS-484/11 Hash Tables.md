@@ -167,6 +167,6 @@ Imagine the scenario above where we attempted to hash 17 - this caused the hashe
 
 To split, we applied a different hashing function: `hash2` to all values in original bucket 0, which causes value `20` to pivot to now bucket 4. After that, the split pointer moved 1 position downward to bucket 1. 
 
-
+From now on, for all buckets that are above the split pointer (i.e. bucket 0), we will be using the new hash function `hash2` to compute its hash value.
 
 ```
