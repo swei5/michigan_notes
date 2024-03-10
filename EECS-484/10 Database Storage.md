@@ -8,7 +8,7 @@ The second half of the class focuses more on building a DBMS, rather than using 
 - Recovery
 
 ```ad-todo
-Roadmap of DBMS:
+Roadmap of DBMS (Bottom to Top):
 - **Disk Manager**
 - Access Methods 
 - Operator Execution 
@@ -30,7 +30,7 @@ For non-volatile devices, also known as **disks**, sequential access is faster t
 
 Dynamic random-access memory (DRAM) is equivalent to "memory", and CPU/CPU Caches are regarded as "CPU" in the context of this class.
 
-```ad-note
+```ad-important
 DBMS will want to **maximize sequential access** and **minimize I/Os** to disks.
 - Algorithms try to reduce number of writes to random pages so that data is stored in **contiguous blocks**
 - Allocating multiple pages at the same time is called an **extent**
