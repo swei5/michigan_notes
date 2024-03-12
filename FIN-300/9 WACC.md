@@ -13,6 +13,8 @@ The Weighted Average Cost of Capital can be expressed as $$WACC=\text{Cost of Eq
 where $EQV$ is the **value of equity**, $DV$ is the **value of debt**, and $T$ is corporate tax rate.
 ```
 
+^335717
+
 ```ad-note
 Note that $\frac{EQV}{EV}=\frac{EQV}{DV+EQV}=1-\frac{DV}{EV}$
 ```
