@@ -1,4 +1,4 @@
-[[2024-03-07]] #Trading #Stocks 
+[[2024-03-07]] #Trading
 
 ### Trading Orders 
 Let's look at a few definitions beforehand.
@@ -69,3 +69,37 @@ A stop order or stop-loss order **specifies a price** $k$.
 - A stop **sell** order becomes a **market order** when the stock is traded at $p\le k$
 
 This is useful in **closing out positions** when market conditions become unfavorable, or **chasing the performance** given positive market momentums. They act as **insurance** to drastic changes.
+
+#### Stop-Limit Order 
+Combines a limit order and a stop order. Two prices are specified - the **stop price** $s$ and the **limit price** $l$.
+- A **buy** order becomes a **limit order** at $l$ when the stock is traded at $s \le p \le l$
+- A **sell** order becomes a **limit order** at $l$ when the stock is traded at $l \le p \le s$
+
+In essence, an order **becomes a limit order** once a bid or offer is **made at a price equal to or less favorable than the stop price**.
+
+If the stop price and the limit price are **equal**, the order is called a **stop-and-limit order**.
+- The order 
+
+Often stop and stop-limit orders are not supported by the exchange, but by the **brokers**.
+
+---
+### Order Instructions 
+- **Validity instructions**: validity instructions indicate how long the order **remains open** (good)
+	- **Good-till-cancel** orders remain open indefinitely 
+	- **Good-until orders** specify an expiration dates 
+	- **Day orders** expire at day-end.
+- **Quantity instructions**: restrict how large orders can be broken into small trades
+	- **All-or-none** orders must be completely filled
+	- **Minimum partial fill** restrictions
+- **Timing instructions** restrict the execution window
+	- Market-on-close orders
+		- Some mutual funds like to trade at closing prices 
+	- Market-on-open orders
+- **Execution instructions** tell the broker how to arrange the trade
+	- **Market-not-held** is a market order that the broker need not immediately execute or expose; the broker is expected to use discretion to find the best price
+
+---
+### Order Book 
+A **limit order book** (LOB) at any point in time contains the **details of those limit orders which are currently valid**, but which have not been executed thus far due to the unavailability of a suitable match. The limit order book is the central structure for many trading venues.
+
+![[Pasted image 20240312102913.png|500]]
