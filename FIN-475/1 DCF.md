@@ -22,7 +22,7 @@ Enterprise Value (EV) is the value of firm's **core business activities**.
 $$\begin{align}\text{EV}&=\text{Operating Assets}\\&=\text{Common Equity}+\text{Preferred Stock}+\text{Total Debt}\\+&\text{Non-controlling Interest of Book Equity}-\text{Cash}\end{align}$$
 ```
 
-Cash is **NOT** part of EV because it doesn't reflect **productive activities**.
+Cash is **NOT** part of EV because it doesn't reflect **productive activities**. [See further](https://www.quora.com/Why-do-we-subtract-cash-and-add-debt-when-calculating-the-enterprise-value-of-a-firm)
 
 ```ad-note
 Given majority ownership $\alpha \in (0.5,1]$ on another entity whose financials have to be 100% **consolidated** onto parent firm’s financial statements, $1-\alpha$ is non-controlling interest.

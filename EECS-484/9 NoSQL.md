@@ -82,7 +82,7 @@ Key commands in Mongo include:
 <dbname>.<collectionname>.insert(<object>)
 ```
 
-Which is equivalent to `SQL INSERT`. Andrewdeorio 
+Which is equivalent to `SQL INSERT`.
 
 ```javascript
 <dbname>.<collectionname>.find(<predicate>)
