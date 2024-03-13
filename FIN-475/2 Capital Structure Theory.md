@@ -63,3 +63,9 @@ Which translates to the **cash flows to a levered firm** is equal to that of **a
 ```ad-note
 Higher debt, lower WACC. Pie size is fixed, distribution among debt and equity financing doesnot change that. (4) is really important
 ```
+
+
+Optimal capital structure 
+- Hard to quantify optimal D/E ratio
+	- Marginal benefit is per unit tax saving 
+	- Marginal cost is hard to estimate (subjective)
