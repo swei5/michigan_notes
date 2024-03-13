@@ -9,17 +9,19 @@ In this chapter, we are going to look at how **changes in capital structure** af
 - Decrease leverage by **issuing new shares and redeeming outstanding debt**
 
 ```ad-note
-Equity is a function of debt.
+Equity is a **function of debt**, all else being equal.
 ```
 
 ### Derivation 
-Assume at the moment that
+It is true that (0):
 $$\text{EV}_{L}=\text{EV}_{U}+\tau_{C}\cdot D$$
-And $$\text{EV}_{L}=D+E$$
+And we know that $$\text{EV}_{L}=D+E$$
 Where $D,E$ are market values of debt and equity, $\text{EV}_{L}$ is the market value of a **levered firm**, and $\text{EV}_{U}$ is that of a **unlevered firm**, and $\tau_{C}$ being the corporate tax rate.
 
 ```ad-info
-TODO: Interest Tax Shield
+**Proof of (0): Interest Tax Shield**
+
+Let's always start with an unlevered company. It has $D=0$ and hence 
 ```
 
 Hence we have $$D+E=\text{EV}_{U}+\tau_{C}\cdot D \to \text{EV}_{U}=E+(1-\tau_{C})D$$
