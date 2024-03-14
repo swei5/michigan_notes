@@ -13,7 +13,7 @@ There is a trade-off regarding the number of indexes to create per database and.
 - Maintenance overhead
 ```
 
-### B+ Tree 
+### B+Tree 
 B-Tree is a family of **balanced tree data structures**. DBMS almost always use some kinds of variants of it. 
 
 A **B+Tree** is an $M$ -way, **self-balancing** tree data structure that keeps data sorted and allows searches, insertions, and deletions in $O(\log n)$. 
@@ -36,6 +36,8 @@ Every B+Tree node is comprised of an **array of key/value pairs**.
 	- Inner nodes: pointers to child nodes
 	- Leaf nodes: the tuple
 
+Keys must be of the **same type**.
+
 A node also has **sibling pointers** that point to the adjacent nodes on the same layer to accelerate and optimize for accessing. Each node can be viewed as a **page** if we use a disk structure.
 
 The arrays are (usually) kept in **sorted** key order.
@@ -57,3 +59,81 @@ There are two approaches as well:
 	- The leaf nodes (of the **primary key index**) store the actual contents of the tuple.
 		- Index must be primary key to avoid duplication 
 	- **Secondary indexes MUST store the Record ID** as their values
+
+```ad-summary
+**B-Tree VS. B+Tree**
+- The original B-Tree from 1972 stored **keys and values in ALL nodes** in the tree.
+	- More space-efficient, since each key only appears once in the tree
+- A B+Tree only stores **values in leaf nodes**
+	-  Inner nodes only guide the search process
+```
+
+#### Insertion 
+As with most other data structures, equivalent to **finding** the correct leaf node $L$.
+- If doesn't exist, we put data entry into $L$ in sorted order
+	- If $L$ has enough space, OK
+	- Else 
+		- Redistribute a key to sibling node first - split $L$ 's keys into $L$ and a new node $L_{2}$, OR
+			- Smallest key to the left and largest key to the right 
+			- Then readjust separator
+		- Redistribute entries evenly, copy and push up the **middle key** to parent's layer (separator)
+			- Insert index entry pointing to $L_2$ from parent of $L$ (the new separator)
+				- If parent is full again, repeat (split parent)
+- Else, OK
+
+#### Deletion
+- Start at root, find leaf $L$ where entry belongs and remove
+	- If $L$ is at least half full, OK
+	- Else, re-distribute, borrowing from sibling
+		- If re-distribution fails, **merge $L$ and sibling**, and delete entry and separator (pointing to $L$ or sibling) from parent of $L$
+
+#### Duplicate Keys
+Approach 1: **Append Record ID**
+- Add the tuple's unique Record ID as part of the key to ensure that all keys are unique
+- The DBMS can still use **partial keys** to find tuples
+
+![[Pasted image 20240314151807.png|500]]
+Approach 2: **Overflow Leaf Nodes**
+- Allow leaf nodes to **spill into overflow nodes** that contain the duplicate keys
+- This is more complex to maintain and modify
+
+![[Pasted image 20240314152003.png|500]]
+
+---
+### Selection Conditions 
+The DBMS can use a B+Tree index if the query provides **ANY of the attributes of the search key**.
+- E.g. if we index on `<a,b>`
+	- `(a=5 AND b=3)` is supported
+	- `(b=3)` is supported
+
+![[Pasted image 20240314151131.png|500]]
+
+Not all DBMSs support this.
+
+```ad-note
+For a hash index, we must have **ALL attributes** in search key.
+```
+
+---
+### Clustered Indices 
+The table is stored in the **sorted order specified by the primary key.**
+- Can be either heap- or index-organized storage
+
+Some DBMSs always use a clustered index.
+- If a table does not contain a primary key, the DBMS will automatically make a **hidden primary key**
+
+With a B+Tree, we are able to achieve in-order traversal by traversing to the left-most leaf page to the right and then retrieve **tuples from all leaf pages**.
+- This is **ALWAYS better** than external sorting
+
+![[Pasted image 20240314152644.png|400]]
+
+Conversely, retrieving tuples in the order they appear in a **non-clustered index can be very inefficient**, if data on the disk is not sorted according to the index.
+- Has to visit pages multiple times
+- Taking lot of storage in buffer pool
+
+![[Pasted image 20240314152917.png|400]]
+
+The DBMS can first figure out **all the tuples that it needs** and then **sort** them based on their Page ID. Then, we can remap them back to the original order if we want retrieved data to be sorted.
+
+---
+### B+Tree Design Choices 
