@@ -81,3 +81,25 @@ These rules give traders incentives to improve price, display their orders, and 
 
 Match quantity is $\min(n(A), n(B))$.
 ```
+
+#### Trade Pricing Rules
+Continuous auction markets maintain an order book. The buy and sell orders are separately sorted by their precedence. When a new order arrives, the system tries to **match the best order** with orders on the other side.
+- If a trade is possible, e.g., the limit buy order is for a price at or above the best offer, the order is called a **marketable order**
+- If a trade is not possible, the order will be **sorted into the book** according to its precedence
+
+Once the orders are **matched**, the trading system then uses its trade-pricing rules to determine trade prices. The three rules that various order-driven markets use to price their trades are:
+- **1. Discriminatory pricing rule**
+	- The **limit price** of the standing order dictates the price for the trade
+	- If the incoming order fills against **multiple standing orders** with different prices, trades will take place at **multiple prices**
+	- Allows a large arriving trader to **discriminate among standing limit orders** by **filling the most aggressively priced orders first** at their limit prices and then filling less aggressively priced orders at their less favorable
+	- Most continuous order-driven markets
+1. **Uniform pricing rule**
+	- All trades execute at the **same price** (clearing price)
+	- The **last match** that leads to a feasible trade determines the **clearing price**
+	- Most call markets and used for opening/closing markets
+	- The **market clearing price** is the price where **supply equals demand**
+	- The market clearing price **maximize the volume of trading**
+
+```ad-note
+If trading systems did not use this pricing rule, large traders would **break their orders into pieces** to price discriminate on their own.
+```
