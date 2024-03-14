@@ -25,7 +25,7 @@ Primarily, there are two types of markets.
 	- Traders may trade at **ANYTIME** while the market is open
 	- Traders may continuously attempt to arrange their trades
 	- NYSE from 9:30-4
-- **Call markets**
+- **Call markets** ^8d69de
 	- Traders may trade in call markets only when the **market is called**
 		- You may have all securities called at the same time or only some; the market may be called several times per day
 	- The opening price and closing price at NYSE is an example of this market
@@ -88,7 +88,7 @@ Continuous auction markets maintain an order book. The buy and sell orders are s
 - If a trade is not possible, the order will be **sorted into the book** according to its precedence
 
 Once the orders are **matched**, the trading system then uses its trade-pricing rules to determine trade prices. The three rules that various order-driven markets use to price their trades are:
-- **1. Discriminatory pricing rule**
+- 1. **Discriminatory pricing rule**
 	- The **limit price** of the standing order dictates the price for the trade
 	- If the incoming order fills against **multiple standing orders** with different prices, trades will take place at **multiple prices**
 	- Allows a large arriving trader to **discriminate among standing limit orders** by **filling the most aggressively priced orders first** at their limit prices and then filling less aggressively priced orders at their less favorable
@@ -96,7 +96,7 @@ Once the orders are **matched**, the trading system then uses its trade-pricing 
 1. **Uniform pricing rule**
 	- All trades execute at the **same price** (clearing price)
 	- The **last match** that leads to a feasible trade determines the **clearing price**
-	- Most call markets and used for opening/closing markets
+	- Most [[#^8d69de|call markets]] and used for opening/closing markets
 	- The **market clearing price** is the price where **supply equals demand**
 	- The market clearing price **maximize the volume of trading**
 
