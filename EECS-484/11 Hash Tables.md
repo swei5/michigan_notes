@@ -4,11 +4,13 @@ Today, we are now going to talk about how DBMS's execution engine supports **rea
 - **Hash tables**
 - Trees
 
-A proper data structure should include the following 
-- Internal meta-data
-- Core data storage 
-- Temporary data structures 
+A proper data structure should include the following. 
+- **Internal meta-data**
+- **Core data storage** 
+- **Temporary data structures** 
 - Table indexes
+
+Hash tables are primarily utilized in the first three.
 
 Likewise, the accessing methods should prioritize **sequential access** and should be adaptive to **DBMS-specific operations**.
 

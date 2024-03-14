@@ -108,7 +108,7 @@ In terms of data organization, there are two approaches:
 2. Log-structured
 
 #### Tuple Storage 
-The most common layout scheme is called **slotted pages**. The slot array maps "slots" to the tuples' **starting position** offsets.
+The most common layout scheme is called **slotted pages**. The slot array maps "slots" to the tuples' **starting position** offsets. ^3deea0
 
 The header keeps track of:
 - The # of used slots
