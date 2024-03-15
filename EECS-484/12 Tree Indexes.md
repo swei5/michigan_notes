@@ -116,8 +116,9 @@ For a hash index, we must have **ALL attributes** in search key.
 
 ---
 ### Clustered Indices 
-The table is stored in the **sorted order specified by the primary key.**
+The table is stored in the **sorted order specified by the primary key.**  It **reorders** the way records in the table are **physically stored**.
 - Can be either heap- or index-organized storage
+- So that we can perform sequential scan
 
 Some DBMSs always use a clustered index.
 - If a table does not contain a primary key, the DBMS will automatically make a **hidden primary key**
@@ -134,6 +135,13 @@ Conversely, retrieving tuples in the order they appear in a **non-clustered inde
 ![[Pasted image 20240314152917.png|400]]
 
 The DBMS can first figure out **all the tuples that it needs** and then **sort** them based on their Page ID. Then, we can remap them back to the original order if we want retrieved data to be sorted.
+
+```ad-note
+**Sequential Scan and Index Scan**
+Though index scan seems to be more efficient, at times we want to use a sequential scan when we are reading a larger portion of the database - in that case, we don't care as much about the ordering because we would have to read most of the data anyway.
+
+In the case that we need only to read a small partition of data, index scan is more efficient as it's built to help find and read data quickly.
+```
 
 ---
 ### B+Tree Design Choices 
