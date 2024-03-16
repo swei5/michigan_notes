@@ -143,5 +143,11 @@ Though index scan seems to be more efficient, at times we want to use a sequenti
 In the case that we need only to read a small partition of data, index scan is more efficient as it's built to help find and read data quickly.
 ```
 
+```ad-info
+To get the tuple identifier in Oracle, we can select field `ctid`.
+```
+
+Clusters are **NOT incrementally updated** - that said, the cluster will not maintain its order after updates or deletes to the table.
+
 ---
 ### B+Tree Design Choices 
