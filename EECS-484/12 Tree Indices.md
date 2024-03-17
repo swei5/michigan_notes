@@ -1,5 +1,14 @@
 [[2024-03-12]] #Database 
 
+```ad-todo
+Roadmap of DBMS:
+- ~~Disk Manager~~
+- **Access Methods** 
+- Operator Execution 
+- Query Planning 
+- Transaction Manager 
+- Log Manager
+```
 ### Table Indices 
 A table index is a **replica** of a **subset of a table's attributes** that are **organized and/or sorted for efficient** access using those attributes.
 
@@ -29,10 +38,10 @@ It has the following properties:
 ![[Pasted image 20240314140244.png|500]]
 
 Every B+Tree node is comprised of an **array of key/value pairs**.
-- The keys are derived from the **attribute (s) that the index is based on**
+- The **keys** are derived from the **attribute (s) that the index is based on**
 	- Inner nodes: separators
 	- Leaf node: keys of the tuple
-- The values will differ based on whether the node is classified as an **inner node** or a **leaf node**
+- The **values** will differ based on whether the node is classified as an **inner node** or a **leaf node**
 	- Inner nodes: pointers to child nodes
 	- Leaf nodes: the tuple
 
@@ -116,6 +125,9 @@ For a hash index, we must have **ALL attributes** in search key.
 
 ---
 ### Clustered Indices 
+
+^b81d32
+
 The table is stored in the **sorted order specified by the primary key.**  It **reorders** the way records in the table are **physically stored**.
 - Can be either heap- or index-organized storage
 - So that we can perform sequential scan
@@ -130,8 +142,10 @@ In Oracle, we can create an index by
 
 ```sql
 CREATE INDEX <name> ON
-<table> USING [BTREE|HASH] 
+<table> USING [BTREE|HASH] (<attr>);
 ```
+
+B+Tree is the **default** index type of most DBMS. 
 
 ![[Pasted image 20240314152644.png|400]]
 
@@ -141,7 +155,8 @@ Conversely, retrieving tuples in the order they appear in a **non-clustered inde
 
 ![[Pasted image 20240314152917.png|400]]
 
-The DBMS can first figure out **all the tuples that it needs** and then **sort** them based on their Page ID. Then, we can remap them back to the original order if we want retrieved data to be sorted.
+The DBMS can first figure out **all the tuples that it needs** and then **sort** them based on their Page ID (or record ID). Then, we can remap them back to the original order if we want retrieved data to be sorted.
+- This way, we are still prioritizing sequential read
 
 ```ad-note
 **Sequential Scan and Index Scan**
@@ -203,3 +218,22 @@ Some DBMSs **do NOT always merge** nodes when they are half full.
 	- Approximate location of desired key based on **known distribution** of keys
 
 ![[Pasted image 20240316174420.png|500]]
+
+### Optimization 
+#### Prefix Compression 
+**Sorted keys** in the same leaf node are likely to have the **same prefix**. Hence, instead of storing the entire key each time, extract common prefix and **store only UNIQUE SUFFIX** for each key.
+
+![[Pasted image 20240316205241.png|400]]
+
+There are many variations to this method.
+
+#### Duplication 
+Non-unique indexes can end up storing multiple copies of the same key in leaf nodes. The leaf node can **store the key once and then maintain a list of tuples with that key** (similar to [[11 Hash Tables#^c3fb2c|what we discussed]] for hash tables).
+
+![[Pasted image 20240316205420.png|400]]
+
+#### Bulk Insert 
+
+^dc4c4c
+
+Intuitively, the fastest way to build a new B+Tree for an existing table is to **first sort the keys** and then **build the index from the bottom up**.

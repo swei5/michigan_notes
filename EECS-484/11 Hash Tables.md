@@ -106,6 +106,9 @@ If all other alternatives for `B` are also occupied, we continue the process wit
 ```
 
 #### Non-unique Keys 
+
+^c3fb2c
+
 In case we have multiple values that associate with the same key (duplicate keys) in the same hash tables, we have two choices:
 1. Separate linked list
 	- Store values in separate storage area for each key
