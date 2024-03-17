@@ -136,6 +136,8 @@ This algorithm contains 2 phases (similar structure to external merge sort):
 In phase 1, we **DO NOT** build hash tables.
 
 In phase 2, we **DO NOT** need to store hash tables built for each partition in disk. We simply push the entries into the final result set.
+- Besides the hash key, we would also need to store a r**unning value** for the aggregate functions in the final output
+		- E.g. `AVG()` needs `(COUNT, SUM)` to perform
 ```
 
 ```ad-example
@@ -145,4 +147,3 @@ In phase 2, we **DO NOT** need to store hash tables built for each partition in 
 
 ![[Pasted image 20240316224213.png|500]]
 ```
-
