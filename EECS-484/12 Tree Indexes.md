@@ -126,9 +126,16 @@ Some DBMSs always use a clustered index.
 With a B+Tree, we are able to achieve in-order traversal by traversing to the left-most leaf page to the right and then retrieve **tuples from all leaf pages**.
 - This is **ALWAYS better** than external sorting
 
+In Oracle, we can create an index by
+
+```sql
+CREATE INDEX <name> ON
+<table> USING [BTREE|HASH] 
+```
+
 ![[Pasted image 20240314152644.png|400]]
 
-Conversely, retrieving tuples in the order they appear in a **non-clustered index can be very inefficient**, if data on the disk is not sorted according to the index.
+Conversely, retrieving tuples in the order they appear in a **non-clustered index can be very inefficient**, if data on the disk is **NOT SORTED** according to the index.
 - Has to visit pages multiple times
 - Taking lot of storage in buffer pool
 
@@ -138,6 +145,7 @@ The DBMS can first figure out **all the tuples that it needs** and then **sort**
 
 ```ad-note
 **Sequential Scan and Index Scan**
+
 Though index scan seems to be more efficient, at times we want to use a sequential scan when we are reading a larger portion of the database - in that case, we don't care as much about the ordering because we would have to read most of the data anyway.
 
 In the case that we need only to read a small partition of data, index scan is more efficient as it's built to help find and read data quickly.
@@ -151,3 +159,47 @@ Clusters are **NOT incrementally updated** - that said, the cluster will not mai
 
 ---
 ### B+Tree Design Choices 
+Four primary design choices are 
+- Node Size
+- Merge Threshold 
+- Variable-Length keys
+- Intra-Node Search 
+
+#### Node Size 
+The **slower the storage device**, the **larger the optimal node size** for a B+Tree.
+- HDD: ~1 MB
+- SSD: ~10 KB
+- In-Memory: ~512B
+
+Optimal sizes can vary **depending on the workload**.
+- **Sequential scan** (lots of leaf-node scan): better to have larger node size
+- **Small lookup** (lots of root-to-leaf traversal): better to have smaller node size
+
+#### Merge Threshold 
+Some DBMSs **do NOT always merge** nodes when they are half full.
+- Delaying a merge operation may reduce the amount of reorganization
+- It may also be better to just let smaller nodes exist and then periodically rebuild entire tree
+	- With the expectation that more keys will be added
+
+#### Variable-Length Keys
+1. **Pointers** 
+	- Store the keys as **pointers to the tuple’s attribute** 
+		- Costly because of massive number of look ups
+1. **Variable-Length Nodes** 
+	- The size of each node in the index can vary
+	- Requires careful memory management
+2. **Padding** 
+	- Always pad the key to be **max length of the key type**
+3. **Key Map / Indirection**
+	- Embed an array of pointers that map to the **key/value list** within the node
+	- Used when the number of unique **keys** is small so that we can efficiently build a dictionary of it
+
+#### Intra-Node Search 
+1. **Linear**
+	- Scan node keys from beginning to end
+2. **Binary**
+	- Jump to middle key, pivot left/right depending on comparison 
+3. **Interpolation**
+	- Approximate location of desired key based on **known distribution** of keys
+
+![[Pasted image 20240316174420.png|500]]
