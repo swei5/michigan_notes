@@ -36,7 +36,7 @@ To tackle this, **non-controlling interest** (aka minority interest) is added to
 **Definition 1.2**: [[4.1 Capital Investment - Valuation#^ea68e9|DCF Approach]]
 
 EV is present value of **future free cash flows** (FCF) discounted at the firm **WACC**. Unlevered FCF is defined as
-$$\begin{align}\text{UFCF}&=\text{NOPAT}+\text{D\&A}-\Delta \text{NWC}-\text{CapEx}\\&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{CapEx}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{CapEx}\\&= \text{OCF}-\text{CapEx} \end{align}$$
+$$\begin{align}\text{UFCF}&=\text{NOPAT}+\text{D\&A}-\Delta \text{NWC}-\text{CapEx}\\&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{CapEx}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{CapEx}\\&= \text{CFO}-\text{CapEx} \end{align}$$
 
 In which
 - $\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}$ is known as **Cash Flow from Operation** (OCF)
@@ -62,7 +62,7 @@ In practice, one approach is to use the **estimated figures on the Statement of 
 
 ```ad-note
 **Taxes and NOPAT (Net operating profit after taxes)**
-$$\begin{align}\text{OCF}&=\text{EBIT} - \text{T} - \Delta \text{NWC}\\&=\text{NOPAT}-\Delta \text{NWC}\\&=(\text{EBIT}(1-T))+\text{D\&A}-\Delta \text{NWC}\\&=((\text{EBITDA}-\text{D\&A})(1-T))+\text{D\&A}-\Delta \text{NWC}\\&= \text{EBITDA}(1-T)+T\cdot\text{D\&A}-\Delta \text{NWC} \end{align}$$
+$$\begin{align}\text{CFO}&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}\\&=\text{NOPAT}+ \text{D\&A}-\Delta \text{NWC}\\&=(\text{EBIT}(1-T))+\text{D\&A}-\Delta \text{NWC}\\&=((\text{EBITDA}-\text{D\&A})(1-T))+\text{D\&A}-\Delta \text{NWC}\\&= \text{EBITDA}(1-T)+T\cdot\text{D\&A}-\Delta \text{NWC} \end{align}$$
 
 Where $\text{EBIT}(1-T)$ is known as **Net Operating Profit after Tax** (NOPAT).
 

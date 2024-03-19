@@ -7,3 +7,9 @@ A futures contract is a **standardized forward contract** traded on an **exchang
 - Can be traded on exchanges
 
 In this section, we will treat all contracts – futures and forwards – as **forward contracts**. This means we will not consider the ongoing requirement to post a margin.
+
+### Hedge Contracts 
+The number of contracts to purchase can be expressed as $$n=\frac{VS\rho}{X}$$
+Where $X$ is the strike price of forward contract, $V$ is volume, $S$ is the spot price, and $\rho$ is the regression coefficient between the asset and the forward contract.
+
+This would create what's known as a **perfect hedge**.

@@ -38,10 +38,19 @@ Stock brokers earn a living through commissions; therefore, there is a **risk fo
 
 Illegal brokerage activities include
 - **Trade Assignment**
-	- The broker assigns the worst priced trade to the client and keeps the best priced trade for himself or for a favored client
+	- The broker **assigns the worst priced trade** to the client and keeps the best priced trade for himself or for a favored client
 - **Front-running**
 	- Client's trade has market impact
 		- E.g. Broker executes their own order before placing client's
 	- Front-running based on proprietary brokerage information is illegal 
 	- Front-running by **observant traders is legal**
 - **Churning**
+	- When a broker engages in **excessive buying and selling** of securities in a customer’s account without considering the customer’s investment goals to generate commissions
+- **Kickbacks**
+	- An illegal payment intended as compensation for preferential treatment or any other type of improper services received
+
+#### Order Flows 
+Payment for order flow refers to the compensation that a broker receives, not from its clients, but from a third party that **wants to influence how the broker routes client orders for fulfillment**.
+- Many retail stock brokers commonly route their order flow to dealers who pay them for each market order sent.
+- E.g. Robinhood 
+
