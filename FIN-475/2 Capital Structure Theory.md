@@ -1,4 +1,4 @@
-[[2024-03-12]] #Accounting #Valuation 
+[[2024-03-12]] #Accounting #Valuation
 
 ### Motivation 
 We know that firm value is determined by **cash flows** to firm and the **risk of assets**, and we're interested in how debt-equity mix affects $\text{FCF}$, $r$, and $\text{EV}$.

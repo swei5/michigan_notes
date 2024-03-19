@@ -35,3 +35,13 @@ A **hard dollar** payment would require a **check to be issued and recorded on a
 #### Principal-Agent Problem 
 Stock brokers earn a living through commissions; therefore, there is a **risk for conflict between a stock broker’s interest and the interests of his clients**.
 - Broker may assign the worst priced trade to the client and keeps the best priced trade for himself or for a favored client
+
+Illegal brokerage activities include
+- **Trade Assignment**
+	- The broker assigns the worst priced trade to the client and keeps the best priced trade for himself or for a favored client
+- **Front-running**
+	- Client's trade has market impact
+		- E.g. Broker executes their own order before placing client's
+	- Front-running based on proprietary brokerage information is illegal 
+	- Front-running by **observant traders is legal**
+- **Churning**

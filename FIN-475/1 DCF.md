@@ -22,6 +22,8 @@ Enterprise Value (EV) is the value of firm's **core business activities**.
 $$\begin{align}\text{EV}&=\text{Operating Assets}\\&=\text{Common Equity}+\text{Preferred Stock}+\text{Total Debt}\\+&\text{Non-controlling Interest of Book Equity}-\text{Cash}\end{align}$$
 ```
 
+^fbe006
+
 Cash is **NOT** part of EV because it doesn't reflect **productive activities**. [See further](https://www.quora.com/Why-do-we-subtract-cash-and-add-debt-when-calculating-the-enterprise-value-of-a-firm)
 
 ```ad-note
@@ -48,6 +50,8 @@ $$\text{Terminal Value}=\frac{\text{FCF}_{T}}{\text{WACC}-g}$$
 
 In practice, one approach is to use the **estimated figures on the Statement of Cash Flows**; or, to use the **pro forma financial statements** with a forecasted growth rate of sales and other figures scaled by sales.
 ```
+
+^cf1ae2
 
 **Unlevered FCFs** are essentially cash flows from **operating activities and investing activities** (only those related to **PRODUCTIVE** activities excluding investments on financial assets), but financing activities are excluded.
 
