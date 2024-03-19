@@ -1,4 +1,4 @@
-[[2024-03-19]] #Accounting #Valuation #DCF 
+[[2024-03-19]] #Accounting #Valuation #DCF #Stocks 
 
 ### Discounted Cash Flow Analysis
 Our primary goal in this chapter is to forecast the income statement, balance sheet and statement of cash flows.
@@ -60,4 +60,49 @@ Definition 3.3: Implied Equity Value
 
 The implied equity value of a firm is defined as 
 $$E=\text{EV}-D-\text{Preferred Stock}-\text{Non-controlling Interest}$$
+
+And thus
+$$P=\frac{E}{\text{Diluted Shares Outstanding}}$$
 ```
+
+#### Sensitivity Analysis 
+Outcomes of discounted cash flow analysis are expressed in terms of valuation range based on various input assumptions, rather than a single value
+- WACC
+- Exit multiple $\text{EM}$
+- Perpetuity growth rate $g$
+
+```ad-summary
+**DCF, Pros and Cons**
+
+- **Pros**
+	- **Fundamental analysis** based on cash flows 
+	- Less susceptible to market-level mispricing
+	- Without relying on truly comparable companies or transactions
+	- Flexibility to run stress tests under different financial performance scenarios
+- **Cons**
+	- Challenging to **forecast financial performance** accurately
+	- Small changes to underlying assumptions can lead to very different valuation ranges
+	- Discounted present **value of terminal value can play a dominant role**, which diminishes the significance of annual FCF in projection period
+	- Basic DCF doesn't provide flexibility to **changes to the company's capital structure** over the projection period
+```
+
+#### Tax, D&A, CapEx projections
+We usually assume a marginal tax rate $\tau_{C}$ of 35% or 40%, or use effective tax rate last year
+
+Depreciation is non-cash expense **reducing book value of PP&E** over useful life. Amortization is non-cash expense **reducing value of definite life intangible assets**. It is disclosed in cash flow statement.
+- Often included in COGS (Manufacturing equipment)
+- Sometimes in SG&A
+
+CapEx is an **expenditure** rather than an expense, capitalized on the balance sheet at the time of purchase and expensed over its useful life as depreciation through income statement. Unlike depreciation, Capex represents **actual cash outflows** and thus **reduces the FCF** available. Historical Capex is disclosed on **cash flow statement under investing activities** section.
+
+#### NWC Projections 
+Recall that ![[1 DCF#^9a4442]]
+We project **accounts receivable** (A/R) based on days sales outstanding (DSO):
+$$
+\text{DSO}=\frac{\text{A/R}}{S}\cdot365
+$$
+We project **inventory** based on days inventory held (DIH): $$\text{DIH}=\frac{\text{Inventory}}{\text{COGS}}\cdot365$$ This is the inverse of **inventory turns**, which measures the number of times a firm turns over its inventory in a year.
+
+**Prepaid expenses** and **accrued liabilities** are projected based on **historical percentages of sales**.
+
+We project **accounts payable** (A/P) based on days payable outstanding (DPO): $$\text{DPO}=\frac{\text{A/P}}{\text{COGS}}\cdot365$$

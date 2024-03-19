@@ -36,7 +36,7 @@ To tackle this, **non-controlling interest** (aka minority interest) is added to
 **Definition 1.2**: [[4.1 Capital Investment - Valuation#^ea68e9|DCF Approach]]
 
 EV is present value of **future free cash flows** (FCF) discounted at the firm **WACC**. Unlevered FCF is defined as
-$$\begin{align}\text{UFCF}&=\text{NOPAT}-\Delta \text{NWC}-\text{CapEx}\\&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{CapEx}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{CapEx}\\&= \text{OCF}-\text{CapEx} \end{align}$$
+$$\begin{align}\text{UFCF}&=\text{NOPAT}+\text{D\&A}-\Delta \text{NWC}-\text{CapEx}\\&=\text{EBIT} - \text{Taxes} + \text{D\&A} - \Delta \text{NWC}-\text{CapEx}\\&=\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}-\text{CapEx}\\&= \text{OCF}-\text{CapEx} \end{align}$$
 
 In which
 - $\text{EBITDA} - \text{Taxes} - \Delta \text{NWC}$ is known as **Cash Flow from Operation** (OCF)
@@ -61,10 +61,12 @@ In practice, one approach is to use the **estimated figures on the Statement of 
 #### NOPAT, NWC, CAPEX
 
 ```ad-note
-**Taxes and NOPAT**
-$$\begin{align}\text{OCF}&=\text{EBITDA} - \text{T} - \Delta \text{NWC}\\&=\text{NOPAT}-\Delta \text{NWC}\\&=(\text{EBIT}(1-T))+\text{D\&A}-\Delta \text{NWC}\\&=((\text{EBITDA}-\text{D\&A})(1-T))+\text{D\&A}-\Delta \text{NWC}\\&= \text{EBITDA}(1-T)+T\cdot\text{D\&A}-\Delta \text{NWC} \end{align}$$
+**Taxes and NOPAT (Net operating profit after taxes)**
+$$\begin{align}\text{OCF}&=\text{EBIT} - \text{T} - \Delta \text{NWC}\\&=\text{NOPAT}-\Delta \text{NWC}\\&=(\text{EBIT}(1-T))+\text{D\&A}-\Delta \text{NWC}\\&=((\text{EBITDA}-\text{D\&A})(1-T))+\text{D\&A}-\Delta \text{NWC}\\&= \text{EBITDA}(1-T)+T\cdot\text{D\&A}-\Delta \text{NWC} \end{align}$$
 
 Where $\text{EBIT}(1-T)$ is known as **Net Operating Profit after Tax** (NOPAT).
+
+NOPAT also known as UE (Unlevered earnings) and EBIAT (Earnings before interest after taxes).
 ```
 
 D&A are **non-cash deductions** that contribute to tax savings, and thus relevant.
@@ -85,6 +87,8 @@ And that
 $$\text{NWC}=\text{COA}-\text{COL}$$
 ```
 
+^9a4442
+
 ```ad-important
 **Definition 1.4**: CapEx 
 
@@ -97,7 +101,7 @@ $$\text{CapEx}=\text{Exp on acquiring FA}-\text{Rev from disposing FA}$$
 
 This implies that in the periods where **NO acquiring/disposing** of fixed assets take place, depreciation is **ZERO**. Only acquisition and salvage value of fixed assets matter.
 
-We compute the after-tax proceeds from selling some fixed assets as
+We compute the **after-tax proceeds** from selling some fixed assets as
 $$\text{ATSV}=\text{BV}+(\text{MV}-\text{BV})(1-T)$$
 where $BV$ and $MV$ are book value and market value of the asset, respectively.
 ```
