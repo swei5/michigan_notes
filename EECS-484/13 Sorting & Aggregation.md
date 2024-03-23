@@ -1,4 +1,4 @@
-[[2024-03-16]] #Database 
+[[2024-03-16]] #Database #DBMS 
 
 In this chapter, we will be covering how to **execute queries** using the DBMS components we have discussed so far.
 
@@ -37,7 +37,7 @@ A run is a **list of key/value pairs**.
 #### Sorting
 The first phase: sort chunks of data that fit in memory and then write back the sorted chunks to a file on disk.
 
-In sorting, a **key** is simply the **attribute (s)** to compare to compute the sort order. However, we have two choices with **values**:
+In sorting, a **key** is simply the **attribute(s)** to compare to compute the sort order. However, we have two choices with **values**: ^13b71e
 1. Tuple (early materialization)
 	- Storing the actual tuple
 	- More read/write during sorting but more sequential I/Os when accessing after sort

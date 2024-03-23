@@ -1,4 +1,4 @@
-[[2024-03-07]] #Database 
+[[2024-03-07]] #Database #DBMS 
 
 Today, we are now going to talk about how DBMS's execution engine supports **read/write** data from pages. There are two types of data structures used within the internal storage of DBMS:
 - **Hash tables**

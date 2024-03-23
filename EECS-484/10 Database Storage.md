@@ -1,4 +1,4 @@
-[[2024-03-05]] #Database #System 
+[[2024-03-05]] #Database #System #DBMS
 
 The second half of the class focuses more on **building a DBMS**, rather than using it (SQL). This includes
 - Storage 
