@@ -86,7 +86,7 @@ In **Pass 0**, we read $B$ pages of the table into memory at a time and sort the
 
 In **Pass 1 and onwards**, we merge $B-1$ runs
 
-Hence, the total number of passes is $1+ \lceil \log_{B-1} \lceil \frac{N}{B}\rceil \rceil$ for a database with $N$ pages, and the total I/O cost is still $2N \cdot n(\text{Pass})$.
+Hence, the total number of passes is $1+ \lceil \log_{B-1} \lceil \frac{N}{B}\rceil \rceil$ for a database with $N$ pages, and the total I/O cost is still $2N \cdot n(\text{Pass})$. ^b4cf7d
 
 ---
 ### B+Tree for Sorting 

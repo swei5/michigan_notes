@@ -120,7 +120,7 @@ The DBMS can use a B+Tree index if the query provides **ANY of the attributes of
 Not all DBMSs support this.
 
 ```ad-note
-For a hash index, we must have **ALL attributes** in search key.
+For a hash index, we must have **ALL attributes** in search key. Hash index also only supports **equality** - hence the more popular usage of B+Tree.
 ```
 
 ---
@@ -155,7 +155,7 @@ Conversely, retrieving tuples in the order they appear in a **non-clustered inde
 
 ![[Pasted image 20240314152917.png|400]]
 
-The DBMS can first figure out **all the tuples that it needs** and then **sort** them based on their Page ID (or record ID). Then, we can remap them back to the original order if we want retrieved data to be sorted.
+The DBMS can first figure out **all the tuples that it needs** and then **sort** them based on their Page ID (or record ID). This enables sequential reads. Then, we can remap them back to the original order if we want retrieved data in the same order.
 - This way, we are still prioritizing sequential read
 
 ```ad-note
