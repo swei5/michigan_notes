@@ -191,7 +191,7 @@ while docsRemain:
 	MergeBlocks(f1, ..., fn) => fmerged
 ```
 
-`ParseNextBlock` accumulates `termid` - `docid` pairs in memory **until block is full**, and `BSBI-Invert` generates small in-memory inverted index. In simple terms, we first build a series of small in-memory inverted indexes, writing each one to disk, then merge them.
+`ParseNextBlock` accumulates `termid` - `docid` pairs in memory **until block is full**, and `BSBI-Invert` generates small in-memory inverted index. In simple terms, we first build a series of small in-memory inverted indices, writing each one to disk, then merge them.
 
 ![[Pasted image 20231116154546.png|400]]
 

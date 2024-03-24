@@ -1,0 +1,147 @@
+[[2024-03-23]] #Database #DBMS 
+
+```ad-todo
+Roadmap of DBMS:
+- ~~Disk Manager~~
+- ~~Access Methods~~
+- ~~Operator Execution~~
+- **Query Planning** 
+- Transaction Manager 
+- Log Manager
+```
+
+In this lecture, we will finally assemble the parts learned on operators (joins and sorts) into the bigger picture of a query plan.
+
+### Processing Model
+A DBMS's processing model defines **how the system executes a query plan**. 
+1. **Iterator Model** 
+2. **Materialization Model**
+3. **Vectorized / Batch Model**
+
+```ad-question
+The utmost important question in query processing is the **granularity of data**: how do we move data around?
+
+There are different trade-offs for different workloads.
+```
+
+#### Iterator Model 
+Most common in early DBMS, also known as Volcano or Pipeline model. Each query plan operator implements a `Next()` function.
+- On **each invocation**, the operator returns either a **single tuple** or a `null` marker if there are no more tuples
+
+The operator implements a **loop** that calls `Next()` on its children to retrieve their tuples and then process them.
+
+```ad-note
+Each operator does **NOT need to wait** for its children to finish running before it can start processing data.
+```
+
+```ad-example
+**Example: Iterator Model**
+
+![[Pasted image 20240324002007.png|500]]
+
+We would need to finish running the entirety of step (3) before going into step (4). This is because we need to have a full hash table before starting the probe phase.
+
+![[Pasted image 20240324002020.png|500]]
+
+When data is emitted from step (5), it gets fed into step (4), then (2), and finally (1) in output. The model **DOES NOT** read all tuples first in the memory at once then perform operations; it does so **iteratively** in a pipeline.
+- Results can be returned to clients immediately after one single tuple is returned 
+```
+
+This is used in almost every DBMS and it allows for **tuple pipelining**. Some operators **must block** until their children emit all their tuples.
+- Joins, subqueries, order by
+
+Output control works easily with this approach.
+
+```ad-summary
+**Cons, Iterator Model**
+- Maybe accessing data more than needed
+- Coordination is difficult with multitudes of function calls: synchronization overheads
+- Excessive movements of data between operators
+```
+
+#### Materialization Model 
+Each operator **processes its input all at once** and then **emits its output all at once**. The operator "materializes" its output as a **single result** to a buffer and pass it to parent operator.
+- Like in [[14 Joins#^7c7a46|value selections]] seen earlier, we have the options of using early materialization (sending tuples) or late materialization (record or tuple IDs)
+
+The DBMS can push down hints (e.g., `LIMIT`) to avoid scanning too many tuples. The output can be either **whole tuples** ([[10 Database Storage#$N$ -ary Storage Model (NSM)|NSM]]) or **subsets of columns** ([[10 Database Storage#Decomposition Storage Model (DSM)|DSM]]).
+
+![[Pasted image 20240324003335.png|500]]
+
+```ad-summary
+**Materialization Model, Pros and Cons**
+
+- **Pros**
+	- Better for OLTP workloads because queries only access a **small number of tuples at a time**
+		- Lower execution / coordination overhead
+		- Fewer function calls 
+- **Cons**
+	- Not good for OLAP queries with **large intermediate results**
+	- Large buffer/storage requirement
+```
+
+#### Vectorization Model 
+Like the Iterator Model where each operator implements a `Next()` function, but emits **a batch of tuples** instead of a single tuple.
+- The operator's **internal loop processes multiple tuples** at a time
+- The size of the batch can **vary based on hardware or query properties**
+
+![[Pasted image 20240324005313.png|500]]
+
+It is **ideal for OLAP queries** because it greatly reduces the number of invocations per operator. It also allows for operators to more easily use vectorized (SIMD) instructions to process batches of tuples.
+
+---
+### Plan Processing Direction 
+When it comes to the direction of process, we can either do
+1. **Top-to-Bottom**
+	- **Start with the root** and "pull" data up from its children
+	- Tuples are always **passed with function calls**
+2. **Bottom-to-Top**
+	- **Start with leaf nodes** and push data to their parents
+	- Allows for tighter control of caches/registers in pipelines
+
+---
+### Access Methods 
+An access method is the way that the DBMS accesses the data stored in a table.
+1. Sequential Scan 
+2. Index Scan 
+3. Multi-index/Bitmap Scan 
+
+This is **NOT** defined in [[5 Relational Algebra|relational algebra]].
+
+#### Sequential Scan 
+This is almost always the **WORST** thing that the DBMS can do to execute a query. We will focus on two primary optimization methods.
+
+##### Zone Maps
+Zone maps are **pre-computed aggregates for the attribute** values in a page. DBMS **checks the zone map** first to decide whether it wants to access the page.
+
+![[Pasted image 20240324010148.png|500]]
+
+Observing a zone map for this given data block informs the DBMS to not scan it at all, for instance.
+
+##### Late Materialization 
+DSM DBMSs can **delay stitching together tuples** until the upper parts of the query plan.
+
+![[Pasted image 20240324010349.png|500]]
+
+#### Index Scan 
+The DBMS picks an index to find the tuples that the query needs. The usage of index has a number of considerations (more on this in later chapters):
+- What attributes the index contains
+- What attributes the query references
+- The attribute's value domains
+- Predicate composition
+- Whether the index has unique or non-unique keys
+
+#### Multi-index Scan 
+If there are **multiple indices** that the DBMS can use for a query, we 
+1. Compute **sets of Record IDs** using each matching index
+2. Combine these sets based on the query's predicates (union/intersect)
+3. Retrieve the records and apply any remaining predicates
+
+![[Pasted image 20240324010930.png|500]]
+
+---
+### Modification Queries
+Operators that modify the database (`INSERT`, `UPDATE`, `DELETE`) are responsible for **checking constraints** and **updating indices**.
+
+For `UPDATE` and `DELETE`, child operators **pass Record IDs for target tuples** and they must keep track of **previously seen tuples**.
+
+For `INSERT`, 

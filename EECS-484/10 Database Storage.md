@@ -68,7 +68,7 @@ The storage manager is responsible for maintaining a database's files. It organi
 - Tracks the available space
 
 A page is a fixed-size **block** of data.
-- Contain tuples, meta-data, indexes, log records
+- Contain tuples, meta-data, indices, log records
 - Most systems do not mix page types
 
 Each page is given a **unique identifier**. The DBMS uses an indirection layer to **map page IDs to physical locations**.

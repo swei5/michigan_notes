@@ -17,7 +17,7 @@ The DBMS ensures that the contents of the table and the index are **logically sy
 A tree is the default data structure of an index-based database.
 
 ```ad-note
-There is a trade-off regarding the number of indexes to create per database and.
+There is a trade-off regarding the number of indices to create per database and.
 - Storage overhead, and 
 - Maintenance overhead
 ```
@@ -67,7 +67,7 @@ There are two approaches as well:
 2. **Tuple Data**
 	- The leaf nodes (of the **primary key index**) store the actual contents of the tuple.
 		- Index must be primary key to avoid duplication 
-	- **Secondary indexes MUST store the Record ID** as their values
+	- **Secondary indices MUST store the Record ID** as their values
 
 ```ad-summary
 **B-Tree VS. B+Tree**
@@ -228,7 +228,7 @@ Some DBMSs **do NOT always merge** nodes when they are half full.
 There are many variations to this method.
 
 #### Duplication 
-Non-unique indexes can end up storing multiple copies of the same key in leaf nodes. The leaf node can **store the key once and then maintain a list of tuples with that key** (similar to [[11 Hash Tables#^c3fb2c|what we discussed]] for hash tables).
+Non-unique indices can end up storing multiple copies of the same key in leaf nodes. The leaf node can **store the key once and then maintain a list of tuples with that key** (similar to [[11 Hash Tables#^c3fb2c|what we discussed]] for hash tables).
 
 ![[Pasted image 20240316205420.png|400]]
 

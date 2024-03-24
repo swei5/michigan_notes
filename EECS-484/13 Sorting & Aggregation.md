@@ -1,4 +1,4 @@
-[[2024-03-16]] #Database #DBMS 
+[[2024-03-16]] #Database #DBMS #System 
 
 In this chapter, we will be covering how to **execute queries** using the DBMS components we have discussed so far.
 

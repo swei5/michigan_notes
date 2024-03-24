@@ -52,7 +52,7 @@ These form an overall operating system.
 
 - File descriptor table
 	- Handles to various resources that have a file interface (read/write/seek)
-	- File descriptors are indexes into this table
+	- File descriptors are indices into this table
 		- `0`: Standard input (`stdin`, `cin`)
 		- `1`: Standard output (`stdout`, `cout`)
 		- `2`: Standard error (`stderr`, `cerr`)

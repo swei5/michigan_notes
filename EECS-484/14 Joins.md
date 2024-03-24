@@ -40,7 +40,7 @@ For tuple $r \in R$ and tuple $s \in S$ that match on join attributes, **concate
 - Storage model 
 - Data requirements in query
 
-Like [[13 Sorting & Aggregation#^13b71e|sorting]], we have two ways of arranging outputs:
+Like [[13 Sorting & Aggregation#^13b71e|sorting]], we have two ways of arranging outputs: ^7c7a46
 1. **Early Materialization**
 	- Copy the values for the attributes in outer and inner tuples into a **new output tuple**
 	- Then, subsequent operators in the query plan **NEVER** need to go back to the **base tables** to get more data
@@ -58,7 +58,7 @@ Like [[13 Sorting & Aggregation#^13b71e|sorting]], we have two ways of arranging
 #### Cost Analysis 
 Assume that there are $M$ pages and $m$ tuples in $R$; $N$ pages and $n$ tuples in $S$. We define the **cost metric** as the **number of I/Os** to compute join.
 - We will ignore output costs since that depends on the data and we cannot compute that yet
-- CPU operations don't count, we only care about I/Os from the disk
+- CPU operations don't count, we **ONLY** care about I/Os from the disk
 
 ```ad-note
 **Join v.s. Cross-Product**
@@ -81,7 +81,7 @@ We will cover three main types:
 
 Like in sorting, we only care about cost if the database **DOES NOT** fit into memory; if it does, the cost of operation is really negligible. The algorithms below are all based on the assumption that we are handling **larger databases**.
 #### Nested Loop Joins
-##### Simple, Block Joins
+##### Simple Join
 The vanilla version follows the algorithm:
 
 ```javascript
@@ -93,9 +93,11 @@ forEach r in R: // Outer m times
 
 For join keys $r, s$.
 
+###### Cost
 This is stupid, because we need to scan $S$ once for every $r \in R$ . Total cost is $$M+(m \cdot N)$$ where $M$ is the cost for scanning $R$ and $N$ is the cost for scanning $S$.
 
 Albeit the inefficiency, this shows us why we would want the **smaller table** to be on the LHS: $$N+(n\cdot M) < M+(m \cdot N) \text{ for } n<m, N<M$$
+##### Block Join
 We have come to realize there are more efficient ways to nested loop joins, if we read **data in blocks** instead of **by single tuples** in each iteration:
 
 ```javascript
@@ -107,6 +109,7 @@ forEach block br in R: // M Times
 				emit if r and s match
 ```
 
+###### Cost
 This is saying for **every block** in $R$, it scans $S$ once. In our example, treat a block as a page. The total cost is therefore $$M+(M\cdot N)$$
 Even better, let's account for the usage of **buffer pools**. Let's assume we have $B$ buffer pools, with $B-2$ buffer pools used for scanning the **outer table**, 1 used for the **inner table**, and 1 used for storing output. Then, the algorithm looks like:
 
@@ -134,6 +137,7 @@ forEach r in R: // m Times
 		emit if r and s match
 ```
 
+###### Cost
 If we assume the cost of each index probe is some constant $C$ per tuple, then the total cost is equal to $$M+(m\cdot C)$$
 The exact cost $C$ here is somewhat subtle as it depends on the type of index used in the table. It is more useful if we are dealing with smaller tables (small $m$).
 
@@ -173,6 +177,7 @@ while cursor_r and curosr_s:
 The algorithm above may not work in all databases - for instance, it may be possible that when we have multiple join keys from $R$ that match with a join key from $S$, because of the design of the algorithm, we increment the cursor from $S$ after only matching one of the join keys in $R$ and thus neglect the rest. 
 - In such cases, when we encounter the same join key from the previous one in $R$, we should always decrement the inner cursor by one
 
+##### Cost
 The sorting cost (Table $R$, for instance) is $$2M\cdot\left(1+ \left\lceil \log_{B-1} \lceil \frac{M}{B}\rceil \right\rceil\right)$$ and the merge cost is on average
 $$M+N$$
 The total cost of the join is the sum of the two, or $$2M\cdot\left(1+ \left\lceil \log_{B-1} \lceil \frac{M}{B}\rceil \right\rceil\right)+2N\cdot\left(1+ \left\lceil \log_{B-1} \lceil \frac{N}{B}\rceil \right\rceil\right)+M+N$$ The thought process is similar to [[13 Sorting & Aggregation#^b4cf7d|that in external merge sort]]
@@ -197,6 +202,7 @@ If tuple $r \in R$ and a tuple $s \in S$ satisfy the join condition, then they h
 There are two phases:
 1. **Build**: **scan the outer relation** and populate a hash table using the hash function $h_1$ on the join attributes
 2. **Probe**: scan the inner relation and use $h_1$ on each tuple to **jump to a location in the hash table and find a matching tuple**
+	- $O(1)$ lookup/comparison, very efficient
 
 In pseudo code, this is 
 
@@ -229,7 +235,7 @@ Works when hash tables do not fit in memory. It also contains two phases:
 
 ![[Pasted image 20240323220739.png|500]]
 
-Then, for each bucket (partition), we can do a nested loop join:
+Then, assume each partition fits in memory, for each bucket (partition), we can do a nested loop join:
 
 ```javascript
 forEach r in buckets_R:
@@ -237,8 +243,47 @@ forEach r in buckets_R:
 		emit if match(r,s)
 ```
 
-Usually a **nested loop join** would be sufficient, as tuples hashed into the same partition tend to be fairly similar; else, we can always build a hash index for that bucket as well.
+Usually a **nested loop join** would be sufficient, as tuples hashed into the same partition tend to be fairly similar; or else, we can always build a hash index and do **hash join**.
 
-The maximum size of a table that can be used in the approach above is $B(B-1)$, where $B-1$ is the partitions in the build phase, where $B$ is the number of buffers. In other words, a table of $N$ pages need $\sqrt(N)$ buffers.
+The maximum size of a table that can be used in the approach above is $B(B-1)$, where $B-1$ is the partitions in the build phase, and $B$ is the maximum number of blocks each partition can hold.
+- A single partition needs to fit into memory of size $B$
+
+In other words, a table of $N$ pages need $\sqrt(N)$ buffers.
 
 The above assumes hash distributes records evenly; if not, we can use a fudge factor $f>1$ such that the buffer pages needed is $B\cdot \sqrt(f\cdot N)$.
+
+However, if a table does **NOT fit** in memory, we can either 
+1. Go back to more naive methods such as nested loop joins that are more expensive but doesn't have memory restriction
+2. **Recursively partition** to splits partitions into smaller partitions that will fit
+	- Build another hash table for **each bucket** $b$ for both tables using $h_{2}$ such that $h_{2}\ne h_{1}$
+	- Then, probe it for each tuple
+
+![[Pasted image 20240323235322.png|500]]
+
+##### Cost 
+In the partition phase, the cost is $$2(M+N)$$ as we need to **read and write** **both tables**. In the probe phase, the cost is 
+$$M+N$$
+since we need to **read both tables**. Bringing the total cost to $3(M+N)$.
+
+Note that this does **NOT include computing cost and output I/O**.
+
+```ad-note
+If the DBMS **knows the size of the outer table**, then it can use a **[[11 Hash Tables#Static Hashing Schemes|static hash table]]**.
+- Less computational overhead for build/probe operations
+
+However, if we do not know the size, then we must use a **[[11 Hash Tables#Dynamic Hashing Schemes|dynamic hash table]]** or allow for overflow pages.
+
+A hash index needs to be **dynamic** since it needs to handle insertion and deletion of a table.
+```
+
+```ad-summary
+**Join Algorithms, Summary**
+
+![[Pasted image 20240324000222.png|500]]
+```
+
+Note that hashing is almost always better than sorting for operator execution. However, it has some caveats:
+- Sorting is better on non-uniform data
+- Sorting is better when result needs to be sorted
+
+When data size is small, all algorithms will perform robustly in memory. In sum, DBMS should handle choosing algorithms, rather than users.

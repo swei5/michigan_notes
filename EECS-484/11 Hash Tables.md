@@ -8,7 +8,7 @@ A proper data structure should include the following.
 - **Internal meta-data**
 - **Core data storage** 
 - **Temporary data structures** 
-- Table indexes
+- Table indices
 
 Hash tables are primarily utilized in the first three.
 
@@ -32,6 +32,9 @@ A hash table implements an **unordered associative array** that maps keys to val
 In DBMS, constants are also important. We would prefer $O(1n)$ a lot better than $O(1000n)$.
 
 #### Static Hash Table 
+
+^b025de
+
 To create a static hash table, we allocate a giant array that has **one slot for EVERY element** you need to store. 
 
 There are two sets of design decision we need to account for:
@@ -121,6 +124,9 @@ In case we have multiple values that associate with the same key (duplicate keys
 	- Easier to implement and what most systems do
 
 #### Dynamic Hashing Schemes 
+
+^9cfdca
+
 Dynamic hash tables **resize themselves on demand**.
 
 ##### Chained Hashing
