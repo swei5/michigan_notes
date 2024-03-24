@@ -70,12 +70,96 @@ There are many algorithms for reducing join cost, but no algorithm works well in
 ---
 ### Join Algorithms 
 We will cover three main types:
-- Nested Loop Joins 
-- Sort-Merge Joins 
-- Hash Joins 
+- **[[#Nested Loop Joins|Nested Loop Joins]]** 
+- **[[#Sort-Merge Joins|Sort-Merge Joins]]** 
+- **[[#Hash Joins|Hash Joins]]** 
 
 #### Nested Loop Joins
+##### Simple, Block Joins
+The vanilla version follows the algorithm:
+
+```javascript
+forEach r in R: // Outer
+	for each s in S: // Inner
+		emit if r and s match
+```
+
+For join keys $r, s$.
+
+This is stupid, because we need to scan $S$ once for every $r \in R$ . Total cost is $$M+(m \cdot N)$$
+Albeit the inefficiency, this shows us why we would want the **smaller table** to be on the LHS: $$N+(n\cdot M) < M+(m \cdot N) \text{ for } n<m, N<M$$
+We have come to realize there are more efficient ways to nested loop joins, if we read **blocks of data** instead of the entirety of a table in each iteration:
+
+```javascript
+forEach block br in R: // M Times
+	forEach block bs in S: // N Times
+		forEach r in br:
+			for each s in bs:
+				emit if r and s match
+```
+
+This is saying for **every block** in $R$, it scans $S$ once. The total cost is therefore $$M+(M\cdot N)$$
+Even better, let's account for the usage of **buffer pools**. Let's assume we have $B$ buffer pools, with $B-2$ buffer pools used for scanning the **outer table**, 1 used for the inner table, and 1 used for storing output. Then, the algorithm looks like:
+
+```javascript
+forEach B-2 block br in R: // M/B-2 Times
+	forEach block bs in S: // N Times
+		forEach r in B-2 br:
+			for each s in bs:
+				emit if r and s match
+```
+
+With this we have a total cost of $$M+\left(\left \lceil \frac{M}{(B-2)}\right \rceil \cdot N\right)$$
+If the outer relation completely fits in memory, i.e. $B>M+2$, intuitively, the total cost becomes $M+N$.
+
+Basic nested loop joins, however, are pretty bad. For each tuple in the outer table, we must do a **sequential scan to check for a match** in the inner table. With an existing index, we can avoid sequential scans by using an index to find inner table matches.
+
+##### Index Nested Loop Join
+Follows the algorithm:
+
+```javascript
+forEach r in R:
+	forEach s in Index(r_i = s_j)
+		emit if r and s match
+```
+
+If we assume the cost of each index probe is some constant $C$ per tuple, then the total cost is equal to $$M+(m\cdot C)$$
+
+![[Pasted image 20240323202720.png|500]]
+
+```ad-summary
+**Nested Loop Joins, Summary**
+- Pick the smaller table as the outer table
+- **Buffer as much** of the outer table in memory as possible
+- Loop over the inner table (or use an index)
+```
 
 #### Sort-Merge Joins 
+Contains two phases:
+1. **Sort** : sort both tables **on the join key**(s) 
+	- Can use [[13 Sorting & Aggregation#External Merge Sort|external merge sort]]
+2. **Merge**: Step through the two sorted tables with cursors and emit matching tuples
+	- May need to backtrack depending on the join type 
+
+The algorithm looks similar to a two-pointer traversal:
+
+```python
+sort R, S on join keys
+init cursor_r, cursor_s on sorted keys
+while cursor_r and curosr_s:
+	if cursor_r > cursor_s:
+		increment cursor_s
+	elif cursor_r < cursor_s:
+		increment cursor_r
+	else:
+		emit
+		increment cursor_s
+```
+
+![[Pasted image 20240323203958.png|500]]
+
+The sorting cost (Table $R$, for instance) is $$2M\cdot\left(1+ \left\lceil \log_{B-1} \lceil \frac{M}{B}\rceil \right\rceil\right)$$ and the merge cost is
+$$M+N$$
+The total cost of the join is the sum of the two.
 
 #### Hash Joins 
