@@ -178,3 +178,25 @@ This is known as the **Halloween Problem**, which describes the anomaly where an
 - Can occur on clustered tables or index scans
 
 The solution is to track **modified Record IDs per query**.
+
+---
+### Expression Evaluation 
+The DBMS represents a `WHERE` clause as an **expression tree**. The nodes in the tree represent different expression types:
+- Comparisons
+- Conjunctions (`AND`), disjunction (`OR`)
+- Arithmetic Operators 
+- Constant Values 
+- Tuple Attribute References 
+
+![[Pasted image 20240326134821.png|500]]
+
+In this example above, we first start at the root (predicate of the query), then traverse from left to right, from up to bottom, until we obtain all necessary values to evaluate the predicate `S.val = $1 + 9`.
+
+However, evaluating predicates in this manner is **slow**, though flexible.
+- The DBMS **traverses the tree and for each node** to figure out what the operator needs to do
+
+A better approach is to just evaluate the expression directly.
+- At runtime, generate function calls and use it (JIT compilation)
+
+![[Pasted image 20240326135230.png|300]]
+
