@@ -79,3 +79,6 @@ Leveraged finance professionals analyze **recent LBO transactions** to determine
 3. Mezzanine debt (subordinated debt and then preferred stock)  
 4. Equity contribution (common stock)
 ```
+
+![[Pasted image 20240325204901.png|500]]
+
