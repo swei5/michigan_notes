@@ -1,4 +1,4 @@
-[[2024-03-31]] #DBMS #Database 
+[[2024-03-31]] #DBMS #Database #SQL
 
 SQL is declarative. User tells the DBMS what answer they want, **NOT HOW** to get the answer. That said, there can be a big difference in performance based on plan is used.
 
@@ -86,6 +86,45 @@ There are two approaches to solve this:
 1. **Rewrite** to de-correlate and/or flatten them   
 ![[Pasted image 20240331225207.png|300]]
 
+In the example above, we choose to flatten the nested query so that the outer query does not have to do a full join with the nested query when scanning a corresponding $S$ tuple.
+
 2. **Decompose nested query** and **store result to temporary table**
 	- For harder queries, the optimizer **breaks up queries into blocks** and then concentrates on one block at a time
 	- Sub-queries are written to a temporary table that are **discarded after the query finishes**
+
+![[Pasted image 20240331225421.png|300]]
+
+In the example above, if we did not run the sub-query separately, we would need to run it for **EVERY tuple** in $S$.
+
+---
+### Expression Rewriting
+An optimizer transforms a query's expressions (e.g., `WHERE` clause predicates) into the **optimal/minimal set of expressions**.
+
+It is implemented using **if/then/else clauses** or a **pattern-matching rule engine**.
+- Search for expressions that match a pattern
+- When a match is found, rewrite the expression 
+- Halt if there are no more rules that match
+
+Examples include join eliminations, merging predicates, etc.
+
+---
+### Cost-based Search
+Generate an estimate of the cost of executing a **particular query plan** for the current state of the database. We can use this in the search space to compare complexities of multiple alternatives.
+- Estimates are only meaningful internally
+
+There are two components:
+1. Physical Cost 
+	- Predict CPU cycles, I/O time, cache misses, RAM consumption, pre-fetching, etc
+	- Heavily dependent on **hardware**, hard to estimate
+	- Mostly seen in commercial system
+1. Logical Costs
+	- Estimate result sizes per operator
+	- **Complexity of the operator algorithm** implementation
+	- Number of sequential I/Os, number of random I/Os, number of arithmetics
+	- Independent of the hardware and easy to do
+
+For disk-based DBMS, the **number of disk accesses** will always dominate the execution time of a query.
+- CPU costs are negligible
+- Must consider sequential vs. Random I/O
+
+This is easier to model if the DBMS has full control over **buffer management**.

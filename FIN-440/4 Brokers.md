@@ -2,7 +2,7 @@
 
 ### Securities Order Routing Process 
 If you trade, you will use a broker.
-![[Pasted image 20240314104427.png|500]]
+![[Pasted image 20240314104427.png|500]] ^fa480e
 
 ---
 ### Brokers 

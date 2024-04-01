@@ -25,7 +25,7 @@ Traditional dealers in equity markets: NYSE specialists, DMMs (designated market
 - A dealer executes the order against his own account
 ```
 
-Many firms have both brokers and dealers (internalizing the trade).
+Many firms have both brokers and dealers (internalizing the trade). ![[4 Brokers#^fa480e]]
 
 ---
 ### Managing Inventory 
@@ -37,7 +37,7 @@ Inventories fluctuate with the order flow. Dealers generally manage their invent
 In a volatile market, designated market makers can **increase bid-ask spread** to reduce risk exposure but **CANNOT exit the market**.
 ```
 
-Dealers can attract order flow by
+Dealers can **attract order flow** by
 - Quoting aggressive prices
 - Quoting large sizes
 - Advertising
@@ -47,13 +47,28 @@ Dealers can attract order flow by
 
 ---
 ### Exchanges and Algorithms 
+There are currently 13 U.S. stock exchanges, 12 of which are run by Intercontinental Exchange Inc, Nasdaq Inc., and CBOE Global Markets. IEX Group runs the only independent exchange.
+
+Broadly speaking, there are two different trading systems in the U.S
+1. **Registered exchanges** (such as NYSE, NASDAQ) and
+	- Can trade (with no volume limits), list stocks, accept and regulate their members
+	- Must allow open access to **ALL traders**
+1. **Alternative trading systems** (electronic communication networks (ECNs) and dark pools).
+	- Subject to **volume limits**
+	- Does not set rules governing the conduct of subscribers
+	- Can discriminate (refuse to allow certain traders)
+
+An ATS does not have to be “dark”, but most dark markets are registered as ATSs.
+- E.g. Sigma X of GS
+
+Electronic Communications Networks, or ECNs are electronic trading systems that automatically match buy and sell orders at specified prices.
 
 ---
 ### Reg NMS
 With **multiple exchanges** and ATSs trading stocks simultaneously, the question arises how it can be assured that the submitted order is executed at the best bid and offer price across all exchanges. This prompted the SEC to establish Regulation National Market System (Reg NMS) in 2005. 
 
 It has four main components
-1. Order protection rule
+1. **Order protection rule**
 2. Access rule
 3. Subpenny pricing rule
 4. Market data rules
@@ -70,11 +85,12 @@ The order protection rule of NMS **does NOT** say:
 - Trade throughs should never happen
 ```
 
+#### Protected Orders
 To qualify for protection by the order protection rule, an order must be
-- Visible (displayed)
-- At the top of the market’s book
+- **Visible** (displayed)
+- **At the top** of the market’s book
 	- The orders limit price must be equal to the **best visible bid or best visible offer**
-- Of an even lot (quantity must be some **multiples of hundreds**)
+- **Of an even lot** (quantity must be some **multiples of hundreds**)
 
 The Reg NMS mandates that before a market center executes an order, it must **check the protected bids and offers**. If it appears that the execution would cause a trade through, the market center must either
 - Return the order unexecuted
