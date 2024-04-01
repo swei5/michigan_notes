@@ -123,5 +123,45 @@ There are three general ways to implement the exchange operator.
 Also called pipeline parallelism. Operations are **overlapped in order to pipeline data** from one stage to the next **without materialization**. Workers **execute operators from different segments** of a query plan at the same time. This is most common in streaming system.
 - Useful when data continuously arrive (streaming)
 
+![[Pasted image 20240331205738.png|500]]
+
+In the example above, since each worker is dedicated to one operator only, occasionally the parent operator may have to **wait** for the child operator to finish processing. That being said, if data does not arrive continuously, it may be a waste of throughput.
 #### Bushy
-A combination of the first two approaches.
+A combination of the first two approaches, where workers execute **multiple operators** from **different segments of a query plan** at the same time. It still needs **exchange operators to combine intermediate results** from segments.
+
+![[Pasted image 20240331210038.png|300]]
+
+---
+### I/O Parallelism 
+Nevertheless, using additional processes/threads to execute queries in parallel **DOES NOT help** if the **disk is always the main bottleneck** for I/O. 
+- Can sometimes make the DBMS's performance worse if worker is accessing different segments of the disk at the same time.
+
+To solve for this problem, we may split the DBMS across **multiple storage devices** to improve disk bandwidth latency:
+- Multiple Disks per Database
+- One Database per Disk
+- One Relation per Disk
+- Split Relation across Multiple Disks
+
+Some DBMSs support this natively. Others require admin to configure outside of DBMS.
+
+There are two approaches to I/O parallelism.
+
+#### Multi-Disk Parallelism 
+We configure OS/hardware to store the DBMS's files across multiple storage devices. It is **TRANSPARENT** to the DBMS. Examples include Storage Appliances and RAID configuration.
+
+![[Pasted image 20240331210741.png|300]]
+
+It would be ideal, for example, to read page 1 and page 2 in parallel as the pages are stored in different storage devices. If we attempted to read page 1 and 4 in parallel, it would still be a **bottleneck**.
+
+#### Database Partitioning 
+Some DBMSs allow users to **specify the disk location** of each individual database. The DBMS is **AWARE** of where the partitions of data are to allow for more efficient scheduling.
+- The buffer pool manager maps a page to a disk location
+
+This is also easy to do at the filesystem level if the DBMS stores each database in a separate directory.
+- The DBMS recovery log file might still be shared if transactions can update multiple databases
+
+Nevertheless, parallelization comes at its costs and troubles:
+- Coordination Overhead 
+- Scheduling 
+- Concurrency Issues
+- Resource Contention

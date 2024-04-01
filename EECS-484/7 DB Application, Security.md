@@ -100,6 +100,9 @@ Stored Procedures are more general than functions.
 - Can use arbitrary DML, including `INSERT` / `UPDATE` / `DELETE`
 
 #### Prepared Statements 
+
+^5365a4
+
 Are **parameterized** SQL query.
 - DBMS “pre-compiles” the query (parses, optimizes, and stores query execution plan)
 - Can be used **multiple times**

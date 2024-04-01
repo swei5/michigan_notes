@@ -41,7 +41,7 @@ In sorting, a **key** is simply the **attribute(s)** to compare to compute the s
 1. Tuple (early materialization)
 	- Storing the actual tuple
 	- More read/write during sorting but more sequential I/Os when accessing after sort
-1. Record ID (late materialization)
+1. Record ID (late materialization) ^52a82a
 	- Storing a pointer to the tuple
 	- Much less read/write during sorting but more random I/Os when accessing after sort
 
