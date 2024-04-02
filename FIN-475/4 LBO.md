@@ -58,7 +58,7 @@ Sponsors aim to exit or monetize their investment within a five-year holding per
 - IPO
 	- Sponsor sells a portion of its shares in the target to the public, typically retaining the largest single equity stake
 	- A full exit will come through **future seasoned equity offering** or an eventual sale of the company
-- **Dividend recapitalization** prior to exits 
+- **Dividend recapitalization** prior to exit 
 	- Issuing additional debt to pay shareholders (self) a dividend
 - **Below par debt repurchase** prior to exit
 	- PE firms have the flexibility to purchase the bank debt and high yield securities especially when it can be bought at distressed levels

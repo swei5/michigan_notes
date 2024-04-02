@@ -56,7 +56,6 @@ In practice, one approach is to use the **estimated figures on the Statement of 
 **Unlevered FCFs** are essentially cash flows from **operating activities and investing activities** (only those related to **PRODUCTIVE** activities excluding investments on financial assets), but financing activities are excluded.
 
 **Levered FCFs** will include **FINANCING activities** which reflect choice of debt structures.
-- CFO from CFS
 
 #### NOPAT, NWC, CAPEX
 
