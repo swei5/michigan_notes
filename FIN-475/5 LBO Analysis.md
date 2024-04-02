@@ -6,9 +6,9 @@ Whereas in LBO analysis, FCF is cash flow from operating assets **after making i
 $$\text{LFCF}=\text{UFCF}-\text{Interest Expense After Tax}-\text{Mandatory Amortization}$$
 Thus, debt balance at the end of period $i$ becomes
 $$D_{i}=D_{i-1}-\text{LFCF}_{i}$$
-Assuming all cash flow is used to payoff some of the debt balance. Most LBOs work on this principle – **pay down the debt as quickly** as possible.
+Assuming all levered cash flow is used to payoff some of the debt balance. Most LBOs work on this principle – **pay down the debt as quickly** as possible.
 
-Assume $\text{EV}$ stays constant throughout $T$ periods, then
+Assume $\text{EV}$ stays constant throughout $T$ periods for the simplicity of model, then
 $$E_{T}=\text{EV}_{0}-D_{T}$$
 From which we can calculate the internal rate of return (IRR) of **equity** using the `IRR` function in excel.
 
