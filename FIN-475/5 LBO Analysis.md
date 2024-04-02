@@ -11,6 +11,9 @@ Assuming all levered cash flow is used to payoff some of the debt balance. Most 
 Assume $\text{EV}$ stays constant throughout $T$ periods for the simplicity of model, then
 $$E_{T}=\text{EV}_{0}-D_{T}$$
 From which we can calculate the internal rate of return (IRR) of **equity** using the `IRR` function in excel.
+- The higher the exit price (EV), the higher the IRR
+- The higher the leverage (lower initial equity contribution), the higher the IRR
+- The more debt paid down, the higher the IRR
 
 We can use Excel `CHOOSE` function to model cash flow scenarios. Typically, cash flow and financing scenarios are modeled separately.
 - `=CHOOSE(k, value1, ..., valuen)` chooses the ` k` th value
