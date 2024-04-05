@@ -6,7 +6,7 @@ This lecture focuses on the topic of **query optimization**.
 
 ### Query Optimization
 At a high level, there are two categories of query optimization:
-- **Heuristics/Rules**
+- **Heuristics/Rules** ^f47e10
 	- Rewrite the query to remove stupid/inefficient things
 	- These techniques may need to **examine catalog** (metadata), but they do not need to examine data
 - **Cost-based Search**
@@ -80,6 +80,9 @@ To optimize this logically, we need to
 
 ---
 ### Nested Sub-queries
+
+^c1b618
+
 The DBMS treats nested sub-queries in the **where clause as functions** that take parameters and return a single value or set of values. Thus, it could be potentially very time-consuming to perform such operations
 
 There are two approaches to solve this:
