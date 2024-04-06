@@ -40,7 +40,7 @@ A (potentially) better approach to it is to **allow concurrent execution** of in
 - Better utilization/throughput 
 - Increased response times to users
 
-Arbitrary interleaving of operations can lead to temporary inconsistency (unavoidable) or permanent inconsistency (**BAD**). However, we want to maintain correctness and fairness throughout still. We would need formal correctness criteria to determine whether an interleaving is valid.
+**Arbitrary interleaving** of operations can lead to temporary inconsistency (unavoidable) or permanent inconsistency (**BAD**). However, we want to maintain **correctness** and **fairness** throughout still. We would need formal correctness criteria to determine whether an interleaving is valid.
 
 A transaction may carry out many operations on the data retrieved from the database. However, the DBMS is only concerned about **what data is read/written** from/to the database.
 
