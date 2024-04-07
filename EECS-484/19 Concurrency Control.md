@@ -40,6 +40,8 @@ A (potentially) better approach to it is to **allow concurrent execution** of in
 - Better utilization/throughput 
 - Increased response times to users
 
+---
+### Motivation
 **Arbitrary interleaving** of operations can lead to temporary inconsistency (unavoidable) or permanent inconsistency (**BAD**). However, we want to maintain **correctness** and **fairness** throughout still. We would need formal correctness criteria to determine whether an interleaving is valid.
 
 A transaction may carry out many operations on the data retrieved from the database. However, the DBMS is only concerned about **what data is read/written** from/to the database.
@@ -119,3 +121,87 @@ Why do we care about interleaving at all? We interleave transaction to **maximiz
 - Multi-core CPUs
 
 When one transaction stalls because of a resource (e.g., page fault), another transaction can continue executing and make forward progress. See [[13 OS, Parallelism#Synchronization|notes on synchronization on operating system]].
+
+Ideally, the correctly interleaved result should be equivalent to a serially produced result. Both are valid.
+
+![[Pasted image 20240406222748.png|500]]
+
+However, some particular scheduling may produce invalid results. Conceptually, this is:
+
+![[Pasted image 20240406222953.png|500]]
+
+##### Correctness 
+The schedule of some transaction is correct if it is **equivalent to some serial execution**.
+
+A **serial schedule** is a schedule that **DOES NOT interleave** the actions of different transactions. 
+
+An **equivalent schedule** is a schedule such that for any database state, the effect of executing the first schedule is identical to the effect of executing the second schedule, regardless of what the arithmetic operations are.
+
+A **serializable schedule** is a schedule that is **equivalent to some serial execution** of the transactions.
+- This provides the DBMS with **additional flexibility** in scheduling operations with parallelism, compared to a direct timestamp approach
+
+If each transaction preserves consistency, **every serializable schedule preserves consistency**.
+
+We need a formal notion of equivalence that can be implemented efficiently based on the notion of **"conflicting" operations**.
+
+##### Conflicts 
+Two operations **conflict** if
+- They are by **different transactions**, and
+- They are on the **same object** and **AT LEAST ONE** of them is a **write**
+
+Naturally, this boils down to three general anomalies:
+- Read-Write Conflicts (R-W)
+	- Unrepeatable reads
+
+![[Pasted image 20240406224856.png|400]]
+
+- Write-Read Conflicts (W-R)
+	- Reading Uncommitted Data ("Dirty Reads")
+
+![[Pasted image 20240406224928.png|400]]
+
+- Write-Write Conflicts (W-W)
+	- Overwriting Uncommitted Data 
+
+![[Pasted image 20240406225202.png|400]]
+
+Given these conflicts, we now can understand what it means for a schedule to be **serializable**.
+- This is to **check whether schedules are correct**
+- This is **NOT** how to generate a correct schedule
+
+There are different levels of serializability:
+- **Conflict Serializability**
+	- Most DBMSs support this
+- **View Serializability**
+	- Very difficult to achieve in practice
+
+##### Conflict Serializable Schedules 
+Two schedules are **conflict equivalent** iff
+- They involve the **same actions of the same transactions**, and
+- Every pair of **conflicting actions is ordered the same way**
+
+Schedule $S$ is conflict serializable if $S$ is **conflict equivalent** to some **serial schedule**. In other words, schedule $S$ is **conflict serializable** if you can **transform S into a serial schedule** by **swapping consecutive non-conflicting operations** of different transactions.
+
+```ad-example
+**Conflict Serializable Transaction, Example**
+
+Imagine a schedule like this:
+
+![[Pasted image 20240406231159.png|200]]
+
+We are able to swap `R(B)` and `W(A)` and `R(A)` and `W(B)` as they are non-conflicting operations of different transactions (as done to different DB objects). Eventually, we could potentially end up with a serializable schedule:
+
+![[Pasted image 20240406231307.png|400]]
+
+```
+
+Swapping operations is easy when there are only two transactions in the schedule. It's cumbersome when there are many transactions.
+
+##### Dependency Graphs
+A quicker way to determine if two schedules are conflict serializable. This is also known as a **precedence graph**.
+
+We will construct a **node per transaction**, and draw an edge from $T_{i}$ to $T_{j}$ if
+- An operation $O_{i}$ of $T_{i}$ conflicts with an operation $O_{j}$ of $T_{j}$, and
+- $O_{i}$ is earlier than $O_{j}$ in schedule
+
+Using this representation, a schedule is **conflict serializable** iff its dependency graph is **acyclic**.
