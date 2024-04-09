@@ -1,4 +1,4 @@
-[[2024-04-02]] #Valuation #Accounting 
+[[2024-04-02]] #Valuation #Accounting #Investment 
 
 ### Cash Flows, Revisited
 In DCF analysis, FCF is cash flow from unlevered operating assets, aka **unlevered FCF**. ![[1 DCF#^cf1ae2]]
