@@ -16,6 +16,20 @@ Mergers usually come in waves; there may be some common theme or goal but it is 
 	- Fueled by credit boom from hedge funds before 2007
 	- Continued low interest rate environment and surging stock markets kept the wave going strong
 
+```ad-important
+**Goal of Acquisition**
+
+The main rationale is that Firm A should only merge with B if
+$$\text{EV}_{AB}>\text{EV}_{A}+\text{EV}_{B}+\text{Costs of transaction}$$
+
+This could happen because of 
+- Synergies (revenue and cost)
+- Business control (financial restructuring and business restructuring)
+- Gain in market power
+- Tax savings
+- Lower cost of financing
+```
+
 ### Sell-Side M&A
 There are a wide array of options available when structuring a business sale. The M&A banker works with the client to understand selling requirements and strategic goals, including:
 - Exit strategy alternatives
@@ -190,4 +204,4 @@ The highest bid **DOES NOT necessarily represent the best bid**.
 - TVM
 - Financing contingencies are not preferred (unless LBO)
 
-After a buyer is selected, the next phase is **confirmatory due diligence** and **contract negotiation**.
+After a buyer is selected, the next phase is **confirmatory due diligence** and **contract negotiation**. Once the seller’s board of directors approves the deal, the definitive agreement is executed by by the buyer and seller. 
