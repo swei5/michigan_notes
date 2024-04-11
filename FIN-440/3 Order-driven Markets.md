@@ -54,6 +54,9 @@ In order-driven markets, trading rules specify how trades are arranged.
 These rules vary across markets.
 
 #### Order Precedence Rules 
+
+^805272
+
 **Market orders** have the **highest** priority. Then, the execution price for such orders is determined as follows:
 - A market buy/sell order will be executed at the best available price from the **standpoint of the trader** (LOB)
 
