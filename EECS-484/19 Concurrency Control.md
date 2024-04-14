@@ -87,7 +87,7 @@ There are two general approaches to ensure atomicity in a DBMS:
 #### Consistency 
 Consistency means that the "world" represented by the database is logically correct. All questions asked about the data are given logically correct answers.
 - **Database Consistency**
-	- The database **accurately models** the real world and follows integrity constraints
+	- The database **accurately models** the real world and follows **integrity constraints**
 	- Transactions in the future **see the effects of transactions committed in the past inside** of the database
 - **Transaction Consistency**
 	- If the database is consistent before the transaction starts (running alone), it will also be consistent after
@@ -214,5 +214,49 @@ Using this representation, a schedule is **conflict serializable** iff its depen
 The first step to build the graph is **finding the conflicts** between the transactions and determining who arrives first. If there are multiple conflicts between two transactions, we would only need to show an edge.
 
 An edge from $T_{1}$ to $T_{2}$ means that the result of $T_{2}$ depends on $T_{1}$, and vice versa. A cycle implies that both transactions **depend on EACH OTHER** - no way to serialize it.
+```
+
+```ad-example
+**Dependency Graph, Example 2**
+
+![[Pasted image 20240413220919.png|500]]
+
+This would be a serializable schedule - in the order of $T_{2}, T_{1}, T_{3}$ (follow the ordered graph), though in reality the transactions happen in a different order.
+```
+
+Although some schedule **may NOT be serializable**, it is still **possible** for the transactions to produce the correct result if the application **does NOT directly interact** with the conflicting output.
+- However, DBMS never knows what application does
+
+##### View Serializability 
+An alternative and weaker notion of serializability. 
+- Allows slightly **more schedules** than conflict serializability 
+- Hard to implement and difficult to enforce
+- Conflict serializability is more popular
+
+In short, it allows for **ALL conflict serializable schedules** and **blind writes**.
+
+![[Pasted image 20240413222108.png|500]]
+
+The original schedule is **NOT conflict serializable** (work out a dependency graph) but really is equivalent to a **serializable** schedule (RHS). This is because the conflicts are caused by **blind writes** (does not impact the final result or any `READ`).
+
+**Neither definition** allows all schedules that you would consider "serializable".
+- This is because they don't understand the meanings of the operations or the data
+
+![[Pasted image 20240413222506.png|400]]
+
+#### Durability 
+All the changes of committed transactions should be **persistent**.
+- No torn updates 
+- No changes from failed transactions 
+
+The DBMS can use either **logging or shadow paging** to ensure that all changes are durable.
+
+We will cover this later on.
+
+```ad-summary
+**Concurrency, Summary**
+Concurrency control and recovery are among the most important functions provided by a DBMS.
+- **Automatic**: system automatically inserts lock/unlock requests and schedules actions of different transactions
+- It ensures that resulting execution is equivalent to executing the transactions one after the other in some order
 ```
 
