@@ -205,3 +205,14 @@ We will construct a **node per transaction**, and draw an edge from $T_{i}$ to $
 - $O_{i}$ is earlier than $O_{j}$ in schedule
 
 Using this representation, a schedule is **conflict serializable** iff its dependency graph is **acyclic**.
+
+```ad-example
+**Dependency Graph, Example 1**
+
+![[Pasted image 20240413192844.png|500]]
+
+The first step to build the graph is **finding the conflicts** between the transactions and determining who arrives first. If there are multiple conflicts between two transactions, we would only need to show an edge.
+
+An edge from $T_{1}$ to $T_{2}$ means that the result of $T_{2}$ depends on $T_{1}$, and vice versa. A cycle implies that both transactions **depend on EACH OTHER** - no way to serialize it.
+```
+
