@@ -33,7 +33,7 @@ Locks **DO NOT guarantee** serializability, if we only grant and reducing them w
 **Two-phase locking** (2PL) is a concurrency control protocol that determines whether a transaction can access an object in the database **on the fly**.
 - The protocol **DOES NOT** need to know all the queries that a transaction will execute ahead of time
 
-There are two phases:
+There are two phases, for **EACH transaction**:
 1. Growing
 	- Each transaction **requests the locks** that it needs from the DBMS’s lock manager
 	- The lock manager 
@@ -45,8 +45,42 @@ There are two phases:
 
 ![[Pasted image 20240413225119.png|400]]
 
+2PL on its own is sufficient to **guarantee conflict serializability**.
+- It generates schedules whose precedence graph is acyclic
+	- As we don't have release/acquire scenarios again (?)
+- However, subject to **cascading aborts**
 
+![[Pasted image 20240413232310.png|200]]
 
+In this example above, if $T_{1}$ aborts, $T_{2}$ should be aborted as well ASAP. If $T_{2}$ does not abort, it will be performing operations on wasted data. 
+- Any information about $T_1$ cannot be leaked to the outside world
+- However, this is permissible by 2 PL but does not make sense to applications
+
+```ad-note
+2PL is **one version of the many** protocols that allow for conflict serializability, but it **does NOT exhaustively** allow all serializable schedules.
+- May still have "dirty reads" due to cascading aborts
+	- Solution: **Strong Strict 2PL** (aka Rigorous 2PL)
+- May lead to deadlocks
+	- Solution: Detection or Prevention
+```
+
+#### Strong Strict Two-Phase Locking 
+The transaction is **ONLY allowed to release locks after is has ended**, i.e., committed or aborted. Allows only conflict serializable schedules, but it is often conservative and stronger than needed for some apps.
+
+![[Pasted image 20240413232925.png|400]]
+
+A schedule is **strict** if a value written by a transaction is **NOT read or overwritten** by other transaction until that transaction **finishes**.
+- Does not incur cascading aborts 
+- Aborted transaction can be undone by just **restoring original values of modified tuples** (of the current transaction)
+
+![[Pasted image 20240413233517.png|400]]
+
+From this we further expanded our universe of schedules:
+
+![[Pasted image 20240413235234.png|400]]
+
+Note that there exists **some conflict serializable** schedules that are **NOT cascading aborts** and **NOT strict** - that said, for some transactions we don't need to employ strong strict 2PL to guarantee this property.
 ### Deadlock Detection + Prevention
+
 
 ### Isolation Levels
