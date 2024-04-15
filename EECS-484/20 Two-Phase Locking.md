@@ -9,6 +9,7 @@ A naive lock looks like below: the lock effective blocks any possible operations
 
 ![[Pasted image 20240413224151.png|400]]
 
+---
 ### Lock Types
 There are two types:
 - **S-LOCK**: Shared locks for reads
@@ -80,6 +81,8 @@ From this we further expanded our universe of schedules:
 ![[Pasted image 20240413235234.png|400]]
 
 Note that there exists **some conflict serializable** schedules that are **NOT cascading aborts** and **NOT strict** - that said, for some transactions we don't need to employ strong strict 2PL to guarantee this property.
+
+---
 ### Deadlock
 A **deadlock** is a **cycle of transactions waiting for locks** to be released by each other.
 
@@ -111,6 +114,7 @@ The system periodically **checks for cycles** in waits-for graph and then decide
 
 #### Deadlock Prevention 
 When the DBMS detects a deadlock, it will **select a "victim" transaction to rollback** to break the cycle.
+- **DOES NOT require** a waits-for graph
 - Victim will either **restart or abort** (more common) depending on how it was invoked
 
 There is a **trade-off** between the **frequency of checking** for deadlocks and **how long transactions have to wait** before deadlocks are broken.
@@ -125,10 +129,55 @@ Selecting the proper victim depends on a lot of different variables. We use vari
 
 We also should consider the number of **times a transaction has been restarted** in the past to prevent starvation.
 
+Based on the priority of transactions, there are two schemes:
+- **Wait-Die** ("Old Waits for Young")
+	- If requesting transaction (acquiring locks) has higher priority than holding transaction, then **requesting transaction** **waits for holding transaction**
+	- Otherwise requesting transaction aborts
+- **Wound-Wait** ("Young Waits for Old")
+	- If requesting transaction has higher priority than holding transaction, then **holding transaction aborts and releases lock**
+	- Otherwise requesting transaction waits
+
+```ad-example
+**Example, Wait-Die and Wound-Wait**
+
+![[Pasted image 20240415132646.png|500]]
+```
+
+These schemes guarantee **NO deadlocks** because only **one "type" of direction is allowed** when waiting for a lock.
 #### Rollback 
 After selecting a victim transaction to abort, the DBMS can also decide on **how far to rollback** the transaction's changes.
 - Completely
 - Minimally
 	- Theoretically possible but difficult to implement
 
+---
 ### Isolation Levels
+Enforcing serializability may allow **too little concurrency and limit performance**. We may want to use a weaker level of consistency to improve scalability.
+
+An isolation level controls **the extent that a transaction is exposed to the actions of other concurrent transactions**. It provides for greater concurrency at the cost of exposing transactions to **uncommitted changes**:
+- Dirty Reads (W-R conflict)
+- Unrepeatable Reads (R-W conflict)
+- Phantom Reads (Unprotected Inserts/Deletes)
+
+The levels (from most strict to most loose) are:
+1. **SERIALIZABLE**: No phantoms, all reads repeatable, no dirty reads
+2. **REPEATABLE READS**: Phantoms may happen
+3. **READ COMMITTED**: Phantoms and unrepeatable reads may happen
+4. **READ UNCOMMITTED**: All of them may happen
+
+```ad-summary
+**Isolation Levels, Summary**
+
+![[Pasted image 20240415134144.png|500]]
+```
+
+You set a transaction's isolation level before you execute any queries in that transaction in some SQL languages: `SET TRANSACTION ISOLATION LEVEL <isolation-level>;`.
+
+**NOT ALL** DBMS support **all isolation levels** in all execution scenarios
+- Default depends on implementations: only a few uses serializable schedule in fact
+
+We can provide hints to the DBMS about whether a transaction will **modify** the database during its lifetime:  `SET TRANSACTION <access-mode>;` Only has two states:
+- `READ WRITE` (Default)
+- `READ ONLY`
+
+Not all DBMSs will optimize execution if you set a transaction to in `READ ONLY` mode.
