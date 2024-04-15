@@ -80,7 +80,55 @@ From this we further expanded our universe of schedules:
 ![[Pasted image 20240413235234.png|400]]
 
 Note that there exists **some conflict serializable** schedules that are **NOT cascading aborts** and **NOT strict** - that said, for some transactions we don't need to employ strong strict 2PL to guarantee this property.
-### Deadlock Detection + Prevention
+### Deadlock
+A **deadlock** is a **cycle of transactions waiting for locks** to be released by each other.
 
+```ad-example
+**Example, Deadlock**
+
+![[Pasted image 20240415104506.png|500]]
+
+In this example above, we have a deadlock scenario because the $T_{2}$ will have to wait for $T_{1}$ to grant permission for `Lock(A)`, which could not take place if $T_{1}$ has not granted permission for `Lock(B)` which was locked granted to $T_{2}$.
+```
+
+There are two ways to deal with deadlocks:
+1. Deadlock detection 
+2. Deadlock prevention 
+
+#### Deadlock Detection 
+The DBMS creates a **waits-for graph** to keep track of what locks each transaction is waiting to acquire.
+- Similar to a dependency graph 
+- Nodes are transaction
+- Directed
+
+Edge from $T_i$ to $T_j$ if $T_i$ is **waiting** for $T_j$ to release a lock.
+
+The system periodically **checks for cycles** in waits-for graph and then decides how to break it.
+
+```ad-example
+![[Pasted image 20240415105157.png|500]]
+```
+
+#### Deadlock Prevention 
+When the DBMS detects a deadlock, it will **select a "victim" transaction to rollback** to break the cycle.
+- Victim will either **restart or abort** (more common) depending on how it was invoked
+
+There is a **trade-off** between the **frequency of checking** for deadlocks and **how long transactions have to wait** before deadlocks are broken.
+
+Selecting the proper victim depends on a lot of different variables. We use various heuristics.
+- By age (lowest timestamp)
+	- Oldest transaction may have acquired the **most number of locks**
+- By progress (least/most queries executed)
+	- Least queries: to prevent wasting work
+- By the number of items already locked
+- By the number of transactions that we have to rollback with it
+
+We also should consider the number of **times a transaction has been restarted** in the past to prevent starvation.
+
+#### Rollback 
+After selecting a victim transaction to abort, the DBMS can also decide on **how far to rollback** the transaction's changes.
+- Completely
+- Minimally
+	- Theoretically possible but difficult to implement
 
 ### Isolation Levels
