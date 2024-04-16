@@ -184,6 +184,40 @@ DBMS must write to disk the log file records that correspond to changes made to 
 This would be a **steal and no-force** policy. This is known as the **Wal Protocol**.
 
 #### Wal Protocol 
-The DBMS **stages all a transaction's log** records in **volatile storage** (usually backed by buffer pool). All log records pertaining to an updated page are written to non-volatile storage **before the page itself is over-written** in non-volatile storage.
+The DBMS **stages all a transaction's log** records in **volatile storage** (usually backed by buffer pool). All log records pertaining to an updated page are written to non-volatile storage **BEFORE the page itself is over-written** in non-volatile storage.
 
-A transaction is not considered committed until all its log records have been written to stable storage.
+A transaction is **not considered committed** if and only if **ALL** its log records have been written to stable storage.
+- Only needs to flush the log records, **NOT** the updated pages
+
+Write a `<BEGIN>` record to the log for each transaction to mark its starting point. When a transaction finishes, the DBMS will:
+- Write a `<COMMIT>` record on the log
+- Make sure that all log records are **flushed** before it returns an acknowledgement to application
+
+Each log entry contains information about the change to a single object.
+- Transaction Id
+- Object Id (Tuple Identifier)
+- Before Value (`UNDO`)
+- After Value (`REDO`)
+
+```ad-example
+**Example, Wal Protocol**
+
+![[Pasted image 20240416114800.png|500]]
+
+During a transaction, we must **first update the logs**, then update the corresponding records in the in-memory buffer pool. 
+
+![[Pasted image 20240416114856.png|500]]
+
+When the transaction commits, we must **flush the log records** to the disk and can wait on flushing the updated pages (when the system sees fit), after which the transaction results can be safely returned to the application.
+
+In the case of a system failure, we can restore the transaction given the logs that are written to the disk.
+```
+
+#### Wal Protocol - Group Commit 
+DBMS write log entries when the transaction **commits**. It is OK to write out **logs of uncommitted transactions**.
+- Transaction **ONLY considered committed** when log records are written
+- Still allow writing uncommitted logs (steal policy) in case the logs become extremely large or automatically flushes during some time intervals
+
+We may use **group commit** to batch multiple log flushes together to amortize overhead.
+
+In a group commit scenario, the log records can be written either when the buffer page becomes fu
