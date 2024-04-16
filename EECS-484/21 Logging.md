@@ -169,4 +169,21 @@ Shadow paging supports easy recovery and rollbacks.
 
 SQLite has used a similar system to shadow paging. When a transaction modifies a page, the DBMS copies the original page to a separate journal file before overwriting master version (reverse shadow paging).
 
-Shadowing page requires the DBMS to perform writes to random non-contiguous pages on disk. We need a way for the DBMS **convert random writes into SEQUENTIAL writes**.
+Shadowing page requires the DBMS to perform writes to random non-contiguous pages on disk. We need a way for the DBMS **convert random writes into SEQUENTIAL writes CONCURRENTLY** .
+
+---
+### Write-Ahead Log 
+Maintain a **log file separate from data files** that contains the changes that transactions make to database.
+- Assume that the log is on **stable storage**
+- Log contains **enough information** to perform the necessary **undo and redo** actions to restore the database
+- Only need to **record changes of records**, instead of writing shadow pages
+- Capitalizes on sequential I/Os since logs are adjacent to each other on disk
+
+DBMS must write to disk the log file records that correspond to changes made to a database object **BEFORE** it can **flush that object to disk**.
+
+This would be a **steal and no-force** policy. This is known as the **Wal Protocol**.
+
+#### Wal Protocol 
+The DBMS **stages all a transaction's log** records in **volatile storage** (usually backed by buffer pool). All log records pertaining to an updated page are written to non-volatile storage **before the page itself is over-written** in non-volatile storage.
+
+A transaction is not considered committed until all its log records have been written to stable storage.
