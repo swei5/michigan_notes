@@ -12,3 +12,4 @@ Roadmap of DBMS:
 
 Motivation: in the case of database failure, how do we inform the client of **committed changes that were NOT COMMUNICATED** to the disk.
 
+
