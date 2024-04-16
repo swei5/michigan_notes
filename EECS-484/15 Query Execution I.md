@@ -135,7 +135,7 @@ DSM DBMSs can **delay stitching together tuples** until the upper parts of the q
 In the selection stage, we only read in all `a` tuples and return their offsets to the parent operator; in the join operation, we only returned results that pertained to offsets of `b`, etc. 
 
 #### Index Scan 
-The DBMS picks an index to find the tuples that the query needs. The usage of index has a number of considerations (more on this in later chapters):
+The DBMS picks an index to find the tuples that the query needs. The usage of index has a number of considerations (more on [[18 Query Planning II|this]] in later chapters):
 - What attributes the index contains
 - What attributes the query references
 - The attribute's value domains

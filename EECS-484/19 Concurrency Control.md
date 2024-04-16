@@ -80,7 +80,7 @@ There are two general approaches to ensure atomicity in a DBMS:
 	- DBMS **logs all actions** so that it can **undo the actions** of aborted transactions
 	- Maintain undo records both in memory and on disk
 	- Logging is used by almost every DBMS
-2. **Shadow Paging**
+2. **[[21 Logging#Shadow Paging|Shadow Paging]]**
 	- DBMS makes copies of pages and transactions make changes to those copies; only when the **transaction commits is the page made visible** to others
 	- Only couchDB and LMDB use this (less efficient because of copying and random I/Os)
 
@@ -251,7 +251,7 @@ All the changes of committed transactions should be **persistent**.
 
 The DBMS can use either **logging or shadow paging** to ensure that all changes are durable.
 
-We will cover this later on.
+We will cover [[21 Logging#^521cf4|this]] later on.
 
 ```ad-summary
 **Concurrency, Summary**

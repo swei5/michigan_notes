@@ -16,7 +16,7 @@ In this lecture, we will focus on performing **binary joins** using **equijoin a
 - These algorithms can be tweaked to support other joins
 
 ```ad-note
-We want the **smaller table** to always be the **left table** ("outer table") in the query plan. More on this later.
+We want the **smaller table** to always be the **left table** ("outer table") in the query plan. More on [[15 Query Execution I|this]] later.
 ```
 
 ```ad-example
