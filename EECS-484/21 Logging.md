@@ -125,11 +125,13 @@ Maintain **two separate copies** of the database:
 - **Master**: Contains only changes from committed transaction
 - **Shadow**: Temporary database with changes made from uncommitted transaction
 
-Both copies can be greater than the memory.
+Both copies can be greater than the memory. Transactions only make updates in the shadow copy. When a transaction commits, **atomically switch the shadow to become the new master** (pointer).
 
-Transactions only make updates in the shadow copy. When a transaction commits, **atomically switch the shadow to become the new master** (pointer).
+This would be a **no-steal and force** policy.
 
-This would be a no-steal and force policy.
+To install the updates, **overwrite the root so it points to the shadow**, thereby **swapping** the master and shadow.
+- Before overwriting the root, none of the transaction's updates are part of the disk-resident database
+- After overwriting the root, all the transaction's updates are part of the disk-resident database
 
 ```ad-example
 **Example, Shadow Paging**
@@ -147,3 +149,24 @@ After the transaction commits and update is finished, the DB root now can safely
 ![[Pasted image 20240415232717.png|500]]
 ```
 
+Shadow paging supports easy recovery and rollbacks.
+- **Undo**: Remove the shadow pages; leave the master and the DB root pointer alone
+- **Redo**: **NOT NEEDED** at all
+
+```ad-summary
+**Shadow Paging, Disadvantages**
+
+**Copying** the entire page table is expensive.
+- To combat this, use a page table structured like a B+tree
+	- No need to copy entire tree, only need to copy paths in the tree that lead to updated leaf nodes
+
+**Commit overhead** is high.
+- Flush every updated page, page table, and root
+- Data gets fragmented (lots of random I/Os since shadow pages live in random locations)
+- Need garbage collection
+- **Only supports ONE writer transaction** at a time or txns in a batch
+```
+
+SQLite has used a similar system to shadow paging. When a transaction modifies a page, the DBMS copies the original page to a separate journal file before overwriting master version (reverse shadow paging).
+
+Shadowing page requires the DBMS to perform writes to random non-contiguous pages on disk. We need a way for the DBMS **convert random writes into SEQUENTIAL writes**.
