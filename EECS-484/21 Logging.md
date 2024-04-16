@@ -172,7 +172,7 @@ SQLite has used a similar system to shadow paging. When a transaction modifies a
 Shadowing page requires the DBMS to perform writes to random non-contiguous pages on disk. We need a way for the DBMS **convert random writes into SEQUENTIAL writes CONCURRENTLY** .
 
 ---
-### Write-Ahead Log 
+### Write-Ahead Log (WAL)
 Maintain a **log file separate from data files** that contains the changes that transactions make to database.
 - Assume that the log is on **stable storage**
 - Log contains **enough information** to perform the necessary **undo and redo** actions to restore the database
@@ -183,7 +183,7 @@ DBMS must write to disk the log file records that correspond to changes made to 
 
 This would be a **steal and no-force** policy. This is known as the **Wal Protocol**.
 
-#### Wal Protocol 
+#### WAL Protocol 
 The DBMS **stages all a transaction's log** records in **volatile storage** (usually backed by buffer pool). All log records pertaining to an updated page are written to non-volatile storage **BEFORE the page itself is over-written** in non-volatile storage.
 
 A transaction is **not considered committed** if and only if **ALL** its log records have been written to stable storage.
@@ -213,11 +213,91 @@ When the transaction commits, we must **flush the log records** to the disk and 
 In the case of a system failure, we can restore the transaction given the logs that are written to the disk.
 ```
 
-#### Wal Protocol - Group Commit 
+#### WAL Protocol - Group Commit 
 DBMS write log entries when the transaction **commits**. It is OK to write out **logs of uncommitted transactions**.
 - Transaction **ONLY considered committed** when log records are written
 - Still allow writing uncommitted logs (steal policy) in case the logs become extremely large or automatically flushes during some time intervals
 
 We may use **group commit** to batch multiple log flushes together to amortize overhead.
 
-In a group commit scenario, the log records can be written either when the buffer page becomes fu
+In a group commit scenario, the log records can be written either when the buffer page becomes full:
+
+![[Pasted image 20240416120320.png|400]]
+
+Or that when some amount of time elapsed:
+
+![[Pasted image 20240416120341.png|400]]
+
+```ad-important
+All log records pertaining to an updated page are written to non-volatile storage **BEFORE the page itself is over-written** in non-volatile storage.
+
+The page (dirty records) can be written in any fashion (when transaction updates a record or commits) as long as it is performed **AFTER writing the logs**.
+```
+
+Almost every DBMS uses **NO-FORCE** + **STEAL** (logging).
+
+![[Pasted image 20240416120810.png|400]]
+
+Crash and recovery are **NOT as frequent** - hence most DBMSs would prioritize runtime performance.
+
+---
+### Logging Schemes
+There are two types of logging schemes:
+- **Physical logging**
+	- Record the changes made to a **specific location in the database**
+	- E.g.  `git diff`
+- **Logical logging**
+	- Record the high-level operations executed by transactions 
+	- **NOT** necessarily **restricted to single page**
+	- E.g. `UPDATE`, `INSERT`, `DELETE` queries invoked by a transaction
+
+Logical logging **requires less data written** in each log record than physical logging.
+
+```ad-note
+While it seems tempting to use a logical logging schemes, it is very hard to implement and almost all systems choose not to use it.
+- Difficult to implement recovery with logical logging if you have concurrent transactions
+	- Hard to **determine which parts of the database may have been modified** by a query before crash
+	- Takes **longer to recover** because you must re- execute every transactions all over again
+```
+
+#### Physiological Logging 
+Hybrid approach where log records **target a single page** but do **NOT specify organization** of the page.
+- **Identify tuples** based on their slot number
+- Allows DBMS to **reorganize pages** after a log record has been written to disk, letting new records being in a better format
+
+This is the most popular approach.
+
+```ad-example
+**Example, Logging Schemes**
+
+![[Pasted image 20240416121843.png|500]]
+```
+
+---
+### Checkpoints
+The WAL will grow forever. After a crash, the DBMS must **replay the entire log**, which will take a long time.
+
+The DBMS periodically **takes a checkpoint** where it flushes all buffers out to disk.
+- After that, it ensures **most of the changes** before the checkpoint has been safely flushed onto the disk 
+
+First, the system **pauses all ongoing transactions**. A checkpoint **outputs onto stable storage all log records** currently residing in main memory. It **outputs to the disk all modified blocks**.
+
+It writes a `<CHECKPOINT>` entry to the log and flush to stable storage.
+
+```ad-example
+**Example, Checkpoints**
+
+![[Pasted image 20240416122849.png|500]]
+
+In recovery, we can safely ignore $T_{1}$ since it is **committed**. Without checkpoints, we must then also check if updated records in $T_{1}$ has been successfully flushed onto the disk.
+```
+
+This approach comes with its own challenges:
+- The DBMS **must stall transactions** when it takes a checkpoint to ensure a consistent snapshot
+- Scanning the **log to find uncommitted transactions** can take a long time.
+- Not obvious **how often** the DBMS should take a checkpoint
+	- Checkpointing too often causes the **runtime performance to degrade**
+		- Spending too much time flushing
+	- Waiting a long time is just as bad
+		- Checkpoint will be large and slow
+		- Longer recovery time
