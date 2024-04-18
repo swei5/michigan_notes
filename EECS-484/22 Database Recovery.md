@@ -125,4 +125,73 @@ Entry is removed after the `TXN-END` message.
 Keep track of which pages in the buffer pool contain changes from transactions that **have NOT been flushed to disk** (committed or aborted).
 
 One entry **per dirty page in the buffer pool**:
-- `recLSN`: The LSN of the log record that first caused the page to be dirty
+- `recLSN`: The `LSN` of the log record that first caused the page to be dirty
+
+```ad-example
+**Example, Checkpoints**
+
+![[Pasted image 20240418010555.png|500]]
+```
+
+However, this still is not ideal because the DBMS must stall transactions during checkpoints.
+
+#### Fuzzy Checkpoints 
+A **fuzzy checkpoint** is where the DBMS allows active transactions to **continue** the run while the system writes the log records for checkpoint.
+- **NO attempt to force** dirty pages to disk
+- New log records to track checkpoint boundaries:
+	- `CHECKPOINT-BEGIN`: Indicates start of checkpoint
+	- `CHECKPOINT-END`: Contains ATT and DPT
+
+The LSN of the `CHECKPOINT-BEGIN` record is written to the **database's MasterRecord entry on disk** when the checkpoint **successfully completes**.
+
+Any transaction that **starts after the checkpoint** is excluded from the ATT in the `CHECKPOINT-END` record.
+
+---
+### Recovery 
+1. Analysis
+	- **Read WAL from last MasterRecord** to identify **dirty pages** in the buffer pool and **active transactions** at the time of the crash
+		- Through ATT and DPT at the `CHECKPOINT-BEGIN`
+		- This is **really important** as it narrows the scope for us, i.e. what transactions we would need to look at - potential redo and undo candidates
+1. Redo
+	- Repeat all actions starting from an appropriate point in the log (even transactions that will abort)
+2. Undo
+	- Reverse the actions of transactions that **DID NOT commit** before the crash
+
+![[Pasted image 20240418012016.png|400]]
+
+#### Analysis Phase
+Scan log **forward from** last **successful checkpoint** (`CHECKPOINT-BEGIN)`.
+- If you find a `TXN-END` record, **remove** its corresponding transaction from ATT
+- For all other records:
+	- Add transaction to ATT with status `UNDO`
+	- On commit, change transaction status to `COMMIT`
+
+For `UPDATE` records:
+- If page $P$ not in DPT, add $P$ to DPT, set its `recLSN` = `LSN`
+
+At end of the Analysis Phase:
+- ATT identifies which transactions were **active** at time of crash
+- DPT identifies which **dirty pages** might not have made it to disk
+
+```ad-example
+**Example, After Analysis Phase**
+
+![[Pasted image 20240418013051.png|500]]
+```
+
+#### Redo Phase 
+The goal is to repeat history to reconstruct state **at the moment of the crash**.
+- **Reapply all updates** (even aborted transaction!) and redo CLRs
+
+There are techniques that allow the DBMS to avoid unnecessary reads/writes, but we will ignore that in this lecture.
+
+We scan forward from the log record containing **smallest** `recLSN` in DPT. For each update log record or CLR with a given `LSN`, redo the action unless:
+- Affected page is not in DPT, or
+	- Page has been flushed
+- Affected page is in DPT but that record's `LSN` is less than the page's `recLSN`
+	- Page has been partially flushed, at least to the point in time of that record
+#### Undo Phase
+Undo all transactions that were **active at the time of crash** and therefore will **never commit**.
+- These are all the transactions with `U` status in the ATT after the Analysis Phase
+
+Process them in **reverse `LSN`** order using the `lastLSN` to speed up traversal. Write a CLR for every modification.
