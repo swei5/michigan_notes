@@ -16,3 +16,113 @@ The main ideas of ARIES are as followed:
 - **Logging Changes During Undo**
 	- Record undo actions to log to ensure action is not repeated in the event of repeated failures
 		- Undo uncommitted changes
+
+---
+### Log Sequence Numbers
+We need to extend our log record format from last class to include additional info. Every log record now includes a **globally unique log sequence number** (LSN).
+
+Various components in the system keep track of LSNs that pertain to them.
+- Each component (disk, buffer pools, checkpoints) each has to maintain a watermark of the LSN
+
+![[Pasted image 20240418001644.png|500]]
+
+Each data page contains a `pageLSN`.
+- The LSN of the **most recent update** to that page
+
+The system keeps track of `flushedLSN` in memory.
+- The **max LSN flushed** so far
+
+Before page `x` can be written to disk, **we must FLUSH log** at least to the point where:
+- `pageLSNx` $\le$ `flushedLSN`
+- Similar idea [[21 Logging#^2fa2e2|here]]
+
+![[Pasted image 20240418002656.png|500]]
+
+---
+### Commit and Abort Operations
+#### Writing Log Records
+**ALL** log records have an LSN. We **update the `pageLSN`** every time a transaction **modifies a record in the page**. **We update the `flushedLSN`** in memory every time the DBMS **writes out the WAL buffer to disk**. 
+
+For the purpose of this lecture, we assume that
+- Each transaction invokes a sequence of reads and writes, followed by `COMMIT` or `ABORT`
+- All log records fit within a single page
+- Disk writes are **atomic**
+- **Strong Strict 2PL** for concurrency control
+- **STEAL + NO-FORCE** buffer management with WAL
+
+#### Transaction Commit
+When a transaction commits, we write `COMMIT` record to log. All log records up to a transaction's `COMMIT` record are **flushed to disk**.
+- Log flushes are sequential, synchronous writes to disk
+- We need to keep the log records in memory for a little bit longer for book-keeping reasons
+
+When the commit succeeds, write a special `TXN-END` record to log.
+- Now safe to truncate log records in memory
+	- This **DOES NOT** need to be flushed immediately
+
+#### Transaction Abort
+Aborting a transaction is a special case of the ARIES undo operation applied to only one transaction.
+
+We need to add another field to our log records:
+- `prevLSN`: **The previous LSN** for the transaction
+	- This maintains a linked-list for each transaction that makes it easy to walk through its records backwards
+
+![[Pasted image 20240418004340.png|500]]
+
+This is slightly different from a committing transaction since (1) we don't have to flush any of the aborting transaction's logs onto the disk since they are aborted anyways, and (2) we **DO NEED TO RECORD** what steps we took to undo the transaction but that information also needs not to be flushed.
+
+Note that we are guaranteed that no dirty writes are written onto the disk since log records were not written.
+
+A **Compensation Log Record** (CLR) describes the actions taken to **undo the actions of a previous update record**. It has all the fields of an update log record plus the `undoNext` pointer (the next-to-be-undone LSN, same as `prevLSN`).
+- NOT for correctness for mainly for the purpose of efficiency
+
+CLRs are added to log records but the DBMS **DOES NOT wait for them to be flushed** before notifying the application that the transaction aborted. 
+
+![[Pasted image 20240418005002.png|500]]
+
+```ad-summary
+**Summary, Abort Algorithm**
+1. Write an `ABORT` record to log for the transaction 
+2. Play back the transaction's updates in reverse order; for each updated record:
+	- **Write a CLR** entry to the log
+	- **Restore** old value
+3. Write a `TXN-END` log record
+
+Notice: CLRs **NEVER need to be undone** (even if the system crashes).
+```
+
+---
+### Fuzzy Checkpointing
+Recall that the DBMS **halts everything** when it takes a [[21 Logging#Checkpoints|checkpoint]] to ensure a consistent snapshot:
+- Halt the start of any new transactions
+- Wait until all active transactions finish executing
+- Flushes dirty pages on disk (random I/Os)
+
+This is bad for runtime performance but makes recovery easy. However, it ensures safe recovery process as every records updated before the checkpoint is guaranteed to be correct (we can even get rid of all log records before the checkpoint).
+
+A slightly better design will be to pause modifying transaction while the DBMS takes the checkpoint.
+- Prevent queries from acquiring write locks on data
+- **Don't have to WAIT** until all transactions finish before taking the checkpoint
+	- Causing inconsistency and atomicity problems as we get "partial pages"
+
+Hence, we must record additional information - internal state as of the beginning of the checkpoint. 
+- **Active Transaction Table** (ATT)
+- **Dirty Page Table** (DPT)
+
+#### Active Transaction Table 
+One entry **per currently active transaction**.
+- `txnId`: Unique transaction identifier
+- `status`: The current "mode" of the transaction 
+	- `R`: Running 
+	- `C`: Committing 
+	- `U`: Candidate for Undo
+		- Default state during crash recovery, or
+		- System/user ordered abort
+- `lastLSN`: Most recent LSN created by transaction
+
+Entry is removed after the `TXN-END` message.
+
+#### Dirty Page Table 
+Keep track of which pages in the buffer pool contain changes from transactions that **have NOT been flushed to disk** (committed or aborted).
+
+One entry **per dirty page in the buffer pool**:
+- `recLSN`: The LSN of the log record that first caused the page to be dirty

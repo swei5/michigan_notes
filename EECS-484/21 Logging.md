@@ -234,6 +234,8 @@ All log records pertaining to an updated page are written to non-volatile storag
 The page (dirty records) can be written in any fashion (when transaction updates a record or commits) as long as it is performed **AFTER writing the logs**.
 ```
 
+^2fa2e2
+
 Almost every DBMS uses **NO-FORCE** + **STEAL** (logging).
 
 ![[Pasted image 20240416120810.png|400]]
