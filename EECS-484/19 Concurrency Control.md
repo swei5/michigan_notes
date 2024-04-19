@@ -243,7 +243,6 @@ The original schedule is **NOT conflict serializable** (work out a dependency gr
 - This is because they don't understand the meanings of the operations or the data
 
 ![[Pasted image 20240413222506.png|400]]
-
 #### Durability 
 All the changes of committed transactions should be **persistent**.
 - No torn updates 
