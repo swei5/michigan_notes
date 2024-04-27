@@ -58,3 +58,13 @@ We can then solve for $r_{u}$ using a binomial tree, including making the follow
 - A bond is **[[5.1 Bonds I#^5a2fcb|valued at par]]**
 - There is an equal chance of an increase or decrease in rates 
 - $r_{d}$ can be obtained via goal seek
+
+```ad-example
+**Example, 3-Step Binary Tree**
+
+![[Pasted image 20240427005908.png|600]]
+
+We start modeling from the right by first **inputting the future values of the bond for the 3-year bond** ($1,036). This value should be **same across** all scenarios since it only depends on the coupon rate (par yield).
+
+The forward rates of the second stage (3.85%, 3.15%, etc.) are derived from the formula above with goal seek. The bond values of the second stage are the corresponding values from the third stage, discounted at the corresponding forward rate, plus a coupon payment. The coupon payment should be the same across all scenarios and across all stages, since 
+```
