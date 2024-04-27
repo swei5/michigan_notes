@@ -66,5 +66,10 @@ We can then solve for $r_{u}$ using a binomial tree, including making the follow
 
 We start modeling from the right by first **inputting the future values of the bond for the 3-year bond** ($1,036). This value should be **same across** all scenarios since it only depends on the coupon rate (par yield).
 
-The forward rates of the second stage (3.85%, 3.15%, etc.) are derived from the formula above with goal seek. The bond values of the second stage are the corresponding values from the third stage, discounted at the corresponding forward rate, plus a coupon payment. The coupon payment should be the same across all scenarios and across all stages, since 
+The forward rates of the second year (3.85%, 3.15%, etc.) are derived from the formula above with goal seek. The bond values of the second year (up and down scenarios) are the corresponding values from the third stage, **discounted at the corresponding forward rate**, **plus a coupon payment**. The coupon payment should be the same across all scenarios and across all stages, since it is only dependent on FV ($1,000) and coupon rate (3.60%).
+
+The bond values of the second year is **an average** between the up and down scenarios. The forward rates of the first year is computed through solving a sub-problem with a 2-year bond using the same approach.
 ```
+
+#### Modeling Embedded Call Option 
+Now that we have modeled interest rates, let’s value a bond with an embedded call option. To answer this, we first calculate, in the absence of call provision, what the bond is worth $P_{i}$ at period $i$. Then, we compare $P_{i}$ to the exercise price $X$ and ask, what is the **minimum value associated** with alternative courses of action?
