@@ -76,5 +76,4 @@ We can obtain the real options discount rate by using the real-world probabiliti
 
 ```ad-important
 The valuation of each stage is the valuation **AFTER** making the decision to either (a) invest, or (b) abandon.
-- In other words, the valuation before subtracting the cost
 ```
