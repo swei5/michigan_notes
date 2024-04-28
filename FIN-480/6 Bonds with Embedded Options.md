@@ -59,6 +59,9 @@ We can then solve for $r_{u}$ using a binomial tree, including making the follow
 - There is an equal chance of an increase or decrease in rates 
 - $r_{d}$ can be obtained via goal seek
 
+The above discussion mainly concerns **government bonds** - which are risk-free instruments. In consideration of corporate bonds, a **spread** needs to be applied to the estimated interest rate **AT EACH STAGE**.
+- This decreases the PV of the bond since investors demand a higher compensation
+
 ```ad-example
 **Example, 3-Step Binary Tree**
 
@@ -72,4 +75,16 @@ The bond values of the second year is **an average** between the up and down sce
 ```
 
 #### Modeling Embedded Call Option 
-Now that we have modeled interest rates, let’s value a bond with an embedded call option. To answer this, we first calculate, in the absence of call provision, what the bond is worth $P_{i}$ at period $i$. Then, we compare $P_{i}$ to the exercise price $X$ and ask, what is the **minimum value associated** with alternative courses of action?
+Now that we have modeled the interest rates, let’s value a bond with an embedded call option. To answer this, we first calculate, in the absence of call provision, what the bond is worth $P_{i}$ at period $i$. Then, we compare $P_{i}$ to the exercise price $X$ and ask, what is the **minimum value associated** with alternative courses of action? We select the minimum of the two be the value of the bond at stage $i$, for a given stage.
+
+```ad-note
+Note that the exercise price does **NOT** include the coupon payment. Hence, we should always compare the option exercise price with the value **NET the coupon payment** of the bond at time $i$.
+```
+
+After that, we discount the values of bonds at each stage to present to arrive at the fair value of the bond.
+
+![[Pasted image 20240427215248.png|600]]
+
+Alternatively, we may use cumulative discount factors to analyze this in a tabular form.
+
+In the case of a **put option**, we use the `MAX()` function as investors aim to sell the bond at the maximum price possible.
