@@ -101,7 +101,8 @@ We project **accounts receivable** (A/R) based on days sales outstanding (DSO):
 $$
 \text{DSO}=\frac{\text{A/R}}{S}\cdot365
 $$
-We project **inventory** based on days inventory held (DIH): $$\text{DIH}=\frac{\text{Inventory}}{\text{COGS}}\cdot365$$ This is the inverse of **inventory turns**, which measures the number of times a firm turns over its inventory in a year.
+We project **inventory** based on days inventory held (DIH): $$\text{DIH}=\frac{\text{Inventory}}{\text{COGS}}\cdot365$$
+This is the inverse of **inventory turns**, which measures the number of times a firm turns over its inventory in a year.
 
 **Prepaid expenses** and **accrued liabilities** are projected based on **historical percentages of sales**.
 
