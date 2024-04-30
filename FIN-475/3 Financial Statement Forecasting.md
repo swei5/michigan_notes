@@ -106,3 +106,4 @@ We project **inventory** based on days inventory held (DIH): $$\text{DIH}=\frac{
 **Prepaid expenses** and **accrued liabilities** are projected based on **historical percentages of sales**.
 
 We project **accounts payable** (A/P) based on days payable outstanding (DPO): $$\text{DPO}=\frac{\text{A/P}}{\text{COGS}}\cdot365$$
+``
