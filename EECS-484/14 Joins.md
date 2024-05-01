@@ -248,13 +248,14 @@ Usually a **nested loop join** would be sufficient, as tuples hashed into the sa
 The maximum size of a table that can be used in the approach above is $B(B-1)$, where $B-1$ is the partitions in the build phase, and $B$ is the maximum number of blocks each partition can hold.
 - A single partition needs to fit into memory of size $B$
 
-In other words, a table of $N$ pages need $\sqrt(N)$ buffers.
+In other words, a table of $N$ pages need $\lceil \sqrt (N)+1 \rceil$ buffers. We use the **smaller table** of the two.
 
-The above assumes hash distributes records evenly; if not, we can use a fudge factor $f>1$ such that the buffer pages needed is $B\cdot \sqrt(f\cdot N)$.
+The above assumes hash distributes records evenly; if not, we can use a fudge factor $f>1$ such that the buffer pages needed is $B\cdot \lceil \sqrt (f\cdot N)+1 \rceil$.
 
 However, if a table does **NOT fit** in memory, we can either 
 1. Go back to more naive methods such as nested loop joins that are more expensive but doesn't have memory restriction
 2. **Recursively partition** to splits partitions into smaller partitions that will fit
+	- Check for $\frac{N}{(B-1)^{r}} \le B-2$ for the number of rounds of partitions $r$ - partitions fit when this is true
 	- Build another hash table for **each bucket** $b$ for both tables using $h_{2}$ such that $h_{2}\ne h_{1}$
 	- Then, probe it for each tuple
 
