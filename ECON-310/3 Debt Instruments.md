@@ -1,4 +1,4 @@
-#Bonds
+#Bonds #Valuation 
 
 ### Overview
 Transaction in a given period (at an **instance**) is **DIFFERENT** from transactions **over a given time frame** (the time dimension involved).
@@ -63,13 +63,17 @@ $$P=\frac{C}{r}\cdot\left(1-\left(\frac{1}{1+r}\right)^{T}\right)+\frac{FV}{(1+r
 
 Here, $r$ is also known as the **yield to maturity (YTM)**, which equates the present value of the payments from an asset with the asset’s price today. In this scenario, this is also interchangeable with the term **coupon rate**.
 
+```ad-important
+**Coupon rate** is a fixed ratio that **DOES NOT change** with market conditions - therefore the interest rate risks.
+```
+
 ```ad-note
 We note that $P=FV \iff r=\frac{C}{FV}$.
 - This implies when a bond is trading **at par**, its **yield** is equal to its **coupon rate**. Matches with our observation [[7 Bonds I#^5a2fcb|here]].
 
 
 More interestingly, we note that the valuation of a bond $P$ isn't a function of $t$.
-- The valuation of the bond **DOES NOT** change as long as market condition does not change.
+- The valuation of the bond **DOES NOT** change as long as market condition does not change
 
 In simple terms, the price of the bond does not change overtime because increased coupon payments due to longer maturity date are **offset by the discounted face value**, ceteris paribus.
 ```
@@ -82,15 +86,22 @@ In simple terms, the price of the bond does not change overtime because increase
 
 #### Fixed Payment Loan
 This is effectively a coupon bond except that we exchange the repayment of the face value by $T-1$ equal payments.
+- This is the standard mortgage model
 
 ![[Pasted image 20230302220324.png|500]]
 
 Given per period installment $x$ and nominal interest rate $i$, the value of the loan over a period of $T$ is thus
-$$L=\frac{x}{1+i}\left(\frac{1-\frac{1}{(1+i)^T}}{1-\frac{1}{1+i}}\right)=\frac{x}{i}\left(1-\frac{1}{(1+i)^T}\right)$$
+$$P=\frac{x}{1+i}\left(\frac{1-\frac{1}{(1+i)^T}}{1-\frac{1}{1+i}}\right)=\frac{x}{i}\left(1-\frac{1}{(1+i)^T}\right)$$
+
+This is very similar to coupon bonds, with the absence of the final payment of face value at time $T$.
 
 Equivalently, given a loan amount of $L$, the per period installment is $x=\frac{iL}{1-\frac{1}{(1+i)^T}}$. The derivation looks similar to that of a coupon bond.
 
-Naturally, the outstanding loan given time $t$ is
+```ad-note
+Note that all valuation methods discussed above come down to the [[2.2 Discounted Cash Flow II#^384322|simple discounted cash flow model]].
+```
+
+Alternatively, the outstanding loan given time $t$ can be expressed in an iterative fashion:
 $$L_t=L_{t-1}+iL_{t}-x$$
 Normally, $x>iL_t$ as it should cover the interest payment and **partially pays off the principal**.
 - If one only wants to pay off the interest (leaving the value of the loan unchanged), then $x=iL_t$
@@ -102,4 +113,11 @@ Here, the term $(1+i)^d$ applied on the numerator is accounted for the **inflati
 ```ad-warning
 **Yield to maturity** is a different concept from **yield**.
 ```
+
+---
+### Perpetuity
+Through a closer examination of the pricing of coupon bonds
+> $$P=\frac{C}{r}\cdot\left(1-\left(\frac{1}{1+r}\right)^{T}\right)+\frac{FV}{(1+r)^T}$$
+
+We note that as $T\to \infty$, $(1+r)^{T}\to 0$  and hence $\frac{FV}{(1+r)^{T}}\to 0$. This makes the entirety of the bond value $P=\frac{C}{r}$. This is known as the **price of perpetuity**.
 
