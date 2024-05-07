@@ -1,4 +1,4 @@
-[[2023-01-25]] #SVM #FeatureMap #Optimization
+[[2023-01-25]] #SVM #Optimization
 
 ### Recap
 

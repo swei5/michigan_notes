@@ -1,4 +1,4 @@
-[[2023-01-11]] #Perceptron #SupervisedLearning #LinearClassifier #GD #Optimization 
+[[2023-01-11]] #SupervisedLearning #LinearClassifier #Optimization 
 
 ### Recap
 Recall the definition of **Binary Linear Classifier**, 

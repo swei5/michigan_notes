@@ -1,4 +1,4 @@
-#Git #System 
+#System 
 
 ### Version Control
 

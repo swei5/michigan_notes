@@ -1,4 +1,4 @@
-#Unix #Shell #System 
+#System 
 ### \*nix
 
 ```ad-important

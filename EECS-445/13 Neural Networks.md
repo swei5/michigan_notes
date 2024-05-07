@@ -1,4 +1,4 @@
-[[2023-02-20]]  #NeuralNetwork #FeatureMap #SGD #SupervisedLearning #Optimization 
+[[2023-02-20]]  #NeuralNetwork #SupervisedLearning #Optimization 
 
 ### Recap: Feature Representation
 1. Explicit Feature Mapping

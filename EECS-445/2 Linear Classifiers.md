@@ -1,4 +1,4 @@
-[[2023-01-09]] #SupervisedLearning #LinearClassifier #Perceptron #Optimization 
+[[2023-01-09]] #SupervisedLearning #LinearClassifier #Optimization 
 
 ### Linear Binary Classifier
 This is **supervised** **learning** as the data are already pre-labeled.

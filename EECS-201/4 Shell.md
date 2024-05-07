@@ -1,4 +1,4 @@
-[[2023-02-03]] #Shell #System
+[[2023-02-03]] #System
 
 ### Shells
 Interactive shells are the shell that you directly **interact** with at a **terminal**.

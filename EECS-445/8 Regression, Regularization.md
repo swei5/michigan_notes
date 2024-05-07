@@ -1,4 +1,4 @@
-[[2023-02-01]] #SGD #Regularization
+[[2023-02-01]] #Regularization
 
 ### Recap : Loss
 
