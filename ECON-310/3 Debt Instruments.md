@@ -61,7 +61,8 @@ The price of a coupon bond is the sum of values of all the **future payments**. 
 Thus,
 $$P=\frac{C}{r}\cdot\left(1-\left(\frac{1}{1+r}\right)^{T}\right)+\frac{FV}{(1+r)^T}$$
 
-Here, $r$ is also known as the **yield to maturity (YTM)**, which equates the present value of the payments from an asset with the asset’s price today. In this scenario, this is also interchangeable with the term **coupon rate**.
+Here, $r$ is also known as the **yield to maturity (YTM)**, which is the **required rate of return** that equates the present value of the payments from an asset with the asset’s price today. 
+- May be calculated using goal seek
 
 ```ad-important
 **Coupon rate** is a fixed ratio that **DOES NOT change** with market conditions - therefore the interest rate risks.
@@ -69,7 +70,7 @@ Here, $r$ is also known as the **yield to maturity (YTM)**, which equates the pr
 
 ```ad-note
 We note that $P=FV \iff r=\frac{C}{FV}$.
-- This implies when a bond is trading **at par**, its **yield** is equal to its **coupon rate**. Matches with our observation [[7 Bonds I#^5a2fcb|here]].
+- This implies when a bond is trading **at par**, its **yield** is equal to its **coupon rate**. Matches with our observation [[5.1 Bonds I#^477e13|here]].
 
 
 More interestingly, we note that the valuation of a bond $P$ isn't a function of $t$.
@@ -120,4 +121,26 @@ Through a closer examination of the pricing of coupon bonds
 > $$P=\frac{C}{r}\cdot\left(1-\left(\frac{1}{1+r}\right)^{T}\right)+\frac{FV}{(1+r)^T}$$
 
 We note that as $T\to \infty$, $(1+r)^{T}\to 0$  and hence $\frac{FV}{(1+r)^{T}}\to 0$. This makes the entirety of the bond value $P=\frac{C}{r}$. This is known as the **price of perpetuity**.
+
+```ad-note
+This implies that **long-term bonds** are **riskier** as interest rate is the more important factor that plays into its valuation. The change of the price of a bond is **larger** if the maturity of the bond is **longer**. This is valid in both directions.
+```
+
+See more on perpetuity under [[2.2 Discounted Cash Flow II#Annuity, Perpetuity|this note]].
+
+This lecture also touches on the topics of [[4 Risks and Return|rate of return]], [[2 Order Types#^14263e|bid-ask spread]], and [[4.2 Capital Investment - Interest Rate#^2fe11c|Fisher's Equation]].
+
+---
+### TIPS (Treasury Inflation-Protected Securities)
+When inflation takes place, government has the incentive to **inflate debt payments** in nominal term. TIPS offers protection against such interest rate risks.
+- Payment **adjusted in real terms** that corrects for potential inflation
+- First issued in the U.S. in 1997
+
+```ad-summary
+Under the traditional DCF model, a bond's value is simply the **discounted summation of total payments**. The variables that impact a bond's value include face value, TTM, coupon rate (coupon), and market interest rate (YTM). 
+
+However, YTM, just like other required rate of returns such as the cost of capital and WACC, isn't a readily available information and is very much a black box. In reality, we first price the bonds through different estimation techniques and obtain the *actual (implied)* rate of returns through a reverse goal-seek fashion.
+
+![[Pasted image 20240507111506.png|500]]
+```
 

@@ -14,6 +14,8 @@ Let's look at a few definitions beforehand.
 - **Trade price**: The price at which the trade is executed
 ```
 
+^14263e
+
 Orders are instructions traders give to brokers and/or exchanges. Orders **ALWAYS** specify:
 - Security to be traded 
 - Quantity
