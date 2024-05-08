@@ -52,7 +52,15 @@ The **distinction** between money, income, wealth is such that
 
 ---
 ### Money and OLG Model 
+In an economy **WITHOUT money**:
+- Output that CANNOT be stored and is perishable
+	- Therefore the optimal strategy is to consume 1, and consume 0 in the next period
+	- This is the overlapping generation economy
 
+Using a concave utility function, we have the following conclusions:
+1. Utility with money (allowing for savings) at present is **BETTER** than in absence of money - this effect is known as consumption smoothing
+	- E.g. Utility gained from $(\frac{1}{2}, \frac{1}{2})$ is better than $(1,0)$
+1. The OLG Model is expected to continue forever. Therefore, in an infinite horizon, fundamentally useless money can improve the economy
 
 ---
 ### Money Supply
