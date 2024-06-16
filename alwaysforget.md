@@ -8,6 +8,7 @@
 ### Shell
 - [Brew location](https://stackoverflow.com/questions/36657321/after-installing-homebrew-i-get-zsh-command-not-found-brew)
 - [Brew Python Version](https://stackoverflow.com/questions/5157678/how-do-i-use-brew-installed-python-as-the-default-python)
+- [MacOS Shell Command](https://support.apple.com/lt-lt/guide/terminal/trmlshtcts/mac)
 
 ### Misc
 - [SQL String Format](https://stackoverflow.com/questions/15290754/sql-capitalize-first-letter-only)
