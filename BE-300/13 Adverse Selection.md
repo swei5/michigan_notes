@@ -1,4 +1,4 @@
-[[2023-03-16]] #AsymmetricInformation
+[[2023-03-16]] #AsymmetricInfo
 
 ### Asymmetric Information
 - Uncertainty can be result of an action taken by another individual who is behaving in a strategic fashion  

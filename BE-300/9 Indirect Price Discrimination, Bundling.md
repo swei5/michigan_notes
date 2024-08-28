@@ -1,4 +1,4 @@
-[[2023-02-14]] #PriceDiscrimination #Bundling
+[[2023-02-14]] #PriceDiscrimination
 
 ### Indirect Price Discrimination
 ##### Inter-temporal price discrimination

@@ -1,4 +1,4 @@
-[[2023-03-25]]
+[[2023-03-25]] #Python #System
 
 ### Overview
 - Shell scripting is hard

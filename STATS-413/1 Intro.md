@@ -38,12 +38,12 @@ For an observation $x_i$ of a variable $x$, the z-score of $x_i$, $z (x_i)$, ans
 - How many standard deviations above (+) or below (-) the mean was the observed value $x_i$?
 
 Inversely, we can write observation $x_{i}$ for the $i$ th individual as the mean, plus some number times the standard deviation:
-$$x_{i}=\overline{x}+z(x_{i})\sigma(x)$$
+$$x_{i}=\overline{x}+z(x_{i})\text{ stdev}(x)$$
 Where
-$$z(x_{i})=\frac{x_{i}-\overline{x}}{\sigma(x)}$$
+$$z(x_{i})=\frac{x_{i}-\overline{x}}{\text{stdev}(x)}$$
 If we form $z$ -scores of any continuous variable, $x$, then we have:
 - $\overline{z(x)}=0$
-- $\sigma(z(x))=1$
+- $\text{stdev}(z(x))=1$
 
 Now, suppose I have a variable $x$, and I change units by $x^\star = a + bx$:
 - If $b>0$: 
@@ -57,3 +57,43 @@ That is, the magnitude of $z$-scores are not affected by **additive and multipli
 We define correlation by taking $z$ -scores of the $y$ and $x$ variables separately. Then, the correlation coefficient $y,x$ is
 $$r(x,y)=\frac{1}{n-1} \sum\limits_{i=1}^{n}z(x_{i})z(y_{i})$$
 In other words, the correlation is the **average** of the products of the $z$ -scores.
+
+```ad-info
+**Properties of Correlation**
+
+- $-1 \le r(x,y) \le 1$
+- **Unit free** - consequence of taking product of z-scores
+- $r(x,y)=r(y,x)$
+- Larger $|r(x,y)|$, stronger the correlation
+
+**Caveats of Correlation**
+- Only tells us about overall **linear** relationship
+- Heavily influenced by **outliers**
+	- Have to plot to check for outliers and check for a nonlinear relationship
+```
+
+#### Regression Effect 
+Given two correlated variables, if one variable is observed to be extreme, then you can expect the other variable to also be extreme – *just not as extreme*.
+
+```ad-important
+**Definition 1.1**: $z$-Score Regression 
+
+Suppose we know that two variables have a linear relationship with correlation $r$. Suppose we want to predict the $y$-value of an individual whose $x$-value had a $z$-score of $z(x)$. Our, prediction for the $z$-score of the $y$ value, $z(\hat{y})$, can be found as:
+$$z(\hat{y}) = r\cdot z(x)$$
+```
+
+^38eb8a
+
+```ad-important
+**Definition 1.2**: Regression Euation
+
+If we rewrite [[#^38eb8a|Definition 1.1]], we have that
+$$\begin{align}z(\hat{y})&=r \cdot z(x)\\ \frac{\hat{y}-\overline{y}}{\text{stdev}(y)}&= r\cdot \frac{x-\overline{x}}{\text{stdev}({x})}\\ \hat{y} &= r \frac{\text{stdev}({y})}{\text{stdev}(x)}x+\overline{y}-r\frac{\text{stdev}({y})}{\text{stdev}(x)}\overline{x} \\ \hat{y}&=\hat{\beta}_{0}+\hat{\beta}_{1}x \end{align}$$
+Where $\hat{\beta}_{1}=r \frac{\text{stdev}({y})}{\text{stdev}(x)}$ and $\hat{\beta}_{0}=\overline{y}-\hat{\beta}_{1}\overline{x}$. 
+
+Here, $\hat{\beta}_{1}$ is the **slope** of the regression line and $\hat{\beta}_{0}$ is the **intercept**.
+```
+
+This line is commonly referred to as **the least squares line**, or the **least squares regression equation**.
+
+There are infinitely many equations of the form $\beta_{0}+\beta_{1}x$ we could have chosen...
