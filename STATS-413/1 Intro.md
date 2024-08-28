@@ -1,4 +1,4 @@
-[[2024-08-26]] #Regression
+[[2024-08-26]] #Regression #R
 
 Our main goal is to use **data** to infer relationships between a single response variable and one or more other predictor variables.
 - Then, to improve predictions of our response variable by leveraging information contained in the predictors (functions)
@@ -26,6 +26,7 @@ In tabular forms, this looks like
 
 ![[Pasted image 20240827220759.png|400]]
 
+---
 ### Linear Association
 The points in the scatterplot appear to be clustered about a line when a relationship is **linear**.
 - Stronger relationship means **TIGHTER cluster** about the line (elliptical shape cloud along the line), and vice versa
@@ -97,3 +98,34 @@ Here, $\hat{\beta}_{1}$ is the **slope** of the regression line and $\hat{\beta}
 This line is commonly referred to as **the least squares line**, or the **least squares regression equation**.
 
 There are infinitely many equations of the form $\beta_{0}+\beta_{1}x$ we could have chosen...
+
+### Covered R Functions 
+
+```r
+# To read from a csv file
+fatherson = read.csv("fatherson.csv")
+
+# To read from columns in a df
+father = fatherson$Father.Height
+
+# Histogram
+hist(father, main= "Histogram of Father's Heights", xlab = "Fathers")
+
+# Boxplot
+boxplot(father, son, names = c("Fathers", "Sons"))
+
+# Scatter plot
+plot(father, son, main = "Father's and Son's Heights", xlab = "Father's Height (in)", ylab = "Son's Height (in)", pch=16)
+
+# Mean, Stdev, Length, Sum
+mean(zfather)
+sd(zfather)
+n = length(son)
+sum(zfather*zson)
+
+# Correlation 
+cor(zfather, zson)
+
+
+
+```
