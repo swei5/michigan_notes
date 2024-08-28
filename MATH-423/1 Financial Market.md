@@ -1,4 +1,4 @@
-[[2024-08-27]] #Valuation #Portfolio
+[[2024-08-27]] #Valuation #Portfolio #Risks 
 
 ### Basic Assumptions
 Financial assets described in two categories:
@@ -26,7 +26,7 @@ should not be negative for $t=0,1$.
 ```ad-important
 **Definition 1.2**: Admissible
 
-TODO
+A portfolio is called **admissible** if its value is always **non-negative**.
 ```
 
 We need to place some further restrictions on $x,y$:
@@ -37,10 +37,16 @@ We need to place some further restrictions on $x,y$:
 	- $\exists M >0$ such that $-M < x, y < M$
 	- A market is called liquid if $x,y$ can be arbitrarily large
 
+```ad-important
+**Definition 1.3**: Arbitrage 
+
+Arbitrage (“free lunch”) is a **risk-free profit** is made with **NO** **initial investment**.
+```
+
 In reality, **arbitrage opportunity** (AO) will **disappear** shortly after its birth, driven by profit-seeking supply and demand forces.
 
 ```ad-important
-**Definition 1.3**: No-Arbitrage
+**Definition 1.4**: No-Arbitrage
 
 For any admissible portfolio, $V(0)=0 \implies V(1)=0$ with a **probability of 1**.
 
@@ -49,9 +55,24 @@ In other words, one cannot have $V(1)>0$ with a non-zero probability.
 
 ---
 ### One-step Binomial Model
-Under this framework, if $S(0)=A(0)$, then $S^{d} < A (1)< S^{u}$, then an **arbitrage opportunity would arise**.
+Suppose that $S(0) = 100$, one year later the stock price $S (1)$ either rises up to 120 with probability $p$ or drops down to 90 with probability $1 − p$, where $0<p<1$. The bond prices are $A (0)=100$ and $A (1)=110$.
 
-TODO: Another Assumption 
+![[Pasted image 20240827211545.png|400]]
+
+
+Under this framework, if $S(0)=A(0)$, then $S^{d} < A (1)< S^{u}$, otherwise an **arbitrage opportunity would arise**.
+
+```ad-info
+**Proof**
+
+First consider the case $A(1) > S_u$. In other words, we prefer to hold at time $1$ the bond. Then:
+
+![[Pasted image 20240827212125.png|400]]
+
+In other words, we have a **certain strictly positive profit** with **zero** investment ($V(0)=0$). Next, consider case $A(1)$ < S^d.
+```
+
+In addition, under the One-step Binomial model, we also have that $\frac{S^{d}}{S (0)} < \frac{A (1)}{A (0)} < \frac{S^{u}}{S(0)}$.
 
 The **rate of return** is defined by $K_{V}=\frac{V(1)-V(0)}{V(0)}$, the **expected return** is $\mathbb{E}(K_{V)}=pK_{V}^{u}+pK_{V}^{d}$ 
 
