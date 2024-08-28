@@ -54,4 +54,6 @@ Now, suppose I have a variable $x$, and I change units by $x^\star = a + bx$:
 That is, the magnitude of $z$-scores are not affected by **additive and multiplicative shifts** (but the sign flips if $b$ negative).
 
 #### Correlation
-We define correlation by taking $z$ -scores of the $y$ and $x$ variables separately.
+We define correlation by taking $z$ -scores of the $y$ and $x$ variables separately. Then, the correlation coefficient $y,x$ is
+$$r(x,y)=\frac{1}{n-1} \sum\limits_{i=1}^{n}z(x_{i})z(y_{i})$$
+In other words, the correlation is the **average** of the products of the $z$ -scores.
