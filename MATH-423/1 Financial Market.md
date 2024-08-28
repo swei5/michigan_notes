@@ -74,6 +74,7 @@ In other words, we have a **certain strictly positive profit** with **zero** inv
 
 In addition, under the One-step Binomial model, we also have that $\frac{S^{d}}{S (0)} < \frac{A (1)}{A (0)} < \frac{S^{u}}{S(0)}$.
 
-The **rate of return** is defined by $K_{V}=\frac{V(1)-V(0)}{V(0)}$, the **expected return** is $\mathbb{E}(K_{V)}=pK_{V}^{u}+pK_{V}^{d}$ 
+### Risk and Return
+The **rate of return** is defined by $K_{V}=\frac{V(1)-V(0)}{V(0)}$, the **expected return** is $\mathbb{E}(K_{V})=pK_{V}^{u}+pK_{V}^{d}$ 
 
-The **risk** of this investment is defined as the **standard deviation** of $K_{V}$, $\sigma_{V}$.
+The **risk** of this investment is defined as the **standard deviation** of $K_{V}$, $\sigma_{V}=\sqrt{\mathbb{E}(K_{V}-\mathbb{E}(K_{V}))}$.
