@@ -74,7 +74,7 @@ In other words, the correlation is the **average** of the products of the $z$ -s
 ```
 
 #### Regression Effect 
-Given two correlated variables, if one variable is observed to be extreme, then you can expect the other variable to also be extreme – *just not as extreme*.
+Given two correlated variables, if one variable is observed to be extreme, then you can expect the other variable to also be extreme – *just not as extreme*. 
 
 ```ad-important
 **Definition 1.1**: $z$-Score Regression 
@@ -83,10 +83,12 @@ Suppose we know that two variables have a linear relationship with correlation $
 $$z(\hat{y}) = r\cdot z(x)$$
 ```
 
+In other words, the **amount of regression** towards the mean is decided by the coefficient of correlation.
+
 ^38eb8a
 
 ```ad-important
-**Definition 1.2**: Regression Euation
+**Definition 1.2**: Regression Equation
 
 If we rewrite [[#^38eb8a|Definition 1.1]], we have that
 $$\begin{align}z(\hat{y})&=r \cdot z(x)\\ \frac{\hat{y}-\overline{y}}{\text{stdev}(y)}&= r\cdot \frac{x-\overline{x}}{\text{stdev}({x})}\\ \hat{y} &= r \frac{\text{stdev}({y})}{\text{stdev}(x)}x+\overline{y}-r\frac{\text{stdev}({y})}{\text{stdev}(x)}\overline{x} \\ \hat{y}&=\hat{\beta}_{0}+\hat{\beta}_{1}x \end{align}$$
@@ -97,7 +99,21 @@ Here, $\hat{\beta}_{1}$ is the **slope** of the regression line and $\hat{\beta}
 
 This line is commonly referred to as **the least squares line**, or the **least squares regression equation**.
 
-There are infinitely many equations of the form $\beta_{0}+\beta_{1}x$ we could have chosen...
+There are infinitely many equations of the form $\beta_{0}+\beta_{1}x$ we could have chosen... This boils down to an optimization problem.
+
+For case $i , i = 1, 2, \dots, n$, let the $i$ th error term be the difference between the observed response variable and the predicted value for the $i$ th individual for a given value of $(\beta_{0},\beta_{1})$:
+$$\epsilon_{i}=y_{i}-(\beta_{0}+\beta_{1}x)$$
+This is the **vertical** difference between the observation and line at $x_{i}$ with the choices of intercept and slope $(\beta_{0},\beta_{1})$. We would like $\epsilon_{i}$ to be as small as possible for better prediction.
+
+The **least squares regression** line chooses $(\beta_{0},\beta_{1})$ to minimize the sum of the squared errors (SSE):
+$$(\hat{\beta_{0}},\hat{\beta}_{1})=\text{arg min}_{\beta_{0}, \beta_{1}} \sum\limits_{i}^{n}(y_{i}-(\beta_{0}+\beta_{1}x))^{2}$$
+The reason for the squaring errors are for:
+- Ease of optimization (taking derivatives)
+- Optimality properties of resulting estimators under additional modeling assumptions
+
+`R` computes the least squares equation for us using the `lm` command - which has the same optimal solutions of $\hat{\beta}_{0}, \hat{\beta}_{1}$ derived from $z$ -score regression intuition.
+
+This shows that the **least squares optimization problem** produces a prediction equation that correctly **accounts for the regression effect**.
 
 ### Covered R Functions 
 
@@ -126,6 +142,7 @@ sum(zfather*zson)
 # Correlation 
 cor(zfather, zson)
 
-
-
+#show scatterplot with regression line included
+plot(father, son, pch = 16)
+abline(sonreg)
 ```
