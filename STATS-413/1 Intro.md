@@ -106,8 +106,8 @@ $$\epsilon_{i}=y_{i}-(\beta_{0}+\beta_{1}x)$$
 This is the **vertical** difference between the observation and line at $x_{i}$ with the choices of intercept and slope $(\beta_{0},\beta_{1})$. We would like $\epsilon_{i}$ to be as small as possible for better prediction.
 
 The **least squares regression** line chooses $(\beta_{0},\beta_{1})$ to minimize the sum of the squared errors (SSE):
-$$(\hat{\beta_{0}},\hat{\beta}_{1})=\text{arg min}_{\beta_{0}, \beta_{1}} \sum\limits_{i}^{n}(y_{i}-(\beta_{0}+\beta_{1}x))^{2}$$
-The reason for the squaring errors are for:
+$$(\hat{\beta_{0}},\hat{\beta}_{1})=\text{arg min}_{\beta_{0}, \beta_{1}} \sum\limits_{i}^{n}(y_{i}-(\beta_{0}+\beta_{1}x_{i}))^{2}$$
+The reason for the squaring errors are for: ^302e2f
 - Ease of optimization (taking derivatives)
 - Optimality properties of resulting estimators under additional modeling assumptions
 
