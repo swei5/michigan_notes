@@ -9,3 +9,5 @@ We may extend this to multiple dimensions, and hence we would come up with a sim
 
 The **least squares coefficients** $(\beta_{0},\beta_{1}, \cdots, \beta_{p})$ to minimize the sum of the squared errors (SSE):
 $$(\hat{\beta_{0}},\hat{\beta}_{1}, \cdots, \hat{\beta}_{p})=\text{arg min}_{\beta_{0}, \beta_{1}, \cdots, \beta_{p}} \sum\limits_{i}^{n}(y_{i}-(\beta_{0}+\beta_{1}x_{i1}+\cdots + \beta_{p}x_{ip}))^{2}$$
+
+### 
