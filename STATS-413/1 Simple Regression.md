@@ -99,14 +99,14 @@ Here, $\hat{\beta}_{1}$ is the **slope** of the regression line and $\hat{\beta}
 
 This line is commonly referred to as **the least squares line**, or the **least squares regression equation**.
 
-There are infinitely many equations of the form $\beta_{0}+\beta_{1}x$ we could have chosen... This boils down to an optimization problem.
+There are infinitely many equations of the form $\tilde{\beta_0}+\tilde{\beta_1}x$ we could have chosen... This boils down to an optimization problem.
 
-For case $i , i = 1, 2, \dots, n$, let the $i$ th error term be the difference between the observed response variable and the predicted value for the $i$ th individual for a given value of $(\beta_{0},\beta_{1})$:
-$$\epsilon_{i}=y_{i}-(\beta_{0}+\beta_{1}x)$$
+For case $i , i = 1, 2, \dots, n$, let the $i$ th **residual** term be the difference between the observed response variable and the predicted value for the $i$ th individual for a given value of $(\tilde{\beta_0},\tilde{\beta_{1}})$:
+$$\epsilon_{i}=y_{i}-(\tilde{\beta_0}+\tilde{\beta_1}x)$$
 This is the **vertical** difference between the observation and line at $x_{i}$ with the choices of intercept and slope $(\beta_{0},\beta_{1})$. We would like $\epsilon_{i}$ to be as small as possible for better prediction.
 
-The **least squares regression** line chooses $(\beta_{0},\beta_{1})$ to minimize the sum of the squared errors (SSE):
-$$(\hat{\beta_{0}},\hat{\beta}_{1})=\text{arg min}_{\beta_{0}, \beta_{1}} \sum\limits_{i}^{n}(y_{i}-(\beta_{0}+\beta_{1}x_{i}))^{2}$$
+The **least squares regression** line chooses $(\tilde{\beta_0},\tilde{\beta_1})$ to minimize the **sum of the squared errors** (SSE):
+$$(\hat{\beta_{0}},\hat{\beta}_{1})=\text{arg min}_{\tilde{\beta_0}, \tilde{\beta_1}} \sum\limits_{i}^{n}(y_{i}-(\tilde{\beta_0}+\tilde{\beta_1}x_{i}))^{2}$$
 The reason for the squaring errors are for: ^302e2f
 - Ease of optimization (taking derivatives)
 - Optimality properties of resulting estimators under additional modeling assumptions
@@ -115,6 +115,7 @@ The reason for the squaring errors are for: ^302e2f
 
 This shows that the **least squares optimization problem** produces a prediction equation that correctly **accounts for the regression effect**.
 
+---
 ### Covered R Functions 
 
 ```r
