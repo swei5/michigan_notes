@@ -102,7 +102,7 @@ This line is commonly referred to as **the least squares line**, or the **least 
 There are infinitely many equations of the form $\tilde{\beta_0}+\tilde{\beta_1}x$ we could have chosen... This boils down to an optimization problem.
 
 For case $i , i = 1, 2, \dots, n$, let the $i$ th **residual** term be the difference between the observed response variable and the predicted value for the $i$ th individual for a given value of $(\tilde{\beta_0},\tilde{\beta_{1}})$:
-$$\epsilon_{i}=y_{i}-(\tilde{\beta_0}+\tilde{\beta_1}x)$$
+$$e_{i}=y_{i}-(\tilde{\beta_0}+\tilde{\beta_1}x)$$
 This is the **vertical** difference between the observation and line at $x_{i}$ with the choices of intercept and slope $(\beta_{0},\beta_{1})$. We would like $\epsilon_{i}$ to be as small as possible for better prediction.
 
 The **least squares regression** line chooses $(\tilde{\beta_0},\tilde{\beta_1})$ to minimize the **sum of the squared errors** (SSE):

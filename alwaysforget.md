@@ -13,7 +13,9 @@
 ### Misc
 - [SQL String Format](https://stackoverflow.com/questions/15290754/sql-capitalize-first-letter-only)
 - [Python Slicing](https://stackoverflow.com/questions/509211/how-slicing-in-python-works)
-- [Python to PDF](https://stackoverflow.com/questions/20412038/printing-python-code-to-pdf)
+- [Python Scripts to PDF](https://stackoverflow.com/questions/20412038/printing-python-code-to-pdf)
 - [Numpy Indexing](https://stackoverflow.com/questions/57840955/numpy-arrays-indexing-assignment-question-code-that-looks-like-it-should-work)
 - [Convert Books to PDFs](https://askubuntu.com/a/299752)
 - [Airport Wi-Fi](https://discussions.apple.com/thread/253799553?sortBy=best)
+- [LaTeX Matrix](https://tex.stackexchange.com/a/204627)
+- [LaTeX Symbols](https://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf)
