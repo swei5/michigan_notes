@@ -133,6 +133,14 @@ Some additional quantities that may be represented in now the vector/matrix form
 Note that the residual $e_{i}$ are different from the error terms $\epsilon_{i}$.
 
 ---
+### Interpretation of Intercepts
+$\beta_{0}$, by extrapolation, is the *true value* for $\mathbb{E}(y_{i}|x_{i})$ when $x_{i}=\mathbf{0}$ ; $\hat{\beta_{0}}$ is its estimate. The intercept provides the proper vertical placement for the mean function $\mathbb{E}(y_{i}|x_{i})$.
+
+Slope coefficients $(\beta_{1},..., \beta_{p})$ provide **comparisons** between the **expectations** at different points $x$. **Holding all other variables equal (ceteris paribus)**, two individuals who differ in variable $x_{j}$ by $1$ unit are expected to differ in $Y$ by $\beta_j$ units. $\hat{\beta}_{j}$ is our estimate of this difference in expectations.
+
+Slope is **NOT changes** as it ascribes a causal interpretation to the slope and overlooks the effect of omitted variables.
+
+---
 ### Covered R Functions
 
 ```r
