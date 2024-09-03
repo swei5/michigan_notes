@@ -26,9 +26,9 @@ More specifically, a **Zero-coupon bond** means that the buyer of the bond will 
 
 The Present Value (PV) is $V (0) = \frac{F}{1 + r}$, if $r$ is annual compounding rate. In reality, we use the **market price of bonds** to imply the annual compounding.
 
-We define $F\cdot B (t, T)$ to be the value at time $t$ of a zero coupon bond with face value $F$ and maturing at $T$. Note that $B(T,T)=1$ and $B(0,T)$ is the current value. By nature we have $P=F\cdot B(0,T)$.
+We define $F\cdot B (t, T)$ to be the value at time $t$ of a zero coupon bond with face value $F$ and maturing at $T$. Note that $B(T,T)=1$ and $B(0,T)$ is the current value. By nature we have $V(0)=P=F\cdot B(0,T)$.
 
-Hence, $$F\cdot B (t, T)=P \frac{B(t,T)}{B(0,T)}$$
+Hence, $$V(t)=F\cdot B (t, T)=P \frac{B(t,T)}{B(0,T)}$$
 The **implied periodic compounding rate** with frequency $m$ is determined by
 $$B(t,T)\cdot\left(1+\frac{r_{m}}{m}\right)^{m(T-t)}=1 \implies r_{m}=m (B(t,T)^{\frac{-1}{m(T-t)}}-1)$$
 
