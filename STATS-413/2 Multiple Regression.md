@@ -41,13 +41,16 @@ Linear models can also be made flexible by **transformation** of the response an
 - For example, if we want to use linear regression to fit $\hat{f}(x)=\hat{\beta_0}+\hat{\beta_1}x+\hat{\beta_{2}}x^2$, we can simply let $x_{2}=x_{1}^{2}$ then plug in to the same linear model
 
 #### Weaker Linear Regression
-In addition to the model demonstrated above, we have the following assumptions:
-1. **Linearity**: the true relationship between the conditional expectation of $y$ and the **predictors** is **linear**
+
+^859af4
+
+In addition to the model demonstrated above, we have the following assumptions: ^39d49d
+1. **Linearity**: the true relationship between the conditional expectation of $y$ and the **predictors** is **linear** ^0125a8
 	- $f(x_{i})=\mathbb{E}(y_{i}|x_{i})=\beta_{0}+\beta_{1}x_{i1}+\cdots+\beta_{p}x_{ip}$ 
-2. **Homoskedasticity**: the error terms have the same variance
+2. **Homoskedasticity**: the error terms have the same variance ^fda1c8
 	- $\text{Var}(\epsilon_{i} | x_{i}) = \sigma_{\epsilon}^2$ for all individuals
 	- If the variability of the noise instead changes as a function of the covariates, we call the noise **heteroskedastic**
-3. **Uncorrelated noise**: $\text{Cov}(\epsilon_{i},\epsilon_{j}|x_{i},x_{j})=0$ for $i \ne j$
+3. **Uncorrelated noise**: $\text{Cov}(\epsilon_{i},\epsilon_{j}|x_{i},x_{j})=0$ for $i \ne j$ ^167b66
 
 For now, we don’t assume that $\epsilon_{i}$ follow a **particular distribution** (for instance, normal). The model will be strengthened later when discussing statistical inference.
 
@@ -92,9 +95,12 @@ $$\text{Var}(y)=\begin{bmatrix} \text{Var}(y_{1}) & \dots & \text{Cov}(y_{1},y_{
 
 Note that $\text{Var}(y)=\text{Var}(\epsilon)=\sigma_{\epsilon}^{2} I_{n \times n}$.
 
-We can also write the **least squares criterion** in matrix form:
+We can also write the **least squares criterion** in matrix form: 
 $$\begin{align}\min_{\tilde{\beta}}{\sum\limits_{i=1}^{n}e_{i}^{2}}&=\min_{\tilde{\beta}}e^{T}e \\ &= \min_{\tilde{\beta}} (y-X\tilde{\beta})^T(y-X\tilde{\beta})
 \end{align}$$
+
+^9294d3
+
 Then, we differentiate the criterion with respect to $\tilde{\beta}$ - attaining
 $$\frac{\partial}{\partial \tilde{\beta}} (y-X\tilde{\beta})^T(y-X\tilde{\beta})=-2X^{T}y+2(X^{T}X)\tilde{\beta}$$
 Setting this to zero allows us to find the minimizer (our objective function is convex).

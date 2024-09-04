@@ -1,6 +1,6 @@
 [[2024-09-03]] #Valuation #Bonds 
 
-Some definitions.
+Some definitions beforehand.
 
 ```ad-important
 **Definition 3.1**: Equivalency
@@ -17,18 +17,20 @@ For a given compounding method with interest rate $r$, the effective rate $r_e$ 
 ```
 
 ---
-
 ### Bonds
 Bond is a financial security promising the holder a sequence of **guaranteed future payments**.  
 
 #### Zero-coupon Bonds
 More specifically, a **Zero-coupon bond** means that the buyer of the bond will receive **face value** $F$ (usually = 100 or 1), known as the face value, on a given day $T$ (usually 1 year), called the **maturity date**.
 
-The Present Value (PV) is $V (0) = \frac{F}{1 + r}$, if $r$ is annual compounding rate. In reality, we use the **market price of bonds** to imply the annual compounding.
 
 We define $F\cdot B (t, T)$ to be the value at time $t$ of a zero coupon bond with face value $F$ and maturing at $T$. Note that $B(T,T)=1$ and $B(0,T)$ is the current value. By nature we have $V(0)=P=F\cdot B(0,T)$.
 
 Hence, $$V(t)=F\cdot B (t, T)=P \frac{B(t,T)}{B(0,T)}$$
+Note that the principal $P\le F$ for $0 \le t \le 1$ due to discounting.
+##### Implied Interest Rate
+The Present Value (PV) is $V (0) = \frac{F}{1 + r}$, if $r$ is annual compounding rate. In reality, we use the **market price of bonds** to imply the annual compounding.
+
 The **implied periodic compounding rate** with frequency $m$ is determined by
 $$B(t,T)\cdot\left(1+\frac{r_{m}}{m}\right)^{m(T-t)}=1 \implies r_{m}=m (B(t,T)^{\frac{-1}{m(T-t)}}-1)$$
 
@@ -37,3 +39,16 @@ $$B(t,T)\cdot e^{r(T-t)}=1 \implies r=-\frac{\ln B(t,T)}{T-t}$$
 
 #### Coupon Bonds
 Besides the face value $F$ due at maturity $T$ , coupon $C$ is paid regularly (annually, semi-annually, quarterly), the last coupon due at $T$.
+$$V(0)=PV=\sum\limits_{i=1}^{N} Ce^{-ri}+Fe^{-rN}$$
+
+```ad-note
+We calculate the value of a coupon bond at time $t$ as the **sum of the PV** of all future payments to be received in $(t,T]$, **IMMEDIATELY after** the coupon payment $C$ at time $t$.
+
+For instance, for $0 \le t < 1$, $V(t)=V(0)e^{rt}$; and, for $1 \le t <2$, $V(t)=V(1)e^{r(t-1)}$
+
+To generalize this in an iterative fashion, 
+$$V(t)=$$
+```
+
+
+
