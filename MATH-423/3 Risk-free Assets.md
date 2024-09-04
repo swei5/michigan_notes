@@ -44,11 +44,14 @@ $$V(0)=PV=\sum\limits_{i=1}^{N} Ce^{-ri}+Fe^{-rN}$$
 ```ad-note
 We calculate the value of a coupon bond at time $t$ as the **sum of the PV** of all future payments to be received in $(t,T]$, **IMMEDIATELY after** the coupon payment $C$ at time $t$.
 
-For instance, for $0 \le t < 1$, $V(t)=V(0)e^{rt}$; and, for $1 \le t <2$, $V(t)=V(1)e^{r(t-1)}$
-
-To generalize this in an iterative fashion, 
-$$V(t)=$$
+For instance, in an iterative fashion, for $0 \le t < 1$, $V(t)=V(0)e^{rt}$; and, for $1 \le t <2$, $V(t)=V(1)e^{r(t-1)}$
 ```
 
+We say a bond sells at **par**, if its price $P$ is equal to its face value $FV$. The coupon rate $i$ is the fraction of the coupon over the face value: 
+$$i=\frac{C}{F}$$
+A bond with **annual coupons** sells **at par** if and only if the coupon rate $\frac{C}{F}$ equals to $r$. To demonstrate this, let's show a simple example ($T=3$):
+$$\begin{align}
+PV&=\frac{C}{1+r}+\frac{C}{(1+r)^{2}}+\frac{C+F}{(1+r)^{3}} \\ &=\frac{rF}{1+r}+ \frac{rF}{(1+r)^{2}}+ \frac{rF+F}{(1+r)^{3}} \\ &= \frac{rF}{1+r}+ \frac{rF+F}{(1+r^{2})} \\ &= \dots \\ &= F
+\end{align}$$
 
-
+Since $PV$ is a **monotone function** of $r$, th only $r$ such that $PV=F$ must be given by $\frac{C}{F}$.
