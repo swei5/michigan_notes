@@ -83,3 +83,68 @@ The intuition here is that residuals are what’s *left over* after running our 
 ---
 ### Properties of $\hat{\beta}$
 With some algebraic properties of the ordinary least squares solution established, we’ll next investigate statistical properties of $\hat{\beta}$ when viewed as an estimator of $\beta$.
+
+Again, the variability in responses $y$ we observed in the model stems from the different vector $\epsilon$ - this in turn generates different slope and intercept coefficients when running regression.
+
+Let's first go over a few definitions and properties. Let $Y, Z \in \mathbb{R}^{m}$ be a **random** vector.
+
+```ad-important
+Definition 3.4: Properties of Expectations
+
+For $A \in \mathbb{R}^{n\times m}, b \in \mathbb{R}^{n}$, $A, b$ constant,
+$$\mathbb{E}(AY+b)=A\mathbb{E}(y)+b$$
+$$\mathbb{E}(Y+Z)=\mathbb{E}(Y)+\mathbb{E}(Z)$$
+```
+
+```ad-important
+**Definition 3.5**: Variance, Covariance
+
+For some $Z \in \mathbb{R}^{m}$,
+$$\begin{align}\text{Var}(Z)&=\mathbb{E}[(Z-\mathbb{E}(Z))(Z-\mathbb{E}(Z))^{T}]
+\\&= \mathbb{E}(ZZ^{T})-\mathbb{E}(Z)\mathbb{E}(Z)^{T}
+\\&= \begin{bmatrix} \text{Var}(Z_{1}) & \dots & \dots & \text{Cov}(Z_{1},Z_{m}) \\ \text{Cov}(Z_{2},Z_{1}) & \text{Var}{Z_{2}} &\dots & \text{Cov}(Z_{2},Z_{m})  \\ \vdots & \ddots & \ddots &\vdots \\ \text{Cov}(Z_{m},Z_{1}) &\dots &\dots & \text{Var}(Z_{m}) \end{bmatrix}
+\end{align}$$
+
+If ${Z_{j}}$ are independent, $\text{Var}(Z) = \text{Diag}(\text{Var}(Z_{j}))$.
+```
+
+```ad-important
+**Definition 3.6**: Properties of Variance
+
+For $A \in \mathbb{R}^{n \times m}, b \in \mathbb{R}^{n}$, $A, b$ constant,
+$$\text{Var}(AZ+b)=A\text{Var}(Z) A^{T}$$
+```
+
+Using the theorems developed above, we may derive the expectation of $\hat{\beta}$:
+$$\begin{align}\mathbb{E}(\hat{\beta})&=\mathbb{E}((X^{T}X)^{-1}X^{T}y)\\&=(X^{T}X)^{-1}X^{T}\mathbb{E}(y) \\ &= (X^{T}X)^{-1}(X^{T} X)\beta \\&= \beta \end{align}$$
+This demonstrates the **unbiasedness** of $\hat{\beta}$.
+- Here, we rely on the fact $\mathbb{E}(\epsilon)=0$ since it implies $\mathbb{E}(y)=X\beta$
+
+Similarly, we may define the variance of $|hat{\beta}$:
+$$\begin{align} \text{Var}(\hat{\beta})&= \text{Var}((X^{T}X)^{-1}X^{T}y) \\ &= (X^{T}X)^{-1}X^{T} \text{Var}(y) ((X^{T}X)^{-1}X^{T})^{T} \\&=\sigma_{\epsilon}^{2}(X^{T}X)^{-1} \end{align}$$
+Here, re rely on the fact $\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}I$.
+
+Note that $\text{Var}(\hat{\beta})$ is a $(p+1) \times (p+1)$ matrix, with the variances of each individual slope coefficient on the diagonal - the $j$ th slope coefficient, look at the $(j+1)$ st diagonal element.
+
+---
+### Variability in Residuals
+We’ll now introduce a few summary measures related to variability in the residuals in order to:
+1. Characterize **how much variability in our outcomes** cannot be accounted for by our predictor variables.
+2. Assess **quality of model fit**.
+3. Come up with an estimator for $\sigma_{\epsilon}^{2}$, a necessary step when (a) performing inference; and (b) constructing prediction intervals for future observations.
+
+```ad-important
+**Definition 3.7**: Residual Sum of Squares (RSS)
+$$RSS=\sum\limits_{i=1}^{n} e_{i}^{2}=\sum\limits_{i=1}^{n} (y-\hat{y})^{2}=(y-X\hat{\beta})(y-X\hat{\beta})^{T}=e^Te$$
+
+Note that this is also known as the *sum of squared errors*, introduced [[1 Simple Regression#^302e2f|here]]. This is also how we derived the OLS estimator $\hat{\beta}$.
+```
+
+```ad-important
+**Definition 3.8**: Total Sum of Squares (TSS)
+
+The total sum of squares represents the total **variability** in $y$ **itself**, **WITHOUT** trying to predict using our explanatory variables.
+$$TSS = \sum\limits_{i=1}^{n} (y_{i}-\bar{y})^{2}=(n-1)\text{Var}(y)$$
+
+where $\text{Var}(y)$ is the sample variance of $y$.
+```
