@@ -148,3 +148,33 @@ $$TSS = \sum\limits_{i=1}^{n} (y_{i}-\bar{y})^{2}=(n-1)\text{Var}(y)$$
 
 where $\text{Var}(y)$ is the sample variance of $y$.
 ```
+
+Suppose the case where we don't have any predictors, $\hat{y}_{i}=\overline{y}$ for all individuals, implying that the residual would be $y_{i}-\overline{y}$. Hence, TSS demonstrates the total variability of our data, in absence of any predictors (worst regression model). 
+
+In other words, the TSS is the sum of squared residuals in a regression that **DOES NOT include any of the predictor variables**, and instead only uses an intercept; while RSS is the sum of squared residuals in a regression that **DOES** **use the predictor variables**.
+
+This leads us to $R^{2}$ - the coefficient of determination.
+
+---
+### $R^{2}$
+
+```ad-important
+**Definition 3.9**: $R^{2}$
+
+$$R^{2}=1- \frac{RSS}{TSS}$$
+
+The $R^{2}$ value is the fraction of variation in the outcome variable $y$ that **can be accounted** for by our predictor variables $X$ through our linear model.
+
+It quantifies how much “better” we are doing in prediction by using our linear model than we would have been stuck with in the absence of any predictor variables.
+
+Additionally,
+$$R^{2}= \text{cor}(\hat{y},y)$$
+
+In the case of simple regression ($p=1$), $R^{2}=\text{cor}(x,y)$.
+```
+
+It's easy to note that $0 \le R^{2} \le 1$ since $RSS \le TSS$. 
+
+$R^{2}$ **NEVER decreases** as you add more predictor variables in to your regression (even if the predictors are irrelevant!).
+
+It only measures the **strength of the LINEAR relationship** between responses and predictors. Not an appropriate summary measure under model misspecification.
