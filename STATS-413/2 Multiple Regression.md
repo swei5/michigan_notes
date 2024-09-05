@@ -1,4 +1,4 @@
-[[2024-08-28]] #Regression 
+[[2024-08-28]] #Regression #R
 
 In general, our responses $y_i$ might be thought of as functions of $p > 1$ explanatory variables
 

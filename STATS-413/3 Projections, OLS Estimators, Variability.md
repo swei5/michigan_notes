@@ -177,4 +177,6 @@ It's easy to note that $0 \le R^{2} \le 1$ since $RSS \le TSS$.
 
 $R^{2}$ **NEVER decreases** as you add more predictor variables in to your regression (even if the predictors are irrelevant!).
 
+![[Pasted image 20240905120329.png|400]]
+
 It only measures the **strength of the LINEAR relationship** between responses and predictors. Not an appropriate summary measure under model misspecification.

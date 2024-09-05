@@ -72,6 +72,8 @@ First consider the case $A(1) > S_u$. In other words, we prefer to hold at time 
 In other words, we have a **certain strictly positive profit** with **zero** investment ($V(0)=0$). Next, consider case $A(1)$ < S^d.
 ```
 
+^73727a
+
 In addition, under the One-step Binomial model, we also have that $\frac{S^{d}}{S (0)} < \frac{A (1)}{A (0)} < \frac{S^{u}}{S(0)}$.
 
 ### Risk and Return

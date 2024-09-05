@@ -1,4 +1,4 @@
-[[2024-09-03]] #Valuation #Bonds 
+[[2024-09-03]] #Valuation #Bonds #DCF
 
 Some definitions beforehand.
 
@@ -26,7 +26,7 @@ More specifically, a **Zero-coupon bond** means that the buyer of the bond will 
 
 We define $F\cdot B (t, T)$ to be the value at time $t$ of a zero coupon bond with face value $F$ and maturing at $T$. Note that $B(T,T)=1$ and $B(0,T)$ is the current value. By nature we have $V(0)=P=F\cdot B(0,T)$.
 
-Hence, $$V(t)=F\cdot B (t, T)=P \frac{B(t,T)}{B(0,T)}$$
+Hence, $$V(t)=F\cdot B (t, T)=F \frac{B(t,T)}{B(0,T)}$$
 Note that the principal $P\le F$ for $0 \le t \le 1$ due to discounting.
 ##### Implied Interest Rate
 The Present Value (PV) is $V (0) = \frac{F}{1 + r}$, if $r$ is annual compounding rate. In reality, we use the **market price of bonds** to imply the annual compounding.
@@ -55,3 +55,26 @@ PV&=\frac{C}{1+r}+\frac{C}{(1+r)^{2}}+\frac{C+F}{(1+r)^{3}} \\ &=\frac{rF}{1+r}+
 \end{align}$$
 
 Since $PV$ is a **monotone function** of $r$, th only $r$ such that $PV=F$ must be given by $\frac{C}{F}$.
+
+---
+### Money Market Account (MMA)
+The bank acts as an agent to help its MMA customer to buy and sell bonds.
+
+Let $A(0)$ be the **initial investment** in MMA. The bank uses it to buy $\frac{A(0)}{B (0, T )}$ **zero coupon bonds**, i.e., the face value is $1. Then the value of the MMA at time $t$ is
+$$A(t)=A(0) \frac{B(t,T)}{B(t,0)}=A(0)e^{rt}, t \le T$$
+Where $r$ is the **implied** continuous compounding rate by the bond.
+
+In fact, $A(t) = A(0)e^{rt}$ holds for any $t > 0$, where we assumed that bonds of the same characteristics are traded for the rest of the time.
+- At time $T$, the bond expires, so we get **cash** $A (T) = A (0) e^{rT}$ 
+
+In fact, $A(t)=A(0)e^{rt}$ holds for **coupon bonds** as well. 
+
+```ad-note
+To demonstrate the above, assume the value of coupon bonds ($n$ years, coupon $C$ annually) at time $0$ is $V (0)$, and we start with $A(0)$ cash.
+- At time $t=0$, we buy $\frac{A(0)}{V(0)}$ units of coupon bonds
+- At time $t=1$, we **cash the coupon**, and **sell the bond**; then
+	- $+C$ from the coupon, and
+	- $+V(1)=V(0)e^{rt}-C$ from selling the bond
+This yields
+$$A(1)=\frac{A(0)}{V(0)}(C+V(0)e^{rt}-C)=A(0)e^{rt}$$
+```
