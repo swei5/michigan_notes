@@ -46,3 +46,10 @@ A **Type II Error** occurs if we **fail to reject the null hypothesis** when it 
 
 Note that the significance level directly determines the Type I error rate.
 - We reject $H_{0}$ when $p\le \alpha$, hence $\mathbb{P}(\text{Type 1}|H_{0}) \le \alpha$
+
+Type II errors are that the null was incorrect is actually true, but they weren’t able to show it based on their test. For a **given significance level**, increasing sample size $n$ increases the **power** of a well-designed test, where
+$$\text{power}=1-P(\text{Type II Error})$$
+Generally, we try to devise tests that have the largest power possible, subject to **controlling the Type I Error** rate at $\alpha$.
+
+In one-sample hypothesis testing, we use the $z$ -statistic when the **population standard deviation** is **known**, and use the $t$ -statistic when the **population standard deviation** is **unknown.**
+$$p=\mathbb{P}(T \ge \text{t-stats} | H_{0})$$

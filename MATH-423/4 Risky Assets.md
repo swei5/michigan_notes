@@ -48,4 +48,8 @@ Assume for simplicity that $S(0) = 1$. The process for stock prices looks a tree
 ![[Pasted image 20240905141439.png|400]]
 
 In general,
-$$S(n)=S(0)(1+u)^{i}(1+d)^{n-1}$$ for $i=0,1,...,n$, i.e. $S(n)$ can 
+$$S(n)=S(0)(1+u)^{i}(1+d)^{n-1}$$ for $i=0,1,...,n$, i.e. $S(n)$ can take $n+1$ different values - the obtained tree is called the **recombining tree**.
+
+The probability of $S (n)$ such that $S(n)=S(0)(1+u)^{i}(1+d)^{n-1}$ is
+$$\mathbb{P}(S(n))=C(n,i) p^{i} (1-p)^{n-1}$$
+In other words, $S \sim B(n,p)$.
