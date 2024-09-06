@@ -53,5 +53,48 @@ Generally, we try to devise tests that have the largest power possible, subject 
 
 In one-sample hypothesis testing, we use the $z$ -statistic when the **population standard deviation** is **known**, and use the $t$ -statistic when the **population standard deviation** is **unknown.**
 $$p=\mathbb{P}(T \ge \text{t-stats} | H_{0})$$
+---
+### Hypothesis Testing for Slope
+Consider a linear model $y = X \beta + \epsilon$ with $p$ predictors, and suppose we wanted to test whether or not the slope on covariate $x_j$ , $\beta_j$ , was equal to a particular value:
+$$H_{0}:\beta_{j}=\gamma_{0}$$
+The alternatives take the following form:
+- $H_{a}: \beta_{j}<\gamma_{0}$: less than
+- $H_{a}: \beta_{j}>\gamma_{0}$: greater than
+- $H_{a}: \beta_{j} \ne \gamma_{0}$: **two-sided**
 
+By far the most common hypothesis test for slope coefficients is $\gamma_{0}=0$.
 
+As previously introduced [[2 Multiple Regression#Interpretation of Intercepts||here]], $\beta_j$ requires *ceteris paribus* - having the same values for all other predictor variables fixed. As such, hypothesis test for the null $\beta_{j}=\gamma_{0}$ can be thought of as:
+- After **controlling / adjusting for the effect** of all other predictor variables $\set{x_{l}; l \ne j}$, let’s assess evidence for whether or not the true slope on the $j$ th variable is $\gamma_{0}$
+
+#### Stronger Linear Model
+While the assumptions that $E (\epsilon) = 0$ and $\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}$ are enough for unbiasedness and to derive a form for the variance for $\hat{\beta}$, we’ll impose **additional restrictions** on $\epsilon$ to derive a sampling distribution for $\hat{\beta}$:
+$$\epsilon \sim MVN(0,\sigma_{\epsilon}^{2}I)$$
+Where $MVN$ represents the multivariate normal distribution. This is equivalent to saying that
+$$\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$$
+And that $\epsilon_{i}$ are iid and normally distributed with expectation 0 and variance $\sigma_{\epsilon}^{2}$.
+
+```ad-example
+**Example**: Stronger Linear Model ($p=1$)
+
+![[Pasted image 20240906001708.png|300]]
+```
+
+```ad-note
+In summary, the stronger linear model assumes:
+1. **Linearity**: $\mathbb{E}(y_{i})=x_{i}^{T}\beta$
+2. **Homoskedasticity**: $\text{Var}(y_{i})=\sigma_{\epsilon}^{2}$
+3. **Normality**: $\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$
+```
+
+#### Distribution of $\hat{\beta}$
+Under the stronger linear model,
+$$\hat{\beta} \sim MVN(\beta, \sigma_{\epsilon}^{2}(X^TX)^{-1})$$
+And similarly
+$$\hat{\beta_{j}} \sim N(\beta_{j},\sigma_{\epsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)})$$
+The mean and standard deviation of $\hat{\beta}$ are previously derived here ![[3 Projections, OLS Estimators, Variability#^a4deed]]
+And here:
+![[3 Projections, OLS Estimators, Variability#^89d509]]
+
+So, for any slope coefficient $j$, letting $\text{stdev}(\hat{\beta}_{j})=\sigma_{\epsilon} \sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$
+$$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{stdev}(\hat{\beta}_{j})} \sim N(0,1)$$
