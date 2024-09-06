@@ -1,3 +1,4 @@
+#Law
 ### Torts
 Previously, the majority of laws and regulations we studied are "laws of rights" - what legal rights one has.
 - Establish a lawsuit

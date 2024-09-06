@@ -116,7 +116,7 @@ The reason for the squaring errors are for: ^302e2f
 This shows that the **least squares optimization problem** produces a prediction equation that correctly **accounts for the regression effect**.
 
 ---
-### Covered R Functions 
+### Covered `R` Functions 
 
 ```r
 # To read from a csv file

@@ -1,3 +1,4 @@
+#Law
 ### Employment at Will
 Most of the corporations in the United States use the Rule of “Employment-at-Will”.
 

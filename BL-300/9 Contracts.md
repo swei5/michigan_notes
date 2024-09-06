@@ -1,5 +1,6 @@
-In essence, a contract is a **meeting of the minds**.
+#Law
 
+In essence, a contract is a **meeting of the minds**.
 ### Contracts, Common Law
 
 ```ad-important

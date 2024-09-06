@@ -1,3 +1,4 @@
+#Law
 ### Criminal Law and Civil Law
 In previous chapters, we have covered extensively about **civil laws**, which concerns:
 - **Interpersonal** wrongdoings

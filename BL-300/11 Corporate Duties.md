@@ -1,3 +1,5 @@
+#Law
+
 Recall the [[3 Entities#^5c8a8d|roles in a corporation]]:
 - Shareholders elect board of directors
 - Board of directors

@@ -1,3 +1,4 @@
+#Investment 
 ### Definition 
 Money is anything accepted in transaction in return for goods and services.
 - Lots of things could function like money, depending on the agreement

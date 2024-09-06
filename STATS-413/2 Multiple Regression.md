@@ -147,7 +147,7 @@ Slope coefficients $(\beta_{1},..., \beta_{p})$ provide **comparisons** between 
 Slope is **NOT changes** as it ascribes a causal interpretation to the slope and overlooks the effect of omitted variables.
 
 ---
-### Covered R Functions
+### Covered `R` Functions
 
 ```r
 # Generate Scatter Plot Matrix

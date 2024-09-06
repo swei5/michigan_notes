@@ -1,3 +1,4 @@
+#Law
 ### General Partnership (GP)
 
 ```ad-important

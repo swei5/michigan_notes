@@ -96,5 +96,45 @@ The mean and standard deviation of $\hat{\beta}$ are previously derived here ![[
 And here:
 ![[3 Projections, OLS Estimators, Variability#^89d509]]
 
-So, for any slope coefficient $j$, letting $\text{stdev}(\hat{\beta}_{j})=\sigma_{\epsilon} \sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$
+So, for any slope coefficient $j$, letting $\text{stdev}(\hat{\beta}_{j})=\sigma_{\epsilon} \sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$ and
 $$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{stdev}(\hat{\beta}_{j})} \sim N(0,1)$$
+If we knew $\sigma_{\epsilon}^{2}$, we could begin with the value of the OLS slope coefficient returned by `R`: $\hat{\beta}_{j}^{\text{obs}}$ and compute $z$ -statistic using d
+$$z_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{stdev}(\hat{\beta}_{j})}$$
+And finally compute $p$ -values using tail probabilities from $N$.
+
+Unfortunately, we don’t know $\sigma_{\epsilon}$ - it is a **parameter** of the linear model and hence we can't compute $z_{\text{stat}}$ since we can't compute $\text{stdev}(\hat{\beta}_{j})$. We would need to estimate $\sigma_{\epsilon}$ in the first place.
+
+```ad-important
+**Definition 4.3**: Root Mean Squared Error (RMSE)
+$$\hat{\sigma_{\epsilon}}=\sqrt{\frac{\sum_{i=1}^{n}e_{i}^{2}}{n-p-1}}$$
+
+where $n-p-1$ are referred to as the **degrees of freedom** for the residual vector $e$.
+- $e$ is constrained by $p+1$ equations $e^{T}X=0$
+- Residual vector is constrained to an $n − p − 1$ dimensional subspace
+```
+
+With an estimation for $\sigma_{\epsilon}$ , we can now estimate $\text{stdev}(\hat{\beta}_{j})$ using $\text{se}(\hat{\beta}_{j})$, the **standard error** for the $j$ th coefficient:
+$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\epsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$
+#### $t$ -Statistic
+With this, we’ll consider a new test statistic which replaces $\text{stdev}(\hat{\beta}_{j})$ with its sample analogue $\text{se}(\hat{\beta}_{j})$:
+$$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$
+```ad-important
+**Definition 4.4**: A Null Distribution for Testing $\beta_{j}$
+
+Under the null hypothesis and assuming the **stronger linear model**, tstat follows a $t$ distribution with $n − p − 1$ degrees of freedom.
+```
+
+We then use tail probabilities from the $t_{n−p−1}$ distribution to compute $p$ -values. 
+
+The $t$ family of distributions is indexed by a number known as its “degrees of freedom,” or $df$ for short. As $df \to \infty$, the $t_{df}$ converges to a **standard normal distribution**.
+
+---
+### Covered `R` Functions
+
+```r
+# Calculate t-test TAIL probability
+pt(tstat, n − p − 1)
+
+# Retrieve standard errors
+summary(lm.medicorp)$coefficients[,2]
+```

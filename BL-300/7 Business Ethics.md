@@ -1,3 +1,4 @@
+#Law
 ### Introduction
 Why study business ethics?
 - Law helps enforce moral codes
