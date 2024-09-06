@@ -113,11 +113,9 @@ where $n-p-1$ are referred to as the **degrees of freedom** for the residual vec
 - Residual vector is constrained to an $n − p − 1$ dimensional subspace
 ```
 
-With an estimation for $\sigma_{\epsilon}$ , we can now estimate $\text{stdev}(\hat{\beta}_{j})$ using $\text{se}(\hat{\beta}_{j})$, the **standard error** for the $j$ th coefficient:
-$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\epsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$
+With an estimation for $\sigma_{\epsilon}$ , we can now estimate $\text{stdev}(\hat{\beta}_{j})$ using $\text{se}(\hat{\beta}_{j})$, the **standard error** for the $j$ th coefficient:$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\epsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ ^bde6fa
 #### $t$ -Statistic
-With this, we’ll consider a new test statistic which replaces $\text{stdev}(\hat{\beta}_{j})$ with its sample analogue $\text{se}(\hat{\beta}_{j})$:
-$$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$
+With this, we’ll consider a new test statistic which replaces $\text{stdev}(\hat{\beta}_{j})$ with its sample analogue $\text{se}(\hat{\beta}_{j})$$$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$ ^cecd4f
 ```ad-important
 **Definition 4.4**: A Null Distribution for Testing $\beta_{j}$
 
@@ -127,6 +125,8 @@ Under the null hypothesis and assuming the **stronger linear model**, tstat foll
 We then use tail probabilities from the $t_{n−p−1}$ distribution to compute $p$ -values. 
 
 The $t$ family of distributions is indexed by a number known as its “degrees of freedom,” or $df$ for short. As $df \to \infty$, the $t_{df}$ converges to a **standard normal distribution**.
+
+![[Pasted image 20240906114003.png|400]]
 
 ---
 ### Covered `R` Functions
@@ -138,3 +138,13 @@ pt(tstat, n − p − 1)
 # Retrieve standard errors
 summary(lm.medicorp)$coefficients[,2]
 ```
+
+#### `lm` Output Interpretation
+
+![[Pasted image 20240906114330.png|500]]
+
+- $\hat{\beta}$: first column
+- [[#^bde6fa|Standard Errors]]: second column
+- [[#^cecd4f|t-statistic]]: third column
+	- Note that this is **BASED ON** $\gamma_{0}=0$
+- One-tail probability: fourth column

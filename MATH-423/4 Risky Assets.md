@@ -33,6 +33,12 @@ $$\mathbb{E}(k(n,m))= \mathbb{E}(k(n+1))+\mathbb{E}(k(n+2))+\cdots +\mathbb{E}(k
 Moreover, if one-step returns $K(n+1),...,K(m)$ are **independent**, then
 $$1+\mathbb{E}(K(n,m))=(1+\mathbb{E}(K(n+1)))(1+\mathbb{E}(K(n+2)))\cdots (1+\mathbb{E}(K(m)))$$
 
+```ad-note
+**Short Proof of the equalities above**
+
+![[Pasted image 20240906115452.png|500]]
+```
+
 ---
 ### Binomial Tree Model
 For stock prices, we extend One-Step Binomial Model to multiple steps so as to obtain a binomial tree structure for stock prices.
