@@ -53,3 +53,5 @@ Generally, we try to devise tests that have the largest power possible, subject 
 
 In one-sample hypothesis testing, we use the $z$ -statistic when the **population standard deviation** is **known**, and use the $t$ -statistic when the **population standard deviation** is **unknown.**
 $$p=\mathbb{P}(T \ge \text{t-stats} | H_{0})$$
+
+
