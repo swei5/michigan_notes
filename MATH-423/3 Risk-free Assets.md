@@ -75,6 +75,7 @@ To demonstrate the above, assume the value of coupon bonds ($n$ years, coupon $C
 - At time $t=1$, we **cash the coupon**, and **sell the bond**; then
 	- $+C$ from the coupon, and
 	- $+V(1)=V(0)e^{rt}-C$ from selling the bond
+
 This yields
 $$A(1)=\frac{A(0)}{V(0)}(C+V(0)e^{rt}-C)=A(0)e^{rt}$$
 ```
