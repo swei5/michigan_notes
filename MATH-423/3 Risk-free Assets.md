@@ -39,7 +39,7 @@ $$B(t,T)\cdot e^{r(T-t)}=1 \implies r=-\frac{\ln B(t,T)}{T-t}$$
 
 #### Coupon Bonds
 Besides the face value $F$ due at maturity $T$ , coupon $C$ is paid regularly (annually, semi-annually, quarterly), the last coupon due at $T$.
-$$V(0)=PV=\sum\limits_{i=1}^{N} Ce^{-ri}+Fe^{-rN}$$
+$$V(0)=PV=\sum\limits_{i=1}^{T} Ce^{-ri}+Fe^{-rT}$$
 
 ```ad-note
 We calculate the value of a coupon bond at time $t$ as the **sum of the PV** of all future payments to be received in $(t,T]$, **IMMEDIATELY after** the coupon payment $C$ at time $t$.
