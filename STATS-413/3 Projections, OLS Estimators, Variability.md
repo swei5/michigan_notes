@@ -178,3 +178,6 @@ $R^{2}$ **NEVER decreases** as you add more predictor variables in to your regre
 ![[Pasted image 20240905120329.png|400]]
 
 It only measures the **strength of the LINEAR relationship** between responses and predictors. Not an appropriate summary measure under model misspecification.
+
+### Further Readings
+- [Expectation and Variance Derivation in Matrix Form](https://www.sfu.ca/~lockhart/richard/350/08_2/lectures/GeneralTheory/web.pdf)
