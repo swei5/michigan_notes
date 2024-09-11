@@ -87,6 +87,8 @@ In summary, the stronger linear model assumes:
 3. **Normality**: $\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$
 ```
 
+^bfc3d4
+
 #### Distribution of $\hat{\beta}$
 Under the stronger linear model,
 $$\hat{\beta} \sim MVN(\beta, \sigma_{\epsilon}^{2}(X^TX)^{-1})$$
@@ -96,11 +98,10 @@ The mean and standard deviation of $\hat{\beta}$ are previously derived here ![[
 And here:
 ![[3 Projections, OLS Estimators, Variability#^89d509]]
 
-So, for any slope coefficient $j$, letting $\text{stdev}(\hat{\beta}_{j})=\sigma_{\epsilon} \sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$ and
-$$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{stdev}(\hat{\beta}_{j})} \sim N(0,1)$$
-If we knew $\sigma_{\epsilon}^{2}$, we could begin with the value of the OLS slope coefficient returned by `R`: $\hat{\beta}_{j}^{\text{obs}}$ and compute $z$ -statistic using d
+So, for any slope coefficient $j$, letting $\text{stdev}(\hat{\beta}_{j})=\sigma_{\epsilon} \sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$ and $$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{stdev}(\hat{\beta}_{j})} \sim N(0,1)$$
+If we knew $\sigma_{\epsilon}^{2}$, we could begin with the value of the OLS slope coefficient returned by `R`: $\hat{\beta}_{j}^{\text{obs}}$ and compute $z$ -statistic using
 $$z_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{stdev}(\hat{\beta}_{j})}$$
-And finally compute $p$ -values using tail probabilities from $N$.
+And finally compute $p$ -values using tail probabilities from $N$. ^e2a176
 
 Unfortunately, we don’t know $\sigma_{\epsilon}$ - it is a **parameter** of the linear model and hence we can't compute $z_{\text{stat}}$ since we can't compute $\text{stdev}(\hat{\beta}_{j})$. We would need to estimate $\sigma_{\epsilon}$ in the first place.
 

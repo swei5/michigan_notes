@@ -70,9 +70,40 @@ $$\begin{align}
 
 ---
 ### Risks Reduction
-Note that $\rho_{12} \in [−1, 1]$. First consider the risk reduction in two extreme cases.
+Equivalent to minimizing $\sigma_V$. Note that $\rho_{12} \in [−1, 1]$. First consider the risk reduction in two extreme cases.
 1. If $\rho_{12}=1$, then $\rho_{V}=|w_{1}\sigma_1+w_{2}\sigma_{2}|$. In particular, when $\sigma_{1} \ne \sigma_2$:
 $$\sigma_{V=0}\iff w_1=\frac{-\sigma_2}{\sigma_{1}-\sigma_{2}} \text{ and } w_{2}=\frac{\sigma_{1}}{\sigma_{1}-\sigma_{2}}$$
 Here either $w_1$ or $w_2$ is negative, implying that **short sales must happen**.
 
-2. If $\rho_{12}=-1$, then $\rho_{V}=|w_{1}\sigma_1-w_{2}\sigma_{2}|$. In particular
+2. If $\rho_{12}=-1$, then $\rho_{V}=|w_{1}\sigma_1-w_{2}\sigma_{2}|$. In particular $$\sigma_{V}=0\iff w_{1}=\frac{\sigma_{2}}{\sigma_{1}+\sigma_{2}} \text{ and } w_{2}=\frac{\sigma_{1}}{\sigma_{1}+\sigma_{2}}$$
+```ad-note
+**Short Proof of (1)**
+
+![[Pasted image 20240911130504.png|500]]
+```
+
+```ad-important
+**Definition 5.3**: Affine Combination, Convex Combination
+
+Let $A,B$ be two points on the plane, then
+1. Every point on the plane that can be written as $$xA+(1-x)B$$ for some $x \in \mathbb{R}$ is called the **affine combination** of $A, B$.
+2. Every point on the plane that can be written as $$xA+(1-x)B$$ for some $x \in [0,1]$ is called the **convex combination** of $A, B$.
+```
+
+![[Pasted image 20240911131329.png|500]]
+
+
+```ad-important
+**Definition 5.4**: Minimal Risk 
+
+For $-1 \le \rho_{12} \le 1$, the minimal risk is attained when
+$$w_{1}^{\text{min}}:=\frac{\sigma_{2}^{2}-\rho_{12}\sigma_{1}\sigma_{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}-2\rho_{12}\sigma_{1}\sigma_{2}}$$
+$$w_{2}^{\text{min}}:=1-w_{1}^{\text{min}}=\frac{\sigma_{1}^{2}-\rho_{12}\sigma_{1}\sigma_{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}-2\rho_{12}\sigma_{1}\sigma_{2}}$$
+
+If short sales are not allowed, the smallest risk (may not be 0) is attained at
+- $(w_{1},w_{2})=(0,1)$ if $w_{1}^{\text{min}}<0$
+- $(w_{1},w_{2})=(w_{1}^{\text{min}}, w_{2}^{\text{min}}<0)$ if $0 \le w_{1}^{\text{min}} \le 1$
+- $(w_{1},w_{2})=(1,0)$ if $w_{1}^{\text{min}}>0$
+```
+
+To proof this, we view $\sigma_{V}^{2}:= f(w_{1})$ as a function of $w_{1}$ and verify that $f^{\prime}(w_{1}^{\text{min}})=0$ and $f^{\prime \prime}(w_{1}^{\text{min}})>0$.
