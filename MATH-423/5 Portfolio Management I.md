@@ -1,4 +1,4 @@
-[[2024-09-10]] #Portfolio #Valuation 
+[[2024-09-10]] #Portfolio #Valuation #Risks 
 
 ### Portfolio Returns
 Assume we have a simple case: two stocks and two time spots.
@@ -109,4 +109,3 @@ If short sales are not allowed, the smallest risk (may not be 0) is attained at
 ```
 
 To proof this, we view $\sigma_{V}^{2}:= f(w_{1})$ as a function of $w_{1}$ and verify that $f^{\prime}(w_{1}^{\text{min}})=0$ and $f^{\prime \prime}(w_{1}^{\text{min}})>0$.
-
