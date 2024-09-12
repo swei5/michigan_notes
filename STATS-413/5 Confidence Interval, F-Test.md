@@ -37,4 +37,24 @@ Or, `R` provides an easier shorthand - `confint(lm, level = .95)` for calculatio
 If our confidence interval is $\hat{\beta_{j}}\pm t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$, we say that we are 95% **confident** that $\beta_{j}$, the **true population slope**, falls between $\hat{\beta_{j}} + t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$ and $\hat{\beta_{j}} - t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$.
 - In other words, values for $\beta_{j}$ outside the interval are **unlikely**
 
-The interval is **random** since both $\hat{\beta_{j}}$ and $\text{se}(\hat{\beta}_{j})$ are random, the first is due to randomness of $\epsilon$ and the latter is due to 
+The interval is **random** since both $\hat{\beta_{j}}$ and $\text{se}(\hat{\beta}_{j})$ are random due to randomness of $\epsilon$.
+
+```ad-note
+**Randomness of Confidence Interval**
+
+For each data set, we see one random sample slope, $\hat{\beta_{j}}$ , and a random standard error estimator $\text{se}(\hat{\beta}_{j})$. If I had collected another data set with the same true slope $\beta$, I would have had a different vector $\hat{\beta}$ and a different standard error $\text{se}(\hat{\beta}_{j})$, because I would have had **different respondents** in my sample.
+
+Hence, our data set is *one possible world*. We usually only collect one data set, but the data set could have been different, and that’s the point! Across 95% of data sets, a 95% confidence interval will capture the true value of $\beta_{j}$ 95% of the time.
+
+![[Pasted image 20240912002208.png|500]]
+```
+
+#### Connection between Confidence Interval and Hypothesis Test 
+If our alternative is **two-sided** and we conduct a test with significance level $\alpha$, we can **reject** the null $\gamma$ iff $\gamma$ **DOES NOT fall** within the $100 (1 − \alpha)\%$ confidence interval.
+- Correspondingly, $\gamma$ **is IN our confidence interval** iff we failed to reject the null that $\beta_{j}=\gamma_0$ with a two sided alternative 
+
+Formally, we fail to reject iff $$\begin{align}|t_{\text{stat}}| &\le t_{1-\frac{\alpha}{2},n-p-1} \\\hat{\beta_j}-t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j}) &\le \gamma_0 \le \hat{\beta_j}+t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j})\end{align}$$ Note that this is also the definition of a $100 (1-\alpha)\%$ confidence interval.
+
+In a one-sided test (consider $H_{1}:\beta_{j} > 0$), we only reject when the $t$ -statistic is **sufficiently large**. In particular, we reject when $\mathbb{P}(T_{n-p-1} \ge t_{\text{stat}}) \le \alpha \iff t_{\text{stat}} > t_{1-\alpha, n-p-1}$ .
+- In other words, we fail to reject when $t_{\text{stat}} \le t_{1-\alpha, n-p-1}$
+
