@@ -1,4 +1,4 @@
-[[2024-09-10]] #Regression 
+[[2024-09-10]] #Regression #R
 
 Recall some key properties of our linear model: ![[4 Hypothesis Testing#^bfc3d4]]
 And that $$\mathbb{E}(\hat{\beta})=\beta$$
@@ -26,5 +26,15 @@ Provided the assumptions for the (stronger) linear model hold (linearity, homosk
 
 A $100(1 − \alpha)\%$ t-based two-sided confidence interval for $\beta_{j}$ is:
 $$\hat{\beta_{j}}\pm t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j})$$
+
 ```
 
+The corresponding `R` command for $t_{1-\frac{\alpha}{2},n-p-1}$ is `qt(1-a/2, n-p-1)`. To compute the entire confidence interval (both tails), we use `beta+c(-1,1)*qt(1-a/2,n-p-1)*se`
+
+Or, `R` provides an easier shorthand - `confint(lm, level = .95)` for calculation of 95% CI with the `lm` regression model.
+
+#### Interpretation of Confidence Interval 
+If our confidence interval is $\hat{\beta_{j}}\pm t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$, we say that we are 95% **confident** that $\beta_{j}$, the **true population slope**, falls between $\hat{\beta_{j}} + t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$ and $\hat{\beta_{j}} - t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$.
+- In other words, values for $\beta_{j}$ outside the interval are **unlikely**
+
+The interval is **random** since both $\hat{\beta_{j}}$ and $\text{se}(\hat{\beta}_{j})$ are random, the first is due to randomness of $\epsilon$ and the latter is due to 
