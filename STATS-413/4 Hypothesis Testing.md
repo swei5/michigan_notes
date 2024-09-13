@@ -114,6 +114,8 @@ where $n-p-1$ are referred to as the **degrees of freedom** for the residual vec
 - Residual vector is constrained to an $n − p − 1$ dimensional subspace
 ```
 
+^52cf89
+
 With an estimation for $\sigma_{\epsilon}$ , we can now estimate $\text{stdev}(\hat{\beta}_{j})$ using $\text{se}(\hat{\beta}_{j})$, the **standard error** for the $j$ th coefficient:$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\epsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ ^bde6fa
 #### $t$ -Statistic
 With this, we’ll consider a new test statistic which replaces $\text{stdev}(\hat{\beta}_{j})$ with its sample analogue $\text{se}(\hat{\beta}_{j})$$$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$ ^cecd4f

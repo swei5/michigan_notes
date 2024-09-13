@@ -29,7 +29,7 @@ $$\hat{\beta_{j}}\pm t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j})$$
 
 ```
 
-The corresponding `R` command for $t_{1-\frac{\alpha}{2},n-p-1}$ is `qt(1-a/2, n-p-1)`. To compute the entire confidence interval (both tails), we use `beta+c(-1,1)*qt(1-a/2,n-p-1)*se`
+The corresponding `R` command for $t_{1-\frac{\alpha}{2},n-p-1}$ is `qt(1-a/2, n-p-1)`. 
 
 Or, `R` provides an easier shorthand - `confint(lm, level = .95)` for calculation of 95% CI with the `lm` regression model.
 
@@ -108,4 +108,34 @@ The overall $\mathcal{F}$ -test can be viewed as a comparison between:
 1. The residual sum of squares in a model including **ALL of the predictor variables**, and
 2. The residual sum of squares in a model only including those variables whose coefficients **don’t equal zero under the null** ($\beta_0$)
 
+In other words, the objective of the test is to quantify **how large of a discrepancy** between [[3 Projections, OLS Estimators, Variability#^cb791d|TSS]] and [[3 Projections, OLS Estimators, Variability#^dbce55|RSS]] we should expect under the null. If what we observe is **much larger** than expected, we reject the null. Alternatively, we may write
+$$F_{\text{stat}}=\frac{\frac{TSS-RSS}{p}}{\frac{RSS}{n-p-1}}=\frac{\frac{TSS-RSS}{p}}{\hat{\sigma}_{\epsilon}^2}$$
+Numerator represents the **difference between the TSS and the RSS**, divided by the differences in the degrees of freedom for the residual terms in those two regressions:
+1. Regression with **ONLY an intercept**: $e$ has $n-1$ degrees of freedom
+2. Regression with **ALL variables**: $e$ has $n-p-1$ degrees of freedom
 
+The difference between (1) and (2) is $p$.
+
+Denominator represents **RSS in the full model**, divided by degrees of freedom for residual vector in the full model. 
+- Note that this is the **mean squared error** of the model, previously introduced [[4 Hypothesis Testing#^52cf89|here]]
+
+---
+### Covered `R` Functions
+
+```r
+# Compute F-stat
+1-pf(Fstat, df1=p, df2=n-p-1)
+
+# p-val computation
+1-pt(tstat, n-p-1) # Greater than
+pt(tstat, n-p-1) # Less than
+2pt(−|tstat|, n-p-1) # Two-sided
+
+# Two-sided CI
+# beta can be accessed through coeff
+# se can be accessed through standard.errors
+beta+c(-1,1)*qt(1-a/2,n-p-1)*se 
+
+# Or,
+confint(lm, level = .95)
+```

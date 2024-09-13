@@ -138,6 +138,8 @@ $$RSS=\sum\limits_{i=1}^{n} e_{i}^{2}=\sum\limits_{i=1}^{n} (y-\hat{y})^{2}=(y-X
 Note that this is also known as the *sum of squared errors*, introduced [[1 Simple Regression#^302e2f|here]]. This is also how we derived the OLS estimator $\hat{\beta}$.
 ```
 
+^dbce55
+
 ```ad-important
 **Definition 3.8**: Total Sum of Squares (TSS)
 
@@ -146,6 +148,8 @@ $$TSS = \sum\limits_{i=1}^{n} (y_{i}-\bar{y})^{2}=(n-1)\text{Var}(y)$$
 
 where $\text{Var}(y)$ is the sample variance of $y$.
 ```
+
+^cb791d
 
 Suppose the case where we don't have any predictors, $\hat{y}_{i}=\overline{y}$ for all individuals, implying that the residual would be $y_{i}-\overline{y}$. Hence, TSS demonstrates the total variability of our data, in absence of any predictors (worst regression model). 
 
