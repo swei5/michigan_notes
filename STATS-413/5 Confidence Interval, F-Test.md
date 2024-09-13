@@ -56,7 +56,7 @@ If our alternative is **two-sided** and we conduct a test with significance leve
 Formally, we fail to reject iff $$\begin{align}|t_{\text{stat}}| &\le t_{1-\frac{\alpha}{2},n-p-1} \\\hat{\beta_j}-t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j}) &\le \gamma_0 \le \hat{\beta_j}+t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j})\end{align}$$ Note that this is also the definition of a $100 (1-\alpha)\%$ confidence interval: $$[\hat{\beta_j}-t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j}),\hat{\beta_j}+t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j})]$$
 
 ```ad-note
-To reject $H_{0}\ne \gamma_{0}$: we need $\mathbb{P}(T_{n-p-1} \ge t_{\text{stat}}) \le \alpha$, which
+To reject $H_{0}\ne \gamma_{0}$, we need $\mathbb{P}(T_{n-p-1} \le |t_{\text{stat}}|) \le \alpha$, which is equivalent to saying that $\hat{\beta}_{j}$ is outside of the $100(1-\alpha)\%$ confidence interval of $\gamma_0$ - and if we construct the same $100(1-\alpha)\%$ confidence interval this time for $\hat{\beta}_{j}$, naturally, $\gamma_0$ would be outside the interval using the same $t$ distribution given the same parameters $\alpha$ and $\text{df}=n-p-1$.
 ```
 
 In a one-sided test (consider $H_{1}:\beta_{j} > 0$), we only reject when the $t$ -statistic is **sufficiently large**. In particular, we reject when $\mathbb{P}(T_{n-p-1} \ge t_{\text{stat}}) \le \alpha \iff t_{\text{stat}} > t_{1-\alpha, n-p-1}$ .
@@ -67,3 +67,45 @@ This means that our $100 (1-\alpha)\%$ one-sided "greater than" confidence inter
 
 ---
 ### $\mathcal{F}$ -test
+We now know how to, given a set of explanatory variables $x_1,\dots,x_p$, create a multiple regression model to try to predict the value of the response $y$. We want to know if there is evidence that the model *helped*.
+- Relative to having **NO information** on the explanatory variables - simply predicting the overall mean
+
+As of now, he test will be based on the magnitude of [[3 Projections, OLS Estimators, Variability#$R {2}$|R-squared]]: *how much variation in $y$ could we explain from our regression*?
+
+Under the assumptions of the multiple regression model, the null hypothesis for testing “was multiple regression worth it?” takes on the form: $$H_{0}: \beta_1=\dots=\beta_{p}=0$$
+And the alternative is $$H_{a} = \text{ at least one } \beta_{j}\ne0$$
+Another way to think about this: under the null, the only thing that matters for predicting a response is the **intercept**, $\beta_0$.
+- If this were true, $\mathbb{E}(y_{i}|x_{i}) = \beta_{0}$; that is, every point has the **same mean** regardless of the values of the explanatory variables
+
+We’ll form a test statistic whose value is large when $x_1,\dots,x_p$ are strong predictors of $y$ (large values mean strong evidence against the null). This corresponds to large values for R-squared.
+
+```ad-important
+**Definition 5.2**: $\mathcal{F}$-statistic
+
+The statistic takes on the form: $$F_{\text{stat}}=\frac{R^{2}}{1-R^{2}}\left(\frac{n-p-1}{p}\right)$$
+```
+
+$R^2$ will be greater than zero due to chance correlations, even if the explanatory variables don’t actually matter - and, the more predictors we add to the model, the higher the $R^2$ will be.
+
+#### $\mathcal{F}$ -Distribution
+It turns out that, **under the null hypothesis**, the distribution of $F_{\text{stat}}$ is a member of a family of probability distributions known as $\mathcal{F}$ -distributions.
+- Parametrized by **degrees of freedom** (two parameters of $\text{df}$)
+- **NOT symmetric**
+
+Formally, $F_{\text{stat}}$ follows a $\mathcal{F}_{p, n-p-1}$ distribution, where $p$ is the number of predictor variables and $n$ is the sample size.
+
+We calculate the $p$ -value as $\mathbb{P}(\mathcal{F}_{p, n-p-1} \ge F_{\text{stat}})$: here the extremes are always in the **right tail**.
+
+```ad-example
+**Example, F-Test**
+
+![[Pasted image 20240913002519.png|400]]
+
+Hence, this suggests that **our regression model provides a statistically significant** improvement in predictions for sales.
+```
+
+The overall $\mathcal{F}$ -test can be viewed as a comparison between:
+1. The residual sum of squares in a model including **ALL of the predictor variables**, and
+2. The residual sum of squares in a model only including those variables whose coefficients **don’t equal zero under the null** ($\beta_0$)
+
+

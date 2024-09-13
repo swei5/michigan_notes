@@ -181,3 +181,6 @@ It only measures the **strength of the LINEAR relationship** between responses a
 
 ### Further Readings
 - [Expectation and Variance Derivation in Matrix Form](https://www.sfu.ca/~lockhart/richard/350/08_2/lectures/GeneralTheory/web.pdf)
+- [SSE SSR Independence](https://math.stackexchange.com/questions/2278247/proving-that-sse-and-ssr-are-independent)
+- [SSE+SSR=SST Proof](https://math.stackexchange.com/questions/709419/prove-sst-ssessr)
+- [R-squared Increasing Proof](https://math.stackexchange.com/questions/1976747/prove-that-r2-cannot-decrease-when-adding-a-variable)
