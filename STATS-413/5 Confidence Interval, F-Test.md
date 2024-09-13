@@ -53,8 +53,17 @@ Hence, our data set is *one possible world*. We usually only collect one data se
 If our alternative is **two-sided** and we conduct a test with significance level $\alpha$, we can **reject** the null $\gamma$ iff $\gamma$ **DOES NOT fall** within the $100 (1 − \alpha)\%$ confidence interval.
 - Correspondingly, $\gamma$ **is IN our confidence interval** iff we failed to reject the null that $\beta_{j}=\gamma_0$ with a two sided alternative 
 
-Formally, we fail to reject iff $$\begin{align}|t_{\text{stat}}| &\le t_{1-\frac{\alpha}{2},n-p-1} \\\hat{\beta_j}-t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j}) &\le \gamma_0 \le \hat{\beta_j}+t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j})\end{align}$$ Note that this is also the definition of a $100 (1-\alpha)\%$ confidence interval.
+Formally, we fail to reject iff $$\begin{align}|t_{\text{stat}}| &\le t_{1-\frac{\alpha}{2},n-p-1} \\\hat{\beta_j}-t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j}) &\le \gamma_0 \le \hat{\beta_j}+t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j})\end{align}$$ Note that this is also the definition of a $100 (1-\alpha)\%$ confidence interval: $$[\hat{\beta_j}-t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j}),\hat{\beta_j}+t_{1-\frac{\alpha}{2},n-p-1}\text{se}(\hat{\beta}_{j})]$$
+
+```ad-note
+To reject $H_{0}\ne \gamma_{0}$: we need $\mathbb{P}(T_{n-p-1} \ge t_{\text{stat}}) \le \alpha$, which
+```
 
 In a one-sided test (consider $H_{1}:\beta_{j} > 0$), we only reject when the $t$ -statistic is **sufficiently large**. In particular, we reject when $\mathbb{P}(T_{n-p-1} \ge t_{\text{stat}}) \le \alpha \iff t_{\text{stat}} > t_{1-\alpha, n-p-1}$ .
 - In other words, we fail to reject when $t_{\text{stat}} \le t_{1-\alpha, n-p-1}$
 
+Formally, we fail to reject iff $$\begin{align}t_{\text{stat}} &\le t_{1-\alpha,n-p-1} \\ \gamma_0 &\ge \hat{\beta_j}-t_{1-\alpha,n-p-1}\text{se}(\hat{\beta}_{j})\end{align}$$
+This means that our $100 (1-\alpha)\%$ one-sided "greater than" confidence interval has the form $$[\hat{\beta_j}-t_{1-\alpha,n-p-1}\text{se}(\hat{\beta}_{j}),\infty)$$
+
+---
+### $\mathcal{F}$ -test
