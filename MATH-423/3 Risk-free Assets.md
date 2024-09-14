@@ -33,7 +33,7 @@ The Present Value (PV) is $V (0) = \frac{F}{1 + r}$, if $r$ is annual compoundin
 
 The **implied periodic compounding rate** with frequency $m$ is determined by
 $$B(t,T)\cdot\left(1+\frac{r_{m}}{m}\right)^{m(T-t)}=1 \implies r_{m}=m (B(t,T)^{\frac{-1}{m(T-t)}}-1)$$
-
+ A
 The **implied continuous compounding rate** is
 $$B(t,T)\cdot e^{r(T-t)}=1 \implies r=-\frac{\ln B(t,T)}{T-t}$$
 
