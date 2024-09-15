@@ -126,6 +126,8 @@ If $X^{T}X$ is invertible, the unique solution of [[#^81c207|Definition 2,3]] is
 $$\hat{\beta}_{(p+1) \times 1}=(X^{T}X)^{-1}X^{T}y$$
 ```
 
+^b72bff
+
 Some additional quantities that may be represented in now the vector/matrix form:
 - Fitted values
 	- $\hat{y}_{i}=x_{i}^{T}\hat{\beta}$
