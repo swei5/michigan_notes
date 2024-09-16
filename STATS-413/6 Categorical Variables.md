@@ -35,3 +35,15 @@ If $G$ variables are included - then $d_{1}+d_{2}+ \dots + d_{G}=\mathbf{1}_{n \
 
 The **population** expectation under the multiple regression model would be $$\mathbb{E}(y_i|X_{i})=\beta_{0}+\beta_{1} \mathbb{1}(x_{i}=c_{i}) + \dots + \beta_{G-1}\mathbb{1}(x_i=c_{G-1})$$ And under the null hypothesis tested by the overall $\mathcal{F}$, $$H_{0}:\beta_{1}=\dots = \beta_{G-1}$$ The expectation function would instead be $$\mathbb{E}(y_{i}|x_{i})=\beta_0$$ i.e. the expectation is the **same for all categories**
 - So, the overall $\mathcal{F}$ -test from this regression can be used to assess the null $H_{0}:\mu_{g}=\beta_{0}$ for all $g$, where $\mu_{g}$ is the population mean in the $g$ th category; in other words, we are asking if the **means from all categories are the SAME**
+
+Recall the definition of $\mathcal{F}$ -test: ![[5 Confidence Interval, F-Test#^5e5647]]
+
+We calculate TSS based on the **overall mean** for all categories ($\bar{y}$), and RSS based on the **mean of each category** ($\hat{y}$).
+#### Analysis of Variance
+This regression-based approach for testing the equality of means through use of the overall $\mathcal{F}$ -test has its own name in the literature: **Analysis of Variance**, or ANOVA for short.
+
+Note that the test is assuming the truth of the *stronger* regression model. Most importantly,
+- Homoskedasticity: $\text{Var}(y_{i})=\sigma_{\epsilon}^{2}$
+- Normality: $\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$
+
+In this context, homoskedasticity means $\sigma_{1} = \dots = \sigma_{G}$.
