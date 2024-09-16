@@ -33,12 +33,11 @@ The Present Value (PV) is $V (0) = \frac{F}{1 + r}$, if $r$ is annual compoundin
 
 The **implied periodic compounding rate** with frequency $m$ is determined by
 $$B(t,T)\cdot\left(1+\frac{r_{m}}{m}\right)^{m(T-t)}=1 \implies r_{m}=m (B(t,T)^{\frac{-1}{m(T-t)}}-1)$$
- A
 The **implied continuous compounding rate** is
 $$B(t,T)\cdot e^{r(T-t)}=1 \implies r=-\frac{\ln B(t,T)}{T-t}$$
 
 #### Coupon Bonds
-Besides the face value $F$ due at maturity $T$ , coupon $C$ is paid regularly (annually, semi-annually, quarterly), the last coupon due at $T$.
+Besides the face value $F$ due at maturity $T$ , coupon $C$ is paid regularly (annually, semi-annually, quarterly), the last coupon due at $T$. For continuously compounding bond instruments, this is
 $$V(0)=PV=\sum\limits_{i=1}^{T} Ce^{-ri}+Fe^{-rT}$$
 
 ```ad-note
