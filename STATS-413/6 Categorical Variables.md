@@ -47,3 +47,47 @@ Note that the test is assuming the truth of the *stronger* regression model. Mos
 - Normality: $\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$
 
 In this context, homoskedasticity means $\sigma_{1} = \dots = \sigma_{G}$.
+
+---
+### Interactions
+It may be that the **slope of a predictor variable changes as a function of another categorical variable**.
+- The continuous variable may impact the expectation in different groups differently
+
+```ad-example
+**Example**: Regression with both Categorical and Continuous Variables
+
+Assume this is our regrssion equation.
+
+![[Pasted image 20240916211846.png|500]]
+
+In the **south**, for two territories with the **same advertising spend** but who differ in total bonus paid by 1 hundred dollars is expected to **differ in** $1.534$ in sales.
+
+In the **midwest**, for two territories with the **same advertising** spend but who differ in total bonus paid by 1 hundred dollars is expected to **differ in** $1.534$ in sales, **ALSO**.
+
+This implies that **across different groups**, regression lines have different intercepts, but **SAME slopes**! This is **NOT always the case in reality**.
+```
+
+We can capture these differences through the incorporation of **interaction terms**.
+
+```ad-important
+**Definition 6.2**: Interaction Terms
+
+To form an interaction term, we simply take the **product** of the two covariates whose interaction we are investigating: $X_{i} \times X_{j}$.
+
+The interaction term between a continuous and categorical covariate takes on the following form: $$X_{i} \mathbb{1}\{X_{j}=c\}=\begin{cases} 0 & X_{j}\ne c \\ X_{i} & X_{j}=c
+\end{cases}$$
+
+Each interaction term is a $n \times 1$ column vector.
+```
+
+```ad-example
+**Example**: Regressions with Interactions
+
+![[Pasted image 20240916213539.png|500]]
+
+`:` in the covariate term means *to interact with*. At this extreme, each group has its **own slope and intercepts**.
+- Midwest (reference): $\hat{\beta}_{0}+\hat{\beta}_{\text{bonus}}(\text{Bonus}) + \hat{\beta}_{\text{advert}}(\text{Advert})$
+- South: $(\hat{\beta}_{0}+\hat{\beta}_\text{south}) + (\hat{\beta}_{\text{bonus}} + \hat{\beta}_{\text{bonus:SOUTH}})(\text{Bonus}) + (\hat{\beta}_{\text{advert}} + \hat{\beta}_{\text{advert:SOUTH}})(\text{Advert})$
+
+This is **NO DIFFERENT** to saying if we fit three separate regressions each with each group, except for potential differences in standard errors and corresponding $t$-values.
+```
