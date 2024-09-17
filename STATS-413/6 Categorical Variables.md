@@ -91,3 +91,45 @@ Each interaction term is a $n \times 1$ column vector.
 
 This is **NO DIFFERENT** to saying if we fit three separate regressions each with each group, except for potential differences in standard errors and corresponding $t$-values.
 ```
+
+Through this process we’ve built up from a fairly simple model for sales to one that separately models sales according to region. Nevertheless, we want to ask - *did we need* to do this to the full extent we’ve provided here?
+
+---
+### Partial $F$ -test
+The required test is called a partial $\mathcal{F}$ -test. 
+- Partial in the sense that it **compares large (full) models to some partial subset** of the large model
+
+Suppose we want to fit a model $y_{i}=\beta_{0}+\beta_{1}x_{i1}+ \dots + \beta_{p}x_{ip} +\epsilon_{i}$ and re interested in the null hypothesis that some subset of slopes $\mathcal{I} \subseteq \set{1,\dots, p}$ are zero: $$H_{0}:\beta_{i}=0 \text{ for some subset of covariates } \mathcal{I}$$The alternative hypothesis is then $$ H_{a}: \text{at least one slope in subset } \mathcal{I} \text{is non zero}$$ **AT LEAST** $\beta_{i}$ **AND/OR** $\beta_j$ is nonzero.
+
+As contrasted to **ALL slopes** as demonstrated in a *full* $\mathcal{F}$ -test ![[5 Confidence Interval, F-Test#^589891]]
+In other words, a partial $\mathcal{F}$ -test is a natural extension of the $t$ -tests on **individual coefficients** to dealing with **sets of coefficients**.
+
+```ad-note
+If the subset is a single coefficient, a partial $\mathcal{F}$-test and a $t$-test will be **identical**.
+```
+
+A natural way to test this is to compare the RSS from a regression **including ALL variables** to the RSS from a regression **excluding the variables** whose slopes are zero under the null:
+1. **Full Model**: The model including the full set of covariates
+	- $RSS_{\text{full}}$: the RSS in the full model, including all candidate predictor variables
+	- $\text{df}_\text{full}$: the degrees of freedom for the residual vector under the full model: $n-p_\text{full}-1$
+1. **Reduced Model**: The model only including the covariates whose slopes aren’t set to zero under the null
+	- $RSS_\text{red}$: the RSS in the reduced model, **including only the predictor variables whose slope coefficients aren’t equal to zero** under the null
+	- $\text{df}_\text{red}$: $n-p_\text{red}-1$
+
+Note that $p_\text{full} > p_\text{red}$.
+
+```ad-example
+If we wanted to see if we needed interactions between region and bonus, we’d compare a model including them (the full model) to a model excluding them (the reduced model)
+```
+
+```ad-important
+**Definition 6.3**: Partial $\mathcal{F}$-test
+
+The test statistic may be expressed as: $$F_\text{stat}=\frac{(RSS_\text{red}-RSS_\text{full})/(\text{df}_\text{red}-\text{df}_\text{full})}{RSS_\text{full}/\text{df}_{\text{full}}}$$
+
+Under the null: $F_{\text{stat}} \sim \mathcal{F}(\text{df}_{\text{red}} - \text{df}_\text{full}), \text{df}_\text{full}$.
+
+View the definition of a [[5 Confidence Interval, F-Test#^5e5647|full F-test here]] and see the similarity.
+```
+
+The numerator is the **difference between the RSS** in the two models, divided by the differences in the degrees of freedom for the residual terms in those two regressions. Again, the denominator is the **MSE** in the **full model**.

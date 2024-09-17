@@ -74,7 +74,7 @@ As of now, he test will be based on the magnitude of [[3 Projections, OLS Estima
 
 Under the assumptions of the multiple regression model, the null hypothesis for testing “was multiple regression worth it?” takes on the form: $$H_{0}: \beta_1=\dots=\beta_{p}=0$$
 And the alternative is $$H_{a} = \text{ at least one } \beta_{j}\ne0$$
-Another way to think about this: under the null, the only thing that matters for predicting a response is the **intercept**, $\beta_0$.
+Another way to think about this: under the null, the only thing that matters for predicting a response is the **intercept**, $\beta_0$. ^589891
 - If this were true, $\mathbb{E}(y_{i}|x_{i}) = \beta_{0}$; that is, every point has the **same mean** regardless of the values of the explanatory variables
 
 We’ll form a test statistic whose value is large when $x_1,\dots,x_p$ are strong predictors of $y$ (large values mean strong evidence against the null). This corresponds to large values for R-squared.
