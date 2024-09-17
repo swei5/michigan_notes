@@ -1,4 +1,4 @@
-[[2024-09-12]] #Regression 
+[[2024-09-12]] #Regression #R 
 
 ### Categorical Variables
 
@@ -133,3 +133,24 @@ View the definition of a [[5 Confidence Interval, F-Test#^5e5647|full F-test her
 ```
 
 The numerator is the **difference between the RSS** in the two models, divided by the differences in the degrees of freedom for the residual terms in those two regressions. Again, the denominator is the **MSE** in the **full model**.
+
+```ad-note
+We may view the overall $\mathcal{F}$-test as a partial $\mathcal{F}$-test where the reduced model only contains the intercept, i.e. $p=0$ for this rergression. Then,
+- $\text{df}_\text{red} = n-1$
+- $RSS_\text{red} = TSS$
+
+And hence $$\begin{align}F_\text{stat}=\frac{(RSS_\text{red}-RSS_\text{full})/(\text{df}_\text{red}-\text{df}_\text{full})}{RSS_\text{full}/\text{df}_{\text{full}}}&=\frac{(TSS-RSS_\text{full})/p}{RSS_\text{full}/(n-p-1)}\\&=\left(\frac{R^2}{1-R^2}\right)\left(\frac{n-p-1}{p}\right)\end{align}$$
+```
+
+The overall $\mathcal{F}$ -test acts as a proof showing that there's **AT LEAST SOMETHING** going on that makes doing regression useful in the first place - to verify that this model isn't *overcomplicated* - we conduct partial $\mathcal{F}$ -test.
+
+```ad-example
+**Example**: Conducting Partial $\mathcal{F}$-test
+
+To conduct the test, we fit the full and reduced linear models, and feed the results into the `anova` command.
+
+![[Pasted image 20240917142549.png|500]]
+
+Conclusion: **Fail to reject** the null. It suggests that we don’t need to include interactions between region and bonus in the model.
+```
+
