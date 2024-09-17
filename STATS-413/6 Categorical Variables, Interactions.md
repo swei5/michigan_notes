@@ -105,7 +105,7 @@ As contrasted to **ALL slopes** as demonstrated in a *full* $\mathcal{F}$ -test 
 In other words, a partial $\mathcal{F}$ -test is a natural extension of the $t$ -tests on **individual coefficients** to dealing with **sets of coefficients**.
 
 ```ad-note
-If the subset is a single coefficient, a partial $\mathcal{F}$-test and a $t$-test will be **identical**.
+If the subset is a **single** coefficient, a partial $\mathcal{F}$-test and a $t$-test will be **identical**.
 ```
 
 A natural way to test this is to compare the RSS from a regression **including ALL variables** to the RSS from a regression **excluding the variables** whose slopes are zero under the null:
@@ -127,7 +127,7 @@ If we wanted to see if we needed interactions between region and bonus, we’d c
 
 The test statistic may be expressed as: $$F_\text{stat}=\frac{(RSS_\text{red}-RSS_\text{full})/(\text{df}_\text{red}-\text{df}_\text{full})}{RSS_\text{full}/\text{df}_{\text{full}}}$$
 
-Under the null: $F_{\text{stat}} \sim \mathcal{F}(\text{df}_{\text{red}} - \text{df}_\text{full}), \text{df}_\text{full}$.
+Under the null: $F_{\text{stat}} \sim \mathcal{F}_{(\text{df}_{\text{red}} - \text{df}_\text{full}), \text{df}_\text{full}}$.
 
 View the definition of a [[5 Confidence Interval, F-Test#^5e5647|full F-test here]] and see the similarity.
 ```
@@ -154,3 +154,35 @@ To conduct the test, we fit the full and reduced linear models, and feed the res
 Conclusion: **Fail to reject** the null. It suggests that we don’t need to include interactions between region and bonus in the model.
 ```
 
+---
+### Continuous Interactions
+Interaction effects are **NOT** solely limited to interactions between continuous variables and categorical variables. 
+
+The interaction term between two continuous variables takes on the form: $$X_{i}:X_{j}=X_{i}\times X_{j}$$
+```ad-example
+**Example**: Regression with Continuous Interactions
+
+Assume the output looks like this: ![[Pasted image 20240917144715.png|500]]
+
+Then, our prediction equation given the interaction term will be $$\text{sales}=205.0266+5.6312(\text{income})-61.6539(\text{competitors})+0.5841(\text{income}\cdot \text{competitors})$$
+
+Since we only include one interaction term, the results from the $t$-test: ![[Pasted image 20240917145007.png|500]]
+
+Is exactly the result from partial $\mathcal{F}$-test where the reduced model where the interaction term is not introduced.
+
+![[Pasted image 20240917145605.png|400]]
+```
+
+---
+### Covered `R` Functions
+
+```r
+# Regression with interactions
+lm(Sales~Region*Bonus + Region*Advert))
+
+# Partial F-test
+lm.full = lm(Sales~Bonus*Region + Advert*Region)
+lm.reduced = lm(Sales~Bonus + Advert*Region)
+
+anova(lm.reduced, lm.full)
+```
