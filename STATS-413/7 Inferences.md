@@ -40,5 +40,8 @@ While we have the variances of both terms ready, we need to compute their covari
 
 Now, let's define $a$ as: $$a_{i} = \begin{cases} 1 & i = 5, 8 \\ 0 & \text{otherwise} \end{cases}$$ which gives that $\hat{\beta}_{\text{Advert, South}} = a^T \hat{\beta}$.
 
-Then, $$\begin{align} \text{Var}(\hat{\beta}_{\text{Advert, South}}) &= \text{Var}(a^{T} \hat{\beta}) \\ &= \sigma_{\epsilon}^{2} a^{T} (X^{T}X)^{-1} a  \end{align}$$
+Then, $$\begin{align} \text{Var}(\hat{\beta}_{\text{Advert, South}}) &= \text{Var}(a^{T} \hat{\beta}) \\ &= \sigma_{\epsilon}^{2} a^{T} (X^{T}X)^{-1} a \\ &\implies \text{stdev}(\hat{\beta}_{\text{Advert, South}}) = \sigma_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \\ &\implies \text{se}(\hat{\beta}_{\text{Advert, South}}) = \hat{\sigma}_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \end{align}$$
+
+We **CAN** calculate this statistic if we have the MSE $\hat{\sigma}_{\epsilon}^2$ and the design matrix $X$.
 ```
+
