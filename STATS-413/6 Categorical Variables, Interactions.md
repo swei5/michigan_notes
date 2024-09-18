@@ -105,8 +105,10 @@ As contrasted to **ALL slopes** as demonstrated in a *full* $\mathcal{F}$ -test 
 In other words, a partial $\mathcal{F}$ -test is a natural extension of the $t$ -tests on **individual coefficients** to dealing with **sets of coefficients**.
 
 ```ad-note
-If the subset is a **single** coefficient, a partial $\mathcal{F}$-test and a $t$-test will be **identical**.
+If the subset is a **single** coefficient, a partial $\mathcal{F}$-test and a $t$-test will be **identical**, giving the same $p$-score.
 ```
+
+^dc651b
 
 A natural way to test this is to compare the RSS from a regression **including ALL variables** to the RSS from a regression **excluding the variables** whose slopes are zero under the null:
 1. **Full Model**: The model including the full set of covariates
