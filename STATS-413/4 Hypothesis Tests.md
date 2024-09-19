@@ -94,9 +94,9 @@ Under the stronger linear model,
 $$\hat{\beta} \sim MVN(\beta, \sigma_{\epsilon}^{2}(X^TX)^{-1})$$
 And similarly
 $$\hat{\beta_{j}} \sim N(\beta_{j},\sigma_{\epsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)})$$
-The mean and standard deviation of $\hat{\beta}$ are previously derived here ![[3 Projections, OLS Estimators, Variability#^a4deed]]
+The mean and standard deviation of $\hat{\beta}$ are previously derived here ![[3 OLS Estimators, Variability#^a4deed]]
 And here:
-![[3 Projections, OLS Estimators, Variability#^89d509]]
+![[3 OLS Estimators, Variability#^89d509]]
 
 So, for any slope coefficient $j$, letting $\text{stdev}(\hat{\beta}_{j})=\sigma_{\epsilon} \sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$ and $$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{stdev}(\hat{\beta}_{j})} \sim N(0,1)$$
 If we knew $\sigma_{\epsilon}^{2}$, we could begin with the value of the OLS slope coefficient returned by `R`: $\hat{\beta}_{j}^{\text{obs}}$ and compute $z$ -statistic using

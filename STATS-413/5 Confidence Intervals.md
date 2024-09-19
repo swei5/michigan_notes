@@ -1,10 +1,10 @@
 [[2024-09-10]] #Regression #R
 
-Recall some key properties of our linear model: ![[4 Hypothesis Testing#^bfc3d4]]
+Recall some key properties of our linear model: ![[4 Hypothesis Tests#^bfc3d4]]
 And that $$\mathbb{E}(\hat{\beta})=\beta$$
 $$\text{Var}(\hat{\beta})=\sigma_{\epsilon}^{2}(X^{T}X)^{-1}$$ 
 We thus have that
-![[4 Hypothesis Testing#^e2a176]]
+![[4 Hypothesis Tests#^e2a176]]
 
 However at times when the population standard deviation of $\epsilon$ is unknown, we need to rely on the $t$ -test. We would need RMSE to compute the standard error: $$\hat{\sigma_{\epsilon}}=\sqrt{\frac{\sum_{i=1}^{n}e_{i}^{2}}{n-p-1}}$$$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\epsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ And finally $$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$
 ### $p$ -Value Computation
@@ -70,7 +70,7 @@ This means that our $100 (1-\alpha)\%$ one-sided "greater than" confidence inter
 We now know how to, given a set of explanatory variables $x_1,\dots,x_p$, create a multiple regression model to try to predict the value of the response $y$. We want to know if there is evidence that the model *helped*.
 - Relative to having **NO information** on the explanatory variables - simply predicting the overall mean
 
-As of now, he test will be based on the magnitude of [[3 Projections, OLS Estimators, Variability#$R {2}$|R-squared]]: *how much variation in $y$ could we explain from our regression*?
+As of now, he test will be based on the magnitude of [[3 OLS Estimators, Variability#$R {2}$|R-squared]]: *how much variation in $y$ could we explain from our regression*?
 
 Under the assumptions of the multiple regression model, the null hypothesis for testing “was multiple regression worth it?” takes on the form: $$H_{0}: \beta_1=\dots=\beta_{p}=0$$
 And the alternative is $$H_{a} = \text{ at least one } \beta_{j}\ne0$$
@@ -108,7 +108,7 @@ The overall $\mathcal{F}$ -test can be viewed as a comparison between:
 1. The residual sum of squares in a model including **ALL of the predictor variables**, and
 2. The residual sum of squares in a model only including those variables whose coefficients **don’t equal zero under the null** ($\beta_0$)
 
-In other words, the objective of the test is to quantify **how large of a discrepancy** between [[3 Projections, OLS Estimators, Variability#^cb791d|TSS]] and [[3 Projections, OLS Estimators, Variability#^dbce55|RSS]] we should expect under the null. If what we observe is **much larger** than expected, we reject the null. Alternatively, we may write $$F_{\text{stat}}=\frac{\frac{TSS-RSS}{p}}{\frac{RSS}{n-p-1}}=\frac{\frac{TSS-RSS}{p}}{\hat{\sigma}_{\epsilon}^2}$$
+In other words, the objective of the test is to quantify **how large of a discrepancy** between [[3 OLS Estimators, Variability#^cb791d|TSS]] and [[3 OLS Estimators, Variability#^dbce55|RSS]] we should expect under the null. If what we observe is **much larger** than expected, we reject the null. Alternatively, we may write $$F_{\text{stat}}=\frac{\frac{TSS-RSS}{p}}{\frac{RSS}{n-p-1}}=\frac{\frac{TSS-RSS}{p}}{\hat{\sigma}_{\epsilon}^2}$$
 Numerator represents the **difference between the TSS and the RSS**, **divided by the differences in the degrees of freedom** for the residual terms in those two regressions: ^5e5647
 1. Regression with **ONLY an intercept**: $e$ has $n-1$ degrees of freedom
 2. Regression with **ALL variables**: $e$ has $n-p-1$ degrees of freedom
@@ -116,7 +116,7 @@ Numerator represents the **difference between the TSS and the RSS**, **divided b
 The difference between (1) and (2) is $p$.
 
 Denominator represents **RSS in the full model**, divided by degrees of freedom for residual vector in the full model. 
-- Note that this is the **mean squared error** of the model, previously introduced [[4 Hypothesis Testing#^52cf89|here]]
+- Note that this is the **mean squared error** of the model, previously introduced [[4 Hypothesis Tests#^52cf89|here]]
 
 ---
 ### Covered `R` Functions

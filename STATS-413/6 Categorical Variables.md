@@ -36,7 +36,7 @@ If $G$ variables are included - then $d_{1}+d_{2}+ \dots + d_{G}=\mathbf{1}_{n \
 The **population** expectation under the multiple regression model would be $$\mathbb{E}(y_i|X_{i})=\beta_{0}+\beta_{1} \mathbb{1}(x_{i}=c_{i}) + \dots + \beta_{G-1}\mathbb{1}(x_i=c_{G-1})$$ And under the null hypothesis tested by the overall $\mathcal{F}$, $$H_{0}:\beta_{1}=\dots = \beta_{G-1}$$ The expectation function would instead be $$\mathbb{E}(y_{i}|x_{i})=\beta_0$$ i.e. the expectation is the **same for all categories**
 - So, the overall $\mathcal{F}$ -test from this regression can be used to assess the null $H_{0}:\mu_{g}=\beta_{0}$ for all $g$, where $\mu_{g}$ is the population mean in the $g$ th category; in other words, we are asking if the **means from all categories are the SAME**
 
-Recall the definition of $\mathcal{F}$ -test: ![[5 Confidence Interval, F-Test#^5e5647]]
+Recall the definition of $\mathcal{F}$ -test: ![[5 Confidence Intervals#^5e5647]]
 
 We calculate TSS based on the **overall mean** for all categories ($\bar{y}$), and RSS based on the **mean of each category** ($\hat{y}$).
 #### Analysis of Variance
@@ -101,7 +101,7 @@ The required test is called a partial $\mathcal{F}$ -test.
 
 Suppose we want to fit a model $y_{i}=\beta_{0}+\beta_{1}x_{i1}+ \dots + \beta_{p}x_{ip} +\epsilon_{i}$ and re interested in the null hypothesis that some subset of slopes $\mathcal{I} \subseteq \set{1,\dots, p}$ are zero: $$H_{0}:\beta_{i}=0 \text{ for some subset of covariates } \mathcal{I}$$The alternative hypothesis is then $$ H_{a}: \text{at least one slope in subset } \mathcal{I} \text{is non zero}$$ **AT LEAST** $\beta_{i}$ **AND/OR** $\beta_j$ is nonzero.
 
-As contrasted to **ALL slopes** as demonstrated in a *full* $\mathcal{F}$ -test ![[5 Confidence Interval, F-Test#^589891]]
+As contrasted to **ALL slopes** as demonstrated in a *full* $\mathcal{F}$ -test ![[5 Confidence Intervals#^589891]]
 In other words, a partial $\mathcal{F}$ -test is a natural extension of the $t$ -tests on **individual coefficients** to dealing with **sets of coefficients**.
 
 ```ad-note
