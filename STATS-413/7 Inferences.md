@@ -45,6 +45,14 @@ Then, $$\begin{align} \text{Var}(\hat{\beta}_{\text{Advert, South}}) &= \text{Va
 \\ &\implies \text{stdev}(\hat{\beta}_{\text{Advert, South}}) = \sigma_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \\ &\implies \text{se}(\hat{\beta}_{\text{Advert, South}}) = \hat{\sigma}_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \end{align}$$
 
 We **CAN** calculate this statistic if we have the MSE $\hat{\sigma}_{\epsilon}^2$ and the design matrix $X$.
+
+In `R` code, this is
+
+![[Pasted image 20240919234153.png|400]]
+
+In short, if we need to make inferences on some linear combinaion of coefficients $i, j$, the method above comes in handy in allowing us to compute the necessary statistics, $\hat{\beta}_{i+j}=a^{T}\hat{\beta}$ and $\text{se}(a^{T}\hat{\beta})$.
+
+To avoid running the complicated procedures above, we could set the reference category to one of the two coefficients we're interested when running the regression, under which scenario we will only need to deal with one coefficient, whose statistics are included as parts of the regression output.
 ```
 
 #### Recap: Inference for Expectations
@@ -54,7 +62,7 @@ Then, we estimate $\mu_y$ by $\hat{\mu}_{y} = \overline{y} = \frac{1}{n}\sum_{i=
 - $\text{Var}(\hat{\mu}_{y})= \frac{\sigma^{2}}{n}$
 - $\text{stdev}(\hat{\mu}_{y})= \frac{\sigma}{\sqrt{n}}$
 - $\text{se}(\hat{\mu}_{y}) = \frac{\hat{\sigma}}{\sqrt{n}}$
-where $$\hat{\sigma} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (y_{i}-\bar{y})^{2}}$$
+where the [[4 Hypothesis Tests#^52cf89|root mean squared error]] is $$\hat{\sigma} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (y_{i}-\bar{y})^{2}}$$
 We form confidence intervals and perform hypothesis tests for $\mu_{y}$ using $\hat{\mu}_{y}$, $\text{se}(\hat{\mu}_y)$ and $t_{n-1}$ distribution. 
 
 #### Inference for Conditional Expectations
@@ -88,4 +96,7 @@ Here, `fit` is the prediction from the regression line. `lwr` and `upr` are the 
 ![[Pasted image 20240919230929.png|400]]
 
 This agrees with our previous intuition - we have more information about what’s occurring near the **center** of my data (lower SE and thus smaller confidence interval).
+- Intervals centered at $\hat{\mu}_{y|\tilde{x}}=\tilde{x}^{T}\hat{\beta}$
+- Narrowest at mean of covariates
+- Wider at the extremes
 ```
