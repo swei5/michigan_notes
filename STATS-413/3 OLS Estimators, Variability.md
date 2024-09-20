@@ -122,7 +122,7 @@ This demonstrates the **unbiasedness** of $\hat{\beta}$. ^a4deed
 Similarly, we may define the variance of $\hat{\beta}$: $$\begin{align} \text{Var}(\hat{\beta})&= \text{Var}((X^{T}X)^{-1}X^{T}y) \\ &= (X^{T}X)^{-1}X^{T} \text{Var}(y) ((X^{T}X)^{-1}X^{T})^{T} \\&=\sigma_{\epsilon}^{2}(X^{T}X)^{-1} \end{align}$$
 Here, we rely on the fact $\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}I$. ^89d509
 
-Note that $\text{Var}(\hat{\beta})$ is a $(p+1) \times (p+1)$ matrix, with the variances of each individual slope coefficient on the diagonal - the $j$ th slope coefficient, look at the $(j+1)$ st diagonal element.
+Note that $\text{Var}(\hat{\beta})$ is a $(p+1) \times (p+1)$ matrix, with the variances of each individual slope coefficient on the diagonal - the $j$ th slope coefficient, look at the $(j+1)$ -st diagonal element.
 
 ---
 ### Variability in Residuals

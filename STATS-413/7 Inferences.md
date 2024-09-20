@@ -40,8 +40,21 @@ While we have the variances of both terms ready, we need to compute their covari
 
 Now, let's define $a$ as: $$a_{i} = \begin{cases} 1 & i = 5, 8 \\ 0 & \text{otherwise} \end{cases}$$ which gives that $\hat{\beta}_{\text{Advert, South}} = a^T \hat{\beta}$.
 
-Then, $$\begin{align} \text{Var}(\hat{\beta}_{\text{Advert, South}}) &= \text{Var}(a^{T} \hat{\beta}) \\ &= \sigma_{\epsilon}^{2} a^{T} (X^{T}X)^{-1} a \\ &\implies \text{stdev}(\hat{\beta}_{\text{Advert, South}}) = \sigma_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \\ &\implies \text{se}(\hat{\beta}_{\text{Advert, South}}) = \hat{\sigma}_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \end{align}$$
+Then, $$\begin{align} \text{Var}(\hat{\beta}_{\text{Advert, South}}) &= \text{Var}(a^{T} \hat{\beta}) \\ &= \sigma_{\epsilon}^{2} a^{T} (X^{T}X)^{-1} a \\ &= \text{Var}(\hat{\beta})_{(5,5)} + \text{Var}(\hat{\beta})_{(8,8)} + 2\text{Var}(\hat{\beta})_{(5,8)}
+\\ &= \text{Var}(\hat{\beta}_{\text{Advert}}) + \text{Var}(\hat{\beta}_{\text{South}}) + \text{Cov}(\hat{\beta}_{\text{Advert}}, \hat{\beta}_{\text{South}})
+\\ &\implies \text{stdev}(\hat{\beta}_{\text{Advert, South}}) = \sigma_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \\ &\implies \text{se}(\hat{\beta}_{\text{Advert, South}}) = \hat{\sigma}_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \end{align}$$
 
 We **CAN** calculate this statistic if we have the MSE $\hat{\sigma}_{\epsilon}^2$ and the design matrix $X$.
 ```
 
+#### Recap: Inference for Expectations
+Suppose you are interested in the mean of a population and you have collected $y_{1},\dots, y_{n}$ which are **iid** and **normally distributed** with $\mathbb{E}(y)=\mu_y$ and $\text{Var}(y) = \sigma^{2}$.
+
+Then, we estimate $\mu_y$ by $\hat{\mu}_{y} = \overline{y} = \frac{1}{n}\sum_{i=1}^{n}y_i$.
+- $\text{Var}(\hat{\mu}_{y})= \frac{\sigma^{2}}{n}$
+- $\text{stdev}(\hat{\mu}_{y})= \frac{\sigma}{\sqrt{n}}$
+- $\text{se}(\hat{\mu}_{y}) = \frac{\hat{\sigma}}{\sqrt{n}}$
+where $$\hat{\sigma} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (y_{i}-\bar{y})^{2}}$$
+We form confidence intervals and perform hypothesis tests for $\mu_{y}$ using $\hat{\mu}_{y}$, $\text{se}(\hat{\mu}_y)$ and $t_{n-1}$ distribution. 
+
+#### Inference for Conditional Expectations
