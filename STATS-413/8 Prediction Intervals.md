@@ -28,4 +28,29 @@ We are curious about the following statistics:
 	- $N(0,\sigma^{2}(1+ \frac{1}{n}))$
 Since we don't know $\sigma^2$ (population parameter), we estimate it using $\hat{\sigma}$ (RMSE). Thus, we may estimate $$\text{stdev}(y^{\star}-\bar{y})=\sqrt{\hat{\sigma}^{2}\left(1+ \frac{1}{n}\right)}$$
 Now, suppose the stronger linear model holds, and that we are interested in forming a **prediction interval** for a future observation $y^\star$ with covariate values $\tilde{x}$. $$y^{\star}=\beta_{0}+\beta_{1} \tilde{x}_{1}+\dots+\beta_{p}\tilde{x}_{p}+\epsilon^{\star}$$ and $$ \epsilon_{1},\dots,\epsilon_{n}, \epsilon^{\star} \sim N (0,\sigma_{\epsilon}^{2}) $$
-Here, $$\mathbb{E}(y^\star)=\mathbb{E}(\tilde{x}^{T}\beta+\epsilon^{\star})=\tilde{x}^{T}\beta$$
+Here, $$\mathbb{E}(y^\star)=\mathbb{E}(\tilde{x}^{T}\beta+\epsilon^{\star})=\tilde{x}^{T}\beta$$ and $$\text{Var}(y^{\star})=\sigma_{\epsilon}^2$$
+Note that this is different from the [[7 Inferences#Inference for Conditional Expectations|distribution for conditional expectations]] we're seeing earlier as we have $y^\star$ as a (fixed) future observation that follows its own distribution, instead of relying on the predictor variables $X$.
+
+#### Population Prediction Intervals
+Then, we would construct a valid $100 (1-\alpha)\%$ prediction interval for a future observation at $\tilde{x}$: $$\tilde{x}^{T} \beta \pm z_{1-\alpha/2}\sigma_{\epsilon}$$
+Recall the assumptions for stronger linear model again:  ![[4 Hypothesis Tests#^bfc3d4]]
+Here, the **linearity** provides the **center** of our intervals. **Homoskedasticity** and **normality** provide the **width**.
+
+```ad-example
+**Example**: Prediction Intervals, $p=1$
+
+![[Pasted image 20240920141010.png|400]]
+
+If all three assumptions are met: At any point $\tilde{x}$, the population distribution of $y$ values for individuals whose $X$ variable equals $\tilde{x}$:
+1. Has expectation of $\tilde{x}^{T}\beta$
+2. Has a standard deviation of $\sigma_{\epsilon}$ (homoskedasticity)
+3. Follows a normal distribution (normality)
+```
+
+#### Actionable Prediction Intervals
+While valid, we can’t actually use this interval in practice:
+- We don't know $\beta$ - crucial for the center of the interval
+- We don't know $\sigma_{\epsilon}$ - crucial for the spread
+
+We’ll now try to replace these components by sample-based estimators. This will change both the **center**, the **width**, and the **distribution** used to form the interval.
+
