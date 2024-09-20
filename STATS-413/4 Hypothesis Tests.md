@@ -68,11 +68,10 @@ As previously introduced [[2 Multiple Regression#Interpretation of Intercepts||h
 - After **controlling / adjusting for the effect** of all other predictor variables $\set{x_{l}; l \ne j}$, let’s assess evidence for whether or not the true slope on the $j$ th variable is $\gamma_{0}$
 
 #### Stronger Linear Model
-While the assumptions that $E (\epsilon) = 0$ and $\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}$ are enough for unbiasedness and to derive a form for the variance for $\hat{\beta}$, we’ll impose **additional restrictions** on $\epsilon$ to derive a sampling distribution for $\hat{\beta}$:
-$$\epsilon \sim MVN(0,\sigma_{\epsilon}^{2}I)$$
+While the assumptions that $E (\epsilon) = 0$ and $\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}$ are enough for unbiasedness and to derive a form for the variance for $\hat{\beta}$, we’ll impose **additional restrictions** on $\epsilon$ to derive a sampling distribution for $\hat{\beta}$: $$\epsilon \sim MVN(0,\sigma_{\epsilon}^{2}I)$$
 Where $MVN$ represents the multivariate normal distribution. This is equivalent to saying that
 $$\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$$
-And that $\epsilon_{i}$ are iid and normally distributed with expectation 0 and variance $\sigma_{\epsilon}^{2}$.
+And that $\epsilon_{i}$ are iid and normally distributed with expectation 0 and variance $\sigma_{\epsilon}^{2}$. ^4716ea
 
 ```ad-example
 **Example**: Stronger Linear Model ($p=1$)

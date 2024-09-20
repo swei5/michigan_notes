@@ -58,3 +58,34 @@ where $$\hat{\sigma} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (y_{i}-\bar{y})^{2}}$$
 We form confidence intervals and perform hypothesis tests for $\mu_{y}$ using $\hat{\mu}_{y}$, $\text{se}(\hat{\mu}_y)$ and $t_{n-1}$ distribution. 
 
 #### Inference for Conditional Expectations
+Now, suppose $y_1,\dots,y_n$ are generated from the (**stronger**) linear model: ![[4 Hypothesis Tests#^4716ea]]
+For any particular value for the predictors $\tilde{x}=[1, \tilde{x}_{1}, \dots ,\tilde{x}_{p}]^{T}$: $$\mu_{y|\tilde{x}}=\mathbb{E}(y|x=\tilde{x})=\tilde{x}^{T}\beta$$
+After running OLS regression and obtaining my estimate $\hat{\beta}$: $$\hat{\mu}_{y|\tilde{x}}=\hat{\mathbb{E}}(y|x=\tilde{x})=\tilde{x}^{T}\hat{\beta}$$
+Before digging deeper, we need to understand the distinction between inferences on the population mean $\mu_{y}$ and conditional expectation $\mu_{y|x}$.
+- Inference on $\mu_{y}$ is an **unconditional expectation**
+- Inference on $\mu_{y|\tilde{x}}$ is a **conditional expectation**
+
+It's obvious that $$\mathbb{E}(\hat{\mu}_{y|\tilde{x}})=\mu_{y|\tilde{x}}$$ and $$\text{Var}(\hat{\mu}_{y|\tilde{x}}) = \sigma_{\epsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x}$$
+Recall that if $Z$ follows a multivariate normal distribution, so too does $AZ + c$. So under the stronger linear model, we also have $$\hat{\mu}_{y|\tilde{x}} \sim N(\mu_{y|\tilde{x}}, \sigma_{\epsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})$$
+We can further estimate $\text{stdev}({\hat{\mu}_{y|\tilde{x}}})$ using the following standard error: $$
+\text{se}(\hat{\mu}_{y|\tilde{x}})=\hat{\sigma_{\epsilon}}\sqrt{\tilde{x}^{T}(X^TX)^{-1}\tilde{x}}$$
+Note that the standard error is a function of $\tilde{x}$. Hence, it is minimized when there is the **smallest variability**: $\tilde{x} = [1, \bar{x}_{1}, \dots, \bar{x}_{p}]$ - the mean of the predictor variables. Variability increases as $\tilde{x}$ moves farther from the mean.
+
+We may construct a $100 (1-\alpha)\%$ $t$ -based confidence interval for $\mu_{y|\tilde{x}}$:  $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\text{se}(\hat{\mu}_{y|\tilde{x}})$$
+The intervals are centered at the **prediction** from our estimated regression line, $\text{se}(\hat{\mu}_{y|\tilde{x}}) = \tilde{x}^T \hat{\beta}$.
+
+Likewise, under the stronger linear model, we could form a test statistic to test the null $H_{0}: \mu_{y|\tilde{x}} = \mu_{0}$ of the form $$t_{\text{stat}}= \frac{\hat{\mu}_{y|\tilde{x}}-\mu_0}{\text{se}(\hat{\mu}_{y|\tilde{x}})}$$ and compute $p$ -values using a $t_{n-p-1}$ distribution. 
+
+The intervals tend to be more popular in practice than the tests.
+
+```ad-example
+**Example**: Confidence Intervals for Conditional Expectations
+
+![[Pasted image 20240919230758.png|400]]
+
+Here, `fit` is the prediction from the regression line. `lwr` and `upr` are the loer and upper bous of the 95% confidence interval.
+
+![[Pasted image 20240919230929.png|400]]
+
+This agrees with our previous intuition - we have more information about what’s occurring near the **center** of my data (lower SE and thus smaller confidence interval).
+```
