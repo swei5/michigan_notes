@@ -6,3 +6,26 @@ Motivation: We know our predicted values $\hat{y}$ are just compromises, best gu
 - Predicting at an uncertainty range of $[580,620]$ is much different than predicting $[400,800]$
 
 These will be called **prediction intervals**.
+
+We've learned from last lecture about forming confidence interval for conditional expectations: ![[7 Inferences#^cbe93c]]
+However, this is not an appropriate behavior for **future observations** (predictions). 
+- Consider the case $p=0$ and sample size $n \to \infty$: then $\overline{y}$ is going to have a confidence interval of $[\overline{y}, \overline{y}]$, which is very unlikely to capture future observation due to the error term $\epsilon_i$
+
+Suppose we have collected $y_{1},\dots, y_{n}$ which are **iid** and **normally distributed** with $N(\mu_{y},\sigma^2)$ and $y^\star$ is a future realization from this distribution. Recall from previous lecture the definition of sample mean and RMSE of $y$: ![[7 Inferences#^5965d1]] ![[7 Inferences#^8e3c23]]
+We are curious about the following statistics:
+- $(y^{\star} - \mu_{y})/\sigma$
+	- $\mathbb{E}\left (\frac{y^{\star} - \mu_{y}}{\sigma}\right)= \frac{\mathbb{E}(y^{\star}) - \mathbb{E}(\mu_y)}{\sigma} = \frac{\mu_{y}-\mu_{y}}{\sigma}=0$
+	- $\text{Var}\left (\frac{y^{\star} - \mu_{y}}{\sigma}\right)= \frac{1}{\sigma^{2}} \text{Var}(y^{\star})=1$
+	- $N(0,1)$ - standard normal
+- $\overline{y}$
+	- $\mathbb{E}(\overline{y})=\mathbb{E}(\frac{1}{n}\sum y_{i})=\frac{1}{n} \sum \mathbb{E}(y_{i})=\frac{1}{n} n\mu_{y}=\mu_{y}$
+	- $\text{Var}(\bar{y})=\text{Var}\left (\frac{1}{n}\sum y_{i}\right)= \frac{1}{n^{2}} \sum \text{Var}(y_{i})= \frac{n\sigma^{2}}{n^{2}}=\frac{\sigma^{2}}{n}$
+	- $N(\mu_{y},\frac{\sigma^{2}}{n})$
+- $y^{\star}-\bar{y}$
+	- $\mathbb{E}(y^{\star}-\bar{y})=0$
+	- $\text{Var}(y^{\star}-\bar{y})=\text{Var}(y^{\star})+\text{Var}(\bar{y})=\sigma^{2}+\frac{\sigma^{2}}{n}=\sigma^{2}(1+ \frac{1}{n})$
+		- Since $\text{Cov}(y^{\star}, \bar{y})=0$
+	- $N(0,\sigma^{2}(1+ \frac{1}{n}))$
+Since we don't know $\sigma^2$ (population parameter), we estimate it using $\hat{\sigma}$ (RMSE). Thus, we may estimate $$\text{stdev}(y^{\star}-\bar{y})=\sqrt{\hat{\sigma}^{2}\left(1+ \frac{1}{n}\right)}$$
+Now, suppose the stronger linear model holds, and that we are interested in forming a **prediction interval** for a future observation $y^\star$ with covariate values $\tilde{x}$. $$y^{\star}=\beta_{0}+\beta_{1} \tilde{x}_{1}+\dots+\beta_{p}\tilde{x}_{p}+\epsilon^{\star}$$ and $$ \epsilon_{1},\dots,\epsilon_{n}, \epsilon^{\star} \sim N (0,\sigma_{\epsilon}^{2}) $$
+Here, $$\mathbb{E}(y^\star)=\mathbb{E}(\tilde{x}^{T}\beta+\epsilon^{\star})=\tilde{x}^{T}\beta$$

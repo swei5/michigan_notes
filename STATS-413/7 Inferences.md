@@ -58,12 +58,12 @@ To avoid running the complicated procedures above, we could set the reference ca
 #### Recap: Inference for Expectations
 Suppose you are interested in the mean of a population and you have collected $y_{1},\dots, y_{n}$ which are **iid** and **normally distributed** with $\mathbb{E}(y)=\mu_y$ and $\text{Var}(y) = \sigma^{2}$.
 
-Then, we estimate $\mu_y$ by $\hat{\mu}_{y} = \overline{y} = \frac{1}{n}\sum_{i=1}^{n}y_i$.
+Then, we estimate $\mu_y$ by $\hat{\mu}_{y} = \overline{y} = \frac{1}{n}\sum_{i=1}^{n}y_i$. ^5965d1
 - $\text{Var}(\hat{\mu}_{y})= \frac{\sigma^{2}}{n}$
 - $\text{stdev}(\hat{\mu}_{y})= \frac{\sigma}{\sqrt{n}}$
-- $\text{se}(\hat{\mu}_{y}) = \frac{\hat{\sigma}}{\sqrt{n}}$
-where the [[4 Hypothesis Tests#^52cf89|root mean squared error]] is $$\hat{\sigma} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (y_{i}-\bar{y})^{2}}$$
-We form confidence intervals and perform hypothesis tests for $\mu_{y}$ using $\hat{\mu}_{y}$, $\text{se}(\hat{\mu}_y)$ and $t_{n-1}$ distribution. 
+- $\text{se}(\hat{\mu}_{y}) = \frac{\hat{\sigma}}{\sqrt{n}}$ where the [[4 Hypothesis Tests#^52cf89|root mean squared error]] is $$\hat{\sigma} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (y_{i}-\bar{y})^{2}}$$ ^8e3c23
+
+We form confidence intervals and perform hypothesis tests for $\mu_{y}$ using $\hat{\mu}_{y}$, $\text{se}(\hat{\mu}_y)$ and $t_{n-1}$ distribution.  ^a53087
 
 #### Inference for Conditional Expectations
 Now, suppose $y_1,\dots,y_n$ are generated from the (**stronger**) linear model: ![[4 Hypothesis Tests#^4716ea]]
@@ -80,7 +80,7 @@ We can further estimate $\text{stdev}({\hat{\mu}_{y|\tilde{x}}})$ using the foll
 Note that the standard error is a function of $\tilde{x}$. Hence, it is minimized when there is the **smallest variability**: $\tilde{x} = [1, \bar{x}_{1}, \dots, \bar{x}_{p}]$ - the mean of the predictor variables. Variability increases as $\tilde{x}$ moves farther from the mean.
 
 We may construct a $100 (1-\alpha)\%$ $t$ -based confidence interval for $\mu_{y|\tilde{x}}$:  $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\text{se}(\hat{\mu}_{y|\tilde{x}})$$
-The intervals are centered at the **prediction** from our estimated regression line, $\text{se}(\hat{\mu}_{y|\tilde{x}}) = \tilde{x}^T \hat{\beta}$.
+The intervals are centered at the **prediction** from our estimated regression line, $\text{se}(\hat{\mu}_{y|\tilde{x}}) = \tilde{x}^T \hat{\beta}$. ^cbe93c
 
 Likewise, under the stronger linear model, we could form a test statistic to test the null $H_{0}: \mu_{y|\tilde{x}} = \mu_{0}$ of the form $$t_{\text{stat}}= \frac{\hat{\mu}_{y|\tilde{x}}-\mu_0}{\text{se}(\hat{\mu}_{y|\tilde{x}})}$$ and compute $p$ -values using a $t_{n-p-1}$ distribution. 
 
