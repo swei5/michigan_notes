@@ -59,7 +59,7 @@ Again, suppose the stronger linear model holds, and that we are interested in fo
 The first $n$ observations represent our observed data, from which we use to form coefficients estimates $\hat{\beta}$ and my estimated prediction equation $$\hat{\mu}_{y|\tilde{x}}=\hat{\mathbb{E}}(y|x=\tilde{x})=\tilde{x}^{T}\hat{\beta}$$
 Note that $$\mathbb{E}(y^{\star}-\hat{\mu}_{y|\tilde{x}})=0$$ In words, the **expected value for a future response** at $\tilde{x}$ equals the expected value of my **SAMPLE-BASED prediction equation** when evaluated at $\tilde{x},\hat{\mu}_{y|\tilde{x}}$ . 
 
-Hence, instead of centering our prediction interval at $\tilde{x}^{T}\beta$, we center it at $$\tilde{x}\hat{\beta}=\hat{\mu}_{y|\tilde{x}}$$
+Hence, instead of centering our prediction interval at $\tilde{x}^{T}\beta$, we center it at $$\tilde{x}^{T}\hat{\beta}=\hat{\mu}_{y|\tilde{x}}$$
 
 ##### Variance for Prediction Intervals
 When centering our prediction intervals at  $\hat{\mu}_{y|\tilde{x}}$, we need to take **two sources of variability** into account:
@@ -74,7 +74,16 @@ Using the independence of $y^{\star}$ and $\hat{\mu}_{y|\tilde{x}}$ and our resu
 Drawing conclusion back [[#^0527d8|here]], we have that $$\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}} \sim N(0,1)$$
 Since, again, the value of $\sigma_{\epsilon}$ is unknown to us, we will use estimate it using RMSE: $$\hat{\sigma}_{\epsilon}= \sqrt{\frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}}$$ which is the standard deviation of the residuals.
 
-Putting it all together, $$T=\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}}  \sim t_{n-p-1}$$ under the stronger linear model. Based on this statistic, an $100 (1-\alpha)\%$ prediction interval for a covariate $\tilde{x}$ is $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$$
+Putting it all together, $$T=\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}}  \sim t_{n-p-1}$$ under the stronger linear model. Based on this statistic, an $100 (1-\alpha)\%$ prediction interval for a covariate $\tilde{x}$ is $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$$ where $\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$ is the standard error.
+
 Note the similarity and difference to a [[7 Inferences#^cbe93c|confidence interval for conditional expectation]].
 
-	
+##### Homoskedasticity
+Homoskedasticity is crucial for the construction of prediction intervals. It allows us to pool information **across residuals** (formed at different $\tilde{x}$) to calculate an estimate of the standard deviation of $y$ any point $\tilde{x}$.
+
+##### Approximation of Prediction Interval
+An approximation to the prediction intervals produced by `R` (appropriate when $n$ is **large**) is given by $$\hat{\mu}_{y|\tilde{x}} \pm z_{1-\alpha/2}\hat{\sigma}_{\epsilon}$$ which ignores the **randomness** in $\hat{\sigma}_{\epsilon}$ and randomness in $\tilde{x}^{T}\hat{\beta}$.
+
+When $n \to \infty$, $\hat{\sigma}_{\epsilon} \to \sigma_{\epsilon}$ and randomness in the center of interval is **small** relative to $\sigma_{\epsilon}$.
+- If all we have is the output from `lm`, this would be a reasonable approximation, otherwise use `predict`
+- Exactly what we've shown in [[#Population Prediction Intervals|population prediction interval]], except for the usage of RMSE (estimator for standard deviation) instead of true population standard deviation

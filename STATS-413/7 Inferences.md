@@ -83,7 +83,7 @@ We can further estimate $\text{stdev}({\hat{\mu}_{y|\tilde{x}}})$ using the foll
 Note that the standard error is a function of $\tilde{x}$. Hence, it is minimized when there is the **smallest variability**: $\tilde{x} = [1, \bar{x}_{1}, \dots, \bar{x}_{p}]$ - the mean of the predictor variables. Variability increases as $\tilde{x}$ moves farther from the mean.
 
 We may construct a $100 (1-\alpha)\%$ $t$ -based confidence interval for $\mu_{y|\tilde{x}}$:  $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\text{se}(\hat{\mu}_{y|\tilde{x}})$$
-The intervals are centered at the **prediction** from our estimated regression line, $\text{se}(\hat{\mu}_{y|\tilde{x}}) = \tilde{x}^T \hat{\beta}$. ^cbe93c
+The intervals are centered at the **prediction** from our estimated regression line, $\tilde{x}^T \hat{\beta}$. ^cbe93c
 
 Likewise, under the stronger linear model, we could form a test statistic to test the null $H_{0}: \mu_{y|\tilde{x}} = \mu_{0}$ of the form $$t_{\text{stat}}= \frac{\hat{\mu}_{y|\tilde{x}}-\mu_0}{\text{se}(\hat{\mu}_{y|\tilde{x}})}$$ and compute $p$ -values using a $t_{n-p-1}$ distribution. 
 
