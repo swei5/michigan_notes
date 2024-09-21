@@ -72,7 +72,7 @@ We form confidence intervals and perform hypothesis tests for $\mu_{y}$ using $\
 Now, suppose $y_1,\dots,y_n$ are generated from the (**stronger**) linear model: ![[4 Hypothesis Tests#^bfc3d4]]
 For any particular value for the predictors $\tilde{x}=[1, \tilde{x}_{1}, \dots ,\tilde{x}_{p}]^{T}$: $$\mu_{y|\tilde{x}}=\mathbb{E}(y|x=\tilde{x})=\tilde{x}^{T}\beta$$
 After running OLS regression and obtaining my estimate $\hat{\beta}$: $$\hat{\mu}_{y|\tilde{x}}=\hat{\mathbb{E}}(y|x=\tilde{x})=\tilde{x}^{T}\hat{\beta}$$
-Before digging deeper, we need to understand the distinction between inferences on the population mean $\mu_{y}$ and conditional expectation $\mu_{y|x}$.
+Before digging deeper, we need to understand the distinction between inferences on the **population mean** $\mu_{y}$ and **conditional expectation** $\mu_{y|x}$.
 - Inference on $\mu_{y}$ is an **unconditional expectation**
 - Inference on $\mu_{y|\tilde{x}}$ is a **conditional expectation**
 

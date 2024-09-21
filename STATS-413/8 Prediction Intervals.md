@@ -1,4 +1,4 @@
-[[2024-09-19]] #Regression 
+[[2024-09-19]] #Regression #R
 
 ### Prediction Intervals 
 Motivation: We know our predicted values $\hat{y}$ are just compromises, best guesses based on some linear approximations. There’s still left over variability that we can’t account for.
@@ -72,14 +72,21 @@ Observe that $y^{\star}$ and $\hat{\mu}_{y|\tilde{x}}$ are **INDEPENDENT of one 
 
 Using the independence of $y^{\star}$ and $\hat{\mu}_{y|\tilde{x}}$ and our results on **[[7 Inferences#^99db9f|linear combinations of slopes]]**, we can derive a variance to help determine the width of our prediction intervals: $$\begin{align}\text{Var}(y^{\star}-\hat{\mu}_{y|\tilde{x}})&=\text{Var}(y^{\star})+\text{Var}(\hat{\mu}_{y|\tilde{x}}) \\ &= \sigma_{\epsilon}^{2}+\sigma_{\epsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x} \\ &= \sigma_{\epsilon}^{2}(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})\end{align}$$
 Drawing conclusion back [[#^0527d8|here]], we have that $$\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}} \sim N(0,1)$$
-Since, again, the value of $\sigma_{\epsilon}$ is unknown to us, we will use estimate it using RMSE: $$\hat{\sigma}_{\epsilon}= \sqrt{\frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}}$$ which is the standard deviation of the residuals.
+Since, again, the value of $\sigma_{\epsilon}$ is unknown to us, so we will use estimate it using RMSE: $$\hat{\sigma}_{\epsilon}= \sqrt{\frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}}$$ which is the standard deviation of the residuals.
 
-Putting it all together, $$T=\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}}  \sim t_{n-p-1}$$ under the stronger linear model. Based on this statistic, an $100 (1-\alpha)\%$ prediction interval for a covariate $\tilde{x}$ is $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$$ where $\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$ is the standard error.
+Putting it all together, $$T=\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}}  \sim t_{n-p-1}$$ under the stronger linear model. Based on this statistic, an $100 (1-\alpha)\%$ prediction interval for a covariate $\tilde{x}$ is $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$$ where $\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$ is the standard error for the predicted response $\hat{\mu}_{y|\tilde{x}}$.
 
 Note the similarity and difference to a [[7 Inferences#^cbe93c|confidence interval for conditional expectation]].
 
 ##### Homoskedasticity
 Homoskedasticity is crucial for the construction of prediction intervals. It allows us to pool information **across residuals** (formed at different $\tilde{x}$) to calculate an estimate of the standard deviation of $y$ any point $\tilde{x}$.
+- $\hat{\text{Var}}(y^{\star}|\tilde{x})=\hat{\sigma}_{\epsilon}^{2}$
+
+If the distribution of $y$ is in fact heteroskedastic, however, then 
+
+![[Pasted image 20240921142230.png|400]]
+
+The $\hat{\sigma}_{\epsilon}$ we computed **may NOT** be a good estimate of the true standard deviation $\sigma_{\epsilon}$, as in this example $\hat{\sigma}_{\epsilon}$ may be too large for smaller $y$ values and vice versa as we assumed constant variances.
 
 ##### Approximation of Prediction Interval
 An approximation to the prediction intervals produced by `R` (appropriate when $n$ is **large**) is given by $$\hat{\mu}_{y|\tilde{x}} \pm z_{1-\alpha/2}\hat{\sigma}_{\epsilon}$$ which ignores the **randomness** in $\hat{\sigma}_{\epsilon}$ and randomness in $\tilde{x}^{T}\hat{\beta}$.
@@ -87,3 +94,52 @@ An approximation to the prediction intervals produced by `R` (appropriate when $
 When $n \to \infty$, $\hat{\sigma}_{\epsilon} \to \sigma_{\epsilon}$ and randomness in the center of interval is **small** relative to $\sigma_{\epsilon}$.
 - If all we have is the output from `lm`, this would be a reasonable approximation, otherwise use `predict`
 - Exactly what we've shown in [[#Population Prediction Intervals|population prediction interval]], except for the usage of RMSE (estimator for standard deviation) instead of true population standard deviation
+
+```ad-note
+**Empirical Rules for Predictions**
+- $50\%$ of future responses will fall within $\pm 2/3\hat{\sigma}_{\epsilon}$ from their predicted value
+- $68\%$ of future responses will fall within $\pm 1\hat{\sigma}_{\epsilon}$ from their predicted value
+- $95\%$ of future responses will fall within $\pm 2\hat{\sigma}_{\epsilon}$ from their predicted value 
+- $99.7\%$ of future responses will fall within $\pm 3\hat{\sigma}_{\epsilon}$ from their predicted value
+```
+
+---
+### Comparison: Prediction Intervals and Confidence Intervals
+We’ve recently introduced (1) **prediction intervals** for future observations $y^\star$ at a point $\tilde{x}$; (2) and **confidence intervals** for predicted mean response $\mathbb{E}(y|\tilde{x})={\mu}_{y|\tilde{x}}$.
+
+```ad-important
+**Confidence Intervals and Prediction Intervals**
+
+(1) **Prediction Interval** for future observations $y^\star$: $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\hat{\sigma}_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$$
+(2) **Confidence Interval** for ${\mu}_{y|\tilde{x}}$: $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\hat{\sigma_{\epsilon}}\sqrt{\tilde{x}^{T}(X^TX)^{-1}\tilde{x}}$$
+
+Both have the **same center**, but **different width.** Prediction intervals are wider (often much wider) than confidence intervals.
+
+**Observations**
+- Variance of $\hat{\mu}_{y|\tilde{x}}$, $\sigma_{\epsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x}$ tends to **zero** as $n \to \infty$
+- Variance used for **prediction intervals**, $\sigma_{\epsilon}^{2}(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})$, tends to **one** as $n \to \infty$
+	- This is effectively saying that, even if we knew $\beta$ (and hence $\mu_{y|\tilde{x}}$ and hence my confidence interval for predicted mean response is just a point), we still **CAN'T** perfectly predict future observations, given the variances introduced by the error $\epsilon_i$
+
+![[Pasted image 20240921160644.png|400]]
+
+Note the confidence intervals are substantially **narrower** than the prediction intervals.
+```
+
+The two types of intervals address **different questions**.
+- Prediction interval addresses the **uncertainty** of an **INDIVIDUAL future response** given some predictor value
+- Confidence interval addresses the **uncertainty** of **AVERAGE predicted response** given some predictor value
+
+---
+### Covered `R` Functions
+
+```r
+xnew = data.frame(income = 75, competitors = 3)
+
+# Prediction Intervals
+predict(lm.both, newdata = xnew, interval ="prediction", level = .95)
+>>> 578.1509 441.0814 715.2204
+
+# Confidence Intervals
+predict(lm.both, newdata = xnew, interval = "confidence", level = .95)
+>>> 578.1509 553.3363 602.9655
+```
