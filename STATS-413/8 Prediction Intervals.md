@@ -77,3 +77,4 @@ Since, again, the value of $\sigma_{\epsilon}$ is unknown to us, we will use est
 Putting it all together, $$T=\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}}  \sim t_{n-p-1}$$ under the stronger linear model. Based on this statistic, an $100 (1-\alpha)\%$ prediction interval for a covariate $\tilde{x}$ is $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$$
 Note the similarity and difference to a [[7 Inferences#^cbe93c|confidence interval for conditional expectation]].
 
+	
