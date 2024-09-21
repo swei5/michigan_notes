@@ -12,7 +12,7 @@ However, this is not an appropriate behavior for **future observations** (predic
 - Consider the case $p=0$ and sample size $n \to \infty$: then $\overline{y}$ is going to have a confidence interval of $[\overline{y}, \overline{y}]$, which is very unlikely to capture future observation due to the error term $\epsilon_i$
 
 Suppose we have collected $y_{1},\dots, y_{n}$ which are **iid** and **normally distributed** with $N(\mu_{y},\sigma^2)$ and $y^\star$ is a future realization from this distribution. Recall from previous lecture the definition of sample mean and RMSE of $y$: ![[7 Inferences#^5965d1]] ![[7 Inferences#^8e3c23]]
-We are curious about the following statistics:
+We are curious about the following statistics: ^0527d8
 - $(y^{\star} - \mu_{y})/\sigma$
 	- $\mathbb{E}\left (\frac{y^{\star} - \mu_{y}}{\sigma}\right)= \frac{\mathbb{E}(y^{\star}) - \mathbb{E}(\mu_y)}{\sigma} = \frac{\mu_{y}-\mu_{y}}{\sigma}=0$
 	- $\text{Var}\left (\frac{y^{\star} - \mu_{y}}{\sigma}\right)= \frac{1}{\sigma^{2}} \text{Var}(y^{\star})=1$
@@ -29,7 +29,7 @@ We are curious about the following statistics:
 Since we don't know $\sigma^2$ (population parameter), we estimate it using $\hat{\sigma}$ (RMSE). Thus, we may estimate $$\text{stdev}(y^{\star}-\bar{y})=\sqrt{\hat{\sigma}^{2}\left(1+ \frac{1}{n}\right)}$$
 Now, suppose the stronger linear model holds, and that we are interested in forming a **prediction interval** for a future observation $y^\star$ with covariate values $\tilde{x}$. $$y^{\star}=\beta_{0}+\beta_{1} \tilde{x}_{1}+\dots+\beta_{p}\tilde{x}_{p}+\epsilon^{\star}$$ and $$ \epsilon_{1},\dots,\epsilon_{n}, \epsilon^{\star} \sim N (0,\sigma_{\epsilon}^{2}) $$
 Here, $$\mathbb{E}(y^\star)=\mathbb{E}(\tilde{x}^{T}\beta+\epsilon^{\star})=\tilde{x}^{T}\beta$$ and $$\text{Var}(y^{\star})=\sigma_{\epsilon}^2$$
-Note that this is different from the [[7 Inferences#Inference for Conditional Expectations|distribution for conditional expectations]] we're seeing earlier as we have $y^\star$ as a (fixed) future observation that follows its own distribution, instead of relying on the predictor variables $X$.
+Note that this is different from the [[7 Inferences#Inference for Conditional Expectations|distribution for conditional expectations]] we're seeing earlier as we have $y^\star$ as a (fixed) future observation that follows the **population distribution**, instead of relying on the predictor variables $X$.
 
 #### Population Prediction Intervals
 Then, we would construct a valid $100 (1-\alpha)\%$ prediction interval for a future observation at $\tilde{x}$: $$\tilde{x}^{T} \beta \pm z_{1-\alpha/2}\sigma_{\epsilon}$$
@@ -53,4 +53,27 @@ While valid, we can’t actually use this interval in practice:
 - We don't know $\sigma_{\epsilon}$ - crucial for the spread
 
 We’ll now try to replace these components by sample-based estimators. This will change both the **center**, the **width**, and the **distribution** used to form the interval.
+
+Again, suppose the stronger linear model holds, and that we are interested in forming a **prediction interval** for a future observation $y^\star$ with covariate values $\tilde{x}$. $$y^{\star}=\beta_{0}+\beta_{1} \tilde{x}_{1}+\dots+\beta_{p}\tilde{x}_{p}+\epsilon^{\star}$$ and $$ \epsilon_{1},\dots,\epsilon_{n}, \epsilon^{\star} \sim N (0,\sigma_{\epsilon}^{2}) $$
+##### Center of Prediction Intervals
+The first $n$ observations represent our observed data, from which we use to form coefficients estimates $\hat{\beta}$ and my estimated prediction equation $$\hat{\mu}_{y|\tilde{x}}=\hat{\mathbb{E}}(y|x=\tilde{x})=\tilde{x}^{T}\hat{\beta}$$
+Note that $$\mathbb{E}(y^{\star}-\hat{\mu}_{y|\tilde{x}})=0$$ In words, the **expected value for a future response** at $\tilde{x}$ equals the expected value of my **SAMPLE-BASED prediction equation** when evaluated at $\tilde{x},\hat{\mu}_{y|\tilde{x}}$ . 
+
+Hence, instead of centering our prediction interval at $\tilde{x}^{T}\beta$, we center it at $$\tilde{x}\hat{\beta}=\hat{\mu}_{y|\tilde{x}}$$
+
+##### Variance for Prediction Intervals
+When centering our prediction intervals at  $\hat{\mu}_{y|\tilde{x}}$, we need to take **two sources of variability** into account:
+- $\text{Var}(y^{\star})$ (future observation)
+-  $\text{Var}(\hat{\mu}_{y|\tilde{x}})$ (center of interval)
+
+Observe that $y^{\star}$ and $\hat{\mu}_{y|\tilde{x}}$ are **INDEPENDENT of one another**.
+- $\hat{\mu}_{y|\tilde{x}}$ is computed using **OBSERVED data**, with outcomes $y_{1}, \dots, y_n$
+- $y^{\star}$ is a **FUTURE observation**, independent of $y_{1},\dots, y_{n}$, which was not used in estimating $\hat{\beta}$
+
+Using the independence of $y^{\star}$ and $\hat{\mu}_{y|\tilde{x}}$ and our results on **[[7 Inferences#^99db9f|linear combinations of slopes]]**, we can derive a variance to help determine the width of our prediction intervals: $$\begin{align}\text{Var}(y^{\star}-\hat{\mu}_{y|\tilde{x}})&=\text{Var}(y^{\star})+\text{Var}(\hat{\mu}_{y|\tilde{x}}) \\ &= \sigma_{\epsilon}^{2}+\sigma_{\epsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x} \\ &= \sigma_{\epsilon}^{2}(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})\end{align}$$
+Drawing conclusion back [[#^0527d8|here]], we have that $$\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}} \sim N(0,1)$$
+Since, again, the value of $\sigma_{\epsilon}$ is unknown to us, we will use estimate it using RMSE: $$\hat{\sigma}_{\epsilon}= \sqrt{\frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}}$$ which is the standard deviation of the residuals.
+
+Putting it all together, $$T=\frac{y^{\star}-\hat{\mu}_{y|\tilde{x}}}{\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}}  \sim t_{n-p-1}$$ under the stronger linear model. Based on this statistic, an $100 (1-\alpha)\%$ prediction interval for a covariate $\tilde{x}$ is $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\sigma_{\epsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$$
+Note the similarity and difference to a [[7 Inferences#^cbe93c|confidence interval for conditional expectation]].
 

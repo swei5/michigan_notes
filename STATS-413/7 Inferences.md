@@ -16,6 +16,9 @@ The $\mathcal{F}$-statistic is the square of the $t$-statistic, and both produce
 
 ---
 ### Linear Combinations of Slope Coefficients
+
+^99db9f
+
 It is true that $$a^{T}\hat{\beta} = \sum\limits_{j=0}^{p} a_{j+1} \hat{\beta_j}$$ where $a=[a_{1},\dots, a_{p}]^T$.
 
 We've been studying a special case to date:
