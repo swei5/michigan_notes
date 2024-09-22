@@ -36,8 +36,8 @@ We assume that $C$ is invertible, i.e. there exists $C^{-1}$.
 ```ad-important
 **Definition 6.3**: Expected Return and Variance 
 
-The expected return $\mu_{V}=\mathbb{E}(K_{V})$ and variance $\sigma_{V}^{2}=\text{Var}(K_{V})$ of a portfolio with weights $w$ are given by $$\begin{align}\mu_{V}&=\mathbb{E}(K_{V}w^{T}) \\ &= \mathbb{E}(K_{V})w^{T} \\ &= mw^{T}  \end{align}$$ 
-$$\begin{align}\sigma_{V}^{2}&=\text{Var}(K_{V}w^{T}) \\ &=   \end{align}$$
+The expected return $\mu_{V}=\mathbb{E}(K_{V})$ and variance $\sigma_{V}^{2}=\text{Var}(K_{V})$ of a portfolio with weights $w$ are given by $$\begin{align}\mu_{V}&=\mathbb{E}(K_{V}) \\ &= \mathbb{E}\left(\sum\limits_{i=1}^{n} w_{i}K_{i}\right) \\&= \sum\limits_{i=1}^{n} w_{i}\mu_{i} = mw^{T}  \end{align}$$ 
+$$\begin{align}\sigma_{V}^{2}&=\text{Var}(K_{V}) \\ &= \text{Var}\left(\sum\limits_{i=1}^{n} w_{i}K_{i}\right) \\ &= \text{Cov}\left(\sum\limits_{i=1}^{n} w_{i}K_{i}, \sum\limits_{j=1}^{n} w_{j}K_{j}\right) \\ &= \sum\limits_{i,j=1}^{n} w_{i}w_{j}c_{ij} \\ &= wCw^{T}  \end{align}$$
 ```
 
 ```ad-note
