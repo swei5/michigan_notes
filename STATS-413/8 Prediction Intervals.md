@@ -129,6 +129,8 @@ The two types of intervals address **different questions**.
 - Prediction interval addresses the **uncertainty** of an **INDIVIDUAL future response** given some predictor value
 - Confidence interval addresses the **uncertainty** of **AVERAGE predicted response** given some predictor value
 
+[See further reading here](https://stats.stackexchange.com/a/271232).
+
 ---
 ### Covered `R` Functions
 
