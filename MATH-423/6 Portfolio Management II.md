@@ -23,7 +23,7 @@ Thus $$uw^T=1$$
 
 We define the **mean vector** ($1 \times n$) $$m:=[\mu_{1},\dots, \mu_{n}]$$ where $\mu_{i}=\mathbb{E}(K_{i})$
 
-We define the **covariance matrix** ($n\times n$ ) $$C=(c_{ij})_{n\times n}$$ where $c_{ij} := \text{Cov}(K_{i},K_{j})$.
+We define the **covariance matrix** ($n\times n$) $$C=(c_{ij})_{n\times n}$$ where $c_{ij} := \text{Cov}(K_{i},K_{j})$.
 ```
 
 Note that since we define the weight and mean vectors as row vectors, the notation is opposite to what we've seen in other linear algebra materials, where both $w,u$ are treated as column vectors.
@@ -36,20 +36,19 @@ We assume that $C$ is invertible, i.e. there exists $C^{-1}$.
 ```ad-important
 **Definition 6.3**: Expected Return and Variance 
 
-The expected return $\mu_{V}=\mathbb{E}(K_{V})$ and variance $\sigma_{V}^{2}=\text{Var}(K_{V})$ of a portfolio with weights $w$ are given by $$\mu_{V}=mw^{T}$$ $$\sigma_{V}^{2}=wCw^{T}$$
+The expected return $\mu_{V}=\mathbb{E}(K_{V})$ and variance $\sigma_{V}^{2}=\text{Var}(K_{V})$ of a portfolio with weights $w$ are given by $$\begin{align}\mu_{V}&=\mathbb{E}(K_{V}w^{T}) \\ &= \mathbb{E}(K_{V})w^{T} \\ &= mw^{T}  \end{align}$$ 
+$$\begin{align}\sigma_{V}^{2}&=\text{Var}(K_{V}w^{T}) \\ &=   \end{align}$$
 ```
-
-^^^ PROOF
 
 ```ad-note
 Given a weight vector $w$ of a portfolio, we can calculate the pair $\mu_V$ and $\sigma_V$ by the last proposition, as both are parametrized by $w$.
 
 The collection of all such points is called the “Area of the Portfolio” (or **feasible region**, or **attainable sets**), we shadow out this region and its boundary is called **Markowitz bullet**.
 - The area doesn't span the entire $\sigma, \mu$ plane since $uw^T=1$
-- In the two-stock case, the area is just a simple curve. i.e. all portfolios lie on the curve, not what's inside
+- In the two-stock case, the area is just a **simple curve**. i.e. all portfolios lie on the curve, not what's inside
+```
 
 We see that the minimal risk is attained at the vertex (point) of the shadowed area, which is exactly located on the Markowitz bullet. There must be a portfolio corresponding to the vertex. We call it the **minimal variance portfolio**, and denote its weight by $w^\star$.
-```
 
 ```ad-important
 **Definition 6.4**: Minimum Variance Portfolio
