@@ -18,10 +18,10 @@ With the restriction that $\sum_{i=1}^{n}w_{i}=1$.
 ```ad-important
 **Definition 6.2**: Properties in Matrix Notation
 
-We define weight **row vector** ($1 \times n$) $$w:=[w_{1},\dots,w_{n}]^{T}$$ and $$u:=[1,\dots,1]^T$$
+We define weight **row vector** ($1 \times n$) $$w:=[w_{1},\dots,w_{n}]$$ and $$u:=[1,\dots,1]$$
 Thus $$uw^T=1$$
 
-We define the **mean vector** ($1 \times n$) $$m:=[\mu_{1},\dots, \mu_{n}]^{T}$$ where $\mu_{i}=\mathbb{E}(K_{i})$
+We define the **mean vector** ($1 \times n$) $$m:=[\mu_{1},\dots, \mu_{n}]$$ where $\mu_{i}=\mathbb{E}(K_{i})$
 
 We define the **covariance matrix** ($n\times n$ ) $$C=(c_{ij})_{n\times n}$$ where $c_{ij} := \text{Cov}(K_{i},K_{j})$.
 ```
