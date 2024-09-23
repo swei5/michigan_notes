@@ -71,11 +71,11 @@ $$\begin{align}
 ---
 ### Risks Reduction
 Equivalent to minimizing $\sigma_V$. Note that $\rho_{12} \in [−1, 1]$. First consider the risk reduction in two extreme cases.
-1. If $\rho_{12}=1$, then $\rho_{V}=|w_{1}\sigma_1+w_{2}\sigma_{2}|$. In particular, when $\sigma_{1} \ne \sigma_2$:
+1. If $\rho_{12}=1$, then $\sigma_{V}=|w_{1}\sigma_1+w_{2}\sigma_{2}|$. In particular, when $\sigma_{1} \ne \sigma_2$:
 $$\sigma_{V=0}\iff w_1=\frac{-\sigma_2}{\sigma_{1}-\sigma_{2}} \text{ and } w_{2}=\frac{\sigma_{1}}{\sigma_{1}-\sigma_{2}}$$
 Here either $w_1$ or $w_2$ is negative, implying that **short sales must happen**.
 
-2. If $\rho_{12}=-1$, then $\rho_{V}=|w_{1}\sigma_1-w_{2}\sigma_{2}|$. In particular $$\sigma_{V}=0\iff w_{1}=\frac{\sigma_{2}}{\sigma_{1}+\sigma_{2}} \text{ and } w_{2}=\frac{\sigma_{1}}{\sigma_{1}+\sigma_{2}}$$
+2. If $\rho_{12}=-1$, then $\sigma_{V}=|w_{1}\sigma_1-w_{2}\sigma_{2}|$. In particular $$\sigma_{V}=0\iff w_{1}=\frac{\sigma_{2}}{\sigma_{1}+\sigma_{2}} \text{ and } w_{2}=\frac{\sigma_{1}}{\sigma_{1}+\sigma_{2}}$$
 ```ad-note
 **Short Proof of (1)**
 

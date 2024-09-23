@@ -78,7 +78,8 @@ Hence $$\begin{align}uw^{T}=1&=u\left(\frac{1}{2} \lambda u C^{-1}\right)^{T} \\
 ![[Pasted image 20240912140518.png|300]]
 
 The bold lines are called the **Markowitz bullet**; it was named after Harry Markowitz in conjunction with its shape (“bullet”).  
-- The shaded area represents portfolios **WITHOUT short-selling**
+- The shaded area (both dark and light), including the boundary, represents portfolios that can be constructed from the securities
+- The **dark-shaded area** represents portfolios **WITHOUT short-selling**
 - Each point on the minimum variance line corresponds to a **single portfolio**
 
 An important feature of the Markowitz bullet is that **EACH POINT** on it has the **smallest risk among all portfolios** with the same expected return as the point. This is why the Markowitz bullet is also called the **minimum variance line**.
@@ -116,3 +117,14 @@ which in conjunction with the constraints leads to the system with unknowns the 
 \lambda_{1}uC^{-1}u^{T}+\lambda_{2}uC^{-1}m^{T} &=2\mu_{V}
 \end{cases}$$
 ```
+
+Now, recall that $w_{\mu_{V}}^{\min}=A\mu_{V}+B$ for some vector $A, B$. Assume that you have determined two (arbitrary, but **distinct**) portfolios on the **MVL**. Then, you can simply properly *split* your wealth and invest on these two portfolios in order to obtain a portfolio with specific data $(\sigma, \mu)$ on MVL.
+
+```ad-important
+**Definition 6.7**: Two-Fund Theorem
+
+Choose arbitrarily two distinct portfoliso $V_{1}^{MVL}, V_{2}^{MVL}$ with associated weights $w_{1}$ and $w_{2}$. Then, a portfolio $V$ lies on the MVL if and only if its weight vector $w$ can be written as an affine combination of $w_{1}$ and $w_2$, i.e. $$w=\alpha w_{1}+(1-\alpha)w_{2}$$ for some $\alpha \in \mathbb{R}$.
+```
+
+![[Pasted image 20240923150508.png|300]]
+To exemplify this, the minimum variance line is **LINEAR** (in weights and expected return) if we parametrize it by **weights** of arbitrary securities in the portfolio.
