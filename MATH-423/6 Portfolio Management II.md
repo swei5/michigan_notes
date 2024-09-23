@@ -89,4 +89,30 @@ An important feature of the Markowitz bullet is that **EACH POINT** on it has th
 The set (parameterized on the positive values of the expected return) of the portfolios with **minimum risk for a given level of expected return** is called the **Minimum Variance Line** (MVL).
 ```
 
-We are not only curious about when the risk of the portfolio is minimized given weights $w$, but also the minimal attainable risk **given some expected return $\mu_V$**. This is
+We are not only curious about when the risk of the portfolio is minimized given weights $w$, but also the minimal attainable risk **given some expected return $\mu_V$**. 
+
+```ad-important
+**Definition 6.6**: Weights of portfolios **on the MVL**
+
+Fix a level of expected return $\mu_{V}$. The portfolio with the **smallest risk** among all portfolios with expected return $\mu_{V}$ has weights $$\begin{align}
+w_{\mu_{V}}^{\min} &= \frac{\begin{vmatrix} 1 & c \\ \mu_{V} & d \end{vmatrix} uC^{-1} + \begin{vmatrix} a & 1 \\ b & \mu_{V} \end{vmatrix} mC^{-1}}{\begin{vmatrix} a & c \\ b & d \end{vmatrix}} \\ &= \frac{(d-c\mu_{V})uC^{-1}+(a\mu_{V}-b)mC^{-1}}{ad-bc}
+\end{align}$$ where $a=uC^{-1}u^{T}, b=mC^{-1}u^{T}, c=uC^{-1}m^{T}, d=mC^{-1}m^{T}$ are all real numbers.
+
+Note that $a,b,c,d$ are all **constants INDEPENDENT** of weight $w$.
+```
+
+Note that $w_{\mu_{V}}^{\min}$ is **linear** in $\mu_{V}$: $$w_{\mu_{V}}^{\min}=A\mu_{V}+B$$ where $A=\frac{(am-cu)C^{-1}}{ad-bc}$ and $B=\frac{(du-bm)C^{-1}}{ad-bc}$.
+
+```ad-note
+**Proof of Definition 6.6**
+
+We want to solve the problem $$\min\limits_{w}wCw^{T} \text{	 subject to 	} uw^{T}=1 \text{	and	} mw^{T}=\mu_{V}$$
+
+Since we have a minimization problem with constraints, we will use the Lagrange multipliers method. To this end, define $$\mathcal{L}(w,\lambda):= wCw^{T} - \lambda_{1} (uw^{T}-1) - \lambda_{2}(mw^{T}-1)$$
+
+Then, for $\nabla := (\frac{\partial}{\partial w_{1}}, \dots, \frac{\partial}{\partial w_{n}})$, we get $$\nabla \mathcal{L}=0 \iff 2wC-\lambda_{1} u - \lambda_{2}m =0 \iff w = \frac{1}{2}(\lambda_{1}u+\lambda_{2}m)C^{-1}$$
+
+which in conjunction with the constraints leads to the system with unknowns the elements of $\lambda$ $$ \begin{cases} \lambda_{1}uC^{-1}u^{T}+\lambda_{2}uC^{-1}m^{T} &=2 \\ \\
+\lambda_{1}uC^{-1}u^{T}+\lambda_{2}uC^{-1}m^{T} &=2\mu_{V}
+\end{cases}$$
+```
