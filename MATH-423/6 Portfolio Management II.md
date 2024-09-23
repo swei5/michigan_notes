@@ -78,8 +78,10 @@ Hence $$\begin{align}uw^{T}=1&=u\left(\frac{1}{2} \lambda u C^{-1}\right)^{T} \\
 ![[Pasted image 20240912140518.png|300]]
 
 The bold lines are called the **Markowitz bullet**; it was named after Harry Markowitz in conjunction with its shape (“bullet”).  
+- The shaded area represents portfolios **WITHOUT short-selling**
+- Each point on the minimum variance line corresponds to a **single portfolio**
 
-An important feature of the Markowitz bullet is that each point on it has the **smallest risk among all portfolios** with the same expected return as the point. This is why the Markowitz bullet is also called the **minimum variance line**.
+An important feature of the Markowitz bullet is that **EACH POINT** on it has the **smallest risk among all portfolios** with the same expected return as the point. This is why the Markowitz bullet is also called the **minimum variance line**.
 
 ```ad-important
 **Definition 6.5**: Minimum Variance Line
@@ -87,3 +89,4 @@ An important feature of the Markowitz bullet is that each point on it has the **
 The set (parameterized on the positive values of the expected return) of the portfolios with **minimum risk for a given level of expected return** is called the **Minimum Variance Line** (MVL).
 ```
 
+We are not only curious about when the risk of the portfolio is minimized given weights $w$, but also the minimal attainable risk **given some expected return $\mu_V$**. This is
