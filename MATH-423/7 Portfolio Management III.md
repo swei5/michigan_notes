@@ -20,3 +20,6 @@ Graphically in Markowitz's Bullet, this is represented by the red line in bold. 
 - Highest expected return among all attainable portfolios with the same risk 
 - Lowest risk among all attainable portfolios with the same expected returns
 
+For our convenience, we will denote the weights of the portfolios lying on the efficient frontier by $w_{EF}$ instead of $w_{\mu_{V}}^{\min}$, for $\mu_{V} \ge \mu_{MVP}$.
+
+The efficient frontier is the set of points whose weights $w_{EF}$ are given by $$w_{EF}=A\mu+B$$ for $\mu > \mu_{MVP}$ and $A=\frac{(am-cu)C^{-1}}{ad-bc}$ and $B=\frac{(du-bm)C^{-1}}{ad-bc}$.
