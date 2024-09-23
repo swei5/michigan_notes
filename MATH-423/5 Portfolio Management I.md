@@ -100,12 +100,15 @@ For $-1 \le \rho_{12} \le 1$, the minimal risk is attained when
 $$w_{1}^{\text{min}}:=\frac{\sigma_{2}^{2}-\rho_{12}\sigma_{1}\sigma_{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}-2\rho_{12}\sigma_{1}\sigma_{2}}$$
 $$w_{2}^{\text{min}}:=1-w_{1}^{\text{min}}=\frac{\sigma_{1}^{2}-\rho_{12}\sigma_{1}\sigma_{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}-2\rho_{12}\sigma_{1}\sigma_{2}}$$
 
+```
+
+^037b18
+
 If short sales are not allowed, the smallest risk (may not be 0) is attained at
 - $(w_{1},w_{2})=(0,1)$ if $w_{1}^{\text{min}}<0$
 - $(w_{1},w_{2})=(w_{1}^{\text{min}}, w_{2}^{\text{min}}<0)$ if $0 \le w_{1}^{\text{min}} \le 1$
 - $(w_{1},w_{2})=(1,0)$ if $w_{1}^{\text{min}}>0$
 
 ![[Pasted image 20240912130645.png|600]]
-```
 
 To proof this, we view $\sigma_{V}^{2}:= f(w_{1})$ as a function of $w_{1}$ and verify that $f^{\prime}(w_{1}^{\text{min}})=0$ and $f^{\prime \prime}(w_{1}^{\text{min}})>0$.

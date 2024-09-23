@@ -48,6 +48,8 @@ The collection of all such points is called the “Area of the Portfolio” (or 
 - In the two-stock case, the area is just a **simple curve**. i.e. all portfolios lie on the curve, not what's inside
 ```
 
+---
+### Minimum Variance Line
 We see that the minimal risk is attained at the vertex (point) of the shadowed area, which is exactly located on the Markowitz bullet. There must be a portfolio corresponding to the vertex. We call it the **minimal variance portfolio**, and denote its weight by $w^\star$.
 
 ```ad-important
@@ -58,7 +60,9 @@ The portfolio with the smallest variance in the attainable set is called the **m
 The weights of the minimum variance portfolio are given by $$w_{MVP}=\frac{uC^{-1}}{uC^{-1}u^{T}}$$
 ```
 
-^^^ REMARK w/ 2 VARIABLES
+We can show that this holds true for a two-security example, drawing conclusion from previous lecture:  ![[5 Portfolio Management I#^037b18]]
+We have that $$\begin{align} w_{MVP}&=\frac{uC^{-1}}{uC^{-1}u^{T}} \\ &= \frac{ \frac{1}{\det(C)} u\begin{bmatrix} \sigma_{2}^{2} & -\sigma_{12} \\ -\sigma_{12} & \sigma_{1}^{2} \end{bmatrix}}{\frac{1}{\det(C)} u\begin{bmatrix} \sigma_{2}^{2} & -\sigma_{12} \\ -\sigma_{12} & \sigma_{1}^{2} \end{bmatrix} u^{T}} \\ &= \begin{bmatrix} \frac{\sigma_{2}^{2}-\sigma_{12}}{\sigma_{2}^{2}+\sigma_{1}^{2}-2\sigma_{12}} &  \frac{\sigma_{1}^{2}-\sigma_{12}}{\sigma_{2}^{2}+\sigma_{1}^{2}-2\sigma_{12}} \end{bmatrix} \end{align}$$
+[See more for the algebra involved here](https://www.cs.rochester.edu/u/brown/Crypto/assts/projects/adj.html).
 
 ```ad-note
 **Proof of Definition 6.4**
