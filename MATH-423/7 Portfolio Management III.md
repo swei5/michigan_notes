@@ -22,4 +22,7 @@ Graphically in Markowitz's Bullet, this is represented by the red line in bold. 
 
 For our convenience, we will denote the weights of the portfolios lying on the efficient frontier by $w_{EF}$ instead of $w_{\mu_{V}}^{\min}$, for $\mu_{V} \ge \mu_{MVP}$.
 
-The efficient frontier is the set of points whose weights $w_{EF}$ are given by $$w_{EF}=A\mu+B$$ for $\mu > \mu_{MVP}$ and $A=\frac{(am-cu)C^{-1}}{ad-bc}$ and $B=\frac{(du-bm)C^{-1}}{ad-bc}$.
+The efficient frontier is the set of points whose weights $w_{EF}$ are given by $$w_{EF}=A\mu+B$$ for $\mu > \mu_{MVP}$ and $A=\frac{(am-cu)C^{-1}}{ad-bc}$ and $B=\frac{(du-bm)C^{-1}}{ad-bc}$ referenced [[6 Portfolio Management II#^bdc70b|here]].
+
+From now on we extend the market of the $n$ **risky assets** by introducing a **risk-free asset** with return $R$.
+- Moreover, we assume $R < \mu_{MVP}$ 

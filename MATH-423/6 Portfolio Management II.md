@@ -102,7 +102,7 @@ w_{\mu_{V}}^{\min} &= \frac{\begin{vmatrix} 1 & c \\ \mu_{V} & d \end{vmatrix} u
 Note that $a,b,c,d$ are all **constants INDEPENDENT** of weight $w$.
 ```
 
-Note that $w_{\mu_{V}}^{\min}$ is **linear** in $\mu_{V}$: $$w_{\mu_{V}}^{\min}=A\mu_{V}+B$$ where $A=\frac{(am-cu)C^{-1}}{ad-bc}$ and $B=\frac{(du-bm)C^{-1}}{ad-bc}$.
+Note that $w_{\mu_{V}}^{\min}$ is **linear** in $\mu_{V}$: $$w_{\mu_{V}}^{\min}=A\mu_{V}+B$$ where $A=\frac{(am-cu)C^{-1}}{ad-bc}$ and $B=\frac{(du-bm)C^{-1}}{ad-bc}$. ^bdc70b
 
 ```ad-note
 **Proof of Definition 6.6**
@@ -128,3 +128,5 @@ Choose arbitrarily two distinct portfoliso $V_{1}^{MVL}, V_{2}^{MVL}$ with assoc
 
 ![[Pasted image 20240923150508.png|300]]
 To exemplify this, the minimum variance line is **LINEAR** (in weights and expected return) if we parametrize it by **weights** of arbitrary securities in the portfolio.
+
+This proposition is important. It means that the minimum variance line has the **same shape** as the **set of portfolios constructed from two securities**.
