@@ -1,4 +1,4 @@
-[[2024-01-30]] #Portfolio #Investment 
+[[2024-01-30]] #Portfolio #Investment #Risks 
 
 ### Motivation 
 The investment problem can be decomposed into two steps:
@@ -11,14 +11,14 @@ A portfolio is a weighted collection of assets. Recall the **expected return** a
 
 ```ad-note
 Note that if our portfolio has exactly one risky assets and one risk-free asset, the variance of the portfolio is
-$$\text{Var}(\mathbf{R}_{p})=w_{E}^{2}\sigma_{E}^{2} $$
+$$\text{Var}(r_{p})=w_{E}^{2}\sigma_{E}^{2} $$
 
 As the return of a risk-free asset is **constant**.
 ```
 
 #### Portfolio of $n$ Risky Assets 
 Assume that $w_{i}=\frac{1}{n}$ (equally weighted). Then,
-$$\text{Var}(\mathbf{R}_{p})=\left(\frac{1}{n}\right) \overline{\sigma_{i}}^{2}+\left(1- \frac{1}{n}\right)\overline{\sigma}_{ij} \to \overline{\sigma}_{ij}$$
+$$\text{Var}(r_{p})=\left(\frac{1}{n}\right) \overline{\sigma_{i}}^{2}+\left(1- \frac{1}{n}\right)\overline{\sigma}_{ij} \to \overline{\sigma}_{ij}$$
 Note that 
 $$\sigma_{ij}=\rho_{ij}\sigma_{i}\sigma_{j}$$
 
@@ -41,7 +41,7 @@ Systematic or non-diversifiable risk is **NOT reduced** even as we increase the 
 Only applies to **one risky asset** in a portfolio.
 
 Given by
-$$\mathbb{E}(\mathbf{R}_{p})=r_{f}+\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}\sigma_{p}$$
+$$\mathbb{E}(r_{p})=r_{f}+\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}\sigma_{p}$$
 Given a risky asset $f$ and risky equity $E$ in a portfolio $p$.  Here, $\frac{\mathbb{E}(r_{E})-r_{f}}{\sigma_{E}}$ is the **sharpe ratio** of the **risky asset** $E$ and is also the slope of the **capital allocation line** (CAL).
 
 ```ad-note

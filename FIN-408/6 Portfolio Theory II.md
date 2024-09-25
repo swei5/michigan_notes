@@ -1,4 +1,4 @@
-[[2024-02-06]] #Portfolio #Investment 
+[[2024-02-06]] #Portfolio #Investment #Risks
 
 ### Efficient Frontier 
 Exists in the **mean-standard-deviation** space.
@@ -26,7 +26,7 @@ Optimization is often carried out in Excel as it's hard to compute by hands.
 1. Specify the **return characteristics** (i.e., expected returns, variances, covariances) of all assets
 2. Find the optimal risky (tangency) portfolio ($T$), obtain the **optimal weight on each risky asset**, calculate the expected return and variance of portfolio $T$  
 3. Allocate between the risk-free asset and portfolio $T$, obtain the optimal weight on risk-free and portfolio $T$, calculate the share of the complete portfolio invested in each risky asset
-	- Treat portfolio $T$ as one asset and thus $\mathbb{E}(\mathbf{R}_{r})=r_{f}+\frac{\mathbb{E}(r_{T})-r_{f}}{\sigma_{T}}\sigma_{p}$
+	- Treat portfolio $T$ as one asset and thus $\mathbb{E}(r_T)=r_{f}+\frac{\mathbb{E}(r_{T})-r_{f}}{\sigma_{T}}\sigma_{p}$
 ---
 ### Separation Theorem 
 All **efficient portfolios** are combinations of **tangency portfolio** and **risk free asset**. The portfolio choice can be separated into two independent tasks

@@ -123,10 +123,22 @@ Now, recall that $w_{\mu_{V}}^{\min}=A\mu_{V}+B$ for some vector $A, B$. Assume 
 ```ad-important
 **Definition 6.7**: Two-Fund Theorem
 
-Choose arbitrarily two distinct portfoliso $V_{1}^{MVL}, V_{2}^{MVL}$ with associated weights $w_{1}$ and $w_{2}$. Then, a portfolio $V$ lies on the MVL if and only if its weight vector $w$ can be written as an affine combination of $w_{1}$ and $w_2$, i.e. $$w=\alpha w_{1}+(1-\alpha)w_{2}$$ for some $\alpha \in \mathbb{R}$.
+Choose arbitrarily two distinct portfoliso $V_{1}^{MVL}, V_{2}^{MVL}$ with associated weights $w_{1}$ and $w_{2}$. Then, a portfolio $V$ lies **on the MVL** if and only if its weight vector $w$ can be written as an affine combination of $w_{1}$ and $w_2$, i.e. $$w=\alpha w_{1}+(1-\alpha)w_{2}$$ for some $\alpha \in \mathbb{R}$.
 ```
 
 ![[Pasted image 20240923150508.png|300]]
 To exemplify this, the minimum variance line is **LINEAR** (in weights and expected return) if we parametrize it by **weights** of arbitrary securities in the portfolio.
 
 This proposition is important. It means that the minimum variance line has the **same shape** as the **set of portfolios constructed from two securities**.
+
+```ad-note
+**Proof of 6.7**
+
+Let $w_{1},w_{2}$ be two portfolios on the MVL. Let $w_{3}=cw_{1}+(1-c)w_{2}$. Then,
+
+$$\begin{align}
+cw_{1}+(1-c)w_{2} &= c(A\mu_{V1}+B) + (1-c)(A\mu_{V2}+B) & \text{ from Definition 6.6} \\ &= cA\mu_{V1}+cB + A\mu_{V2} + B - cA\mu_{V2} - cB \\ &= A(c\mu_{V1}+(1-c)\mu_{V2})+B
+\end{align}$$
+
+which agrees with the form shown in Definition 6.6.
+```
