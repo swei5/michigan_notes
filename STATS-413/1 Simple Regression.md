@@ -97,6 +97,8 @@ Where $\hat{\beta}_{1}=r \frac{\text{stdev}({y})}{\text{stdev}(x)}$ and $\hat{\b
 Here, $\hat{\beta}_{1}$ is the **slope** of the regression line and $\hat{\beta}_{0}$ is the **intercept**.
 ```
 
+^70b481
+
 This line is commonly referred to as **the least squares line**, or the **least squares regression equation**.
 
 There are infinitely many equations of the form $\tilde{\beta_0}+\tilde{\beta_1}x$ we could have chosen... This boils down to an optimization problem.

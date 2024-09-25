@@ -1,4 +1,4 @@
-[[2024-09-17]] #Portfolio #Valuation #Risks #CAPM 
+[[2024-09-17]] #Portfolio #Valuation #Risks
 
 ### Efficient Frontier
 Let $V_{i}, i=1,2$ be two risky assets, e.g., stock price, portfolio etc., with associated data $(\sigma_{i},\mu_{i}), i=1,2$. Then,
@@ -82,3 +82,6 @@ At this point, in addition, we have to make sure that $\gamma \ne 0$. Recall tha
 The half-line that starts at the risk-free asset and runs through the market portfolio $M$ will be said the Capital Market Line (CML) and it satisfies the equation: $$\mu = R +\frac{\mu_{M}-R}{\sigma_{M}}\sigma$$ where $\frac{\mu_{M}-R}{\sigma_{M}}$ is the **risk premium**.
 ```
 
+The risk premium can be seen as the the additional return above the risk-free return $R$ which **compensates for exposure** to risk.
+
+In addition, if every investor uses the same $m$ and $C$  (investing in the same set of assets) and shares the same principles as the one we have described, e.g., the efficient portfolios are preferable, then **every investor will construct their portfolio on the CML**.
