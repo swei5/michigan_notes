@@ -23,4 +23,11 @@ We want to find a best line, or equivalently a pair of $(\beta, \alpha)$, that m
 \\ \frac{\partial f}{\partial \alpha} = 0 \implies \alpha-\mathbb{E}[K_{V}] + \beta\mathbb{E}[K_{M}]=0 \end{cases}$$ Solving simultaneously yields $$\begin{cases} \beta = \frac{\mathbb{E}[K_{V}K_{M}]-\mathbb{E}[K_{V}]\mathbb{E}[K_{M}]}{\mathbb{E}[K_{M}^{2}]-\mathbb{E}[E_{M}]^{2}}= \frac{\text{Cov}(K_{V}, K_{M}) }{\sigma_{M}^{2}}\\ \alpha = \mathbb{E}[K_{V}]-\beta_V \mathbb{E}[K_{M}]=\mu_V -\beta_{V}\mu_{M}\end{cases}$$
 Note that this is the same conclusion we drew from  [[1 Simple Regression#^70b481|statistics]] prior.
 
-The line we eventually find $$y=\beta_{V}x+\alpha_V$$ is called the line of best fit, or regression line statistically. We may also rewrite it as $$\mu_V=\beta_V\mu_{M}+\alpha_{V}$$
+The line we eventually find $$y=\beta_{V}x+\alpha_V$$ is called the line of best fit, or regression line statistically. Rewriting $\alpha$ , we also get $$ \mu_V=\beta_V\mu_{M}+\alpha_{V}$$
+```ad-important
+**Definition 8.2**: Covariance of Two Portfolios
+
+Let two portfolios $V_1$,$V_2$ have associated weights $w_{1}:=[w_{1,1},\dots, w_{1,n}]$ and $w_{2}:=[w_{2,1},\dots, w_{2,n}]$. Then, $$\text{Cov}(K_{V1},K_{V2})=w_{1}Cw_{2}^T$$ for $K:=[K_{1},\dots, K_{n}]$ is a row vector of random returns of risky assets.
+```
+
+This is true since $$\begin{align}\text{Cov}(K_{V1},K_{V2})&=\text{Cov}(w_{1}K^{T},w_{2}K^{T}) \\ &= \text{Cov}\left(\sum\limits_{i=1}^{n} w_{1,i} K_{i}, \sum\limits_{j=1}^{n} w_{1,j} K_{j}\right) \\ &= \sum\limits_{i=1}^{n} \sum\limits_{j=1}^{n} w_{1,i} w_{2,j} \text{Cov}(K_{i},K_{j}) \\&=w_{1}Cw_{2}^{T} \end{align}$$
