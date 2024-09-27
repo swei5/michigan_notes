@@ -18,3 +18,16 @@ If we further assume (stronger linear model) that $\epsilon \sim MVN(0, \sigma_{
 ```
 
 Violations of these assumptions can invalidate the methods we’ve proposed. For instance: 
+- $\mathbb{E}(y-X\hat{\beta})\ne0$
+	- Our hypothesis tests might commit a [[4 Hypothesis Tests#^1ba045|Type I error]] at a rate different from $\alpha$
+	- The coverage of our confidence intervals might differ from $100 (1-\alpha)\%$
+	- ...
+
+### Regression Diagnostics
+Regression Diagnostics are tools/methods for determining whether a regression model adequately represents the data at hand. It takes two main forms:
+1. **Diagnostic Plots** - create a plot which can visually reveal a violation of a modeling assumption
+2. **Diagnostic Tests** - test the null hypothesis that a given modeling assumption holds; Rejection of the null suggests a violation of the assumption under consideration
+
+We will focus on graphical diagnostics here.
+
+It is difficult to visualize the relationship between $y$ and $x$ unless $p=1$ - we need to consider low-dimensional consequences of the linear model.

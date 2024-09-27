@@ -38,7 +38,7 @@ Convention is to use $\alpha = 0.05$.
 We can characterize the types of correct or incorrect decisions in a 2 × 2 table: 
 ![[Pasted image 20240905122427.png|400]]
 
-A **Type I Error** occurs if we **reject the null hypothesis** when it was actually true.
+A **Type I Error** occurs if we **reject the null hypothesis** when it was actually true. ^1ba045
 - E.g. declaring the defendant guilty when they are innocent
 
 A **Type II Error** occurs if we **fail to reject the null hypothesis** when it was actually false.
