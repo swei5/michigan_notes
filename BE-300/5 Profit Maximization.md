@@ -1,4 +1,4 @@
-[[2023-01-19]] #MarketStructure
+[[2023-01-19]] #Microeconomics
 
 ### Marginal Revenue
 $MR$ has the same intercept as **inverse demand curve** and **twice** the slope.

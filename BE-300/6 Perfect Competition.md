@@ -1,4 +1,4 @@
-[[2023-01-24]] #MarketStructure
+[[2023-01-24]] #Microeconomics 
 
 Pricing strategies are dependent upon market structures.
 

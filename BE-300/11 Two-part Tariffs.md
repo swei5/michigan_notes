@@ -1,4 +1,4 @@
-[[2023-02-21]] #PriceDiscrimination
+[[2023-02-21]] #PriceDiscrimination #Microeconomics 
 
 ### Two-part Tariffs
 
@@ -21,7 +21,7 @@ We set $P=MC$ in order to sell $Q_c$ units (maximum).
 - Customers whose demands **CAN** be identified
 	- Simply charge **different** fixed fee (based on $CS$) and the **same** per-unit price ($MC$)
 - Customers whose demands **CAN'T** be identified
-	- Since we cannot verify types. No one would choose to pay higher fee. Note similarity between this and [[9 Indirect Price Discrimination, Bundling#^30fab2|quantity discount|]].
+	- Since we cannot verify types. No one would choose to pay higher fee. Note similarity between this and [[9 Bundling#^30fab2|quantity discount|]].
 	- Fee is constrained by type with **lower demand**
 
 However, we have a neat trick.

@@ -1,4 +1,4 @@
-[[2023-09-23]] #RESTAPI #Webpage  
+[[2023-09-23]] #Webpage  
 ### HTTP Review
 As seen in [[2 Static Pages|previous chapter in Static Pages]], HTTP request methods indicate server action.
 - `GET`: request a resource

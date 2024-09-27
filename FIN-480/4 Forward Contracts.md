@@ -1,4 +1,4 @@
-[[2024-03-14]] #Options #Valuation 
+[[2024-03-14]] #Derivatives #Valuation 
 
 A forward contract is an agreement to transact in the future. It can be written to **meet particular requirements**, but buyers and sellers are responsible for **managing counterparty default risk**.
 

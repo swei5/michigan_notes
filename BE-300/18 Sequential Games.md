@@ -1,4 +1,4 @@
-[[2023-04-11]] #Game
+[[2023-04-11]] #Game #Microeconomics
 
 ### Games, Recap
 - Coordination Game

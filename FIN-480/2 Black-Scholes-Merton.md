@@ -1,4 +1,4 @@
-[[2024-01-25]] #Options #Valuation 
+[[2024-01-25]] #Derivatives #Valuation 
 
 ### Assumptions 
 The model prescribes the assumptions below:

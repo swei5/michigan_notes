@@ -1,4 +1,4 @@
-[[2024-01-11]] #Options #Valuation 
+[[2024-01-11]] #Derivatives #Valuation 
 
 ### Option Concepts, Overview
 - **Option types**  

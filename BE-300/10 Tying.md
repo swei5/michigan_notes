@@ -1,4 +1,4 @@
-[[2023-02-16]] #PriceDiscrimination
+[[2023-02-16]] #PriceDiscrimination #Microeconomics 
 
 ### Tying
 
@@ -12,7 +12,7 @@ A pricing strategy in which a seller will only sell a product to a buyer if that
 - Might have **monopoly** in **ONE** market (base good) and not the other (variable good). Tying goods together allows monopolist to **capture more surplus**
 - Printers, E-Books, gaming consoles
 
-Recall the definition of bundling ![[9 Indirect Price Discrimination, Bundling#^dbc3ce]]
+Recall the definition of bundling ![[9 Bundling#^dbc3ce]]
 Both bundling and tying are forms of price discrimination.
 - Tied goods are typically **strong** **complements** (printer and ink), whereas bundled goods need not be complements (TV channels)
 - Tied goods are typically sold **one to many** (one printer and lots of ink), whereas bundled goods are typically sold **one-to-one** (one burger and one order of fries)

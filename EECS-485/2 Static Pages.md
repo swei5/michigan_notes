@@ -1,4 +1,4 @@
-[[2023-05-06]] #HTML #CSS #Webpage
+[[2023-05-06]] #Webpage
 
 ### Overview of Class
 How does the Web work?

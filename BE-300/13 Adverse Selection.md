@@ -1,4 +1,4 @@
-[[2023-03-16]] #AsymmetricInfo
+[[2023-03-16]] #AsymmetricInfo #Microeconomics 
 
 ### Asymmetric Information
 - Uncertainty can be result of an action taken by another individual who is behaving in a strategic fashion  
@@ -40,7 +40,6 @@ While most lemons market/adverse selection examples we saw in class end up with 
 If supply curves have **same intercept**, iterate once with updating beliefs to see if you end up in an **equilibrium** ($\text{consumer beliefs} = \text{actual proportions supplied}$).
 
 ---
-
 #### Mitigating Adverse Selection
 - Force everyone into market
 	- E.g. insurance - **Affordable Care Act**

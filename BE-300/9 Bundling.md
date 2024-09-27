@@ -1,4 +1,4 @@
-[[2023-02-14]] #PriceDiscrimination
+[[2023-02-14]] #PriceDiscrimination #Microeconomics 
 
 ### Indirect Price Discrimination
 ##### Inter-temporal price discrimination

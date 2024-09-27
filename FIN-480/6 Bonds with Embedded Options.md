@@ -1,4 +1,4 @@
-[[2024-04-26]] #Bonds #Options #Valuation 
+[[2024-04-26]] #Bonds #Derivatives #Valuation 
 
 ### Overview
 **Call** option **benefits the bond issuer** (most prevalent). 

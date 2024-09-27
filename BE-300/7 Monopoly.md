@@ -1,4 +1,4 @@
-[[2023-01-26]] #MarketStructure
+[[2023-01-26]] #Microeconomics 
 
 ### Market Structure
 - Perfect competition: many firms, no market power, price takers

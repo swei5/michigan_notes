@@ -1,4 +1,4 @@
-[[2023-03-30]] #Risks 
+[[2023-03-30]] #Risks #Microeconomics
 
 - **Risk neutral**: 
 	- A person who is indifferent between a certain outcome and uncertain outcomes with the same **expected value**  

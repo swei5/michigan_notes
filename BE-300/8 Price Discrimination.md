@@ -1,4 +1,4 @@
-[[2023-02-07]] #PriceDiscrimination 
+[[2023-02-07]] #PriceDiscrimination #Microeconomics 
 
 ### Price Discrimination
 Charging **different prices** to **different customers** for same good or for different units of good without cost differences is called price discrimination.
@@ -37,4 +37,4 @@ In the scenario above, we can't sell between $Q_m$ and $Q_c$ without lowering th
 	- Versioning (e.g. airlines)
 	- Quantity discounts
 
-- Third‐degree (direct) price discrimination, or discrimination by **indicators**/ **segments**: firm charges different prices by market segment (age, income, type of use, time of purchase)
+- Third‐degree (direct) price discrimination, or discrimination by **indicators**/**segments**: firm charges different prices by market segment (age, income, type of use, time of purchase)

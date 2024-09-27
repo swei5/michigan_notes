@@ -1,4 +1,4 @@
-[[2023-04-06]] #Game 
+[[2023-04-06]] #Game #Microeconomics
 
 ### Repeated Games
 [[16 Game Theory Basics#^731cea|Nash equilibrium]] can leave both players **worse off** relative to some other outcome. To reach that other outcome, players need to **coordinate**.  

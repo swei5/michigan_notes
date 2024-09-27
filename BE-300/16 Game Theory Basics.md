@@ -1,4 +1,4 @@
-[[2023-04-04]] #Game
+[[2023-04-04]] #Game #Microeconomics 
 
 ### Simultaneous Games
 Players choose their strategies at the **same time**.

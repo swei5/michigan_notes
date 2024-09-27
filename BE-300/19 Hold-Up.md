@@ -1,4 +1,4 @@
-[[2023-04-13]] #Game 
+[[2023-04-13]] #Game #Microeconomics
 
 ### Hold-Up Problem
 Two firms want to trade with each other but one firm must **move first** by making a specific investment that can only be used in its transaction with the 2nd firm, and 2nd firm **takes advantage** of the 1st firm.
