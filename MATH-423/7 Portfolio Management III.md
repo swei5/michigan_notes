@@ -50,6 +50,8 @@ In other words, we can uniquely identify a portfolio $M$, which will be given th
 Under the assumption that $R < \mu_{MVP}$ and if $C$ is invertible, then the market portfolio $M$ **exists** and its weights are given by $$w=\frac{(m-Ru)C^{-1}}{(m-Ru)C^{-1}u^{T}}$$
 ```
 
+^061edf
+
 ```ad-note
 **Proof of 7.3**
 
