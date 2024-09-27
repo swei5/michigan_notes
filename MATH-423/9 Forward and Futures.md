@@ -18,3 +18,12 @@ The future value of a **SHORT** forward position at time T is $F (0, T )−S(T )
 ![[Pasted image 20240926183728.png|500]]
 ```
 
+```ad-important
+**Definition 9.2**: Forward Price
+
+The no-arbitrage forward price is $$F(0,T)=S(0) \frac{A(T)}{A(0)}=S(0)e^{rT}$$
+
+where $r$ is the continuous compounding interest rate.
+```
+
+Note that there is **NO** $S(T)$ in the expression of $$
