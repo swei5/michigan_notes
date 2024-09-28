@@ -19,7 +19,7 @@ We introduce an additional quantity called the **Hat matrix**, which will be use
 ```ad-important
 **Definition 3.1**: Hat Matrix
 
-We define that $$\hat{y}=X\hat{\beta}=X(X^{T}X)^{-1}X^{T}y=HY$$
+We define that $$\hat{y}=X\hat{\beta}=X(X^{T}X)^{-1}X^{T}y=Hy$$
 where $$H=X(X^{T}X)^{-1}X^{T}$$
 
 Intuitively, it is called the hat matrix because it *puts on the hats* on $y$.
@@ -107,6 +107,8 @@ $$\begin{align}\text{Var}(Z)&=\mathbb{E}[(Z-\mathbb{E}(Z))(Z-\mathbb{E}(Z))^{T}]
 
 If ${Z_{j}}$ are independent, $\text{Var}(Z) = \text{Diag}(\text{Var}(Z_{j}))$.
 ```
+
+^2cf564
 
 ```ad-important
 **Definition 3.6**: Properties of Variance
