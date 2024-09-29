@@ -133,7 +133,7 @@ In addition, we also plot the relationship between residuals and fitted values: 
 #### Assessing Homoskedasticity
 Homoskedasticity tells us that, for each $x_{i}$ $$\text{Var}(\epsilon_{i}|x_{i})=\sigma_{\epsilon}^{2}$$
 We don't have $\epsilon_{i}$ and instead observe its sample analogue $e_{i}$ instead. Recall that previously we have $$\text{Var}(e_{i}|x_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})$$
-Generally $h_{ii} \ne h_{jj}$ for $i \ne j$. Thus, even under homoskedasticity, our sample residuals would not have constant variance.
+Generally $h_{ii} \ne h_{jj}$ for $i \ne j$. Thus, even under homoskedasticity, our sample residuals would not have constant variance. ^b62bf9
 
 Fortunately, there’s a straightforward fix under the weaker linear model: $$\begin{align}\text{Var}\left(\frac{e_{i}}{\sqrt{1-h_{ii}}}|x_{i}\right)&=\frac{\text{Var}(e_{i}|x_{i})}{1-h_{ii}} \\ &= \frac{\sigma_{\epsilon}^{2}(1-h_{ii})}{(1-h_{ii})} \\ &= \sigma_{\epsilon}^{2}\end{align}$$
 This motivates the use of an **alternative residual** for assessing homoskedasticity.
@@ -160,5 +160,47 @@ With any of these approaches, want to see if the magnitude of the residuals is v
 - Concern: magnitude of residuals varies systematically (heteroskedasticity)
 ```
 
-Plotting $|r_i |$ focuses attention on **magnitude** while taking $\sqrt{|r_{i}|}$
+Plotting $|r_i |$ focuses attention on **magnitude** while taking $\sqrt{|r_{i}|}$ removes skewness in plot since $|r_{i}|$ is very much right-skewed.
+
+```ad-example
+**Example**: Heteroskedasticity
+
+![[Pasted image 20240928220302.png|500]]
+```
+
+---
+### Assessing Normality
+Our methods for hypothesis tests / confidence intervals / prediction intervals have so far relied crucially on the normality assumption in the stronger linear model: $$\epsilon \sim MVN(0,\sigma_{\epsilon}^{2}I)$$
+Again, we will be using sample residuals $e_{i}$ are our best guesses for $\epsilon_{i}$.
+
+A seemingly natural approach might be to use a histogram to assess normality, and look for a bell-shaped / normally distributed.
+- Easy to distinguish a normal distribution from a distribution which is left or right skewed using a histogram
+- Much harder to distinguish a normal distribution from a bell-shaped distribution with **heavier tails**
+
+However, this might not be ideal - it's very hard to distinguish $N$ and $t$ distributions with a larger $\text{df}$. A normal quantile plot, or a Q-Q plot would make sense here.
+- Vertical axis: sorted variable values
+- Horizontal axis: “theoretical normal quantiles”
+	- $n$ units of standard deviations above/below the mean
+
+To create a Normal QQ-Plot:
+1. Sort the standardized residuals $r_{1} \le r_{2} \le r_{n}$
+2. Compute $u_{i}=\Phi^{-1}(\frac{i}{n+1})$ - division by $n+1$ accounts for discreteness in data
+3. Plot $r_{i}$ against $u_{i}$
+
+```ad-note
+Note that $\Phi(\cdot)^{-1}$ is `qnorm(.)`, which **takes as input a probability**, gives as output the corresponding quantile.
+
+We again use standardized residuals $r_{i}=\frac{e_{i}}{\hat{\sigma}_{\epsilon}\sqrt{1-h_{ii}}}$ instead of $e_{i}$
+- This is because $e_{i}$ aren't identically distributed (see [[#^b62bf9|here]]) - QQ-plots are made for iid variables
+```
+
+If the points don’t deviate from the diagonal line much, then the variable is *approximately normally distributed*.
+
+![[Pasted image 20240928230710.png|400]]
+
+How non-normalities show up in normal quantile plots:
+- **Right-Skewness**: frequent in finance. This causes convex (cup-shaped) curvature in normal quantile plots
+- Left-skewed - concave curvature
+- Outlying observations cause points to be too high on the right or too low on the left
+- Multi-modality (rare) causes snaking of the normal quantile plot
 
