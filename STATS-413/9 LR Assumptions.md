@@ -1,4 +1,4 @@
-[[2024-09-24]] #Regression 
+[[2024-09-24]] #Regression #R
 
 To date we have derived properties of the ordinary least squares coefficients $\hat{\beta}$ under the assumption that a **linear model holds**.
 
@@ -204,3 +204,21 @@ How non-normalities show up in normal quantile plots:
 - Outlying observations cause points to be too high on the right or too low on the left
 - Multi-modality (rare) causes snaking of the normal quantile plot
 
+---
+### Covered R Functions
+
+```r
+# Get residuals from a model
+resid.both <- lm.both$residuals 
+
+# Get fitted values from a model
+fitted.both <- lm.both$fitted.values
+
+# Get standardized residuals 
+sresid.both <- rstandard(lm.both)
+
+# Q-Q plots
+qqnorm(scores) # Q-Q plot
+qqline(scores) # Normal Line
+
+```
