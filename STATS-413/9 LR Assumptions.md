@@ -34,7 +34,7 @@ It is difficult to visualize the relationship between $y$ and $x$ unless $p=1$ -
 
 #### Algebraic Properties of Residuals and Fitted Values
 Recall that $H=X(X^{T}X)^{-1}X^{T}$ and let $h_{ij}$ denote its $i,j$ element. Then,  $$e=(I-H)y$$ And $$\hat{y}=Hy$$
-We’ve previously discussed algebraic properties of $e$ and $\hat{y}$ when running a regression with an intercept. Let $\text{Cov}(\cdot, \cdot)$  be the **sample** covariance operator. Then, $$\text{Cov}(e,x_{j})=0$$ $$\text{Cov}(e,\hat{y})=0$$ (shown [here](https://stats.stackexchange.com/q/474587)). And $$\bar{e}=\frac{1}{n}\sum\limits_{i=1}^{n}e_{i}=0$$ (shown using the [[2 Multiple Regression#^81c207|Normal Equation]]) ^c048e6
+We’ve previously discussed algebraic properties of $e$ and $\hat{y}$ when running a regression with an intercept. Let $\text{cov}(\cdot, \cdot)$  be the **sample** covariance operator. Then, $$\text{cov}(e,x_{j})=0$$ $$\text{cov}(e,\hat{y})=0$$ And $$\bar{e}=\frac{1}{n}\sum\limits_{i=1}^{n}e_{i}=0$$ (shown using the [[2 Multiple Regression#^81c207|Normal Equation]]) ^c048e6
 
 These properties are purely algebraic, and hold **regardless** of whether the weaker linear model holds.
 
@@ -52,7 +52,7 @@ Note the distinction between $\mathbb{E}(e_{i})=0$ and $\overline{e}=0$;  the fo
 ```ad-important
 **Definition 9.2**: Variances of Residuals and Fitted Values
 
-Under the weaker linear model $$\text{Var}(e)=\sigma_{\epsilon}^{2}(I-H)$$ using $\text{Var}[(I-H)y]=(I-H)\text{Var}(y)(I-H)^{T}$ and $$\text{Var}(\hat{y})=\sigma_{\epsilon}^{2}H$$ using $\text{Var}(\hat{y})=\text{Var}(Hy)=H\text{Var}(y)H^{T}$ and $\text{Var}(y)=$.
+Under the weaker linear model $$\text{Var}(e)=\sigma_{\epsilon}^{2}(I-H)$$ using $\text{Var}[(I-H)y]=(I-H)\text{Var}(y)(I-H)^{T}$ $\text{Var}(y)=\sigma_{\epsilon}^{2}$ under assumptions; and $$\text{Var}(\hat{y})=\sigma_{\epsilon}^{2}H$$ using $\text{Var}(\hat{y})=\text{Var}(Hy)=H\text{Var}(y)H^{T}$ and $\text{Var}(y)=\sigma_{\epsilon}^{2}$ under assumptions.
 ```
 
 Keep in mind the distinction between $\text{Var}(e_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})$ and $\hat{\sigma}_{\epsilon}^{2}= \frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}$. The former describes **variability for ANY component** $e_{i}$ across data sets. The latter is the **sample variance** for the observed residuals.
@@ -80,6 +80,85 @@ In other words, for $i, j =1, \dots, n$, $\text{Cov}(e_{i},\hat{y}_{j})=0$.
 ```
 
 This is **distinct** from the result that the sample covariance between $e$ and $\hat{y}$ equals zero [[#^c048e6|when running regression with an intercept]].
-- $\text{Cov}(e_{i},\hat{y}_{j})=0$: Property of random variables across data sets **under the linear model**
-- $\text{Cov}(e, \hat{y})=0$ : Algebraic property
+- $\text{Cov}(e_{i},\hat{y}_{i})=0$: Property of random variables across data sets **under the linear model**
+- $\text{cov}(e, \hat{y})=0$ : Algebraic property
+
+```ad-important
+**Definition 9.5**: Distribution of Residuals and Fitted Values
+
+Under the stronger linear model, $$\begin{bmatrix} e \\ \hat{y} \end{bmatrix} \sim MVN \left(\begin{bmatrix} \mathbf{0} \\ X\beta \end{bmatrix}, \begin{bmatrix} (I-H)\sigma_{\epsilon}^{2} & \mathbf{0} \\ \mathbf{0} & H\sigma_{\epsilon}^{2} \end{bmatrix}\right)$$
+
+Implications under the stronger linear model: $$e_{i} \sim N(0, \sigma_{\epsilon}^{2}(1-h_{ii}))$$ and $e$ and $\hat{y}$ are **independent of one another** (relies crucially on multivariate normality).
+```
+
+#### Linearity
+**Linearity**, $y=X\beta+\epsilon$ with $\mathbb{E}(\epsilon)=0$ tells us that for each $i$, $$\mathbb{E}(e_{i}|x_{i})=\mathbb{E}(y_{i}-\hat{y}|x_{i})=0$$
+i.e. that the expected value of our sample residual $e_i$ at **ANY point** $x_i$ equals zero.
+
+**Nonlinearity**, on the other hand, could be written as $y_{i}=g (x_{i})+\epsilon_{i}$ and $\mathbb{E}(\epsilon_{i})=0$ for some **nonlinear** functions $g(\cdot)$. In this case, $$\mathbb{E}(e_{i}|x_{i})=\mathbb{E}(y_{i}-\hat{y}|x_{i})=\eta(x_{i})$$ for some non-zero function $\eta(\cdot)$.
+
+---
+### Residual Plots
+#### Assessing Linearity
+In the linearity case where $$\mathbb{E}(e_{i}|x_{i})=\mathbb{E}(y_{i}-\hat{y}|x_{i})=0$$ there is **NO pattern in residuals** as a function of **ANY** of the predictor variables.
+
+For nonlinearity where $\mathbb{E}(e_{i}|x_{i})=\eta(x_{i})$ for some $\eta (x_{i})\ne 0$, we can't generally visualize $e_{i}$ as joint function of $x_{i1}, \dots, x_{ip}$ - however, we can **separately visualize** relationship between $e_{i}$ and $x_{i1}$, $e_{i}$ and $x_{i2}$, and so on through $p$ scatterplots (2 dimension projections).
+- Our hope is that the high-dimensional nonlinearity reveals itself in lower dimensions
+
+These plots with the residuals on the $y$ axis and predictors on the $x$ axis are examples of residual plots.
+
+```ad-example
+**Example: Curvature**
+
+Ideal residual plot should look like an amorphous blob. No systematic variation between residuals and $x_{i}$.
+
+![[Pasted image 20240928213441.png|400]]
+
+A residual plot with **curvature** may look something like 
+
+![[Pasted image 20240928213504.png|400]]
+```
+
+```ad-note
+Residuals will always have mean zero.
+```
+
+In addition, we also plot the relationship between residuals and fitted values: $e$ versus $\hat{y}$.
+- If we knew $\beta$, then we know $\mathbb{E}(e_{i}|x_{i}^{T}\beta)=0$ for all $x_{i}$
+	- Then, a plot of $e$ against $\mathbb{E}(y)=X\beta$ would reveal no discernable pattern under linearity
+- However, if we replace $\beta$ by our best estimate $\hat{\beta}$: $x_{i}^{T}\hat{\beta}=\hat{y}_{i}$, nonlinearity might reveal itself with **systematic variation in residuals as a function of predicted values**
+
+![[Pasted image 20240928214741.png|500]]
+
+#### Assessing Homoskedasticity
+Homoskedasticity tells us that, for each $x_{i}$ $$\text{Var}(\epsilon_{i}|x_{i})=\sigma_{\epsilon}^{2}$$
+We don't have $\epsilon_{i}$ and instead observe its sample analogue $e_{i}$ instead. Recall that previously we have $$\text{Var}(e_{i}|x_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})$$
+Generally $h_{ii} \ne h_{jj}$ for $i \ne j$. Thus, even under homoskedasticity, our sample residuals would not have constant variance.
+
+Fortunately, there’s a straightforward fix under the weaker linear model: $$\begin{align}\text{Var}\left(\frac{e_{i}}{\sqrt{1-h_{ii}}}|x_{i}\right)&=\frac{\text{Var}(e_{i}|x_{i})}{1-h_{ii}} \\ &= \frac{\sigma_{\epsilon}^{2}(1-h_{ii})}{(1-h_{ii})} \\ &= \sigma_{\epsilon}^{2}\end{align}$$
+This motivates the use of an **alternative residual** for assessing homoskedasticity.
+
+```ad-important
+**Definition 9.6**: Standardized / Internally Studentized Residuals
+
+The standardized residual (also called the internally studentized residual) takes the following form for each observation $i$: $$r_{i}=\frac{e_{i}}{\hat{\sigma}_{\epsilon}\sqrt{1-h_{ii}}}$$
+
+The division by $\hat{\sigma}_{\epsilon}$ **removes dependence on scale**.
+```
+
+```ad-summary
+**Summary: Detecting Heteroskedasticity**
+
+Common approaches using standardized residuals include:
+1. Plot $r_{i}$ against $x_{ij}$ for $j=1,\dots,p$
+2. Plot $r_{i}$ against $\hat{y}_{i}$
+3. Plot $\sqrt{|r_{i}|}$ against $x_{ij}$ for $j=1,\dots,p$
+4. Plot $\sqrt{|r_{i}|}$ against $\hat{y}_{i}$
+
+With any of these approaches, want to see if the magnitude of the residuals is varying as a function of $x_{ij}$ or $\hat{y}_{i}$.
+- Ideal: no systematic variation (homoskedasticity)
+- Concern: magnitude of residuals varies systematically (heteroskedasticity)
+```
+
+Plotting $|r_i |$ focuses attention on **magnitude** while taking $\sqrt{|r_{i}|}$
 
