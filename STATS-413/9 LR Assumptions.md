@@ -60,7 +60,7 @@ Under the weaker linear model $$\text{Var}(e)=\sigma_{\epsilon}^{2}(I-H)$$ using
 Keep in mind the distinction between $\text{Var}(e_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})$ and $\hat{\sigma}_{\epsilon}^{2}= \frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}$. The former describes **variability for ANY component** $e_{i}$ across data sets. The latter is the **sample variance** for the observed residuals.
 
 When performing regression with an intercept and $p$ predictors, the **diagonal entries** of the hat matrix $H$, $h_{ii}$ , satisfy the following $$\frac{1}{n} \le h_{ii} \le 1$$ for $i=1,\dots,n$. And $$\sum\limits_{i=1}^{n}h_{ii}=p+1$$
-This implies that $$\text{Var}(e_{i})=\sigma_{\epsilon}^{2}(1-h_{ii}) \le \sigma_{\epsilon}^{2}=\text{Var}(\epsilon_{i})$$ In words, residuals **DO NOT** generally have the **same variance** as errors do; in addition, residuals $e_{i}$ have **SMALLER** variance then $\epsilon_{i}$.
+This implies that $$\text{Var}(e_{i})=\sigma_{\epsilon}^{2}(1-h_{ii}) \le \sigma_{\epsilon}^{2}=\text{Var}(\epsilon_{i})$$ In words, residuals **DO NOT** generally have the **same variance** as errors do; in addition, residuals $e_{i}$ have **SMALLER** variance then $\epsilon_{i}$. ^376c7f
 
 In addition, for any $i, j=1,\dots,n$ and by rearranging the results in [[#^908aff|Definition 9.2]]  we may show that $$\text{Cov}(e_{i},e_{j})=-\sigma_{\epsilon}^{2}h_{ij}$$
  $$\text{Cov}(\hat{y}_{i},\hat{y}_{j})=\sigma_{\epsilon}^{2}h_{ij}$$
@@ -226,5 +226,4 @@ sresid.both <- rstandard(lm.both)
 # Q-Q plots
 qqnorm(scores) # Q-Q plot
 qqline(scores) # Normal Line
-
 ```
