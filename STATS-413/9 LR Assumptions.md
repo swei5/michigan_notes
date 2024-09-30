@@ -55,13 +55,20 @@ Note the distinction between $\mathbb{E}(e_{i})=0$ and $\overline{e}=0$;  the fo
 Under the weaker linear model $$\text{Var}(e)=\sigma_{\epsilon}^{2}(I-H)$$ using $\text{Var}[(I-H)y]=(I-H)\text{Var}(y)(I-H)^{T}$ $\text{Var}(y)=\sigma_{\epsilon}^{2}$ under assumptions; and $$\text{Var}(\hat{y})=\sigma_{\epsilon}^{2}H$$ using $\text{Var}(\hat{y})=\text{Var}(Hy)=H\text{Var}(y)H^{T}$ and $\text{Var}(y)=\sigma_{\epsilon}^{2}$ under assumptions.
 ```
 
+^908aff
+
 Keep in mind the distinction between $\text{Var}(e_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})$ and $\hat{\sigma}_{\epsilon}^{2}= \frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}$. The former describes **variability for ANY component** $e_{i}$ across data sets. The latter is the **sample variance** for the observed residuals.
 
 When performing regression with an intercept and $p$ predictors, the **diagonal entries** of the hat matrix $H$, $h_{ii}$ , satisfy the following $$\frac{1}{n} \le h_{ii} \le 1$$ for $i=1,\dots,n$. And $$\sum\limits_{i=1}^{n}h_{ii}=p+1$$
 This implies that $$\text{Var}(e_{i})=\sigma_{\epsilon}^{2}(1-h_{ii}) \le \sigma_{\epsilon}^{2}=\text{Var}(\epsilon_{i})$$ In words, residuals **DO NOT** generally have the **same variance** as errors do; in addition, residuals $e_{i}$ have **SMALLER** variance then $\epsilon_{i}$.
 
-In addition, for any $i, j=1,\dots,n$ $$\text{Cov}(e_{i},e_{j})=-\sigma_{\epsilon}^{2}h_{ij}$$ $$\text{Cov}(\hat{y}_{i},\hat{y}_{j})=\sigma_{\epsilon}^{2}h_{ij}$$
+In addition, for any $i, j=1,\dots,n$ and by rearranging the results in [[#^908aff|Definition 9.2]]  we may show that $$\text{Cov}(e_{i},e_{j})=-\sigma_{\epsilon}^{2}h_{ij}$$
+ $$\text{Cov}(\hat{y}_{i},\hat{y}_{j})=\sigma_{\epsilon}^{2}h_{ij}$$
 This implies that despite the fact $\text{Cov}(\epsilon_{i},\epsilon_{j})=0$ under the weaker linear model, $\text{Cov}(e_{i}, e_{j})\ne 0$.
+
+```ad-note
+Though we assume $\epsilon$ to be iid and normally distributed, $e$ is **NOT independent and iid** given a non-zero covariance term between $e_{i}$ and $e_{j}$. Alternatively, we can make the same conclusion since the variance of $e_{i}$ is a function of $i$ in $H$.
+```
 
 ```ad-important
 **Definition 9.3**: Properties of Covariance
@@ -168,8 +175,7 @@ Plotting $|r_i |$ focuses attention on **magnitude** while taking $\sqrt{|r_{i}|
 ![[Pasted image 20240928220302.png|500]]
 ```
 
----
-### Assessing Normality
+#### Assessing Normality
 Our methods for hypothesis tests / confidence intervals / prediction intervals have so far relied crucially on the normality assumption in the stronger linear model: $$\epsilon \sim MVN(0,\sigma_{\epsilon}^{2}I)$$
 Again, we will be using sample residuals $e_{i}$ are our best guesses for $\epsilon_{i}$.
 
