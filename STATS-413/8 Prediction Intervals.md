@@ -129,7 +129,12 @@ The two types of intervals address **different questions**.
 - Prediction interval addresses the **uncertainty** of an **INDIVIDUAL future response** given some predictor value
 - Confidence interval addresses the **uncertainty** of **AVERAGE predicted response** given some predictor value
 
-[See further reading here](https://stats.stackexchange.com/a/271232).
+[See further reading here](https://stats.stackexchange.com/a/271232). Also [here](https://piazza.com/class/ly4q6d2b6vz208/post/115).
+
+```ad-note
+For any type of interval estimation, formally, we use the **expected value** of our variable of interest as the **center of the interval** (which is often an estimator of the variable of interest), and the **standard error** of the **difference between the true value of the variable of interest and its estimator** as the **width of the interval**.
+- Note that for all CI calculations we have conducted, the standard error term is solely determined upon the **variance of the estimator** since the true population parameter is a constant, which is **NOT the case** for PI
+```
 
 ---
 ### Covered `R` Functions
