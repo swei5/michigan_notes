@@ -99,4 +99,10 @@ While the tool of leverage helps us assess the impact **outliers** have on the o
 ### Detecting Outliers
 How do we distinguish between truly unusual outcomes and large, but not unexpected, values for residuals? In particular, how do we identifying **outlying observations** in $y$ that may have **SMALL residuals** but **HIGH leverage**?
 
-A good idea would be to **exclude** point $i$, and recompute $\hat{\beta}_{(i)}$ and $\hat{y}_{(i)}$
+A good idea would be to **exclude** point $i$, and recompute $\hat{\beta}_{(i)}$ and $\hat{y}_{(i)}$, then if $|y_{i}-\hat{y}_{(i)}|$ is **large**, it suggests that outcome $y_{i}$ is an outlier.
+- Since $y_{i}$ is independent of $\hat{y}_{i}$ as $y_{i}$ is excluded and did not help form its prediction
+
+![[Pasted image 20241003162105.png|400]]
+
+Formally, we are testing:
+- **Null hypothesis**: 
