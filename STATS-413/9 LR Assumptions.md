@@ -153,6 +153,8 @@ The standardized residual (also called the internally studentized residual) take
 The division by $\hat{\sigma}_{\epsilon}$ **removes dependence on scale**.
 ```
 
+^5ba862
+
 ```ad-summary
 **Summary: Detecting Heteroskedasticity**
 
