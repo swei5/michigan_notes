@@ -9,7 +9,7 @@ More frequently, our concern is with **strong**, not perfect, collinearity. $$x_
 ```ad-note
 **Multicollinearity vs Leverage**
 
-Both multicollinearty and leverage have to do with the distribution of the **predictors**, not the responses.
+Both multicollinearity and leverage have to do with the distribution of the **predictors**, not the responses.
 
 They describe very different attributes of predictor space, with different statistical ramifications.
 - Leverage: certain observations are outliers with respect to the distribution of $X$; have potential to exert large influence over the OLS solution
@@ -88,4 +88,38 @@ A scatterplot of $y_{.R}$ against $x_{j.R}$ is called a **partial regression plo
 - Heteroskedasticity
 - **Influential points** for determining the $j$ th slope coefficient
 
-Because $\hat{\beta}_{j.R}=\hat{\beta}_{j}$, it must be that $$\text{Var}(\hat{\beta}_{j})=\text{Var}(\hat{\beta}_{j.R})$$ Thus, we can rewrite 
+Because $\hat{\beta}_{j.R}=\hat{\beta}_{j}$, it must be that $$\text{Var}(\hat{\beta}_{j})=\text{Var}(\hat{\beta}_{j.R})$$ Thus, we can rewrite $\text{Var}(\hat{\beta}_{j})=\sigma_{\epsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)}$  as $$\begin{align}
+\text{Var}(\hat{\beta}_{j})&=\frac{\sigma_{\epsilon}^{2}}{x_{j}^{T}(I-H_{R})x_{j}} \\\\
+&= \frac{\sigma_{\epsilon}^{2}}{\sum_{i=1}^{n}x_{ij.R}^{2}}
+\end{align}$$
+This result provides another (equivalent) way to compute **standard errors**: $$
+\text{se}(\hat{\beta}_{j})=\frac{\hat{\sigma}_{\epsilon}}{\sqrt{x_{j}^{T}(I-H_{R})x_{j}}}$$ That said, the main reason we’ve gone through partial regression is that it inspires a useful measure of multicollinearity.
+- Measure how “unstable” a slope coefficient is because of multicollinearity
+- Instability = High variance
+- *How much has the variability in the slope coefficient increased due to multicollinearity?*
+
+We think of $x_{j}^{T}(I-H_{R})x_{j}$ as a **type of RSS** from our partial regression framework ($x_{j}$ on $X_{R}$): $$ RSS_{j}=x_{j}^{T}(I-H_{R}) x_{j}=\sum\limits_{i=1}^{n} (x_{ij}-\hat{x}_{ij})^{2}$$ where $\hat{x}_{ij}$ are my predicted values from a regression of $x_{ij}$ on $X_{R}$.
+
+The corresponding **TSS** for this partial regression is $$TSS_{j}=\sum\limits_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}=(n-1)\text{var}(x_{j})$$ where $\text{var}(x_{j})$ is the sample variance.
+
+```ad-note
+Generally, we prefer RSS to be small relative to TSS.
+- In this context however, $RSS_j$ small relative to $TSS_j$ indicates **strong multicollinearity**!
+- It means we can predict $x_j$ very well as a linear function of the other predictor variables
+
+Instead, we want RSS to be as close to TSS as possible.
+```
+
+There would be **NO multicollinearity** issues with respect to $x_{j}$ and $\hat{\beta}_{j}$ if $$RSS_{j}=TSS_{j}$$
+This would occur if $$\frac{1}{n}\sum\limits_{i=1}^{n} (x_{ij}-\bar{x}_{j})(x_{ik}-\bar{x}_{k})=0$$ for $k=1,\dots, p$; that is, if $x_{j}$ minus its **sample mean** is **orthogonal** to the other $p-1$ predictor variables minus their sample means.
+
+If $x_{j}-\bar{x}_{j}$ is orthogonal to $x_{k}-\bar{x}_{k}$ for $k=1,\dots, p$, $k\ne j$: $$x_{ij.R}=x_{ij}-\bar{x}_{j}$$
+```ad-note
+The above effectively says that the residual of $x_{j}$ when regressed on $X_{R}$ is equal to the predictor $x_{j}$ subtracted by the sample mean of $x_{j}$.
+- Our prediction for all $n$ observations of $x_{j}$ is just its sample mean, hence $RSS_{j}=TSS_{j}$
+- This implies that we are **NOT** better off at all regressing $x_{j}$ on $X_{R}$ and hence we predict everything based on its sample mean, meaning that $X_{R}$ gives us **NO information** - $x_{j}$ and all other predictors are not related
+```
+
+In this case, the following two slopes are **identical**:
+1. The estimated slope coefficient on $x_{j}$ in a simple regression of $y$ on $x_j$
+2. The estimated slope coefficient on $x_{j}$ in a multiple regression of $y$ on $x_{1}, x_{2},\dots, x_{p}$
