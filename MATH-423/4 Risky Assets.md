@@ -17,7 +17,7 @@ Here we see that the **growth factor** is $1+K(n,m)$.
 Analogously, we can write the log return over the same time interval:
 $$k(n,m):= \ln \frac{S(m)}{S(n)}$$
 Rearranging this gives $$S(m)=S(n)e^{k(n,m)}$$
-Like coupon being paid in bonds, when a dividend is paid, the stock price **drops** by the same amount. 
+Like coupon being paid in bonds, when a dividend is paid, the stock price **DROPS** by the same amount. 
 
 Since the dividend is decided **prior to paying date**, the drop of stock price is already reflected in $S(n)$. Thus, $S (n)+\text{div}(n)$ reflects the stock price at time $n$ if dividend **were NOT paid**. Hence, the one-step return and log return are 
 $$K(n):=K(n-1,n) = \frac{S(n)+\text{div}(n)-S(n-1)}{S(n-1)}$$
