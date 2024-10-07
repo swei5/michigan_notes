@@ -1,1 +1,43 @@
 [[2024-10-03]] #Derivatives #Valuation 
+
+```ad-important
+**Definition 12.1**: Bounds on European Option Prices
+
+The prices of European call and put options on a stock **paying NO dividends** satisfy the inequalities $$\begin{align}
+\text{Call:     } & \max{(S(0)-Xe^{-rT},0)} \le C_{E}<S(0)\\
+\text{Put:     } & \max{(Xe^{-rT}-S(0),0)} \le P_{E}<Xe^{-rT}\\
+\end{align}$$
+```
+
+In the above inequalities, if discrete dividends will be paid on the stock, we **subtract** the **PV** $\text{Div}_{0}$ of the dividend from $S(0)$: $$\begin{align}
+\text{Call:     } & \max{(S(0)-\text{Div}_{0}-Xe^{-rT},0)} \le C_{E}<S(0)-\text{Div}_{0}\\
+\text{Put:     } & \max{(Xe^{-rT}-(S(0)-\text{Div}_{0}),0)} \le P_{E}<Xe^{-rT}\\
+\end{align}$$
+If dividend yield of the stock is $r_{\text{div}}$, then discount $S (0)$ by the factor $e^{-r_\text{div}T}$: $$\begin{align}
+\text{Call:     } & \max{(S(0)e^{-r_\text{div}T}-Xe^{-rT},0)} \le C_{E}<S(0)e^{-r_\text{div}T}\\
+\text{Put:     } & \max{(Xe^{-rT}-S(0)e^{-r_\text{div}T},0)} \le P_{E}<Xe^{-rT}\\
+\end{align}$$
+```ad-note
+**Proof of Definition 12.1**
+
+From the put-call parity we have $$P_{E}=C_{E}-S(0)+Xe^{-rT}$$ Hence, $P_{E}\ge 0$ implies $$C_{E} \ge S(0)-Xe^{-rT} \ge 0 \implies C_{E} \ge \max{(S(0)-Xe^{-rT},0)}$$
+
+Similarly, $C_{E}\ge 0$ implies $$P_{E} \ge Xe^{-rT}-S(0) \ge 0 \implies P_{E} \ge \max{(Xe^{-rT}-S(0),0)}$$
+
+This completes the first half of our proof.
+
+Let's assume that $C_{E} < S(0)$, then $P_{E} < Xe^{-rT}$. So it remains to prove $C_{E} < S(0)$. We will again use the no-arbitrage principle to prove $C_{E} < S(0)$. 
+
+By contradition, we assume that $C_{E} \ge S(0)$.
+
+At time $0$:
+- Short Call: $+C_{E}$
+- Long one share: $-S(0)$
+- Deposit the difference: $C_{E}-S(0)$
+- **Total payoff**: $0$
+
+At time $T$:
+- Collect deposit: $(C_{E}-S(0))e^{rT}$
+- 
+```
+

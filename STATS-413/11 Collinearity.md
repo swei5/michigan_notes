@@ -186,6 +186,9 @@ The condition number $\kappa$ is defined to be $$\kappa = \sqrt{\frac{\lambda_{1
 Rule of thumb: $\kappa>15$: moderate collinearity; $\kappa > 30$: big issues.
 ```
 
+---
+### Multicollinearity in Practice
+
 ```ad-example
 **Detecting Collinearity in Pratice**
 
@@ -195,7 +198,28 @@ Rule of thumb: $\kappa>15$: moderate collinearity; $\kappa > 30$: big issues.
 
 ![[Pasted image 20241007131717.png|400]]
 
+Full regression output: 
+
+![[Pasted image 20241007132616.png|400]]
+
+$p$-value on covariate $j$ assesses whether or not, after having included the other $p-1$ predictor variables in the model, we also need to include covariate $j$.
+- Under stronger multicollinearity, the other $p$ contain **substantial information** about $j$ due to strong correlations
+
+After excluding some redundant variables: 
+
+![[Pasted image 20241007132640.png|400]]
+
+Note that we still have a significant model with a similar $R^2$ value, but we have managed to reduce a lot of redundant covariates.
+
 ```
+
+If we mostly care about **prediction accuracy for future observations**, we should eliminate predictors that are highly correlated with other predictors.
+
+Collinearity makes the prediction equation **unstable**! Substantially different prediction equations can fit the observed data similarly.  Small changes in $X$ can **yield big changes in predictions** for new observations.
+
+Try to use **problem-specific context** to choose which collinear variables to eliminate. That said, there are automated methods for variable selection which we will discuss soon.
+
+If interpretation is important and you must keep all predictors, be forewarned that coefficients estimates will be unstable. It is advisable to not use OLS, and to instead use a more advanced regression technique.
 
 ---
 ### Covered `R` Functions
