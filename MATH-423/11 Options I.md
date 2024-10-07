@@ -52,6 +52,7 @@ For an underlying asset paying **no dividends**, the following relationship hold
 
 ```ad-note
 **Proof of Definition 11.2**
+
 At time 0:
 1. Buy a European call option for $C_{E}$: $-C_{E}$
 2. Write and sell a European put option for $P_{E}$: $+P_{E}$
