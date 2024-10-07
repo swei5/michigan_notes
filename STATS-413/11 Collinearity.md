@@ -70,7 +70,7 @@ Observe that $$\begin{align}
 (I-H_R)X_{R} &= 0\\
 (I-H_{R})(I-H) &= (I-H)
 \end{align}$$ since $X_{R}$ reside in the columnspace of $X$, so that $X_{R}H=X_R$ and $H_{R}H=H_{R}$.
-``
+
 Hence the above becomes $$y_{.R}=x_{j.R}\hat{\beta}_{j}+(I-H)y$$ Subtract $x_{j.R}\hat{\beta}_{j}$ from both sides and multiply by $x_{j}^{T}(I-H_{R})$ yields $$x_{j.R}^{T}(y_{.R}-x_{j.R}\hat{\beta}_{j})=x_{j}^{T}(I-H_{R})(I-H)y$$ The RHS equals **zero** since $x_{j}^T (I-H)y=0$ as $x_{j}$ is in the columnspace of $X$.
 ```
 
@@ -80,7 +80,7 @@ The above implies that $\hat{\beta}_{j}$ **satisfies the normal equations** for 
 In a simple regression of $y_{.R}$ on $x_{j.R}$.
 - Intercept is **zero**
 - Slope is $\hat{\beta}_{j}$
-- Residuals are **identical** to the residuals in a regression of $y$ on $X$ (shown by this: $y_{.R}=x_{j.R}\hat{\beta}_{j}+(I-H)y$)
+- Residuals are **identical** to the residuals in a regression of $y$ on $X$ - shown by this: $y_{.R}=x_{j.R}\hat{\beta}_{j}+(I-H)y$
 ```
 
 A scatterplot of $y_{.R}$ against $x_{j.R}$ is called a **partial regression plot**. It can be used as an additional diagnostic tool to detect
@@ -88,16 +88,26 @@ A scatterplot of $y_{.R}$ against $x_{j.R}$ is called a **partial regression plo
 - Heteroskedasticity
 - **Influential points** for determining the $j$ th slope coefficient
 
-Because $\hat{\beta}_{j.R}=\hat{\beta}_{j}$, it must be that $$\text{Var}(\hat{\beta}_{j})=\text{Var}(\hat{\beta}_{j.R})$$ Thus, we can rewrite $\text{Var}(\hat{\beta}_{j})=\sigma_{\epsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)}$  as $$\begin{align}
+Because $\hat{\beta}_{j.R}=\hat{\beta}_{j}$, it must be that $$\text{Var}(\hat{\beta}_{j})=\text{Var}(\hat{\beta}_{j.R})$$
+```ad-important
+**Definition 11.2**: Variance of $\hat{\beta_{j}}$, Alternative Notation
+
+Thus, we can rewrite $\text{Var}(\hat{\beta}_{j})=\sigma_{\epsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)}$  as $$\begin{align}
 \text{Var}(\hat{\beta}_{j})&=\frac{\sigma_{\epsilon}^{2}}{x_{j}^{T}(I-H_{R})x_{j}} \\\\
-&= \frac{\sigma_{\epsilon}^{2}}{\sum_{i=1}^{n}x_{ij.R}^{2}}
+&= \frac{\sigma_{\epsilon}^{2}}{\sum_{i=1}^{n}x_{ij.R}^{2}}\\
+&= \frac{\sigma_{\epsilon}^{2}}{RSS_{j}}
 \end{align}$$
+```
+
+^a5b79b
+
 This result provides another (equivalent) way to compute **standard errors**: $$
 \text{se}(\hat{\beta}_{j})=\frac{\hat{\sigma}_{\epsilon}}{\sqrt{x_{j}^{T}(I-H_{R})x_{j}}}$$ That said, the main reason we’ve gone through partial regression is that it inspires a useful measure of multicollinearity.
 - Measure how “unstable” a slope coefficient is because of multicollinearity
 - Instability = High variance
 - *How much has the variability in the slope coefficient increased due to multicollinearity?*
 
+#### Orthogonality
 We think of $x_{j}^{T}(I-H_{R})x_{j}$ as a **type of RSS** from our partial regression framework ($x_{j}$ on $X_{R}$): $$ RSS_{j}=x_{j}^{T}(I-H_{R}) x_{j}=\sum\limits_{i=1}^{n} (x_{ij}-\hat{x}_{ij})^{2}$$ where $\hat{x}_{ij}$ are my predicted values from a regression of $x_{ij}$ on $X_{R}$.
 
 The corresponding **TSS** for this partial regression is $$TSS_{j}=\sum\limits_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}=(n-1)\text{var}(x_{j})$$ where $\text{var}(x_{j})$ is the sample variance.
@@ -122,4 +132,97 @@ The above effectively says that the residual of $x_{j}$ when regressed on $X_{R}
 
 In this case, the following two slopes are **identical**:
 1. The estimated slope coefficient on $x_{j}$ in a simple regression of $y$ on $x_j$
-2. The estimated slope coefficient on $x_{j}$ in a multiple regression of $y$ on $x_{1}, x_{2},\dots, x_{p}$
+2. The estimated slope coefficient on $x_{j}$ in a multiple regression of $y$ on all covariates: $x_{1}, x_{2},\dots, x_{p}$
+
+Compare our interpretations of the slope on $\hat{\beta}_{j}$ in simple and multiple regression:
+- **Simple Regression**: Two individuals who differ in $x_{j}$ by one unit are expected to differ in $y$ by $\hat{\beta}_{j}$ 
+- **Multiple regression**: Holding the values for the other predictor variables **fixed**, two individuals who differ in $x_{j}$ by one unit are expected to differ in $y$ by $\hat{\beta}_{j}$ 
+
+Under **orthogonality**, these two estimates are the **SAME**.
+- Adjusting for other predictors does nothing to alter the impact of differences in $x_j$ on dfferences in $y$
+- None of the other predictors **systematically vary** with $x_j$.
+
+---
+### Metrics for Multicollinearity
+Recall in [[#^a5b79b|Definition 11.2]] that $$\text{Var}(\hat{\beta}_{j})=\frac{\sigma_{\epsilon}^{2}}{RSS_{j}}$$ From this, we see that the smallest variance for $\hat{\beta}_{j}$ is attained when $RSS_{j}=TSS_{j}$.
+- Smallest variance = **most stable estimate** (no multicollinearity)
+
+We can rewrite the expression above as $$\begin{align}
+\text{Var}(\hat{\beta}_{j})&=\frac{\sigma_{\epsilon}^{2}}{RSS_{j}}\\
+&= \frac{\sigma_{\epsilon}^{2}}{TSS_{j}}\frac{TSS_{j}}{RSS_{j}}\\
+&= \frac{\sigma_{\epsilon}^{2}}{TSS_{j}} \frac{1}{1-R^{2}} & (R^{2}=1-RSS/TSS)
+\end{align}$$ where $\frac{\sigma_{\epsilon}^{2}}{TSS_{j}}$ is the theoretical minimum of $\text{Var}(\hat{\beta}_{j})$ and the term $\frac{TSS_{j}}{RSS_{j}}$ is the inflation factor that describes how much the actual variance is larger than the minimum. Formally, this is the VIF.
+
+#### Variance Inflation Factor
+
+```ad-important
+**Definition 11.3**: Variance Inflation Factor
+
+The **Variance Inflation Factor** (VIF) for covariate $j$ is defined to be $$VIF_{j}=\frac{1}{1-R^{2}}$$ where $R_{j}^{2}$ is the $R^2$ value from a regression of $x_{j}$ on the other predictor variables $X_{R}$.
+
+Rule of thumb: $VIF_{j} > 10$ is concerning; alternatively, $R_{j}$ indicates a problem.
+```
+
+VIF answers the question: *By what factor is the variance of $j$ **inflated** relative to what it would have been **under no multicollinearity** (orthogonality)?*
+- Larger inflation - more unstable, higher impact of multicollinearity.
+
+#### Condition Number
+Another metric for multicollinearity will be based on the **condition number** for the correlation matrix of the predictors. 
+
+Consider a system of equations of the form $$Ab=c$$ Condition number of A is a derivative of sorts.
+- It answers the question: ***how quickly** does $b$ change due to a small change in $c$*
+
+In linear regression, we consider the normal equations: $$(X^{T}X)^{-1}\hat{\beta}=X^{T}y$$
+The condition number of $(X^{T}X)$ itself depends upon the **units** of $X$, making it **inappropriate** as a measure of multicollinearity. We instead consider the condition number of the **correlation matrix** for the predictor variables.
+- Invariant to changes in units, and contain the necessary information about multicollinearity
+
+The correlation matrix $C$ has entires $C_{ij}=\text{cor}(x_{i},x_{j})$
+
+```ad-important
+**Definition 11.4**: The Condition Number of the Correlation Matrix
+
+The condition number $\kappa$ is defined to be $$\kappa = \sqrt{\frac{\lambda_{1}}{\lambda_{p}}}$$ where $\lambda_{1}$ and $\lambda_{p}$ are the **largest and smallest eigenvalues** of the correlation matrix for the predictors.
+
+Rule of thumb: $\kappa>15$: moderate collinearity; $\kappa > 30$: big issues.
+```
+
+```ad-example
+**Detecting Collinearity in Pratice**
+
+1. Correlation matrix: large **pairwise correlation** (Rough look)
+2. Regress $x_{j}$ on other predictors $X_{R}$. $R^{2}_{j}$ above $0.9$ or $VIF_{j}>10$ indicates a problem
+3. Condition number of correlation matrix (numerical stability)
+
+![[Pasted image 20241007131717.png|400]]
+
+```
+
+---
+### Covered `R` Functions
+
+```r
+# Sensitivity of Coefficients to Pertubations of y
+junk <- lm(hipcenter + 10*rnorm(38) ~ ., data=seatpos)
+
+# In the example above, we added random pertubations (noises) to the response
+# Ideally, we shouldn't see changes in coefficients
+# If not, then it might indicate collinearity issues
+
+## Correlation matrix
+round(cor(seatpos[,1:8]), 2)
+
+## Condition number
+eigs.seat = eigen(cor(seatpos[,1:8]))$values
+condnumber = sqrt(eigs.seat[1]/eigs.seat[length(eigs.seat)])
+condnumber
+>>> [1] 59.7662 # Problem 
+
+## Variance inflation factor
+library(faraway)
+vif(lm.seat)
+
+## Using a subset of predictor variables
+
+result2 <- lm(hipcenter ~ Age + Weight + Ht, data=seatpos)
+summary(result2)
+```
