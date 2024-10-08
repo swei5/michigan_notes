@@ -20,7 +20,7 @@ If dividend yield of the stock is $r_{\text{div}}$, then discount $S (0)$ by the
 ```ad-note
 **Proof of Definition 12.1**
 
-From the put-call parity we have $$P_{E}=C_{E}-S(0)+Xe^{-rT}$$ Hence, $P_{E}\ge 0$ implies $$C_{E} \ge S(0)-Xe^{-rT} \ge 0 \implies C_{E} \ge \max{(S(0)-Xe^{-rT},0)}$$
+From the [[11 Options I#^4f00c5|put-call parity]] we have $$P_{E}=C_{E}-S(0)+Xe^{-rT}$$ Hence, $P_{E}\ge 0$ implies $$C_{E} \ge S(0)-Xe^{-rT} \ge 0 \implies C_{E} \ge \max{(S(0)-Xe^{-rT},0)}$$
 
 Similarly, $C_{E}\ge 0$ implies $$P_{E} \ge Xe^{-rT}-S(0) \ge 0 \implies P_{E} \ge \max{(Xe^{-rT}-S(0),0)}$$
 
@@ -65,7 +65,7 @@ How about the dependence of $C_E$ and $P_E$ on each of $(X, S, T)$, when the oth
 With these, we can propose the following.
 
 ```ad-important
-**Definition 12.3**: Option Prices: Dependence on $X$:
+**Definition 12.3**: Option Prices: Dependence on $X$
 
 If $X_{1} < X_{2}$, then $$C_{E}(X_{1}) \ge C_{E}(X_{2})$$ i.e. $X \to C_{E}(X)$ is **decreasing**.
 
@@ -74,3 +74,10 @@ If $X_{1} < X_{2}$, then $$P_{E}(X_{1}) \le P_{E}(X_{2})$$ i.e. $X \to P_{E}(X)$
 
 To prove this, since $X_{1} < X_{2}$, we always have $(S (T)-X_{1})^{+} \ge (S (T)-X_{2})^{+}$. Therefore by [[#^56f05a|Definition 12.2]], $C_{E}(X_{1}) \ge C_{E}(X_{2})$. We can show it for the put option using a similar approach.
 
+```ad-important
+**Definition 12.4**: Option Prices: Dependence on $X$, Cont'd
+
+If $X_{1}<X_2$, then $$C_{E}(X_{1})-C_{E}(X_{2})\le e^{-rT}(X_{2}-X_{1})$$ $$P_{E}(X_{2})-P_{E}(X_{1})\le e^{-rT}(X_{2}-X_{1})$$
+```
+
+We can show this again using put-call parity: $$C_{E}(X_{1})-P_{E}(X_{1})=S(0)-X_{1}e^{-rT}$$$$C_{E}(X_{2})-P_{E}(X_{2})=S(0)-X_{2}e^{-rT}$$ Taking the difference and we get $$[C_{E}(X_{1})-C_{E}(X_{2})]+[P_{E}(X_{2})]$$

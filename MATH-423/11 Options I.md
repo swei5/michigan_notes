@@ -50,6 +50,8 @@ This relationship, indeed, exists and it is called **put-call parity**.
 For an underlying asset paying **no dividends**, the following relationship holds between the prices of European call and put options written on this asset, with the same exercise price $X$ and exercise date $T$: $$C_{E}-P_{E}=S(0)-Xe^{-rT}$$ where $r$ is the **continuously compounding interest rate**.
 ```
 
+^4f00c5
+
 ```ad-note
 **Proof of Definition 11.2**
 
