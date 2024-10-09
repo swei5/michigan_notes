@@ -149,4 +149,4 @@ summary(lm.medicorp)$coefficients[,2]
 - [[#^bde6fa|Standard Errors]]: second column
 - [[#^cecd4f|t-statistic]]: third column
 	- Note that this is **BASED ON** $\gamma_{0}=0$
-- One-tail probability: fourth column
+- Two-tail probability: fourth column
