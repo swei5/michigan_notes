@@ -26,7 +26,7 @@ We are curious about the following statistics: ^0527d8
 	- $\text{Var}(y^{\star}-\bar{y})=\text{Var}(y^{\star})+\text{Var}(\bar{y})=\sigma^{2}+\frac{\sigma^{2}}{n}=\sigma^{2}(1+ \frac{1}{n})$
 		- Since $\text{Cov}(y^{\star}, \bar{y})=0$
 	- $N(0,\sigma^{2}(1+ \frac{1}{n}))$
-Since we don't know $\sigma^2$ (population parameter), we estimate it using $\hat{\sigma}$ (RMSE). Thus, we may estimate $$\text{stdev}(y^{\star}-\bar{y})=\sqrt{\hat{\sigma}^{2}\left(1+ \frac{1}{n}\right)}$$
+Since we don't know $\sigma^2$ (population parameter), we estimate it using $\hat{\sigma}$ (RMSE). Thus, we may estimate $$\text{se}(y^{\star}-\bar{y})=\sqrt{\hat{\sigma}^{2}\left(1+ \frac{1}{n}\right)}$$
 Now, suppose the stronger linear model holds, and that we are interested in forming a **prediction interval** for a future observation $y^\star$ with covariate values $\tilde{x}$. $$y^{\star}=\beta_{0}+\beta_{1} \tilde{x}_{1}+\dots+\beta_{p}\tilde{x}_{p}+\epsilon^{\star}$$ and $$ \epsilon_{1},\dots,\epsilon_{n}, \epsilon^{\star} \sim N (0,\sigma_{\epsilon}^{2}) $$
 Here, $$\mathbb{E}(y^\star)=\mathbb{E}(\tilde{x}^{T}\beta+\epsilon^{\star})=\tilde{x}^{T}\beta$$ and $$\text{Var}(y^{\star})=\sigma_{\epsilon}^2$$
 Note that this is different from the [[7 Inferences#Inference for Conditional Expectations|distribution for conditional expectations]] we're seeing earlier as we have $y^\star$ as a (fixed) future observation that follows the **population distribution**, instead of relying on the predictor variables $X$.
