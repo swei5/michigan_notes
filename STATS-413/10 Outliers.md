@@ -136,6 +136,8 @@ Suppose that the stronger linear model actually holds for all $n$ observations, 
 To interpret this reversely, we need to test each hypothesis at level $\frac{\alpha}{n}$ to normalize the chance of type I to $\alpha$.
 ```
 
+^9bf0ba
+
 In general, it is not good practice to remove outliers **unless we have a compelling reason** that the point isn’t representative of the population of interest.
 - Good reasons: data entry error, individual was included in data set who truly should have been excluded
 - Bad reasons: increased significance in slope coefficients, $R^2$, etc.

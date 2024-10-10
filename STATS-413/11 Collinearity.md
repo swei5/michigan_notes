@@ -26,6 +26,7 @@ Recall that $$\hat{\beta}=(X^{T}X)^{-1}X^{T}y$$ Because $\hat{\beta}$ depends on
 - $t$ -tests can fail to reveal significant predictors
 - Coefficients can have weird signs and values relative to intuition
 - Estimated predictions $\tilde{x}^{T}\hat{\beta}$, highly unstable
+	- Slight change in $X$ could lead to big changes in predictions for $y$ at a future observation $\tilde{x}$
 
 Pairwise **correlations and scatterplots** help us assess if any pairs of predictor variables are **strongly related**. 
 
@@ -158,7 +159,7 @@ We can rewrite the expression above as $$\begin{align}
 ```ad-important
 **Definition 11.3**: Variance Inflation Factor
 
-The **Variance Inflation Factor** (VIF) for covariate $j$ is defined to be $$VIF_{j}=\frac{1}{1-R^{2}}$$ where $R_{j}^{2}$ is the $R^2$ value from a regression of $x_{j}$ on the other predictor variables $X_{R}$.
+The **Variance Inflation Factor** (VIF) for covariate $j$ is defined to be $$VIF_{j}=\frac{1}{1-R_{j}^{2}}$$ where $R_{j}^{2}$ is the $R^2$ value from a regression of $x_{j}$ on the other predictor variables $X_{R}$.
 
 Rule of thumb: $VIF_{j} > 10$ is concerning; alternatively, $R_{j}$ indicates a problem.
 ```
