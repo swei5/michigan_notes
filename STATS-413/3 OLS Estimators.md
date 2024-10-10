@@ -172,9 +172,9 @@ The $R^{2}$ value is the fraction of variation in the outcome variable $y$ that 
 It quantifies how much “better” we are doing in prediction by using our linear model than we would have been stuck with in the absence of any predictor variables.
 
 Additionally,
-$$R^{2}= \text{cor}(\hat{y},y)$$
+$$R^{2}= \text{cor}(\hat{y},y)^{2}$$
 
-In the case of simple regression ($p=1$), $R^{2}=\text{cor}(x,y)$.
+In the case of simple regression ($p=1$), $R^{2}=\text{cor}(x,y)^{2}$.
 ```
 
 It's easy to note that $0 \le R^{2} \le 1$ since $RSS \le TSS$. 
