@@ -14,6 +14,8 @@ The time $T$ is called the **exercise time** or expiry time.
 Both $X$ and $T$ are set today. The person who buys the option is called the **holder** and the person who sells the option is called the **writer**.
 ```
 
+^a0fa47
+
 The payoff of a call option at time $T$ is $$\max(S(T)-X,0)$$ also denoted by $(S(T)-X)^+$. The payoff of a put option at time $T$ is $$\max(X-S(T),0)$$ also denoted by $(X-S(T))^{+}$.
 
 ![[Pasted image 20241006232204.png|500]]

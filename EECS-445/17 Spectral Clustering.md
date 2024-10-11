@@ -1,4 +1,4 @@
-[[2023-03-20]] #UnsupervisedLearning #Clustering
+[[2023-03-20]] #UnsupervisedLearning
 
 ### Spectral Clustering
 

@@ -1,4 +1,4 @@
-[[2023-03-18]] #UnsupervisedLearning #Clustering
+[[2023-03-18]] #UnsupervisedLearning
 
 ### Motivation
 - Labelling is labor-intensive

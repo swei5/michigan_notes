@@ -41,7 +41,7 @@ Traditionally, to avoid double spending, banks use the ACH system for transferri
 Blockchain is essentially a **distributed database with a shared protocol** for **multiple writers** who *don’t trust each other or a central authority.*
 
 ```ad-summary
-Blockchain useful when #Exam 
+Blockchain useful when
 - Database is shared with multiple writers
 - Users don’t trust each other  
 - Users don’t trust a central authority

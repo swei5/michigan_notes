@@ -49,7 +49,7 @@ At time $T$:
 A.O. So we cannot assume $C_{E} \ge S(0)$. This completes the proof.
 ```
 
-### Option Valuation
+### European Option Valuation
 We have seen from the put-call parity that $C_E$ and $P_E$ **do NOT depend on the expected return** of the underlying asset, when other parameters $(X, S, T)$ in the put-call parity are **fixed**.
 
 How about the dependence of $C_E$ and $P_E$ on each of $(X, S, T)$, when the other two parameters are fixed?
@@ -65,6 +65,8 @@ How about the dependence of $C_E$ and $P_E$ on each of $(X, S, T)$, when the oth
 ^56f05a
 
 With these, we can propose the following.
+
+#### Price Dependence on $X$
 
 ```ad-important
 **Definition 12.3**: Option Prices: Dependence on $X$
@@ -118,7 +120,7 @@ Let $f: \mathbb{R}_{+} \to \mathbb{R}_{+}$. The function $f$ is **convex** if fo
 
 The functions $X \to C_{E}(X)$ and $X \to P_{E}(X)$ are **convex**, i.e. for any $X_{1}, X_{2} > 0$ and any $\alpha \in [0,1]$, $$C_{E}(\alpha X_{1}+(1-\alpha)X_{2}) \le \alpha C_{E}(X_{1})+(1-\alpha)C_{E}(X_{2})$$ $$P_{E}(\alpha X_{1}+(1-\alpha)X_{2}) \le \alpha P_{E}(X_{1})+(1-\alpha)P_{E}(X_{2})$$
 
-Let $S \in \mathbb{R}_{+}$ be fixed. The functions $\mathbb{R}_{+}\ni X \to (S-X)^{+} \in \mathbb{R}_{+}$ and $\mathbb{R}_{+}\ni X \to (X-S)^{+} \in \mathbb{R}_{+}$.
+Let $S \in \mathbb{R}_{+}$ be fixed. The functions $\mathbb{R}_{+}\ni X \to (S-X)^{+} \in \mathbb{R}_{+}$ and $\mathbb{R}_{+}\ni X \to (X-S)^{+} \in \mathbb{R}_{+}$ are **convex**.
 ```
 
 ^547734
@@ -143,4 +145,26 @@ And by [[#^56f05a|Definition 12.2]] we have that $$C_{E}(X^{\alpha}) \le \alpha 
 The proof for the put option case is similar.
 ```
 
+#### Price Dependence on $S$
 
+```ad-important
+**Definition 12.9**: Option Prices: Dependence on $S$
+
+If $S_{1}<S_{2}$, then $$\begin{align}
+C_{E}(S_{1}) &\le C_{E}(S_{2}) \text{ i.e. } S \to C_{E}(S) \text{ is increasing}\\
+P_{E}(S_{1}) &\ge P_{E}(S_{2}) \text{ i.e. } S \to P_{E}(S) \text{ is increasing}\\
+C_{E}(S_{2})-C_{E}(S_{1}) &\le S_{2}-S_{1}, P_{E}(S_{1})-P_{E}(S_{2}) \le S_{2}-S_{1}
+\end{align}$$
+```
+
+```ad-important
+**Definition 12.10**: Option Prices: Dependence on $S$, Cont'd
+
+The functions $\mathbb{R}_{+} \ni S \to C_{E}(S)$ and $S \to P_{E}(S)$ are **[[#^09e2e3|Lipschitz with associated constant]]** $1$.
+```
+
+```ad-important
+**Definition 12.11**: Option Prices: Dependence on $S$, Cont'd
+
+The functions $S \to C_{E}(S)$ and $S \to P_{E}(S)$ are **convex**, i.e. for any $X_{1}, X_{2} > 0$ and any $\alpha \in [0,1]$, $$C_{E}(\alpha S_{1}+(1-\alpha)S_{2}) \le \alpha C_{E}(S_{1})+(1-\alpha)C_{E}(S_{2})$$ $$P_{E}(\alpha S_{1}+(1-\alpha)S_{2}) \le \alpha P_{E}(S_{1})+(1-\alpha)P_{E}(S_{2})$$
+```

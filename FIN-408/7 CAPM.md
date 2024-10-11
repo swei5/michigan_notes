@@ -11,8 +11,6 @@ Changes the concept of the risk of an asset/portfolio from that of standard devi
 The market portfolio will be **on the efficient frontier** (for a given amount of risk offers the highest expected return), and at the **tangent point of the CAL** (offers the highest return per unit of risk).  
 
 ```ad-note 
-#Exam 
-
 Note that it's true that $$\rho_{ij}=\frac{\beta_{i}\beta_{j} \text{Var}(R_{M})}{\sigma_{i}\sigma_{j}} \to \beta_{i}\beta_{j} \text{Var}(R_{M})=\text{Cov}(R_{i},R_{j})$$
 ```
 #### Beta Calculation
