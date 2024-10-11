@@ -7,6 +7,8 @@ The prices of European call and put options on a stock **paying NO dividends** s
 \text{Call:     } & \max{(S(0)-Xe^{-rT},0)} \le C_{E}<S(0)\\
 \text{Put:     } & \max{(Xe^{-rT}-S(0),0)} \le P_{E}<Xe^{-rT}\\
 \end{align}$$
+
+![[Pasted image 20241011110630.png|400]]
 ```
 
 In the above inequalities, if discrete dividends will be paid on the stock, we **subtract** the **PV** $\text{Div}_{0}$ of the dividend from $S(0)$: $$\begin{align}
@@ -137,4 +139,8 @@ At time $T$, each payoff is
 From [[#^547734|Definition 12.8]] we know that $$(S(T)-X^{\alpha})^{+} \le \alpha(S(T)-X_{1})^{+} + (1-\alpha)(S(T)-X_{2})^{+}$$
 
 And by [[#^56f05a|Definition 12.2]] we have that $$C_{E}(X^{\alpha}) \le \alpha C_{E}(X_{1})+(1-\alpha) C_{E}(X_{2})$$
+
+The proof for the put option case is similar.
 ```
+
+
