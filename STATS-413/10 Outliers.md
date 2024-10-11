@@ -131,9 +131,9 @@ This leads to the Bonferroni Correction.
 ```ad-important
 **Definition 10.3**: Bonferroni Correction
 
-Suppose that the stronger linear model actually holds for all $n$ observations, meaning that none of the points are actually generated from a different model. Then, $$\begin{align}\text{Type I Error}&=\mathbb{P}(\text{reject at least one test}|H_{0}) \\ &\le \sum\limits_{i=1}^{n} \mathbb{P}(\text{reject test } i | H_{0}) \\ &= n\alpha \end{align}$$
+Suppose that the stronger linear model actually holds for all $n$ observations, meaning that none of the points are actually generated from a different model. Then, $$\begin{align}\text{Type I Error}&=\mathbb{P}(\text{reject at least one test}|H_{0}) \\ &\le \sum\limits_{i=1}^{K} \mathbb{P}(\text{reject test } i | H_{0}) \\ &= K\alpha \end{align}$$
 
-To interpret this reversely, we need to test each hypothesis at level $\frac{\alpha}{n}$ to normalize the chance of type I to $\alpha$.
+In other words, if we conduct $K$ hypothesis tests, we can guarantee that the probability of **committing at least one Type I error** is at most $\alpha$ if we conduct each individual test at level $\alpha/K$.
 ```
 
 ^9bf0ba
