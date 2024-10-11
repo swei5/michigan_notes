@@ -66,12 +66,48 @@ We first order the $p$-values from $K$ hypothesis tests as $p_{1} \le p_{2}\le \
 
 ```r
 i = 1
-do while 1:
+do while:
 	if p(i) <= a/(K-i+1):
 		i += 1
 		continue
 	else:
-		return
+		exit
 ```
 
-If the method terminates in step $1$, we don’t reject any null hypotheses. If it terminates in step $i$ , you reject the hypotheses corresponding to $p_{1},\cdots, p_{n}$. If it doesn’t terminate, we reject all K of our hypotheses.
+If the method terminates in step $1$, we don’t reject any null hypotheses. If it terminates in step $i$ , you reject the hypotheses corresponding to $p_{1},\cdots, p_{i-1}$. If it doesn’t terminate, we reject all $K$ of our hypotheses.
+- This method rejects **as many or more** hypotheses than Bonferroni, which compares all $p$ -values to $\alpha/K$
+
+---
+### Pairwise Comparisons
+Multiple regression with a single categorical predictor and no continuous predictors (like our jelly bean example) is sometimes referred to as **One-Way Analysis of Variance**, or One-Way ANOVA.
+- Large assumption when using ANOVA: **equal variances across the groups** being compared
+
+In this context, there are particular methods built for comparing the average responses across different groups while controlling the familywise error rate.
+
+Suppose we have $G$ groups ($G$ levels of the categorical predictor). For all $i\ne j, i, j=1,\cdots,G$ , we might want to assess the null: $$H_{0}:\mu_{i} =\mu_{j}$$ We want to make all $K=\binom G2$  possible pairwise comparisons between different groups while  controlling the familywise error rate at level $\alpha$.
+
+```ad-important
+**Definition 12.3**: Tukey-Kramer Honest Significant Difference
+
+Let $\bar{y}_{i}$ be the observed mean in the $i$th of $G$ groups, and let $\hat{\sigma}_{\epsilon}$ be the RMSE from our regression of the response on the categorical predictor.
+
+For all $i,j$, we can construct a $100(1-\alpha)\%$ confidence interval for $\mu_{i}-\mu_{j}$ while controlling the familywise error rate at $\alpha$ through the following: $$\bar{y}_{i}-\bar{y}_{j} \pm \frac{q_{1-\alpha,G,n-G}} {\sqrt{2}} \hat{\sigma}_{\epsilon} \sqrt{\frac{1}{n_{i}} + \frac{1}{n_{j}}} $$ where $q_{1-\alpha,G,n-G}$ is a quantile from the **Studentized Range Distribution**, and $n_{i}$ is the sample size for the $i$th group and $\hat{\sigma}_{\epsilon} \sqrt{\frac{1}{n_{i}} + \frac{1}{n_{j}}}$ is the standard error of $\text{se}(\bar{y}_{i}-\bar{y}_{j})$.
+```
+
+Studentized Range $(G , n-G)$ accounts for the fact that we are looking at $|\bar{y}_{i}-\bar{y}_{j}|$ for **all possible combinations of groups**.
+
+We use it to produce **wider intervals** than those from the $t$ distribution unless $G=2$.
+
+```ad-example
+**Comparing Tukey to Bonferroni**
+
+For a given $G$ , consider $95\%$ confidence intervals in One-Way ANOVA.
+- Tukey-Kramer: $q_{0.95,G,n-G}/\sqrt{2}$
+- Bonferroni: $t_{1-0.025/K,n-G}$ where $K= \binom G2$
+
+Let us fix $n=1000$ for purpose of illustration:
+
+![[Pasted image 20241010203652.png|500]]
+
+Quantiles are the same for $G=2$; Tukey-Kramer is better (narrower CI) for $G>2$.
+```
