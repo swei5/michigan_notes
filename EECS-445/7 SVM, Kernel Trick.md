@@ -1,4 +1,4 @@
-[[2023-01-30]] #SVM #Regularization #Optimization 
+[[2023-01-30]] #SVM #Optimization 
 
 ### Recap
 Recall our derivations for dual variable $\overline{\alpha}_i$ and support vectors, ![[6 Dual Formulation of SVM#^b23318]]

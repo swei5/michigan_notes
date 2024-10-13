@@ -1,4 +1,4 @@
-[[2023-02-01]] #Regularization #Regression 
+[[2023-02-01]] #Regression 
 
 ### Recap : Loss
 

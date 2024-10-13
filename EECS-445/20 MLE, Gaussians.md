@@ -1,4 +1,4 @@
-[[2023-03-29]] #MLE #Probability
+[[2023-03-29]] #Probability
 
 ### Background, IID
 - Identically distributed
