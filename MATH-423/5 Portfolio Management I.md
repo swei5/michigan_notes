@@ -18,7 +18,7 @@ $$K_{V}=w_{1}K_{1}+w_{2}K_{2}$$
 where $K_{i} := \frac{S_{i}(1)-S_{i}(0)}{S_{i}(0)}, i=1,2$ are the returns of the  portfolio and of stock $i$ over time period $[0,1]$.
 
 For log return, we have: 
-$$e^{kv}=w_{1}e^{k_{1}}+w_{2}e^{k_{2}}$$
+$$e^{k_V}=w_{1}e^{k_{1}}+w_{2}e^{k_{2}}$$
 
 where $k_{V}:= \ln \frac{V(1)}{V(0)}$ and $k_{i}:= \ln \frac{S_{i}(1)}{S_{i}(0)}, i=1,2$ are the returns of the  portfolio and of stock $i$ over time period $[0,1]$.
 ```
