@@ -2,11 +2,11 @@
 
 Recall some key properties of our linear model: ![[4 Hypothesis Tests#^bfc3d4]]
 And that $$\mathbb{E}(\hat{\beta})=\beta$$
-$$\text{Var}(\hat{\beta})=\sigma_{\epsilon}^{2}(X^{T}X)^{-1}$$ 
+$$\text{Var}(\hat{\beta})=\sigma_{\varepsilon}^{2}(X^{T}X)^{-1}$$ 
 We thus have that
 ![[4 Hypothesis Tests#^e2a176]]
 
-However at times when the population standard deviation of $\epsilon$ is unknown, we need to rely on the $t$ -test. We would need RMSE to compute the standard error: $$\hat{\sigma_{\epsilon}}=\sqrt{\frac{\sum_{i=1}^{n}e_{i}^{2}}{n-p-1}}$$$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\epsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ And finally $$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$
+However at times when the population standard deviation of $\varepsilon$ is unknown, we need to rely on the $t$ -test. We would need RMSE to compute the standard error: $$\hat{\sigma_{\varepsilon}}=\sqrt{\frac{\sum_{i=1}^{n}e_{i}^{2}}{n-p-1}}$$$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\varepsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ And finally $$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$
 ### $p$ -Value Computation
 Let $T_{n-p-1}$ be a random variable which follows a $t_{n-p-1}$ distribution:
 - Less than alternative (`pt(tstat, n-p-1)`: $$p=\mathbb{P}(T_{n-p-1} \le t_{\text{stat}})$$
@@ -19,7 +19,7 @@ Hence, note that $$\begin{align}1-\alpha&=\mathbb{P}\left(-t_{1-\frac{\alpha}{2}
 \end{align}$$
 ---
 ### Confidence Intervals for ${\beta}_{j}$
-Provided the assumptions for the (stronger) linear model hold (linearity, homoskedasticity, normality of $\epsilon$), we may define the following.
+Provided the assumptions for the (stronger) linear model hold (linearity, homoskedasticity, normality of $\varepsilon$), we may define the following.
 
 ```ad-important
 **Definition 5.1**: Two-Sided Confidence Intervals for $\beta_{j}$
@@ -37,7 +37,7 @@ Or, `R` provides an easier shorthand - `confint(lm, level = .95)` for calculatio
 If our confidence interval is $\hat{\beta_{j}}\pm t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$, we say that we are 95% **confident** that $\beta_{j}$, the **true population slope**, falls between $\hat{\beta_{j}} + t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$ and $\hat{\beta_{j}} - t_{0.975, n-p-1} \text{se}(\hat{\beta}_{j})$.
 - In other words, values for $\beta_{j}$ outside the interval are **unlikely**
 
-The interval is **random** since both $\hat{\beta_{j}}$ and $\text{se}(\hat{\beta}_{j})$ are random due to randomness of $\epsilon$.
+The interval is **random** since both $\hat{\beta_{j}}$ and $\text{se}(\hat{\beta}_{j})$ are random due to randomness of $\varepsilon$.
 
 ```ad-note
 **Randomness of Confidence Interval**
@@ -108,7 +108,7 @@ The overall $\mathcal{F}$ -test can be viewed as a comparison between:
 1. The residual sum of squares in a model including **ALL of the predictor variables**, and
 2. The residual sum of squares in a model only including those variables whose coefficients **don’t equal zero under the null** ($\beta_0$)
 
-In other words, the objective of the test is to quantify **how large of a discrepancy** between [[3 OLS Estimators#^cb791d|TSS]] and [[3 OLS Estimators#^dbce55|RSS]] we should expect under the null. If what we observe is **much larger** than expected, we reject the null. Alternatively, we may write $$F_{\text{stat}}=\frac{\frac{TSS-RSS}{p}}{\frac{RSS}{n-p-1}}=\frac{\frac{TSS-RSS}{p}}{\hat{\sigma}_{\epsilon}^2}$$
+In other words, the objective of the test is to quantify **how large of a discrepancy** between [[3 OLS Estimators#^cb791d|TSS]] and [[3 OLS Estimators#^dbce55|RSS]] we should expect under the null. If what we observe is **much larger** than expected, we reject the null. Alternatively, we may write $$F_{\text{stat}}=\frac{\frac{TSS-RSS}{p}}{\frac{RSS}{n-p-1}}=\frac{\frac{TSS-RSS}{p}}{\hat{\sigma}_{\varepsilon}^2}$$
 Numerator represents the **difference between the TSS and the RSS**, **divided by the differences in the degrees of freedom** for the residual terms in those two regressions: ^5e5647
 1. Regression with **ONLY an intercept**: $e$ has $n-1$ degrees of freedom
 2. Regression with **ALL variables**: $e$ has $n-p-1$ degrees of freedom

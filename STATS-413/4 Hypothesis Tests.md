@@ -55,7 +55,7 @@ In one-sample hypothesis testing, we use the $z$ -statistic when the **populatio
 $$p=\mathbb{P}(T \ge \text{t-stats} | H_{0})$$
 ---
 ### Hypothesis Testing for Slope
-Consider a linear model $y = X \beta + \epsilon$ with $p$ predictors, and suppose we wanted to test whether or not the slope on covariate $x_j$ , $\beta_j$ , was equal to a particular value:
+Consider a linear model $y = X \beta + \varepsilon$ with $p$ predictors, and suppose we wanted to test whether or not the slope on covariate $x_j$ , $\beta_j$ , was equal to a particular value:
 $$H_{0}:\beta_{j}=\gamma_{0}$$
 The alternatives take the following form:
 - $H_{a}: \beta_{j}<\gamma_{0}$: less than
@@ -68,10 +68,10 @@ As previously introduced [[2 Multiple Regression#Interpretation of Intercepts||h
 - After **controlling / adjusting for the effect** of all other predictor variables $\set{x_{l}; l \ne j}$, let’s assess evidence for whether or not the true slope on the $j$ th variable is $\gamma_{0}$
 
 #### Stronger Linear Model
-While the assumptions that $E (\epsilon) = 0$ and $\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}$ are enough for unbiasedness and to derive a form for the variance for $\hat{\beta}$, we’ll impose **additional restrictions** on $\epsilon$ to derive a sampling distribution for $\hat{\beta}$: $$\epsilon \sim MVN(0,\sigma_{\epsilon}^{2}I)$$
+While the assumptions that $E (\varepsilon) = 0$ and $\text{Var}(\varepsilon)=\sigma_{\varepsilon}^{2}$ are enough for unbiasedness and to derive a form for the variance for $\hat{\beta}$, we’ll impose **additional restrictions** on $\varepsilon$ to derive a sampling distribution for $\hat{\beta}$: $$\varepsilon \sim MVN(0,\sigma_{\varepsilon}^{2}I)$$
 Where $MVN$ represents the multivariate normal distribution. This is equivalent to saying that
-$$\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$$
-And that $\epsilon_{i}$ are iid and normally distributed with expectation 0 and variance $\sigma_{\epsilon}^{2}$. ^4716ea
+$$\varepsilon_{i} \sim N(0,\sigma_{\varepsilon}^{2})$$
+And that $\varepsilon_{i}$ are iid and normally distributed with expectation 0 and variance $\sigma_{\varepsilon}^{2}$. ^4716ea
 
 ```ad-example
 **Example**: Stronger Linear Model ($p=1$)
@@ -82,31 +82,31 @@ And that $\epsilon_{i}$ are iid and normally distributed with expectation 0 and 
 ```ad-note
 In summary, the stronger linear model assumes:
 1. **Linearity**: $\mathbb{E}(y_{i})=x_{i}^{T}\beta$
-2. **Homoskedasticity**: $\text{Var}(y_{i})=\sigma_{\epsilon}^{2}$
-3. **Normality**: $\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$
+2. **Homoskedasticity**: $\text{Var}(y_{i})=\sigma_{\varepsilon}^{2}$
+3. **Normality**: $\varepsilon_{i} \sim N(0,\sigma_{\varepsilon}^{2})$
 ```
 
 ^bfc3d4
 
 #### Distribution of $\hat{\beta}$
 Under the stronger linear model,
-$$\hat{\beta} \sim MVN(\beta, \sigma_{\epsilon}^{2}(X^TX)^{-1})$$
+$$\hat{\beta} \sim MVN(\beta, \sigma_{\varepsilon}^{2}(X^TX)^{-1})$$
 And similarly
-$$\hat{\beta_{j}} \sim N(\beta_{j},\sigma_{\epsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)})$$
+$$\hat{\beta_{j}} \sim N(\beta_{j},\sigma_{\varepsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)})$$
 The mean and standard deviation of $\hat{\beta}$ are previously derived here ![[3 OLS Estimators#^a4deed]]
 And here:
 ![[3 OLS Estimators#^89d509]]
 
-So, for any slope coefficient $j$, letting $\text{stdev}(\hat{\beta}_{j})=\sigma_{\epsilon} \sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$ and $$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{stdev}(\hat{\beta}_{j})} \sim N(0,1)$$
-If we knew $\sigma_{\epsilon}^{2}$, we could begin with the value of the OLS slope coefficient returned by `R`: $\hat{\beta}_{j}^{\text{obs}}$ and compute $z$ -statistic using
+So, for any slope coefficient $j$, letting $\text{stdev}(\hat{\beta}_{j})=\sigma_{\varepsilon} \sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$ and $$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{stdev}(\hat{\beta}_{j})} \sim N(0,1)$$
+If we knew $\sigma_{\varepsilon}^{2}$, we could begin with the value of the OLS slope coefficient returned by `R`: $\hat{\beta}_{j}^{\text{obs}}$ and compute $z$ -statistic using
 $$z_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{stdev}(\hat{\beta}_{j})}$$
 And finally compute $p$ -values using tail probabilities from $N$. ^e2a176
 
-Unfortunately, we don’t know $\sigma_{\epsilon}$ - it is a **parameter** of the linear model and hence we can't compute $z_{\text{stat}}$ since we can't compute $\text{stdev}(\hat{\beta}_{j})$. We would need to estimate $\sigma_{\epsilon}$ in the first place.
+Unfortunately, we don’t know $\sigma_{\varepsilon}$ - it is a **parameter** of the linear model and hence we can't compute $z_{\text{stat}}$ since we can't compute $\text{stdev}(\hat{\beta}_{j})$. We would need to estimate $\sigma_{\varepsilon}$ in the first place.
 
 ```ad-important
 **Definition 4.3**: Root Mean Squared Error (RMSE)
-$$\hat{\sigma_{\epsilon}}=\sqrt{\frac{\sum_{i=1}^{n}e_{i}^{2}}{n-p-1}}$$
+$$\hat{\sigma_{\varepsilon}}=\sqrt{\frac{\sum_{i=1}^{n}e_{i}^{2}}{n-p-1}}$$
 
 where $n-p-1$ are referred to as the **degrees of freedom** for the residual vector $e$.
 - $e$ is constrained by $p+1$ equations $e^{T}X=0$
@@ -115,7 +115,7 @@ where $n-p-1$ are referred to as the **degrees of freedom** for the residual vec
 
 ^52cf89
 
-With an estimation for $\sigma_{\epsilon}$ , we can now estimate $\text{stdev}(\hat{\beta}_{j})$ using $\text{se}(\hat{\beta}_{j})$, the **standard error** for the $j$ th coefficient:$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\epsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ ^bde6fa
+With an estimation for $\sigma_{\varepsilon}$ , we can now estimate $\text{stdev}(\hat{\beta}_{j})$ using $\text{se}(\hat{\beta}_{j})$, the **standard error** for the $j$ th coefficient:$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\varepsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ ^bde6fa
 #### $t$ -Statistic
 With this, we’ll consider a new test statistic which replaces $\text{stdev}(\hat{\beta}_{j})$ with its sample analogue $\text{se}(\hat{\beta}_{j})$$$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$ ^cecd4f
 ```ad-important

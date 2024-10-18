@@ -93,17 +93,17 @@ Because $\hat{\beta}_{j.R}=\hat{\beta}_{j}$, it must be that $$\text{Var}(\hat{\
 ```ad-important
 **Definition 11.2**: Variance of $\hat{\beta_{j}}$, Alternative Notation
 
-Thus, we can rewrite $\text{Var}(\hat{\beta}_{j})=\sigma_{\epsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)}$  as $$\begin{align}
-\text{Var}(\hat{\beta}_{j})&=\frac{\sigma_{\epsilon}^{2}}{x_{j}^{T}(I-H_{R})x_{j}} \\\\
-&= \frac{\sigma_{\epsilon}^{2}}{\sum_{i=1}^{n}x_{ij.R}^{2}}\\
-&= \frac{\sigma_{\epsilon}^{2}}{RSS_{j}}
+Thus, we can rewrite $\text{Var}(\hat{\beta}_{j})=\sigma_{\varepsilon}^{2}(X^TX)^{-1}_{(j+1),(j+1)}$  as $$\begin{align}
+\text{Var}(\hat{\beta}_{j})&=\frac{\sigma_{\varepsilon}^{2}}{x_{j}^{T}(I-H_{R})x_{j}} \\\\
+&= \frac{\sigma_{\varepsilon}^{2}}{\sum_{i=1}^{n}x_{ij.R}^{2}}\\
+&= \frac{\sigma_{\varepsilon}^{2}}{RSS_{j}}
 \end{align}$$
 ```
 
 ^a5b79b
 
 This result provides another (equivalent) way to compute **standard errors**: $$
-\text{se}(\hat{\beta}_{j})=\frac{\hat{\sigma}_{\epsilon}}{\sqrt{x_{j}^{T}(I-H_{R})x_{j}}}$$ That said, the main reason we’ve gone through partial regression is that it inspires a useful measure of multicollinearity.
+\text{se}(\hat{\beta}_{j})=\frac{\hat{\sigma}_{\varepsilon}}{\sqrt{x_{j}^{T}(I-H_{R})x_{j}}}$$ That said, the main reason we’ve gone through partial regression is that it inspires a useful measure of multicollinearity.
 - Measure how “unstable” a slope coefficient is because of multicollinearity
 - Instability = High variance
 - *How much has the variability in the slope coefficient increased due to multicollinearity?*
@@ -145,14 +145,14 @@ Under **orthogonality**, these two estimates are the **SAME**.
 
 ---
 ### Metrics for Multicollinearity
-Recall in [[#^a5b79b|Definition 11.2]] that $$\text{Var}(\hat{\beta}_{j})=\frac{\sigma_{\epsilon}^{2}}{RSS_{j}}$$ From this, we see that the smallest variance for $\hat{\beta}_{j}$ is attained when $RSS_{j}=TSS_{j}$.
+Recall in [[#^a5b79b|Definition 11.2]] that $$\text{Var}(\hat{\beta}_{j})=\frac{\sigma_{\varepsilon}^{2}}{RSS_{j}}$$ From this, we see that the smallest variance for $\hat{\beta}_{j}$ is attained when $RSS_{j}=TSS_{j}$.
 - Smallest variance = **most stable estimate** (no multicollinearity)
 
 We can rewrite the expression above as $$\begin{align}
-\text{Var}(\hat{\beta}_{j})&=\frac{\sigma_{\epsilon}^{2}}{RSS_{j}}\\
-&= \frac{\sigma_{\epsilon}^{2}}{TSS_{j}}\frac{TSS_{j}}{RSS_{j}}\\
-&= \frac{\sigma_{\epsilon}^{2}}{TSS_{j}} \frac{1}{1-R^{2}} & (R^{2}=1-RSS/TSS)
-\end{align}$$ where $\frac{\sigma_{\epsilon}^{2}}{TSS_{j}}$ is the theoretical minimum of $\text{Var}(\hat{\beta}_{j})$ and the term $\frac{TSS_{j}}{RSS_{j}}$ is the inflation factor that describes how much the actual variance is larger than the minimum. Formally, this is the VIF.
+\text{Var}(\hat{\beta}_{j})&=\frac{\sigma_{\varepsilon}^{2}}{RSS_{j}}\\
+&= \frac{\sigma_{\varepsilon}^{2}}{TSS_{j}}\frac{TSS_{j}}{RSS_{j}}\\
+&= \frac{\sigma_{\varepsilon}^{2}}{TSS_{j}} \frac{1}{1-R^{2}} & (R^{2}=1-RSS/TSS)
+\end{align}$$ where $\frac{\sigma_{\varepsilon}^{2}}{TSS_{j}}$ is the theoretical minimum of $\text{Var}(\hat{\beta}_{j})$ and the term $\frac{TSS_{j}}{RSS_{j}}$ is the inflation factor that describes how much the actual variance is larger than the minimum. Formally, this is the VIF.
 
 #### Variance Inflation Factor
 

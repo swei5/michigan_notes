@@ -43,11 +43,11 @@ While we have the variances of both terms ready, we need to compute their covari
 
 Now, let's define $a$ as: $$a_{i} = \begin{cases} 1 & i = 5, 8 \\ 0 & \text{otherwise} \end{cases}$$ which gives that $\hat{\beta}_{\text{Advert, South}} = a^T \hat{\beta}$.
 
-Then, $$\begin{align} \text{Var}(\hat{\beta}_{\text{Advert, South}}) &= \text{Var}(a^{T} \hat{\beta}) \\ &= \sigma_{\epsilon}^{2} a^{T} (X^{T}X)^{-1} a \\ &= \text{Var}(\hat{\beta})_{(5,5)} + \text{Var}(\hat{\beta})_{(8,8)} + 2\text{Var}(\hat{\beta})_{(5,8)}
+Then, $$\begin{align} \text{Var}(\hat{\beta}_{\text{Advert, South}}) &= \text{Var}(a^{T} \hat{\beta}) \\ &= \sigma_{\varepsilon}^{2} a^{T} (X^{T}X)^{-1} a \\ &= \text{Var}(\hat{\beta})_{(5,5)} + \text{Var}(\hat{\beta})_{(8,8)} + 2\text{Var}(\hat{\beta})_{(5,8)}
 \\ &= \text{Var}(\hat{\beta}_{\text{Advert}}) + \text{Var}(\hat{\beta}_{\text{South}}) + \text{Cov}(\hat{\beta}_{\text{Advert}}, \hat{\beta}_{\text{South}})
-\\ &\implies \text{stdev}(\hat{\beta}_{\text{Advert, South}}) = \sigma_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \\ &\implies \text{se}(\hat{\beta}_{\text{Advert, South}}) = \hat{\sigma}_{\epsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \end{align}$$
+\\ &\implies \text{stdev}(\hat{\beta}_{\text{Advert, South}}) = \sigma_{\varepsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \\ &\implies \text{se}(\hat{\beta}_{\text{Advert, South}}) = \hat{\sigma}_{\varepsilon} \sqrt{a^{T} (X^{T}X)^{-1} a} \end{align}$$
 
-We **CAN** calculate this statistic if we have the MSE $\hat{\sigma}_{\epsilon}^2$ and the design matrix $X$.
+We **CAN** calculate this statistic if we have the MSE $\hat{\sigma}_{\varepsilon}^2$ and the design matrix $X$.
 
 In `R` code, this is
 
@@ -76,10 +76,10 @@ Before digging deeper, we need to understand the distinction between inferences 
 - Inference on $\mu_{y}$ is an **unconditional expectation**
 - Inference on $\mu_{y|\tilde{x}}$ is a **conditional expectation**
 
-It's obvious that $$\mathbb{E}(\hat{\mu}_{y|\tilde{x}})=\mu_{y|\tilde{x}}$$ and $$\text{Var}(\hat{\mu}_{y|\tilde{x}}) = \sigma_{\epsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x}$$
-Recall that if $Z$ follows a multivariate normal distribution, so too does $AZ + c$. So under the stronger linear model, we also have $$\hat{\mu}_{y|\tilde{x}} \sim N(\mu_{y|\tilde{x}}, \sigma_{\epsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})$$
+It's obvious that $$\mathbb{E}(\hat{\mu}_{y|\tilde{x}})=\mu_{y|\tilde{x}}$$ and $$\text{Var}(\hat{\mu}_{y|\tilde{x}}) = \sigma_{\varepsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x}$$
+Recall that if $Z$ follows a multivariate normal distribution, so too does $AZ + c$. So under the stronger linear model, we also have $$\hat{\mu}_{y|\tilde{x}} \sim N(\mu_{y|\tilde{x}}, \sigma_{\varepsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})$$
 We can further estimate $\text{stdev}({\hat{\mu}_{y|\tilde{x}}})$ using the following standard error: $$
-\text{se}(\hat{\mu}_{y|\tilde{x}})=\hat{\sigma_{\epsilon}}\sqrt{\tilde{x}^{T}(X^TX)^{-1}\tilde{x}}$$
+\text{se}(\hat{\mu}_{y|\tilde{x}})=\hat{\sigma_{\varepsilon}}\sqrt{\tilde{x}^{T}(X^TX)^{-1}\tilde{x}}$$
 Note that the standard error is a function of $\tilde{x}$. Hence, it is minimized when there is the **smallest variability**: $\tilde{x} = [1, \bar{x}_{1}, \dots, \bar{x}_{p}]$ - the mean of the predictor variables. Variability increases as $\tilde{x}$ moves farther from the mean.
 
 We may construct a $100 (1-\alpha)\%$ $t$ -based confidence interval for $\mu_{y|\tilde{x}}$:  $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\text{se}(\hat{\mu}_{y|\tilde{x}})$$

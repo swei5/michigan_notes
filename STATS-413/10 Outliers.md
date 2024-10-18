@@ -2,7 +2,7 @@
 
 ### Recap: Importance of LR Assumptions
 Consider our test statistic for testing the null $H_{0}:\beta_{j}=\gamma_{0}$ with a two-sided alternative: ![[4 Hypothesis Tests#^cecd4f]]
-Here **linearity** plays a role in asserting the **unbiasedness** of $\hat{\beta}$ and thus the center of the distribution. **Homoskedasticity** plays a role in establishing constant $\hat{\sigma}_{\epsilon}^{2}$ and therefore the standard error. **Normality** plays a role in forming the $T$ distribution.
+Here **linearity** plays a role in asserting the **unbiasedness** of $\hat{\beta}$ and thus the center of the distribution. **Homoskedasticity** plays a role in establishing constant $\hat{\sigma}_{\varepsilon}^{2}$ and therefore the standard error. **Normality** plays a role in forming the $T$ distribution.
 
 In addition to our suite of regression diagnostics assessing linearity, homoskedasticity, and normality, we’ll introduce additional diagnostics to help us **flag potentially unusual / important observations** in our data set.
 - **Outliers** - observations do not behave like the bulk of our data points
@@ -49,13 +49,13 @@ Here $h_{ii}$ can be thought of as the **weight** placed on $y_{i}$ when forming
 Let's consider the extreme case where $h_{ii}=1$. Then,
 - $\hat{y}_{i}=y_{i}$ since each $h_{ij}=0$ from (3)
 - $e_{i}=y_{i}-\hat{y}_{i}=0$
-- $\text{Var}(\hat{y}_{i} | x_{i})=\sigma_{\epsilon}^{2}h_{ii}=\sigma_{\epsilon}^{2}$
-- $\text{Var}(e_{i}|x_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})=0$
+- $\text{Var}(\hat{y}_{i} | x_{i})=\sigma_{\varepsilon}^{2}h_{ii}=\sigma_{\varepsilon}^{2}$
+- $\text{Var}(e_{i}|x_{i})=\sigma_{\varepsilon}^{2}(1-h_{ii})=0$
 
 ```ad-summary
 **Leverage and Linear Model Assumptions**
 
-Under the weaker linear model we have that $$\text{Var}(e_{i}|x_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})$$ $$\text{Var}(\hat{y}_{i} | x_{i})=\sigma_{\epsilon}^{2}h_{ii}$$ $$\text{Corr}(\hat{y}_{i},y_{i}|x_{i})=\sqrt{h_{ii}}$$
+Under the weaker linear model we have that $$\text{Var}(e_{i}|x_{i})=\sigma_{\varepsilon}^{2}(1-h_{ii})$$ $$\text{Var}(\hat{y}_{i} | x_{i})=\sigma_{\varepsilon}^{2}h_{ii}$$ $$\text{Corr}(\hat{y}_{i},y_{i}|x_{i})=\sqrt{h_{ii}}$$
 
 The larger $h_{ii}$, the smaller the variability in the $i$th residual, $e_{i}$ and the closer $y_{i}$ tends to be to $\hat{y}_{i}$, or the more $\hat{y}_{i}$ behaves like $y_{i}$
 ```
@@ -105,16 +105,16 @@ A good idea would be to **exclude** point $i$, and recompute $\hat{\beta}_{(i)}$
 ![[Pasted image 20241003162105.png|400]]
 
 Formally, we are testing:
-- **Null hypothesis**: For all observations $a=1,\dots, n, y_{a}=x_{a}^{T}\beta + \epsilon_{a}$ and $\epsilon_{a} \sim N(0,\sigma_{\epsilon}^{2})$ and iid.
+- **Null hypothesis**: For all observations $a=1,\dots, n, y_{a}=x_{a}^{T}\beta + \varepsilon_{a}$ and $\varepsilon_{a} \sim N(0,\sigma_{\varepsilon}^{2})$ and iid.
 - **Alternative hypothesis**: This model holds for all observations except for the $i$ th individual, who comes from a **different, unspecified, model**
 
-Under the null hypothesis, we have that $$\mathbb{E}(y_{i}-\hat{y}_{(i)})=0$$ and $$\text{Var}(y_{i}-\hat{y}_{(i)})=\sigma_{\epsilon}^{2}(1+x_{i}^{T}(X_{(i)}^{T}X_{(i)})^{-1}x_{i})$$
+Under the null hypothesis, we have that $$\mathbb{E}(y_{i}-\hat{y}_{(i)})=0$$ and $$\text{Var}(y_{i}-\hat{y}_{(i)})=\sigma_{\varepsilon}^{2}(1+x_{i}^{T}(X_{(i)}^{T}X_{(i)})^{-1}x_{i})$$
 Note that this is very similar to the results underpinning our [[8 Prediction Intervals|prediction intervals]] we've seen earlier.
 
 ```ad-important
 **Definition 10.2**: Externally Studentized Residuals
 
-With the RMSE from a regression excluding the $i$th individual $\hat{\sigma}_{\epsilon(i)}$ $$t_{i}=\frac{y_{i}-\hat{y}_{(i)}}{\hat{\sigma}_{\epsilon(i)} \sqrt{1+x_{i}^{T}(X_{(i)}^{T}X_{(i)})^{-1}x_{i}}} \sim t_{n-(p+1)-1}$$
+With the RMSE from a regression excluding the $i$th individual $\hat{\sigma}_{\varepsilon(i)}$ $$t_{i}=\frac{y_{i}-\hat{y}_{(i)}}{\hat{\sigma}_{\varepsilon(i)} \sqrt{1+x_{i}^{T}(X_{(i)}^{T}X_{(i)})^{-1}x_{i}}} \sim t_{n-(p+1)-1}$$
 
 These $t_i$ are called externally studentized residuals. Interestingly, $t_i$ can also be expressed as $$t_{i}=r_{i} \left(\frac{n-(p+1)-1}{n-(p+1)-r_{i}^{2}}\right)^\frac{1}{2}$$ where $r_{i}$ are the [[9 LR Assumptions#^5ba862|standardized residuals]] we introduced previously.
 
@@ -159,7 +159,7 @@ A good measure to detect which points are most likely to be influential is Cook'
 ```ad-important
 **Definition 10.4**: Cook's Distance
 
-The Cook’s distance $D_i$ of an observation $i$ is the **sum of the squared differences** between predicted values in regressions fit including $i$ and excluding $i$ , normalized by $(p + 1)\hat{\sigma}_{\epsilon}^{2}$. $$D_{i}=\frac{(X\hat{\beta}-X\hat{\beta}_{(i)})^{T}(X\hat{\beta}-X\hat{\beta}_{(i)}) }{(p + 1)\hat{\sigma}_{\epsilon}^{2}}$$ where $\hat{\beta}_{(i)}$ are the regression coefficients from a regression excluding observation $i$.
+The Cook’s distance $D_i$ of an observation $i$ is the **sum of the squared differences** between predicted values in regressions fit including $i$ and excluding $i$ , normalized by $(p + 1)\hat{\sigma}_{\varepsilon}^{2}$. $$D_{i}=\frac{(X\hat{\beta}-X\hat{\beta}_{(i)})^{T}(X\hat{\beta}-X\hat{\beta}_{(i)}) }{(p + 1)\hat{\sigma}_{\varepsilon}^{2}}$$ where $\hat{\beta}_{(i)}$ are the regression coefficients from a regression excluding observation $i$.
 
 Equivalently, Cook’s distance can be expressed as $$D_{i}=\frac{1}{p+1}r_{i}^{2} \frac{h_{ii}}{1-h_{ii}}$$ from whence we see that $D_i$ combines the impact of
 - **Large residual** (in terms of standardized residual $r_i$)

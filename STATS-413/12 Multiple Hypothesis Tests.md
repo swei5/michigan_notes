@@ -89,9 +89,9 @@ Suppose we have $G$ groups ($G$ levels of the categorical predictor). For all $i
 ```ad-important
 **Definition 12.3**: Tukey-Kramer Honest Significant Difference
 
-Let $\bar{y}_{i}$ be the observed mean in the $i$th of $G$ groups, and let $\hat{\sigma}_{\epsilon}$ be the RMSE from our regression of the response on the categorical predictor.
+Let $\bar{y}_{i}$ be the observed mean in the $i$th of $G$ groups, and let $\hat{\sigma}_{\varepsilon}$ be the RMSE from our regression of the response on the categorical predictor.
 
-For all $i,j$, we can construct a $100(1-\alpha)\%$ confidence interval for $\mu_{i}-\mu_{j}$ while controlling the familywise error rate at $\alpha$ through the following: $$\bar{y}_{i}-\bar{y}_{j} \pm \frac{q_{1-\alpha,G,n-G}} {\sqrt{2}} \hat{\sigma}_{\epsilon} \sqrt{\frac{1}{n_{i}} + \frac{1}{n_{j}}} $$ where $q_{1-\alpha,G,n-G}$ is a quantile from the **Studentized Range Distribution**, and $n_{i}$ is the sample size for the $i$th group and $\hat{\sigma}_{\epsilon} \sqrt{\frac{1}{n_{i}} + \frac{1}{n_{j}}}$ is the standard error of $\text{se}(\bar{y}_{i}-\bar{y}_{j})$.
+For all $i,j$, we can construct a $100(1-\alpha)\%$ confidence interval for $\mu_{i}-\mu_{j}$ while controlling the familywise error rate at $\alpha$ through the following: $$\bar{y}_{i}-\bar{y}_{j} \pm \frac{q_{1-\alpha,G,n-G}} {\sqrt{2}} \hat{\sigma}_{\varepsilon} \sqrt{\frac{1}{n_{i}} + \frac{1}{n_{j}}} $$ where $q_{1-\alpha,G,n-G}$ is a quantile from the **Studentized Range Distribution**, and $n_{i}$ is the sample size for the $i$th group and $\hat{\sigma}_{\varepsilon} \sqrt{\frac{1}{n_{i}} + \frac{1}{n_{j}}}$ is the standard error of $\text{se}(\bar{y}_{i}-\bar{y}_{j})$.
 ```
 
 Studentized Range $(G , n-G)$ accounts for the fact that we are looking at $|\bar{y}_{i}-\bar{y}_{j}|$ for **all possible combinations of groups**.
@@ -111,3 +111,25 @@ Let us fix $n=1000$ for purpose of illustration:
 
 Quantiles are the same for $G=2$; Tukey-Kramer is better (narrower CI) for $G>2$.
 ```
+
+---
+### Scheffé's Method
+In regression, we’ve introduced methods for constructing 95% confidence intervals for $\mu_{y|\tilde{x}}=\mathbb{E}(y|\tilde{x})$ at particular data point $\tilde{x}$. There are called **pointwise confidence intervals**. This says that for any particular point $\tilde{x}$, we are 95% confident that $\mu_{y|\tilde{x}}$ will fall within $$\hat{\mu}_{y|\tilde{x}} \pm t_{1-\alpha/2,n-p-1}\text{se}(\hat{\mu}_{y|\tilde{x}})$$
+However, this does not imply that we are 95% confident that **the true prediction equation** falls within these bounds. This would be making multiple comparisons!
+
+In other words, rather than capturing $\mu_{y|\tilde{x}}$ at a given point $\tilde{x}$, can we create upper and lower bounds that capture the entire function $\mathbb{E}(y|\tilde{x})=\tilde{x}^{T}\beta$ with $100 (1-\alpha)\%$ confidence?
+
+```ad-important
+**Definition 12.4**: Scheffé's Method
+
+At any point $\tilde{x}$, consider the following modified confidence intervals for the conditional expectation: $$\hat{\mu}_{y|\tilde{x}} \pm \sqrt{(p+1)\mathcal{F}_{1-\alpha, (p+1), n-p-1}} \hat{\sigma}_{\varepsilon} \sqrt{\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x}}$$ where $\mathcal{F}_{1-\alpha, (p+1), n-p-1}$ is the $1-\alpha$ quantile of an $\mathcal{F}$ distribution with $p+1$ and $n-p-1$ degrees of freedom.
+```
+
+Scheffé's Method replaces a quantile from the $t_{n-p-1}$ distribution with $\sqrt{(p+1)\mathcal{F}_{1-\alpha, (p+1), n-p-1}}$ .
+- This accounts for looking at **all possible linear combinations** of $\hat{\beta}$ and $\tilde{x}^T \hat{\beta}$
+- Size of penalty **depends on the number of predictor variables**
+	- Large $p$ results in very **wide** intervals - much wider than pointwise intervals
+
+The resulting intervals, when plotted for all values of $\tilde{x}$, capture the **true prediction equation** with $100 (1-\alpha)\%$ confidence.
+
+![[Pasted image 20241017212738.png|500]]

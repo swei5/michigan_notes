@@ -3,14 +3,14 @@
 To date we have derived properties of the ordinary least squares coefficients $\hat{\beta}$ under the assumption that a **linear model holds**.
 
 ```ad-summary
-The weaker linear model states $$\begin{align}y&=X\beta+\epsilon \\ \mathbb{E}(\epsilon)&=0 \\ \text{Var}(\epsilon) &= \sigma_{\epsilon}^{2}I \end{align}$$
+The weaker linear model states $$\begin{align}y&=X\beta+\varepsilon \\ \mathbb{E}(\varepsilon)&=0 \\ \text{Var}(\varepsilon) &= \sigma_{\varepsilon}^{2}I \end{align}$$
 
 If this holds, we showed among many things:
 - $\mathbb{E}(\hat{\beta})=\beta$
-- $\text{Var}(\hat{\beta})=\sigma_{\epsilon}^{2}(X^{T}X)^{-1}$
+- $\text{Var}(\hat{\beta})=\sigma_{\varepsilon}^{2}(X^{T}X)^{-1}$
 - $\mathbb{E}(y-X\hat{\beta})=0$
 
-If we further assume (stronger linear model) that $\epsilon \sim MVN(0, \sigma_{\epsilon}^{2}I)$, we can construct
+If we further assume (stronger linear model) that $\varepsilon \sim MVN(0, \sigma_{\varepsilon}^{2}I)$, we can construct
 - [[5 Confidence Intervals|Hypothesis tests/confidence intervals for slope coefficients]]
 - [[6 Categorical Variables|Hypothesis tests to compare models of differing complexity]]
 - [[7 Inferences|Confidence intervals for the conditional expectation]]
@@ -52,22 +52,22 @@ Note the distinction between $\mathbb{E}(e_{i})=0$ and $\overline{e}=0$;  the fo
 ```ad-important
 **Definition 9.2**: Variances of Residuals and Fitted Values
 
-Under the weaker linear model $$\text{Var}(e)=\sigma_{\epsilon}^{2}(I-H)$$ using $\text{Var}[(I-H)y]=(I-H)\text{Var}(y)(I-H)^{T}$ $\text{Var}(y)=\sigma_{\epsilon}^{2}$ under assumptions; and $$\text{Var}(\hat{y})=\sigma_{\epsilon}^{2}H$$ using $\text{Var}(\hat{y})=\text{Var}(Hy)=H\text{Var}(y)H^{T}$ and $\text{Var}(y)=\sigma_{\epsilon}^{2}$ under assumptions.
+Under the weaker linear model $$\text{Var}(e)=\sigma_{\varepsilon}^{2}(I-H)$$ using $\text{Var}[(I-H)y]=(I-H)\text{Var}(y)(I-H)^{T}$ $\text{Var}(y)=\sigma_{\varepsilon}^{2}$ under assumptions; and $$\text{Var}(\hat{y})=\sigma_{\varepsilon}^{2}H$$ using $\text{Var}(\hat{y})=\text{Var}(Hy)=H\text{Var}(y)H^{T}$ and $\text{Var}(y)=\sigma_{\varepsilon}^{2}$ under assumptions.
 ```
 
 ^908aff
 
-Keep in mind the distinction between $\text{Var}(e_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})$ and $\hat{\sigma}_{\epsilon}^{2}= \frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}$. The former describes **variability for ANY component** $e_{i}$ across data sets. The latter is the **sample variance** for the observed residuals.
+Keep in mind the distinction between $\text{Var}(e_{i})=\sigma_{\varepsilon}^{2}(1-h_{ii})$ and $\hat{\sigma}_{\varepsilon}^{2}= \frac{1}{n-p-1} \sum_{i=1}^{n} e^{2}$. The former describes **variability for ANY component** $e_{i}$ across data sets. The latter is the **sample variance** for the observed residuals.
 
 When performing regression with an intercept and $p$ predictors, the **diagonal entries** of the hat matrix $H$, $h_{ii}$ , satisfy the following $$\frac{1}{n} \le h_{ii} \le 1$$ for $i=1,\dots,n$. And $$\sum\limits_{i=1}^{n}h_{ii}=p+1$$
-This implies that $$\text{Var}(e_{i})=\sigma_{\epsilon}^{2}(1-h_{ii}) \le \sigma_{\epsilon}^{2}=\text{Var}(\epsilon_{i})$$ In words, residuals **DO NOT** generally have the **same variance** as errors do; in addition, residuals $e_{i}$ have **SMALLER** variance then $\epsilon_{i}$. ^376c7f
+This implies that $$\text{Var}(e_{i})=\sigma_{\varepsilon}^{2}(1-h_{ii}) \le \sigma_{\varepsilon}^{2}=\text{Var}(\varepsilon_{i})$$ In words, residuals **DO NOT** generally have the **same variance** as errors do; in addition, residuals $e_{i}$ have **SMALLER** variance then $\varepsilon_{i}$. ^376c7f
 
-In addition, for any $i, j=1,\dots,n$ and by rearranging the results in [[#^908aff|Definition 9.2]]  we may show that $$\text{Cov}(e_{i},e_{j})=-\sigma_{\epsilon}^{2}h_{ij}$$
- $$\text{Cov}(\hat{y}_{i},\hat{y}_{j})=\sigma_{\epsilon}^{2}h_{ij}$$
-This implies that despite the fact $\text{Cov}(\epsilon_{i},\epsilon_{j})=0$ under the weaker linear model, $\text{Cov}(e_{i}, e_{j})\ne 0$.
+In addition, for any $i, j=1,\dots,n$ and by rearranging the results in [[#^908aff|Definition 9.2]]  we may show that $$\text{Cov}(e_{i},e_{j})=-\sigma_{\varepsilon}^{2}h_{ij}$$
+ $$\text{Cov}(\hat{y}_{i},\hat{y}_{j})=\sigma_{\varepsilon}^{2}h_{ij}$$
+This implies that despite the fact $\text{Cov}(\varepsilon_{i},\varepsilon_{j})=0$ under the weaker linear model, $\text{Cov}(e_{i}, e_{j})\ne 0$.
 
 ```ad-note
-Though we assume $\epsilon$ to be iid and normally distributed, $e$ is **NOT independent and iid** given a non-zero covariance term between $e_{i}$ and $e_{j}$. Alternatively, we can make the same conclusion since the variance of $e_{i}$ is a function of $i$ in $H$.
+Though we assume $\varepsilon$ to be iid and normally distributed, $e$ is **NOT independent and iid** given a non-zero covariance term between $e_{i}$ and $e_{j}$. Alternatively, we can make the same conclusion since the variance of $e_{i}$ is a function of $i$ in $H$.
 ```
 
 ```ad-important
@@ -93,16 +93,16 @@ This is **distinct** from the result that the sample covariance between $e$ and 
 ```ad-important
 **Definition 9.5**: Distribution of Residuals and Fitted Values
 
-Under the stronger linear model, $$\begin{bmatrix} e \\ \hat{y} \end{bmatrix} \sim MVN \left(\begin{bmatrix} \mathbf{0} \\ X\beta \end{bmatrix}, \begin{bmatrix} (I-H)\sigma_{\epsilon}^{2} & \mathbf{0} \\ \mathbf{0} & H\sigma_{\epsilon}^{2} \end{bmatrix}\right)$$
+Under the stronger linear model, $$\begin{bmatrix} e \\ \hat{y} \end{bmatrix} \sim MVN \left(\begin{bmatrix} \mathbf{0} \\ X\beta \end{bmatrix}, \begin{bmatrix} (I-H)\sigma_{\varepsilon}^{2} & \mathbf{0} \\ \mathbf{0} & H\sigma_{\varepsilon}^{2} \end{bmatrix}\right)$$
 
-Implications under the stronger linear model: $$e_{i} \sim N(0, \sigma_{\epsilon}^{2}(1-h_{ii}))$$ and $e$ and $\hat{y}$ are **independent of one another** (relies crucially on multivariate normality).
+Implications under the stronger linear model: $$e_{i} \sim N(0, \sigma_{\varepsilon}^{2}(1-h_{ii}))$$ and $e$ and $\hat{y}$ are **independent of one another** (relies crucially on multivariate normality).
 ```
 
 #### Linearity
-**Linearity**, $y=X\beta+\epsilon$ with $\mathbb{E}(\epsilon)=0$ tells us that for each $i$, $$\mathbb{E}(e_{i}|x_{i})=\mathbb{E}(y_{i}-\hat{y}|x_{i})=0$$
+**Linearity**, $y=X\beta+\varepsilon$ with $\mathbb{E}(\varepsilon)=0$ tells us that for each $i$, $$\mathbb{E}(e_{i}|x_{i})=\mathbb{E}(y_{i}-\hat{y}|x_{i})=0$$
 i.e. that the expected value of our sample residual $e_i$ at **ANY point** $x_i$ equals zero.
 
-**Nonlinearity**, on the other hand, could be written as $y_{i}=g (x_{i})+\epsilon_{i}$ and $\mathbb{E}(\epsilon_{i})=0$ for some **nonlinear** functions $g(\cdot)$. In this case, $$\mathbb{E}(e_{i}|x_{i})=\mathbb{E}(y_{i}-\hat{y}|x_{i})=\eta(x_{i})$$ for some non-zero function $\eta(\cdot)$.
+**Nonlinearity**, on the other hand, could be written as $y_{i}=g (x_{i})+\varepsilon_{i}$ and $\mathbb{E}(\varepsilon_{i})=0$ for some **nonlinear** functions $g(\cdot)$. In this case, $$\mathbb{E}(e_{i}|x_{i})=\mathbb{E}(y_{i}-\hat{y}|x_{i})=\eta(x_{i})$$ for some non-zero function $\eta(\cdot)$.
 
 ---
 ### Residual Plots
@@ -138,19 +138,19 @@ In addition, we also plot the relationship between residuals and fitted values: 
 ![[Pasted image 20240928214741.png|500]]
 
 #### Assessing Homoskedasticity
-Homoskedasticity tells us that, for each $x_{i}$ $$\text{Var}(\epsilon_{i}|x_{i})=\sigma_{\epsilon}^{2}$$
-We don't have $\epsilon_{i}$ and instead observe its sample analogue $e_{i}$ instead. Recall that previously we have $$\text{Var}(e_{i}|x_{i})=\sigma_{\epsilon}^{2}(1-h_{ii})$$
+Homoskedasticity tells us that, for each $x_{i}$ $$\text{Var}(\varepsilon_{i}|x_{i})=\sigma_{\varepsilon}^{2}$$
+We don't have $\varepsilon_{i}$ and instead observe its sample analogue $e_{i}$ instead. Recall that previously we have $$\text{Var}(e_{i}|x_{i})=\sigma_{\varepsilon}^{2}(1-h_{ii})$$
 Generally $h_{ii} \ne h_{jj}$ for $i \ne j$. Thus, even under homoskedasticity, our sample residuals would not have constant variance. ^b62bf9
 
-Fortunately, there’s a straightforward fix under the weaker linear model: $$\begin{align}\text{Var}\left(\frac{e_{i}}{\sqrt{1-h_{ii}}}|x_{i}\right)&=\frac{\text{Var}(e_{i}|x_{i})}{1-h_{ii}} \\ &= \frac{\sigma_{\epsilon}^{2}(1-h_{ii})}{(1-h_{ii})} \\ &= \sigma_{\epsilon}^{2}\end{align}$$
+Fortunately, there’s a straightforward fix under the weaker linear model: $$\begin{align}\text{Var}\left(\frac{e_{i}}{\sqrt{1-h_{ii}}}|x_{i}\right)&=\frac{\text{Var}(e_{i}|x_{i})}{1-h_{ii}} \\ &= \frac{\sigma_{\varepsilon}^{2}(1-h_{ii})}{(1-h_{ii})} \\ &= \sigma_{\varepsilon}^{2}\end{align}$$
 This motivates the use of an **alternative residual** for assessing homoskedasticity.
 
 ```ad-important
 **Definition 9.6**: Standardized / Internally Studentized Residuals
 
-The standardized residual (also called the internally studentized residual) takes the following form for each observation $i$: $$r_{i}=\frac{e_{i}}{\hat{\sigma}_{\epsilon}\sqrt{1-h_{ii}}}$$
+The standardized residual (also called the internally studentized residual) takes the following form for each observation $i$: $$r_{i}=\frac{e_{i}}{\hat{\sigma}_{\varepsilon}\sqrt{1-h_{ii}}}$$
 
-The division by $\hat{\sigma}_{\epsilon}$ **removes dependence on scale**.
+The division by $\hat{\sigma}_{\varepsilon}$ **removes dependence on scale**.
 ```
 
 ^5ba862
@@ -178,8 +178,8 @@ Plotting $|r_i |$ focuses attention on **magnitude** while taking $\sqrt{|r_{i}|
 ```
 
 #### Assessing Normality
-Our methods for hypothesis tests / confidence intervals / prediction intervals have so far relied crucially on the normality assumption in the stronger linear model: $$\epsilon \sim MVN(0,\sigma_{\epsilon}^{2}I)$$
-Again, we will be using sample residuals $e_{i}$ are our best guesses for $\epsilon_{i}$.
+Our methods for hypothesis tests / confidence intervals / prediction intervals have so far relied crucially on the normality assumption in the stronger linear model: $$\varepsilon \sim MVN(0,\sigma_{\varepsilon}^{2}I)$$
+Again, we will be using sample residuals $e_{i}$ are our best guesses for $\varepsilon_{i}$.
 
 A seemingly natural approach might be to use a histogram to assess normality, and look for a bell-shaped / normally distributed.
 - Easy to distinguish a normal distribution from a distribution which is left or right skewed using a histogram
@@ -198,7 +198,7 @@ To create a Normal QQ-Plot:
 ```ad-note
 Note that $\Phi(\cdot)^{-1}$ is `qnorm(.)`, which **takes as input a probability**, gives as output the corresponding quantile.
 
-We again use standardized residuals $r_{i}=\frac{e_{i}}{\hat{\sigma}_{\epsilon}\sqrt{1-h_{ii}}}$ instead of $e_{i}$
+We again use standardized residuals $r_{i}=\frac{e_{i}}{\hat{\sigma}_{\varepsilon}\sqrt{1-h_{ii}}}$ instead of $e_{i}$
 - This is because $e_{i}$ aren't identically distributed (see [[#^b62bf9|here]]) - QQ-plots are made for iid variables
 ```
 

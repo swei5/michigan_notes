@@ -105,7 +105,7 @@ There are infinitely many equations of the form $\tilde{\beta_0}+\tilde{\beta_1}
 
 For case $i , i = 1, 2, \dots, n$, let the $i$ th **residual** term be the difference between the observed response variable and the predicted value for the $i$ th individual for a given value of $(\tilde{\beta_0},\tilde{\beta_{1}})$:
 $$e_{i}=y_{i}-(\tilde{\beta_0}+\tilde{\beta_1}x)$$
-This is the **vertical** difference between the observation and line at $x_{i}$ with the choices of intercept and slope $(\beta_{0},\beta_{1})$. We would like $\epsilon_{i}$ to be as small as possible for better prediction.
+This is the **vertical** difference between the observation and line at $x_{i}$ with the choices of intercept and slope $(\beta_{0},\beta_{1})$. We would like $\varepsilon_{i}$ to be as small as possible for better prediction.
 
 The **least squares regression** line chooses $(\tilde{\beta_0},\tilde{\beta_1})$ to minimize the **sum of the squared errors** (SSE):
 $$(\hat{\beta_{0}},\hat{\beta}_{1})=\text{arg min}_{\tilde{\beta_0}, \tilde{\beta_1}} \sum\limits_{i}^{n}(y_{i}-(\tilde{\beta_0}+\tilde{\beta_1}x_{i}))^{2}$$

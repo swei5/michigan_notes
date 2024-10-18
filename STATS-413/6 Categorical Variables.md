@@ -43,8 +43,8 @@ We calculate TSS based on the **overall mean** for all categories ($\bar{y}$), a
 This regression-based approach for testing the equality of means through use of the overall $\mathcal{F}$ -test has its own name in the literature: **Analysis of Variance**, or ANOVA for short.
 
 Note that the test is assuming the truth of the *stronger* regression model. Most importantly,
-- Homoskedasticity: $\text{Var}(y_{i})=\sigma_{\epsilon}^{2}$
-- Normality: $\epsilon_{i} \sim N(0,\sigma_{\epsilon}^{2})$
+- Homoskedasticity: $\text{Var}(y_{i})=\sigma_{\varepsilon}^{2}$
+- Normality: $\varepsilon_{i} \sim N(0,\sigma_{\varepsilon}^{2})$
 
 In this context, homoskedasticity means $\sigma_{1} = \dots = \sigma_{G}$.
 
@@ -99,7 +99,7 @@ Through this process we’ve built up from a fairly simple model for sales to on
 The required test is called a partial $\mathcal{F}$ -test. 
 - Partial in the sense that it **compares large (full) models to some partial subset** of the large model
 
-Suppose we want to fit a model $y_{i}=\beta_{0}+\beta_{1}x_{i1}+ \dots + \beta_{p}x_{ip} +\epsilon_{i}$ and re interested in the null hypothesis that some subset of slopes $\mathcal{I} \subseteq \set{1,\dots, p}$ are zero: $$H_{0}:\beta_{i}=0 \text{ for some subset of covariates } \mathcal{I}$$The alternative hypothesis is then $$ H_{a}: \text{at least one slope in subset } \mathcal{I} \text{is non zero}$$ **AT LEAST** $\beta_{i}$ **AND/OR** $\beta_j$ is nonzero.
+Suppose we want to fit a model $y_{i}=\beta_{0}+\beta_{1}x_{i1}+ \dots + \beta_{p}x_{ip} +\varepsilon_{i}$ and re interested in the null hypothesis that some subset of slopes $\mathcal{I} \subseteq \set{1,\dots, p}$ are zero: $$H_{0}:\beta_{i}=0 \text{ for some subset of covariates } \mathcal{I}$$The alternative hypothesis is then $$ H_{a}: \text{at least one slope in subset } \mathcal{I} \text{is non zero}$$ **AT LEAST** $\beta_{i}$ **AND/OR** $\beta_j$ is nonzero.
 
 As contrasted to **ALL slopes** as demonstrated in a *full* $\mathcal{F}$ -test ![[5 Confidence Intervals#^589891]]
 In other words, a partial $\mathcal{F}$ -test is a natural extension of the $t$ -tests on **individual coefficients** to dealing with **sets of coefficients**.

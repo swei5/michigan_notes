@@ -5,11 +5,11 @@ Recall some of the ground rules we have for **[[2 Multiple Regression#^859af4|we
 ![[2 Multiple Regression#^167b66]]
 
 In matrix notation, our weaker linear model takes the form
-$$y=X\beta + \epsilon$$
-With $\mathbb{E}(\epsilon)=0$ (Assumption 1), $\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}I_{n \times n}$ (Assumption 2). Here, we consider $X$ (design matrix) to be **fixed**, $\beta$ to be **fixed** but **UNKNOWN**, and $\epsilon$ **random** - the only factor that contributes to the randomness of our model.
+$$y=X\beta + \varepsilon$$
+With $\mathbb{E}(\varepsilon)=0$ (Assumption 1), $\text{Var}(\varepsilon)=\sigma_{\varepsilon}^{2}I_{n \times n}$ (Assumption 2). Here, we consider $X$ (design matrix) to be **fixed**, $\beta$ to be **fixed** but **UNKNOWN**, and $\varepsilon$ **random** - the only factor that contributes to the randomness of our model.
 
-Note that $$\mathbb{E}(y)=\mathbb{E}(X\beta)+\mathbb{\epsilon}=\mathbb{E}(X\beta)$$
-And also $$\text{Var}(y)=\text{Var}(X\beta)+\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}I_{n \times n}$$
+Note that $$\mathbb{E}(y)=\mathbb{E}(X\beta)+\mathbb{\varepsilon}=\mathbb{E}(X\beta)$$
+And also $$\text{Var}(y)=\text{Var}(X\beta)+\text{Var}(\varepsilon)=\sigma_{\varepsilon}^{2}I_{n \times n}$$
 Since we keep $X$, $\beta$ fixed and hence their product has variance $\mathbf{0}$.
 
 ---
@@ -84,7 +84,7 @@ The intuition here is that residuals are what’s *left over* after running our 
 ### Properties of $\hat{\beta}$
 With some algebraic properties of the ordinary least squares solution established, we’ll next investigate statistical properties of $\hat{\beta}$ when viewed as an estimator of $\beta$.
 
-Again, the variability in responses $y$ we observed in the model stems from the different vector $\epsilon$ - this in turn generates different slope and intercept coefficients when running regression.
+Again, the variability in responses $y$ we observed in the model stems from the different vector $\varepsilon$ - this in turn generates different slope and intercept coefficients when running regression.
 
 Let's first go over a few definitions and properties. Let $Y, Z \in \mathbb{R}^{m}$ be a **random** vector.
 
@@ -119,10 +119,10 @@ $$\text{Var}(AZ+b)=A\text{Var}(Z) A^{T}$$
 
 Using the theorems developed above, we may derive the expectation of $\hat{\beta}$: $$\begin{align}\mathbb{E}(\hat{\beta})&=\mathbb{E}((X^{T}X)^{-1}X^{T}y)\\&=(X^{T}X)^{-1}X^{T}\mathbb{E}(y) \\ &= (X^{T}X)^{-1}(X^{T} X)\beta \\&= \beta \end{align}$$
 This demonstrates the **unbiasedness** of $\hat{\beta}$. ^a4deed
-- Here, we rely on the fact $\mathbb{E}(\epsilon)=0$ since it implies $\mathbb{E}(y)=X\beta$
+- Here, we rely on the fact $\mathbb{E}(\varepsilon)=0$ since it implies $\mathbb{E}(y)=X\beta$
 
-Similarly, we may define the variance of $\hat{\beta}$: $$\begin{align} \text{Var}(\hat{\beta})&= \text{Var}((X^{T}X)^{-1}X^{T}y) \\ &= (X^{T}X)^{-1}X^{T} \text{Var}(y) ((X^{T}X)^{-1}X^{T})^{T} \\&=\sigma_{\epsilon}^{2}(X^{T}X)^{-1} \end{align}$$
-Here, we rely on the fact $\text{Var}(\epsilon)=\sigma_{\epsilon}^{2}I$. ^89d509
+Similarly, we may define the variance of $\hat{\beta}$: $$\begin{align} \text{Var}(\hat{\beta})&= \text{Var}((X^{T}X)^{-1}X^{T}y) \\ &= (X^{T}X)^{-1}X^{T} \text{Var}(y) ((X^{T}X)^{-1}X^{T})^{T} \\&=\sigma_{\varepsilon}^{2}(X^{T}X)^{-1} \end{align}$$
+Here, we rely on the fact $\text{Var}(\varepsilon)=\sigma_{\varepsilon}^{2}I$. ^89d509
 
 Note that $\text{Var}(\hat{\beta})$ is a $(p+1) \times (p+1)$ matrix, with the variances of each individual slope coefficient on the diagonal - the $j$ th slope coefficient, look at the $(j+1)$ -st diagonal element.
 
@@ -131,7 +131,7 @@ Note that $\text{Var}(\hat{\beta})$ is a $(p+1) \times (p+1)$ matrix, with the v
 We’ll now introduce a few summary measures related to variability in the residuals in order to:
 1. Characterize **how much variability in our outcomes** cannot be accounted for by our predictor variables.
 2. Assess **quality of model fit**.
-3. Come up with an estimator for $\sigma_{\epsilon}^{2}$, a necessary step when (a) performing inference; and (b) constructing prediction intervals for future observations.
+3. Come up with an estimator for $\sigma_{\varepsilon}^{2}$, a necessary step when (a) performing inference; and (b) constructing prediction intervals for future observations.
 
 ```ad-important
 **Definition 3.7**: Residual Sum of Squares (RSS)
