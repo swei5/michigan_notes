@@ -88,3 +88,30 @@ $$\begin{align}
 \end{align}
 $$
 ```
+
+Comparing these results with what we obtained for the [[3 OLS Estimators#^a4deed|ordinary least squares]], the estimators have the **SAME expectations**, but **DIFFERENT variances**. 
+
+Under the new generative model for $y$, it turns out that $\hat{\beta}_{WLS}$ is the best linear unbiased estimator (BLUE) of $\beta$.
+- **Linear**: estimators $\tilde{\beta}$ can be written in the form $\tilde{\beta}=Cy$ for some matrix $C$
+- **Unbiased**: $\mathbb{E}(\hat{\beta}_{WLS}) = \beta$
+- **Best**: For any vector of constants $a$, $\text{Var}(a^{T}\tilde{\beta})$ has the **smallest possible variance** out of all unbiased linear estimators
+
+```ad-important
+**Definition 13.4**: Gauss-Markov Theorem
+
+Let $\hat{\beta}_{WLS}$ be the weighted least squares solution. Suppose the above generative model and that $X$ is full rank. Let $\tilde{\beta}$ be another linear unbiased estimator of $\beta$. Then, for any constant vector $a \in \mathbb{R}^{p+1}$: $$\text{Var}(a^{T}\hat{\beta}_{WLS}) \le \text{Var}(a^{T}\tilde{\beta})$$
+```
+
+```ad-note
+**Proof of Definition 13.4**
+
+![[Pasted image 20241018175619.png|400]]
+
+![[Pasted image 20241018175632.png|400]]
+```
+
+Note that if $W=W^{-1}=I$, $\hat{\beta}_{WLS}=\hat{\beta}_{OLS}$.
+- Under homoskedasticity, $\hat{\beta}_{OLS}$ is the best linear unbiased estimator for $\beta$
+- The derivation above provides additional justification for using OLS to estimate $\beta$ under the weaker and stronger linear model
+- Any other linear, unbiased estimator would be worse than $\hat{\beta}_{OLS}$
+
