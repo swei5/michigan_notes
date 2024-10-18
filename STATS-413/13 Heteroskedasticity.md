@@ -63,4 +63,28 @@ $$\begin{align}
 \end{align}$$
 ```
 
-Now, consider running an ordinary least squares regression of the **transformed responses** $W^{1/2}y$, on the **transformed predictors** $W^{1/2}X$
+Now, consider running an ordinary least squares regression of the **transformed responses** $W^{1/2}y$, on the **transformed predictors** $W^{1/2}X$: 
+
+```ad-important
+**Definition 13.2**: WLS Estimator
+
+$$\begin{align}
+\hat{\beta}_{WLS}&=\text{arg} \min\limits_{\beta}(W^{1/2}y-W^{1/2}X\beta)^{T}(W^{1/2}y-W^{1/2}X\beta)\\
+&= \text{arg} \min\limits_{\beta}(y-X\beta)^T W(y-X\beta)\\
+&= \text{arg} \min\limits_{\beta} \sum\limits_{i=1}^{n} w_{ii}(y_{i}-x_{i}^{T}\beta)^{2}\\
+&= \left((W^{1/2}X)^{T}W^{1/2}X\right)^{-1}(W^{1/2}X)^{T}W^{1/2}y&\text{ Note similarity with Definition 2.4}\\
+&= (X^{T}WX)^{-1}X^{T}Wy
+\end{align}$$
+
+This is called the **weighted least squares** solution. Larger $w_{ii}$ means **bigger penalty** on $(y_{i}-x_{i}^{T}\beta)^{2}$ and **stronger emphasis** on fit for individual $i$.
+```
+
+```ad-important
+**Definition 13.3**: Expectation and Variance of $\hat{\beta}_{WLS}$
+
+$$\begin{align}
+\mathbb{E}(\hat{\beta}_{WLS}) &= \beta\\
+\text{Var}(\hat{\beta}_{WLS})&=\hat{\sigma}_{\varepsilon}^{2}(X^{T}WX)^{-1}
+\end{align}
+$$
+```
