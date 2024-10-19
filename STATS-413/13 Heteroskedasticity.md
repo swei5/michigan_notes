@@ -1,4 +1,4 @@
-[[2024-10-17]] #Regression 
+[[2024-10-17]] #Regression #R
 
 In the first part of this course, we
 - Derived certain consequences of the ordinary least squares slope coefficients under the assumptions of the weaker and stronger linear models (Lecture 1-8)
@@ -115,3 +115,51 @@ Note that if $W=W^{-1}=I$, $\hat{\beta}_{WLS}=\hat{\beta}_{OLS}$.
 - The derivation above provides additional justification for using OLS to estimate $\beta$ under the weaker and stronger linear model
 - Any other linear, unbiased estimator would be worse than $\hat{\beta}_{OLS}$
 
+In the general case where $W \ne I$, we see that $\hat{\beta}_{WLS}$ is preferred to $\hat{\beta}_{OLS}$.
+
+```ad-note
+Recall that our model for heteroskedasticity states $$\text{Var}(\varepsilon)=\sigma_{\varepsilon}^{2}W^{-1}$$ so that the variances of $\varepsilon_{i}$ are proportional to the **inverse of the weights**.
+- Small $\text{Var}(\varepsilon_{i})$: larger weight for that observation when determining $\hat{\beta}_{WLS}$
+	- Believe that $y_{i}$ is on average closer to $\mathbb{E}(y_{i})=x_{i}^T \beta$ so it prioritizes the prediction equation fitting that point better
+- Larger $\text{Var}(\varepsilon_{i})$: smaller weight for that observation when determining $\hat{\beta}_{WLS}$
+	- $y_{i}$ could be quite far from $\mathbb{E}(y_{i})=x_{i}^T \beta$ due to variability, so it should not prioritize the prediction equation fitting that particular point well
+```
+
+We have so far assumed that $W$ is known, but have made no assumption that $\sigma_{\varepsilon}^{2}$ is known. 
+
+```ad-important
+**Definition 13.5**: Standard Errors for Weighted Least Squares
+
+If $\sigma_{\varepsilon}^{2}$ is unknown, we can estimate it using its standard error, also the MSE: $$\hat{\sigma}_{\varepsilon,WLS}^{2}=\frac{(y-X\hat{\beta}_{WLS})^T W(y-X\hat{\beta}_{WLS})}{n-p-1}$$
+```
+
+We can then estimate $\text{Var}(\hat{\beta}_{WLS})$ by $$\hat{V}(\hat{\beta}_{WLS})=\hat{\sigma}_{\varepsilon,WLS}^{2}(X^{T}WX)^{-1}$$ From here, we can derive **standard errors** for $\hat{\beta}_{j, WLS}$ as $$\text{se}(\hat{\beta}_{j,WLS})=\hat{\sigma}_{\varepsilon,WLS}\sqrt{(X^{T}WX)^{-1}}$$
+
+When do we know $W$? For instances:
+- If each observation $i$ represents the **average response** among a $n_i$ equally weighted responses in a given group, then $w_{ii}=n_{i}$
+	- Can occur when each observation $i$ represents the **number of respondents/participants** at a given location
+	- Can occur if running experiments of different sizes at each $x_{i}$
+- If it’s known that the standard deviation is **proportional to a predictor variable**, then $w_{ii}=1/x_{i}^{2}$
+	- In many systems, **larger values for the predictors introduce more variability** in the responses
+	- Would require subject matter knowledge
+
+```ad-note
+If we simply view $W$ as a weight matrix, without necessarily believing $\text{Var}(\varepsilon)=\sigma_{\varepsilon}^{2}W^{-1}$, weighted least squares can account for **different priorities** on performance of predictions at different covariates $x_{i}$ $$\hat{\beta}_{WLS}= \text{arg} \min\limits_{\beta} \sum\limits_{i=1}^{n} w_{ii}(y_{i}-x_{i}^{T}\beta)^{2}$$
+
+If we care more about **accuracy** of predictions at certain values of $x_{i}$, we can place a larger weight $w_{ii}$ on the residuals for those observations.
+- There could be predictor variables that encode sensitive attributes, or reflect observations of high value to stakeholders
+
+Under this use case for weighted least squares, the Gauss-Markov justification for WLS goes out the window. We are instead arguing that the **loss function underpinning WLS better aligns** with our priorities.
+```
+
+---
+### HC Standard Errors
+If we don't know $W$ and hence $\text{Var}(\varepsilon)$ there two potential paths to explore:
+1. Simply use $\hat{\beta}_{OLS}$ - which doesn’t require a weight matrix, and come up with standard error estimates that are **robust to heteroskedasticity**
+	- While coefficient estimates will no longer be optimal in Gauss-Markov sense, this will allow us to nonetheless conduct inference
+2. Try to estimate $\text{Var}(\varepsilon)$ using the residuals from ordinary least squares; then, **use the inverse of the estimated variances** as weights
+	- Called **feasible weighted least squares** (FWLS)
+	- *Won't discuss in detail*
+
+---
+### Covered `R` Functions

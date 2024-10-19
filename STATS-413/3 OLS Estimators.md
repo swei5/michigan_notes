@@ -117,11 +117,21 @@ For $A \in \mathbb{R}^{n \times m}, b \in \mathbb{R}^{n}$, $A, b$ constant,
 $$\text{Var}(AZ+b)=A\text{Var}(Z) A^{T}$$
 ```
 
-Using the theorems developed above, we may derive the expectation of $\hat{\beta}$: $$\begin{align}\mathbb{E}(\hat{\beta})&=\mathbb{E}((X^{T}X)^{-1}X^{T}y)\\&=(X^{T}X)^{-1}X^{T}\mathbb{E}(y) \\ &= (X^{T}X)^{-1}(X^{T} X)\beta \\&= \beta \end{align}$$
+```ad-important
+**Definition 3.7**: Expectation of OLS Estimator
+
+Using Definition 3.4, we may derive the expectation of $\hat{\beta}$: $$\begin{align}\mathbb{E}(\hat{\beta})&=\mathbb{E}((X^{T}X)^{-1}X^{T}y)\\&=(X^{T}X)^{-1}X^{T}\mathbb{E}(y) \\ &= (X^{T}X)^{-1}(X^{T} X)\beta \\&= \beta \end{align}$$
+```
+
 This demonstrates the **unbiasedness** of $\hat{\beta}$. ^a4deed
 - Here, we rely on the fact $\mathbb{E}(\varepsilon)=0$ since it implies $\mathbb{E}(y)=X\beta$
 
+```ad-important
+**Definition 3.8**: Variance of OLS Estimator
+
 Similarly, we may define the variance of $\hat{\beta}$: $$\begin{align} \text{Var}(\hat{\beta})&= \text{Var}((X^{T}X)^{-1}X^{T}y) \\ &= (X^{T}X)^{-1}X^{T} \text{Var}(y) ((X^{T}X)^{-1}X^{T})^{T} \\&=\sigma_{\varepsilon}^{2}(X^{T}X)^{-1} \end{align}$$
+```
+
 Here, we rely on the fact $\text{Var}(\varepsilon)=\sigma_{\varepsilon}^{2}I$. ^89d509
 
 Note that $\text{Var}(\hat{\beta})$ is a $(p+1) \times (p+1)$ matrix, with the variances of each individual slope coefficient on the diagonal - the $j$ th slope coefficient, look at the $(j+1)$ -st diagonal element.
@@ -134,7 +144,7 @@ We’ll now introduce a few summary measures related to variability in the resid
 3. Come up with an estimator for $\sigma_{\varepsilon}^{2}$, a necessary step when (a) performing inference; and (b) constructing prediction intervals for future observations.
 
 ```ad-important
-**Definition 3.7**: Residual Sum of Squares (RSS)
+**Definition 3.9**: Residual Sum of Squares (RSS)
 $$RSS=\sum\limits_{i=1}^{n} e_{i}^{2}=\sum\limits_{i=1}^{n} (y-\hat{y})^{2}=(y-X\hat{\beta})(y-X\hat{\beta})^{T}=e^Te$$
 
 Note that this is also known as the *sum of squared errors*, introduced [[1 Simple Regression#^302e2f|here]]. This is also how we derived the OLS estimator $\hat{\beta}$.
@@ -143,7 +153,7 @@ Note that this is also known as the *sum of squared errors*, introduced [[1 Simp
 ^dbce55
 
 ```ad-important
-**Definition 3.8**: Total Sum of Squares (TSS)
+**Definition 3.10**: Total Sum of Squares (TSS)
 
 The total sum of squares represents the total **variability** in $y$ **itself**, **WITHOUT** trying to predict using our explanatory variables.
 $$TSS = \sum\limits_{i=1}^{n} (y_{i}-\bar{y})^{2}=(n-1)\text{Var}(y)$$
@@ -163,7 +173,7 @@ This leads us to $R^{2}$ - the coefficient of determination.
 ### $R^{2}$
 
 ```ad-important
-**Definition 3.9**: $R^{2}$
+**Definition 3.11**: $R^{2}$
 
 $$R^{2}=1- \frac{RSS}{TSS}$$
 
