@@ -1,5 +1,7 @@
 [[2024-10-03]] #Derivatives #Valuation 
 
+### Bounds on European Option Prices
+
 ```ad-important
 **Definition 12.1**: Bounds on European Option Prices
 

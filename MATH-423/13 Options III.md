@@ -1,6 +1,5 @@
 [[2024-10-07]] #Valuation #Derivatives 
 
-### American Option Valuation
 Recall the definition of an **American Option**: ![[11 Options I#^a0fa47]]
 
 ```ad-important
@@ -86,7 +85,97 @@ If the underlying asset pays no dividends, the same argument could be used to pr
 
 The prices of American put and call options, written on the same underlying asset $S$ that pays **NO dividends**, with the same strike price $X$ and expiry time $T$ satisfy $$S(0)-X\le C_{A}-P_{A} \le S(0)-Xe^{-rT}$$
 
-If the underlying stock will pay discrete dividends with present value $\text{Div}_{0}$, then the put-call parity estimates are $$$S(0)-\text{Div}_{0}-X\le C_{A}-P_{A} \le S(0)-Xe^{-rT}$$
+If the underlying stock will pay discrete dividends with present value $\text{Div}_{0}$, then the put-call parity estimates are $$S(0)-\text{Div}_{0}-X\le C_{A}-P_{A} \le S(0)-Xe^{-rT}$$
 
 If dividend yield of the underlying stock is $r_{\text{div}}$, then the put-call parity estimates are $$S(0)e^{-r_{\text{div}}T}-X\le C_{A}-P_{A} \le S(0)-Xe^{-rT}$$
+```
+
+^f99aaa
+
+```ad-note
+**Proof of Definition 13.3**
+
+Suppose that the first inequality is not true, i.e. $C_{A}-P_{A}<S(0)-X$. At time $t=0$:
+- Long an American Call: $-C_{A}$
+- Short an American Put: $+P_{A}$
+- Short one share: $+S(0)$
+- Deposit the proceeds at risk-free rate $r$: $-(S(0)+P_{A}-C_{A})$
+	- Note that $(S(0)+P_{A}-C_{A})>X\ge 0$
+
+Now we discuss two cases:
+1. If the American put is exercised at time $t<T$ by the other party
+	- Then, our wealth is $(S(t)-X)^{+}+(S(0)+P_{A}-C_{A})e^{rt}-X>Xe^{rt}-X \ge 0$
+2. If the American put is not exercised at all
+	- We exercise our call option to buy one share for $X$ at time $T$, return it
+- At time $T$ our wealth is $(S(0)+P_{A}-C_{A})e^{rT}-X>Xe^{rt}-X \ge 0$
+
+Now, suppose that the second inequality is not true, i.e., $C_{A}-P_{A}<S(0)-Xe^{-rT}$. At time $t=0$:
+- Long an American Put: $-P_{A}$
+- Short an American Call: $+C_{A}$
+- Long one share: $-S(0)$
+- Invest (borrow if negative) the difference: $-(C_{A}-P_{A}-S(0))$
+	- Note that $(C_{A}-P_{A}-S(0))>-Xe^{-rT}$
+
+Now we discuss two cases:
+1. If the American call is exercised at time $t<T$ by the other party
+	- Then, our wealth is $(X-S(t))^{+}+X+(C_{A}-P_{A}-S(0))e^{rt}>X-Xe^{-rT}e^{rt} \ge 0$
+2. If the American call is not exercised at all
+	- We exercise our put option to sell one share for $X$ at time $T$
+- At time $T$ our wealth is $X+(C_{A}-P_{A}-S(0))e^{rT}>X-Xe^{-rT}e^{rT}=0$
+```
+
+### Bounds on American Option Prices
+
+```ad-important
+**Definition 13.4**: Bounds on American Option Prices
+
+The prices of American call and put options, on a stock paying **NO dividends**, satisfy the inequalities
+
+$$\begin{align}
+\text{Call:     } & \max{(S(0)-Xe^{-rT},0)} \le C_{A}<S(0)\\
+\text{Put:     } & \max{(X-S(0),0)} \le P_{A}<X\\
+\end{align}$$
+```
+
+The prices of American call and put options, on a stock paying discrete dividends with present value $\text{Div}_{0}$, satisfy the inequalities $$\begin{align}
+\text{Call:     } & \max(0,S(0)-X,(S(0)-\text{Div}_{0})-Xe^{-rT}) \le C_{A}<S(0)\\
+\text{Put:     } & \max(0,X-S(0),Xe^{-rT}-(S(0)-\text{Div}_{0})) \le P_{A}<X\\
+\end{align}$$
+---
+### European Option Valuation
+In general, American options have similar properties to their European counterparts. Difficulties:
+- The absence of put-call parity; we only have the **[[#^f99aaa|weaker put-call parity]]** estimates
+- The possibility of early exercise
+
+```ad-important
+**Definition 13.5**: Option Prices: Dependence on $S$, $X$
+
+The functions $\mathbb{R}_{+} \ni X \to C_{A}(X) \in \mathbb{R}_{+}$ is decreasing, convex, and **[[#^09e2e3|Lipschitz with associated constant]]** $1$.
+
+The functions $\mathbb{R}_{+} \ni X \to P_{A}(X) \in \mathbb{R}_{+}$ is increasing, convex, and **Lipschitz with associated constant** $1$.
+
+The functions $\mathbb{R}_{+} \ni S \to C_{A}(S) \in \mathbb{R}_{+}$ is increasing, convex, and **Lipschitz with associated constant** $1$.
+
+The functions $\mathbb{R}_{+} \ni S \to P_{A}(S) \in \mathbb{R}_{+}$ is decreasing, convex, and **Lipschitz with associated constant** $1$.
+```
+
+```ad-important
+**Definition 13.6**: Option Prices: Dependence on $T$
+
+If $T_{1}<T_{2}$, then $$C_{A}(T_{1})\le C_{A}(T_{2})$$ $$P_{A}(T_{1})\le P_{A}(T_{2})$$ i.e. $T \to C_{A}(T)$ and $T \to P_{A}(T)$ are increasing. The one with longer life is worth more.
+```
+
+```ad-note
+**Proof of Definition 13.6**
+
+Suppose that $C_{A}(T_{1})>C_{A}(T_{2})$. At time $t=0$,
+- Sell one American call expiring at time $T_{1}$: $+C_{A}(T_{1})$
+- Buy one American call with same strike price but expiring at time $T_{2}$: $-C_{A}(T_{2})$
+- Deposit the difference: $-(C_{A}(T_{1})-C_{A}(T_{2}))$
+
+Then, if the other party exercises the call, we exercise the call as well at the same time $t$ and get positive profit from $(C_{A}(T_{1})-C_{A}(T_{2})$
+
+Similarly, we would not exercise if the other party does not exercise and get positive profit from $(C_{A}(T_{1})-C_{A}(T_{2})$.
+
+We pay prove $P_{A}(T_{1})\le P_{A}(T_2)$ in a similar fashion.
 ```
