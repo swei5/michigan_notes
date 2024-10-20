@@ -161,5 +161,42 @@ If we don't know $W$ and hence $\text{Var}(\varepsilon)$ there two potential pat
 	- Called **feasible weighted least squares** (FWLS)
 	- *Won't discuss in detail*
 
+Under homoskedasticity, we based standard errors off of $$\hat{V} (\hat{\beta})=\hat{\sigma_{\varepsilon}}^{2}(X^{T}X)^{-1}$$ which was based upon the fact that under homoskedasticity, $\text{Var}(\hat{\beta})=\sigma_{\varepsilon}^{2}(X^{T}X)^{-1}$. 
+
+Under heteroskedasticity, this variance estimate is generally **inconsistent** (even under favorable conditions). As $n \to \infty$ $$n\{\hat{V} (\hat{\beta})-\text{Var}(\hat{\beta})\}
+\xrightarrow[]{p} C\ne 0$$
+The notation $\xrightarrow[]{p}$ means **convergence in probability**. It’s a notion of convergence used for random variables.
+- For a good statistical estimator, we want the difference between the estimate and the truth to **tend to zero**; an estimator with this property is called **consistent**
+- Difference is not equal to zero above is troublesome
+
+Now, consider the heteroskedastic generative model. Suppose (unrealistically) that I knew the value of $\varepsilon_{i}$ , and consider the random variable $\varepsilon_{i}^{2}$: $$\begin{align}
+\mathbb{E}(\varepsilon_{i}^{2})&=\text{Var}(\varepsilon)+\mathbb{E}(\varepsilon_{i})^{2}\\
+&= \text{Var}(\varepsilon)\\
+&= \sigma^{2}_{\varepsilon}/w_{ii}
+\end{align}$$
+And, let $\text{diag}[\varepsilon_{i}^{2}]$ be an $n \times n$ diagonal matrix with $\varepsilon_{i}^{2}$ on the $i$ th diagonal, and consider the variance estimator $$(X^{T}X)^{-1}\text{diag}[\varepsilon_{i}^{2}]X(X^{T}X)^{-1}$$
+The proposed variance estimator happens to be an unbiased estimator for $\text{Var}(\hat{\beta})$, even **under heteroskedasticity**. $$\begin{align}
+&\mathbb{E}[(X^{T}X)^{-1}\text{diag}[\varepsilon_{i}^{2}]X(X^{T}X)^{-1}]\\
+&= (X^{T}X)^{-1} \mathbb{E}[\text{diag}[\varepsilon_{i}^{2}]] X(X^{T}X)^{-1}\\
+&= (X^{T}X)^{-1} \text{diag}[\sigma_{\varepsilon}^{2}/w_{ii}]X(X^{T}X)^{-1}\\
+&= (X^{T}X)^{-1} \sigma_{\varepsilon}^{2}W^{-1}X(X^{T}X)^{-1}\\
+&= \text{Var}(\hat{\beta})
+\end{align}$$
+Regrettably we can’t use this estimator because it depends on $\varepsilon$. Instead, we’ll use a similar estimator which replaces $\varepsilon$ with a normalized version of $e=(I-H)y$, the ordinary least squares residuals.
+
+```ad-important
+**Definition 13.6**: Heteroskedasticity-consistent (HC) Variance Estimator
+
+$$\hat{V} (\hat{\beta})_{HC2}=(X^{T}X)^{-1} \text{diag}[e_{i}^{2}/(1-h_{ii})]X(X^{T}X)^{-1}$$
+
+where $h_{ii}$ is the $ii$ diagonal of $H$ ([[10 Outliers#^94e388|leverage]]). Under homoskedasticity, we have $$\mathbb{E}(e_{i}^{2}/(1-h_{ii}))=\text{Var}\left(e_{i}/\sqrt{(1-h_{ii})}\right)=\sigma_{\varepsilon}^{2}$$
+```
+
+Under *suitable conditions*, this variance estimator is **consistent** even if the truth is heteroskedastic:  $$n\{\hat{V}_{HC2} (\hat{\beta})-\text{Var}(\hat{\beta})\}
+\xrightarrow[]{p}  0$$
+We may also see this estimator referred to as a **sandwich estimator**.
+- $(X^{T}X)^{-1}X^{T}$ is the bread
+- $\text{diag}[e_{i}^{2}/(1-h_{ii})]$ is the meat
+
 ---
 ### Covered `R` Functions

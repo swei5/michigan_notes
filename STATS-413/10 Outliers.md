@@ -36,6 +36,8 @@ Individual observations vary in the influence they have over the fitted values, 
 We define the leverage, or self-influence, of the $i$ th observation (with covariate $x_i$ ) as $$\text{Leverage}_{i}=h_{ii}$$ where $h_{ii}$ is the $i$th diagonal entry of the hat matrix, $H=X(X^{T}X)^{-1}X^{T}$. Thus, we have $$h_{ii}=x_{i}^{T}(X^{T}X)^{-1}x_{i}$$
 ```
 
+^94e388
+
 Leverage thus depends not only on $x_{i}$ , but on the predictor variables for the other $n-1$ individuals in the dataset.
 
 Here, $h_{ii}$ serves as a measure of how much the $i$ th individual’s observed value, $y_{i}$, influences the $i$ th observation's fitted value $\hat{y}_{i}$. $$\begin{align}\hat{y}&=Hy \\ \hat{y_{i}} &=\sum\limits_{i=1}^{n}h_{ij} y_{j} \\&=h_{ii}y_{i}+\sum\limits_{j\ne i} h_{ij}y_{j} \end{align}$$
