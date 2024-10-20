@@ -130,10 +130,10 @@ We have so far assumed that $W$ is known, but have made no assumption that $\sig
 ```ad-important
 **Definition 13.5**: Standard Errors for Weighted Least Squares
 
-If $\sigma_{\varepsilon}^{2}$ is unknown, we can estimate it using its standard error, also the MSE: $$\hat{\sigma}_{\varepsilon,WLS}^{2}=\frac{(y-X\hat{\beta}_{WLS})^T W(y-X\hat{\beta}_{WLS})}{n-p-1}$$
-```
+If $\sigma_{\varepsilon}^{2}$ is unknown, we can estimate it using its mean squared error (MSE): $$\text{MSE}_{WLS}=\hat{\sigma}_{\varepsilon,WLS}^{2}=\frac{(y-X\hat{\beta}_{WLS})^T W(y-X\hat{\beta}_{WLS})}{n-p-1}$$
 
 We can then estimate $\text{Var}(\hat{\beta}_{WLS})$ by $$\hat{V}(\hat{\beta}_{WLS})=\hat{\sigma}_{\varepsilon,WLS}^{2}(X^{T}WX)^{-1}$$ From here, we can derive **standard errors** for $\hat{\beta}_{j, WLS}$ as $$\text{se}(\hat{\beta}_{j,WLS})=\hat{\sigma}_{\varepsilon,WLS}\sqrt{(X^{T}WX)^{-1}}$$
+```
 
 When do we know $W$? For instances:
 - If each observation $i$ represents the **average response** among a $n_i$ equally weighted responses in a given group, then $w_{ii}=n_{i}$
@@ -161,7 +161,7 @@ If we don't know $W$ and hence $\text{Var}(\varepsilon)$ there two potential pat
 	- Called **feasible weighted least squares** (FWLS)
 	- *Won't discuss in detail*
 
-Under homoskedasticity, we based standard errors off of $$\hat{V} (\hat{\beta})=\hat{\sigma_{\varepsilon}}^{2}(X^{T}X)^{-1}$$ which was based upon the fact that under homoskedasticity, $\text{Var}(\hat{\beta})=\sigma_{\varepsilon}^{2}(X^{T}X)^{-1}$. 
+Under homoskedasticity, we based standard errors off of $$\hat{V} (\hat{\beta})=\hat{\sigma}_{\varepsilon}^{2}(X^{T}X)^{-1}$$ which was based upon the fact that under homoskedasticity, $\text{Var}(\hat{\beta})=\sigma_{\varepsilon}^{2}(X^{T}X)^{-1}$. 
 
 Under heteroskedasticity, this variance estimate is generally **inconsistent** (even under favorable conditions). As $n \to \infty$ $$n\{\hat{V} (\hat{\beta})-\text{Var}(\hat{\beta})\}
 \xrightarrow[]{p} C\ne 0$$
@@ -192,11 +192,61 @@ $$\hat{V} (\hat{\beta})_{HC2}=(X^{T}X)^{-1} \text{diag}[e_{i}^{2}/(1-h_{ii})]X(X
 where $h_{ii}$ is the $ii$ diagonal of $H$ ([[10 Outliers#^94e388|leverage]]). Under homoskedasticity, we have $$\mathbb{E}(e_{i}^{2}/(1-h_{ii}))=\text{Var}\left(e_{i}/\sqrt{(1-h_{ii})}\right)=\sigma_{\varepsilon}^{2}$$
 ```
 
+```ad-note
+**Proof of Definition 13.6**
+
+$$\begin{align}
+\mathbb{E}(e_{i}^{2}/(1-h_{ii}))&=\text{Var}\left(e_{i}/\sqrt{(1-h_{ii})}\right)+\mathbb{E}\left(e_{i}/\sqrt{(1-h_{ii})}\right)^{2}\\
+&= \text{Var}\left(e_{i}/\sqrt{(1-h_{ii})}\right)&(\mathbb{E}(e_{i})=0)\\
+&= \sigma_{\varepsilon}^{2} &\text{( Above Definition 9.6 )}
+\end{align}$$
+```
+
 Under *suitable conditions*, this variance estimator is **consistent** even if the truth is heteroskedastic:  $$n\{\hat{V}_{HC2} (\hat{\beta})-\text{Var}(\hat{\beta})\}
 \xrightarrow[]{p}  0$$
 We may also see this estimator referred to as a **sandwich estimator**.
 - $(X^{T}X)^{-1}X^{T}$ is the bread
 - $\text{diag}[e_{i}^{2}/(1-h_{ii})]$ is the meat
 
+```ad-important
+**Definition 13.7**: Heteroskedasticity-Consistent Standard Errors
+
+The square roots of the diagonal elements of $\hat{V} (\hat{\beta})_{HC2}$ provide alternative standard errors for $\hat{\beta}$ that are consistent under heteroskedasticity: $$\text{se}_{HC2}(\hat{\beta}_{j})=\sqrt{\hat{V}_{HC2} (\hat{\beta})_{(j+1),(j+1)}}$$
+```
+
+These standard errors are valid **regardless of whether or not the truth is homoskedastic**.
+- If the truth actually is actually homoskedastic, the **conventional standard errors perform better**
+- But rarely is one certain that the truth is homoskedastic
+
+There are *other* standard errors that are consistent under heteroskedasticity - hence the number "2".
+
+```ad-example
+**Example**: Comparing Confidence Intervals
+
+![[Pasted image 20241019210920.png|400]]
+
+Note that HC standard errors are much **larger**.
+
+Given clear indication of heteroskedasticity, we should only trust the confidence intervals using HC standard errors.
+- The usual standard errors assuming homoskedasticity would likely provide confidence intervals with coverage much lower than $95\%$
+```
+
 ---
 ### Covered `R` Functions
+
+```r
+library(sandwich) # HC Standard Errors
+
+# OLS Fit
+ols.supervisors = lm(supervisors~workers)
+
+# Hat Variance / Standard Errors
+Vhat.HC2 = vcovHC(ols.supervisors, type = "HC2")
+se.HC2 = sqrt(diag(Vhat.HC2))
+
+# OLS Standard Errors
+summary(ols.supervisors)$coef[,2]
+
+# WLS Regression
+lm(supervisors~workers, weights = 1/workers^2)
+```

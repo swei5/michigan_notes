@@ -64,7 +64,7 @@ At time $T$,
 - Initial deposit at time $0$: $(C_{A}-C_{E})e^{rT}$
 - Deposit at time $t$: $Xe^{r(T-t)}$
 - Total payoff: $$\begin{align}
-&(S(T)-X)^{+}-S(T)+(C_{A}-C_{E})e^{rT}+Xe^{r(T-t)} \\  &\ge -X +(C_{A}-C_{E})e^{rT}+Xe^{r(T-t)}
+&(S(T)-X)^{+}-S(T)+(C_{A}-C_{E})e^{rT}+Xe^{r(T-t)} \\  &\ge -X +(C_{A}-C_{E})e^{rT}+Xe^{r(T-t)}>0
 \end{align}$$
 
 
@@ -75,8 +75,18 @@ Combining these two cases. we have A.O. Hence, $C_{A} = C_{E}$.
 
 ```ad-note
 There is no corresponding result like $P_{E}=P_{A}$.
+```
 
-If the underlying asset pays no dividends, then we **should not exercise** the American call option before the expiry date.
+If the underlying asset pays no dividends, then we **should NOT exercise** the American call option before the expiry date.
 
 If the underlying asset pays no dividends, the same argument could be used to prove that the values/premia of European and American calls at time $t$ are the same: $C_{E}(t)=C_{A}(t)$
+
+```ad-important
+**Definition 13.3**: Put-Call Parity Estimates for American Options
+
+The prices of American put and call options, written on the same underlying asset $S$ that pays **NO dividends**, with the same strike price $X$ and expiry time $T$ satisfy $$S(0)-X\le C_{A}-P_{A} \le S(0)-Xe^{-rT}$$
+
+If the underlying stock will pay discrete dividends with present value $\text{Div}_{0}$, then the put-call parity estimates are $$$S(0)-\text{Div}_{0}-X\le C_{A}-P_{A} \le S(0)-Xe^{-rT}$$
+
+If dividend yield of the underlying stock is $r_{\text{div}}$, then the put-call parity estimates are $$S(0)e^{-r_{\text{div}}T}-X\le C_{A}-P_{A} \le S(0)-Xe^{-rT}$$
 ```
