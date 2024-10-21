@@ -174,12 +174,12 @@ Now, consider the heteroskedastic generative model. Suppose (unrealistically) th
 &= \text{Var}(\varepsilon)\\
 &= \sigma^{2}_{\varepsilon}/w_{ii}
 \end{align}$$
-And, let $\text{diag}[\varepsilon_{i}^{2}]$ be an $n \times n$ diagonal matrix with $\varepsilon_{i}^{2}$ on the $i$ th diagonal, and consider the variance estimator $$(X^{T}X)^{-1}\text{diag}[\varepsilon_{i}^{2}]X(X^{T}X)^{-1}$$
+And, let $\text{diag}[\varepsilon_{i}^{2}]$ be an $n \times n$ diagonal matrix with $\varepsilon_{i}^{2}$ on the $i$ th diagonal, and consider the variance estimator $$(X^{T}X)^{-1}X^{T}\text{diag}[\varepsilon_{i}^{2}]X(X^{T}X)^{-1}$$
 The proposed variance estimator happens to be an unbiased estimator for $\text{Var}(\hat{\beta})$, even **under heteroskedasticity**. $$\begin{align}
-&\mathbb{E}[(X^{T}X)^{-1}\text{diag}[\varepsilon_{i}^{2}]X(X^{T}X)^{-1}]\\
-&= (X^{T}X)^{-1} \mathbb{E}[\text{diag}[\varepsilon_{i}^{2}]] X(X^{T}X)^{-1}\\
-&= (X^{T}X)^{-1} \text{diag}[\sigma_{\varepsilon}^{2}/w_{ii}]X(X^{T}X)^{-1}\\
-&= (X^{T}X)^{-1} \sigma_{\varepsilon}^{2}W^{-1}X(X^{T}X)^{-1}\\
+&\mathbb{E}[(X^{T}X)^{-1}X^T \text{diag}[\varepsilon_{i}^{2}]X(X^{T}X)^{-1}]\\
+&= (X^{T}X)^{-1}X^T \mathbb{E}[\text{diag}[\varepsilon_{i}^{2}]] X(X^{T}X)^{-1}\\
+&= (X^{T}X)^{-1}X^T \text{diag}[\sigma_{\varepsilon}^{2}/w_{ii}]X(X^{T}X)^{-1}\\
+&= (X^{T}X)^{-1}X^T \sigma_{\varepsilon}^{2}W^{-1}X(X^{T}X)^{-1}\\
 &= \text{Var}(\hat{\beta})
 \end{align}$$
 Regrettably we can’t use this estimator because it depends on $\varepsilon$. Instead, we’ll use a similar estimator which replaces $\varepsilon$ with a normalized version of $e=(I-H)y$, the ordinary least squares residuals.
@@ -187,7 +187,7 @@ Regrettably we can’t use this estimator because it depends on $\varepsilon$. I
 ```ad-important
 **Definition 13.6**: Heteroskedasticity-consistent (HC) Variance Estimator
 
-$$\hat{V} (\hat{\beta})_{HC2}=(X^{T}X)^{-1} \text{diag}[e_{i}^{2}/(1-h_{ii})]X(X^{T}X)^{-1}$$
+$$\hat{V} (\hat{\beta})_{HC2}=(X^{T}X)^{-1}X^T \text{diag}[e_{i}^{2}/(1-h_{ii})]X(X^{T}X)^{-1}$$
 
 where $h_{ii}$ is the $ii$ diagonal of $H$ ([[10 Outliers#^94e388|leverage]]). Under homoskedasticity, we have $$\mathbb{E}(e_{i}^{2}/(1-h_{ii}))=\text{Var}\left(e_{i}/\sqrt{(1-h_{ii})}\right)=\sigma_{\varepsilon}^{2}$$
 ```
