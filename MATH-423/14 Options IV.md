@@ -71,9 +71,48 @@ Note that (a) represents the **lower bound** of the American put option. So in a
 
 ---
 ### Binomial Tree Model
-Recall the Binomial tree Model in Lecture 4: ![[4 Risky Assets#^6a7af0]]
+Recall the Binomial tree Model in Lecture 4: ![[4 Risky Assets#^29bdb3]]
 And hence one-step return is $$K(n):=K(n-1,n)=\frac{S(n)-S(n-1)}{S(n-1)}$$
 We assume that one-step returns $K (n), n=1,2,...$ are i.i.d. such that for each $n$, $$K(n)=\begin{cases}
 u \text{ with probability }p \\
 d \text{ with probability }(1-p) \\
-\end{cases}$$
+\end{cases}$$ where $-1<d<u$ and $p\in (0,1)$. Further, we assume that $d <r <u$. See proof [[4 Risky Assets#^1a0562|here]].
+
+The probability of the stock price $S(n)$ taking a particular value is $$\begin{align}
+&\mathbb{P}(S(n)==S(0)(1+u)^{i}(1+d)^{n-i})\\
+&= \binom{n}{i}p^{i}(1-p)^{n-i}
+\end{align}$$
+
+![[Pasted image 20241022135011.png|400]]
+
+Although $S (n)$ is random, we could calculate (and are usually interested in calculating) the **expected price** $\mathbb{E}(S(n))$ and compare it with the risk-free investment $A(n)=A(0)(1+r)^{n}$.
+
+```ad-important
+**Definition 14.5**: Expected Value of Stock Price in Binomial Tree Model
+
+$$\begin{align}
+\mathbb{E}(S(n))&=S(0)\mathbb{E}(1+K(0,n))\\
+&= S(0)(1+\mathbb{E}(K(1)))(1+\mathbb{E}(K(1)))\cdots (1+\mathbb{E}(K(n))) &\text{ S is iid}\\
+&= S(0)(1+\mathbb{E}(K(1)))^{n} 
+\end{align}$$
+```
+
+The comparison reduces to comparing $r$ and $\mathbb{E}(K(1))=pu+(1-p)d$.
+
+```ad-important
+**Definition 14.6**: Risk-Neutral Probability
+
+The risk-neutral probability $p^\star$, is such that $$r=p^{\star}u+(1-p^{\star})d=\mathbb{E}^{\star}(K(1))$$
+
+Or, $p^{\star}=r-d/u-d$ and is always in $[0,1]$ given our assumptions that $-1<d<u$ and $d <r <u$.
+```
+
+The probability measure $\mathbb{P}^{\star}$, under which the stock price goes up with probability $p^\star$ and goes down with probability $1-p^{\star}$ independently at each node, is called **risk-neutral probability measure**.
+
+The expectation under $\mathbb{P}^{\star}$ is called the **risk-neutral expectation** and is denoted by $\mathbb{E}^{\star}$.
+
+```ad-note
+$p^{\star}$ **may NOT reflect** the real/actual/physical market probability. The risk-neutral probability lives in a risk-neutral world that is not affected by real-world expectations. It is introduced for the **purpose of pricing derivative securities** such that we forbid any potential A.O..
+```
+
+Since the risk-neutral probability measure is just a special choice of $p=p^\star$, $$\mathbb{E}^{\star}(S(n))=S(0)(1+r)^{n}$$
