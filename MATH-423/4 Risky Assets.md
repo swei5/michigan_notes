@@ -8,11 +8,10 @@ To be more precise, we shall write $S(t, \omega)$ to denote the stock price at t
 
 ---
 ### Returns
-For two integers $n<m$, we substitute $K(n,m)$ for $K(n\tau, m\tau ;\omega)$ as the return over the time interval $[n\tau, m\tau]$ when the scenario $\omega$ is realized:
-$$K(n,m):=K(n\tau, m\tau, \omega)=\frac{S(m\tau, \omega)-S(n\tau, \omega)}{S(n\tau, \omega)}=\frac{S(m)-S(n)}{S(n)}$$
+For two integers $n<m$, we substitute $K(n,m)$ for $K(n\tau, m\tau ;\omega)$ as the return over the time interval $[n\tau, m\tau]$ when the scenario $\omega$ is realized: $$K(n,m):=K(n\tau, m\tau, \omega)=\frac{S(m\tau, \omega)-S(n\tau, \omega)}{S(n\tau, \omega)}=\frac{S(m)-S(n)}{S(n)}$$
 The return is a **random variable** as well; rearranging this equality gives
 $$S(m)=S(n)(1+K(n,m))$$
-Here we see that the **growth factor** is $1+K(n,m)$.
+Here we see that the **growth factor** is $1+K(n,m)$. ^6a7af0
 
 Analogously, we can write the log return over the same time interval:
 $$k(n,m):= \ln \frac{S(m)}{S(n)}$$

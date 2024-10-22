@@ -1,4 +1,4 @@
-[[2024-04-26]] #Bonds #Valuation 
+[[2024-04-26]] #Bonds #Valuation #Derivatives 
 
 ### Swaps
 An interest rate swap is **a series of forward contracts to exchange floating rate payments for fixed rate payments**.

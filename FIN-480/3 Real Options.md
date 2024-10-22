@@ -1,4 +1,4 @@
-[[2024-02-08]] #Valuation #Derivatives
+[[2024-02-08]] #Valuation #Derivatives #Investment 
 
 ### Real options
 A real option gives a firm's management the right, but not the obligation to undertake certain **business opportunities or investments**.

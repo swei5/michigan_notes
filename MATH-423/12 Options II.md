@@ -13,6 +13,8 @@ The prices of European call and put options on a stock **paying NO dividends** s
 ![[Pasted image 20241011110630.png|400]]
 ```
 
+^b5a9b4
+
 In the above inequalities, if discrete dividends will be paid on the stock, we **subtract** the **PV** $\text{Div}_{0}$ of the dividend from $S(0)$: $$\begin{align}
 \text{Call:     } & \max{(S(0)-\text{Div}_{0}-Xe^{-rT},0)} \le C_{E}<S(0)-\text{Div}_{0}\\
 \text{Put:     } & \max{(Xe^{-rT}-(S(0)-\text{Div}_{0}),0)} \le P_{E}<Xe^{-rT}\\
