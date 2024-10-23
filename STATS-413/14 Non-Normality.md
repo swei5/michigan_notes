@@ -83,6 +83,8 @@ After this is done, find the quantiles $q_{0.975}(t^{\star}_{\text{stat}})$ and 
 This is called a **Monte-Carlo approximation** to the quantiles of $t_{\text{stat}}$.
 ```
 
+^6a8a9a
+
 #### Plug-in Bootstrap
 While these intervals would be great, these **aren’t actionable** since we don’t know the true distribution $t_{\text{stat}}$ because we don't know the population distribution of $y_{i}$.
 - If we knew the true distribution of $y_{i}$, ironically, we'd know $\mu$ as a consequence and we shouldn't need to conduct any inference
@@ -110,4 +112,50 @@ A **bootstrap sample** from a data set is an iid sample of size $n$ from $\hat{F
 For any type of variable (continuous or discrete), I can draw an iid sample of size $n$ from $\hat{F}_{y}$ by running `yboot = sample(y, n, replace = T)` in `R`.
 - That is, sampling $n$ times **with replacement** from a vector $y$ gives an iid sample from the empirical distribution of $y$
 
-Let 
+Let $\{y_{1}^{\star},\cdots,y_{n}^{\star}\}$ denote the resulting iid sample of size $n$ from $\hat{F}_{y}$. Across the bootstrap resamples 
+- $\hat{F}_{y}$ becomes the true **population distribution** for $y_{i}^{\star}$
+- Any **population parameter** within the bootstrap framework is derived from $\hat{F}_{y}$
+
+```ad-note
+In real life, in my single sample $y_{1},\cdots, y_{n}$
+- $\hat{F}_{y}$ estimates $F_{y}$
+- $\bar{y}$ estimates $\mu$
+- $\text{stdev}(y)$ estimates $\sigma$
+
+If I then take a bootstrap sample of $y_{1},\cdots, y_{n}$; for any single bootstrap sample $y_{1}^{\star},\cdots,y_{n}^{\star}$
+- The empirical distribution of $y_{i}^{\star}$, $\hat{F}_{y^{\star}}$, estimates $\hat{F}_{y}$
+- $\bar{y}^{\star}$ estimates $\bar{y}$
+- $\text{stdev}(y^{\star})$ estimates $\text{stdev}(y)$
+
+Most importantly, we **CANNOT** generate multiple data sets with distribution $F_{y}$ (as we don't know $F_{y}$), whereas we **CAN** with the empirical distribution $\hat{F}_{y}$.
+```
+
+With the bootstrap technique, we can reform our $t_{\text{stat}}$ based on values $y_{1}^{\star},\cdots,y_{n}^{\star}$$$t^{\star}_{\text{stat}}=\frac{\bar{y}^{\star}-\bar{y}}{\text{stdev}(y^{\star})/\sqrt{n}}$$ The benefit of this is that unlike $F_{y}$, we have access to $\hat{F}_{y}$. It is defined based on our sample!
+- We can generate multiple data sets according to the distribution $\hat{F}_{y}$
+- We can then actually calculate the quantiles for $t^{\star}_{\text{stat}}$
+
+Thus, we can redesign everything formed in [[#^6a8a9a|Definition 14.2]]. 
+
+```ad-important
+**Definition 14.4**: The Bootstrap for $t$ Statistics
+
+For a given data set $\{y_{1},\cdots, y_{n}\}$ with observed mean $\bar{y}$, we could construct a confidence interval by doing the following $B$ times.
+1. Sample $n$ times **with replacement** from the values $\{y_{1},\cdots, y_{n}\}$. Store the resulting sample as $\{y_{1}^{\star},\cdots,y_{n}^{\star}\}$
+2. Find $\bar{y}^{\star}$ and $\text{stdev}(y^{\star})$
+3. Form $t^{\star}_{\text{stat},b}=\frac{\bar{y}^{\star}-\bar{y}}{\text{stdev}(y^{\star})/\sqrt{n}}$
+
+After this is done, find the quantiles $q_{0.975}(t^{\star}_{\text{stat}})$ and $q_{0.025}(t^{\star}_{\text{stat}})$ based on $B$ simulated values, and use these to form confidence intervals. The coverage would be $0.95$, in this case.
+```
+
+In general, we are trying to approximate the distribution of $$t_{\text{stat}}=\frac{\bar{y}-\mu}{\text{stdev}(y)/\sqrt{n}}$$ by that of $$t^{\star}_{\text{stat}}=\frac{\bar{y}^{\star}-\bar{y}}{\text{stdev}(y^{\star})/\sqrt{n}}$$ instead of simply asserting that it is $t$ -distributed, like we did before.
+
+```ad-note
+**Bootstrap**
+
+Rather than employing quantiles based on the $t$-distribution, we use **simulation** to try to estimate these quantiles.
+- Can be shown to work under very mild conditions
+- Works with continuous or discrete variables
+- Can also be used to create confidence intervals for quantities other than the population mean
+```
+
+#### Bootstrapping in Regression

@@ -3,7 +3,7 @@
 ### Boosting
 
 ```ad-important
-**Definition 11.1**:
+**Definition 11.1**: Boosting
 
 Combining simple **weak classifiers** into a more complex/strong classifier.
 - Decreases **bias** (structural error) and **variance** (estimation error)
