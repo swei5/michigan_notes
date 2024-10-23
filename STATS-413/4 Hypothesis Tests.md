@@ -106,7 +106,7 @@ Unfortunately, we don’t know $\sigma_{\varepsilon}$ - it is a **parameter** of
 
 ```ad-important
 **Definition 4.3**: Root Mean Squared Error (RMSE)
-$$\hat{\sigma_{\varepsilon}}=\sqrt{\frac{\sum_{i=1}^{n}e_{i}^{2}}{n-p-1}}$$
+$$\hat{\sigma}_{\varepsilon}=\sqrt{\frac{\sum_{i=1}^{n}e_{i}^{2}}{n-p-1}}$$
 
 where $n-p-1$ are referred to as the **degrees of freedom** for the residual vector $e$.
 - $e$ is constrained by $p+1$ equations $e^{T}X=0$
@@ -115,9 +115,9 @@ where $n-p-1$ are referred to as the **degrees of freedom** for the residual vec
 
 ^52cf89
 
-With an estimation for $\sigma_{\varepsilon}$ , we can now estimate $\text{stdev}(\hat{\beta}_{j})$ using $\text{se}(\hat{\beta}_{j})$, the **standard error** for the $j$ th coefficient:$$\text{se}(\hat{\beta}_{j})=\hat{\sigma_{\varepsilon}}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ ^bde6fa
+With an estimation for $\sigma_{\varepsilon}$ , we can now estimate $\text{stdev}(\hat{\beta}_{j})$ using $\text{se}(\hat{\beta}_{j})$, the **standard error** for the $j$ th coefficient: $$\text{se}(\hat{\beta}_{j})=\hat{\sigma}_{\varepsilon}\sqrt{(X^TX)^{-1}_{(j+1),(j+1)}}$$ ^bde6fa
 #### $t$ -Statistic
-With this, we’ll consider a new test statistic which replaces $\text{stdev}(\hat{\beta}_{j})$ with its sample analogue $\text{se}(\hat{\beta}_{j})$$$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}_{j})}$$ ^cecd4f
+With this, we’ll consider a new test statistic which replaces $\text{stdev}(\hat{\beta}_{j})$ with its sample analogue $\text{se}(\hat{\beta}_{j})$$$t_{\text{stat}}=\frac{\hat{\beta}_{j}^{\text{obs}}-\gamma_{0}}{\text{se}(\hat{\beta}^{\text{obs}}_{j})}$$ ^cecd4f
 ```ad-important
 **Definition 4.4**: A Null Distribution for Testing $\beta_{j}$
 

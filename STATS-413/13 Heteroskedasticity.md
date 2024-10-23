@@ -22,7 +22,7 @@ When discussing heteroskedasticity, we will consider the following generative mo
 y &= X\beta + \varepsilon\\
 \mathbb{E}(\varepsilon) &= 0\\
 \text{Var}(\varepsilon)&=\sigma_{\varepsilon}^{2}W^{-1} 
-\end{align}$$ where $\varepsilon_{1},\cdots, \varepsilon_{n}$ are independent, $W$ is a $n \times n$ diagonal matrix with $w_{ii}>0$ on the diagonals (zeros off the diagonals)
+\end{align}$$ where $\varepsilon_{1},\cdots, \varepsilon_{n}$ are independent, $W$ is a $n \times n$ diagonal matrix with $w_{ii}>0$ on the diagonals (zeros off the diagonals) ^e387c1
 - Implies $W^{-1}$ is a $n \times n$ diagonal matrix with $1/w_{ii}$ on the diagonals (zeros off the diagonals)
 - $W=W^{-1}=I$ implies homoskedasticity
 
@@ -100,6 +100,8 @@ Under the new generative model for $y$, it turns out that $\hat{\beta}_{WLS}$ is
 **Definition 13.4**: Gauss-Markov Theorem
 
 Let $\hat{\beta}_{WLS}$ be the weighted least squares solution. Suppose the above generative model and that $X$ is full rank. Let $\tilde{\beta}$ be another linear unbiased estimator of $\beta$. Then, for any constant vector $a \in \mathbb{R}^{p+1}$: $$\text{Var}(a^{T}\hat{\beta}_{WLS}) \le \text{Var}(a^{T}\tilde{\beta})$$
+
+This **justifies** the usage of $\hat{\beta}_{WLS}$ under heteroskedasticity.
 ```
 
 ```ad-note
