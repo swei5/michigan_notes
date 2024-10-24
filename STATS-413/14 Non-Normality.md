@@ -1,7 +1,7 @@
 [[2024-10-22]] #Regression 
 
-*What happens if certain assumptions seem unreasonable? Can we proceed? If so, how?*
-- We address concerns with heteroskedasticity in [[13 Heteroskedasticity|Lecture 13]]
+*What happens if certain LR assumptions seem unreasonable? Can we proceed? If so, how?*
+- We addressed concerns with heteroskedasticity in [[13 Heteroskedasticity|Lecture 13]]
 - Today, we will focus on violations of normality
 
 ---
@@ -159,3 +159,51 @@ Rather than employing quantiles based on the $t$-distribution, we use **simulati
 ```
 
 #### Bootstrapping in Regression
+We will now apply the same principles to better approximating the distributions of $$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{se}_{HC2}(\hat{\beta}_{j})}$$ or $$\frac{\hat{\beta}_{j}-\beta_{j}}{\text{se}(\hat{\beta}_{j})}$$
+In analogy to what we saw when bootstrapping the mean, in the bootstrap world:
+- The **true** population slope coefficients will be $\hat{\beta}$
+- Each bootstrap sample will generate a value $\hat{\beta}^\star$, an estimate of $\hat{\beta}$
+- Each bootstrap sample will also generate a **standard error estimator**
+- Each bootstrap sample will generate a value for $t^{\star}_{\text{stat}}$
+
+The distribution of $t^{\star}_{\text{stat}}$ across simulations will serve as our estimate for the distribution $t_{\text{stat}}$, rather than using the $t_{n-p-1}$ distribution.
+
+There are two prevalent bootstrap schema, depending upon whether one is willing to assume homoskedasticity.
+1. **Residual Bootstrap** (assumes homoskedasticity): $\frac{\hat{\beta}_{j}-\beta_{j}}{\text{se}(\hat{\beta}_{j})}$
+2. **Pairs Bootstrap** (valid even if heteroskedastic): $\frac{\hat{\beta}_{j}-\beta_{j}}{\text{se}_{HC2}(\hat{\beta}_{j})}$
+
+```ad-important
+**Definition 14.5**: Residual Bootstrap
+
+Let $\hat{\beta}$ be the OLS coefficients from a regression of $y$ on $X$. For $b=1,\cdots, B$ bootstrap samples:
+1. Sample $n$ times **with replacement** from the values $\{e_{1},\cdots, e_{n}\}$. Store the resulting sample as $\{e_{1}^{\star},\cdots,e_{n}^{\star}\}$
+2. Construct $y_{i}^{\star}=x_{i}^{T}\hat{\beta}+e_{i}^{\star}$ for $i=1,\cdots,n$
+3. Run regression of $y^{\star}$ on $X$ - call the result `lm*`
+4. Calculate $\hat{\beta}_{j}^\star$ and $\text{se}(\hat{\beta}_{j}^\star)$ using the regresion `lm*`
+5. Form $t_{\text{stat,b}}^{\star}$ as $$t_{\text{stat,b}}^{\star}=\frac{\hat{\beta}_{j}^{\star}-\hat{\beta}_{j}}{\text{se}(\hat{\beta}_{j}^{\star})}$$
+
+And we use quantiles of $t_{\text{stat,b}}^{\star}$ to construct confidence intervals.
+```
+
+If **homoskedasticity** appears reasonable, the residual bootstrap is generally **preferred**.
+- Treats $X$ as fixed, induces randomness through resampling residuals
+- More aligned with the data generating mechanism we’ve considered
+- Performs better in small samples (more stable) than the pairs bootstrap
+
+```ad-important
+**Definition 14.6**: Residual Bootstrap
+
+Let $\hat{\beta}$ be the OLS coefficients from a regression of $y$ on $X$. For $b=1,\cdots, B$ bootstrap samples:
+1. Sample $n$ times **with replacement** from the values pairs $\{(y_{1},x_{1}),\cdots, (y_{n},x_{n})\}$. Store the resulting sample as $\{(y_{1}^{\star},x_{1}^{\star}),\cdots,(y_{n}^{\star},x_{n}^{\star})\}$
+2. Construct $y_{i}^{\star}=x_{i}^{T}\hat{\beta}+e_{i}^{\star}$ for $i=1,\cdots,n$ and $X^{\star}$, the $n \times (p+1)$ matrix whose $i$th row contains $x^{\star}_{i}$
+3. Run regression of $y^{\star}$ on $X^{\star}$ - call the result `lm*`
+4. Calculate $\hat{\beta}_{j}^\star$ and $\text{se}_{HC2}(\hat{\beta}_{j}^\star)$ using the regresion `lm*`
+5. Form $t_{\text{stat,b}}^{\star}$ as $$t_{\text{stat,b}}^{\star}=\frac{\hat{\beta}_{j}^{\star}-\hat{\beta}_{j}}{\text{se}_{HC2}(\hat{\beta}_{j}^{\star})}$$
+
+And we use quantiles of $t_{\text{stat,b}}^{\star}$ to construct confidence intervals.
+```
+
+Under **heteroskedasticity**, the pairs bootstrap is our **ONLY** option
+- Breaks the association between $e_{i}$ and $x_{i}$ - reasonable under homoskedasticity, but not under heteroskedasticity
+- Residual bootstrap doesn’t provide valid inference under heteroskedasticity
+- Pairs bootstrap maintains correspondence between pairs $(y_{i},x_{i})$, and hence preserves heteroskedasticity in the bootstrap world
