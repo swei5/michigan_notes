@@ -26,7 +26,7 @@ Perhaps the most commonly applied transformation of predictors and/or response v
 It is useful when changes in a particular variable occur on a multiplicative / **percentage scale**, rather than an **additive scale**.
 
 ```ad-note
-Let $y=\{y_{1},\cdpts, y_{n}\}$ be positive. Then,
+Let $y=\{y_{1},\cdots, y_{n}\}$ be positive. Then,
 
 $$\text{mean}(\log(y)) \ne \log(\text{mean}(y))$$
 $$\text{stdev}(\log(y)) \ne \log(\text{stdev}(y))$$
