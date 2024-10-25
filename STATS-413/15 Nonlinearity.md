@@ -56,10 +56,12 @@ The linear approximation wasn’t terrible, but the trend is much better approxi
 
 Suppose we compared two individuals who differ in their $x$ values by $1$ percent. What we we predict the difference in their predicted $y$ values to be? $$\begin{align}
 \hat{y}_{1}-\hat{y}_{2}&=\hat{\beta}_{1} (\ln(1.01x)-\ln(x))\\
-&= \hat{\beta}_{1} \ln(1.01)
+&= \hat{\beta}_{1} \ln(1.01)\\
+&\approx \hat{\beta}_{1}(0.01)
 \end{align}$$
 ```ad-important
 **Definition 15.1**: Approximate Interpretation under Logarithmic Growth
 
-Two observations who differ in $x$ by $\inc$
+Two observations who differ in $x$ by $\Delta \%$ are predicted to differ in $y$ by roughly $\hat{\beta}_{1}(\Delta/100)$ (provided $|\Delta| < 10\%$)
 ```
+
