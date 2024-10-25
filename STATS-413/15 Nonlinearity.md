@@ -59,9 +59,12 @@ Suppose we compared two individuals who differ in their $x$ values by $1$ percen
 &= \hat{\beta}_{1} \ln(1.01)\\
 &\approx \hat{\beta}_{1}(0.01)
 \end{align}$$
-```ad-important
-**Definition 15.1**: Approximate Interpretation under Logarithmic Growth
+![[Pasted image 20241025174739.png|300]]
 
-Two observations who differ in $x$ by $\Delta \%$ are predicted to differ in $y$ by roughly $\hat{\beta}_{1}(\Delta/100)$ (provided $|\Delta| < 10\%$)
-```
+In other words, two observations who differ in $x$ by $\Delta \%$ are predicted to differ in $y$ by roughly $\hat{\beta}_{1}(\Delta/100)$ (provided $|\Delta| < 10\%$)
 
+
+#### Exponential Growth
+In a system undergoing exponential growth as a function of $x$, one may observe that additive differences in $x$ correspond to percentage (multiplicative) differences in $y$ . This is consistent with the model $$y_{i}=\exp({\beta_{0}+\beta_{1}x_{i}+\varepsilon_{i}})$$ If we take the log transformation of the response, we’d return to a linear model $$\ln(y_{i})=\beta_{0}+\beta_{1}x_{i}+\varepsilon_{i}$$ from whence we can run a linear regression of $\ln(y_{i})$ on $x_{i}$ to estimate $\beta$. 
+
+Under exponential growth, consider two units who differ in $x$ by one unit: $$\ln(\hat{y}_{1})-\ln(\hat{y}_{2})=\hat{\beta}_{1}$$
