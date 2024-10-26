@@ -54,17 +54,42 @@ The linear approximation wasn’t terrible, but the trend is much better approxi
 ![[Pasted image 20241025132304.png|400]]
 ```
 
-Suppose we compared two individuals who differ in their $x$ values by $1$ percent. What we we predict the difference in their predicted $y$ values to be? $$\begin{align}
-\hat{y}_{1}-\hat{y}_{2}&=\hat{\beta}_{1} (\ln(1.01x)-\ln(x))\\
-&= \hat{\beta}_{1} \ln(1.01)\\
-&\approx \hat{\beta}_{1}(0.01)
+Suppose we compared two individuals who differ in their $x$ values by $1$ percent. If the two units differed by $\Delta \%$ , the expected difference in  $y$ would be a factor of $\beta_{1} \ln(1+\Delta/100)$: $$\begin{align}
+\hat{y}_{1}-\hat{y}_{2}&=\hat{\beta}_{1} (\ln((1+\Delta\%)x)-\ln(x))\\
+&= \hat{\beta}_{1} \ln(1+\Delta\%)\\
+&\approx \hat{\beta}_{1}(\Delta/100)
 \end{align}$$
+In other words, two observations who differ in $x$ by $\Delta \%$ are predicted to differ in $y$ by **roughly** $\hat{\beta}_{1}(\Delta/100)$ (provided $|\Delta| < 10\%$).
+
 ![[Pasted image 20241025174739.png|300]]
-
-In other words, two observations who differ in $x$ by $\Delta \%$ are predicted to differ in $y$ by roughly $\hat{\beta}_{1}(\Delta/100)$ (provided $|\Delta| < 10\%$)
-
 
 #### Exponential Growth
 In a system undergoing exponential growth as a function of $x$, one may observe that additive differences in $x$ correspond to percentage (multiplicative) differences in $y$ . This is consistent with the model $$y_{i}=\exp({\beta_{0}+\beta_{1}x_{i}+\varepsilon_{i}})$$ If we take the log transformation of the response, we’d return to a linear model $$\ln(y_{i})=\beta_{0}+\beta_{1}x_{i}+\varepsilon_{i}$$ from whence we can run a linear regression of $\ln(y_{i})$ on $x_{i}$ to estimate $\beta$. 
 
-Under exponential growth, consider two units who differ in $x$ by one unit: $$\ln(\hat{y}_{1})-\ln(\hat{y}_{2})=\hat{\beta}_{1}$$
+Under exponential growth, consider two units who differ in $x$ by one unit: $$\begin{align}
+\ln(\hat{y}_{1})-\ln(\hat{y}_{2})&=\hat{\beta}_{1}\\
+\ln(\hat{y}_{1}/\hat{y}_{2})&= \hat{\beta}_{1}\\\\
+\frac{\hat{y}_{1}}{\hat{y}_{2}}&= \exp(\hat{\beta}_{1})\\
+&\approx (1+\hat{\beta}_{1}\Delta)
+\end{align}$$ That is, two units who differ in $x$ by one unit differ in their predicted values for $y$ by a factor of $\exp(\hat{\beta}_{1})$. If they differ by $\Delta$ units, their predictions would differ by a factor of $\exp(\Delta \hat{\beta}_{1})$.
+
+In other words, two observations who differ in $x$ by $\Delta$ units are predicted to differ in $y$ by **roughly** $(100\hat{\beta}_{1})\Delta \%$ (provided $|\hat{\beta}_{1}\Delta| < 0.1$).
+
+#### Log-Log Transformation
+In other applications, relationships may be best thought of as percentage (multiplicative) changes in $x$ being predictive of percentage (multiplicative) changes in $y$.
+
+```ad-example
+**Example**: Elasticity
+
+In this case, we’d anticipate the following functional form: $$y_{i}=x_{i}^{\beta_{1}} \exp(\beta_{0}+\varepsilon_{i})$$ Taking logs of both sides, $$\ln(y_{i})=\beta_{0}+\beta_{1}\ln(x_{i})+\varepsilon_{i}$$ so that after log transformation of $x$ and $y$ we have a **linear** model. We can now run a linear regression of $\ln(y)$ on $\ln(x)$.
+
+![[Pasted image 20241025203330.png|400]]
+```
+
+Suppose two units differ in $x$ by $\Delta\%$. $$\begin{align}
+\ln(\hat{y}_{1})-\ln(\hat{y}_{2})&=\hat{\beta}_{1}(\ln((1+\Delta \%)x)-\ln(x))\\
+\ln(\hat{y}_{1}/\hat{y}_{2})&=\hat{\beta}_{1}\ln(1+\Delta \%)\\
+\ln\left(1+\frac{\hat{y}_{1}-\hat{y}_{2}}{\hat{y}_{1}}\right)&= \hat{\beta}_{1}\ln(1+\Delta \%)\\
+\frac{\hat{y}_{1}}{\hat{y}_{2}}&= (1+\Delta/100)^{\hat{\beta}_{1}}\\
+\frac{\hat{y}_{1}-\hat{y}_{2}}{\hat{y}_{1}}&\approx (\hat{\beta}_{1}\Delta)/100
+\end{align}$$ If they differ by $\Delta \%$ in $x$, we'd expect them to differ in $y$ by a factor of $(1+\Delta/100)^{\hat{\beta}_1}$.  Approximately, two observations who differ in $x$ by $\Delta \%$ are predicted to differ in $y$ by $\hat{\beta}_{1}\Delta \%$ (provided $|\hat{\beta}_{1}\Delta|<10\%$, $|\Delta| < 10\%$).
