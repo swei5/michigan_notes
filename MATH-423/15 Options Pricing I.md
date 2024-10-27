@@ -1,6 +1,6 @@
 [[2024-10-24]] #Derivatives #Valuation 
 
-### Martingale Property
+### Risk Neutral Probability, Martingale
 
 ```ad-question
 
@@ -41,4 +41,26 @@ This is a **special version** of the definition of martingales for our course pu
 
 The identity $\mathbb{E}^{\star}[\tilde{S}(n+1)|S (n)]=\tilde{S}(n)$ indeed says that the discounted stock prices $\tilde{S}(0), \tilde{S}(1), \tilde{S}(2), \cdots$ form a martingale under the risk-neutral probability measure $\mathbb{P}^{\star}$.
 
-Further, since $A(n)=A(0)(1+r)^{n}$, the identity may be rewritten as $$\mathbb{E}^{\star}\left[\frac{S(n+1)}{A(n+1)}|S(n)\right]=\frac{S(n)}{A(n)}$$
+Further, since $A(n)=A(0)(1+r)^{n}$, the identity may be rewritten as $$\mathbb{E}^{\star}\left[\frac{S(n+1)}{A(n+1)}|S(n)\right]=\frac{S(n)}{A(n)}$$ The result could be extended to **multiple stocks**, **finite time steps**, and **finite possible stock prices**.
+
+```ad-important
+**Definition 15.3**: Fundamental Theorem of Asset Pricing
+
+Suppose there are $k$ stocks $S_{1},\cdots, S_{k}$, and a risk-free asset $A$ in the market. Let $S(n)=(S_{1}(n),\cdots, S_{k}(n))$ be the stock price vector and $A(n)$ be the risk-free asset price at time $n$. Suppose $\Omega$ is the set of all scenarios and $\mathbb{P}(\omega)>0$ for each scenario $\omega \in \Omega$.
+
+Then the **No-Arbitrage Principle** is equivalent to the existence of a **risk-neutral probability measure** $\mathbb{P}^{\star}$ on the set of scenarios $\Omega$ such that
+- $\mathbb{P}^{\star}(\omega)>0$ for each scenario $\omega \in \Omega$
+- The discounted stock prices $\tilde{S}_{i}(n)=S_{i}(n)/A(n)$ are **martingales** for $i=1,\cdots, k$: $$\mathbb{E}^{\star}[\tilde{S}_{i}(n+1)|S (n)]=\tilde{S}_{i}(n)$$
+
+Here the LHS is the **conditional expectation** with respect to the risk-neutral probability $\mathbb{P}^{\star}$ computed once the stock price vector $S(n)$ becomes known at time $t$.
+```
+
+```ad-example
+**Example**: Computing the risk-neutral probability
+
+![[Pasted image 20241026205948.png|500]]
+
+![[Pasted image 20241026210054.png|500]]
+
+![[Pasted image 20241026210106.png|500]]
+```
