@@ -142,7 +142,7 @@ The prices of American call and put options, on a stock paying discrete dividend
 \text{Put:     } & \max(0,X-S(0),Xe^{-rT}-(S(0)-\text{Div}_{0})) \le P_{A}<X\\
 \end{align}$$
 ---
-### European Option Valuation
+### American Option Valuation
 In general, American options have similar properties to their European counterparts. Difficulties:
 - The absence of put-call parity; we only have the **[[#^f99aaa|weaker put-call parity]]** estimates
 - The possibility of early exercise
