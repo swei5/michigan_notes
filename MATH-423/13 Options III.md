@@ -150,7 +150,7 @@ In general, American options have similar properties to their European counterpa
 ```ad-important
 **Definition 13.5**: Option Prices: Dependence on $S$, $X$
 
-The functions $\mathbb{R}_{+} \ni X \to C_{A}(X) \in \mathbb{R}_{+}$ is decreasing, convex, and **[[#^09e2e3|Lipschitz with associated constant]]** $1$.
+The functions $\mathbb{R}_{+} \ni X \to C_{A}(X) \in \mathbb{R}_{+}$ is decreasing, convex, and **[[12 Options II#^09e2e3|Lipschitz with associated constant]]** $1$.
 
 The functions $\mathbb{R}_{+} \ni X \to P_{A}(X) \in \mathbb{R}_{+}$ is increasing, convex, and **Lipschitz with associated constant** $1$.
 
