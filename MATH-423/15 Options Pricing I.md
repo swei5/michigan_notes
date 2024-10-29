@@ -39,6 +39,8 @@ A sequence of random variables $X(0), X(1), X(2), \cdots$ such that $$\mathbb{E}
 This is a **special version** of the definition of martingales for our course purpose.
 ```
 
+^181293
+
 The identity $\mathbb{E}^{\star}[\tilde{S}(n+1)|S (n)]=\tilde{S}(n)$ indeed says that the discounted stock prices $\tilde{S}(0), \tilde{S}(1), \tilde{S}(2), \cdots$ form a martingale under the risk-neutral probability measure $\mathbb{P}^{\star}$.
 
 Further, since $A(n)=A(0)(1+r)^{n}$, the identity may be rewritten as $$\mathbb{E}^{\star}\left[\frac{S(n+1)}{A(n+1)}|S(n)\right]=\frac{S(n)}{A(n)}$$ The result could be extended to **multiple stocks**, **finite time steps**, and **finite possible stock prices**.

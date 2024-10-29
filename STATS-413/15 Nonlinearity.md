@@ -93,3 +93,23 @@ Suppose two units differ in $x$ by $\Delta\%$. $$\begin{align}
 \frac{\hat{y}_{1}}{\hat{y}_{2}}&= (1+\Delta/100)^{\hat{\beta}_{1}}\\
 \frac{\hat{y}_{1}-\hat{y}_{2}}{\hat{y}_{1}}&\approx (\hat{\beta}_{1}\Delta)/100
 \end{align}$$ If they differ by $\Delta \%$ in $x$, we'd expect them to differ in $y$ by a factor of $(1+\Delta/100)^{\hat{\beta}_1}$.  Approximately, two observations who differ in $x$ by $\Delta \%$ are predicted to differ in $y$ by $\hat{\beta}_{1}\Delta \%$ (provided $|\hat{\beta}_{1}\Delta|<10\%$, $|\Delta| < 10\%$).
+
+---
+### Prediction Intervals
+Suppose that we’ve run a linear regression using $\ln(y)$ as a response variable, and that we’d like to form a $95\%$ prediction interval for $y$ at a given value for the predictors $\tilde{x}$. We could certainly construct prediction intervals for $\ln(y)$ if the **stronger linear model** held: linearity, homoskedasticity, normality.
+
+A $100 (1-\alpha)\%$ prediction interval for $\ln(y)$ takes the form $$\tilde{x}^{T}\hat{\beta} \pm t_{1-\alpha/2,n-p-1}\hat{\sigma}_{\varepsilon} \sqrt{(1+\tilde{x}^{T}(X^{T}X)^{-1}\tilde{x})}$$ we can use this to directly get a prediction interval for $y$ exponentiating the endpoints, that is $$[\exp(\text{lb}), \exp(\text{ub})]$$ for lower bounds and upper bounds of $100 (1-\alpha)\%$ prediction interval for $\ln(y)$.
+
+```ad-important
+**Definition 15.1**: Quantiles and Logrithms
+
+Let $Z$ be any (positive) variable, and let $q_{p}(\cdot)$ be the $p$th quantile/percentile of a distribution. Then, $$q_{p}(\ln(Z))=\ln(q_{p}(Z))$$
+
+This includes the median.
+```
+
+This is because the logarithm is a **monotone increasing transformation**. This means it preserves order!
+
+![[Pasted image 20241029145428.png|400]]
+
+Because the log is a monotone transformation, we know that for $y>0$: $$\text{lb} \le \ln(y) \le \text{ub} \iff \exp(\text{lb}) \le y \le \exp(\text{ub})$$
