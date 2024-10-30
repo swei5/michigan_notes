@@ -50,7 +50,13 @@ Let us calculate the **discounted option price**: $$\begin{align}
 The risk-neutral probability $p^{\star}$ is a quick way to **price** the European option with payoff $f$, compared to the method of replicating portfolios.
 ```
 
-TODO: EXAMPLE
+```ad-example
+**Example**: European Derivative Security: One-step Binomial Tree Model
+
+![[Pasted image 20241030015051.png|500]]
+
+![[Pasted image 20241030015100.png|500]]
+```
 #### American Options
 We have to consider the right to exercise early and compare 
 - The payoff we obtain by exercising immediately, with
@@ -61,3 +67,19 @@ Then, we should act accordingly, namely, choose the one that **offers the highes
 - At time $0$: We exercise at time $0$ only if that $$f(S(0))\ge \mathbb{E}^{\star}\left[\frac{f(S(1))}{1+r}|S(0)\right]$$ otherwise we wait. Therefore, the price of the American option is given by $$D(0)=\max(f(S(0)),\frac{p^{\star}f(S^{u})+(1-p^{\star})f(S^{d})}{1+r})$$
 ---
 ### Two-step Binomial Tree Model
+We can extend the above to two time steps: $t=0,1,2$. The stock price $S(2)$ has three possible values: $S^{uu}, S^{ud}, S^{dd}$ and $S(1)$ has two values: $S^{u},S^{d}$.
+
+The valuation method above requires the following martingale property: $$\tilde{D}(0)=\mathbb{E}^{\star}[\tilde{D}(2)|S(0)]=\mathbb{E}^{\star}[\tilde{D}(2)]$$
+Since at time $2$ the option price is simply its payoff $D(2)=f(S(2))$, for each of the three subtrees we can use the one-step replicating procedure.
+
+If we know the stock price goes up at time $1$, then $$D^{u}(1)=\mathbb{E}^{\star}\left[\frac{D(2)}{1+r}|S(1)=S^{u}\right]=\frac{p^{\star}f(S^{uu})+(1-p^{\star})f(S^{ud})}{1+r}$$
+Conversely if the stock price goes down: $$D^{d}(1)=\mathbb{E}^{\star}\left[\frac{D(2)}{1+r}|S(1)=S^{d}\right]=\frac{p^{\star}f(S^{dd})+(1-p^{\star})f(S^{ud})}{1+r}$$
+Now $D(1)$ can be regarded as a **derivative security** expiring at time $1$ with **payoffs** $D^{u}(1)$ and $D^{d}(1)$. Therefore, $$\begin{align}
+D(0)&=\mathbb{E}^{\star}\left[\frac{D(1)}{1+r}|S(0)\right]\\
+&= \frac{1}{1+r}(p^{\star}D^{u}(1)+(1-p^{\star})D^{d}(1))\\
+&= \frac{1}{(1+r)^{2}}\left((p^{\star})^{2}f(S^{uu})+2p^{\star}(1-p^{\star})f(S^{ud})+(1-p^{\star})^{2}f(S^{dd})\right)\\
+&= \mathbb{E}^{\star}\left[\frac{f(S(2))}{(1+r)^{2}}|S(0)\right]\\
+&= \mathbb{E}^{\star}[\tilde{D}(2)|S(0)]\\
+&=\mathbb{E}^{\star}[\tilde{D}(2)]
+\end{align}$$
+Hence the martingale stands.
