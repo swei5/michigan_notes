@@ -130,4 +130,3 @@ As a general rule, as we **increase** model complexity:
 Errors for future observations will decline at first (as reductions in bias dominate) but will then start to increase again (as increases in variance dominate)
 
 ![[Pasted image 20241030135513.png|400]]
-

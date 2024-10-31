@@ -82,4 +82,4 @@ D(0)&=\mathbb{E}^{\star}\left[\frac{D(1)}{1+r}|S(0)\right]\\
 &= \mathbb{E}^{\star}[\tilde{D}(2)|S(0)]\\
 &=\mathbb{E}^{\star}[\tilde{D}(2)]
 \end{align}$$
-Hence the martingale stands.
+Hence the martingale stands. ^5326c3

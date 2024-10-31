@@ -36,6 +36,8 @@ The value of an American Option is at least the same as the value of the Europea
 If the underlying asset pays **NO dividends**, then the European and American calls, written on this asset with the same $X$ and $T$ , have the same price: $$C_{E}=C_{A}$$
 ```
 
+^ca55d2
+
 ```ad-note
 **Proof of Definition 13.2**
 
