@@ -114,3 +114,20 @@ Under the stronger linear model, if we fit a line, the **only source of reducibl
 Prediction Error can thus be decomposed into three terms: $$\mathbb{E}[(y^{\star}-\hat{f}(\tilde{x}))^{2}]=\mathbb{E}[(y^{\star}-{f}(\tilde{x}))^{2}]+(\mathbb{E}[\hat{f}(\tilde{x})]-f(\tilde{x}))^{2}+\mathbb{E}[(\hat{f}(\tilde{x})-\mathbb{E}[\hat{f}(\tilde{x})])^{2}]$$ The last two terms are the terms that we can hope to control based on how we use our data to estimate $\hat{f}(\tilde{x})$.
 - Ideally, we’d like to minimize both terms
 - Unfortunately, strategies that minimize one term need not minimize the other
+
+**Increasing the polynomial** degree **decreases bias** (we are getting better approximations of the true function) but also **increases** variance, as we begin to fit too much to noise.
+
+This is a general phenomenon known as the **bias-variance tradeoff**.
+
+```ad-important
+**Definition 16.2**: The Bias-Variance Tradeoff
+
+As a general rule, as we **increase** model complexity:
+- Estimator bias **decreases**
+- Estimator variance **increases**
+```
+
+Errors for future observations will decline at first (as reductions in bias dominate) but will then start to increase again (as increases in variance dominate)
+
+![[Pasted image 20241030135513.png|400]]
+
