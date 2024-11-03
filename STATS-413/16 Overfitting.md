@@ -60,6 +60,9 @@ This highlights the deficiency of measures such as $R^{2}$ for assessing model p
 
 ---
 ### Prediction Errors
+
+^d2754c
+
 The previous illustration of overfitting simulated multiple data sets, but of course we’re stuck with a single data set.
 
 In general, suppose our data arise through $$y_{i}=f(x_{i})+\varepsilon_{i}$$ where $\varepsilon$ are iid with $\mathbb{E}(\varepsilon)=0$ and $\text{Var}(\varepsilon)=\sigma_{\epsilon}^{2}$. Based on our data we come up with a predictive model $\hat{f}(x)$. Now, we consider using our prediction function from our data set $\hat{f}(x)$ to predict a **new**/**future** observation at a point $\tilde{x}$. Call the unknown future observation $y^{\star}$.
@@ -111,7 +114,7 @@ Under the stronger linear model, if we fit a line, the **only source of reducibl
 
 ---
 ### Bias-Variance Tradeoff
-Prediction Error can thus be decomposed into three terms: $$\mathbb{E}[(y^{\star}-\hat{f}(\tilde{x}))^{2}]=\mathbb{E}[(y^{\star}-{f}(\tilde{x}))^{2}]+(\mathbb{E}[\hat{f}(\tilde{x})]-f(\tilde{x}))^{2}+\mathbb{E}[(\hat{f}(\tilde{x})-\mathbb{E}[\hat{f}(\tilde{x})])^{2}]$$ The last two terms are the terms that we can hope to control based on how we use our data to estimate $\hat{f}(\tilde{x})$.
+Prediction Error can thus be decomposed into three terms: $$\mathbb{E}[(y^{\star}-\hat{f}(\tilde{x}))^{2}]=\mathbb{E}[(y^{\star}-{f}(\tilde{x}))^{2}]+(\mathbb{E}[\hat{f}(\tilde{x})]-f(\tilde{x}))^{2}+\mathbb{E}[(\hat{f}(\tilde{x})-\mathbb{E}[\hat{f}(\tilde{x})])^{2}]$$ The last two terms are the terms that we can hope to control based on how we use our data to estimate $\hat{f}(\tilde{x})$. ^d960c7
 - Ideally, we’d like to minimize both terms
 - Unfortunately, strategies that minimize one term need not minimize the other
 
@@ -126,6 +129,8 @@ As a general rule, as we **increase** model complexity:
 - Estimator bias **decreases**
 - Estimator variance **increases**
 ```
+
+^16b2f2
 
 Errors for future observations will decline at first (as reductions in bias dominate) but will then start to increase again (as increases in variance dominate)
 
