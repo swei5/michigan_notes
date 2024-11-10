@@ -1,4 +1,4 @@
-[[2024-11-05]] #Regression 
+[[2024-11-05]] #Regression #R 
 
 ### Piecewise Polynomials
 As a means of capturing nonlinear trends, polynomials suffer from a few important deficiencies
@@ -68,5 +68,15 @@ The location of the knots $\xi_{1},\cdots, \xi_{K}$ can be pre-specified by the 
 
 If we don’t have such knowledge, and simply desire to fit a spline with $K$ knots, two natural defaults arise in practice.
 - **Equi-spaced** knot points $\xi_{k}$, so that the knot points are the same distance apart
-- Knot points based on quantiles of $x$, so that each of the $K + 1$ resulting regions contains the same fraction of observations in the data (this is **most common**, and is built into the function in `R`)
+- Knot points based on quantiles of $x$, so that each of the $K + 1$ resulting regions contains the same fraction of observations in the data (this is **most common**, and is built into `R`)
+
+In `R`, functions for splines are available in the splines package. We use the `bs` function to help fit regression splines. For a degree $d$ regression spline with $K$ knot locations stored in an object called `knotlocation`.
+
+```r
+library(splines)
+lm(y~bs(x, knots = knotlocation, degree = d)) # We will define knotlocation
+
+# Or, if we rather have the knots placed at quantiles of x
+lm(y~bs(x, df = d+K, degree = d)) # df = d+K as we are ignoring the intercept
+```
 
