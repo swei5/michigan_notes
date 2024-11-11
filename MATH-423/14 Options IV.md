@@ -107,6 +107,8 @@ The risk-neutral probability $p^\star$, is such that $$r=p^{\star}u+(1-p^{\star}
 Or, $p^{\star}=r-d/u-d$ and is always in $[0,1]$ given our assumptions that $-1<d<u$ and $d <r <u$.
 ```
 
+^f99ea9
+
 The probability measure $\mathbb{P}^{\star}$, under which the stock price goes up with probability $p^\star$ and goes down with probability $1-p^{\star}$ independently at each node, is called **risk-neutral probability measure**.
 
 The expectation under $\mathbb{P}^{\star}$ is called the **risk-neutral expectation** and is denoted by $\mathbb{E}^{\star}$.
