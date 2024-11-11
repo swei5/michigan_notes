@@ -187,6 +187,8 @@ $$R^{2}= \text{cor}(\hat{y},y)^{2}$$
 In the case of simple regression ($p=1$), $R^{2}=\text{cor}(x,y)^{2}$.
 ```
 
+^723b57
+
 It's easy to note that $0 \le R^{2} \le 1$ since $RSS \le TSS$. 
 
 $R^{2}$ **NEVER decreases** as you add more predictor variables in to your regression (even if the predictors are irrelevant!).

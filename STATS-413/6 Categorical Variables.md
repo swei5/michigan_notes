@@ -134,6 +134,8 @@ Under the null: $F_{\text{stat}} \sim \mathcal{F}_{(\text{df}_{\text{red}} - \te
 View the definition of a [[5 Confidence Interval, F-Test#^5e5647|full F-test here]] and see the similarity.
 ```
 
+^4b24d8
+
 The numerator is the **difference between the RSS** in the two models, divided by the differences in the degrees of freedom for the residual terms in those two regressions. Again, the denominator is the **MSE** in the **full model**.
 
 ```ad-note
