@@ -28,6 +28,8 @@ where the index $i$ denotes the numbers of *downs* of the paths and $\binom{N}{i
 The formula (CRR) is called **Cox-Ross-Rubinstein formula**. An alternative name for the binomial tree model is CRR model.
 ```
 
+^b11d79
+
 ---
 ### $N$ -step, Binomial Tree Model, American Options
 For the American call option, if the underlying stock pays no dividend, [[13 Options III#^ca55d2|then we know]] that $C_{A}=C_{E}$ could be calculated using the CRR formula. 

@@ -26,6 +26,8 @@ It is assumed that $-1<d<r<u$ and $p\in (0,1)$. If we are interested in calculat
 If asset $M_{1}$ is worth the same as asset $M_{2}$ at time $t=1$, i.e. $M_{1}(1)=M_{2}(1)$, then $M_{1}(0)=M_{2}(0)$, otherwise an arbitrage opportunity would arise.
 ```
 
+^4f6bd8
+
 We may show this by constructing a portfolio $V=(x,y)$ with $x$ shares of stock $S$ and $y$ units of risk-free assets $A$, such that it will produce the same payoff as the **call option** at $t=1$. That is, we set $C(1)=V(1)$, where $$C(1)=(S(1)-X)^{+}, V(1)=xS(1)+yA(1)$$ this leads to two linear equations in terms of $x$ and $y$ (since the stock price may go up or down at z $t=1$):  $$\begin{align}
 xS^{u}+yA(1) &= (S^{u}-X)^{+} \\
 xS^{d}+yA(1) &= (S^{d}-X)^{+}
