@@ -1,7 +1,8 @@
 [[2024-11-12]] #Valuation #Derivatives 
 
+### From binomial tree to continuous time model
 Now we've studied a discrete time model (Binomial Tree Model), we would like to set up a continuous time model to describe the evolution of a stock price $S$ over a period of time, say $1$ year. We first divide a calendar year into $N$ intervals with equal length: $$\tau_{N}:=\frac{1}{N}$$
-Consider a **binomial model**, for the stock $S$, on the time grid $$\{0,\frac{1}{N},\frac{2}{N},\cdots,\frac{N}{N}\}=\{0,\tau_{N},2\tau_{N},\cdots, N\tau_{N}\}$$
+Consider a **binomial model**, for the stock $S$, on the time grid $$\{0,\frac{1}{N},\frac{2}{N},\cdots,\frac{N}{N}\}=\{0,\tau_{N},2\tau_{N},\cdots, N\tau_{N}=1\}$$
 We will denote the the **one-step return** over the time interval $[(m-1)\tau_{N},m\tau_{N}]$ by $K_{N}(m)$, for every $m=1,2,\cdots, N-1, N$.
 
 Since we have assumed a binomial model, the sequence $(K_{N}(m))_{m=1,\cdots,N}$ is i.i.d with $$K_{N}(1)=\begin{cases}
@@ -29,3 +30,76 @@ The **volatility** of a **STOCK** over $1$ year is defined to be the **standard 
 In addition, if we assume the volatility over $1$ year is $\sigma$. Then, the volatility over a period of length $\tau_{N}$ is $\sigma \sqrt{\tau_{N}}$.
 ```
 
+This is true since $$\begin{align}
+\sigma^{2}=\text{Var}[k] &= \text{Var}\left[\sum\limits_{j=1}^{n}k_{N}(j)\right]\\
+&= \sum\limits_{j=1}^{n}\text{Var}[k_{N}(j)] & k_{N}\text{ is independent}\\
+&= N \text{Var}[k_{N}(1)] & k_{N}\text{ is identically distributed}\\
+&= N \frac{\sigma^{2}}{N}
+\end{align}$$ Thus, $$\sigma_{N}=\sqrt{\text{Var}[k_{N}(1)]}=\sqrt{\frac{\sigma^{2}}{N}}=\sigma\sqrt{\tau_N}$$
+
+```ad-note
+One can empirically estimate the volatility over a period, say over $[t, t+n(\Delta t)]$ where $\Delta t$ is a fixed time unit (e.g., day), by collecting historical data is the following:
+- The stock price $S_{j}$ at the time $t+j\Delta t$ for $j=0, \cdots, N$
+- Determine $u_{j}:=\ln\left(\frac{S_{j}}{S_{j-1}}\right)$ - which can be viewed as a **sample of log returns** $k_{N}(j)$ with $\tau_{N}=\Delta t$
+
+Then, we can use the estimator for the standard deviation of $u_{j}$: $$s:=\sqrt{\frac{1}{n-1} \sum\limits_{i=1}^{n} (u_{j}-\bar{u})^{2}}$$ where $\bar{u}$ is the sample mean of $u$. Therefore, $$\hat{\sigma}=\frac{s}{\sqrt{\Delta t}}$$
+```
+
+Now assume that we have made some analysis and we have estimated that $$\mathbb{E}(k)=\mu$$ and $$\text{Var}(k)=\sigma^{2}$$ Then, given the precious discussion, we have immediately that $$\mathbb{E}(k_{N}(1))=\mu\tau_{N}$$ and $$\text{Var}(k_{N}(1))=\sigma^{2}\tau_{N}$$
+We also have that $\ln (1+u_{N})=\mu \tau_{N}+\sigma \sqrt{\tau_{N}}$ and $\ln (1+u_{d})=\mu \tau_{N}-\sigma \sqrt{\tau_{N}}$. 
+
+```ad-note
+**Proof**
+```
+
+---
+### Random Walk
+Let us assume that we have an i.i.d. sequence of random variables $(\xi(j))_{j\in \mathbb{N}}$ such that $$\xi(1)=\begin{cases}
++1 & \text{ with probability } \frac{1}{2} \\
+-1 & \text{ with probability } \frac{1}{2}
+\end{cases}$$ Moreover, define the **stochastic process** $w$, called the **Random Walk**, by $$w(n):=\sum\limits_{j=1}^{n}\xi(j)$$ for all $n \in \mathbb{N}$ and the **scaled Random Walk** $$w_{N}(n\tau_{N}):=\frac{1}{\sqrt{N}}w(n)=\frac{1}{\sqrt{N}}\sum\limits_{j=1}^{n}\xi(j)$$
+```ad-note
+The random walk *jumps* at every time unit by $\pm 1$. The scaled random walk *jumps* at every $\tau_N$-time unit, $\tau_{N}=\frac{1}{N}$ by $\pm \frac{1}{\sqrt{N}}$.
+```
+
+The random walk is a **martingale**, i.e. for every $n \in \mathbb{N}$, $$\mathbb{E}[w(n+1)|\xi(1), \cdots, \xi(n)]=w(n)$$ where $\mathcal{F}_{n}$ is the information one has up to time $n$.
+
+```ad-note
+**Proof of the Martingale**
+
+$$\begin{align}
+\mathbb{E}[w(n+1)|\xi(1), \cdots, \xi(n)]&=w(n) \\
+&= \mathbb{E}\left[\sum\limits_{i=1}^{n+1} \xi(i)|\xi(1), \cdots, \xi(n)\right]\\
+&= \mathbb{E}\left[\sum\limits_{i=1}^{n} \xi(i) + \xi(n+1)|\xi(1), \cdots, \xi(n)\right]\\
+&= w(n) + \mathbb{E}[\xi(n+1)|\xi(1), \cdots, \xi(n)]\\
+&= w(n) + \mathbb{E}[\xi(n+1)] & \text{ future observation independent of observed}\\
+&= w(n)
+\end{align}$$
+```
+
+![[Pasted image 20241112140333.png|500]]
+
+If we scale the path to the extreme, we will start to see the path starting to *smooth out*.
+
+```ad-important
+**Definition 20.2**: Properties of the Expectation and Variance of Random Walk
+
+We have that $$\mathbb{E}[w_{N}(n\tau_{N})]=0$$ and $$\text{Var}[w_{N}(n\tau_{N})]=\frac{n}{N}$$ for every $n \in \mathbb{N}$
+
+In particular, $\text{Var}[w_{N}(1)] =1$ for every $N$.
+```
+
+As we have previously shown, $$\begin{align}
+k_{N}(j)&=\begin{cases}
+\ln(1+u_{N}) & p=\frac{1}{2}  \\
+\ln(1+d_{N}) & p=\frac{1}{2}
+\end{cases} = \begin{cases}
+\mu \tau_{N}+\sigma \sqrt{\tau_{N}}  \\
+\mu \tau_{N}-\sigma \sqrt{\tau_{N}}
+\end{cases}\\
+&= \mu \tau_{N}+\sigma \xi(j)\sqrt{\tau_{N}}
+\end{align}$$
+
+Given that $t=\frac{m}{N}=m\tau_{N}$, we may write the stock price at $t$ $S_{N}(t)$ as $$\begin{align}
+S_{N}(t)=S_{N}(0)
+\end{align}$$
