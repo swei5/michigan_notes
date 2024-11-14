@@ -1,6 +1,6 @@
 [[2024-11-12]] #Valuation #Derivatives 
 
-### From binomial tree to continuous time model
+### From Binomial Tree to Continuous time Model
 Now we've studied a discrete time model (Binomial Tree Model), we would like to set up a continuous time model to describe the evolution of a stock price $S$ over a period of time, say $1$ year. We first divide a calendar year into $N$ intervals with equal length: $$\tau_{N}:=\frac{1}{N}$$
 Consider a **binomial model**, for the stock $S$, on the time grid $$\{0,\frac{1}{N},\frac{2}{N},\cdots,\frac{N}{N}\}=\{0,\tau_{N},2\tau_{N},\cdots, N\tau_{N}=1\}$$
 We will denote the the **one-step return** over the time interval $[(m-1)\tau_{N},m\tau_{N}]$ by $K_{N}(m)$, for every $m=1,2,\cdots, N-1, N$.
@@ -46,6 +46,7 @@ One can empirically estimate the volatility over a period, say over $[t, t+n(\De
 Then, we can use the estimator for the standard deviation of $u_{j}$: $$s:=\sqrt{\frac{1}{n-1} \sum\limits_{i=1}^{n} (u_{j}-\bar{u})^{2}}$$ where $\bar{u}$ is the sample mean of $u$. Therefore, $$\hat{\sigma}=\frac{s}{\sqrt{\Delta t}}$$
 ```
 
+#### Expectations, Variance of Log Returns
 Now assume that we have made some analysis and we have estimated that $$\mathbb{E}(k)=\mu$$ and $$\text{Var}(k)=\sigma^{2}$$ Then, given the precious discussion, we have immediately that $$\mathbb{E}(k_{N}(1))=\mu\tau_{N}$$ and $$\text{Var}(k_{N}(1))=\sigma^{2}\tau_{N}$$
 The **one-step log return** under the binomial tree model can be expressed as $$\ln (1+u_{N})=\mu \tau_{N}+\sigma \sqrt{\tau_{N}}$$ and $$\ln (1+u_{d})=\mu \tau_{N}-\sigma \sqrt{\tau_{N}}$$
 
@@ -64,7 +65,7 @@ And $$\begin{align}
 
 Solving both equations simultaneously yields $$\begin{cases}
 \ln (1+u_{N})=\mu \tau_{N}+\sigma \sqrt{\tau_{N}} = \mu \tau_{N} + \sigma_{N} \\
-\ln (1+u_{d})=\mu \tau_{N}-\sigma \sqrt{\tau_{N}} = \mu \tau_{N} - \sigma_{N}
+\ln (1+d_{N})=\mu \tau_{N}-\sigma \sqrt{\tau_{N}} = \mu \tau_{N} - \sigma_{N}
 \end{cases}$$
 ```
 
@@ -134,5 +135,50 @@ Recall that we want to take the limit as $N \to \infty$ or equivalently as $\tau
 Since we have made use of the exponential, it is convenient to compare $S_{N}(t)$ and $S_{N}(t+\tau_{N})$. We know that the **second order approximation** of the exponential function is given by $$\exp(x)=\sum\limits_{k \in \mathbb{N}\cup\{0\}}\frac{x^{k}}{k!} \approx 1+x+ \frac{x^{2}}{2}$$ when $x$ is *very small*. Then, with $t=\frac{m}{N}, m\tau_{N}$, $$\begin{align}
 \frac{S_{N}(t+\tau_{N})}{S_{N}(t)}&=\frac{S_{N}((m+1)\tau_{N})}{S_{N}(m\tau_{N})}=\exp(k_{N}(m+1))\\
 &= \exp(\mu \tau_{N}+\sigma \xi(m+1)\sqrt{\tau_{N}})\\
-&\approx 1+(\mu \tau_{N}+\sigma \xi(m+1)\sqrt{\tau_{N}})+1}{2}
+&\approx 1+(\mu \tau_{N}+\sigma \xi(m+1)\sqrt{\tau_{N}}) +\frac{1}{2} \left(\mu \tau_{N}+\sigma \xi(m+1)\sqrt{\tau_{N}}\right)^{2} \\
+&= 1+\mu \tau_{N}+\sigma \xi(m+1)\sqrt{\tau_{N}} + \frac{1}{2}\mu^{2}\tau_{N}^{2}+\mu\tau_{N}^{\frac{3}{2}}\sigma \xi(m+1)+ \frac{1}{2}\sigma^{2}\tau_{N} \xi^{2}(m+1)\\
+&\approx 1+\left(\mu+ \frac{1}{2}\sigma^{2}\right)\tau_{N}+\sigma \sqrt{\tau_{N}} \xi(m+1) & \xi^{2}(\cdot) &= 1
 \end{align}$$
+As we get rid of higher order terms for a small $\tau_{N}$.  We can rewrite the approximation above as $$S_{N}(t+\tau_{N})-S_{N}(t)\approx S_{N}(t)\left(\mu+ \frac{1}{2}\sigma^{2}\right)\tau_{N}+S_{N}(t)\sigma [w_{N}(t+\tau_{N})-w_{N}(t)]$$
+As we have $\xi (t+\tau_{N})=w_{N}(t+\tau_{N})-w_{N}(t)$ by definition.
+
+```ad-important
+**Definition 20.4**: The Black–Scholes model
+
+The Central Limit Theorem will allow us to conclude the well-posedness of the **Stochastic Differential Equation** (SDE): $$dS(t)\approx S_{N}(t)\left(\mu+ \frac{1}{2}\sigma^{2}\right)\tau_{N} + \sigma S(t)dW(t)$$
+where $dS(t)=S(t+dt)-S(t)$ and $dW(t)=W(t+dt)-W(t)$.
+```
+
+```ad-note
+The SDE above is the **Black-Scholes Model**. It has a unique solution $$S(t)=S(0) \exp(\mu t+\sigma W(t))$$ where $W$ is the Brownian Motion.
+
+Observe that for every $t \ge 0$, $$\ln\left(\frac{S(t)}{S(0)}\right)=\mu t+\sigma W(t) \sim \mathcal{N}(\mu t, \sigma^{2}t)$$
+
+Here, the value $\sigma$ is the **volatility** of our price model. Under different probability measures that one is interested in, $\mu$ has different values and $W(t)$ takes different forms. However, the volatility $\sigma$ remains the **same** among all probability measures. The underlying reason of this fact, [Girsanov’s Theorem](https://en.wikipedia.org/wiki/Girsanov_theorem).
+```
+
+```ad-important
+**Definition 20.5**: Donsker’s Theorem
+
+The limit $W$ of the sequence of the scaled random walks $(w_{N})_{n \in \mathbb{N}}$ exits and it is a process with the following properties:
+1. $W_{0}=0$
+2. For every choice $0 \le s \le t \le u$, the increments $W(t)-W(s)$ and $W(u) - W(t)$ are **independent random variables**
+3. For every choice $0 \le s \le t$ the increment $$W(t)-W(s) \sim \mathcal{N}(0,t-s)$$
+4. The paths of $W(t)$ are **continuous** in $t$
+```
+
+![[Pasted image 20241114151034.png|400]]
+
+The paths of the limit process $W$ are *similar*.
+
+```ad-note
+The process $W$ described in Donsker’s Theorem is called **Brownian Motion**.
+```
+
+```ad-important
+**Definition 20.6**: Properties of Black–Scholes model
+
+Assume that $\mu^{\star}$ is the expected log return associated with the **risk neutral probability measure** $\mathbb{P}^{\star}$. Then $$\mu^{\star}=r- \frac{1}{2}\sigma^{2}$$
+
+And, it can be proven that the **martingale measure** $\mathbb{P}^{\star}$ **exists and is unique**.
+```

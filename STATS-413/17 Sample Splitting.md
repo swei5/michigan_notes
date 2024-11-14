@@ -82,6 +82,8 @@ Based on our training set, our best guess for the population mean is $\bar{y}_\t
 $$OSR^{2}=1-\frac{\sum_{i=1}^{n_{\text{test}}}(y_{i}-\hat{y}_{i})^{2}}{\sum_{i=1}^{n_{\text{test}}}(y_{i}-\bar{y}_{\text{train}})^{2}}$$
 ```
 
+^e91f4c
+
 ---
 ### Polynomials in Several Predictors
 We can define polynomials with **multiple predictor variables**. For $p$ even moderate, the number of polynomial terms **explodes quickly** when doing a third degree or higher polynomial. In practice, people rarely go beyond 2nd degree polynomial with multiple predictors.
