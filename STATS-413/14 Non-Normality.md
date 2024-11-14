@@ -191,7 +191,7 @@ If **homoskedasticity** appears reasonable, the residual bootstrap is generally 
 - Performs better in small samples (more stable) than the pairs bootstrap
 
 ```ad-important
-**Definition 14.6**: Residual Bootstrap
+**Definition 14.6**: Pair Bootstrap
 
 Let $\hat{\beta}$ be the OLS coefficients from a regression of $y$ on $X$. For $b=1,\cdots, B$ bootstrap samples:
 1. Sample $n$ times **with replacement** from the values pairs $\{(y_{1},x_{1}),\cdots, (y_{n},x_{n})\}$. Store the resulting sample as $\{(y_{1}^{\star},x_{1}^{\star}),\cdots,(y_{n}^{\star},x_{n}^{\star})\}$
