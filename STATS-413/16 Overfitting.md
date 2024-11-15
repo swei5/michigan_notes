@@ -83,12 +83,17 @@ We’ve actually seen both of these errors before when forming [[8 Prediction In
 - Reducible error: $\text{Var}(\tilde{x}^{T} \hat{\beta})=\sigma_{\varepsilon}^{2} \tilde{x}^{T}(X^{T}X)^{-1}\tilde{x}$
 ```
 
+```ad-important
+**Definition 16.2**: Bias, Variance
+
 In thinking about how to reduce the **reducible error**, consider a further decomposition. $$\mathbb{E}[(\hat{f}(\tilde{x})-{f}(\tilde{x}))^{2}]=(\mathbb{E}[\hat{f}(\tilde{x})]-f(\tilde{x}))^{2}+\mathbb{E}[(\hat{f}(\tilde{x})-\mathbb{E}[\hat{f}(\tilde{x})])^{2}]$$ which we can also break down into two components:
 1. **Estimator Bias** (squared): $(\mathbb{E}[\hat{f}(\tilde{x})]-f(\tilde{x}))^{2}$
 	- Is there a systematic difference between $\mathbb{E}[\hat{f}(\tilde{x})]$ and $f(\tilde{x})$?
 2. **Estimator Variance**: $\mathbb{E}[(\hat{f}(\tilde{x})-\mathbb{E}[\hat{f}(\tilde{x})])^{2}]$
 	- How much does my predicted value $\hat{f}(\tilde{x})$ vary from one data set to the next?
 	- *How stable is my prediction function?*
+
+```
 
 Bias refers to the error that is introduced by modeling a real life problem (that is usually extremely complicated) by a **much simpler problem**.
 - The **more flexible/complex** a model is, the **LESS bias** it will generally have
@@ -123,7 +128,7 @@ Prediction Error can thus be decomposed into three terms: $$\mathbb{E}[(y^{\star
 This is a general phenomenon known as the **bias-variance tradeoff**.
 
 ```ad-important
-**Definition 16.2**: The Bias-Variance Tradeoff
+**Definition 16.3**: The Bias-Variance Tradeoff
 
 As a general rule, as we **increase** model complexity:
 - Estimator bias **decreases**

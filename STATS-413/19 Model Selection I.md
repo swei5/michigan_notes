@@ -1,4 +1,4 @@
-[[2024-11-07]] #Regression 
+[[2024-11-07]] #Regression #R
 
 Through our discussion of nonlinear regression (Lec 15-19), we understand the importance of choosing the right **level of complexity**.
 - [[16 Overfitting|Bias-Variance Trade-Off]]
