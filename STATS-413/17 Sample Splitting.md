@@ -31,7 +31,7 @@ We’ll now describe a general strategy for comparing models.
 
 ---
 ### Sample Splitting
-Imagine taking our data set with n observations, and randomly splitting it into two **mutually exclusive**/disjoint and exhaustive sets.
+Imagine taking our data set with $n$ observations, and randomly splitting it into two **mutually exclusive**/disjoint and exhaustive sets.
 - Training set of size $n_{\text{train}}$
 - Test set of size $n_{\text{test}}$
 - Typically, $n_{\text{train}} > n_{\text{test}}$
