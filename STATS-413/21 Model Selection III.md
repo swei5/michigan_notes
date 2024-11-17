@@ -51,6 +51,8 @@ Ultimately the tradeoff, along with computational considerations, leads 5 or 10 
 
 Based on this assessment, we’d choose the model produced by forward selection with $\lambda$ chosen through cross-validation.
 - Though CV gave same results as choosing based on $OSR^{2}$ (optimistic), but it is **NOT** always the case
+
+Substantial improvement seen in $OSR^{2}$ by penalizing complexity.
 ```
 
 ---
@@ -60,9 +62,64 @@ Splitting the sample into training and test sets allows us to conduct valid hypo
 However, we **CANNOT use the conventional output** from the training set without modification.
 - Issue: we *sifted through* the training set to find a model that performed well
 
+But, if we **decided ahead of time** on this algorithm **before looking at the test set**, we can use the the $p$-values from the **test set**!
+
 The training set serves an **exploratory** role.
 - It allows us to search for a **potentially interesting model**
 
 The test set serves a **confirmatory role**.
 - We searched around for interesting associations on the training set; Now, we test them using data that **weren’t involved in the initial search**
 
+This works so long as performance on the **test set in no way informs the choice of model**. If we have competing models and want to choose one based on out-of-sample performance on a held out data set, we really need **another validation set.**
+- Choose model by reference to validation
+- Do inference on the as of yet untouched test set
+
+```ad-note
+If we ultimately want **high power for the inference in the test set**, we’d want its sample size to be **large**. 
+- However, if we make the sample size in the training set too small, then we might not have enough data to explore interesting patterns to begin with
+
+For prediction, more data is used for training, since ultimately it is the algorithm we create by means of the training set that will be employed in the future.
+```
+
+---
+### Regularized Regression
+Rather than running ordinary least squares to estimate $\beta$: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)^{2}$$ we’ve considered methods that penalize complexity, which we quantified as the number of predictor variables $m$ in the chosen model.
+- Again, $m=\sum_{j=1}^{p}\mathbb{1}(\hat{\beta}_{j} \ne 0)$
+
+One way to penalize model complexity is through considering best subset selection, through an optimization problem of the form $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)^{2}+\lambda \sum\limits_{j=1}^{p} \mathbb{1}(\tilde{\beta} \ne 0)$$ whereby we try to balance **in-sample performance** (first term) while weighing the desire to **avoid overfitting** (second term).
+
+```ad-note
+- [[19 Model Selection I#^a6739d|Mallows' Cp]] is equivalent to the above approach with $\lambda = 2$
+- AIC asymptotically equivalent to the above approach with $\lambda = 2$
+- BIC asymptotically equivalent to the above approach with $\lambda = \ln(n)$
+
+A better approach to the above is to choose $\lambda$ via cross-validation.
+```
+
+Due to computational limitations (the need to enumerate all possible all possible models), we generally cannot calculate $\hat{\beta}$ above.
+- Number of possible candidate models: $2^{p}$
+
+Our remedy thus far are to consider iterative model building approaches that are heuristic approaches to the above optimization problem.
+- [[19 Model Selection I#^7398ef|Forward stepwise]]: start with only intercept, iteratively increase model size
+- [[19 Model Selection I#^bdb940|Backwards elimination]]: start with the full model, iteratively decrease model size
+
+An alternative approach is rather thinking of greedy heuristics to best subset (forward stepwise, backwards elimination), we could instead consider changing the form of our complexity penalty: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)^{2}+\lambda \sum\limits_{j=1}^{p} |\tilde{\beta_{j}}|^{0}$$ where we define $$|\tilde{\beta}_{j}|^{0}=\begin{cases}
+0 & \tilde{\beta}_{j}=0 \\
+1 & \text{otherwise}
+\end{cases}$$
+In general, this method takes the form: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)^{2}+\lambda \sum\limits_{j=1}^{p} |\tilde{\beta_{j}}|^{q}, q >0$$
+When $q=1$, this is called a **Lasso Regression**; when $q=2$, it is called a **[[8 Regression, Regularization#^e607e4|Ridge Regression]]**. These are the most commonly used regularized regression.
+
+Importantly, for $q\ge 1$, the objective function is **convex** in $\tilde{\beta}$
+- Implication: can be solved to **optimality efficiently**
+- Rather than resorting to heuristics for best-subset selection, this approach changes the form of the complexity penalty in a way that is **computationally tractable**
+
+```ad-note
+We don’t penalize the **intercept** (this just finds the right vertical level for the line of best fit).
+```
+
+As $q$ tends towards zero $|\tilde{\beta}_{1}|^{q}+|\tilde{\beta}_{2}|^{q}=1$, behaves more like $|\tilde{\beta}_{1}|^{0}+|\tilde{\beta}_{2}|^{0}$
+- For $q \ge 1$, note that the corresponding regions are convex sets
+- For $q>1$, boundaries of region are smooth as they intersect the axes
+
+![[Pasted image 20241116202050.png|400]]

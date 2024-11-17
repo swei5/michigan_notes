@@ -49,6 +49,8 @@ Backwards elimination starts with a linear model including all predictors, and t
 In `R`, the function `ols_step_backward_p` in the package `olsrr` executes this routine.
 ```
 
+^bdb940
+
 Alternatively, we can also adapt **forward selection**.
 
 ```ad-important
@@ -63,6 +65,8 @@ Forward Selection starts with a model only including the intercept, and then ite
 
 In `R`, the function `ols_step_forward_p` in the package `olsrr` executes this routine.
 ```
+
+^7398ef
 
 When we have categorical predictors, we generally consider adding **either all** of the categories or **none** of the categories to the model.
 - Remember: we encode categoricals with $d-1$ dummy variables for $d$ categories
@@ -112,6 +116,8 @@ This approach promotes **model fit** (numerator) and penalizes model complexity 
 For a model $\mathcal{M}_{m}$ with $m$ predictors, Mallows’s $C_{p}$ takes the form $$C_{p}(\mathcal{M}_{m})=\frac{RSS(\mathcal{M}_{m})}{\hat{\sigma}^{2}_\varepsilon(\mathcal{M}_{p})}+2(m+1)-n$$ where $\hat{\sigma}^{2}_\varepsilon(\mathcal{M}_{p})$ is estimated from the model with all $p$ predictor variables.
 ```
 
+^a6739d
+
 By intuition, $C_{p}$ provides an estimate of the (scaled) residual sums of squares: $$\frac{1}{\sigma_\varepsilon ^{2}} \sum\limits_{i=1}^{n}(\hat{y}_{i}-x_{i}^{T}\beta)^{2}$$ where $\hat{y}_{i}$ are the fitted values from model $\mathcal{M}_{m}$.
 - In a good fit, $C_{p}$ should be near or below $m+1$
 
@@ -155,8 +161,8 @@ The above may work out and produce an optimal solution for a relatively small nu
 ---
 ### Stepwise Regression
 An instinct may be to employ an **iterative model** building schema to explore the set of all possible models, just like we did with the [[#Hypothesis Test-Based Methods|hypothesis test based approaches]]. This is common in practice, known as **stepwise regression**, with three contenders:
-1. Forward Selection
-2. Backwards Elimination
+1. Forward Selection ^cb2fc5
+2. Backwards Elimination ^f29005
 3. Hybrid Elimination (can be helpful under multicollinearity)
 
 ```ad-important
