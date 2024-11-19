@@ -125,11 +125,18 @@ k_{N}(j)&=\begin{cases}
 &= \mu \tau_{N}+\sigma \xi(j)\sqrt{\tau_{N}}
 \end{align}$$
 
+```ad-important
+**Definition 20.4**: Binomial Model with Random Walk
+
 Given that $t=\frac{m}{N}=m\tau_{N}$, we may write the stock price at $t$ $S_{N}(t)$ as $$\begin{align}
 S_{N}(t) &= S_{N}(0) \exp\left[\sum\limits_{j=1}^{m}(\mu \tau_{N}+\sigma \sqrt{\tau_{N}} \xi(j))\right]\\
 &= S_{N}(0) \exp\left[m\mu\tau_{N}+\sigma \sqrt{\tau_{N}}\sum\limits_{j=1}^{m}(\xi(j))\right]\\
 &= S_{N}(0) \exp\left[\mu t+\sigma w_{N}(t)\right] & m\tau_{N}=t, \text{ Definition 20.2}
 \end{align}$$
+```
+
+^3cfe2f
+
 Recall that we want to take the limit as $N \to \infty$ or equivalently as $\tau_{N} \to 0$. The above is effectively saying if we can determine $\lim_{N \to \infty}w_{N}(t)$ , we also have $\lim_{N \to \infty}S_{N}(t)$.
 
 Since we have made use of the exponential, it is convenient to compare $S_{N}(t)$ and $S_{N}(t+\tau_{N})$. We know that the **second order approximation** of the exponential function is given by $$\exp(x)=\sum\limits_{k \in \mathbb{N}\cup\{0\}}\frac{x^{k}}{k!} \approx 1+x+ \frac{x^{2}}{2}$$ when $x$ is *very small*. Then, with $t=\frac{m}{N}, m\tau_{N}$, $$\begin{align}
@@ -143,9 +150,9 @@ As we get rid of higher order terms for a small $\tau_{N}$.  We can rewrite the 
 As we have $\xi (t+\tau_{N})=w_{N}(t+\tau_{N})-w_{N}(t)$ by definition.
 
 ```ad-important
-**Definition 20.4**: The Black–Scholes model
+**Definition 20.5**: The Black–Scholes model
 
-The Central Limit Theorem will allow us to conclude the well-posedness of the **Stochastic Differential Equation** (SDE): $$dS(t)\approx S(t)\left(\mu+ \frac{1}{2}\sigma^{2}\right)dt + \sigma S(t)dW(t)$$
+The Central Limit Theorem will allow us to conclude the well-posedness of the **Stochastic Differential Equation** (SDE): $$dS(t)= S(t)\left(\mu+ \frac{1}{2}\sigma^{2}\right)dt + \sigma S(t)dW(t)$$
 where $dS(t)=S(t+dt)-S(t)$ and $dW(t)=W(t+dt)-W(t)$.
 ```
 
@@ -160,7 +167,7 @@ Here, the value $\sigma$ is the **volatility** of our price model. Under differe
 ```
 
 ```ad-important
-**Definition 20.5**: Donsker’s Theorem
+**Definition 20.6**: Donsker’s Theorem
 
 The limit $W$ of the sequence of the scaled random walks $(w_{N})_{n \in \mathbb{N}}$ exits and it is a process with the following properties:
 1. $W_{0}=0$
@@ -180,7 +187,7 @@ The process $W$ described in Donsker’s Theorem is called **Brownian Motion**.
 ```
 
 ```ad-important
-**Definition 20.6**: Properties of Black–Scholes model
+**Definition 20.7**: Properties of Black–Scholes model
 
 Assume that $\mu^{\star}$ is the expected log return associated with the **risk neutral probability measure** $\mathbb{P}^{\star}$. Then $$\mu^{\star}=r- \frac{1}{2}\sigma^{2}$$
 

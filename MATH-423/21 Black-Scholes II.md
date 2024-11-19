@@ -27,6 +27,9 @@ Let us first try to calculate $\int_{0}^{t} W_{s}dW_{s}$: $$\begin{align}
 \end{align}$$
 Thus, $$W_{t}^{2}=t+2 \int_{0}^{t}W_{s}dW_{s} \implies dW_{t}^{2}=dt+2W_{t}dW_{t}$$
 
+---
+### Itô's Formula
+
 ```ad-important
 **Definition 21.1**: Itô's Formula
 
@@ -80,8 +83,44 @@ We want to solve for $\mathbb{E}(W_{t}^{4})$. Applying Itô's formula, we have $
 Since the expectation of the stochastic integral is zero, this is $$\begin{align}
 W_{t}^{4}&= \int_{0}^{t}4W_{s}^{3} dW_{s} + \int_{0}^{t} 12W_{s}^{2}ds\\
 \mathbb{E}(W_{t}^{4}) &= \mathbb{E}\left(\int_{0}^{t}4W_{s}^{3} dW_{s}\right) + \mathbb{E}\left(\int_{0}^{t} 12W_{s}^{2}ds\right) \\
-&= 12 \int_{0}^{t} \mathbb{E}(W_{s}^{2})ds
+&= 12 \int_{0}^{t} \mathbb{E}(W_{s}^{2})ds\\
+&= 12 \int_{0}^{t}\mathbb{E}\left(\int_{0}^{t} 2W_{k}dW_{k} + \int_{0}^{t} 1 dk\right)ds\\
+&= 12 \int_{0}^{t}\mathbb{E}\left(\int_{0}^{t} 1 dk\right) ds\\
+&= 12 \frac{t^{2}}{4}\\
+&= 3t^{2}
 \end{align}$$
+
+We would've arrived at the same conclusion by leveraging properties of moments of a normal random variable ($W_{t}$).
 ```
 
+Recall that in Lecture 20 we have re-written the binomial model as ![[20 Black-Scholes I#^3cfe2f]]
+We can adapt this to the stochastic function we've studied throughout $f(t,w_{N}(t))$, where $f (t, x):= S (0)\exp(\mu t+\sigma x)$ for $t \in \mathbb{R}^{+}$ and $x \in \mathbb{R}$. Here, $\mu$ is the mean value of the **log returns** under the measure $\mathbb{P}$.
 
+We can derive the limit-model (Black-Scholes) in the form of $$dS(t)= S(t)\left(\mu+ \frac{1}{2}\sigma^{2}\right)dt + \sigma S(t)dW(t)$$
+```ad-example
+**Example**: Applying Itô in B-S 
+
+Applying Itô's formula to $f (t, x):= S (0)\exp(\mu t+\sigma x)$, we have $$\begin{align}\\
+df(t,W_{t})&= \frac{\partial f}{\partial t}(t,W_{t})dt + \frac{\partial f}{\partial W_{t}}(t,W_{t})dW_{t} + \frac{1}{2} \frac{\partial^{2} f}{\partial W_{t}^{2}}(t,W_{t})dt\\
+&= S(0)\mu \exp(\mu t + \sigma W_{t}) dt + S(0)\sigma \exp(\mu t + \sigma W_{t}) dW_{t} + \frac{1}{2} S(0) \exp(\mu t + \sigma W_{t}) \sigma^{2} dt\\
+&= S(0) \exp(\mu t + \sigma W_{t}) \left[\left(\mu + \frac{1}{2}\sigma^{2}\right)dt + \sigma dW_{t}\right]
+\end{align}$$
+
+It can thus be proven that $$S(t)=S(0) \exp(\mu t+\sigma W(t))$$ is the unique solution the problem.
+```
+
+#### Itô's Formula for Process $X$
+When the underlying process is not a Brownian motion, but a **diffusion process** $X$, we can still use Ito’s formula to write down the dynamics of $f(t, X_{t})$.
+
+```ad-important
+**Definition 21.3**: Itô's Formula, Extended
+
+Assume the process $X$ has the following dynamics: $$dX_{t}=\mu_{t} dt+\sigma_{t}dW_{t}, X_{0}=x_{0}$$
+
+Then, for every $f(t,x) \in C^{1,2}(\mathbb{R}^{+}, \mathbb{R})$, i.e., continuously differentiable in the time variable $t$ and twice continuously differentiable in the space variable $x$, the following Itô's formula holds: $$df = \left(\frac{\partial f}{\partial t} + \mu_{t} \frac{\partial f}{\partial x} + \frac{1}{2} \sigma_{t}^{2} \frac{\partial^{2} f}{\partial x^{2}}\right)dt + \sigma_{t} \frac{\partial f}{\partial x} dW_{t}$$
+```
+
+---
+### Extras
+-  [Variation of Brownian Motion](https://uregina.ca/~kozdron/Teaching/Regina/862Winter06/Handouts/quad_var_cor.pdf)
+- [Ito Integrals](https://math.nyu.edu/~goodman/teaching/DerivSec10/notes/week6.pdf)
