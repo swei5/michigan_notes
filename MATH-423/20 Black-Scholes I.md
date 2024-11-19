@@ -145,9 +145,11 @@ As we have $\xi (t+\tau_{N})=w_{N}(t+\tau_{N})-w_{N}(t)$ by definition.
 ```ad-important
 **Definition 20.4**: The Black–Scholes model
 
-The Central Limit Theorem will allow us to conclude the well-posedness of the **Stochastic Differential Equation** (SDE): $$dS(t)\approx S_{N}(t)\left(\mu+ \frac{1}{2}\sigma^{2}\right)\tau_{N} + \sigma S(t)dW(t)$$
+The Central Limit Theorem will allow us to conclude the well-posedness of the **Stochastic Differential Equation** (SDE): $$dS(t)\approx S(t)\left(\mu+ \frac{1}{2}\sigma^{2}\right)dt + \sigma S(t)dW(t)$$
 where $dS(t)=S(t+dt)-S(t)$ and $dW(t)=W(t+dt)-W(t)$.
 ```
+
+^9c7323
 
 ```ad-note
 The SDE above is the **Black-Scholes Model**. It has a unique solution $$S(t)=S(0) \exp(\mu t+\sigma W(t))$$ where $W$ is the Brownian Motion.
@@ -166,6 +168,8 @@ The limit $W$ of the sequence of the scaled random walks $(w_{N})_{n \in \mathbb
 3. For every choice $0 \le s \le t$ the increment $$W(t)-W(s) \sim \mathcal{N}(0,t-s)$$
 4. The paths of $W(t)$ are **continuous** in $t$
 ```
+
+^50b971
 
 ![[Pasted image 20241114151034.png|400]]
 
