@@ -36,3 +36,52 @@ The first and the third terms correspond to the familiar Riemann integrals seen 
 
 The second term corresponds to the Stochastic Integral w.r.t. the Brownian Motion.
 ```
+
+The third term is called the **Itô's correction**, which arises because Brownian motion $W_{t}$ has non-zero quadratic variation ($dW^{2}_{t}=dt+2W_{t}dW_{t}$). The correction is deterministic because it comes from the second derivative and represents how the variance (the *roughness* of $W_{t}$) impacts $f$.
+
+```ad-example
+**Example**: Applying Itô to $\int_{0}^{t} W_{s}dW_{s}$
+
+Let $Y_{t}=W_{t}^{2}$. Then, $$\begin{align}
+dY_{t}&= \frac{\partial }{\partial t}(W_{t}^{2})dt + \frac{\partial }{\partial W_{t}}(W_{t}^{2})dW_{t} + \frac{1}{2} \frac{\partial^{2}}{\partial W_{t}^{2}}(W_{t}^{2})dt\\
+&= 0 + 2W_{t}dW_{t} +1 dt
+\end{align}$$
+
+Thus, $$\begin{align}
+W_{t}^{2}&=\int_{0}^{t} 2W_{s}dW_{s} + \int_{0}^{t} 1 ds\\
+&\implies \int_{0}^{t} W_{s}dW_{s} = \frac{1}{2}W_{t}^{2}+ \frac{1}{2}
+\end{align} $$
+
+The exact solution we got from the earlier computation.
+
+Note that in differentiating, we treat $W_{t}$ as fixed w.r.t. $t$.
+```
+
+```ad-important
+**Definition 21.2**: Martingality of Stochastic Integrals
+
+Assume that the function $g(t,x)$ does not grow faster than the **exponential function**. Then, the process of stochastic integrals **with respect to the Brownian Motion**, i.e. $$\int_{0}^{t} g(s,W_{s})dW_{s}, t \in \mathbb{R}^{+}$$
+
+is an $\mathbb{F}^{W}$-martingale.
+
+This implies that
+- Its expected value at any time $t$ equals its **initial value** (which is typically zero)
+- It exhibits no *drift* — its future value is purely determined by the **stochastic noise**
+```
+
+Here the filtration $\mathbb{F}^{W}:=(\mathcal{F}_{t}^{W})_{t\in \mathbb{R}^{+}}$ means the **information we can collect** from the Brownian Motion up to time $t$. 
+
+In other words, we have that $$\mathbb{E}\left[\int_{0}^{t} g(s,W_{s})dW_{s}\right]=\int_{0}^{0}g(s,W_{s})dW_{s}=0, t \in \mathbb{R}^{+}$$
+```ad-example
+**Example**: Solving for $\mathbb{E}(W_{t}^{4})$ using Martingality
+
+We want to solve for $\mathbb{E}(W_{t}^{4})$. Applying Itô's formula, we have $$d(W_{t}^{4})=4W_{t}^{3} dW_{t}+12W_{t}^{2}dt$$
+
+Since the expectation of the stochastic integral is zero, this is $$\begin{align}
+W_{t}^{4}&= \int_{0}^{t}4W_{s}^{3} dW_{s} + \int_{0}^{t} 12W_{s}^{2}ds\\
+\mathbb{E}(W_{t}^{4}) &= \mathbb{E}\left(\int_{0}^{t}4W_{s}^{3} dW_{s}\right) + \mathbb{E}\left(\int_{0}^{t} 12W_{s}^{2}ds\right) \\
+&= 12 \int_{0}^{t} \mathbb{E}(W_{s}^{2})ds
+\end{align}$$
+```
+
+
