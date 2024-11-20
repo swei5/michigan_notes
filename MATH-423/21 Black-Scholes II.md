@@ -72,6 +72,8 @@ This implies that
 - It exhibits no *drift* — its future value is purely determined by the **stochastic noise**
 ```
 
+^a962f7
+
 Here the filtration $\mathbb{F}^{W}:=(\mathcal{F}_{t}^{W})_{t\in \mathbb{R}^{+}}$ means the **information we can collect** from the Brownian Motion up to time $t$. 
 
 In other words, we have that $$\mathbb{E}\left[\int_{0}^{t} g(s,W_{s})dW_{s}\right]=\int_{0}^{0}g(s,W_{s})dW_{s}=0, t \in \mathbb{R}^{+}$$
