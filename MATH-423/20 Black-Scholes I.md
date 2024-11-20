@@ -47,7 +47,7 @@ Then, we can use the estimator for the standard deviation of $u_{j}$: $$s:=\sqrt
 ```
 
 #### Expectations, Variance of Log Returns
-Now assume that we have made some analysis and we have estimated that $$\mathbb{E}(k)=\mu$$ and $$\text{Var}(k)=\sigma^{2}$$ Then, given the precious discussion, we have immediately that $$\mathbb{E}(k_{N}(1))=\mu\tau_{N}$$ and $$\text{Var}(k_{N}(1))=\sigma^{2}\tau_{N}$$
+Now assume that we have made some analysis and we have estimated that $$\mathbb{E}(k)=\mu$$ and $$\text{Var}(k)=\sigma^{2}$$ Then, given the previous discussion, we have immediately that $$\mathbb{E}(k_{N}(1))=\mu\tau_{N}$$ and $$\text{Var}(k_{N}(1))=\sigma^{2}\tau_{N}$$
 The **one-step log return** under the binomial tree model can be expressed as $$\ln (1+u_{N})=\mu \tau_{N}+\sigma \sqrt{\tau_{N}}$$ and $$\ln (1+u_{d})=\mu \tau_{N}-\sigma \sqrt{\tau_{N}}$$
 
 ```ad-note
