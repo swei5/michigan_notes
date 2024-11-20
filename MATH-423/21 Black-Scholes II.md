@@ -117,7 +117,13 @@ When the underlying process is not a Brownian motion, but a **diffusion process*
 
 Assume the process $X$ has the following dynamics: $$dX_{t}=\mu_{t} dt+\sigma_{t}dW_{t}, X_{0}=x_{0}$$
 
-Then, for every $f(t,x) \in C^{1,2}(\mathbb{R}^{+}, \mathbb{R})$, i.e., continuously differentiable in the time variable $t$ and twice continuously differentiable in the space variable $x$, the following Itô's formula holds: $$df = \left(\frac{\partial f}{\partial t} + \mu_{t} \frac{\partial f}{\partial x} + \frac{1}{2} \sigma_{t}^{2} \frac{\partial^{2} f}{\partial x^{2}}\right)dt + \sigma_{t} \frac{\partial f}{\partial x} dW_{t}$$
+Then, for every $f(t,x) \in C^{1,2}(\mathbb{R}^{+}, \mathbb{R})$, i.e., continuously differentiable in the time variable $t$ and twice continuously differentiable in the space variable $x$, the following Itô's formula holds: $$df(t,X_{t}) = \left(\frac{\partial f(t,X_{t})}{\partial t} + \mu_{t} \frac{\partial f(t,X_{t})}{\partial x} + \frac{1}{2} \sigma_{t}^{2} \frac{\partial^{2} f(t,X_{t})}{\partial x^{2}}\right)dt + \sigma_{t} \frac{\partial f(t,X_{t})}{\partial x} dW_{t}$$
+
+Alternatievly, we can write the above as $$df(t, X_{t})=\frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x} dX_{t} + \frac{1}{2} \frac{\partial^{2}f}{\partial x^{2}}(dX_{t})^{2}$$
+where $(dX_{t})^{2}$ is calculated using the following rule:
+1. $(dt)^{2}=0$
+2. $dt dW_{t} = 0$
+3. $(dW_{t})^{2}=dt$
 ```
 
 ---
