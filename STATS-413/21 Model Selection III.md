@@ -83,10 +83,10 @@ For prediction, more data is used for training, since ultimately it is the algor
 
 ---
 ### Regularized Regression
-Rather than running ordinary least squares to estimate $\beta$: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)^{2}$$ we’ve considered methods that penalize complexity, which we quantified as the number of predictor variables $m$ in the chosen model.
+Rather than running ordinary least squares to estimate $\beta$: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}\left(y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)\right)^{2}$$ we’ve considered methods that penalize complexity, which we quantified as the number of predictor variables $m$ in the chosen model.
 - Again, $m=\sum_{j=1}^{p}\mathbb{1}(\hat{\beta}_{j} \ne 0)$
 
-One way to penalize model complexity is through considering best subset selection, through an optimization problem of the form $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)^{2}+\lambda \sum\limits_{j=1}^{p} \mathbb{1}(\tilde{\beta} \ne 0)$$ whereby we try to balance **in-sample performance** (first term) while weighing the desire to **avoid overfitting** (second term).
+One way to penalize model complexity is through considering **best subset selection**, through an optimization problem of the form $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}\left(y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)\right)^{2}+\lambda \sum\limits_{j=1}^{p} \mathbb{1}(\tilde{\beta} \ne 0)$$ whereby we try to balance **in-sample performance** (first term) while weighing the desire to **avoid overfitting** (second term).
 
 ```ad-note
 - [[19 Model Selection I#^a6739d|Mallows' Cp]] is equivalent to the above approach with $\lambda = 2$
@@ -103,11 +103,11 @@ Our remedy thus far are to consider iterative model building approaches that are
 - [[19 Model Selection I#^7398ef|Forward stepwise]]: start with only intercept, iteratively increase model size
 - [[19 Model Selection I#^bdb940|Backwards elimination]]: start with the full model, iteratively decrease model size
 
-An alternative approach is rather thinking of greedy heuristics to best subset (forward stepwise, backwards elimination), we could instead consider changing the form of our complexity penalty: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)^{2}+\lambda \sum\limits_{j=1}^{p} |\tilde{\beta_{j}}|^{0}$$ where we define $$|\tilde{\beta}_{j}|^{0}=\begin{cases}
+An alternative approach is rather thinking of greedy heuristics to best subset (forward stepwise, backwards elimination), we could instead consider changing the form of our complexity penalty: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}\left(y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)\right)^{2}+\lambda \sum\limits_{j=1}^{p} |\tilde{\beta_{j}}|^{0}$$ where we define $$|\tilde{\beta}_{j}|^{0}=\begin{cases}
 0 & \tilde{\beta}_{j}=0 \\
 1 & \text{otherwise}
 \end{cases}$$
-In general, this method takes the form: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)^{2}+\lambda \sum\limits_{j=1}^{p} |\tilde{\beta_{j}}|^{q}, q >0$$
+In general, this method takes the form: $$\hat{\beta}=\arg \min \limits_\tilde{\beta}\sum\limits_{i=1}^{n}\left(y_{i}-\left(\tilde{\beta_0}+\sum\limits_{j=1}^{p}\tilde{\beta}_{j}x_{ij}\right)\right)^{2}+\lambda \sum\limits_{j=1}^{p} |\tilde{\beta_{j}}|^{q}, q >0$$
 When $q=1$, this is called a **Lasso Regression**; when $q=2$, it is called a **[[8 Regression, Regularization#^e607e4|Ridge Regression]]**. These are the most commonly used regularized regression.
 
 Importantly, for $q\ge 1$, the objective function is **convex** in $\tilde{\beta}$
@@ -123,3 +123,5 @@ As $q$ tends towards zero $|\tilde{\beta}_{1}|^{q}+|\tilde{\beta}_{2}|^{q}=1$, b
 - For $q>1$, boundaries of region are smooth as they intersect the axes
 
 ![[Pasted image 20241116202050.png|400]]
+
+For $q\ge 1$, it is computationally feasible; otherwise it is computationally intractable.

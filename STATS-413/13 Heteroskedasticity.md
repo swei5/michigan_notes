@@ -104,6 +104,8 @@ Let $\hat{\beta}_{WLS}$ be the weighted least squares solution. Suppose the abov
 This **justifies** the usage of $\hat{\beta}_{WLS}$ under heteroskedasticity.
 ```
 
+^8fffb5
+
 ```ad-note
 **Proof of Definition 13.4**
 
