@@ -23,7 +23,7 @@ Let us first try to calculate $\int_{0}^{t} W_{s}dW_{s}$: $$\begin{align}
 \int_{0}^{t} W_{s}dW_{s} &= \lim_{n \to \infty} \sum\limits_{i=1}^{n} W_{t_{i-1}}(W_{t_{i}}-W_{t_{i-1}})\\
 
 &= \lim_{n \to \infty} \frac{1}{2} \left(\sum\limits_{i=1}^{n} W_{t_{i}}^{2}-W_{t_{i-1}}^{2}\right) + \frac{1}{2}  \left(\sum\limits_{i=1}^{n} (W_{t_{i}}-W_{t_{i-1}})^{2}\right)  \\
-&\approx \frac{1}{2}(W_{t_{n}}^{2}-W_{t_{0}}^{2})- \frac{1}{2}\left(\sum dt\right)
+&\approx \frac{1}{2}(W_{t_{n}}^{2}-W_{t_{0}}^{2})- \frac{1}{2}\left(\sum dt\right) & \text{ from quadratic variation}
 \end{align}$$
 Thus, $$W_{t}^{2}=t+2 \int_{0}^{t}W_{s}dW_{s} \implies dW_{t}^{2}=dt+2W_{t}dW_{t}$$
 
