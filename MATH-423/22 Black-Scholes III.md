@@ -60,7 +60,7 @@ We can calculate the expectation with respect to the martingale measure $\mathbb
 S(T) >X &\iff S(0)\exp\left[(r- \frac{1}{2}\sigma^{2})T+\sigma W^\star_T\right]>X\\
 &\iff W_{T}^{\star} > \frac{\ln \left(\frac{X}{S(0)}\right)-(r- \frac{1}{2}\sigma^{2})T}{\sigma}\\
 &\iff N >\frac{\ln \left(\frac{X}{S(0)}\right)-(r- \frac{1}{2}\sigma^{2})T}{\sigma \sqrt{T}}
-\end{align}$$ where in the last equivalence we used $W^{\star}_{t} \sim \mathcal{N}(0,t)$ under the measure $\mathbb{P}^{\star}$. For notational convenience we define $$d_{\pm}= \frac{\ln \left(\frac{S(0)}{X}\right)-(r\pm \frac{1}{2}\sigma^{2})T}{\sigma \sqrt{T}}$$
+\end{align}$$ where in the last equivalence we used $W^{\star}_{t} \sim \mathcal{N}(0,t)$ under the measure $\mathbb{P}^{\star}$. For notational convenience we define $$d_{\pm}= \frac{\ln \left(\frac{S(0)}{X}\right)+(r\pm \frac{1}{2}\sigma^{2})T}{\sigma \sqrt{T}}$$
 Observe that we just worked on the event $\mathbb{P}(S (T)>X)=\mathbb{P}^{\star}(N>-d_{-})$. Now we can derive the price $$\begin{align}
 C_{E}(0)&=\mathbb{E}^{\star}[e^{-rT}(S(T)-X)^{+}]\\
 &= \mathbb{E}^{\star}[(S(T)e^{-rT}-Xe^{-rT}){\mathbb{1}_{(S(T)>X)}}]\\
@@ -70,7 +70,7 @@ C_{E}(0)&=\mathbb{E}^{\star}[e^{-rT}(S(T)-X)^{+}]\\
 &= \frac{S(0)}{\sqrt{2\pi}}  \int_{-d_{-}}^{\infty} \exp\left[- \frac{(x-\sigma \sqrt{T})^{2}}{2}\right]dx - Xe^{-rT} [1-\Phi(-d_{-})]
 \end{align}$$ where $\Phi$ is the cumulative distribution function of the standard normal distribution.
 
-In order to compute the first integral we will use the change of variable $y=x-\sigma \sqrt{T}$, for which we have $dy=dx$ and $$-d_{-}-\sigma\sqrt{T}=\frac{\ln \left(\frac{S(0)}{X}\right)+(r- \frac{1}{2}\sigma^{2})T}{\sigma \sqrt{T}}-\frac{\sigma^{2}T}{\sigma\sqrt{T}}=-d_{+}$$ therefore we have $$\begin{align}
+In order to compute the first integral we will use the change of variable $y=x-\sigma \sqrt{T}$, for which we have $dy=dx$ and $$-d_{-}-\sigma\sqrt{T}=\frac{\ln \left(\frac{X}{S(0)}\right)-(r- \frac{1}{2}\sigma^{2})T}{\sigma \sqrt{T}}-\frac{\sigma^{2}T}{\sigma\sqrt{T}}=-d_{+}$$ therefore we have $$\begin{align}
 C_{E}(0) &= \frac{S(0)}{\sqrt{2\pi}}  \int_{-d_{-}}^{\infty} \exp\left[- \frac{(x-\sigma \sqrt{T})^{2}}{2}\right]dx - Xe^{-rT} [1-\Phi(-d_{-})]\\
 &= \frac{S(0)}{\sqrt{2\pi}}  \int_{-d_{+}}^{\infty} \exp\left[- \frac{y^{2}}{2}\right]dy - Xe^{-rT} \Phi(d_{-}) & \text{ symmetry of } \Phi\\ 
 &= S(0) [1-\Phi(-d_{+})] -Xe^{-rT} \Phi(d_{-})\\
