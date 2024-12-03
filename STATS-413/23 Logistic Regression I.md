@@ -83,14 +83,14 @@ We know $\{y_{i}\}$ and $\{x_{i}\}$ from our data, but $\beta$ are unknown. This
 
 While this formulation is new, it turns out many familiar estimators can be motivated as maximum likelihood estimators under specific distributional assumptions.
 1. If $y_{1},\cdots, y_{n}$ are iid Bernoulli with unknown probability of success $p$, then $\hat{p}$, the fraction of ones in the data, is the MLE
-2. If $y_{1},\cdots, y_{n}$ are iid Normal with unknown mean $\mu$ and unknown standard deviation $\sigma$, then the MLE for $\mu$ is \bar{y}
+2. If $y_{1},\cdots, y_{n}$ are iid Normal with unknown mean $\mu$ and unknown standard deviation $\sigma$, then the MLE for $\mu$ is $\bar{y}$
 3. Under the stronger linear model with $\varepsilon_{i}$ iid with mean zero and standard deviation $\sigma_{\varepsilon}$, then the MLEs for $(\beta_{0},\beta_{1},\cdots, \beta_{p})$ are the OLS coefficients, $\hat{\beta}=(X^{T}X)^{-1}X^{T}y$
 ```
 
 #### Derivation of Coefficients
 First, we define $L(\beta | y,x)$ as $$L(\tilde{\beta}|y,x)=\prod_{i=1}^{n} \left(\frac{\exp(x_{i}^{T}\beta)}{1+\exp(x_{i}^{T}\beta)}\right)^{y_{i}}\left(\frac{1}{1+\exp(x_{i}^{T}\beta)}\right)^{1-y_{i}}$$
 We find the coefficients $\{\hat{\beta}_{j}\}$ through the following optimization problem $$\arg \max_{\tilde{\beta}} L(\tilde{\beta}|y,x)=\arg\max_{\tilde{\beta}} \log (L(\tilde{\beta}|y,x))$$ or, equivalently due to monotonicity of the logarithm $$\arg \min_{\tilde{\beta}}-\log (L(\tilde{\beta}|y,x))$$
-In practice, most maximum likelihood estimators are actually found by **minimizing the negative** of the log likelihood. Define $p_{\tilde{\beta}}(x_{i})$ as what the probability would be given $x_{i}$ for a fixed value of $\tilde{\beta}$ $$p_{\tilde{\beta}}(x_{i})= \frac{\exp(\tilde{\beta}_{0}+\sum_{i=1}^{p}\tilde{\beta}_{j}x_{ij})}{1+\exp(\tilde{\beta}_{0}+\sum_{i=1}^{p}\tilde{\beta}_{j}x_{ij})}$$ Plugging that into the likelihood, the likelihood becomes $$L(\tilde{\beta}|y,x)=\prod_{i=1}^{n}(p_{\tilde{\beta}}(x_{i}))^{y_{i}}(1-p_{\tilde{\beta}}(x_{i}))^{1-y_{i}}$$ Taking the negative of the log likelihood: $$-\log(L(\tilde{\beta}|y,x))=\sum\limits_{i=1}^{n} -y_{i}\log(p_{\tilde{\beta}}(x_{i}))-(1-y_{i})\log(1-p_{\tilde{\beta}}(x_{i}))$$
+**In practice**, most maximum likelihood estimators are actually found by **minimizing the negative** of the log likelihood (log loss). Define $p_{\tilde{\beta}}(x_{i})$ as what the probability would be given $x_{i}$ for a fixed value of $\tilde{\beta}$ $$p_{\tilde{\beta}}(x_{i})= \frac{\exp(\tilde{\beta}_{0}+\sum_{i=1}^{p}\tilde{\beta}_{j}x_{ij})}{1+\exp(\tilde{\beta}_{0}+\sum_{i=1}^{p}\tilde{\beta}_{j}x_{ij})}$$ Plugging that into the likelihood, the likelihood becomes $$L(\tilde{\beta}|y,x)=\prod_{i=1}^{n}(p_{\tilde{\beta}}(x_{i}))^{y_{i}}(1-p_{\tilde{\beta}}(x_{i}))^{1-y_{i}}$$ Taking the negative of the log likelihood: $$-\log(L(\tilde{\beta}|y,x))=\sum\limits_{i=1}^{n} -y_{i}\log(p_{\tilde{\beta}}(x_{i}))-(1-y_{i})\log(1-p_{\tilde{\beta}}(x_{i}))$$
 
 ```ad-important
 **Definition 23.2**: Log Loss 
@@ -122,3 +122,18 @@ At the very least, we can interpret the sign. Positive sign - positive relations
 ```
 
 The hypothesis tests assume correctness of the likelihood function. That is $$p(y|x)=\prod_{i=1}^{n} \left(\frac{\exp(x_{i}^{T}\beta)}{1+\exp(x_{i}^{T}\beta)}\right)^{y_{i}}\left(\frac{1}{1+\exp(x_{i}^{T}\beta)}\right)^{1-y_{i}}$$
+```ad-example
+**Example**: Multiple Logistic Regression
+
+Here’s the logistic regression fit for our osteoporosis data using all available covariates.
+
+![[Pasted image 20241203130406.png|400]]
+```
+
+### Distribution for $\hat{\beta}_{j}$
+As $n \to \infty$, under the assumption that the likelihood has been properly specified, $$\begin{align}
+n(\text{Var}(\hat{\beta}_{j}) - \text{se}(\hat{\beta}_{j})^{2}) \xrightarrow{p} 0\\
+\frac{\hat{\beta}_{j}-\beta_{j}}{\text{se}(\hat{\beta_{j}})} \xrightarrow{d} N(0,1)
+\end{align}$$
+As a result, the distribution of $z$ -statistic is **standard normal**.
+- Play analogous role as is linear regression: standard errors estimate the standard deviation of $\hat{\beta}_{j}$

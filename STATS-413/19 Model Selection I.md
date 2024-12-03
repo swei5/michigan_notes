@@ -160,6 +160,9 @@ The above may work out and produce an optimal solution for a relatively small nu
 
 ---
 ### Stepwise Regression
+
+^4ee7e8
+
 An instinct may be to employ an **iterative model** building schema to explore the set of all possible models, just like we did with the [[#Hypothesis Test-Based Methods|hypothesis test based approaches]]. This is common in practice, known as **stepwise regression**, with three contenders:
 1. Forward Selection ^cb2fc5
 2. Backwards Elimination ^f29005
