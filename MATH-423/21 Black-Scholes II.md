@@ -111,6 +111,8 @@ df(t,W_{t})&= \frac{\partial f}{\partial t}(t,W_{t})dt + \frac{\partial f}{\part
 It can thus be proven that $$S(t)=S(0) \exp(\mu t+\sigma W(t))$$ is the unique solution the problem.
 ```
 
+^7a3abc
+
 #### Itô's Formula for Process $X$
 When the underlying process is not a Brownian motion, but a **diffusion process** $X$, we can still use Ito’s formula to write down the dynamics of $f(t, X_{t})$.
 
@@ -119,10 +121,10 @@ When the underlying process is not a Brownian motion, but a **diffusion process*
 
 Assume the process $X$ has the following dynamics: $$dX_{t}=\mu_{t} dt+\sigma_{t}dW_{t}, X_{0}=x_{0}$$
 
-Then, for every $f(t,x) \in C^{1,2}(\mathbb{R}^{+}, \mathbb{R})$, i.e., continuously differentiable in the time variable $t$ and twice continuously differentiable in the space variable $x$, the following Itô's formula holds: $$df(t,X_{t}) = \left(\frac{\partial f(t,X_{t})}{\partial t} + \mu_{t} \frac{\partial f(t,X_{t})}{\partial x} + \frac{1}{2} \sigma_{t}^{2} \frac{\partial^{2} f(t,X_{t})}{\partial x^{2}}\right)dt + \sigma_{t} \frac{\partial f(t,X_{t})}{\partial x} dW_{t}$$
-
-Alternatievly, we can write the above as $$df(t, X_{t})=\frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x} dX_{t} + \frac{1}{2} \frac{\partial^{2}f}{\partial x^{2}}(dX_{t})^{2}$$
-where $(dX_{t})^{2}$ is calculated using the following rule:
+Then, for every $f(t,x) \in C^{1,2}(\mathbb{R}^{+}, \mathbb{R})$, i.e., continuously differentiable in the time variable $t$ and twice continuously differentiable in the space variable $x$, the following Itô's formula holds: $$\begin{align}df(t,X_{t})&= \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}dX_{t} + \frac{1}{2} \frac{\partial ^{2} f}{\partial x^{2}} dX_{t}^{2}\\
+&= \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}(\mu_{t} dt+\sigma_{t}dW_{t})+\frac{1}{2} \frac{\partial ^{2} f}{\partial x^{2}}(\mu_{t} dt+\sigma_{t}dW_{t})\\
+&= \left(\frac{\partial f(t,X_{t})}{\partial t} + \mu_{t} \frac{\partial f(t,X_{t})}{\partial x} + \frac{1}{2} \sigma_{t}^{2} \frac{\partial^{2} f(t,X_{t})}{\partial x^{2}}\right)dt + \sigma_{t} \frac{\partial f(t,X_{t})}{\partial x} dW_{t}
+\end{align}$$ since as $dt \to 0, dt^{2}$ and $dt dW_{t}$ will tend to zero faster than $dt$ and $dW_{t}^{2}$ and $(dX_{t})^{2}=dt$ is calculated using the following rule:
 1. $(dt)^{2}=0$
 2. $dt dW_{t} = 0$
 3. $(dW_{t})^{2}=dt$
@@ -130,5 +132,27 @@ where $(dX_{t})^{2}$ is calculated using the following rule:
 
 ---
 ### Extras
--  [Variation of Brownian Motion](https://uregina.ca/~kozdron/Teaching/Regina/862Winter06/Handouts/quad_var_cor.pdf)
+- [Variation of Brownian Motion](https://uregina.ca/~kozdron/Teaching/Regina/862Winter06/Handouts/quad_var_cor.pdf)
 - [Ito Integrals](https://math.nyu.edu/~goodman/teaching/DerivSec10/notes/week6.pdf)
+- [Derivation of BSM](https://dergipark.org.tr/en/download/article-file/1838280)
+
+```ad-note
+**Black-Scholes Equation (B-S PDE)**
+
+If $S$ is a stock price that follows an Itô's Process, then the value of an option, $f$, of $S$ is quantified by the following equation: $$\frac{\partial f}{\partial t}+r S \frac{\partial f}{\partial S}+ \frac{1}{2} \frac{\partial^{2} f}{\partial x^{2}}\sigma^{2}S^{2}=rf$$
+
+To show this, suppose $f$ is a twice differentiable function of the price of a call option or other derivative contingent on $S$. Since $S$ follows an Itô's Process, $S$ has a Itô's differential equation of $$dS=\mu Sdt + \sigma S dz$$
+
+Using Itô's Lemma we can write $df$ as $$df=\left(\mu S \frac{\partial f}{\partial S}+\frac{\partial f}{\partial t} + \frac{1}{2} \frac{\partial ^{2} f}{\partial S^{2}} \sigma^{2}S^{2}\right)dt + \frac{\partial f}{\partial S}\sigma S dz$$
+
+Notice how $\mu$ and $\sigma$ are no longer contingent on $t$, but are contingent on $S$. We can write the above discretely over a time period $\Delta t$ as $$\Delta S = \mu S \Delta t+ \sigma S \Delta z$$ and $$\Delta f = \left(\mu S \frac{\partial f}{\partial S}+\frac{\partial f}{\partial t} + \frac{1}{2} \frac{\partial ^{2} f}{\partial S^{2}} \sigma^{2}S^{2}\right)\Delta t+ \frac{\partial f}{\partial S}\sigma S \Delta z$$
+
+Now $S$ and $f$ both follow the same Itô's Process. Thus, if we select a portfolio, we can eliminate the Itô's Process and effectively price an option. The portfolio we select will consist of short $1$ derivative and long $\frac{\delta f}{\delta S}$ shares of stock. It will become clear shortly why we select this portfolio.
+
+We define $Pi$ as the value of our portfolio. By definition, $$\Pi = -f + \frac{\partial f}{\partial S} S$$, which takes on the discrete version of $$\Delta \Pi = -\Delta f + \frac{\partial f}{\partial S} \Delta S$$
+
+Subbing in $\Delta f$ and $\Delta S$ that were calculated above, we get $$\Delta \Pi = -\frac{\partial f}{\partial t} \Delta t - \frac{1}{2} \frac{\partial^{2} f}{\partial S^{2}} \sigma^{2} S^{2} \Delta t$$ Factoring out a $\Delta t$, $$\Delta \Pi = \left(-\frac{\partial f}{\partial t}- \frac{1}{2} \frac{\partial^{2} f}{\partial S^{2}} \sigma^{2} S^{2}\right)\Delta t$$ 
+
+Without a $\Delta z$ term (stochastic variable), this portfolio is effectively **riskless** during the time period $\Delta t$. Since there are **no arbitrage opportunities**, security trading is continuous and all securities **share the same short term constant interest rate**, our portfolio we have created will earn instantaneous rates of return over the time period $\Delta t$. Thus we can write $\Delta \Pi$ as $$\Delta \Pi = r\Pi \Delta t$$ 
+Then by combining the above we have $$\left(-\frac{\partial f}{\partial t}- \frac{1}{2} \frac{\partial^{2} f}{\partial S^{2}} \sigma^{2} S^{2}\right)\Delta t= r\left(-f + \frac{\partial f}{\partial S} S\right)\Delta t$$
+```

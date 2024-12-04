@@ -154,6 +154,8 @@ As we have $\xi (t+\tau_{N})=w_{N}(t+\tau_{N})-w_{N}(t)$ by definition.
 
 The Central Limit Theorem will allow us to conclude the well-posedness of the **Stochastic Differential Equation** (SDE): $$dS(t)= S(t)\left(\mu+ \frac{1}{2}\sigma^{2}\right)dt + \sigma S(t)dW(t)$$
 where $dS(t)=S(t+dt)-S(t)$ and $dW(t)=W(t+dt)-W(t)$.
+
+The derivation of this is seen [[21 Black-Scholes II#^7a3abc|here]] later.
 ```
 
 ^9c7323

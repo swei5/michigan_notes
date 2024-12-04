@@ -42,7 +42,7 @@ Therefore, $tilde{S}(t) = \tilde{S}(0)+\int_{0}^{t} \sigma g(s, W_{s}^{\star}) d
 Girsanov’s Theorem describes the relationship between the processes $W$ and $W^{\star}$: $$W^{\star}_{t}=W_{t}+\frac{\mu - r + \frac{1}{2} \sigma^{2}}{\sigma} t$$
 
 Thus, 
-- The information $\mathbb{F}^{{W}^{\star}}$ and $\mathbb{F}^{W}$ are the same: if we know all the history of the process $W$ up to time $t$, then we also know what happened to the process $W^{\star}$ up to time tand vice versa
+- The information $\mathbb{F}^{{W}^{\star}}$ and $\mathbb{F}^{W}$ are the same: if we know all the history of the process $W$ up to time $t$, then we also know what happened to the process $W^{\star}$ up to time $t$ and vice versa
 - The process $W$ is a Brownian Motion and martingale under the measure $\mathbb{P}$, but **NOT** under the measure $\mathbb{P}^{\star}$
 - The process $W^{\star}$ is a Brownian Motion and martingale under the measure $\mathbb{P}^{\star}$, but **NOT** under the measure $\mathbb{P}$
 ```
@@ -84,7 +84,7 @@ One can follow similar arguments for the arbitrary time $t$ and derive a result 
 The price at time $t \in [0,T)$ of the European call with strike price $X$ and exercise time $T$ is given by $$C_{E}(t)=S(t) \Phi(d_{+}(t)) -Xe^{-r(T-t)} \Phi(d_{-}(t))$$ where $$d_{\pm}(t):=\frac{\ln \left(\frac{S(t)}{X}\right)-(r\pm \frac{1}{2}\sigma^{2})(T-t)}{\sigma \sqrt{T-t}}$$
 ```
 
-Use Put–Call Parity, we may derive that the price at time $t$ of the European put with strike price $X$ and exercise time $T$ is given by $$P_{E}(t)=Xe^{-r(T-t)}\Phi(-d_{-}(t))-S(t)\Phi(-d_{+}(t))$$
+Use Put–Call Parity, we may derive that the price at time $t$ of theEuropean put with strike price $X$ and exercise time $T$ is given by $$P_{E}(t)=Xe^{-r(T-t)}\Phi(-d_{-}(t))-S(t)\Phi(-d_{+}(t))$$
 In general, for a European option $D$ with payoff function $g (S (T))$ at the maturity time $T$, its value at $t \in [0,T]$ is given by $$D(T)=V(t,S(t))$$ where $V(t,x)$ is a **solution** to the Black–Scholes Partial Differential Equation $$\frac{\partial V}{\partial t}(t,x)+ \frac{1}{2}\sigma^{2} x^{2} \frac{\partial^{2}V}{\partial x^{2}}(t,x) + rx \partial \frac{\partial V}{\partial x}(t,x)-rV(t,x)=0$$ and the boundary condition $V(T,x)=g(x)$.
 
 There is a replicating portfolio consisting of $x(t)$ shares of $S(t)$ and $y(t)$ units of risk-free assets $A(t)=A(0)e^{rt}$, namely $D(t)=x(t)S(t)+y(t)A(t)$, where $$\begin{cases}
