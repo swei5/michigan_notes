@@ -135,3 +135,20 @@ We could calculate Greeks once we have the precise stock model. Then, for small 
 From this we see that, in order to make the value of the portfolio **insensitive to small changes in certain variable**(s), we need to neutralize the corresponding Greek(s) of the portfolio.
 
 For example, to hedge against small volatility movements we should construct a vega-neutral portfolio, with vega of the portfolio equal to zero.
+
+```ad-summary
+**Options Greeks for European Calls, closed forms under BSM**
+- **Delta**: $\frac{\partial D}{\partial S(t)}=\Delta_{C_{E}}(t)= \Phi(d_{+}(t))$
+- **Gamma**: $\frac{\partial^{2} D}{\partial S(t)^{2}}=\Gamma_{C_{E}}(t)= \frac{1}{S(t)\sigma\sqrt{2\pi(T-t)}}\exp(-\frac{1}{2}d_{+}^{2}(t))$
+- **Theta**: $\frac{\partial D}{\partial t}=\Theta_{C_{E}}(t)= - \frac{S(t)\sigma}{2 \sqrt{2\pi (T-t)}} \exp\left(- \frac{1}{2} d_{+}^{2}(t)\right)- rXe^{-r(T-t)}\Phi(d_{-}(t))$
+- **Vega**: $\frac{\partial D}{\partial \sigma}=\nu_{C_{E}}(t)=\frac{S(t)\sqrt{T-t}}{\sqrt{2\pi}}\exp\left(- \frac{1}{2} d_{+}^{2}(t)\right)$
+- **Rho**: $\frac{\partial D}{\partial r}=\rho_{C_{E}}(t)=(T-t)Xe^{-r(T-t)}\Phi(d_{-}(t))$
+
+Greeks are functions of $S(t), t, \sigma, r$, but we write $(t)$ for short.
+```
+
+The Greeks of European put can be calculated similarly by using the Black-Scholes formula or the **Put-Call Parity**.
+
+```ad-note
+In general, according to the Black-Scholes PDE, the price $D$ of any European derivative security satisfies the following equation $$\frac{\partial D}{\partial t}+rS \frac{\partial D}{\partial S}+ \frac{1}{2} \sigma^{2}S^{2} \frac{\partial ^{2}D}{\partial S^{2}}=rD$$
+```
