@@ -155,4 +155,8 @@ Subbing in $\Delta f$ and $\Delta S$ that were calculated above, we get $$\Delta
 
 Without a $\Delta z$ term (stochastic variable), this portfolio is effectively **riskless** during the time period $\Delta t$. Since there are **no arbitrage opportunities**, security trading is continuous and all securities **share the same short term constant interest rate**, our portfolio we have created will earn instantaneous rates of return over the time period $\Delta t$. Thus we can write $\Delta \Pi$ as $$\Delta \Pi = r\Pi \Delta t$$ 
 Then by combining the above we have $$\left(-\frac{\partial f}{\partial t}- \frac{1}{2} \frac{\partial^{2} f}{\partial S^{2}} \sigma^{2} S^{2}\right)\Delta t= r\left(-f + \frac{\partial f}{\partial S} S\right)\Delta t$$
+Through some algebraic manipulation we end up with $$\frac{\partial f}{\partial t}+r S \frac{\partial f}{\partial S}+ \frac{1}{2} \frac{\partial^{2} f}{\partial x^{2}}\sigma^{2}S^{2}=rf$$
 ```
+
+^db5363
+

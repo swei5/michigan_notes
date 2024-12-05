@@ -150,5 +150,15 @@ Greeks are functions of $S(t), t, \sigma, r$, but we write $(t)$ for short.
 The Greeks of European put can be calculated similarly by using the Black-Scholes formula or the **Put-Call Parity**.
 
 ```ad-note
-In general, according to the Black-Scholes PDE, the price $D$ of any European derivative security satisfies the following equation $$\frac{\partial D}{\partial t}+rS \frac{\partial D}{\partial S}+ \frac{1}{2} \sigma^{2}S^{2} \frac{\partial ^{2}D}{\partial S^{2}}=rD$$
+One can check that these Greeks relate with each other as: $$\frac{\partial D}{\partial t}+rS \frac{\partial D}{\partial S}+ \frac{1}{2} \sigma^{2}S^{2} \frac{\partial ^{2}D}{\partial S^{2}}=rD$$
+
+Note that this is exactly what [[21 Black-Scholes II#^db5363|Black-Scholes PDE]] is about.
+```
+
+^93c6e0
+
+```ad-example
+**Example**: Delta Neutral Portfolio
+
+![[Pasted image 20241203223642.png|500]]
 ```
