@@ -81,7 +81,7 @@ One can follow similar arguments for the arbitrary time $t$ and derive a result 
 ```ad-important
 **Definition 22.2**: Black–Scholes formula for the European call
 
-The price at time $t \in [0,T)$ of the European call with strike price $X$ and exercise time $T$ is given by $$C_{E}(t)=S(t) \Phi(d_{+}(t)) -Xe^{-r(T-t)} \Phi(d_{-}(t))$$ where $$d_{\pm}(t):=\frac{\ln \left(\frac{S(t)}{X}\right)-(r\pm \frac{1}{2}\sigma^{2})(T-t)}{\sigma \sqrt{T-t}}$$
+The price at time $t \in [0,T)$ of the European call with strike price $X$ and exercise time $T$ is given by $$C_{E}(t)=S(t) \Phi(d_{+}(t)) -Xe^{-r(T-t)} \Phi(d_{-}(t))$$ where $$d_{\pm}(t):=\frac{\ln \left(\frac{S(t)}{X}\right)+(r\pm \frac{1}{2}\sigma^{2})(T-t)}{\sigma \sqrt{T-t}}$$
 ```
 
 Use Put–Call Parity, we may derive that the price at time $t$ of theEuropean put with strike price $X$ and exercise time $T$ is given by $$P_{E}(t)=Xe^{-r(T-t)}\Phi(-d_{-}(t))-S(t)\Phi(-d_{+}(t))$$
