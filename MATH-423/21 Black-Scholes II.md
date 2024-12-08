@@ -122,9 +122,9 @@ When the underlying process is not a Brownian motion, but a **diffusion process*
 Assume the process $X$ has the following dynamics: $$dX_{t}=\mu_{t} dt+\sigma_{t}dW_{t}, X_{0}=x_{0}$$
 
 Then, for every $f(t,x) \in C^{1,2}(\mathbb{R}^{+}, \mathbb{R})$, i.e., continuously differentiable in the time variable $t$ and twice continuously differentiable in the space variable $x$, the following Itô's formula holds: $$\begin{align}df(t,X_{t})&= \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}dX_{t} + \frac{1}{2} \frac{\partial ^{2} f}{\partial x^{2}} dX_{t}^{2}\\
-&= \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}(\mu_{t} dt+\sigma_{t}dW_{t})+\frac{1}{2} \frac{\partial ^{2} f}{\partial x^{2}}(\mu_{t} dt+\sigma_{t}dW_{t})\\
+&= \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}(\mu_{t} dt+\sigma_{t}dW_{t})+\frac{1}{2} \frac{\partial ^{2} f}{\partial x^{2}}(\mu_{t} dt+\sigma_{t}dW_{t})^{2}\\
 &= \left(\frac{\partial f(t,X_{t})}{\partial t} + \mu_{t} \frac{\partial f(t,X_{t})}{\partial x} + \frac{1}{2} \sigma_{t}^{2} \frac{\partial^{2} f(t,X_{t})}{\partial x^{2}}\right)dt + \sigma_{t} \frac{\partial f(t,X_{t})}{\partial x} dW_{t}
-\end{align}$$ since as $dt \to 0, dt^{2}$ and $dt dW_{t}$ will tend to zero faster than $dt$ and $dW_{t}^{2}$ and $(dX_{t})^{2}=dt$ is calculated using the following rule:
+\end{align}$$ since as $dt \to 0, dt^{2}$ and $dt dW_{t}$ will tend to zero faster than $dt$ and $dW_{t}^{2}$ and $(dW_{t})^{2}=dt$ is calculated using the following rule:
 1. $(dt)^{2}=0$
 2. $dt dW_{t} = 0$
 3. $(dW_{t})^{2}=dt$
@@ -149,7 +149,7 @@ Notice how $\mu$ and $\sigma$ are no longer contingent on $t$, but are contingen
 
 Now $S$ and $f$ both follow the same Itô's Process. Thus, if we select a portfolio, we can eliminate the Itô's Process and effectively price an option. The portfolio we select will consist of short $1$ derivative and long $\frac{\delta f}{\delta S}$ shares of stock. It will become clear shortly why we select this portfolio.
 
-We define $Pi$ as the value of our portfolio. By definition, $$\Pi = -f + \frac{\partial f}{\partial S} S$$, which takes on the discrete version of $$\Delta \Pi = -\Delta f + \frac{\partial f}{\partial S} \Delta S$$
+We define $Pi$ as the value of our portfolio. By definition, $$\Pi = -f + \frac{\partial f}{\partial S} S$$ which takes on the discrete version of $$\Delta \Pi = -\Delta f + \frac{\partial f}{\partial S} \Delta S$$
 
 Subbing in $\Delta f$ and $\Delta S$ that were calculated above, we get $$\Delta \Pi = -\frac{\partial f}{\partial t} \Delta t - \frac{1}{2} \frac{\partial^{2} f}{\partial S^{2}} \sigma^{2} S^{2} \Delta t$$ Factoring out a $\Delta t$, $$\Delta \Pi = \left(-\frac{\partial f}{\partial t}- \frac{1}{2} \frac{\partial^{2} f}{\partial S^{2}} \sigma^{2} S^{2}\right)\Delta t$$ 
 
@@ -159,4 +159,3 @@ Through some algebraic manipulation we end up with $$\frac{\partial f}{\partial 
 ```
 
 ^db5363
-

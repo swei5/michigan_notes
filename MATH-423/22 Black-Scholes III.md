@@ -33,7 +33,7 @@ Repeating what we did in the first example allows us to get $$\begin{align}
 
 Since the function $g(t,x)=S(0)\exp\left[- \frac{1}{2}\sigma^{2}t+\sigma x\right]$ grows at most as fast as an exponential function, the process consisting of the stochastic integrals $$\int_{0}^{t} \sigma g(s, W_{s}^{\star}) dW_{s}^{\star}$$ is an $\mathbb{F}^{W}$-martingale. ([[21 Black-Scholes II#^a962f7|Definition 21.2]])
 
-Therefore, $tilde{S}(t) = \tilde{S}(0)+\int_{0}^{t} \sigma g(s, W_{s}^{\star}) dW_{s}^{\star}$ is an $\mathbb{F}^{W}$-martingale under the measure $\mathbb{P}^{\star}$.
+Therefore, $\tilde{S}(t) = \tilde{S}(0)+\int_{0}^{t} \sigma g(s, W_{s}^{\star}) dW_{s}^{\star}$ is an $\mathbb{F}^{W}$-martingale under the measure $\mathbb{P}^{\star}$.
 ```
 
 ```ad-important
