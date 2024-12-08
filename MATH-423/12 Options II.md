@@ -156,8 +156,9 @@ The proof for the put option case is similar.
 
 If $S_{1}<S_{2}$, then $$\begin{align}
 C_{E}(S_{1}) &\le C_{E}(S_{2}) \text{ i.e. } S \to C_{E}(S) \text{ is increasing}\\
-P_{E}(S_{1}) &\ge P_{E}(S_{2}) \text{ i.e. } S \to P_{E}(S) \text{ is increasing}\\
-C_{E}(S_{2})-C_{E}(S_{1}) &\le S_{2}-S_{1}, P_{E}(S_{1})-P_{E}(S_{2}) \le S_{2}-S_{1}
+P_{E}(S_{1}) &\ge P_{E}(S_{2}) \text{ i.e. } S \to P_{E}(S) \text{ is decreasing}\\
+C_{E}(S_{2})-C_{E}(S_{1}) &\le S_{2}-S_{1} \\
+P_{E}(S_{1})-P_{E}(S_{2}) &\le S_{2}-S_{1}
 \end{align}$$
 ```
 

@@ -109,7 +109,7 @@ Now we discuss two cases:
 	- Then, our wealth is $(S(t)-X)^{+}+(S(0)+P_{A}-C_{A})e^{rt}-X>Xe^{rt}-X \ge 0$
 2. If the American put is not exercised at all
 	- We exercise our call option to buy one share for $X$ at time $T$, return it
-- At time $T$ our wealth is $(S(0)+P_{A}-C_{A})e^{rT}-X>Xe^{rt}-X \ge 0$
+- At time $T$ our wealth is $(S(0)+P_{A}-C_{A})e^{rT}-X>Xe^{rT}-X \ge 0$
 
 Now, suppose that the second inequality is not true, i.e., $C_{A}-P_{A}<S(0)-Xe^{-rT}$. At time $t=0$:
 - Long an American Put: $-P_{A}$
@@ -175,9 +175,9 @@ Suppose that $C_{A}(T_{1})>C_{A}(T_{2})$. At time $t=0$,
 - Buy one American call with same strike price but expiring at time $T_{2}$: $-C_{A}(T_{2})$
 - Deposit the difference: $-(C_{A}(T_{1})-C_{A}(T_{2}))$
 
-Then, if the other party exercises the call, we exercise the call as well at the same time $t$ and get positive profit from $(C_{A}(T_{1})-C_{A}(T_{2})$
+Then, if the other party exercises the call, we exercise the call as well at the same time $t$ and get positive profit from $(C_{A}(T_{1})-C_{A}(T_{2}))$.
 
-Similarly, we would not exercise if the other party does not exercise and get positive profit from $(C_{A}(T_{1})-C_{A}(T_{2})$.
+Similarly, we would not exercise if the other party does not exercise and get positive profit from $(C_{A}(T_{1})-C_{A}(T_{2}))$.
 
 We pay prove $P_{A}(T_{1})\le P_{A}(T_2)$ in a similar fashion.
 ```

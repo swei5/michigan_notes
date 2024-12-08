@@ -53,7 +53,7 @@ For an underlying asset paying **no dividends**, the following relationship hold
 ```
 
 ^4f00c5
-
+	
 ```ad-note
 **Proof of Definition 11.2**
 
@@ -68,7 +68,7 @@ At time $t$:
 1. Receive $(S(0)+P_{E}-C_{E})e^{rT}$
 2. Two cases: in either way, we pay $X$: $-X$
 	- If $S(T) \ge X$, then we exercise the call option and pays $X$ to buy one share; the put is void; the share shorted in (2) is returned: $-X$
-	- If $S(T ) \le X$, then the call is void; the holder of the put exercises the right and we have to buy one share for$ X$; the share shorted in (2) is returned: $-X$
+	- If $S(T ) \le X$, then the call is void; the holder of the put exercises the right and we have to buy one share for $X$; the share shorted in (2) is returned: $-X$
 - Total Payoff: $(S(0)+P_{E}-C_{E})e^{rT}-X=(S(0)+P_{E}-C_{E}-Xe^{-rT})e^{rT}$
 ```
 
