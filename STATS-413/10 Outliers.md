@@ -33,7 +33,7 @@ Individual observations vary in the influence they have over the fitted values, 
 ```ad-important
 **Definition 10.1**: Leverage
 
-We define the leverage, or self-influence, of the $i$ th observation (with covariate $x_i$ ) as $$\text{Leverage}_{i}=h_{ii}$$ where $h_{ii}$ is the $i$th diagonal entry of the hat matrix, $H=X(X^{T}X)^{-1}X^{T}$. Thus, we have $$h_{ii}=x_{i}^{T}(X^{T}X)^{-1}x_{i}$$
+We define the leverage, or self-influence, of the $i$ th observation (with covariate $x_i$) as $$\text{Leverage}_{i}=h_{ii}$$ where $h_{ii}$ is the $i$th diagonal entry of the hat matrix, $H=X(X^{T}X)^{-1}X^{T}$. Thus, we have $$h_{ii}=x_{i}^{T}(X^{T}X)^{-1}x_{i}$$
 ```
 
 ^94e388
