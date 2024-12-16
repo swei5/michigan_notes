@@ -28,7 +28,7 @@ y &= X\beta + \varepsilon\\
 
 Suppose the previous model for heteroskedasticity holds; then: $$\begin{align}
 \mathbb{E}(\hat{\beta}) &= \beta\\
-\text{Var}(\hat{\beta})&=\sigma_{\varepsilon}^{2}(X^TX)^{-1}X^{T}W^{-1}(X^TX)^{-1} \\
+\text{Var}(\hat{\beta})&=\sigma_{\varepsilon}^{2}(X^TX)^{-1}X^{T}W^{-1}X(X^TX)^{-1} \\
 &\ne \sigma_{\varepsilon}^{2}(X^TX)^{-1}
 \end{align}$$
 
