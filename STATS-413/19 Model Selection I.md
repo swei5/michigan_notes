@@ -100,7 +100,7 @@ Note its difference from [[3 OLS Estimators#^723b57|raw R-squared]].
 
 This benefits as a measure of improvement as
 - $R^{2}_{adj}$ can decrease as we add more variables - this is because of the inclusion of the degrees of freedom, which penalizes models with larger $m$, making it more suitable for model selection
-- $R^{2}_adj$ can be **negative**!
+- $R^{2}_{adj}$ can be **negative**!
 ```
 
 We can rewrite the above as $$\hat{\sigma}^{2}_{\varepsilon}(\mathcal{M}_{m})=\frac{RSS(\mathcal{M}_{m})}{n-m-1}=\text{stdev}(y)\sqrt{1-R^{2}_{adj}}$$ Hence, maximizing $R^{2}_{adj}$ is equivalent to **minimizing** $\hat{\sigma}^{2}_{\varepsilon}(\mathcal{M}_{m})$.

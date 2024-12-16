@@ -70,7 +70,8 @@ Suppose I knew the values of $\beta_{0}, \beta_{1}, \cdots, \beta_{p}$. At any p
 $$\begin{cases}
 \mathbb{P}(y_{i}=1|x_{i})=\frac{\exp(x_{i}^{T}\beta)}{1+\exp(x_{i}^{T}\beta)} \\
 \mathbb{P}(y_{i}=0|x_{i})=\frac{1}{1+\exp(x_{i}^{T}\beta)}
-\end{cases}$$ We can write this concisely as $$p(y_{i}|x_{i})=\left(\frac{\exp(x_{i}^{T}\beta)}{1+\exp(x_{i}^{T}\beta)}\right)^{y_{i}}\left(\frac{1}{1+\exp(x_{i}^{T}\beta)}\right)^{1-y_{i}}$$ as $y_{i}=1$ or $y_{i}=0$.
+\end{cases}$$
+We can write this concisely as $$p(y_{i}|x_{i})=\left(\frac{\exp(x_{i}^{T}\beta)}{1+\exp(x_{i}^{T}\beta)}\right)^{y_{i}}\left(\frac{1}{1+\exp(x_{i}^{T}\beta)}\right)^{1-y_{i}}$$ as $y_{i}=1$ or $y_{i}=0$.
 
 In our dataset, we have $n$ pairs $(x_{1}, y_{1}), \cdots, (x_{n},y_{n})$. We assume independence between observations. Then, given $x_{1}, x_{2},\cdots, x_{n}$, the probability of observing $y_{1}$ and $y_2$ and $\cdots$ and $y_{n}$ is $$\begin{align}
 p(y_{1}\cap y_{2} \cap \cdots \cap y_{n}|x_{1}, \cdots, x_{n})&= \prod_{i=1}^{n}p(y_{i}|x_{i})\\
