@@ -84,7 +84,7 @@ Multiple regression with a single categorical predictor and no continuous predic
 
 In this context, there are particular methods built for comparing the average responses across different groups while controlling the familywise error rate.
 
-Suppose we have $G$ groups ($G$ levels of the categorical predictor). For all $i\ne j, i, j=1,\cdots,G$ , we might want to assess the null: $$H_{0}:\mu_{i} =\mu_{j}$$ We want to make all $K=\binom G2$  possible pairwise comparisons between different groups while  controlling the familywise error rate at level $\alpha$.
+Suppose we have $G$ groups ($G$ levels of the categorical predictor). For all $i\ne j, i, j=1,\cdots,G$ , we might want to assess the null: $$H_{0}:\mu_{i} =\mu_{j}$$ We want to make all $K=\binom G2$  possible pairwise comparisons between different groups while controlling the familywise error rate at level $\alpha$.
 
 ```ad-important
 **Definition 12.3**: Tukey-Kramer Honest Significant Difference

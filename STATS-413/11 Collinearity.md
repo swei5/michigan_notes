@@ -159,7 +159,7 @@ We can rewrite the expression above as $$\begin{align}
 ```ad-important
 **Definition 11.3**: Variance Inflation Factor
 
-The **Variance Inflation Factor** (VIF) for covariate $j$ is defined to be $$VIF_{j}=\frac{1}{1-R_{j}^{2}}$$ where $R_{j}^{2}$ is the $R^2$ value from a regression of $x_{j}$ on the other predictor variables $X_{R}$.
+The **Variance Inflation Factor** (VIF) for covariate $j$ is defined to be $$VIF_{j}=\frac{1}{1-R_{j}^{2}}= \frac{TSS_j}{RSS_j}$$ where $R_{j}^{2}$ is the $R^2$ value from a regression of $x_{j}$ on the other predictor variables $X_{R}$.
 
 Rule of thumb: $VIF_{j} > 10$ is concerning; alternatively, $R_{j}$ indicates a problem.
 ```
