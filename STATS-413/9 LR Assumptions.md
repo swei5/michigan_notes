@@ -75,7 +75,7 @@ Though we assume $\varepsilon$ to be iid and normally distributed, $e$ is **NOT 
 
 For $A \in \mathbb{R}^{d\times m}, B \in \mathbb{R}^{k \times n}$: $$\text{Cov}(AZ, BY)=A \text{Cov}(Z,Y)B^{T}$$ for random vectors $Z \in \mathbb{R}^{m}, Y \in \mathbb{R}^{n}$.
 
-Note that [[3 OLS Estimators, Variability#^2cf564|Definition 3.5]] is a special case of this.
+Note that [[3 OLS Estimators#^2cf564|Definition 3.5]] is a special case of this.
 ```
 
 ```ad-important
