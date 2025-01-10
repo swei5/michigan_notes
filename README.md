@@ -48,3 +48,8 @@
 | FA 2024 | STATS 413     | Appl Regression       |     ⭕️      |    ⭕️     |
 | FA 2024 | STRATEGY 390  | Corporate Strategy    |      ❌      |     ❌     |
 | FA 2024 | TO 300        | Bus Info Systems      |      ❌      |     ❌     |
+| WN 2025 | EECS 476      | Data Mining           |             |           |
+| WN 2025 | EECS 486      | Info Retrieval        |             |           |
+| WN 2025 | FIN 338       | Maize & Blue Fund SR  |     N/A     |    N/A    |
+| WN 2025 | MATH 526      | Disc Stoch Proc       |             |           |
+| WN 2025 | MIDEAST 315   | Intro Arab Culture    |             |           |
