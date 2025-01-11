@@ -90,3 +90,79 @@ There are three general methodologies:
 		- Smoothing
 		- Fourier transform
 		- Wavelet transform
+
+##### Standardization
+Consider $D$ of $n$ observations over $m$ variables ($n \times m$ matrix). We say $D$ is **zero-centered** if $\text{mean}(d_{i})=0$ for each column $d_{i}$ of $D$
+
+We can center any dataset by **subtracting the mean** from each column.
+
+```ad-warning
+However, note that
+- Centering cannot be applied to all sorts of data
+- It destroys non-negativity
+- Centered data won’t contain integers
+- Centering destroys sparsity
+```
+
+An attribute $d$ has unit variance if $\text{var}(d)=1$. A dataset $D$ has unit variance iff $\forall d_{i} \text{var}(d_{i})=1$
+
+We obtain unit variance by **dividing every column by its standard deviation**.
+
+Division by standard deviation makes **all observations equally important**.
+
+```ad-warning
+However note that
+- Dividing by standard deviation is based on the assumption that the values follow a **Gaussian distribution**
+	- Often this is plausible: Law of Large Numbers, Central Limit Theorem, etc.
+- Not all data is Gaussian
+- Not all data distributions **have** a mean
+	- Power-law distributions
+```
+
+Data that is **zero centered** and has **unit** **variance** is called **standardized**, or the $z$ -scores.
+- Many methods (implicitly) assume data is standardized, e.g. PCA
+
+Of course, we may apply non-linear transformations to the data before standardizing.
+
+---
+### Data Selection, Reduction
+Sampling is the main technique employed for data selection. It is often used for both the preliminary investigation of the data and the final data analysis. Sampling is used in data mining because processing the entire set of data of interest is too expensive or time consuming.
+
+Using a sample will work almost as well as using the entire data set, if the sample is **representative**.
+- A sample is representative if it has approximately the same property (of interest) as the original set of data
+
+There are four main types of sampling:
+- **Simple Random Sampling**
+	- Equal probability of selecting any particular item
+- **Sampling without replacement**
+	- Each selected item is removed from the population
+- **Sampling with replacement**
+- **Stratified sampling**
+	- Split the data into several partitions; then draw random samples from each partition
+
+#### Dimensionality Reduction
+When dimensionality increases, data becomes **increasingly sparse** in the space that it occupies. Definitions of density and distance between points, which is critical for clustering and outlier detection, become **less meaningful**.
+
+![[Pasted image 20250110160222.png|400]]
+
+The purpose of dimensionality reduction is to
+- Avoid curse of dimensionality
+- Reduce amount of time and memory required by data mining algorithms
+- Allow data to be more easily visualized
+- May help to eliminate irrelevant features or reduce noise
+
+#### Feature Subset Selection
+Another way to reduce dimensionality of data - picking a subset of the features. It gets rid of
+- **Redundant features**
+	- Duplicate much or all of the information contained in one or more attributes
+- **Irrelevant features**
+	- Contain no information that is useful for the data mining task at hand – removing them leads to better results
+
+There are four main methods to conduct this:
+- **Brute-force approach**
+- **Embedded approaches**
+	- Feature selection occurs naturally as part of the data mining algorithm (e.g., regularization)
+- **Filter approaches**
+	- Features are selected before data mining algorithm is run (external quality measure)
+- **Wrapper approaches**
+	- Use the data mining algorithm as a black box to find best **subset** of attributes (specific to your method, through some search algorithm)
