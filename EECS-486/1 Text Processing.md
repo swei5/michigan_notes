@@ -154,13 +154,13 @@ Traditional tokenization of web-scale data results in extremely large vocabulary
 - Originally developed for text compression
 - Used by GPT to reduce vocabulary size
 
-Given a large corpus, and a target vocabulary size, the algorithm learn **merge rules**:
+Given a large corpus, and a target vocabulary size, the algorithm learn **merge rules**(Training):
 1. Pre-tokenize into words
 2. Get all the individual characters in your corpus
 3. Compute the frequencies of all pairs (=two consecutive tokens)
 4. Merge the most frequent pair into the vocabulary.
 	- If needed, break ties randomly or choose the first occurrence
 1. Recalculate the frequencies taking new token into account
-2. Repeat steps 3 and 4 until desired vocabulary size is reached
+2. Repeat steps 3 and 4 until desired vocabulary size $V$ is reached
 
 BPE is increasingly the tokenization of choice, especially for training LLMs.
