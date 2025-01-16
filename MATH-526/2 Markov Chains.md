@@ -72,7 +72,7 @@ Notice that the probability of next shot is given by the previous two. Therefore
 ---
 ### Multistep Transition Probabilities
 In this section, we aim to show that $$p^m (x,y) = \mathbb{P}(X_{n+m}=y|X_n =x)$$ 
-That is, the probability of getting from the state $x$ to $y$ in $m$ -steps is given by the $m$ -th power of the **transition matrix** $p$.
+That is, the probability of getting from the state $x$ to $y$ in $m$ -steps is given by the $m$ -th power of the **transition matrix** $p$. ^c5b224
 
 By induction, it holds for $m-1$ : $$\begin{align}
 \mathbb{P}(X_{n+m}=y|X_n =x) &= \sum_{k \in \mathcal{S}} \mathbb{P}(X_{n+m}=y|X_{n+m-1}=k,X_n =x) \mathbb{P}(X_{n+m-1}=k|X_n =x)\\
@@ -108,5 +108,46 @@ We say $T: \Omega \to \mathbb{N} \cup \{\infty\}$ is a stopping time with respec
 
 ```ad-important
 **Definition 2.4**: Strong Markov Property
+
+Let $T$ be a stopping time with respect to the Markov chain $X_{n}$. For any $k \in \mathbb{N}, x \in \mathcal{S}$, given $\{T < \infty, X_{T}=x\}$, $X_{T+k}$ is independent of $\{X_{0},\cdots, X_{k}\}$. Moreover, $$\mathbb{P}(X_T+k = y | T < \infty, X_T =x)= p^k (x,y)$$
 ```
 
+This is distinct from [[#^c5b224|what we've mentioned earlier]], as $T$ is a random time while $n$ is a fixed time. By utilizing the definition of **stopping time**, we ensure that for any given chosen stopping time $T$ in time, is a Markov Chain.
+
+```ad-note
+**Proof of Definition 2.4**
+
+Let $S(n,x)$ be the set of sequences $\{x_{0}, \cdots, x_{n-1}, x\}$ such that if $X_{0}=x_{0},\cdots, X_{n}=x$, then $T=n$. $$\{T < \infty, X_T =x\} = \bigcup_{n \ge 1} \{\mathbf{X}_{n} \in S(n,x)\}$$ where $\mathbf{X}_{n} = \{X_{0}, \cdots, X_{n}\}$. Here, $\{T < \infty, X_T =x\}$ is the set of all sequence of $\mathbf{X}_{n}$ that ends in time $T$ .
+
+On $\{T < \infty, X_T =x\}$, $$\begin{align}
+&\mathbb{P}(X_{T+k}=y | T < \infty, X_T = x, \mathbf{X}_T )\\
+&= \sum\limits_{n\ge 1} \sum\limits_{\mathbf{x} \in S(n,x)} \mathbf{1}(\mathbf{X}_n = \mathbf{x}) \mathbb{P}(X_{T+k} = y | T=n, X_n = x, \mathbf{X}_n = \mathbf{x}) \\
+&= p^{k}(x,y) \sum\limits_{n \ge 1} \sum\limits_{\mathbf{x} \in S(n,x)} \mathbf{1}(\mathbf{X}_n = \mathbf{x})
+\end{align}$$
+
+Alternatively, by decomposition of probability, $$\begin{align}
+&\mathbb{P}(X_{T+k} = y | T < \infty, X_T =x) \\
+&= \sum\limits_{n \ge 1} \sum\limits_{\mathbf{x} \in S(n,x)} \mathbb{P}(X_{T+k} = y | T < \infty, X_T = x, \mathbf{X}_n = \mathbf{x}) \\
+&= p^k (x,y) \sum\limits_{n \ge 1} \sum\limits_{\mathbf{x} \in S(n,x)} \mathbb{P}(\mathbf{X}_n = \mathbf{x} | T < \infty, X_T =x)\\
+&= \mathbb{P}(X_{T+k} = y | T < \infty, X_T =x, \mathbf{X}_T)
+\end{align}$$
+```
+
+For **CONTINUOUS** Markov processes, strong Markov property and Markov property are **NOT equivalent**. 
+
+A standard example is a process that waits until an exponential clock rings and moves to one direction with a constant speed. To see that it is Markov, note that given $\{X_{s}=0\}$, distribution of $X_{t+s}$ is the same as the distribution of $X_{t}$, due to the memoryless property of exponential clock. Given $\{X_{s} \ne 0\}$, distribution of $X_{t+s}$ is the dirac mass at $X_{s}+t$.
+
+To see that it is not strong Markov, consider $\tau = \inf\{t>0 : X_{t} \ne 0\}$. Then $\{X_{\tau+t}\}$ has distribution dirac mass at $t$, which is not the same as the distribution of $X_{t}$.
+
+---
+### Classification of States
+In this section, we will classify states to distinguish whether or not MC visits them indefinitely. Let us introduce the notation $\mathbb{P}_{x}(A) := \mathbb{P}(A|X_{0}=x)$ and $\mathbb{E}_{x}$ denotes the expectation under the measure $\mathbb{P}_{x}$. Moreover, we define the **return time** $T_{y}$ $$T_y := \inf(n \ge 1: X_n =y); \rho_{xy}:=\mathbb{P}_x (T_y < \infty)$$
+We call $T_y := \inf(n \ge 0: X_n =y)$ the **hitting time**. Note that, $T_{y}$ is a stopping time because $$\{T_y =n\}=\{X_0 \ne y, \cdots, X_{n-1} \ne y, X_n =y\}$$ and thus $\{T_{y}=n\}$ is a function of $\{X_{0}, \cdots, X_{n}\}$. 
+
+Let us also introduce the $k$ -th return time (stopping time) $$T_y ^1 :=T_y , T_y ^k = \inf(n > T_y ^{k-1}: X_n =y)$$
+Because of the strong Markov property, it holds that $$\mathbb{P}_x (T_y ^k <\infty)=\rho_{xy}\rho_{yy}^{k-1}$$
+```ad-important
+**Lemma 2.1**
+
+Suppose $\mathbb{P}_{x}(T_{y} \le k) \ge a > 0$ for all $x \in \mathcal{S}$. Then, $$\mathbb{P}_x (T_y > mk) \le (1-a)^m $$
+```
