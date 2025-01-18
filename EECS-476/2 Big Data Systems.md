@@ -221,6 +221,114 @@ RDDs can be created from Hadoop or by transforming other RDDs. They are best sui
 There are two key types of operations for RDD.
 - **Transformations**: build RDDs through deterministic operations on other RDDs
 	- Define new dataset based on previous ones
-	- e.g., `map`, `flatmap`, `filter`, `join`, `union`, `reducebykey`, etc.
+	- E.g. `map`, `flatmap`, `filter`, `join`, `union`, `reducebykey`, etc.
 	- **Lazy evaluation**: nothing computed until an action requires it
 - **Actions**: start a job to execute on cluster (return value / export data)
+	- E.g.  `count`, `collect`, `reduce`, `save`
+	- Actions are applied to RDDs; actions **force calculations and return values**
+
+Lineage allows for fault tolerance.
+
+#### Task Scheduler: General DAGs
+Spark supports general directed acyclic task graphs.
+- Pipeline functions where possible
+	- Grouping functions together to make operations more efficient
+- Cache-aware data reuse & locality
+- Partitioning-aware to avoid shuffles
+
+![[Pasted image 20250117151552.png|450]]
+
+#### Higher-level API: DataFrame & Dataset
+- **DataFrame**
+	- Unlike an RDD, data **organized into named columns**, e.g. a table in a relational database or data frame in pandas
+	- Imposes a structure onto a distributed collection of data, allowing higher-level abstraction
+	- *Tables*
+- **Dataset**
+	- **Extension** of DataFrame API which provides type-safe, object-oriented programming interface (**compile-time** error detection)
+
+Both are built on Spark SQL engine and can be converted back to an RDD.
+
+![[Pasted image 20250117153238.png|450]]
+
+SparkContext sets up everything that optimizes the process. The Driver Program establishes connection with the Cluster Manager, which allocates resources to the workers.
+
+#### Spark Libraries
+- **Spark SQL**
+	- Scalable processing of relational data
+	- **`pyspark.sql`:** provides the DataFrame and SQL APIs
+	- **`pyspark.sql.functions`**: contains built-in functions for data transformations.
+	- **Spark streaming** (`pyspark.streaming`) stream processing of live data streams
+- **MLlib**
+	- Scalable machine learning (**`pyspark.ml`**)
+- **GraphX**
+	- Graph manipulation 
+	- Extends Spark RDD with a Graph abstraction: a directed multigraph with properties attached to each vertex and edge
+
+```ad-example
+**Example**: Log Mining
+
+Load error messages from a log into memory and run interactive queries.
+
+**Result**: full-text search on 1TB data in 5-7sec vs. 170sec with on-disk data!
+
+```python
+lines = spark.textFile("hdfs://...") 
+errors = lines.filter(_.startsWith("ERROR")) # Transformation
+errors.persist() # Caching
+errors.filter(_.contains("Foo")).count() # Action
+errors.filter(_.contains("Bar")).count() # Action
+
+```
+
+```ad-summary
+Hadoop MapReduce and Spark are **complementary**.
+- **Spark**
+	- Highly cost-effective thanks to in-memory data processing
+	- Outperforms MapReduce but it needs A **LOT more** memory to perform well; degrades if data cannot fit in memory
+	- Requires mid to high-level H/W
+	- High-level APIs make programming in Spark easier
+- **Hadoop MapReduce**
+	- More mature platform
+	- Built for batch processing
+	- Works well for the 1-pass jobs that it was designed for
+	- Can be more cost-effective than Spark for data that **doesn’t fit in memory**
+	- More difficult to program in MR
+	- Runs on commodity H/W
+```
+
+Typically, good use cases of **Spark** are when Spark can continuously read over the same set of data and leverage locality (ideally with no updates).
+
+**MapReduce** works well for
+- Problems that require sequential data access
+- Large batch jobs (_not_ interactive, real-time)
+**MapReduce** is **inefficient** for problems where **random** (or irregular) access to data required
+- Graphs
+- Interdependent data
+	- Machine learning
+	- Comparisons of many pairs of items
+
+---
+### Cost Measures for Algorithms
+In MapReduce we quantify the cost of an algorithm using
+1. Communication cost = total I/O of all processes
+2. Elapsed communication cost = max of I/O along any path
+3. (Elapsed) computation cost: analogous, but count only running time of processes
+
+Note that here the big-O notation is not the most useful.
+
+```ad-example
+**Ecxample: Cost Measures**
+
+For a map-reduce algorithm
+- Communication cost:
+	- Input file size +
+	- $2 \times \sum\limits$ file sizes for the intermediate outputs
+	- Output file size
+- Elapsed communication cost:
+	- Largest input + output for processes
+```
+
+Either the I/O (communication) or processing (computation) cost dominates.
+- Ignore one or the other
+
+**Total cost** tells what you pay in rent from your friendly neighborhood cloud. Elapsed cost is wall-clockclock time using **parallelism**.
