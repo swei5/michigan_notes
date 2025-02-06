@@ -29,7 +29,7 @@ $$\hat{y}=Hy$$
 $$e=y-\hat{y}=(I-H)y$$
 where $I$ is the $n \times n$ identity matrix.
 ```
-\
+
 We would like to establish a few useful properties for the hat matrix.
 
 ```ad-important
