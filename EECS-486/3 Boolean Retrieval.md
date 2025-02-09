@@ -64,4 +64,92 @@ A possible implementation may look something like an intersect:
 ![[Pasted image 20250208225505.png|300]]
 
 #### Query Processing: OR
- We can adapt the `AND` merge algorithm for an `OR` query. This is a union.
+We can adapt the `AND` merge algorithm for an `OR` query. This is a union.
+
+#### Query Optimization
+For `AND` queries, we want to process in order of increasing frequencies:
+- Start with **smallest set**, then keep cutting further
+- Use document frequencies stored in the dictionary
+
+```ad-example
+**Example**: Query Optimization
+
+Consider a query that is an `AND` of $n$ terms:
+
+![[Pasted image 20250208230125.png|400]]
+
+In this case, we should execute the query as (Calpurnia `AND` Brutus) `AND` Caesar.
+```
+
+---
+### Boolean Model, Extension
+1. **Phrase Queries**
+	- Want to **answer the query** as a phrase
+	- The concept of phrase queries is one of the few “advanced search” ideas that has proven easily understood by users
+		- About 10% of web queries are phrase queries
+		- Many more are implicit phrase queries (e.g. person names)
+2. **Proximity Queries**
+	- Altavista: Python NEAR language
+	- Google: Python * language
+	- Many search engines use keyword proximity implicitly
+
+#### Phase Queries: Biword Indices
+We can index every two consecutive tokens in the text.
+- Treat each biword (or bigram) as a vocabulary term
+- **Bigram phrase query processing** is now straightforward
+
+For longer phrase queries, we can break them into **conjunction of biwords**.
+- E.g. *electrical engineering and computer science* -> *electrical engineering* `AND` *engineering and* `AND` *and computer* `AND` *computer science*
+
+However, there's a few drawbacks:
+1. Can have **false positives**
+	- Unless retrieved docs are verified
+2. Larger dictionary leads to **index blowup**
+	- Clearly unfeasible for ngrams larger than bigrams
+3. It is not a standard solution for phrase queries
+
+#### Phase Queries: Positional Indices
+
+```bash
+for each token:
+	for each docID:
+		store the positions where tok appears in docID
+```
+
+![[Pasted image 20250208231855.png|300]]
+
+We use a merge algorithm at two levels:
+1. **Postings level**, to find matching docIDs for query tokens
+2. **Document level**, to find consecutive positions for query tokens
+
+For example, if we want to query for the phrase *to be or not to be*, we first
+1. Extract index entries for each distinct term: *to, be, or, not*
+2. Merge their doc: position lists to enumerate all positions with *to be or not to be*:
+	- *to*: `[...]`
+	- *be*: `[...]`
+
+A positional index expands **postings storage** substantially, because we need an entry for each occurrence, not just for each document.
+- 2 to 4 times as large as a non-positional index
+
+Nevertheless, a positional index is now standardly used because of the **power and usefulness of phrase and proximity queries**.
+
+#### Phase Queries: Combined Strategy
+Biword and positional indexes can be fruitfully combined.
+1. Use a phrase index, or a biword index, for certain queries
+	- Queries known to be **common** based on recent querying behavior
+	- Queries where the individual words are common but the **desired phrase is comparatively rare**
+1. Use a positional index for remaining phrase queries
+
+```ad-summary
+Boolean queries are **precise**:
+- A document either matches the query or it does not
+- However, hard to tune precision vs. recall:
+	- `AND` operator tends to produce high precision but low recall
+	- `OR` operator gives low precision but high recall
+
+Most search engines include at least partial implementations of Boolean models.
+- Boolean operators
+- Phrase search
+
+Still, main search is generally focused on free text queries: **vector space model**.
+```
