@@ -157,7 +157,7 @@ Traditional tokenization of web-scale data results in extremely large vocabulary
 Given a large corpus, and a target vocabulary size, the algorithm learn **merge rules**(Training):
 1. Pre-tokenize into words
 2. Get all the individual characters in your corpus
-3. Compute the frequencies of all pairs (=two consecutive tokens)
+3. Compute the frequencies of all pairs (two consecutive tokens)
 4. Merge the most frequent pair into the vocabulary.
 	- If needed, break ties randomly or choose the first occurrence
 1. Recalculate the frequencies taking new token into account
