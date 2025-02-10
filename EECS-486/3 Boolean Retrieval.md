@@ -9,7 +9,7 @@ Before we take a deep dive into a typical IR system, let's focus on a more simpl
 
 A naive approach would be to **compile list of documents** that contain the queried words. It is simple, and works well for moderately sized data, but is very slow for large corpora since we need to do **linear scan** for every query.
 
-A better idea is to compute and store **term-document incidence matrices**. We precompute a data structure that makes search fast for every query.
+A better idea is to compute and store **term-document incidence matrices**. We precompute a data structure that makes search fast for every query. ^b306f2
 
 ![[Pasted image 20250208223454.png|400]]
 
