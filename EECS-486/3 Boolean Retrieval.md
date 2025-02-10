@@ -151,5 +151,14 @@ Most search engines include at least partial implementations of Boolean models.
 - Boolean operators
 - Phrase search
 
-Still, main search is generally focused on free text queries: **vector space model**.
+In summary, **boolean search** is good for expert users and applications:
+- With precise understanding of their needs and the collection
+- With good understanding of Boolean operators
+- Ability to handle 1000s of results
+
+However, it's **NOT good** for the majority of users.
+- Incapable of writing Boolean queries
+- Large set of results
+
+Main search is generally focused on free text queries: **[[4 Vector Space Model|vector space model]]**.
 ```
