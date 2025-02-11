@@ -132,5 +132,102 @@ However, it's missing semantic information (e.g., word sense) and syntactic info
 - Lacks the control of a Boolean model (e.g., requiring a term to appear in a document)
 ```
 
+Term weighting does matter! Research shows the following
+
+![[Pasted image 20250211003454.png|400]]
+
+The lower the score, the better the model performance.
+- Best model uses tf-idf as **weight** of the documents, normalized-tf-idf as **weight** of the query, and **cosine similarity**
+
+```ad-note
+For document vectors, we
+- Use $n$ (normalized tf) for **technical vocabulary** (e.g., CRAN), use tf for more **varied vocabulary**, and used $1$ for short document vectors for term frequency
+- Use idf, unless in **dynamic collections** with many changes in the document collection makeup, then $1$ for documentt frequency
+- Perform normalization with respect to document length, except for **short documents with homogenous length**
+
+
+For query vectors, we
+- Use $n$ for short queries for **short queries**, and use tf for **longer querie**s that require better **discrimination** among terms for term frequency
+- Use idf for document frequency
+- **DO NOT** do normalization with query length
+```
+
 ---
 ### Evaluation of IR Models: Precision & Recall
+Let us start with a contingency table: $$\begin{bmatrix} &\text{retrieved} & \text{not retrieved}\\ \text{relevant} &  w & x  \\  \text{not relevant} &y & z\end{bmatrix}$$ where we define $n_{1}=w+x$ and $n_2=y+z$ and $N=w+x+y+z$ the total number of documents.
+
+**Recall** answers the problem: from all the documents that are **relevant out there**, **how many** did the IR system **retrieve**? $$\frac{w}{w+x}$$
+**Precision**, on the other hand, tries to answer from all the **documents that are retrieved** by the IR system how many are **relevant**? $$\frac{w}{w+y}$$
+The rule of thumb is that these two measures often behave in an inverse relationship.
+
+For a **set of queries**, we first determine the retrieved documents and the relevant documents for each query. Then, we calculate
+- Macro-average: **average** the P/R calculated for the individual queries
+- Micro-average: **sum** all/relevant documents for individual queries, and **calculate P/R only once**
+
+---
+### Implementation
+A naive approach would be to convert all documents in collection $D$ to tf-idf weighted vectors, $d_{j}$ for keyword vocabulary $V$, and convert query to a tf-idf-weighted vector $q$. Then,
+
+```bash
+for each d[j] in D do:
+	score[j] = cosSim(d[j], q)
+sort(score, order=desc)
+```
+
+Time complexity is $O(|V|\cdot |D|)$! Not doable.
+
+A more practical way of doing things is to try to identify only those documents that contain **at least one query keyword**.
+- We know that documents containing **NONE** of the query keywords do not affect the final ranking (score would be $0$ due to similarity computation)
+
+**Step 1**: Preprocessing
+We implement the preprocessing functions:
+- For tokenization
+- Stopword removal
+- Stemming
+
+Input: **Documents** that are read one by one from the collection
+Output: **Tokens** to be added to the index
+
+**Step 2**: Indexing
+We build an inverted index, with an entry for **each word** in the vocabulary.
+- For each such entry, we keep a **list** of all the documents where it appears together with the corresponding frequency (to calculate tf)
+- For each such entry, keep the **total number of occurrences in all documents** (to calculate idf)
+
+Input: **Tokens** obtained from the preprocessing module
+Output: An **inverted index** for fast access
+
+![[Pasted image 20250211005425.png|400]]
+
+```ad-note
+TF and IDF for each token can be computed in **one pass**. However, cosine similarity also requires **document lengths** - need a second pass to compute document vector lengths.
+- We must wait until all weights ($tf \cdot idf$, which requires all $df$ to be known) to be computed before we can calculate the length (which is square-root of sum of the squares of the weights)
+
+This suggests doing a second pass over all documents: keeping a list or hashtable with all document ids, and for each document determine its length.
+```
+
+```ad-important
+**Indexing, Time Complexity Analysis**
+
+Creating vector and indexing a document of $n$ tokens: $O(n)$.
+Indexing $|D|$ such documents is $O(|D|n)$.
+Computing token IDFs can be done during the same first pass.
+Computing vector lengths is also $O(|D|n)$.
+
+Thus, the entire process is $O(|D|n)$, which is also the complexity of just reading in the corpus.
+```
+
+**Step 3**: Retrieval
+We use the inverted index (from step 2) to find the limited set of documents that contain at least one of the query words.
+- **Incrementally compute** cosine similarity of each indexed document as query words are processed one by one
+	- If tf is normalized for the query, may need to first read all the query tokens
+
+To accumulate a total score for each retrieved document, store retrieved documents in a hash table (or another search data structure), where the document id is the key, and the partial accumulated score is the value.
+
+Input: Query and Inverted Index
+Output: Similarity values between query and documents
+
+**Step 4**: Ranking
+We then sort the search structure including the retrieved documents based on the value of cosine similarity and return them in descending order of their relevance.
+
+Input: Similarity values between query and documents
+Output: Ranked list of documented in reversed order of their relevance
