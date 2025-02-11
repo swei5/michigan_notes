@@ -117,4 +117,20 @@ Lastly, we introduce the **Cosine Similarity**. It is the distance between vecto
 
 ![[Pasted image 20250210013246.png|400]]
 
-It is given by 
+The cosine similarity is given by $$\text{sim}(d_{j},d_{k})= \frac{d_{j}\cdot d_{k}}{|d_{j}||d_{k}|}= \frac{\sum w_{i,j}w_{i,k}}{\sqrt{\sum w_{i,j}^{2}}\sqrt{\sum w_{i,k}^{2}}}$$
+This is also known as the **normalized inner product** (inner product normalized by vector lengths).
+
+```ad-summary
+**Vector Space Model, Pros and Cons**
+
+This is a simple, and mathematically based approach. It considers both local (tf) and global (idf) word occurrence frequencies and provides partial matching and ranked results.
+- Tends to work quite well in practice despite obvious weaknesses
+- Efficient
+
+However, it's missing semantic information (e.g., word sense) and syntactic information (e.g., phrase structure, word order, proximity information).
+- Assumption of term independence
+- Lacks the control of a Boolean model (e.g., requiring a term to appear in a document)
+```
+
+---
+### Evaluation of IR Models: Precision & Recall
