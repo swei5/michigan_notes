@@ -1,4 +1,4 @@
-EECS 476 Homework 2
+**EECS 476 Homework 2**
 Vincent Wei ([vswei@umich.edu](mailto:vswei@umich.edu))
 February 20, 2025
 
@@ -67,7 +67,7 @@ Frequent pairs of items: $\{2,4\}, \{4,5\}$.
 | B0     | (4,6)               | 3     |
 | B1     | (5,6)               | 3     |
 | B2     |                     |       |
-| B3     | (1,2),              | 2     |
+| B3     | (1,2)               | 2     |
 | B4     | (1,3)               | 3     |
 | B5     | (2,3), (1,4)        | 4     |
 | B6     | (1,5), (2,4)        | 5     |
@@ -75,4 +75,90 @@ Frequent pairs of items: $\{2,4\}, \{4,5\}$.
 | B8     | (3,5), (2,6)        | 5     |
 | B9     | (4,5), (3,6)        | 8     |
 
-##### Question 2.2 (iv)
+##### Question 2.1 (iv)
+The candidate pairs are $\{2,3\}$, $\{1,4\}$, $\{1,5\}$, $\{2,4\}$, $\{3,4\}$, $\{2,5\}$, $\{1,6\}$, $\{3,5\}$, $\{2,6\}$, $\{4,5\}$, and $\{3,6\}$ after pass 1.
+
+| Basket | Pairs               | Count |
+| ------ | ------------------- | ----- |
+| B0     | (4,5), (3,6)        | 8     |
+| B1     |                     |       |
+| B2     |                     |       |
+| B3     |                     |       |
+| B4     |                     |       |
+| B5     | (2,3), (1,4)        | 4     |
+| B6     | (1,5), (2,4)        | 5     |
+| B7     | (3,4), (2,5), (1,6) | 4     |
+| B8     | (3,5), (2,6)        | 5     |
+
+##### Question 2.1 (v)
+No.
+
+#### Question 2.2 
+The largest number of $k$ -shingles is $n-k+1$.
+- First $k$ -shingle starts at position 0 and ends at index $k-1$, last $k$ -shingle starts at index $n-k$ and ends at index $n-1$ (0-indexed)
+
+#### Question 2.3
+##### Question 2.3 (a)
+Sentence 1: $[1, 1, 1, 1, 1, 1, 1, 0, 0]$
+Sentence 2: $[1, 1, 1, 0, 1, 1, 1, 1, 1]$
+
+##### Question 2.3 (b)
+$$\text{cos\_sim}(\mathbf{x}, \mathbf{y})= \frac{6}{\sqrt{7}\sqrt{8}}=0.802$$
+##### Question 2.3 (c)
+$$\text{dist}(\mathbf{x}, \mathbf{y})=\sqrt{3}=1.732$$
+##### Question 2.3 (d)
+Because $\mathbf{x}, \mathbf{y}$ are normalized, $\text{cos\_sim}(\mathbf{x}, \mathbf{y})=\mathbf{x}^{T}\mathbf{y}$ . Then, $$\begin{align}
+\text{dist}(\mathbf{x}, \mathbf{y}) &= ||\mathbf{x}-\mathbf{y}||\\
+&= \sqrt{(\mathbf{x}-\mathbf{y})^{T}(\mathbf{x}-\mathbf{y})}\\
+&= \sqrt{1-2 \mathbf{x}^{T}\mathbf{y}+1}\\
+&= \sqrt{2-2\text{cos\_sim}(\mathbf{x}, \mathbf{y})}
+\end{align}$$
+##### Question 2.3 (e)
+Sentence 1b: $[1, 1, 1, 1, 1, 1, 0, 0, 0, 1]$
+Sentence 2:   $[1, 1, 1, 0, 1, 1, 1, 1, 1, 0]$
+
+$$\text{cos\_sim}(\mathbf{x}, \mathbf{y})= \frac{5}{\sqrt{7}\sqrt{8}}=0.668$$
+$$\text{dist}(\mathbf{x}, \mathbf{y})=\sqrt{5}=2.236$$
+
+##### Question 2.3 (f)
+The presence of synonyms reduced the similarity and distance measures between two sentences, which, by human judgement, were inherently identical prior/after the synonym change. One key limitation seen here is that Bag-of-words fails to capture semantic meaning because they ignore word order, context, and relationships between words.
+
+##### Question 2.3 (g)
+- Similarity between Sentence 1, Sentence 2: $0.959$
+- Similarity between Sentence 1b, Sentence 2: $0.951$
+- Euclidean Distance between Sentence 1, Sentence 2: $2.858$
+- Euclidean Distance between Sentence 1b, Sentence 2: $3.104$
+
+##### Question 2.3 (h)
+When using the bag-of-words model, replacing a word with its synonym caused a noticeable drop in cosine similarity and an increase in Euclidean distance, even though the sentences were essentially the same in meaning. When using embeddings, the similarity scores between Sentence 1 and Sentence 2, as well as between Sentence 1b and Sentence 2, remained much higher and suggests that embeddings better capture synonymy and meaning, leading to more accurate similarity measurements.
+
+#### Question 2.4
+
+##### Question 2.4 (a)
+Centroid: $(10.500, 4.250)$
+Diameter: $5.000$
+
+##### Question 2.4 (b)
+
+
+##### Question 2.4 (c)
+
+##### Question 2.4 (d)
+
+#### Question 2.5
+
+##### Question 2.5 (a)
+
+##### Question 2.5 (b)
+
+###### Question 2.5 (b)(i)
+
+###### Question 2.5 (b)(ii)
+
+###### Question 2.5 (b)(iii)
+
+###### Question 2.5 (b)(iv)
+
+###### Question 2.5 (b)(v)
+
+###### Question 2.5 (b)(vi)
