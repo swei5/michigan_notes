@@ -152,18 +152,72 @@ Clustroid: The clustroid may change as the point that minimizes the maximum or s
 #### Question 2.5
 
 ##### Question 2.5 (a)
-
+We would see a bigger benefit from using LSH in the database with a large number of near-duplicate documents. This is because LSH hashes similar documents into the same buckets with high probability, allowing us to only compare documents within buckets rather than all pairs and hence reducing the number of pairwise comparisons.
 
 ##### Question 2.5 (b)
 
 ###### Question 2.5 (b)(i)
+First, we initialize the document matrix:
+
+|     | $C_1$ | $C_2$ | $C_3$ | $C_4$ |
+| --- | ----- | ----- | ----- | ----- |
+| $0$ | $0$   | $0$   | $1$   | $0$   |
+| $1$ | $1$   | $0$   | $0$   | $1$   |
+| $2$ | $0$   | $0$   | $1$   | $0$   |
+| $3$ | $0$   | $1$   | $0$   | $1$   |
+| $4$ | $1$   | $0$   | $1$   | $1$   |
+| $5$ | $0$   | $1$   | $0$   | $1$   |
+
+Then, for each hash function $h$ and row $r$ we compute the corresponding hash values: 
+
+|       | $C_1$ | $C_2$ | $C_3$ | $C_4$ | $h_1 (x)$ | $h_2 (x)$ | $h_3 (x)$ | $h_4 (x)$ |
+| ----- | ----- | ----- | ----- | ----- | --------- | --------- | --------- | --------- |
+| $r_0$ | $0$   | $0$   | $1$   | $0$   | $0$       | $3$       | $1$       | $1$       |
+| $r_1$ | $1$   | $0$   | $0$   | $1$   | $1$       | $5$       | $2$       | $4$       |
+| $r_2$ | $0$   | $0$   | $1$   | $0$   | $2$       | $7$       | $3$       | $2$       |
+| $r_3$ | $0$   | $1$   | $0$   | $1$   | $3$       | $9$       | $4$       | $0$       |
+| $r_4$ | $1$   | $0$   | $1$   | $1$   | $4$       | $1$       | $5$       | $3$       |
+| $r_5$ | $0$   | $1$   | $0$   | $1$   | $5$       | $3$       | $6$       | $1$       |
+Finally, we can derive the minhash signatures based on the minhash values computed in the previous step.
+
+|       | $C_1$ | $C_2$ | $C_3$ | $C_4$ |
+| ----- | ----- | ----- | ----- | ----- |
+| $h_1$ | $1$   | $3$   | $0$   | $1$   |
+| $h_2$ | $1$   | $3$   | $1$   | $1$   |
+| $h_3$ | $2$   | $4$   | $1$   | $2$   |
+| $h_4$ | $3$   | $0$   | $1$   | $0$   |
 
 ###### Question 2.5 (b)(ii)
 
+|       | $C_1$ | $C_2$ | $C_3$ | $C_4$ |
+| ----- | ----- | ----- | ----- | ----- |
+| $C_1$ | $1$   | $1/5$ | $1/4$ | $1/2$ |
+| $C_2$ |       | $1$   | $1/4$ | $1/5$ |
+| $C_3$ |       |       | $1$   | $2/3$ |
+| $C_4$ |       |       |       | $1$   |
+
 ###### Question 2.5 (b)(iii)
+First band $b_{1}$: $$\begin{bmatrix}1 & 3 & 0 & 1  \\  1 & 3 & 1 & 1\end{bmatrix}$$
+After applying the hash function, 
+- $h(1,1)=3$ - $d_{1}$ to bucket $3$
+- $h(3,3)=5$ - $d_{2}$ to bucket $5$
+- $h(0,1)=2$ - $d_{3}$ to bucket $2$
+- $h(1,1)=3$ - $d_{4}$ to bucket $3$
+
+Second band $b_{2}$: : $$\begin{bmatrix}2 & 4 & 1 & 2  \\  3 & 0 & 1 & 0\end{bmatrix}$$
+After applying the hash function,
+- $h(2,3)=0$ - $d_{1}$ to bucket $0$
+- $h(4,0)=6$ - $d_{2}$ to bucket $6$
+- $h(1,1)=3$ - $d_{3}$ to bucket $3$
+- $h(2,0)=4$ - $d_{4}$ to bucket $4$
+
+The only candidate pair is $(d_{1},d_{4})$ since they are both hashed to bucket $3$ in $b_{1}$.
 
 ###### Question 2.5 (b)(iv)
+The number of candidate pairs would have increased - since there are more bands, there are more chances for a pair of documents to be hashed into the same bucket in at least one band. This increases the likelihood of finding candidate pairs compared to using just one band.
 
 ###### Question 2.5 (b)(v)
+The number of candidate pairs would have decreased - since the entire signature of each document is considered as a single band, all $4$ rows are hashed together. This makes it harder for documents to be considered similar unless their entire signature matches across all rows in that single band.
 
 ###### Question 2.5 (b)(vi)
+No. Any $b,r$ such that $br=4$ works (for the length of the signature for each document is $4$); however, $b,r$ are integers and the only permutations are aforementioned $(2,2), (4,1)$, and $(1,4)$.
