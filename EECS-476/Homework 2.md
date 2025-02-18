@@ -139,15 +139,20 @@ Centroid: $(10.500, 4.250)$
 Diameter: $5.000$
 
 ##### Question 2.4 (b)
-
+$(11,4)$.
 
 ##### Question 2.4 (c)
+$(10,5)$.
 
 ##### Question 2.4 (d)
+Centroid: The centroid shifts towards the outlier because it is the average of all points.
+Diameter: The diameter increases significantly since the maximum pairwise distance will likely involve the outlier.
+Clustroid: The clustroid may change as the point that minimizes the maximum or sum of distances may shift, depending on how the outlier affects the overall distance structure.
 
 #### Question 2.5
 
 ##### Question 2.5 (a)
+
 
 ##### Question 2.5 (b)
 
