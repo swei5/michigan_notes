@@ -78,7 +78,9 @@ No, random initialization is **NOT** better than initialization using `selectC.t
 Based on the cost progression over 25 episodes for random initialization, the cost starts to stabilize around the $6$ th or $7$ th cluster. After that, the reduction in cost becomes much smaller. Thus, I would pick $k=7$ as the optimal number of clusters, as it provides a good balance between reducing cost and avoiding overfitting.
 
 ### Question 2.5
+Proof by contradiction: Let's assume that after updating the centroid, the cost increases. That is, the squared distances between the points and the new centroids are greater than the squared distances to the old centroids. If the cost increased after updating the centroid, it would mean that at least one point is farther away from the new centroid than it was from the old one. However, by the way the centroids are updated (as the mean of the points), this cannot happen because the mean minimizes the sum of squared distances.
 
+Therefore, if a point were farther away from the new centroid, it would have been assigned to a different cluster in the previous iteration, because $k$ -means assigns each point to the closest centroid. This contradicts with our initial assumption.
 
 ### Question 3.1
 
