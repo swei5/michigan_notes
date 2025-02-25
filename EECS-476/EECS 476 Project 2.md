@@ -6,12 +6,12 @@ February 24, 2025
 ### Question 1.3
 | Method                                    | LSH Runtime | Total Runtime | # Candidate Pairs |
 | ----------------------------------------- | ----------- | ------------- | ----------------- |
-| LSH Shingle $1$: `k=10, n=120, r=5, b=24` | 0.00        | 58.03         | 209               |
-| LSH Shingle $2$: `k=10, n=120, r=20, b=6` | 0.00        | 58.11         | 26                |
-| LSH Shingle $3$: `k=10, n=120, r=60, b=2` | 0.00        | 57.83         | 12                |
-| LSH Shingle $4$: `k=3, n=120, r=20, b=6`  | 0.00        | 4.22          | 23                |
-| Naive Shingle $1$: `k=3`                  | N/A         | 1.75          | 20                |
-| Naive Shingle $2$: `k=10`                 | N/A         | 41.91         | 11                |
+| LSH Shingle $1$: `k=10, n=120, r=5, b=24` | $0.00$      | $58.03$       | $209$             |
+| LSH Shingle $2$: `k=10, n=120, r=20, b=6` | $0.00$      | $58.11$       | $26$              |
+| LSH Shingle $3$: `k=10, n=120, r=60, b=2` | $0.00$      | $57.83$       | $12$              |
+| LSH Shingle $4$: `k=3, n=120, r=20, b=6`  | $0.00$      | $4.22$        | $23$              |
+| Naive Shingle $1$: `k=3`                  | N/A         | $1.75$        | $20$              |
+| Naive Shingle $2$: `k=10`                 | N/A         | $41.91$       | $11$              |
 Runtimes recorded in seconds. 
 
 The runtime increases with larger shingles in the naive method, with `k=3` taking $1.75$ s and `k=10` taking 41.91s. LSH reduces candidate pairs but seemingly adds overhead for building hash functions. For example for `k=10`, LSH runtimes are around $58$ s, higher than the naive method, due to this extra cost. The impact of LSH parameters like $b$ and $r$ is minimal, with the primary factor being the shingle size. The number of candidate pairs is significantly reduced in LSH compared to the naive method, with LSH variants having between $11$ and $209$ pairs, while naive methods result in 20 and 11 pairs, respectively, reflecting LSH's efficiency in pruning non-relevant candidates.
@@ -19,10 +19,10 @@ The runtime increases with larger shingles in the naive method, with `k=3` tak
 ### Question 1.4
 | Method                                    | False Positive | False Negative |
 | ----------------------------------------- | -------------- | -------------- |
-| LSH Shingle $1$: `k=10, n=120, r=5, b=24` | 198            | 0              |
-| LSH Shingle $2$: `k=10, n=120, r=20, b=6` | 17             | 2              |
-| LSH Shingle $3$: `k=10, n=120, r=60, b=2` | 9              | 8              |
-| LSH Shingle $4$: `k=3, n=120, r=20, b=6`  | 3              | 0              |
+| LSH Shingle $1$: `k=10, n=120, r=5, b=24` | $198$          | $0$            |
+| LSH Shingle $2$: `k=10, n=120, r=20, b=6` | $17$           | $2$            |
+| LSH Shingle $3$: `k=10, n=120, r=60, b=2` | $9$            | $8$            |
+| LSH Shingle $4$: `k=3, n=120, r=20, b=6`  | $3$            | $0$            |
 
 ### Question 1.5
 | Method                                    | Expected False Negative           | Expected False Positive |
@@ -39,10 +39,10 @@ The candidate pairs returned by the variant for `k=10` is a subset of what's ret
 ### Question 2.3
 | Method                             | Total Runtime | # Candidate Pairs |
 | ---------------------------------- | ------------- | ----------------- |
-| LSH Cosine $1$: `n=120, r=5, b=24` | 0.03          | 2774              |
-| LSH Cosine $2$: `n=120, r=20, b=6` | 0.02          | 112               |
-| LSH Cosine $3$: `n=120, r=60, b=2` | 0.02          | 10                |
-| Naive Cosine: `k=10`               | 0.01          | 56                |
+| LSH Cosine $1$: `n=120, r=5, b=24` | $0.03$        | $2774$            |
+| LSH Cosine $2$: `n=120, r=20, b=6` | $0.02$        | $112$             |
+| LSH Cosine $3$: `n=120, r=60, b=2` | $0.02$        | $10$              |
+| Naive Cosine: `k=10`               | $0.01$        | $56$              |
 Runtimes recorded in seconds. 
 
 As $r$ increases and $b$ decreases, the number of candidate pairs drops, making LSH more selective similar to what we saw in previous questions. LSH can capture more potential near-duplicates than the naive method but may introduce more false positives.
@@ -50,9 +50,9 @@ As $r$ increases and $b$ decreases, the number of candidate pairs drops, mak
 ### Question 2.4
 | Method                             | False Positive | False Negative |
 | ---------------------------------- | -------------- | -------------- |
-| LSH Cosine $1$: `n=120, r=5, b=24` | 2718           | 0              |
-| LSH Cosine $2$: `n=120, r=20, b=6` | 69             | 13             |
-| LSH Cosine $3$: `n=120, r=60, b=2` | 0              | 46             |
+| LSH Cosine $1$: `n=120, r=5, b=24` | $2718$         | $0$            |
+| LSH Cosine $2$: `n=120, r=20, b=6` | $69$           | $13$           |
+| LSH Cosine $3$: `n=120, r=60, b=2` | $0$            | $46$           |
 
 ### Question 2.5
 The embeddings and cosine similarity approach identified significantly more near-duplicate pairs ($56$ vs. $20$) compared to shingling and Jaccard similarity. Most of these additional pairs were genuinely similar based on human judgment, suggesting that word embeddings capture semantic similarities more effectively than shingling, which relies on exact substring matches. However, one document pair was detected by shingling but not embeddings, indicating that embeddings may sometimes miss certain structural similarities. Overall, embeddings with cosine similarity are more powerful for near-duplicate detection, as they consider meaning rather than just textual overlap.
@@ -60,3 +60,39 @@ The embeddings and cosine similarity approach identified significantly more near
 ---
 ## Part 2
 ### Question 2.1
+
+![[n2_random.csv.png|400]]
+
+### Question 2.2 
+
+![[n2_select.csv.png|400]]
+
+### Question 2.3
+| Algorithm              | % change in cost |
+| ---------------------- | ---------------- |
+| Random Initialization  | $-26.7\%$        |
+| SelectC Initialization | $-79.1\%$        |
+No, random initialization is **NOT** better than initialization using `selectC.txt` in terms of cost. The results suggests that `selectC.txt` likely provides a better starting point for $k$ -means, positioning centroids closer to natural clusters, leading to faster convergence and lower final cost.
+
+### Question 2.4
+Based on the cost progression over 25 episodes for random initialization, the cost starts to stabilize around the $6$ th or $7$ th cluster. After that, the reduction in cost becomes much smaller. Thus, I would pick $k=7$ as the optimal number of clusters, as it provides a good balance between reducing cost and avoiding overfitting.
+
+### Question 2.5
+
+
+### Question 3.1
+
+![[n1_random.csv.png|400]]
+### Question 3.2
+
+![[n1_select.csv.png|400]]
+
+### Question 3.3
+| Algorithm              | % change in cost |
+| ---------------------- | ---------------- |
+| Random Initialization  | $-17.7\%$        |
+| SelectC Initialization | $-54.0\%$        |
+No, random initialization is **NOT** better than initialization using `selectC.txt` in terms of cost. The results suggests that `selectC.txt` likely provides a better starting point for $k$ -means, positioning centroids closer to natural clusters, leading to faster convergence and lower final cost.
+
+---
+## Part 3
