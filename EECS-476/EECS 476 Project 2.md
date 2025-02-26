@@ -98,3 +98,12 @@ No, random initialization is **NOT** better than initialization using `selectC.t
 
 ---
 ## Part 3
+
+### Question 2
+- Precision: $0.5333333333333333$
+- Recall: $0.13333333333333333$
+- F 1 Score: $0.21333333333333335$
+
+### Question 3
+
+### Question 4
