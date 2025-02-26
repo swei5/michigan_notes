@@ -105,5 +105,24 @@ No, random initialization is **NOT** better than initialization using `selectC.t
 - F 1 Score: $0.21333333333333335$
 
 ### Question 3
+It could be that `k=1` is too small, making the algorithm unreliable in estimating local density. Increasing $k$ could potentially provide a better comparison. In addition, the cutoff `c=1.3` maybe too high and conservative for the dataset, which could result in a significant number of false negatives.
 
 ### Question 4
+
+![[precision_vs_c.png|400]]
+
+![[recall_vs_c.png|400]]
+
+![[f1_vs_c.png|400]]
+
+`c=1` results in the highest F1-score.
+
+### Question 5
+
+![[Figure_1 1.png|400]]
+It seems that fake and legit articles cluster differently in the reduced space.
+
+### Question 6
+
+
+### Question 7
