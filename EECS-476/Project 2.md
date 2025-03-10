@@ -120,9 +120,15 @@ It could be that `k=1` is too small, making the algorithm unreliable in estimat
 ### Question 5
 
 ![[Figure_1 1.png|400]]
-It seems that fake and legit articles cluster differently in the reduced space.
+It seems that fake and legit articles cluster differently in the reduced space as shown by the visualization of the embeddings.
 
 ### Question 6
+The top outliers found were `260`, `460`, `116`, `159`, and `353`. The top-5 outliers, marked in black, are located in a transition region between the two distinct clusters (red and blue) in the t-SNE plot below. This suggests that these points have ambiguous characteristics, making them stand out as anomalies. LOF is working well in this case because it identifies points with lower local density compared to their neighbors, which aligns with the observed structure of the data.
+
+![[Pasted image 20250308210028.png|400]]
 
 
 ### Question 7
+$k$ -means could be used for identifying fake news by clustering articles based on their embeddings.  To choose the optimal number of clusters $k$ for identifying fake news, I would start with the elbow method, which involves plotting the sum of squared distances for different values of $k$ and selecting the point where the decrease in inertia starts to level off. This gives $k=3$  as a potential candidate. I do not expect $k$ -means to work better than the LOF algorithm for identifying fake news in this context. $k$ -means is a clustering algorithm that assumes clusters are spherical and well-separated, which may not always hold for high-dimensional text embeddings. It forces every data point into a cluster, making it less effective at identifying true anomalies or outliers.
+
+![[Pasted image 20250308211429.png|400]]
