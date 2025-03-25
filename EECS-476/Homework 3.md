@@ -69,3 +69,29 @@ print(f"Closest row: {result[closest_index]}")
 
 ---
 ## Question 3
+### (a)
+We have that $$\gamma_{u,s}=\sum\limits_{x \in \text{Items}}r_{u,x} \cdot \text{cos-sim}(x,s)$$ where cosine-similarity is defined as $$\begin{align}
+ \text{cos-sim}(x,s)&=\frac{\text{item}_{x} \cdot \text{item}_{s}}{||\text{item}_{x}|| ||\text{item}_{s}||}\\
+&= \frac{(R^{T}R)_{x,s}}{||R^{T}_{x, \cdot}||R^{T}_{s, \cdot}||}
+\end{align}$$ given that each item $i$ is represented as a column in adjacency matrix $R$. Note that since each entry in $R$ is either $0$ or $1$, the L2-norm of each item is effectively the squared root of its degree in the item degrees matrix $Q$. Thereby, we can rewrite the above as $$\begin{align}
+\text{cos-sim}(x,s) &= \frac{(R^{T}R)_{x,s}}{\sqrt{Q_{xx}Q_{ss}}}
+\end{align}$$ The denominator is a scalar - we can transform this to matrix form as: $$Q^{-1/2}_{xx}(R^{T}R)_{x,s}Q^{-1/2}_{ss}$$
+Similarly, we can extend the original expression to matrix form: $$\begin{align}
+\gamma_{u,s}&=\sum\limits_{x \in \text{Items}}r_{u,x} \cdot \text{cos-sim}(x,s)=R_{u,\cdot} Q^{-1/2}(R^{T}R)Q^{-1/2}\\
+&\implies \Gamma=RQ^{-1/2}(R^{T}R)Q^{-1/2}
+\end{align}$$
+### (b)
+For user-user collaborative filtering, the predicted score for user $u$ on item $s$ is given by $$\gamma_{u,s}=\sum\limits_{x \in \text{Users}}r_{x,s} \cdot \text{cos-sim}(x,u)$$ where cosine-similarity is defined as $$\begin{align}
+ \text{cos-sim}(x,s)&=\frac{\text{user}_{x} \cdot \text{user}_{u}}{||\text{user}_{x}|| ||\text{user}_{s}||}\\
+&= \frac{(RR^{T})_{x,u}}{||R_{x, \cdot}||R^{T}_{u, \cdot}||}
+\end{align}$$ similar to what we have shown in part (a). Since $R$ contains binary values ($0$ or $1$), the L2-norm of a user's row vector $R_{x}$ is effectively the squared root of its degree in the user degrees matrix $P$. Thereby, we can rewrite the above as $$\begin{align}
+\text{cos-sim}(x,u) &= \frac{(RR^{T})_{x,u}}{\sqrt{P_{xx}P_{uu}}}
+\end{align}$$
+The denominator is a scalar - we can transform this to matrix form as: $$P^{-1/2}_{xx}(RR^{T})_{x,u}P^{-1/2}_{uu}$$
+Similarly, we can extend the original expression to matrix form: $$\begin{align}
+\gamma_{u,s}&=\sum\limits_{x \in \text{Users}}r_{x,s} \cdot \text{cos-sim}(x,u)=R_{\cdot, s} Q^{-1/2}(R^{T}R)Q^{-1/2}\\
+&\implies \Gamma=P^{-1/2}(R^{T}R)P^{-1/2}R
+\end{align}$$
+---
+## Question 4
+### (a)
