@@ -95,3 +95,45 @@ Similarly, we can extend the original expression to matrix form: $$\begin{align}
 ---
 ## Question 4
 ### (a)
+$$\begin{bmatrix}1 & 1 & 0 & 1 & 0 & 0 & 1 & 0 \\ 0 & 1 & 1 & 1 & 0 & 0 &0   & 0  \\ 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1\end{bmatrix}$$
+
+### (b)
+- Cosine distance between $A,B$: $0.423$
+- Cosine distance between $A,C$: $0.5$
+- Cosine distance between $B,C$: $0.7113$
+
+```python
+import numpy as np
+
+def cosine_distance(A, B):
+    dot_product = np.dot(A, B)
+    norm_A = np.linalg.norm(A)
+    norm_B = np.linalg.norm(B)
+    return 1 - (dot_product / (norm_A * norm_B))
+
+A = np.array([
+    [1,1,0,1,0,0,1,0],
+    [0,1,1,1,0,0,0,0],
+    [0,0,0,1,0,1,1,1]
+])
+
+n = A.shape[0]
+cosine_distances = np.zeros((n, n))
+
+for i in range(n):
+    for j in range(n):
+        if i != j:
+            cosine_distances[i, j] = cosine_distance(A[i], A[j])
+
+print(cosine_distances)
+```
+
+### (c)
+- Average value of $A$: $3.333$
+- Average value of $B$: $2.333$
+- Average value of $C$: $3$
+
+Normalized matrix: $$\begin{bmatrix}0.667 & 1.667 & & 1.667 & -2.333 &  & -0.333 & -1.333 \\ & 0.667 & 1.667 & 0.667 & -1.333 & -0.333 & -1.333 & \\ -1 & & -2 & 0 & & 1 & 2 & 0 \end{bmatrix}$$
+
+### (d)
+We first calculate the jaccard distance between each pair of items: $$\begin{bmatrix}0 & 0.5 & 1 & 0.667 & 1 & 1 & 0.5 & 1 \\ 0.5 & 0 & 0.5 & 0.333 & 1 & 1 & 0.667 & 1 \\ 1 & 0.5 & 0 & 0.667 & 1 & 1 & 1 & 1 \\ 0.667 & 0.333 & 0.667 & 0 & 1 & 0.667 & 0.333 & 0.667  \\ 1 & 1 & 1 & 1 & 0 & 1 & 1 & 1 \\ 1 & 1 & 1 & 0.667 & 1 & 0 & 0.5 & 0 \\ 0.5 &  0.667 & 1 & 0.333 & 1 & 0.5 & 0 & 0.5  \\ 1 & 1 & 1 & 0.667 & 1 & 0  & 0.5 & 0 \end{bmatrix}$$
