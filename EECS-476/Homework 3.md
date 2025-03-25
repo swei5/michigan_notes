@@ -137,3 +137,29 @@ Normalized matrix: $$\begin{bmatrix}0.667 & 1.667 & & 1.667 & -2.333 &  & -0.333
 
 ### (d)
 We first calculate the jaccard distance between each pair of items: $$\begin{bmatrix}0 & 0.5 & 1 & 0.667 & 1 & 1 & 0.5 & 1 \\ 0.5 & 0 & 0.5 & 0.333 & 1 & 1 & 0.667 & 1 \\ 1 & 0.5 & 0 & 0.667 & 1 & 1 & 1 & 1 \\ 0.667 & 0.333 & 0.667 & 0 & 1 & 0.667 & 0.333 & 0.667  \\ 1 & 1 & 1 & 1 & 0 & 1 & 1 & 1 \\ 1 & 1 & 1 & 0.667 & 1 & 0 & 0.5 & 0 \\ 0.5 &  0.667 & 1 & 0.333 & 1 & 0.5 & 0 & 0.5  \\ 1 & 1 & 1 & 0.667 & 1 & 0  & 0.5 & 0 \end{bmatrix}$$
+Iteration 1:
+- Merge $F$, $H$ since they have JD of $0$
+- Clusters: $[A],[B],[C],[D],[E],[F,H],[G]$
+- Cluster Size: $7$
+
+Iteration 2:
+- Merge $B$, $D$ since they have JD of $0.333$
+- Clusters: $[A],[B,D],[C],[E],[F,H],[G]$
+- Cluster Size: $6$
+
+Iteration 3:
+- Merge $[B,D]$, $G$ since they have JD of $0.333$
+- Clusters: $[A],[B,D,G],[C],[E],[F,H]$
+- Cluster Size: $5$
+
+Iteration 4:
+- Merge $[B,D,G]$, $A$ since they have JD of $0.5$
+- Clusters: $[A,B,D,G],[C],[E],[F,H]$
+- Cluster Size: $4$
+
+Final clusters: $[A,B,D,G],[C],[E],[F,H]$.
+
+### (e)
+
+
+### (f)
