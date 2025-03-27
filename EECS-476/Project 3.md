@@ -65,3 +65,18 @@ Similarly, $$\begin{align}
 q_{i} &\leftarrow q_{i}+2\mu(\epsilon_{iu} p_{u}-\lambda q_{i})\\
 p_{u} &\leftarrow p_{u}+2\mu(\epsilon_{iu} q_{i}-\lambda p_{u})
 \end{align}$$
+
+### Question 3
+In this question, I encountered an overflow error due to the changes to $p_{i}$ and $q_{u}$ became unboundedly large, therefore causing a divergence in the SGD. 
+![[lr_0.1.png|400]]
+### Question 4
+I found `lr=0.01` to be a better learning rate that resolves the previously seen overflow error and pushes the total error down to approximately $50000$ at its $40$ th iteration.
+
+### Question 5
+![[lr_0.01.png|400]]
+
+### Question 6
+- Average Runtime: $88.4205$ s
+- Machine Specs: Apple M1, 16GB RAM
+
+### Question 7
