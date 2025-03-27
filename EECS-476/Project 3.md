@@ -54,3 +54,14 @@ $$\begin{align}
 \end{align}$$
 
 ### Question 2
+$$\begin{align}
+\frac{\partial E}{\partial q_{i}}&= 2(r_{iu}-q_{i}\cdot p^{T}_{u})(-p_{u})+2\lambda q_{i}\\
+&= -2\epsilon_{iu} p_{u}+2\lambda q_{i}
+\end{align}$$
+Similarly, $$\begin{align}
+\frac{\partial E}{\partial p_{u}}&= 2(r_{iu}-q_{i}\cdot p^{T}_{u})(-q_{i})+2\lambda p_{u}\\
+&= -2\epsilon_{iu} q_{i}+2\lambda p_{u}
+\end{align}$$ Hence, the update rules are: $$\begin{align}
+q_{i} &\leftarrow q_{i}+2\lambda(\epsilon_{iu} p_{u}-\lambda q_{i})\\
+p_{u} &\leftarrow p_{u}+2\lambda(\epsilon_{iu}-\lambda p_{u})
+\end{align}$$
