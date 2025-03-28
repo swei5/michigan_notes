@@ -26,7 +26,7 @@ I kept 13 components.
 
 ![[grayscale_image.jpg|300]] 
 
-![[matrix.png|400]]
+![[matrix.png|300]]
 
 #### (c)
 As the number of components increase, the reconstructed image looks more and more similar to the original image. We don't see a significant improvement, however, after `components=13`, confirming our hypothesis in the previous question that `energy=0.9` is a good benchmark for dimensionality reduction.
@@ -68,12 +68,12 @@ p_{u} &\leftarrow p_{u}+2\mu(\epsilon_{iu} q_{i}-\lambda p_{u})
 
 ### Question 3
 In this question, I encountered an overflow error due to the changes to $p_{i}$ and $q_{u}$ became unboundedly large, therefore causing a divergence in the SGD. 
-![[lr_0.1.png|400]]
+![[lr_0.1.png|300]]
 ### Question 4
 I found `lr=0.01` to be a better learning rate that resolves the previously seen overflow error and pushes the total error down to approximately $50000$ at its $40$ th iteration.
 
 ### Question 5
-![[lr_0.01.png|400]]
+![[lr_0.01.png|300]]
 
 ### Question 6
 - Average Runtime: $88.4205$ s
@@ -82,12 +82,12 @@ I found `lr=0.01` to be a better learning rate that resolves the previously seen
 ### Question 7
 The runtime reported across different datasets seem to be growing linearly with the size of its input.
 
-![[runtime.png|400]]
+![[runtime.png|300]]
 
 ### Question 8
 - User: $360$, Movie: $916$
-	- Prediction
+	- Prediction: $2.6360$
 - User: $43$, Movie: $85$
-	- Prediction
+	- Prediction: $2.7892$
 - User: $250$, Movie: $60$
-	- Prediction
+	- Prediction: $4.4794$
