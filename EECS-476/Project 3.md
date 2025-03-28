@@ -80,3 +80,14 @@ I found `lr=0.01` to be a better learning rate that resolves the previously seen
 - Machine Specs: Apple M1, 16GB RAM
 
 ### Question 7
+The runtime reported across different datasets seem to be growing linearly with the size of its input.
+
+![[runtime.png|400]]
+
+### Question 8
+- User: $360$, Movie: $916$
+	- Prediction
+- User: $43$, Movie: $85$
+	- Prediction
+- User: $250$, Movie: $60$
+	- Prediction
