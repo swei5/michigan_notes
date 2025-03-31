@@ -22,11 +22,9 @@ A^{T}A &= (U\Sigma V^{T})^{T}(U\Sigma V^{T}) \\
 
 ### Question 2
 #### (b)
-I kept 13 components. 
+I kept 14 components. 
 
-![[grayscale_image.jpg|300]] 
-
-![[matrix.png|300]]
+![[matrix 1.png|400]]
 
 #### (c)
 As the number of components increase, the reconstructed image looks more and more similar to the original image. We don't see a significant improvement, however, after `components=13`, confirming our hypothesis in the previous question that `energy=0.9` is a good benchmark for dimensionality reduction.
@@ -39,7 +37,7 @@ As the number of components increase, the reconstructed image looks more and mor
 ![[output_31.png|300]]
 
 #### (d)
-$18733$. This is the sum of the size of $U$, $\Sigma$, and $V^{T}$.
+$20174$. This is the sum of the size of $U$, $\Sigma$, and $V^{T}$.
 
 #### (e)
 $518400$. This is the size of the original matrix.
