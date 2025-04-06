@@ -40,12 +40,22 @@ Node $C$ has the highest value in betweenness. It is on the shortest path betwee
 Node $C$ has the highest value in closeness. The sum of its shortest path to all the other nodes is the shortest among all nodes - it has a distance of $1$ to $A, B, E, F, G$, $2$ to $H$ and $3$ to $I$. All the other nodes have a sum that is notably higher.
 
 ### (b)(vi)
-$$C=\frac{\text{Number of closed triplets}}{n(\text{number of all triplets})}$$
+We can count the number of closed triplets (triangles) manually and the number of triplets for each vertex $i$ as $C(\text{deg}(v_{i}),2)$.
+$$C=\frac{\text{number of closed triplets}}{n(\text{number of all triplets})}=\frac{7}{47}=0.149$$
 
 ---
 ## Question 2
 ### (a)
-### (b)
+A, B.
+### (b)(i)
+$$M=\begin{bmatrix}0 & 0 & 1 & 0  \\ \frac{1}{2} & 0 & 0 & 0  \\  \frac{1}{2} & 1 & 0 & 1 \\ 0 & 0 & 0 & 0\end{bmatrix}$$
+
+### (b)(ii)
+$$\begin{align}
+\mathbf{r}^{1}&=\left(\beta M+(1-\beta) \left[\frac{1}{n}\right]_{4 \times 4}\right)\mathbf{r}^{0}\\
+&= 
+\end{align}$$
+
 ### (c)
 
 ---
