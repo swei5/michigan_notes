@@ -1,3 +1,7 @@
+**EECS 476 Homework 4**
+Vincent Wei ([vswei@umich.edu](mailto:vswei@umich.edu))
+April 15, 2025
+
 ## Question 1
 ### (a)
 A.
@@ -53,13 +57,110 @@ $$M=\begin{bmatrix}0 & 0 & 1 & 0  \\ \frac{1}{2} & 0 & 0 & 0  \\  \frac{1}{2} & 
 ### (b)(ii)
 $$\begin{align}
 \mathbf{r}^{1}&=\left(\beta M+(1-\beta) \left[\frac{1}{n}\right]_{4 \times 4}\right)\mathbf{r}^{0}\\
-&= 
+&= \begin{bmatrix}0.0375 & 0.0375 & 0.8875 & 0.0375\\
+0.4625 & 0.0375 & 0.0375 & 0.0375\\
+0.4625 & 0.8875 & 0.0375 & 0.8875\\
+0.0375 & 0.0375 & 0.0375 & 0.0375\end{bmatrix} \begin{bmatrix}0.25 \\
+0.25 \\
+0.25 \\
+0.25\end{bmatrix}\\
+&= \begin{bmatrix}0.25 \\
+0.144\\
+0.569\\
+0.038\end{bmatrix}
 \end{align}$$
+### (b)(iii)
+Similar to (ii), we can compute $\mathbf{r}^{2}$ as $$\begin{align}
+\mathbf{r}^{2}&=\left(\beta M+(1-\beta) \left[\frac{1}{n}\right]_{4 \times 4}\right)\mathbf{r}^{1} \\
+&= \begin{bmatrix}0.0375 & 0.0375 & 0.8875 & 0.0375\\
+0.4625 & 0.0375 & 0.0375 & 0.0375\\
+0.4625 & 0.8875 & 0.0375 & 0.8875\\
+0.0375 & 0.0375 & 0.0375 & 0.0375\end{bmatrix} \begin{bmatrix}0.25 \\
+0.144 \\
+0.569 \\
+0.038\end{bmatrix}\\
+&= \begin{bmatrix}0.521\\
+0.144\\
+0.298\\
+0.038\end{bmatrix}
+\end{align}$$
+### (b)(iv)
+If $D \to C$ is reversed, then $D$ becomes a dangling node. This violates the assumption of Column-stochasticity - that columns within an adjacency matrix $M$ should sum up to $1$ ($D$ will have sum of $0$ if no teleports were implemented). 
 
+### (b)(v)
+I ran the following code to determine the expected PageRank vector:
+
+```python
+import numpy as np
+
+M = np.array([
+    [0,   0,   1,   0],
+    [0.5, 0,   0,   0],
+    [0.5, 1,   0,   1],
+    [0,   0,   0,   0]
+])
+
+beta = 0.85
+n = M.shape[0]
+teleport = np.ones((n, 1)) / n
+
+r = np.ones((n, 1)) / n
+
+eps = 1e-8
+delta = 1
+while delta > eps:
+    r_new = beta * M @ r + (1 - beta) * teleport
+    delta = np.linalg.norm(r_new - r, 1)
+    r = r_new
+
+print("PageRank vector:\n", r.flatten())
+```
+
+The resulting vector is $$\mathbf{r}= \begin{bmatrix}0.373  \\ 0.196 \\ 0.394 \\ 0.038\end{bmatrix}$$
 ### (c)
+First, we initialize the adjacency matrix $A$: $$\begin{bmatrix}0 & 1 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0\end{bmatrix}$$ as well as the authority and hub vectors: $$a=h=\begin{bmatrix} 0.5 \\ 0.5 \\ 0.5\\ 0.5 \end{bmatrix}$$
+First iteration:
+$$\begin{align}
+a = A^{T}h &=\begin{bmatrix}0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 1 \\ 0 & 0 & 0 & 0\end{bmatrix}\begin{bmatrix} 0.5 \\ 0.5 \\ 0.5 \\ 0.5 \end{bmatrix}\\
+&= \begin{bmatrix} 0.5\\ 0.5 \\ 1.5 \\ 0
+\end{bmatrix}\\
+h=Aa &= \begin{bmatrix}0 & 1 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0\end{bmatrix}\begin{bmatrix} 0.5 \\ 0.5 \\ 0.5 \\ 0.5 \end{bmatrix}\\
+&= \begin{bmatrix}1 \\ 0.5 \\ 0.5 \\ 0.5
+\end{bmatrix}
+\end{align}$$
+Normalizing gives $$a= \frac{1}{\sqrt{3}} \begin{bmatrix}0.5\\ 0.5 \\ 1.5 \\ 0\end{bmatrix}$$ and $$h= \frac{1}{\sqrt{1.75}} \begin{bmatrix}1 \\ 0.5 \\ 0.5 \\ 0.5
+\end{bmatrix}$$
+We repeat the process for the second iteration: $$\begin{align}
+a= A^Th &=\begin{bmatrix}0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 1 \\ 0 & 0 & 0 & 0\end{bmatrix}\frac{1}{\sqrt{1.75}} \begin{bmatrix}1 \\ 0.5 \\ 0.5 \\ 0.5
+\end{bmatrix}\\
+&= \begin{bmatrix} 0.378\\ 0.756 \\ 1.512 \\ 0
+\end{bmatrix}\\
+h = Aa &= \begin{bmatrix}0 & 1 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0\end{bmatrix}\frac{1}{\sqrt{3}} \begin{bmatrix}0.5\\ 0.5 \\ 1.5 \\ 0\end{bmatrix}\\
+&= \begin{bmatrix}1.155 \\ 0.866 \\ 0.289 \\ 0.866
+\end{bmatrix}
+\end{align}$$ After applying normalization, we have $$a= \frac{1}{\sqrt{3}} \begin{bmatrix} 0.378\\ 0.756 \\ 1.512 \\ 0
+\end{bmatrix}$$ and $$h=\frac{1}{\sqrt{2.917}} \begin{bmatrix}1.155 \\ 0.866 \\ 0.289 \\ 0.866
+\end{bmatrix}$$
 
 ---
 ## Question 3
 ### (a)
+A, C.
 ### (b)
-### (c)
+$A$: $0$
+- Explanation: the structure overgeneralizes and is not better off than a randomized structure
+$B$: $0.39$
+- Explanation: this visually matches the left and right square structures and exhibits strong intra-cluster and minimal inter-cluster edges
+$C$: $0.19$
+- Explanation: this is somewhat between $A$ and $B$ in that there is some community structure based on the partitions but not optimal
+$D$: $-0.13$
+- Explanation: Each node is a community itself (no community structure)
+
+### (c)(i)
+
+### (c)(ii)
+
+### (c)(iii)
+
+---
+### Question 5
