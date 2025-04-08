@@ -157,6 +157,7 @@ $D$: $-0.13$
 - Explanation: Each node is a community itself (no community structure)
 
 ### (c)(i)
+Because there is only $1$ edge between any pairs of communities after the first pass, the weight of each edge in graph $H$ is exactly $1$.
 
 ### (c)(ii)
 
