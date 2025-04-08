@@ -160,14 +160,55 @@ $D$: $-0.13$
 Because there is $1$ edge between all pairs of communities after the first pass, the weight of each edge in graph $H$ is exactly $2$.
 
 ### (c)(ii)
-The modularity is given by $$Q= \frac{1}{2m} \sum\limits_{i,j} \left[A_{ij}- \frac{k_{i}k_{j}}{2m}\right] \delta(c_{i},c_{j})$$ Since we're calculating modularity after the first pass, each node in $H$ is its own community. For any pair of nodes $i$ and $j$ that are connected:
+The modularity is given by $$Q= \frac{1}{2m} \sum\limits_{i,j} \left[A_{ij}- \frac{k_{i}k_{j}}{2m}\right] \delta(c_{i},c_{j})$$ Note that $m=8$ because there are $4$ edges, each of weight $2$.
+
+Since we're calculating modularity after the first pass, each node in $H$ is its own community. For any pair of nodes $i$ and $j$ that are connected:
 - $A_{ij}=2$
 - $k_{i}=k_{j}=4$
 - $\delta(c_{i},c_{j})=0$
 
+And for any node with itself (same community),
+- $A_{ii}=0$
+- $\delta(c_{i},c_{i})=1$
 
+We now have enough information to compute $Q$: $$\begin{align}
+Q&= \frac{1}{16} \sum\limits_{i,i} \left[- \frac{k_{i}k_{i}}{2m}\right]\\
+&=  \frac{1}{16} (4)  \frac{-16}{16}\\
+&= - \frac{1}{4}
+\end{align}$$
 
 ### (c)(iii)
+The modularity gain when moving a node $i$ to community $C$ is given by: $$\Delta Q = \left[\frac{\Sigma_{in} + k_{i,in}}{2m} - \left(\frac{\Sigma_{tot} + k_i}{2m}\right)^2\right] - \left[\frac{\Sigma_{in}}{2m} - \left(\frac{\Sigma_{tot}}{2m}\right)^2 - \left(\frac{k_i}{2m}\right)^2\right]$$ 
+In our graph $H$: 
+-  $m = 8$ (as shown previously)
+- $k_i = 4$ 
+And for any community $C$ consisting of a single node $j$:
+-  $\Sigma_{in} = 0$ (no internal edges in a single-node community)
+-  $\Sigma_{tot} = 4$ (total weight of edges connected to node $j$)
+- $k_{i,in} = 2$ (weight of edge between node $i$ and node $j$) 
+
+Substituting in the previous equation shows:
+$$\begin{align} \Delta Q &= \left[\frac{0 + 2}{2 \cdot 8} - \left(\frac{4 + 4}{2 \cdot 8}\right)^2\right] - \left[\frac{0}{2 \cdot 8} - \left(\frac{4}{2 \cdot 8}\right)^2 - \left(\frac{4}{2 \cdot8}\right)^2\right] \\ &= \left[\frac{2}{16} - \left(\frac{8}{16}\right)^2\right] - \left[0 - \left(\frac{4}{16}\right)^2 - \left(\frac{4}{16}\right)^2\right] \\ &= \left[\frac{2}{16} - \frac{64}{256}\right] - \left[0 - \frac{16}{256} - \frac{16}{256}\right] \\ &= \left[\frac{2}{16} - \frac{1}{4}\right] - \left[0 - \frac{32}{256}\right] \\ &= \left[\frac{1}{8} - \frac{1}{4}\right] - \left[-\frac{1}{8}\right] \\ &= -\frac{1}{8} + \frac{1}{8} \\ &= 0 \end{align}$$
 
 ---
-### Question 5
+## Question 4
+### (a)(i)
+### (a)(ii)
+### (a)(iii)
+### (b)(i)
+### (b)(ii)
+
+---
+## Question 5
+### (a)
+Since $h_{A}^{(0)}=1$ and $A$ has $1$ neighbor, $h_{A}^{(1)}=1+1=2$.
+
+### (b)
+Similar to (a), we can work out $h_{B}^{1}=1+1=2$.
+
+The neighbor of $B$ has $3$ neighbors (including $B$). Hence, $$h_{neighbor}^{1} = h_{neighbor}^{0} + \sum_{v \in \mathcal{N}_{neighbor}} h_{v}^{0}=1+3=4$$
+This gives $$h_{B}^{2}=h_{B}^{1} +h_{neighbor}^{1}=2+4=6$$
+### (c)
+First we need to compute $h^{2}_{A}$. Since $A$ 's neighbor has just the same number of neighbors as $B$ 's neighbor, we can conclude that $h_{A}^{2}=6$ as well. Therefor the second layer fails to distinguish and we need to look at the third layer.
+
+Without actual calculation, we can tell that $A$ and $B$ would have different embeddings at layer $k=3$. This is because both ($2$) of the neighbors of $A$ 's neighbor are connected to $2$ other neighbors, but only one of the $2$ neighbors of $B$ 's neighbor is connected to $2$ other neighbors, and the other one is only connected to $1$. This implies $h^{2}_{A's neighbor}$ will be larger than $h^{2}_{B'sneighbor}$ and therefore causing $h^{3}_{A}$ and $h^{3}_{B}$ to differ.
