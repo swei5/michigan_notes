@@ -157,9 +157,15 @@ $D$: $-0.13$
 - Explanation: Each node is a community itself (no community structure)
 
 ### (c)(i)
-Because there is only $1$ edge between any pairs of communities after the first pass, the weight of each edge in graph $H$ is exactly $1$.
+Because there is $1$ edge between all pairs of communities after the first pass, the weight of each edge in graph $H$ is exactly $2$.
 
 ### (c)(ii)
+The modularity is given by $$Q= \frac{1}{2m} \sum\limits_{i,j} \left[A_{ij}- \frac{k_{i}k_{j}}{2m}\right] \delta(c_{i},c_{j})$$ Since we're calculating modularity after the first pass, each node in $H$ is its own community. For any pair of nodes $i$ and $j$ that are connected:
+- $A_{ij}=2$
+- $k_{i}=k_{j}=4$
+- $\delta(c_{i},c_{j})=0$
+
+
 
 ### (c)(iii)
 
