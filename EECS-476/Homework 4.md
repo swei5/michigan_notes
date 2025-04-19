@@ -178,7 +178,8 @@ Q&= \frac{1}{16} \sum\limits_{i,i} \left[- \frac{k_{i}k_{i}}{2m}\right]\\
 \end{align}$$
 
 ### (c)(iii)
-The modularity gain when moving a node $i$ to community $C$ is given by: $$\Delta Q = \left[\frac{\Sigma_{in} + k_{i,in}}{2m} - \left(\frac{\Sigma_{tot} + k_i}{2m}\right)^2\right] - \left[\frac{\Sigma_{in}}{2m} - \left(\frac{\Sigma_{tot}}{2m}\right)^2 - \left(\frac{k_i}{2m}\right)^2\right]$$ 
+The modularity gain when moving a node $i$ to community $C$ is given by: 
+$$\Delta Q = \left[ \frac{\Sigma_{\text{in}} + k_{i,\text{in}}}{2m} - \left( \frac{\Sigma_{\text{tot}} + k_i}{2m} \right)^2 \right] - \left[ \frac{\Sigma_{\text{in}}}{2m} - \left( \frac{\Sigma_{\text{tot}}}{2m} \right)^2 - \left( \frac{k_i}{2m} \right)^2 \right]$$ 
 In our graph $H$: 
 -  $m = 8$ (as shown previously)
 - $k_i = 4$ 
@@ -188,15 +189,95 @@ And for any community $C$ consisting of a single node $j$:
 - $k_{i,in} = 2$ (weight of edge between node $i$ and node $j$) 
 
 Substituting in the previous equation shows:
-$$\begin{align} \Delta Q &= \left[\frac{0 + 2}{2 \cdot 8} - \left(\frac{4 + 4}{2 \cdot 8}\right)^2\right] - \left[\frac{0}{2 \cdot 8} - \left(\frac{4}{2 \cdot 8}\right)^2 - \left(\frac{4}{2 \cdot8}\right)^2\right] \\ &= \left[\frac{2}{16} - \left(\frac{8}{16}\right)^2\right] - \left[0 - \left(\frac{4}{16}\right)^2 - \left(\frac{4}{16}\right)^2\right] \\ &= \left[\frac{2}{16} - \frac{64}{256}\right] - \left[0 - \frac{16}{256} - \frac{16}{256}\right] \\ &= \left[\frac{2}{16} - \frac{1}{4}\right] - \left[0 - \frac{32}{256}\right] \\ &= \left[\frac{1}{8} - \frac{1}{4}\right] - \left[-\frac{1}{8}\right] \\ &= -\frac{1}{8} + \frac{1}{8} \\ &= 0 \end{align}$$
+$$
+\begin{align}
+\Delta Q &= \left[ \frac{0 + 2}{2 \cdot 8} - \left( \frac{4 + 4}{2 \cdot 8} \right)^2 \right] - \left[ \frac{0}{2 \cdot 8} - \left( \frac{4}{2 \cdot 8} \right)^2 - \left( \frac{4}{2 \cdot 8} \right)^2 \right] \\
+&= \left[ \frac{2}{16} - \left( \frac{8}{16} \right)^2 \right] - \left[ 0 - \left( \frac{4}{16} \right)^2 - \left( \frac{4}{16} \right)^2 \right] \\
+&= \left[ \frac{2}{16} - \frac{64}{256} \right] - \left[ 0 - \frac{16}{256} - \frac{16}{256} \right] \\
+&= \left[ \frac{2}{16} - \frac{1}{4} \right] - \left[ 0 - \frac{32}{256} \right] \\
+&= \left[ \frac{1}{8} - \frac{1}{4} \right] - \left[ -\frac{1}{8} \right] \\
+&= -\frac{1}{8} + \frac{1}{8} \\
+&= 0
+\end{align}
+$$
 
 ---
 ## Question 4
 ### (a)(i)
+$O(k)$.
+
 ### (a)(ii)
+$O(N)$. In the worst case, each split might separate just one sample from the rest, potentially requiring up to $N-1$ splits.
+
 ### (a)(iii)
+Each binary attribute can create at most $2$ branches, and each $t$ -ary attribute can create at most $t$ branches. In the maximum case, we can have all possible combinations of attribute values: $2^{k_{1}} t^{k_{2}}$ leaf nodes.
+
 ### (b)(i)
+Computation:
+- Total entropy of the dataset: $$- \frac{4}{9}\log\left(\frac{4}{9}\right) - \frac{5}{9}\log\left(\frac{5}{9}\right)=0.9911$$
+- First Split
+	- WSplit on `Genre`
+		- Comedy: 2 Yes
+		- Thriller: 2 Yes, 2 No 
+		- Drama: 3 No
+		- Entropy: $\frac{2}{9} (0) + \frac{4}{9} (1) + \frac{3}{9}(0) = \frac{4}{9}$
+		- Gain: $0.9911- \frac{4}{9}=0.5467$
+		- Split Entropy: $-\frac{2}{9} \log\left(\frac{2}{9}\right)  - \frac{4}{9}\log\left(\frac{4}{9}\right) - \frac{3}{9}\log\left(\frac{3}{9}\right)=1.5305$
+		- Gain Ratio: $\frac{0.5467}{1.5305} = 0.3572$
+	- Split on `Length`
+		- Short: 2 Yes, 1 No
+		- Medium: 3 No
+		- Long: 2 Yes, 1 No
+		- Entropy: $\frac{1}{3}(0.9183) + \frac{1}{3}(0) + \frac{1}{3}(0.9183)=0.6122$
+		- Gain: $0.991-0.6122=0.3789$
+		- Split Entropy: $3\cdot -\frac{1}{3} \log\left(\frac{1}{3}\right)=1.5850$
+		- Gain Ratio: $\frac{0.3789}{1.5850} = 0.2391<0.3$
+	- Split on `Director`
+		- Orange: 2 Yes
+		- Blue: 1 Yes
+		- Green: 1 Yes, 1 No
+		- Yellow: 2 No
+		- White: 2 No
+		- Entropy: $\frac{2}{9} (1)=\frac{2}{9}$
+		- Gain: $0.9911 - \frac{2}{9} = 0.7689$
+		- Split Entropy: $-4\cdot \frac{2}{9}\log\left (\frac{2}{9}\right) - \frac{1}{9} \log\left (\frac{1}{9}\right)=2.2810$
+		- Gain Ratio: $\frac{0.7689}{2.2810}=0.3371$
+	- Split on `Awards?`
+		- Yes: 2 Yes, 2 No
+		- No: 2 Yes, 3 No
+		- Entropy: $\frac{4}{9}(1) + \frac{5}{9} (0.9710)=0.9839$
+		- Gain: $0.9911-0.9839=0.0072$
+		- Split Entropy: $-\frac{4}{9} \log\left (\frac{4}{9}\right) - \frac{5}{9} \log\left(\frac{5}{9}\right)=0.9911$
+		- Gain Ratio: $\frac{0.0072}{0.9911} = 0.0071 < 3$
+We can make the first split on feature `Genre`.
+- Second Split
+	- Since Comedy and Drama categories both have $0$, we only need to split on the subset of movies that are from the Thriller category.
+	- Total entropy of the subset: $$-\frac{1}{2}\log\left(\frac{1}{2}\right) - \frac{1}{2}\log\left(\frac{1}{2}\right)=1$$
+	- Split on `Length`:
+		- Short: 1 Yes
+		- Medium: 2 No
+		- Long: 1 Yes
+		- Entropy: $0$
+		- Gain: $1-0=1$
+		- Split Entropy: $2\cdot - \frac{1}{4} \log\left (\frac{1}{4}\right) - \frac{1}{2}\log\left (\frac{1}{2}\right) = 1.5$
+		- Gain Ratio: $\frac{1}{1.5}=\frac{2}{3}$
+We can make the second split on feature `Length` because it has a gain ratio greater than $0.3$ plus it gave us $100\%$ certainty.
+
+Our final tree may look something like: 
+
+```
+Genre?
+|---- Comedy: Yes
+|---- Drama: No
+|---- Thriller:
+     |---- Length?
+          |---- Short: Yes
+          |---- Medium: No
+          |---- Long: Yes
+```
+
 ### (b)(ii)
+Predicted Label: `Yes`.
 
 ---
 ## Question 5
