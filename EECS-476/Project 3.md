@@ -1,4 +1,4 @@
-**EECS 476 Project 2**
+**EECS 476 Project 3**
 Vincent Wei ([vswei@umich.edu](mailto:vswei@umich.edu))
 March 31, 2025 
 
